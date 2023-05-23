@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+body {
+    margin: 0;
+    color: #282828;
+    font-family: 'Noto Sans KR';
+}
+a{
+    text-decoration: none;
+}
+a:visited{
+    color: inherit;
+}
+main{
+    max-width: 1200px;
+}
+
+:root {
+    /* 폰트 */
+    --font: 'Noto Sans KR';
+
+    /* ================== 공통 ================== */
+
+    /* ------------------ 색상 ------------------ */
+    /* 메인 색상 */
+    --main-color: #FFE551;
+    /* 서브 색상 */
+    --sub-color: #2292F9;
+    /* 페이지 배경색 */
+    --background-color: #F5F5F7;
+    /* 폰트 기본 색상 */
+    --font-color: #282828;
+    /* 힌트 색상 */
+    --hint-color: #9D9999;
+    /* 박스 배경색 */
+    --box-color: #EEE;
+
+    /* --------------- 효과 --------------- */
+    /* 블럭 그림자 */
+    --block-shadow: 0px 1px 4px 0px #0002;
+    /* 긴 버튼 그림자 */
+    --btn-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    /* 박스 곡률 */
+    --border-radius: 8px;
+    /* 아래 테두리 */
+    --border-bottom: 1px solid #0002;
+
+    /* --------------- 크기 --------------- */
+    /* 헤더 높이 */
+    --header-height: 144px;
+    /* 버튼 높이 */
+    --btn-height: 40px;
+
+    /* =============== 상민 ================== */
+    
+    /* --------------- 레이아웃 --------------- */
+    /* 블럭 간 간격 (블럭 margin-top) */
+    --block-space: 8px;
+    /* 컨텐츠 간 간격 (컨텐츠 margin-top) */
+    --contents-space: 20px;
+    /* 컨텐트 상하 마진 */
+    --content-margin: 5px 0px;
+
+}
