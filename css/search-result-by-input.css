@@ -92,6 +92,10 @@ header {
         border-radius: var(--border-radius);
     }
 
+    .filter-img-box {
+        margin-left: 2px;
+    }
+
     .filter img {
         width: 13px;
         height: 10px;

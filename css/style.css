@@ -50,6 +50,10 @@ main{
     /* --------------- 크기 --------------- */
     /* 헤더 높이 */
     --header-height: 144px;
+    /* 헤더 너비 */
+    --header-width: 100%;
+    /* 헤더 padding */
+    --header-padding: 34px 20px 34px 20px;
     /* 버튼 높이 */
     --btn-height: 40px;
 

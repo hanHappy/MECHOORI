@@ -7,9 +7,9 @@ body {
 /* =================== 헤더 =================== */
 
 header {
-    height: 144px;
-    width: 100%;
-    padding: 0px 20px 34px 20px;
+    height: var(--header-height);
+    width: var(--header-width);
+    padding: var(--header-padding);
     background-color: var(--main-color);
 
     /* layout */
@@ -20,13 +20,13 @@ header {
     align-items: end;
 }
 
-.header-contents-wrapper {
+.header-box {
     width: 100%;
     height: fit-content;
 
     /* layout */
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: center;
     justify-content: space-between;
 }
@@ -78,6 +78,10 @@ main {
 }
 
 /* ----------- 식당 이미지 ----------- */
+.restaurant-img-box {
+    line-height: 0px;
+}
+
 .restaurant-img {
     width: 100%;
 }
