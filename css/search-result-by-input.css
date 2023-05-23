@@ -27,8 +27,8 @@ body {
 /* =================== 헤더 =================== */
 
 header {
-    height: 144px;
-    width: 100%;
+    height: var(--header-height);
+    width: var(--header-width);
     padding: 0px 20px 22px 20px;
     background-color: var(--main-color);
 
@@ -143,17 +143,15 @@ header {
             top: var(--img-elements-margin);
             right: var(--img-elements-margin);
         }
-        .empty-heart{
+        .like.inactive{
             background-image: url("/images/icons/빈하트.svg");
-            /* display: none; */
 
             text-indent: -999px;
             overflow: hidden;
             
         }
-        .heart{
+        .like {
             background-image: url("/images/icons/하트.svg");
-            display: none;
 
             text-indent: -999px;
             overflow: hidden;
