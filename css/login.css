@@ -1,0 +1,195 @@
+/* ---------전체 ----------*/
+
+html,
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  margin: 0px;
+}
+body {
+  background-color: rgb(255, 248, 212);
+}
+/* ---------헤더 ----------*/
+
+.header-logo {
+  background-image: url(/images/assets/logo_1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  width: 70px;
+  height: 70px;
+  /* "메추리" 텍스트 가리기 */
+
+  /* layout */
+  grid-column: 2;
+  z-index: 1;
+  position: absolute;
+  top: 75px;
+}
+
+
+
+/* ---------메인 ----------*/
+.login2_image {
+  width: 166px;
+  height: 182px;
+  position: relative;
+  justify-items: center;
+  background-image: url(../images/assets/login2.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 112px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/* ---------버튼 S ----------*/
+
+input {
+  width: 335px;
+  height: 45px;
+  z-index: -1;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border-style: hidden;
+  /* text-align: center; */
+  padding: 0px 0px 0px 90px;
+  box-sizing: border-box;
+}
+
+/* ---------로그인 ----------*/
+
+.login {
+  position: absolute;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  z-index: 90;
+  left: 10px;
+  line-height: 40px;
+}
+.pass {
+  position: absolute;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  z-index: 90;
+  left: 10px;
+  line-height: 40px;
+}
+
+.idAndPw {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 335px;
+  margin-top: 83px;
+  text-align: end;
+}
+::placeholder {
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  font-weight: 900;
+  color: gray;
+  text-align: end;
+  padding-right: 40px;
+}
+
+input[type="password"]:focus,
+input[type="email"]:focus {
+  background-color: #fffde6; /* 포커스 시 배경 색상 변경 */
+}
+.id {
+  position: relative;
+  display: inline-block;
+}
+.pw {
+  position: relative;
+}
+
+.idtext {
+  margin-top: 377px;
+  position: absolute;
+  left: 20%;
+  transform: translateX(-50%);
+  height: 45px;
+  text-align: center;
+  width: 60px;
+}
+.input-container {
+  border-radius: 6px;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 44px 1fr 80px;
+  height: 42px;
+  grid-template-rows: 100%;
+  position: relative;
+  top: 220px;
+  margin-right: 20px;
+}
+
+.submitbtn {
+  grid-column: 3;
+  font-size: 18px;
+  background-color: rgb(255, 234, 116);
+  border-style: none;
+  font-weight: 900;
+  border-radius: 8px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(48, 48, 48);
+}
+
+.findId {
+  position: absolute;
+  width: 69px;
+  height: 19px;
+  left: 49px;
+  top: 659px;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height */
+
+  /* hint */
+
+  color: rgba(157, 153, 153, 0.6);
+}
+
+.findPwd {
+  position: absolute;
+  width: 81px;
+  height: 19px;
+  left: 152px;
+  top: 659px;
+
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height */
+
+  /* hint */
+
+  color: rgba(157, 153, 153, 0.6);
+}
+
+.idAndPwd {
+  display: flex;
+  width: 300px;
+  position: absolute;
+  top: 10px;
+}
+
+.btw {
+  position: absolute;
+  width: 20px;
+  height: 0px;
+  left: 125px;
+  top: 677px;
+
+  /* hint */
+
+  border: 1px solid rgba(157, 153, 153, 0.6);
+  transform: rotate(90deg);
+}
