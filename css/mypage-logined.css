@@ -50,7 +50,6 @@ a{
 }
 
 .cls{
-    /* background-image: url("/picture/xcross.png"); */
     background-repeat: no-repeat;
     grid-template-columns: 3;
     background-position: center;
@@ -67,6 +66,8 @@ a{
     margin: -40px 0 0 135px;
     border-radius: 50%;
     /* text-align: center; */
+    background-color: #fff;
+    box-shadow: var(--btn-shadow);
 } 
 
 .profile-circle img{
