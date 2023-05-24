@@ -2,17 +2,28 @@
 
 body{
     margin: 0;
-    color: #545454; 
+    color: #282828;
     font-family: var(--font);
 }
 
 header {
+    height: 144px;
     width: 100%;
-    padding: 77px 20px 22px 20px;
+    padding: 0px 20px 22px 20px;
+    background-color: #FFE551;
+    
+    
+    /* layout */
     box-sizing: border-box;
-    /* position: sticky; */
-    /* top: 0; */
-    background-color: var(--main-color);
+    position: sticky;
+    top: 0;
+    display: flex;
+}
+
+main{
+    width: 100%;
+    padding: 20px 20px 0 20px;
+    box-sizing: border-box;
 }
 
 .search-container {
@@ -65,17 +76,13 @@ input {
     top: 20%;
 }
 
-
-main{
-    margin: 0px 20px;
-}
-
 p {
     margin: 0;
 }
 
+/* ======================= main ======================= */
+
 .title-box{
-    margin-top: 20px;
     display: flex;
     justify-content: space-between;
 }
@@ -84,7 +91,7 @@ h1{
     margin: 0;
     font-weight: normal;
     font-size: 18px;
-    color: var(--sub-color);
+    color: #2292F9;
 
     /* layout */
     display: inline-block;
@@ -93,9 +100,10 @@ h1{
 .title-box button{
     background-color: transparent;
     border: none;
-    color: var(--hint-color);
+    color: #9D9999;
 }
 
+/* ------------- 리스트 ------------- */
 
 .list{
     margin-top: 15px;
