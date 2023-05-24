@@ -1,0 +1,262 @@
+@import url(/css/style.css);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+*{
+ margin: 0px;
+ padding: 0px;
+ font-family: var(--font);
+}
+
+header{
+    background-color: var(--main-color);
+    /* background-color: rgba(255, 229, 81, 1); */
+
+    display: grid;
+    grid-template-columns: 45px 1fr 45px;
+    grid-template-rows: 100%;
+    align-items: center;
+    justify-items: center;
+
+    /* width: 100vw; */
+    /* width: 375px; */
+    height: 145px;
+}
+
+.userBtn{
+    min-width: 45px;
+    grid-column: 3;
+    justify-items: start;
+    
+}
+
+.userBtn-img{
+    /* position: absolute; */
+    /* background-image: url(/images/icons/마이페이지버튼.png); */
+    /* padding-left: 10px; */
+    /* background-size: cover; */
+    /* background-repeat: no-repeat; */
+
+    width: 22px;
+    height: 24px;
+
+    overflow: hidden;
+}
+
+.logo{
+    grid-row: 1;
+    grid-column: 2; 
+    justify-self: center;
+}
+
+.logo-img{
+    grid-column: 2;
+    width: 87px;
+    height: 51px;
+}
+
+body{
+    margin: 0;
+    background-color: rgba(247, 247, 247, 1);
+}
+
+main{
+    /* margin: 20px; */
+    /* padding: 8px 20px 0px 20px; */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.search-bar{
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+    position: absolute;
+    width: 335px;
+    height: 45px;
+    left: 20px;
+    top: 121px;
+
+    background: #FFFFFF;
+    border: 1px solid #F7BB0A;
+    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+    border-radius: 8px;
+}
+
+.search-bar input{
+    padding-left: 15px;
+    padding-top: 2px;
+    border: none;
+    outline: none;
+    width: 100%;
+    /* box-sizing: border-box; */
+    /* input:focus {outline:none;} */
+
+    /* size: ; */
+}
+
+.search-bar .search-input img{
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
+/* .search-input{
+} */
+
+.ad{
+    /* position: absolute; */
+    width: 375px;
+    height: 168px;
+    /* left: 20px; */
+    /* top: 144px; */
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.type{
+    margin: 8px 0px 0px 0px;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.typelist{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 3px;
+    list-style: none;
+    overflow-x: scroll;
+}
+
+.section{
+    margin: 8px 0px 0px 0px;
+    /* 위 우 하 좌 */
+    padding: 10px 20px;
+    /* 좌우, 상하 */
+    background-color: white;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.section h1{
+    padding: 0px 0px 5px 0px;
+    font-family: 'Noto Sans CJK KR Medium';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+
+    color: #000000;
+}
+
+.section input[id*="slide"]{
+    display: none;
+}
+
+.section .slidewrap{
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+
+}
+
+.section .slidelist{
+    display: inline-block;
+    white-space:nowrap;
+    font-size: 0px;
+}
+
+.section .slidelist li{
+    display: inline-block;
+    vertical-align: middle;
+    transition: all .5s;
+    /* margin-right: 10px; */
+}
+
+.section .slidelist > li > a {
+    display: block;
+    position: relative;
+}
+
+.section .slidelist > li > a img{
+    width: 100%;
+}
+
+.section .slidelist label{
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 50px;
+    cursor: pointer;
+}
+
+
+
+.section .slidelist .left{
+    left: -30px;
+    background: url('/images/icons/왼버튼.png') center center / 20% no-repeat;
+}
+
+.section .slidelist .right{    
+    right: -30px;
+    background: url('/images/icons/오른버튼.png') center center / 20% no-repeat;
+}
+
+.section [id="slide01"]:checked ~ .slidewrap .slidelist > li {transform:translateX(0%);}
+.section [id="slide02"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-100%);}
+.section [id="slide03"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-200%);}
+.section [id="slide04"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-300%);}
+.section [id="slide05"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-400%);}
+.section [id="slide06"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-500%);}
+
+
+
+
+.comparison{
+    margin: 8px 0px 0px 0px;
+    /* padding: 10px 20px; */
+    padding: 10px 20px 10px 20px;
+    background-color: white;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+    height: 214px;
+}
+
+.comparison h1{
+    padding: 0px 0px 5px 0px;
+    font-family: 'Noto Sans CJK KR Medium';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    color: #000000;
+}
+
+
+.adBox{
+    margin: 8px 0px 0px 0px;
+}
+
+
+/* .comparison img{ */
+    /* height: 100%; */
+    /* width: 335px;
+    height: 184px; */
+/* } */
+
+/* .rateAd{ */
+    /* margin: 8px 0px 0px 0px;
+    padding: 0px 0px 0px 0px; */
+    /* padding: 10px 20px 15px 20px; */
+    /* background-color: white; */
+    /* box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2); */
+    /* height: 214px; */
+/* } */
+
+
+
+
+
+
+
