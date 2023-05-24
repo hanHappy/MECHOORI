@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/SignUp.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/earlyaccess/notosanskr.css"
+    />
+    <script src = "../js/SignUp.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-text">정보 입력</div>
+      <div class="back">
+      <a href="main_hsm.html"></a>
+    </div>
+      <div class = "home">
+        <a href="#"></a>
+      </div>
+    </header>
+
+    <main>
+      <div class="circleParent">
+        <span class="circle1 circle">1</span>
+        <span class="circle2 circle">2</span>
+        <span class="circle3 circle">3</span>
+        <span class="Inline"></span>
+      </div>
+
+      <div class="circleTextMain">
+        <div class="circleText1 circleText">약관 동의</div>
+        <div class="circleText2 circleText">정보 입력</div>
+        <div class="circleText3 circleText">가입 완료</div>
+      </div>
+
+      <span class="line"> </span>
+      <section class="sectionBox">
+        <div class="nameParent">
+          <div class="nameText text">이름</div>
+          <div>
+            <input
+              type="text"
+              class="input1"
+              placeholder="  *한글 10자, 영문 20자 이내"
+            />
+          </div>
+        </div>
+
+        <div class="nickNameParent">
+          <div class="nickNameText text">닉네임</div>
+          <div class="nick">
+            <input
+              type="text"
+              class="input2"
+              placeholder="  *6자리 이상의 영문 혹은 숫자 조합"
+            />
+            <input type="submit" value="중복 확인" />
+          </div>
+        </div>
+        <div class="passwordParent">
+          <div class="passwordText text">비밀번호</div>
+          <input
+            type="password"
+            class="input3"
+            id="password"
+            placeholder="  *영문, 숫자, 특수문자를 포함하여 8자리 이상 입력"
+            />
+        </div>
+        <div class="pwParent">
+          <div class="pwText text">비밀번호 확인</div>
+          <input 
+          type="password" 
+          class="input4" 
+          id="password1"
+          placeholder=" 비밀번호 확인"/>
+          <!-- <button class = "PwdCheck" id="passwordCheckButton">비밀번호 확인</button> -->
+          <div id="passwordCheck"></div>
+        </div>
+        <div class="emailParent">
+          <div class="emailText text">이메일</div>
+          <div class="email">
+            <input
+              type="email"
+              class="input5"
+              placeholder="  * 이메일  주소  입력"
+              id = "email"
+            />
+            <input type="submit" value="인증 요청" />
+            <div id="emailCheck"></div>
+
+          </div>
+          <div class="numParent">
+            <div class="numText text">인증 번호 입력</div>
+            <input type="text" class="input9" />
+            <input type="submit" value="확 인" />
+          </div>
+        </div>
+        <div class="PhoneNumParent">
+          <div class="phoneText text">휴대폰 번호</div>
+          <div class="phone">
+            <input
+              type="text"
+              class="input6"
+              id = "phone"
+              placeholder='   "ㅡ" 는 제외하고 입력하여 주십시오'
+              maxlength="13"
+            />
+            <input type="submit" value="인증 요청" />
+            <div id="numberCheck"></div>
+          </div>
+        </div>
+        <div class="numParent">
+          <div class="numText text">인증 번호 입력</div>
+          <input type="text" class="input7" />
+          <input type="submit" value="확 인" />
+        </div>
+      </section>
+      <div class="line1"> </div>
+
+      <a href="SignIn2.html">
+        <div class="next">가입</div>
+      </a>
+    </main>
+  </body>
+</html>
