@@ -145,9 +145,6 @@ header {
         }
         .like.inactive{
             background-image: url("/images/icons/빈하트.svg");
-
-            text-indent: -999px;
-            overflow: hidden;
             
         }
         .like {
