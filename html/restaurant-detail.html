@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>손 안의 메뉴 추천 리스트, 메추리</title>
+    <link rel="stylesheet" type="text/css" href="/CSS/restaurant-detail.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+    <script>
+  
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="search-container">
+            <!-- <div class="search-inner"> -->
+                <!-- <div class="icon_searching"> -->
+                    <button type="button" onclick="history.back()"><img src="/images/icon-backwardw.svg"></button>
+                    <p>상세페이지</p>
+                    <button type="button" onclick="location.href='../index.html'" ><img src="/images/icon-home.svg"></button>
+                <!-- </div> -->
+            </div>
+        </div>
+        
+    </header>
+    <main>
+      <div class="detail">
+        <img src="/images/rstrt-detail.png">
+        <div class="title">
+          <p>짜장상회</p>
+          <img src="/images/icon-like.svg">
+          <img src="/images/icon-share.svg">
+        </div>
+        
+        <p class="intro">지금까지 이런 짜장면은 없었다</p>
+        <p class="region">서울  ·  신촌</p>
+        <p class="rating-price">가성비  80% (99+) </p>
+        <p class="average-price">평균가격 6,000원</p>
+      </div>
+      
+      <div class="menu">
+        <div class="menu-title">
+              <img src="/images/foods/청화원2.png">
+                <p>대표메뉴</p>
+             </div>
+
+             <div class="menu-detail">
+                <p>짜장면 …………………………………… 4.000원</p>
+                <p>짜장면 …………………………………… 4.000원</p>
+                <p>짜장면 …………………………………… 4.000원</p>
+             </div>
+
+            <div class="check-box">
+                <input id="check-btn" type="checkbox">
+                <label for="check-btn">메뉴 더보기</label>
+                <span class="togle">▼</span>
+                <ul class="menubars">
+                    <li>짜장면 ………………… 4.000원</li>
+                    <li>짜장면 ………………… 4.000원</li>
+                    <li>짜장면 ………………… 4.000원</li>
+                    <li>짜장면 ………………… 4.000원</li>
+                </ul>    
+            </div>
+        </div>
+
+
+        <div class="map">
+            <div class="map-title-box">
+                <div class="map-title">
+                  <img src="/images/icon-line.svg">
+                    <p>위치 안내</p>
+                </div>
+                <div class="map-address">
+                    <p>서울특별시 마포구 백범로 52</p>
+                    <img src="/images/icon-mapmore.svg" width="16px">
+                </div>
+            </div>
+            <div class="map-detail">
+                <div class="map-column">
+                  <div class="map-image">
+                    <img src="/images/thumb-map.png">
+                  </div>
+                  <div class="map-button">
+                    <div class="map-button-image" id=btnWrap>
+                        <div id="popupBtn"><img src="/images/icon-phone.svg">전화하기</div>
+                    </div>
+                   
+                    <div class="map-button-image">
+                        <img src="/images/icon-map.svg">지도보기
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <div class="review">
+            <div class="review-title">
+              <img src="/images/icon-line.svg">
+                <p>리뷰 (<span class="review-span">99</span>+)</p>
+            </div>
+            <div class="review-contents">
+                <img src="/images/thumb-search.png" alt="식당사진" width="65px">
+                <div class="review-content">
+                  <span class="rate-title">가성비 평가</span>
+                  <p class="rate-menu">메뉴명</p>
+                  <span class="review-nickname">닉네임</span>
+                  <p class="review-text">리뷰</p>
+                </div>
+            </div>
+            <div class="review-contents">
+                <img src="/images/thumb-search.png" alt="식당사진" width="65px">
+                <div class="review-content">
+                  <span class="rate-title">가성비 평가</span>
+                  <p class="rate-menu">메뉴명</p>
+                  <span class="review-nickname">닉네임</span>
+                  <p class="review-text">리뷰</p>
+                </div>
+            </div>
+            <div class="review-contents">
+                <img src="/images/thumb-search.png" alt="식당사진" width="65px">
+                <div class="review-content">
+                  <span class="rate-title">가성비 평가</span>
+                  <p class="rate-menu">메뉴명</p>
+                  <span class="review-nickname">닉네임</span>
+                  <p class="review-text">리뷰</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+<!-- <div id="btnWrap">
+  <button typ="button" id="popupBtn">모달 팝업 tst</button>
+</div> -->
+
+<div id="modalWrap">
+  <div id="modalContent">
+    <div id="modalBody">
+      <div id="callBtn">전화하기</div>
+      <div id="closeBtn">취소하기</div>
+    </div>
+  </div>
+</div>
+    
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('popupBtn');
+    const modal = document.getElementById('modalWrap');
+    const closeBtn = document.getElementById('closeBtn');
+    const callBtn = document.getElementById('callBtn');
+
+    modal.style.display = 'none'; 
+
+    btn.onclick = function() {
+      modal.style.display = 'block';
+    }
+    closeBtn.onclick = function() {
+      modal.style.display = 'none'; // 모달 닫기
+    }
+    callBtn.onclick = function() {
+      modal.style.display = 'none'; // 모달 닫기
+    }
+
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none'; // 모달 외부
+      }
+    }
+  });
+  </script>
+</body>
+
+</html>
