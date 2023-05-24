@@ -1,0 +1,352 @@
+@import url(style.css);
+
+body {
+    background-color: var(--background-color);
+}
+
+/* =================== 헤더 =================== */
+
+header {
+    height: var(--header-height);
+    width: var(--header-width);
+    padding: var(--header-padding);
+    background-color: var(--main-color);
+
+    /* layout */
+    position: sticky;
+    top: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: end;
+}
+
+.header-box {
+    width: 100%;
+    height: fit-content;
+
+    /* layout */
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    justify-content: space-between;
+}
+
+.back-btn-img {
+    background-image: url(/images/icons/뒤로가기.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    background-color: transparent;
+    width: 12px;
+    height: 19px;
+
+    /* "메뉴버튼" 텍스트 가리기 */
+    overflow: hidden;
+    text-indent: -999px;
+}
+
+.header-logo {
+    background-image: url(/images/assets/logo_1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: 72px;
+    height: 44px;
+
+    /* "메추리" 텍스트 가리기 */
+    overflow: hidden;
+    text-indent: -999px;
+}
+
+.header-menu-btn {
+    background-image: url(/images/icons/엑스.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    width: 18px;
+    height: 18px;
+
+    /* "메뉴버튼" 텍스트 가리기 */
+    overflow: hidden;
+    text-indent: -999px;
+}
+
+/* =================== 메인 =================== */
+main {
+    max-width: 1200px;
+}
+
+/* ----------- 식당 이미지 ----------- */
+.restaurant-img-box {
+    line-height: 0px;
+}
+
+.restaurant-img {
+    width: 100%;
+}
+
+/* ----------- 상호명 ----------- */
+.restaurant-name-wrapper {
+    background-color: #fff;
+    height: 3em;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: var(--block-shadow);
+
+    /* layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ----------- 사용자 입력 컨텐츠 wrapper ----------- */
+.input-contents-wrapper {
+    background-color: #fff;
+
+    /* layout */
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--block-space);
+    padding: 20px;
+}
+
+/* ----------- 메뉴 선택 ----------- */
+.menu-selection {
+    background-color: #fff;
+
+    /* layout */
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-selection h1 {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.menu-dropbox {
+    /* box styling */
+    background-color: #EEE;
+    border: none;
+    border-radius: 8px;
+    height: 40px;
+
+    /* contents */
+    font-family: var(--font);
+    text-align: center;
+
+    /* layout */
+    margin: var(--content-margin);
+}
+
+/* ----------- 평가 ----------- */
+.rate {
+    background-color: #fff;
+
+    /* layout */
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--contents-space);
+}
+
+.rate h1 {
+    margin: var(--content-margin);
+    font-weight: bold;
+}
+
+.selling-price-box {
+    height: 27px;
+    /* layout */
+    margin: var(--content-margin);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.selling-price {
+    display: flex;
+}
+
+.selling-price span:last-child {
+    margin-left: 17px;
+}
+
+.my-price-box {
+    height: 27px;
+    /* layout */
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.my-price-box p {
+    /* font styling */
+    font-weight: bold;
+    color: var(--sub-color);
+}
+
+.my-price input {
+    width: 60px;
+    height: 27px;
+    background-color: var(--box-color);
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    font-family: var(--font);
+    font-size: 16px;
+}
+
+/* 가격 조절 스크롤 */
+.slide-container {
+    margin: var(--content-margin);
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 2vmin;
+    border-radius: 5px;
+    background-color: var(--sub-color);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 6vmin;
+    height: 6vmin;
+    border-radius: 50%;
+    background: var(--background-color);
+    border: 3px solid var(--sub-color);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--background-color);
+    cursor: pointer;
+}
+
+/* ----------- 리뷰 ----------- */
+.comment {
+    background-color: #fff;
+
+    /* layout */
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--contents-space);
+}
+
+    .comment h1 {
+        margin: var(--content-margin);
+        font-weight: bold;
+    }
+
+    .comment textarea {
+        font-family: var(--font);
+        margin: var(--content-margin);
+        background-color: var(--box-color);
+        border: none;
+        border-radius: var(--border-radius);
+        height: 80px;
+        padding: 10px;
+        resize: none;
+    }
+
+/* ----------- 평가 버튼 ----------- */
+.rate-btn-container {
+    margin-top: var(--contents-space);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+    .rate-btn {
+        height: var(--btn-height);
+        width: 100%;
+        background-color: var(--sub-color);
+        border: none;
+        border-radius: var(--border-radius);
+        font-size: 18px;
+        color: #fff;
+        font-weight: bold;
+    }
+
+/* ------------- 평가 확인 모달 ------------- */
+/* 모달 창 */
+.modal {
+    display: none;
+    position: fixed;
+    /* 페이지 스크롤에 영향을 받지 않음 */
+    z-index: 1;
+    /* 다른 요소보다 위에 위치 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /* 스크롤 가능하게 함 */
+    background-color: rgba(0, 0, 0, 0.7);
+    /* 반투명한 검은색 배경 */
+}
+
+    /* 모달 박스 */
+    .modal-box {
+        font-weight: bold;
+        background-color: #fff;
+        border-radius: var(--border-radius);
+        padding: 45px 0;
+        box-sizing: border-box;
+
+        /* layout */
+        margin: 50% 40px;
+        height: 269px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        justify-content: space-between;
+    }
+
+        .modal-box img {
+            width: 106px;
+            height: 92px;
+        }
+
+        .check-btn-box {
+            display: flex;
+        }
+
+            .check-btn-box button {
+                font-family: var(--font);
+                width: 80px;
+                height: 40px;
+                border: none;
+                border-radius: var(--border-radius);
+                margin: 0px 5px;
+            }
+
+            .no {
+                background-color: var(--box-color);
+            }
+            .no:hover {
+                filter: brightness(0.9);
+            }
+
+            .yes {
+                background-color: var(--main-color);
+            }
+            .yes:hover {
+                filter: brightness(0.9);
+            }
