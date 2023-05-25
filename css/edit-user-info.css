@@ -61,7 +61,8 @@ ul{
 
 li{
     list-style: none;
-    padding: 4px 0 0 8px;
+    padding: 2px 0 0 10px;
+    font-weight: lighter;
 }
 
 /*닉네임 이메일주소 휴대폰번호 비번 묶음*/
@@ -80,7 +81,7 @@ li{
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 10px 20px 0 20px;
+    padding: 10px 10px 0 0px;
 
 
 }
@@ -89,12 +90,15 @@ li{
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    margin-left: 44px;
+    /* margin-left: 44px; */
+    justify-content: space-between;
+    /* padding-left: 20px; */
     
 }
 /*정보표시 + 변경버튼*/
 .info-box{
-    width:295px;
+    /* width:295px; */
+    width: 100%;
     height: 45px;
     margin:10px auto;
     display: flex;
@@ -104,12 +108,13 @@ li{
 
 /*회원 정보 표시*/
 .box{
-    width:223px;
-    height:45px;
+    width:279px;
+    height:39px;
     line-height: 36px;
     background-color: #eeeeee;
     font-size: 14px;
     border-radius: 8px;
+    margin-left: 20px;
 }
 
 .nickname{
@@ -120,8 +125,8 @@ li{
 
 /*변경*/
 .change-btn {
-    width:60px;
-    height:45px;
+    width:46px;
+    height:39px;
     z-index: 999;
     box-shadow: 0px 0px 5px rgba(117, 117, 117, 0.25);
     border-radius: 8px;
@@ -130,20 +135,21 @@ li{
     font-size: 14px;
     margin-left: 10px;
     padding-top: 2px;
-    
+    font-weight: lighter;
 }
 
+/* 변경버튼 */
 .pwd-change-btn{
-    width:60px;
-    height:45px;
+    width:46px;
+    height:41px;
     z-index: 999;
     box-shadow: 0px 0px 5px rgba(117, 117, 117, 0.25);
     border-radius: 8px;
     text-align: center;
     line-height: 39px;
     font-size: 14px;
-    margin-left: 60px;
-    padding-top: 1[x];
+    margin-right: 20px;
+    font-weight: lighter;
 }
 
 .info-box a{
@@ -153,9 +159,8 @@ li{
 }
 
 .change-pwd-wrapper{
-    width: 288px;
+    width: 375px;
     height: 69px;
-    justify-content: space-between;
     align-items: center;
     margin-top: 20px;
 }
@@ -166,10 +171,12 @@ li{
     font-size: 14px;
 }
 
+
 .change-pwd-text{
     line-height: 39px;
     font-size: 14px;
-    padding-left: 2px;
+    padding-left: 28px;
+    
 }
 
 .withdraw-btn{
