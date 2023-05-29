@@ -13,25 +13,19 @@ header {
     background-color: var(--main-color);
 
     /* layout */
+    width: 100%;
     position: sticky;
     top: 0;
+
+    /* items layout */
     box-sizing: border-box;
-    display: flex;
-    align-items: end;
-}
-
-.header-box {
-    width: 100%;
-    height: fit-content;
-
-    /* layout */
     display: flex;
     align-items: end;
     justify-content: center;
     justify-content: space-between;
 }
 
-.back-btn-img {
+.header-icon-back {
     background-image: url(/images/icons/뒤로가기.svg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -46,26 +40,30 @@ header {
 }
 
 .header-logo {
-    background-image: url(/images/assets/logo_1.png);
+    background-image: url(/images/assets/logo.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 
+    /* layout */
     width: 72px;
     height: 44px;
+    margin: 0;
 
     /* "메추리" 텍스트 가리기 */
     overflow: hidden;
     text-indent: -999px;
 }
 
-.header-menu-btn {
-    background-image: url(/images/icons/엑스.svg);
+.header-icon-home {
+    background-image: url(/images/icons/home.svg);
     background-size: cover;
     background-repeat: no-repeat;
+    border: none;
+    background-color: transparent;
 
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 23px;
 
     /* "메뉴버튼" 텍스트 가리기 */
     overflow: hidden;
