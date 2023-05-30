@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 
 * {
   margin: 0px;
@@ -27,7 +27,6 @@ header {
   /* margin: 0 auto; */
   /* grid-gap: 0 16.46px; */
   align-items: center;
-  
 }
 
 .search-container button {
@@ -42,14 +41,13 @@ main {
   background-color: var(--background-color);
 }
 
-.title-img{
-  width:100%;
+.title-img {
+  width: 100%;
 }
 
 .detail {
   background-color: white;
   box-shadow: var(--block-shadow);
-
 }
 
 .detail p {
@@ -78,7 +76,7 @@ main {
 
 .title img {
   width: 25.77px;
-  display:flex;
+  display: flex;
   justify-content: space-between;
 }
 
@@ -111,7 +109,6 @@ main {
   font-weight: 800;
   font-size: 18px;
 }
-
 
 .menu {
   margin: 8px 0;
@@ -146,7 +143,6 @@ main {
   font-size: 16px;
   font-weight: 400;
   line-height: 30px;
-
 }
 
 .togle {
@@ -157,7 +153,7 @@ main {
   display: none;
 }
 
-#check-btn:checked~.menubars {
+#check-btn:checked ~ .menubars {
   display: block;
   list-style-type: none;
   text-align: start;
@@ -180,6 +176,11 @@ main {
   font-size: 16px;
   font-weight: 700;
   line-height: 30px;
+}
+
+.KaKaomap {
+  width: 300px;
+  height: 181px;
 }
 
 .map-title-box {
@@ -226,7 +227,6 @@ main {
 }
 
 .map-image {
-
   flex: 1;
   display: flex;
   align-items: flex-end;
@@ -234,7 +234,6 @@ main {
   /* border-top-left-radius: 8px; */
   /* border-top-right-radius: 8px; */
   overflow: hidden;
-
 }
 
 .map-image img {
@@ -272,11 +271,21 @@ main {
   /* border-left: 1px solid #C8C8C8; */
 }
 
-.map-button-image>img {
+.mapBtn {
+  border-style: none;
+  background-color: white;
+  width: 80px;
+  height: 31px;
+  font-size: 18px;
+  position: relative;
+  left: 4px;
+}
+
+.map-button-image > img {
   padding-right: 6px;
 }
 
-#popupBtn>img {
+#popupBtn > img {
   padding-right: 6px;
 }
 
@@ -355,18 +364,15 @@ main {
   line-height: 30px;
 }
 
-
 /* -------------------------------------- */
 
 /* 모바일 미디어 쿼리 */
 @media screen and (max-width: 357px) {
-
   /* .search_inner 너비 조정 */
   .search_inner {
     width: 100%;
     max-width: 300px;
   }
-
 }
 
 /* -------------------------------------- */
@@ -396,7 +402,6 @@ main {
   overflow: auto;
   backdrop-filter: blur(10px);
   background-color: rgba(56, 56, 56, 0.3);
-
 }
 
 /* 모달 팝업 */
@@ -437,7 +442,7 @@ main {
   justify-content: center;
   align-items: center;
   color: white;
-  background: #6D6D6D;
+  background: #6d6d6d;
   cursor: pointer;
   border-radius: 8px;
 }

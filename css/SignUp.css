@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  font-weight: 700;
+}
 /* ---------전체 ----------*/
 body {
   font-size: 16px;
@@ -5,21 +11,14 @@ body {
   font-family: "Noto Sans KR", sans-serif;
 }
 
-main {
-  margin: 40px 20px;
-
-}
-*{
-  font-weight: 700;
-
-}
 /* ========메인========== */
+
 .circleParent {
   position: relative;
   width: 100%;
   height: 100px;
   margin-top: 30px;
-  top: -10px;
+  /* font-size: 18px; */
 }
 
 .circle {
@@ -30,19 +29,21 @@ main {
   border-radius: 30px;
   display: flex;
   justify-content: center;
-  font-size: 26px;
+  font-size: 18px;
   transform: translateX(-50%);
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .circle1 {
   left: 18%;
-  background-color: rgb(255, 246, 198);
-  color: gray;
+  background-color: rgb(255, 229, 81, 1);
+  color: rgb(0, 0, 0);
+  font-weight: 700;
 }
 .circle2 {
   left: 50%;
-  background-color: rgba(255, 229, 81, 1);
-  font-weight: 700;
+  background-color: rgba(255, 246, 198);
+  color: gray;
 }
 .circle3 {
   left: 82%;
@@ -53,11 +54,11 @@ main {
 .Inline {
   width: 60%;
   height: 1px;
-  position: absolute;
   top: 25%;
+  position: absolute;
+  background-color: black;
   left: 50%;
   transform: translateX(-50%);
-  background-color: black;
   z-index: -2;
 }
 
@@ -68,27 +69,28 @@ main {
   justify-items: center;
   width: 100%;
   grid-template-rows: 100%;
-  top: -60px;
+  top: -40px;
   font-size: 14px;
-  margin-top: 10px;
+  /* font-family: Noto Sans CJK KR Medium; */
+  font-family: "Noto Sans CJK KR Medium";
 }
 
 .circleText1 {
   grid-column: 1;
   width: auto;
-  color: gray;
-  margin-left: 10px;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
 }
 .circleText2 {
   grid-column: 2;
   width: auto;
-  font-weight: 700;
+
+  color: gray;
 }
 .circleText3 {
   grid-column: 3;
   width: auto;
   color: gray;
-  margin-right: 10px;
 }
 
 /*====정보 입력 칸====*/
@@ -121,6 +123,12 @@ input {
   position: relative;
 }
 
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding-left: 20px;
+}
+
 ::placeholder {
   color: rgb(167, 167, 167);
   font-size: 12px;
@@ -141,7 +149,7 @@ input {
 .input1,
 .input3,
 .input4 {
-  width: 335px;
+  width: 295px;
 }
 .input7,
 .input9,
@@ -160,13 +168,12 @@ input {
   align-items: center;
   justify-content: center;
 
-  position: absolute;
-  width: 295px;
-  max-width: 235px;
+  position: relative;
+  width: 335px;
 
   height: 42px;
   left: 50%;
-  top: 1177px;
+  top: 20px;
   transform: translateX(-50%);
 }
 .line {
@@ -180,21 +187,16 @@ input {
 }
 
 .line1 {
-  position: absolute;
+  position: relative;
   width: 295px;
   height: 0px;
   left: 50%;
-  top: 1137px;
+  top: 20px;
   transform: translateX(-50%);
   border: 1px solid #c6c6c6;
   margin-bottom: 40px;
 }
-/* 
-#passwordCheck {
-  width: 100px;
-  height: 100px;
+
+.check {
+  font-size: 14px;
 }
-#result{
-  width: 100px;
-  height: 100px;
-} */
