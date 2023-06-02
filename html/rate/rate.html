@@ -16,7 +16,7 @@
     <header>
         <a href="/html/search-result-by-input.html"><button class="header-icon-back">버튼</button></a>
         <h1 class="header-logo">로고</h1>
-            <a href="/index.html"><button class="header-icon-home">버튼</button></a>
+        <a href="/index.html"><button class="header-icon-home">버튼</button></a>
     </header>
 
     <!-- ================ main ================ -->
@@ -83,14 +83,48 @@
         </section>
 
 
-        <!-- 모달 -->
-        <div class="modal">
+        <!-- 모달 /완료 확인-->
+        <div class="modal check-complete">
             <div class="modal-box">
-                <img src="/images/assets/메추리-OK.png" alt="">
-                <p>평가를 완료할까요?</p>
+                <div class="question-box">
+                    <img src="/images/assets/메추리-OK.png" alt="">
+                    <p>평가를 완료할까요?</p>
+                    <div class="check-btn-box">
+                        <button class="no">아니오</button>
+                        <a href="./rate-result.html"><button class="yes">네</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 모달 /이전 화면 확인-->
+        <div class="modal check-back">
+            <div class="modal-box">
+                <div class="question-box">
+                    <img src="/images/assets/coca-물음표.png" alt="">
+                    <div>
+                        <p>작성을 취소하고</p>
+                        <p>이전으로 돌아갈까요?</p>
+                    </div>
+                </div>
                 <div class="check-btn-box">
                     <button class="no">아니오</button>
                     <a href="./rate-result.html"><button class="yes">네</button></a>
+                </div>
+            </div>
+        </div>
+        <!-- 모달 /홈으로 확인-->
+        <div class="modal check-home">
+            <div class="modal-box">
+                <div class="question-box">
+                    <img src="/images/assets/coca-물음표.png" alt="">
+                    <div>
+                        <p>작성을 취소하고</p>
+                        <p>홈으로 돌아갈까요?</p>
+                    </div>
+                    <div class="check-btn-box">
+                        <button class="no">아니오</button>
+                        <a href="./rate-result.html"><button class="yes">네</button></a>
+                    </div>
                 </div>
             </div>
         </div>

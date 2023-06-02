@@ -42,6 +42,8 @@ main{
     --block-shadow: 0px 1px 4px 0px #0002;
     /* 긴 버튼 그림자 */
     --btn-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    /* 작은 버튼 그림자 */
+    --btn-shadow2: 0px 2px 5px 0px #00000016;
     /* 박스 곡률 */
     --border-radius: 8px;
     /* 아래 테두리 */

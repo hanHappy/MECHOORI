@@ -10,7 +10,7 @@ window.addEventListener("load", function () {
 
   // 평가 확인 모달 ------------------------------------------
   let rateBtn = document.querySelector('#rate-btn');
-  let modal = document.querySelector('.modal');
+  let modal = document.querySelector('.modal.check-complete');
   let no = this.document.querySelector('.no');
 
   // 모달 열기
