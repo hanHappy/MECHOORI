@@ -297,7 +297,7 @@ main {
     overflow: auto;
 }
 
-    /* 모달 박스 */
+    /* 모달 박스 공통 */
     .modal-box {
         font-weight: bold;
         background-color: #fff;
@@ -306,6 +306,7 @@ main {
 
         /* layout */
         margin: 50% 40px;
+        padding: 30px;
         height: 269px;
 
         /* items layout */
@@ -313,9 +314,22 @@ main {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+    
+    /* 모달 박스 (이전화면, 홈으로) */
+    .modal.check-back .modal-box,
+    .modal.check-home .modal-box {
+        /* items layout */
+        justify-content: space-between;
+    }
+
+    /* 모달 박스 (평가 완료) */
+    .modal.check-complete .modal-box {
+        /* items layout */
         gap: 20px
     }
-        /* 메추리 + 질문 박스 */
+
+        /* 메추리 + 텍스트(질문) 박스 */
         .question-box {
             display: flex;
             flex-direction: column;
@@ -356,10 +370,15 @@ main {
             .no:hover {
                 filter: brightness(0.9);
             }
-
             .yes {
                 background-color: var(--main-color);
             }
             .yes:hover {
                 filter: brightness(0.9);
+            }
+            .modal.check-back .yes,
+            .modal.check-home .yes {
+                background-color: #FFE8E8;
+                border: 1.5px solid #F00;
+                color: #F00;
             }
