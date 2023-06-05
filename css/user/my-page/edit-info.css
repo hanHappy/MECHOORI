@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url('/css/style.css');
+
+body{
+    width: 375px;
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+    background-color: #f7f7f7;
+}
+
+.header {
+    height: 145px;
+    display: flex; 
+    align-items: center;
+    background-color: var(--main-color);
+    justify-items: center; 
+    align-items: center;
+    text-align: center;
+    
+}
+
+.back-to-index{
+    margin-left: 30px;
+    background-image: url("../images/HomeButton.svg");
+    background-size:100%;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    margin:60px 0px 0px 64px;
+    
+    /* background-color: black; */
+    } 
+
+.goback{
+    width:60px;
+    margin: 50px 32px 0 2px;
+   
+}
+
+.mypage-text{
+    flex-grow: 0.75;
+    margin-top: 40px;
+    margin-left: 16px;
+}
+
+
+h1{
+    font-size: 20px;
+    color:#282828;
+}
+
+ul{
+    margin:0 20px 0 0;
+    padding-left: 25px;
+    font-size: 14px;
+    color: #282828;
+    font-weight: bold;
+}
+
+li{
+    list-style: none;
+    padding: 2px 0 0 10px;
+    font-weight: lighter;
+}
+
+/*닉네임 이메일주소 휴대폰번호 비번 묶음*/
+.edit-user-total{
+    width: 375px;
+    height: 465px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.1);
+    background-color: #ffffff;
+    padding-top: 20px;
+}
+/*개별 묶음*/
+.edit-user-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 10px 0 0px;
+
+
+}
+/*비밀번호는 표시되는게 없어서 따로 분류*/
+.change-pwd-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* margin-left: 44px; */
+    justify-content: space-between;
+    /* padding-left: 20px; */
+    
+}
+/*정보표시 + 변경버튼*/
+.info-box{
+    /* width:295px; */
+    width: 100%;
+    height: 45px;
+    margin:10px auto;
+    display: flex;
+    flex-direction: row;
+
+}
+
+/*회원 정보 표시*/
+.box{
+    width:279px;
+    height:39px;
+    line-height: 36px;
+    background-color: #eeeeee;
+    font-size: 14px;
+    border-radius: 8px;
+    margin-left: 20px;
+}
+
+.nickname{
+    margin-top: 10px;
+}
+
+
+
+/*변경*/
+.change-btn {
+    width:46px;
+    height:39px;
+    z-index: 999;
+    box-shadow: 0px 0px 5px rgba(117, 117, 117, 0.25);
+    border-radius: 8px;
+    text-align: center;
+    line-height: 39px;
+    font-size: 14px;
+    margin-left: 10px;
+    padding-top: 2px;
+    font-weight: lighter;
+}
+
+/* 변경버튼 */
+.pwd-change-btn{
+    width:46px;
+    height:41px;
+    z-index: 999;
+    box-shadow: 0px 0px 5px rgba(117, 117, 117, 0.25);
+    border-radius: 8px;
+    text-align: center;
+    line-height: 39px;
+    font-size: 14px;
+    margin-right: 20px;
+    font-weight: lighter;
+}
+
+.info-box a{
+    color: #282828;
+    text-decoration-line: none;
+    font-size: 14px;
+}
+
+.change-pwd-wrapper{
+    width: 375px;
+    height: 69px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.change-pwd-wrapper a{
+    color: #282828;
+    text-decoration-line: none;
+    font-size: 14px;
+}
+
+
+.change-pwd-text{
+    line-height: 39px;
+    font-size: 14px;
+    padding-left: 28px;
+    
+}
+
+.withdraw-btn{
+    width: 68px;
+    height: 28px;
+    margin: 20px;
+    border: 1px solid #dedede;
+    background-color: #ffffff;
+    border-radius: 8px;
+    align-items: center;
+    text-align: center;
+}
+
+.withdraw-btn a{
+    color: #868686;
+    text-decoration-line: none;
+    font-size: 12px;
+}
