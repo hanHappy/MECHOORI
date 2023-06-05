@@ -15,10 +15,10 @@
 
 <body>
     <header>
-        <div class="search-container">
+        <div class="search-container"> 
             <div class="search-inner">
                 <div class="icon_searching">
-                    <button type="button" onclick="history.back()" ><img src="/images/icons/icon-backwardw.svg"></button>
+                    <button type="button" onclick="history.back()"><img src="/images/icons/icon-backwardw.svg"></button>
                 </div>
                 <p>한식</p>
                 <div class="icon_backward">
@@ -42,12 +42,42 @@
             </div>
         </div>
 
-        <div class="search-result-box">
-            <a href="/html/restaurant-detail.html">
-                    <p>상호</p>
-            </a>
-        </div>
-    
+        <!-- 컨텐츠 -->
+        <section>
+            <section class="content">
+                <!-- 이미지 -->
+                <div class="image-box">
+                    <img src="/images/foods/청화원2.png" alt="청화원" class="image">
+                    <!-- 하트 -->
+                    <button class="like inactive">좋아요</button>
+                    <div class="data-box">
+                        <p>좋아요 수</p>
+                        <p>718</p>
+                        <p>평가 수</p>
+                        <p>207</p>
+                    </div>
+                </div>
+                <!-- 정보 -->
+                <div class="info-box">
+                    <p>짜장상회</p>
+                    <p>평균가격</p>
+                    <p>10,000원</p>
+                    <p>·</p>
+                    <p>가성비</p>
+                    <p>113%</p>
+                </div>
+                <!-- 버튼 -->
+                <div class="btn-box">
+                    <div>
+                        <a href=""><button>상세 보기</button></a>
+                    </div>
+                    <div>
+                        <a href="rate/rate.html"><button>평가하기</button></a>
+                    </div>
+                </div>
+            </section>
+        </section>
+
     </main>
 
 </body>
