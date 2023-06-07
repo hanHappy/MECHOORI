@@ -1,18 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
-body {
+html, body, input, button, select, option {
     margin: 0;
     color: #282828;
     font-family: 'Noto Sans KR';
 }
-a{
+a{ /* 하이퍼링크 스타일 */
     text-decoration: none;
 }
-a:visited{
+a:visited{ /* 방문한 하이퍼링크 색상 변화 해제 */
     color: inherit;
 }
 main{
     max-width: 1200px;
+}
+.d-none{
+    display: none;
 }
 
 :root {
@@ -50,22 +53,11 @@ main{
     --border-bottom: 1px solid #0002;
 
     /* --------------- 크기 --------------- */
-    /* 헤더 높이 */
-    --header-height: 144px;
-    /* 버튼 높이 */
-    --btn-height: 40px;
-    /* 헤더 너비 */
-    --header-width: 100%;
-    /* 헤더 padding */
-    --header-padding: 34px 20px 34px 20px;
     /* 버튼 높이 */
     --btn-height: 40px;
 
     /* 버튼 높이 */
     --btn-height: 40px;
-
-    --btn-home-height: 20px;
-    --btn-home-width: 20px;
 
     /* =============== 상민 ================== */
     
@@ -76,5 +68,85 @@ main{
     --contents-space: 20px;
     /* 컨텐트 상하 마진 */
     --content-margin: 5px 0px;
+}
 
+/* =================== 헤더 =================== */
+header {
+    height: 90px;
+    width: 100%;
+    padding: 0 20px;
+    background-color: var(--main-color);
+
+    /* layout */
+    width: 100%;
+    position: sticky;
+    top: 0;
+
+    /* items layout */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1{
+    font-size: 20px;
+}
+
+.header-side {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.header-side.left{
+    justify-content: start;
+}
+.header-side.right{
+    justify-content: end;
+}
+
+.header-icon {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+
+    /* layout */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-indent: -999px;
+}
+
+.header-icon.logo {
+    background-image: url(/images/assets/logo.png);
+    width: 72px;
+    height: 44px;
+}
+.header-icon.back {
+    background-image: url(/images/icons/back.svg);
+    width: 13px;
+    height: 21px;
+}
+.header-icon.home {
+    background-image: url(/images/icons/home.svg);
+    width: 19px;
+    height: 21px;
+}
+.header-icon.menu {
+    background-image: url(/images/icons/menu.svg);
+    width: 22px;
+    height: 20px;
+}
+.header-icon.cancle {
+    background-image: url(/images/icons/cancel.svg);
+    width: 20px;
+    height: 20px;
+}
+.header-icon.search {
+    background-image: url(/images/icons/icon-search.svg);
+    width: 21px;
+    height: 21px;
 }
