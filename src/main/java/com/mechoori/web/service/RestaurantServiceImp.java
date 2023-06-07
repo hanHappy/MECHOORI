@@ -1,7 +1,5 @@
 package com.mechoori.web.service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +23,9 @@ public class RestaurantServiceImp implements RestaurantService{
 	}
 
 	@Override
-	public Restaurant getDetail() {
-		// TODO Auto-generated method stub
-		return null;
+	public Restaurant getDetail(int restaurantId) {
+		Restaurant restaurant = repository.findById(restaurantId);
+		return restaurant;
 	}
 
 //	@Override

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>손 안의 메뉴 추천 리스트, 메추리</title>
-    <link rel="stylesheet" type="text/css" href="/CSS/restaurant-detail.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/restaurant/detail.css">
     <link rel="stylesheet" type="text/css" href="/CSS/style.css">
     <script>
   
@@ -30,13 +30,13 @@
       <div class="detail">
         <img src="/images/foods/청화원2.png">
         <div class="title">
-          <p>짜장상회</p>
+          <p th:text="${restaurant.name}">식당명</p>
           <img src="/images/icons/icon-like.svg">
           <img src="/images/icons/icon-share.svg">
         </div>
         
-        <p class="intro">지금까지 이런 짜장면은 없었다</p>
-        <p class="region">서울  ·  신촌</p>
+        <p class="intro">식당 소개</p>
+        <p class="region">주소</p>
         <p class="rating-price">가성비  80% (99+) </p>
         <p class="average-price">평균가격 6,000원</p>
       </div>

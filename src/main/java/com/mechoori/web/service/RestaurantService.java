@@ -8,5 +8,5 @@ public interface RestaurantService {
 	
 	List<Restaurant> getList(int categoryId);
 
-	Restaurant getDetail();
+	Restaurant getDetail(int restaurantId);
 }

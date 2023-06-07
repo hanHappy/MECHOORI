@@ -6,11 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>손 안의 메뉴 추천 리스트, 메추리</title>
-    <link rel="stylesheet" type="text/css" href="/css/search-result-by-category.css">
+    <link rel="stylesheet" type="text/css" href="/css/restaurant/category.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-
-    <!-- <script>
-    </script> -->
 </head>
 
 <body>
@@ -32,7 +29,7 @@
         <div class="menu-box">
             <div class="menu">
                 <ul>
-                    <li class="rs-menu non-click"><a href="#">한식</a></li>
+                    <li class="rs-menu non-click"><a href="#" th:href="@{/restaurant/list/category/{id}(id=1)}">한식</a></li>
                     <li class="rs-menu non-click"><a href="#">중식</a></li>
                     <li class="rs-menu non-click"><a href="#">일식</a></li>
                     <li class="rs-menu non-click"><a href="#">양식</a></li>
@@ -44,7 +41,7 @@
 
         <!-- 컨텐츠 -->
         <section>
-            <section class="content">
+            <section class="content" th:each="restaurant : ${list}">
                 <!-- 이미지 -->
                 <div class="image-box">
                     <img src="/images/foods/청화원2.png" alt="청화원" class="image">
@@ -52,14 +49,14 @@
                     <button class="like inactive">좋아요</button>
                     <div class="data-box">
                         <p>좋아요 수</p>
-                        <p>718</p>
+                        <p th:text="${restaurant.likedCount}">718</p>
                         <p>평가 수</p>
-                        <p>207</p>z
+                        <p th:text="${restaurant.ratedCount}">207</p>
                     </div>
                 </div>
                 <!-- 정보 -->
                 <div class="info-box">
-                    <p>짜장상회</p>
+                    <p th:text="${restaurant.name}">식당명</p>
                     <p>평균가격</p>
                     <p>10,000원</p>
                     <p>·</p>
@@ -69,8 +66,8 @@
                 <!-- 버튼 -->
                 <div class="btn-box">
                     <div>
-                        <a href=""><button>상세 보기</button></a>
-                    </div>
+                        <a href="/restaurant/1" th:href="@{/restaurant/{id}(id=${restaurant.id})}"><button>상세 보기</button></a>
+                    </div>	
                     <div>
                         <a href="rate/rate.html"><button>평가하기</button></a>
                     </div>
