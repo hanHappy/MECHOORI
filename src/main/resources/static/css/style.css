@@ -2,7 +2,7 @@
 
 html, body, input, button, select, option {
     margin: 0;
-    color: #282828;
+    color: var(--font-color);
     font-family: 'Noto Sans KR';
 }
 a{ /* 하이퍼링크 스타일 */
@@ -55,10 +55,7 @@ main{
     /* --------------- 크기 --------------- */
     /* 버튼 높이 */
     --btn-height: 40px;
-
-    /* 버튼 높이 */
-    --btn-height: 40px;
-
+    
     /* =============== 상민 ================== */
     
     /* --------------- 레이아웃 --------------- */
