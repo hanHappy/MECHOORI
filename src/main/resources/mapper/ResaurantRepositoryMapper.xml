@@ -6,7 +6,7 @@
 	<select id="findAll" resultType="com.mechoori.web.entity.Restaurant">
 		select *
 		from restaurant
-		where food_type_id = #{categoryId};
+		where category_id = #{categoryId};
 	</select>
 	<select id="findById" resultType="com.mechoori.web.entity.Restaurant">
 		select *
