@@ -39,13 +39,8 @@
 
 
         <section class="type">
-            <ul class="typelist">
-                <li> <a href="/restaurant/list/category/1" th:href="@{/restaurant/list/category/{id}(id=1)}"> <img src="/images/icons/한식.png" alt=""> </a></li>
-                <li> <a href="/restaurant/list/category/2" th:href="@{/restaurant/list/category/{id}(id=2)}"> <img src="/images/icons/중식.png" alt=""> </a></li>
-                <li> <a href="/restaurant/list/category/3" th:href="@{/restaurant/list/category/{id}(id=3)}"> <img src="/images/icons/일식.png" alt=""> </a></li>
-                <li> <a href="/restaurant/list/category/4" th:href="@{/restaurant/list/category/{id}(id=4)}"> <img src="/images/icons/양식.png" alt=""> </a></li>
-                <li> <a href="/restaurant/list/category/5" th:href="@{/restaurant/list/category/{id}(id=5)}"> <img src="/images/icons/분식.png" alt=""> </a></li>
-                <li> <a href="/restaurant/list/category/6" th:href="@{/restaurant/list/category/{id}(id=6)}"> <img src="/images/icons/기타.png" alt=""> </a></li>
+            <ul class="typelist">             
+                <li th:each="c : ${list}"> <a href="/restaurant/list/category/1" th:href="@{/restaurant/list/category/{id}(id=${c.id})}" > <img src="../static/images/icons/한식.png" th:src="@{/images/icons/{img}(img=${c.image})}"> </a></li>
             </ul>
         </section>
 

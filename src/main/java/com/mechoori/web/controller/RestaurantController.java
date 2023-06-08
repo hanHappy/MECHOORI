@@ -1,4 +1,4 @@
-package com.mechoori.web.controller.restaurant;
+package com.mechoori.web.controller;
 
 import java.util.List;
 
@@ -15,23 +15,49 @@ import com.mechoori.web.service.RestaurantService;
 
 @Controller
 @RequestMapping("/restaurant")
-public class DetailController {
-	
+public class RestaurantController {
+
 	@Autowired
 	private RestaurantService service;
-	
-	// /restaurant/133
+
+	@GetMapping("/list/category/{id}")
+	public String list(
+			@PathVariable("id") int categoryId,
+			Model model) {
+
+		List<Restaurant> list = service.getList(categoryId);
+
+		model.addAttribute("list", list);
+
+		return "restaurant/category";
+	}
+
 	@GetMapping("{id}")
 	public String detail(
 			@PathVariable("id") int restaurantId,
 			Model model) {
-		
+
 		Restaurant restaurant = service.getDetail(restaurantId);
 		List<Menu> menuList = service.getMenuList(restaurantId);
 
 		model.addAttribute("restaurant", restaurant)
-			.addAttribute("menuList", menuList);
-		
+				.addAttribute("menuList", menuList);
+
 		return "restaurant/detail";
 	}
+
+	// @GetMapping("/list")
+	// public String list(
+	// @RequestParam("ctgId") int categoryId,
+	// Model model) {
+	//
+	// List<Restaurant> list = service.getList(categoryId);
+	//
+	// model.addAttribute("list", list);
+	//
+	// if()
+	// return "html/search-result-by-category";
+	// else if()
+	// return "html/search-result-by-input";
+	// }
 }
