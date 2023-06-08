@@ -47,10 +47,8 @@
                 <p>대표메뉴</p>
              </div>
 
-             <div class="menu-detail">
-                <p>짜장면 …………………………………… 4.000원</p>
-                <p>짜장면 …………………………………… 4.000원</p>
-                <p>짜장면 …………………………………… 4.000원</p>
+             <div class="menu-detail" th:each="menu : ${menuList}">
+                <p><span th:text="${menu.name}">메뉴명</span> …………………………………… <span th:text="${menu.price}">가격</span></p>
              </div>
 
             <div class="check-box">

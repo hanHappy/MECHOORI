@@ -4,15 +4,15 @@ import lombok.Data;
 
 @Data
 public class Restaurant {
-	private int id;
-	private int adminId;
-	private int foodTypeId;
+    private Integer id;
+	private Integer adminId;
+	private Integer foodTypeId;
 	private String name;
 	private String intro;
 	private String address;
 	private String operatingTime;
 	private String contactNumber;
-	private int likedCount;
-	private int ratedCount;
+	private Integer likedCount;
+	private Integer ratedCount;
 }
 
