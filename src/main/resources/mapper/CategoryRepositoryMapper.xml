@@ -6,11 +6,14 @@
 	<select id="findAll" resultType="Category">
 		select * 
 		from category
-		where id between 1 and 6
 	</select>
 	<select id="findById" resultType="Category">
 		select *
 		from category
 		where id = #{categoryId}
 	</select>
+	<insert id="save" parameterType="Category">
+		insert into category(name, image)
+		values(#{name}, #{image})
+	</insert>
 </mapper>

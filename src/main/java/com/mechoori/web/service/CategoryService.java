@@ -10,4 +10,6 @@ public interface CategoryService {
 
     Category getDetail(int categoryId);
 
+    int save(Category category);
+
 }

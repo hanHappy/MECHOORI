@@ -8,14 +8,16 @@
 </head>
 <body>
     <h1>카테고리</h1>
+<table>
     <th>id</th>
     <th>name</th>
     <th>img</th>
   </tr>
-  <tr th:each="">
-    <td>데이터 1</td>
-    <td>데이터 2</td>
-    <td>데이터 3</td>
+  <tr th:each="c : ${list}">
+    <td th:text="${c.id}">데이터 1</td>
+    <td th:text="${c.name}">데이터 2</td>
+    <td th:text="${c.image}">데이터 3</td>
   </tr>
+</table>
 </body>
 </html>

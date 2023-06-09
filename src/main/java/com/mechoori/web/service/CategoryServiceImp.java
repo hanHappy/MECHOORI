@@ -23,5 +23,12 @@ public class CategoryServiceImp implements CategoryService {
     public Category getDetail(int categoryId) {
         return repository.findById(categoryId);
     }
+
+    @Override
+    public int save(Category category) {
+        return repository.save(category);
+    }
+
+    
     
 }

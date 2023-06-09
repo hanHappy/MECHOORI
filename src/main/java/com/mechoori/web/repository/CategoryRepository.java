@@ -13,4 +13,6 @@ public interface CategoryRepository {
 
     Category findById(int categoryId);
 
+    int save(Category category);
+
 }

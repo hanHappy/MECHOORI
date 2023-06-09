@@ -17,9 +17,14 @@ class CategoryRepositoryTest {
 	private CategoryRepository repository;
 	
 	@Test
-	void test() {
-		List<Category> list = repository.findAll();
-		System.out.println(list);
+	void testSave() {
+		Category category = Category.builder()
+								.name("간식")
+								.image("간식.svg")
+								.build();
+		int save = repository.save(category);
+		System.out.println(category);
+		System.out.println(save);
 	}
 
 }
