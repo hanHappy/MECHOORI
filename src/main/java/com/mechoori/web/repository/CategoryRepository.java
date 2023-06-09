@@ -17,4 +17,6 @@ public interface CategoryRepository {
 
     void delete(int[] id);
 
+    void update(List<Category> list);
+
 }
