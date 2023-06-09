@@ -9,7 +9,7 @@
 		where id between 1 and 6
 	</select>
 	<select id="findById" resultType="Category">
-		select *
+		select * 
 		from category
 		where id = #{categoryId}
 	</select>
