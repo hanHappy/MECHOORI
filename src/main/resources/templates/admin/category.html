@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category</title>
 </head>
+
 <body>
-    <h1>카테고리</h1>
-<table>
-    <th>id</th>
-    <th>name</th>
-    <th>img</th>
-  </tr>
-  <tr th:each="c : ${list}">
-    <td th:text="${c.id}">데이터 1</td>
-    <td th:text="${c.name}">데이터 2</td>
-    <td th:text="${c.image}">데이터 3</td>
-  </tr>
-</table>
+  <h1>카테고리</h1>
+  <form method="POST">
+    <table>
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>img</th>
+      <tr th:each="l: ${list}">
+        <td><input type="checkbox" th:value="${l.id}" name="id"></td>
+        <td th:text="${l.id}">데이터 1</td>
+        <td th:text="${l.name}">데이터 2</td>
+        <td th:text="${l.image}">데이터 3</td>
+      </tr>
+    </table>
+    <input type="submit" value="DELETE">
+  </form>
+
+  <p> </p>
+
+  <form method="POST">
+    <span><strong>카테고리명 </strong></span><input type="text" name="name" required />
+    <p> </p>
+    <span><strong>이미지 파일명 </strong></span><input type="text" name="image" required />
+    <input type="submit" value="SAVE" />
+  </form>
 </body>
+
 </html>
