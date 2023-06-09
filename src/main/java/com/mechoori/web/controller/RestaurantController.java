@@ -29,12 +29,15 @@ public class RestaurantController {
 			@PathVariable("id") int categoryId,
 			Model model) {
 
+		// 헤더에 식당 카테고리 출력
+		Category category = ctgService.getDetail(categoryId);
+		// 식당별 평균 가격 출력
+		
+		// 식당 리스트 출력
 		List<Restaurant> list = service.getList(categoryId);
 
-		Category category = ctgService.getDetail(categoryId);
-
 		model.addAttribute("list", list)
-			.addAttribute("category", category);
+				.addAttribute("category", category);
 
 		return "restaurant/category";
 	}
