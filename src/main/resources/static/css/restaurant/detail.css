@@ -49,57 +49,59 @@ main {
 .detail {
   background-color: white;
   box-shadow: var(--block-shadow);
-
-}
-
-.detail p {
-  margin-left: 20px;
-  margin-right: 20px;
+  /* padding: 20px; */
+   padding-left: 20px;
+  padding-right: 20px;
 }
 
 .detail img {
   width: 100%;
 }
 
+.rated-result {
+  display: flex;
+  /* position: absolute; */
+  /* margin-left: 20px; */
+}
+
+.rated-result .like, .rated-result .rated {
+  display: flex;
+  align-items: center;
+  margin-right: 7px;
+}
+
+.rated-result .like img, .rated-result .rated img {
+  height: 12px;
+  margin-right: 4px;
+}
+
+.rated-result .like p, .rated-result .rated p {
+  margin-bottom: 0;
+}
+
 .title {
+  display: flex;
+  align-items: center;
   font-weight: 700;
   font-size: 24px;
   margin-top: 23px;
   margin-right: 20px;
-  /* line-height: 44px; */
-  /* display: flex; */
-  display: grid;
-  grid-template-columns: 1fr 34px 34px;
-  grid-gap: 0 16.46px;
-  align-items: center;
-  letter-spacing: -0.09em;
   color: #282828;
 }
 
 .title img {
   width: 25.77px;
-  display:flex;
-  justify-content: space-between;
+  margin-left: 8px;
+  margin-right: 4px;
 }
 
-.intro {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  letter-spacing: -0.09em;
-  margin-top: 15px;
-}
-
+.intro,
 .region {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  display: flex;
-  align-items: center;
   letter-spacing: -0.09em;
-  margin-bottom: 15px;
+  margin: 0;
 }
 
 .average-price {
@@ -111,7 +113,6 @@ main {
   font-weight: 800;
   font-size: 18px;
 }
-
 
 .menu {
   margin: 8px 0;
@@ -148,6 +149,8 @@ main {
   line-height: 30px;
 
 }
+
+
 
 .togle {
   color: var(--sub-color);
@@ -295,6 +298,12 @@ main {
   color: #282828;
 }
 
+.review-title-box{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+
 .review-title {
   display: flex;
   align-items: center;
@@ -310,6 +319,20 @@ main {
 
 .review-title img {
   margin-right: 5px;
+}
+
+.review-rate{
+  width: 70px;
+  height: 28px;
+  background: #EEEEEE;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  padding: 3px;
+  /* gap: 10px; */
 }
 
 .review-contents {

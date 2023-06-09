@@ -7,15 +7,37 @@
     <title>Category</title>
 </head>
 <body>
-    <h1>카테고리</h1>
-    <th>id</th>
-    <th>name</th>
-    <th>img</th>
-  </tr>
-  <tr th:each="">
-    <td>데이터 1</td>
-    <td>데이터 2</td>
-    <td>데이터 3</td>
-  </tr>
+  <h1>카테고리</h1>
+  <form method="post">
+    <table>
+      <th>선택</th>
+      <th>id</th>
+      <th>name</th>
+      <th>img</th>
+      <tr th:each="l: ${list}">
+        <td><input type="checkbox" th:value="${l.id}" name="id"></td>
+        <td th:text="${l.id}">데이터 1</td>
+        <td th:text="${l.name}">데이터 2</td>
+        <td th:text="${l.image}">데이터 3</td>
+      </tr>
+
+      <!-- <form class="sign-in-form" method="POST">
+        <span><strong>카테고리명 </strong></span><input type="text" name="name" required />
+        <p> </p>
+        <span><strong>이미지 파일명 </strong></span><input type="text" name="image" required />
+        <input type="submit" value="SAVE" />
+      </form> -->
+    </table>
+    <input type="submit" value="DELETE">
+  </form>
+
+  <form method="post">
+    <label for="name">카테고리명</label>
+    <input type="text" id="name" name="name">
+    <label for="image">이미지 파일명</label>
+    <input type="text" id="image" name="image">
+    <input type="submit" value="SAVE">
+  </form>
+
 </body>
 </html>

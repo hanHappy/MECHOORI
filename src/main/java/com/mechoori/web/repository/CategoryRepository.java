@@ -13,4 +13,7 @@ public interface CategoryRepository {
 
     Category findById(int categoryId);
 
+    void save(Category category);
+
+    void delete(int[] id);
 }
