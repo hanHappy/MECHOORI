@@ -47,19 +47,16 @@
                 <p>대표메뉴</p>
              </div>
 
-             <div class="menu-detail" th:each="menu : ${menuList}">
-                <p><span th:text="${menu.name}">메뉴명</span> …………………………………… <span th:text="${menu.price}">가격</span></p>
+             <div class="menu-detail" th:each="menu, iter : ${menuList}" th:if="${iter.index} &lt; 4">
+                <p><span th:text="${menu.name}">메뉴명</span> …………………………………… <span th:text="${menu.price}+'원'">가격</span></p>
              </div>
 
             <div class="check-box">
                 <input id="check-btn" type="checkbox">
                 <label for="check-btn">메뉴 더보기</label>
                 <span class="togle">▼</span>
-                <ul class="menubars">
-                    <li>짜장면 ………………… 4.000원</li>
-                    <li>짜장면 ………………… 4.000원</li>
-                    <li>짜장면 ………………… 4.000원</li>
-                    <li>짜장면 ………………… 4.000원</li>
+                <ul class="menubars" th:each="menu, iterStat : ${menuList}" th:if="${iterStat.index} &gt;= 4">
+                  <p><span th:text="${menu.name}">메뉴명</span> …………………………………… <span th:text="${menu.price}+'원'">가격</span></p>
                 </ul>    
             </div>
         </div>
