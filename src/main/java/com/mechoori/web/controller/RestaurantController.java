@@ -31,8 +31,6 @@ public class RestaurantController {
 
 		// 헤더에 식당 카테고리 출력
 		Category category = ctgService.getDetail(categoryId);
-		// 식당별 평균 가격 출력
-		
 		// 식당 리스트 출력
 		List<Restaurant> list = service.getList(categoryId);
 
@@ -55,19 +53,4 @@ public class RestaurantController {
 
 		return "restaurant/detail";
 	}
-
-	// @GetMapping("/list")
-	// public String list(
-	// @RequestParam("ctgId") int categoryId,
-	// Model model) {
-	//
-	// List<Restaurant> list = service.getList(categoryId);
-	//
-	// model.addAttribute("list", list);
-	//
-	// if()
-	// return "html/search-result-by-category";
-	// else if()
-	// return "html/search-result-by-input";
-	// }
 }
