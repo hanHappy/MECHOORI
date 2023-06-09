@@ -18,5 +18,10 @@ public class CategoryServiceImp implements CategoryService {
     public List<Category> getList() {
         return repository.findAll();
     }
+
+    @Override
+    public Category getDetail(int categoryId) {
+        return repository.findById(categoryId);
+    }
     
 }

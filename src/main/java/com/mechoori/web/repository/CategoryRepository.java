@@ -11,4 +11,6 @@ public interface CategoryRepository {
 
     List<Category> findAll();
 
+    Category findById(int categoryId);
+
 }

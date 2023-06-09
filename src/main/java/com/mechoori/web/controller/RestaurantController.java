@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Restaurant;
+import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.RestaurantService;
 
 @Controller
@@ -19,6 +21,8 @@ public class RestaurantController {
 
 	@Autowired
 	private RestaurantService service;
+	@Autowired
+	private CategoryService ctgService;
 
 	@GetMapping("/list/category/{id}")
 	public String list(
@@ -27,7 +31,10 @@ public class RestaurantController {
 
 		List<Restaurant> list = service.getList(categoryId);
 
-		model.addAttribute("list", list);
+		Category category = ctgService.getDetail(categoryId);
+
+		model.addAttribute("list", list)
+			.addAttribute("category", category);
 
 		return "restaurant/category";
 	}
