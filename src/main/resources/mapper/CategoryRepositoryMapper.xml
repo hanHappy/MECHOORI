@@ -13,7 +13,7 @@
 		where id = #{categoryId}
 	</select>
 	<insert id="save" parameterType="Category">
-		insert into category(type, image)
+		insert into category(name, image)
 		values(#{name}, #{image})
 	</insert>
 	<delete id="delete" parameterType="java.util.List">

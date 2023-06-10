@@ -10,7 +10,7 @@ public interface CategoryService {
 
     Category getDetail(int categoryId);
 
-    void save(String[] name, String[] image);
+    void save(Category category);
 
     void delete(int[] id);
 

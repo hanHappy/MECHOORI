@@ -13,6 +13,7 @@ import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.service.CategoryService;
+import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantService;
 
 @Controller
@@ -21,6 +22,8 @@ public class RestaurantController {
 
 	@Autowired
 	private RestaurantService service;
+	@Autowired
+	private MenuService menuService;
 	@Autowired
 	private CategoryService ctgService;
 
@@ -46,11 +49,19 @@ public class RestaurantController {
 			Model model) {
 
 		Restaurant restaurant = service.getDetail(restaurantId);
-		List<Menu> menuList = service.getMenuList(restaurantId);
+		List<Menu> menuList = menuService.getList(restaurantId);
 
 		model.addAttribute("restaurant", restaurant)
 				.addAttribute("menuList", menuList);
 
 		return "restaurant/detail";
 	}
+
+	@GetMapping("{id}/rate")
+	public String rate(){
+		return "restaurant/rate";
+	}
+
+
+
 }

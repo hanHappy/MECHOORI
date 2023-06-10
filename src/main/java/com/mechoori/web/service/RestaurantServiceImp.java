@@ -29,11 +29,6 @@ public class RestaurantServiceImp implements RestaurantService{
 		return restaurant;
 	}
 
-	@Override
-	public List<Menu> getMenuList(int restaurantId) {
-		List<Menu> menuList = repository.findMenuListByRestaurantId(restaurantId);
-		return menuList;
-	}
 
 	// TODO : 예외처리 생각합시다
 //	@Override

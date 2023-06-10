@@ -14,9 +14,4 @@
 		from restaurant
 		where id = #{restaurantId}
 	</select>
-	<select id="findMenuListByRestaurantId" resultType="com.mechoori.web.entity.Menu">
-		select * 
-		from menu
-		where restaurant_id = #{restaurantId}
-	</select>
 </mapper>

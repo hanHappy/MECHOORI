@@ -26,11 +26,7 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
-    public void save(String[] name, String[] image) {
-        Category category = Category.builder()
-                .name(name[0])
-                .image(image[0])
-                .build();
+    public void save(Category category) {
         repository.save(category);
     }
 
