@@ -17,16 +17,13 @@ public class RestaurantServiceImp implements RestaurantService{
 	
 	@Override
 	public List<Restaurant> getList(int categoryId) {
-		
-		List<Restaurant> list = repository.findAll(categoryId);
-		
-	return list;
+
+		return repository.findAll(categoryId);
 	}
 
 	@Override
 	public Restaurant getDetail(int restaurantId) {
-		Restaurant restaurant = repository.findById(restaurantId);
-		return restaurant;
+		return repository.findById(restaurantId);
 	}
 
 

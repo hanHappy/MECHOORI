@@ -1,5 +1,6 @@
 package com.mechoori.web.repository;
 
+import com.mechoori.web.entity.Menu;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,12 @@ import com.mechoori.web.entity.Restaurant;
 class RestaurantRepositoryTest {
 	
 	@Autowired
-	private RestaurantRepository repository;
+	private MenuRepository repository;
 
 	@Test
 	void testFindById() {
-		Restaurant restaurant = repository.findById(132);
-		System.out.println(restaurant);
+		Menu menu = repository.findById(132);
+		System.out.println(menu);
 	}
 
 }

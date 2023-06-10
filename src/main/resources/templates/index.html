@@ -36,36 +36,7 @@
 
       <section class="type">
         <ul class="typelist">
-          <li>
-            <a href="/html/search-result-by-category.html">
-              <img src="/images/icons/한식.png" alt="" />
-            </a>
-          </li>
-          <li>
-            <a href="/html/search-result-by-category.html">
-              <img src="/images/icons/중식.png" alt="" />
-            </a>
-          </li>
-          <li>
-            <a href="/html/search-result-by-category.html">
-              <img src="/images/icons/일식.png" alt="" />
-            </a>
-          </li>
-          <li>
-            <a href="/html/search-result-by-category.html">
-              <img src="/images/icons/양식.png" alt="" />
-            </a>
-          </li>
-          <li>
-            <a href="/html/search-result-by-category.html">
-              <img src="/images/icons/분식.png" alt="" />
-            </a>
-          </li>
-          <li>
-            <a href="/html/search-result-by-category.html">
-              <img src="/images/icons/기타.png" alt="" />
-            </a>
-          </li>
+          <li th:each="c : ${list}"> <a href="/restaurant/list/category/1" th:href="@{/restaurant/list/category/{id}(id=${c.id})}" > <img src="/images/icons/한식.svg" th:src="@{/images/icons/{img}(img=${c.image})}"> </a></li>
         </ul>
       </section>
 
@@ -125,11 +96,7 @@
           </ul>
         </div>
       </section>
-        <section class="type">
-            <ul class="typelist">
-                <li th:each="c : ${list}"> <a href="/restaurant/list/category/1" th:href="@{/restaurant/list/category/{id}(id=${c.id})}" > <img src="/images/icons/한식.svg" th:src="@{/images/icons/{img}(img=${c.image})}"> </a></li>
-            </ul>
-        </section>
+
 
       <section class="comparison">
         <h1>나의 가성비 성과 비교</h1>

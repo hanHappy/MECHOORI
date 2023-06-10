@@ -16,8 +16,13 @@ public class MenuServiceImp implements MenuService{
 
 	@Override
 	public List<Menu> getList(int restaurantId) {
-		List<Menu> menuList = repository.findAll(restaurantId);
-		return menuList;
+		return repository.findAll(restaurantId);
 	}
-    
+
+	@Override
+	public Menu getDetail(int restaurantId) {
+		return repository.findById(restaurantId);
+	}
+
+
 }

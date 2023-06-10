@@ -9,4 +9,5 @@ public interface MenuRepository {
 
 	List<Menu> findAll(int restaurantId);
 
+    Menu findById(int restaurantId);
 }

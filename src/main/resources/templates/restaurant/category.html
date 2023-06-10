@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,7 +69,7 @@
                         <a href="/restaurant/1" th:href="@{/restaurant/{id}(id=${restaurant.id})}"><button>상세 보기</button></a>
                     </div>	
                     <div>
-                        <a href="rate/rate.html"><button>평가하기</button></a>
+                        <a href="/restaurant/{id}/rate" th:href="@{/restaurant/{id}/rate(id=${restaurant.id})}"><button>평가하기</button></a>
                     </div>
                 </div>
             </section>
