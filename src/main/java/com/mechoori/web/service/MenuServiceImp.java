@@ -20,8 +20,8 @@ public class MenuServiceImp implements MenuService{
 	}
 
 	@Override
-	public Menu getDetail(int restaurantId) {
-		return repository.findById(restaurantId);
+	public Menu getDetail(int menuId) {
+		return repository.findById(menuId);
 	}
 
 

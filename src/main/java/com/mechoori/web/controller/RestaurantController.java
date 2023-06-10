@@ -58,15 +58,19 @@ public class RestaurantController {
 	}
 
 	@GetMapping("{id}/rate")
-	public String rate(@PathVariable("id") int restaurantId,
+	public String rate(@PathVariable("id") int restaurantId,Integer menuId,
 					   Model model){
 
-		List<Menu> menuList = menuService.getList(restaurantId);
+		List<Menu> list = menuService.getList(restaurantId);
 		Restaurant restaurant = service.getDetail(restaurantId);
-		Menu menu = menuService.getDetail(restaurantId);
 
-		model.addAttribute("list", menuList);
-		model.addAttribute("resaurant", restaurant);
+		Menu menu = null;
+
+		if (menuId != null) {
+			menu = menuService.getDetail(menuId);
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("restaurant", restaurant);
 		model.addAttribute("menu", menu);
 		return "restaurant/rate";
 	}

@@ -8,4 +8,9 @@
         from menu
         where restaurant_id = #{restaurantId};
 	</select>
+	<select id="findById" resultType="Restaurant">
+		select *
+		from menu
+		where id = #{restaurantId}
+	</select>
 </mapper>

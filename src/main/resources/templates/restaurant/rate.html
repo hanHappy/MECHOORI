@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,8 +27,8 @@
         </div>
 
         <!-- 상호명 -->
-        <div class="restaurant-name-wrapper" th:each="m:${resaurant}">
-            <div th:text="${m.name}">청화원 신촌점</div>
+        <div class="restaurant-name-wrapper">
+            <div th:text="${restaurant.name}">청화원 신촌점</div>
         </div>
 
         <!-- -------------- 사용자 입력단 -------------- -->
@@ -38,7 +38,7 @@
                 <h1>메뉴를 선택해주세요</h1>
                 <select class="menu-dropbox">
                     <option value="메뉴선택" disabled selected>메뉴 선택</option>
-                    <option th:each="menu:${list}" th:text="${menu.name}" value="우육도삭면">우육도삭면</option>
+                    <option th:each="item : ${list}" th:text="${item.name}" th:value="${item.name}">우육도삭면</option>
                 </select>
             </section>
 
@@ -47,8 +47,8 @@
                 <h1>평가가격을 입력해주세요</h1>
                 <div class="selling-price-box">
                     <p>판매가격</p>
-                    <div class="selling-price" th:each="menu:${menu}">
-                        <span th:text="${menu.price}">8000</span>
+                    <div class="selling-price">
+                        <div th:text="${menu.price}">8000</div>
                         <span>원</span>
                     </div>
                 </div>
