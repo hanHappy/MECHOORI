@@ -14,7 +14,7 @@ public interface CategoryService {
 
     void delete(int[] id);
 
-    void update(String[] name, String[] image, int[] id);
+    void update(Category category);
 
     
 }

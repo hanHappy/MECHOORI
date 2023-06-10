@@ -39,4 +39,16 @@ public class CategoryController {
         return "redirect:/admin/category";
     }
 
+    @GetMapping("/admin/category/edit")
+    public String editCategory(int id, Model model){
+        Category category = service.getDetail(id);
+        model.addAttribute("category", category);
+        return "admin/category/edit";
+    }
+
+    @PostMapping("/admin/category/edit")
+    public String category(Category category){
+        service.update(category);
+        return "redirect:/admin/category";
+    }
 }
