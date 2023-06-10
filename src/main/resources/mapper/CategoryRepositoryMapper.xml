@@ -23,17 +23,11 @@
 			#{id}
 		</foreach>
 	</delete>
-	<update id="update" parameterType="java.util.List">
-	<foreach item="c" collection="list" separator=";">
+	<update id="update" parameterType="Category">
 		UPDATE category
 		set
-		<if test="c.name != null">
-			name = #{c.name},
-		</if>
-		<if test="c.image != null">
-			image = #{c.image},
-		</if>
-		WHERE id = #{c.id}
-	</foreach>
+		name = #{name},
+		image = #{image}
+		WHERE id = #{id}
 	</update>
 </mapper>
