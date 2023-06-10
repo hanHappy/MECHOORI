@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rate</title>
+    <!-- <link rel="stylesheet" href="/css/reset.css"> -->
+    <link rel="stylesheet" href="/css/restaurant/rate.css">
+    <script src="/js/restaurant/rate.js" defer="defer"></script>
+</head>
+
+<body>
+    <!-- ================ header ================ -->
+    <header>
+        <a><button class="header-icon-back">버튼</button></a>
+        <h1 class="header-logo">로고</h1>
+        <a><button class="header-icon-home">버튼</button></a>
+    </header>
+
+    <!-- ================ main ================ -->
+    <main>
+        <!-- 식당 사진 -->
+        <div class="restaurant-img-box">
+            <img src="/images/foods/청화원2.png" class="restaurant-img" alt="식당사진">
+        </div>
+
+        <!-- 상호명 -->
+        <div class="restaurant-name-wrapper">
+            <p>청화원 신촌점</p>
+        </div>
+
+        <!-- -------------- 사용자 입력단 -------------- -->
+        <section class="input-contents-wrapper">
+            <!-- 메뉴 선택 -->
+            <section class="menu-selection">
+                <h1>메뉴를 선택해주세요</h1>
+                <select class="menu-dropbox">
+                    <option value="" disabled selected>메뉴 선택</option>
+                    <option value="">우육도삭면</option>
+                    <option value="">쇼마이</option>
+                    <option value="">유발도삭면</option>
+                    <option value="">새우 아스파라거스</option>
+                    <option value="">마라두부</option>
+                </select>
+            </section>
+
+            <!-- 평가 가격 -->
+            <section class="rate">
+                <h1>평가가격을 입력해주세요</h1>
+                <div class="selling-price-box">
+                    <p>판매가격</p>
+                    <div class="selling-price">
+                        <span>8000</span>
+                        <span>원</span>
+                    </div>
+                </div>
+                <div class="my-price-box">
+                    <p>나의 평가가격</p>
+                    <div class="my-price">
+                        <input id="demo" type="number">
+                        <span>원</span>
+                    </div>
+                </div>
+                <!-- 가격 슬라이더 -->
+                <div class="slide-container">
+                    <input type="range" min="6000" max="10000" value="8000" step="100" class="slider" id="my-range">
+                </div>
+            </section>
+
+            <!-- 한줄평 -->
+            <section class="comment">
+                <h1>한줄평을 작성해주세요</h1>
+                <!-- <input type="text" placeholder="100자 내로 리뷰를 작성해주세요"> -->
+                <textarea rows="5" placeholder="100자 내로 리뷰를 작성해주세요"></textarea>
+            </section>
+
+            <!-- 평가하기 버튼 -->
+            <div class="rate-btn-container">
+                <button class="rate-btn">평가하기</button>
+            </div>
+        </section>
+
+
+        <!-- 모달 /완료 확인-->
+        <div class="modal check-complete">
+            <div class="modal-box">
+                <div class="question-box">
+                    <img src="/images/assets/메추리-OK.png" alt="">
+                    <p>평가를 완료할까요?</p>
+                </div>
+                <div class="check-btn-box">
+                    <button class="no">아니오</button>
+                    <a href="./rate-result.html"><button class="yes">네</button></a>
+                </div>
+            </div>
+        </div>
+        <!-- 모달 /이전 화면 확인-->
+        <div class="modal check-back">
+            <div class="modal-box">
+                <div class="question-box">
+                    <img src="/images/assets/coca-물음표.png" alt="">
+                    <div>
+                        <p>작성을 취소하고</p>
+                        <p>이전으로 돌아갈까요?</p>
+                    </div>
+                </div>
+                <div class="check-btn-box">
+                    <button class="no">아니오</button>
+                    <a href="/html/search-result-by-input.html"><button class="yes">네</button></a>
+                </div>
+            </div>
+        </div>
+        <!-- 모달 /홈으로 확인-->
+        <div class="modal check-home">
+            <div class="modal-box">
+                <div class="question-box">
+                    <img src="/images/assets/coca-물음표.png" alt="">
+                    <div>
+                        <p>작성을 취소하고</p>
+                        <p>홈으로 돌아갈까요?</p>
+                    </div>
+                </div>
+                <div class="check-btn-box">
+                    <button class="no">아니오</button>
+                    <a href="/index.html"><button class="yes">네</button></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://db.newlecture.com:3306/iljodb
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: iljo
+    password: 1234
+mybatis:
+  type-aliases-package: com.mechoori.web.entity
+  mapper-locations:
+  - classpath*:mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true

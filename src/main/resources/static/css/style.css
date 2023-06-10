@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+html, body, input, button, select, option {
+    margin: 0;
+    color: var(--font-color);
+    font-family: 'Noto Sans KR';
+}
+a{ /* 하이퍼링크 스타일 */
+    text-decoration: none;
+}
+a:visited{ /* 방문한 하이퍼링크 색상 변화 해제 */
+    color: inherit;
+}
+main{
+    max-width: 1200px;
+}
+.d-none{
+    display: none;
+}
+
+:root {
+    /* 폰트 */
+    --font: 'Noto Sans KR';
+
+    /* ================== 공통 ================== */
+
+    /* ------------------ 색상 ------------------ */
+    /* 메인 색상 */
+    --main-color: #FFE551;
+    /* 서브 색상 */
+    --sub-color: #2292F9;
+    /* 페이지 배경색 */
+    --background-color: #F5F5F7;
+    /* 폰트 기본 색상 */
+    --font-color: #282828;
+    /* 힌트 색상 */
+    --hint-color: #9D9999;
+    /* 박스 배경색 */
+    --box-color: #EEE;
+    /* 아이콘 색생 */
+    --icon-color: #6D6D6D;
+
+    /* --------------- 효과 --------------- */
+    /* 블럭 그림자 */
+    --block-shadow: 0px 1px 4px 0px #0002;
+    /* 긴 버튼 그림자 */
+    --btn-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    /* 작은 버튼 그림자 */
+    --btn-shadow2: 0px 2px 5px 0px #00000016;
+    /* 박스 곡률 */
+    --border-radius: 8px;
+    /* 아래 테두리 */
+    --border-bottom: 1px solid #0002;
+
+    /* --------------- 크기 --------------- */
+    /* 버튼 높이 */
+    --btn-height: 40px;
+
+    /* =============== 상민 ================== */
+    
+    /* --------------- 레이아웃 --------------- */
+    /* 블럭 간 간격 (블럭 margin-top) */
+    --block-space: 8px;
+    /* 컨텐츠 간 간격 (컨텐츠 margin-top) */
+    --contents-space: 20px;
+    /* 컨텐트 상하 마진 */
+    --content-margin: 5px 0px;
+}
+
+/* =================== 헤더 =================== */
+header {
+    height: 90px;
+    width: 100%;
+    padding: 0 20px;
+    background-color: var(--main-color);
+
+    /* layout */
+    width: 100%;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+
+    /* items layout */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1{
+    font-size: 20px;
+}
+
+.header-side {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.header-side.left{
+    justify-content: start;
+}
+.header-side.right{
+    justify-content: end;
+}
+
+.header-icon {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+
+    /* layout */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-indent: -999px;
+}
+
+.header-icon.logo {
+    background-image: url(/images/assets/logo.png);
+    width: 72px;
+    height: 44px;
+}
+.header-icon.back {
+    background-image: url(/images/icons/back.svg);
+    width: 13px;
+    height: 21px;
+}
+.header-icon.home {
+    background-image: url(/images/icons/home.svg);
+    width: 19px;
+    height: 21px;
+}
+.header-icon.menu {
+    background-image: url(/images/icons/menu.svg);
+    width: 22px;
+    height: 20px;
+}
+.header-icon.cancle {
+    background-image: url(/images/icons/cancel.svg);
+    width: 20px;
+    height: 20px;
+}
+.header-icon.search {
+    background-image: url(/images/icons/icon-search.svg);
+    width: 21px;
+    height: 21px;
+}

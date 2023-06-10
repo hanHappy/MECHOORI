@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category</title>
+  <link rel="stylesheet" href="/css/admin/category.css">
+  <script src="/js/admin/category.js" defer="defer"></script>
+</head>
+
+<body>
+  <h1>카테고리</h1>
+  <h2>조회 및 삭제</h2>
+  <form method="POST">
+    <table>
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>img</th>
+      <th></th>
+      <tr th:each="c: ${list}">
+        <td><input type="checkbox" th:value="${c.id}" name="id"></td>
+        <td th:text="${c.id}">id</td>
+        <td th:text="${c.name}">name</td>
+        <td th:text="${c.image}">img</td>
+      </tr>
+    </table>
+    <input type="submit" value="DELETE">
+  </form>
+
+  <h2>수정</h2>
+  <form method="GET" th:action="@{/admin/category/edit}">
+    <table>
+      <th>id</th>
+      <th>name</th>
+      <th>img</th>
+      <th></th>
+      <tr th:each="c: ${list}">
+        <td th:text="${c.id}">id</td>
+        <td th:text="${c.name}">name</td>
+        <td th:text="${c.image}">img</td>
+        <td><input type="submit" th:value="${c.id}" name="id" class="edit"></td>
+      </tr>
+    </table>
+  </form>
+
+  <p> </p>
+
+  <h2>추가</h2>
+  <form method="POST" th:object="${category}">
+    <span><strong>카테고리명 </strong></span><input type="text" th:field="*{name}" required />
+    <p> </p>
+    <span><strong>이미지 파일명 </strong></span><input type="text" th:field="*{image}" required />
+    <input type="submit" value="SAVE" />
+  </form>
+</body>
+
+</html>
