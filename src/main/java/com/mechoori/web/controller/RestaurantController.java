@@ -38,7 +38,7 @@ public class RestaurantController {
 		List<Restaurant> list = service.getList(categoryId);
 
 		model.addAttribute("list", list)
-				.addAttribute("category", category);
+				.addAttribute("category");
 
 		return "restaurant/category";
 	}
