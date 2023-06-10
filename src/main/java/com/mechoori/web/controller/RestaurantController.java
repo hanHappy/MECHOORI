@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
@@ -28,7 +29,7 @@ public class RestaurantController {
 	private CategoryService ctgService;
 
 	@GetMapping("/list/category/{id}")
-	public String list(
+	public String listByCategoryId(
 			@PathVariable("id") int categoryId,
 			Model model) {
 
@@ -41,6 +42,12 @@ public class RestaurantController {
 				.addAttribute("category", category);
 		
 		return "restaurant/category";
+	}
+
+	@GetMapping("/list")
+	public String listByQuery(@RequestParam(name = "q", required = false) String query){
+		// service.getListByQuery(query);
+		return "restaurant/list";
 	}
 
 	@GetMapping("{id}")
@@ -61,17 +68,6 @@ public class RestaurantController {
 	public String rate(@PathVariable("id") int restaurantId,Integer menuId,
 					   Model model){
 
-		List<Menu> list = menuService.getList(restaurantId);
-		Restaurant restaurant = service.getDetail(restaurantId);
-
-		Menu menu = null;
-
-		if (menuId != null) {
-			menu = menuService.getDetail(menuId);
-		}
-		model.addAttribute("list", list);
-		model.addAttribute("restaurant", restaurant);
-		model.addAttribute("menu", menu);
 		return "restaurant/rate";
 	}
 
