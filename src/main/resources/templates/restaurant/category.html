@@ -12,16 +12,12 @@
 
 <body>
     <header>
-        <div class="search-container"> 
-            <div class="search-inner">
-                <div class="icon_searching">
-                    <button type="button" onclick="history.back()"><img src="/images/icons/icon-backwardw.svg"></button>
-                </div>
-                <p th:text="${category.name}">한식</p>
-                <div class="icon_backward">
-                    <button type="button"><img src="/images/icons/icon-search.svg"></button>
-                </div>
-            </div>
+        <div class="header-side left">
+            <a href=""><button class="header-icon back">버튼</button></a>
+        </div>
+        <h1 class="header-icon logo">로고</h1>
+        <div class="header-side right">
+            <a href=""><button class="header-icon search">버튼</button></a>
         </div>
     </header>
 

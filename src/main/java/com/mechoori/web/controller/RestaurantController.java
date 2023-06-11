@@ -70,7 +70,4 @@ public class RestaurantController {
 
 		return "restaurant/rate";
 	}
-
-
-
 }
