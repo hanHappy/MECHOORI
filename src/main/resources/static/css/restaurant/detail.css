@@ -80,8 +80,16 @@ main {
   justify-content: space-between;
 }
 
-.rated-result div{
+.title img:first-child{
+  margin-right: 15px;
+}
+
+.title div{
   display: flex;
+} 
+
+.rated-result div{
+  display:inline-flex;
   align-items: center;
   margin: 7px 7px 0 0;
 }

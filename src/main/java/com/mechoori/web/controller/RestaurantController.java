@@ -16,6 +16,7 @@ import com.mechoori.web.entity.RestaurantCard;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantCardService;
+import com.mechoori.web.service.RestaurantCardService;
 import com.mechoori.web.service.RestaurantService;
 
 @Controller
@@ -29,10 +30,22 @@ public class RestaurantController {
 	@Autowired
 	private MenuService menuService;
 	@Autowired
-	private CategoryService ctgService;
-	
+	private RestaurantCardService rescService;
 
-	// /restaurant/list/category/{id}(id=${c.id})}
+	// // /restaurant/list/category/{id}(id=${c.id})}
+	// @GetMapping("/list/category/{id}")
+	// public String listByCategoryId(
+	// 		@PathVariable("id") int categoryId,
+	// 		Model model) {
+
+	// 	//식당 리스트 출력
+	// 	List<Restaurant> list = service.getList(categoryId);
+
+	// 	model.addAttribute("list", list);
+		
+	// 	return "restaurant/category";
+	// }
+
 	@GetMapping("/list/category/{id}")
 	public String list(
 			@PathVariable("id") int categoryId,
@@ -47,6 +60,7 @@ public class RestaurantController {
 		
 		return "restaurant/category";
 	}
+
 
 	@GetMapping("/list")
 	public String listByQuery(@RequestParam(name = "q", required = false) String query){
