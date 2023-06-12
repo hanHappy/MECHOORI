@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Restaurant;
+import com.mechoori.web.entity.RestaurantCard;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
+import com.mechoori.web.service.RestaurantCardService;
 import com.mechoori.web.service.RestaurantService;
 
 @Controller
@@ -24,6 +25,8 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantService service;
 	@Autowired
+	private RestaurantCardService rescService;
+	@Autowired
 	private MenuService menuService;
 	@Autowired
 	private CategoryService ctgService;
@@ -31,20 +34,16 @@ public class RestaurantController {
 
 	// /restaurant/list/category/{id}(id=${c.id})}
 	@GetMapping("/list/category/{id}")
-	public String listByCategoryId(
+	public String list(
 			@PathVariable("id") int categoryId,
 			Model model) {
 
-		//헤더에 식당 카테고리 출력
-		Category category = ctgService.getDetail(categoryId);
-		//식당 리스트 출력
-		List<Restaurant> list = service.getList(categoryId);
-		//식당 리스트 평균가격 출력
-		
+	
+		// 식당 리스트 출력
+		List<RestaurantCard> list = rescService.getList(categoryId);
 		
 
-		model.addAttribute("list", list)
-				.addAttribute("category", category);
+		model.addAttribute("list", list);
 		
 		return "restaurant/category";
 	}

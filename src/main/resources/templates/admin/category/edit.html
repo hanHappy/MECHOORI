@@ -8,7 +8,9 @@
 </head>
 
 <body>
-    <form action="" method="post" th:object="${category}">
+    <h1>수정 및 삭제</h1>
+    <hr>
+    <form action="/admin/category/edit" method="post" th:object="${category}">
         <table>
             <th>id</th>
             <th>name</th>
