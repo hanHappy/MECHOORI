@@ -25,12 +25,7 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
-    public void save(String name, String image) {
-        Category category = Category.builder()
-            .name(name)
-            .image(image)
-            .build();
-
+    public void save(Category category) {
         repository.save(category);
     }
 
@@ -38,5 +33,10 @@ public class CategoryServiceImp implements CategoryService {
     public void delete(int[] id) {
         repository.delete(id);
     }
-    
+
+    @Override
+    public void update(Category category) {
+        repository.update(category);
+    }
+
 }
