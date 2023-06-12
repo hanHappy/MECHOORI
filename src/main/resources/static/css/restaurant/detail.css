@@ -5,18 +5,21 @@
   font-family: var(--font);
 }
 
+/* --------------헤더-------------- */
+
 header {
-  position: relative;
   width: 100%;
+  font-size: 20px;
+  font-weight: 700;
+/* 
+  position: relative;
   padding: 88px 20px 30px 20px;
   box-sizing: border-box;
   background-color: var(--main-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 27px;
+  line-height: 27px; */
 }
 
 .search-container {
@@ -24,9 +27,10 @@ header {
   display: grid;
   grid-template-columns: 25px 1fr 20px;
   place-items: center;
+  align-items: center;
+  padding: 0 20px;
   /* margin: 0 auto; */
   /* grid-gap: 0 16.46px; */
-  align-items: center;
 }
 
 .search-container button {
@@ -36,13 +40,10 @@ header {
   border: none;
 }
 
-main {
-  /* margin: 0; */
-  background-color: var(--background-color);
-}
+/* ---------------메인---------------- */
 
-.title-img {
-  width: 100%;
+main {
+  background-color: var(--background-color);
 }
 
 .detail {
@@ -50,58 +51,51 @@ main {
   box-shadow: var(--block-shadow);
 }
 
-.detail p {
-  margin-left: 20px;
-  margin-right: 20px;
+.detail-content{
+  padding : 0 20px 20px 20px;
 }
 
-.detail img {
+.rstr-thumb{
+  padding:0;
   width: 100%;
 }
 
+.rated-result, .intro{
+  margin-bottom: 15px;
+}
+
 .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-weight: 700;
   font-size: 24px;
   margin-top: 23px;
-  margin-right: 20px;
-  /* line-height: 44px; */
-  /* display: flex; */
-  display: grid;
-  grid-template-columns: 1fr 34px 34px;
-  grid-gap: 0 16.46px;
-  align-items: center;
-  letter-spacing: -0.09em;
   color: #282828;
 }
 
 .title img {
   width: 25.77px;
-  display: flex;
+  display:flex;
   justify-content: space-between;
 }
 
-.intro {
+.rated-result div{
+  display: flex;
+  align-items: center;
+  margin: 7px 7px 0 0;
+}
+
+.rated-result img {
+  height: 12px;
+  margin-right: 4px;
+}
+
+.intro{
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  display: flex;
-  align-items: center;
   letter-spacing: -0.09em;
-  margin-top: 15px;
-}
-
-.region {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  letter-spacing: -0.09em;
-  margin-bottom: 15px;
-}
-
-.average-price {
-  padding-bottom: 20px;
 }
 
 .rating-price {
@@ -110,11 +104,17 @@ main {
   font-size: 18px;
 }
 
+/* ======== */
+
 .menu {
   margin: 8px 0;
-  padding: 10px 20px;
+  padding: 15px 20px;
   background-color: white;
   box-shadow: var(--block-shadow);
+}
+
+.menu-title, .menu-detail{
+  margin-bottom: 15px;
 }
 
 .menu-title {
@@ -130,17 +130,22 @@ main {
 }
 
 .menu-detail {
-  margin: 5px 0;
   font-size: 14px;
 }
 
-.check-box {
+.menu-detail-rp {
+  color:#2292F9;
+}
+
+
+
+.menu-check-box {
   width: 100%;
-  background-color: white;
+  background-color: #EEEEEE;
   border-radius: 8px;
   color: #282828;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 30px;
 }
@@ -157,20 +162,21 @@ main {
   display: block;
   list-style-type: none;
   text-align: start;
+  /* text-align:center; */
 }
 
 .menubars {
   display: none;
+  padding-left: 25px;
 }
 
-/* .menu p:nth-child(2) {
-    display: inline-block;
-    margin: 0 5px;
-  } */
+.menubars:last-child {
+  padding-bottom: 10px;
+}
 
 .map {
-  /* margin: 20px 0; */
-  padding: 10px 20px;
+  margin: 8px 0;
+  padding: 15px 20px;
   background-color: white;
   box-shadow: var(--block-shadow);
   font-size: 16px;
@@ -186,6 +192,7 @@ main {
 .map-title-box {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 .map-title {
@@ -200,7 +207,6 @@ main {
 .map-address {
   display: flex;
   align-items: center;
-  font-size: 16px;
   font-weight: 400;
   line-height: 16px;
 }
@@ -210,26 +216,25 @@ main {
 }
 
 .map-detail {
-  margin-top: 15px;
   width: fit-content;
   display: flex;
-
-  /* border: 1px solid #C8C8C8; */
   border: 1px solid var(--hint-color);
   border-radius: 8px;
   overflow: hidden;
   height: 170px;
 }
 
-.map-column {
+.map-table {
   display: flex;
   flex-direction: column;
 }
 
 .map-image {
+  width:100%;
   flex: 1;
   display: flex;
   align-items: flex-end;
+  border-radius: 8px 8px 0 0;
   /* border-bottom: 1px solid black; */
   /* border-top-left-radius: 8px; */
   /* border-top-right-radius: 8px; */
@@ -239,13 +244,6 @@ main {
 .map-image img {
   width: 100%;
   height: auto;
-  /* object-fit: cover; */
-  /* -webkit-mask-image: url("map-mask.svg");
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: 100% 100%;
-    mask-image: url("map-mask.svg");
-    mask-repeat: no-repeat;
-    mask-size: 100% 100%; */
 }
 
 .map-button {
@@ -293,15 +291,49 @@ main {
   border-right: none;
 }
 
+/* 지도 테이블 */
+/* table {
+  border-collapse: collapse;
+  border-radius: 10px;
+  border-style: hidden;
+  box-shadow: 0 0 0 1px var(--hint-color);
+  width: 100%;
+  height: 173px;
+}
+tr:first-child {
+  height: 135px;
+}
+td:first-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom: 1px solid var(--hint-color);
+}
+td:last-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+tr:nth-child(2) td:first-child {
+  border-right: 0.5px solid var(--hint-color);
+} */
+
+
+/* ============ */
+
 .review {
   margin: 8px 0;
-  padding: 10px 20px;
+  padding: 15px 20px;
   background-color: white;
   box-shadow: var(--block-shadow);
   font-size: 16px;
   font-weight: 700;
   line-height: 30px;
   color: #282828;
+}
+
+.review-title-box{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
 }
 
 .review-title {
@@ -319,6 +351,29 @@ main {
 
 .review-title img {
   margin-right: 5px;
+}
+
+.rate-button{
+  width: 70px;
+  height: 28px;
+  background: #EEEEEE;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  padding: 3px;
+  outline: none; /* after - 포커스 표시 삭제 */
+}
+
+.review-button:hover {
+  background: transparent;
+}
+
+.review-button:active {
+  background: transparent;
 }
 
 .review-contents {
@@ -375,6 +430,7 @@ main {
   }
 }
 
+
 /* -------------------------------------- */
 
 /* 버튼 감싸는 영역 */
@@ -382,13 +438,6 @@ main {
   width: 100%;
   /* margin: 100px auto; */
 }
-
-/* #popupBtn {
-  width: 150px;
-  height: 50px;
-  padding: 10px 5px;
-  
-} */
 
 /* 모달 최상위 */
 #modalWrap {

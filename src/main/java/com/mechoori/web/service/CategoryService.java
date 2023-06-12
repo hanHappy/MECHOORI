@@ -10,11 +10,4 @@ public interface CategoryService {
 
     Category getDetail(int categoryId);
 
-    void save(Category category);
-
-    void delete(int[] id);
-
-    void update(Category category);
-
-    
 }

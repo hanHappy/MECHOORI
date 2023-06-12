@@ -8,7 +8,7 @@
 		from category
 	</select>
 	<select id="findById" resultType="Category">
-		select * 
+		select *
 		from category
 		where id = #{categoryId}
 	</select>

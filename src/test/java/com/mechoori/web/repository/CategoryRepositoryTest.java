@@ -1,4 +1,4 @@
-package com.mechoori.web.repository;
+// package com.mechoori.web.repository;
 
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;

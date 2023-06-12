@@ -14,118 +14,164 @@
 <body>
     <header>
         <div class="search-container">
-                    <button type="button" onclick="history.back()"><img src="/images/icons/icon-backwardw.svg"></button>
+            <div class="header-side left">
+              <button class="header-icon back" onclick="history.back()"><img src="/images/icons/icon-backwardw.svg"></button>
+          </div>
+          <h1 class="header-icon logo">로고</h1>
+          <div class="header-side right">
+              <button class="header-icon home" onclick="location.href='../index.html'" ><img src="/images/icons/icon-home.svg"></button>
+          </div>
+                    <!-- <button type="button" onclick="history.back()"><img src="/images/icons/icon-backwardw.svg"></button>
                     <p>상세페이지</p>
-                    <button type="button" onclick="location.href='../index.html'" ><img src="/images/icons/icon-home.svg"></button>
-            </div>
+                    <button type="button" onclick="location.href='../index.html'" ><img src="/images/icons/icon-home.svg"></button> -->
         </div>
         
     </header>
+
     <main>
       <div class="detail">
-        <img src="/images/foods/청화원2.png">
-        <div class="title">
-          <p th:text="${restaurant.id}">식당명</p>
-          <img src="/images/icons/icon-like.svg">
-          <img src="/images/icons/icon-share.svg">
-        </div>
-        
-        <p class="intro">식당 소개</p>
-        <p class="region">주소</p>
-        <p class="rating-price">가성비  80% (99+) </p>
-        <p class="average-price">평균가격 6,000원</p>
+        <img src="/images/foods/청화원2.png" class="rstr-thumb">
+
+      <div class="detail-content">
+          <div class="title">
+            <p>짜장상회</p>
+            <div>
+              <img src="/images/icons/icon-like.svg">
+              <img src="/images/icons/icon-share.svg">
+            </div>
+          </div>
+
+          <div class="rated-result">
+            <div>
+              <img src="/images/icons/icon-like-result.svg">
+              <p th:text="${restaurant.likedCount}">찜하기수</p>
+            </div>
+            <div>
+              <img src="/images/icons/icon-rated-result.svg">
+              <p th:text="${restaurant.ratedCount}">평가수</p>
+            </div>
+          </div>
+          
+          <div class="intro">
+              <p>지금까지 이런 짜장면은 없었다</p>
+              <p>서울  ·  신촌</p>
+          </div>
+
+          <div class="price">
+            <p class="rating-price">가성비  80% (99+)</p>
+            <p>평균가격 6,000원</p>
+          </div>
       </div>
-      
-      <div class="menu">
-        <div class="menu-title">
-              <img src="/images/icons/icon-line.svg">
-                <p>대표메뉴</p>
-             </div>
+    </div>
+          
+    <div class="menu">
+      <div class="menu-title">
+        <img src="/images/icons/icon-line.svg">
+        <p>대표메뉴</p>
+      </div>
 
-             <div class="menu-detail" th:each="menu, iter : ${menuList}" th:if="${iter.index} &lt; 4">
-                <p><span th:text="${menu.name}">메뉴명</span> …………………………………… <span th:text="${menu.price}+'원'">가격</span></p>
-             </div>
+      <div class="menu-detail" th:each="menu, iter : ${menuList}" th:if="${iter.index} &lt; 4">
+          <p><span th:text="${menu.name}">메뉴명</span> ……………………………… <span th:text="${menu.price + '원'}">가격</span>
+          <span th:text="${ ' '+'(' + (menu.cumulativeRatedPrice/menu.price*100) + '%)'}" class="menu-detail-rp"></span></p>
+      </div>
 
-            <div class="check-box">
-                <input id="check-btn" type="checkbox">
-                <label for="check-btn">메뉴 더보기</label>
-                <span class="togle">▼</span>
-                <ul class="menubars" th:each="menu, iterStat : ${menuList}" th:if="${iterStat.index} &gt;= 4">
-                  <p><span th:text="${menu.name}">메뉴명</span> …………………………………… <span th:text="${menu.price}+'원'">가격</span></p>
-                </ul>    
-            </div>
-        </div>
+      <div class="menu-check-box">
+        <input id="check-btn" type="checkbox">
+        <label for="check-btn">메뉴 더보기</label>
+        <span class="togle">▼</span>
+        <ul class="menubars" th:each="menu, iterStat : ${menuList}" th:if="${iterStat.index} &gt;= 4">
+          <p><span th:text="${menu.name}">메뉴명</span> …………………… 
+          <span th:text="${menu.price}+'원'">가격</span>
+          <span th:text="${ ' '+'(' + (menu.cumulativeRatedPrice/menu.price*100) + '%)'}" class="menu-detail-rp"></span></p>
+        </ul>    
+      </div>
+    </div>
 
+    <div class="map">
+      <div class="map-title-box">
+          <div class="map-title">
+            <img src="/images/icons/icon-line.svg">
+            <p>위치 안내</p>
+          </div>
+          <div class="map-address">
+              <p>서울특별시 마포구 백범로 52</p>
+              <img src="/images/icons/icon-mapmore.svg" width="16px">
+          </div>
+      </div>
 
-        <div class="map">
-            <div class="map-title-box">
-                <div class="map-title">
-                  <img src="/images/icons/icon-line.svg">
-                    <p>위치 안내</p>
-                </div>
-                <div class="map-address">
-                    <p>서울특별시 마포구 백범로 52</p>
-                    <img src="/images/icons/icon-mapmore.svg" width="16px">
-                </div>
-            </div>
-            <div class="map-detail">
-                <div class="map-column">
-                  <div class="map-image">
-                    <!-- <img src="/images/components/thumb-map.png"> -->
-                    <div id="map1" class = "KaKaomap"></div>
-                
-                  </div>
-                  <div class="map-button">
-                    <div class="map-button-image" id=btnWrap>
-                        <div id="popupBtn"><img src="/images/icons/icon-phone.svg">전화하기</div>
-                    </div>
-                   
-                    <div class="map-button-image">
-                      <a class = " mapBtn" href="kakaomap://route?sp=&ep=37.5502,126.9381&by=CAR">
-                      <img src="/images/icons/icon-map.svg">지도보기
-                      </a>
-                      </div>
-                  </div>
-                </div>
+      <div class="map-detail">
+          <div class="map-table">
+            <img src="/images/components/thumb-map.png" class="map-image">
+            <div class="map-button">
+              <div class="map-button-image" id=btnWrap>
+                <div id="popupBtn">
+                <img src="/images/icons/icon-phone.svg">전화하기</div>
               </div>
+              <div class="map-button-image">
+                <img src="/images/icons/icon-map.svg">지도보기</div>
+            </div>
+          </div>
+      </div>
+
+      <!-- 지도 테이블 -->
+      <!-- <table>
+        <tr>
+          <td colspan="2" class="">
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </table> -->
+      <!--  -->
+
+      </div>
+
+      <div class="review">
+        <div class="review-title-box">
+          <div class="review-title">
+            <img src="/images/icons/icon-line.svg">
+            <p>리뷰 (<span class="review-span">99</span>+)</p>
+          </div>
+          <button class="rate-button" onclick="location.href='#'">평가하기</button>
+          <!-- <div class="rate-button">평가하기</div> -->
         </div>
+          <div class="review-contents">
+              <img src="/images/components/식당_1(75x75).png" alt="식당사진" width="65px">
+              <div class="review-content">
+                <span class="rate-title">가성비 평가</span>
+                <p class="rate-menu">메뉴명</p>
+                <span class="review-nickname">닉네임</span>
+                <p class="review-text">리뷰</p>
+              </div>
+          </div>
+          <div class="review-contents">
+              <img src="/images/components/식당_1(75x75).png" alt="식당사진" width="65px">
+              <div class="review-content">
+                <span class="rate-title">가성비 평가</span>
+                <p class="rate-menu">메뉴명</p>
+                <span class="review-nickname">닉네임</span>
+                <p class="review-text">리뷰</p>
+              </div>
+          </div>
+          <div class="review-contents">
+              <img src="/images/components/식당_1(75x75).png" alt="식당사진" width="65px">
+              <div class="review-content">
+                <span class="rate-title">가성비 평가</span>
+                <p class="rate-menu">메뉴명</p>
+                <span class="review-nickname">닉네임</span>
+                <p class="review-text">리뷰</p>
+              </div>
+          </div>
+      </div>
 
-        <div class="review">
-            <div class="review-title">
-              <img src="/images/icons/icon-line.svg">
-                <p>리뷰 (<span class="review-span">99</span>+)</p>
-            </div>
-            <div class="review-contents">
-                <img src="/images/components/식당_1(75x75).png" alt="식당사진" width="65px">
-                <div class="review-content">
-                  <span class="rate-title">가성비 평가</span>
-                  <p class="rate-menu">메뉴명</p>
-                  <span class="review-nickname">닉네임</span>
-                  <p class="review-text">리뷰</p>
-                </div>
-            </div>
-            <div class="review-contents">
-                <img src="/images/components/식당_1(75x75).png" alt="식당사진" width="65px">
-                <div class="review-content">
-                  <span class="rate-title">가성비 평가</span>
-                  <p class="rate-menu">메뉴명</p>
-                  <span class="review-nickname">닉네임</span>
-                  <p class="review-text">리뷰</p>
-                </div>
-            </div>
-            <div class="review-contents">
-                <img src="/images/components/식당_1(75x75).png" alt="식당사진" width="65px">
-                <div class="review-content">
-                  <span class="rate-title">가성비 평가</span>
-                  <p class="rate-menu">메뉴명</p>
-                  <span class="review-nickname">닉네임</span>
-                  <p class="review-text">리뷰</p>
-                </div>
-            </div>
-        </div>
+  </main>
 
-    </main>
 
+<!-- ============================================================= -->
 <div id="modalWrap">
   <div id="modalContent">
     <div id="modalBody">
