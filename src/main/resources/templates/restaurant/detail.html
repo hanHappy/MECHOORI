@@ -34,7 +34,7 @@
 
       <div class="detail-content">
           <div class="title">
-            <p th:text="${restaurant.name}">짜장상회</p>
+            <p th:text="${rstnDetail.name}">짜장상회</p>
             <div>
               <img src="/images/icons/icon-like.svg">
               <img src="/images/icons/icon-share.svg">
@@ -43,22 +43,22 @@
           <div class="rated-result">
             <div>
               <img src="/images/icons/icon-like-result.svg">
-              <p th:text="${restaurant.likedCount}">찜하기수</p>
+              <p th:text="${rstnDetail.likedCount}">찜하기수</p>
             </div>
             <div>
               <img src="/images/icons/icon-rated-result.svg">
-              <p th:text="${restaurant.ratedCount}">평가수</p>
+              <p th:text="${rstnDetail.ratedCount}">평가수</p>
             </div>
           </div>
           
           <div class="intro">
-              <p>지금까지 이런 짜장면은 없었다</p>
-              <p>서울  ·  신촌</p>
+              <p th:text="${rstnDetail.intro}">지금까지 이런 짜장면은 없었다</p>
+              <p th:text="${rstnDetail.address}">서울  ·  신촌</p>
           </div>
 
           <div class="price">
-            <p class="rating-price">가성비  80% (99+)</p>
-            <p>평균가격 6,000원</p>
+            <p class="rating-price" th:text="${rstnDetail.value}">가성비  80% (99+)</p>
+            <p th:text="${rstnDetail.avgPrice}">평균가격 6,000원</p>
           </div>
       </div>
     </div>
@@ -171,6 +171,7 @@
 
 
 <!-- ============================================================= -->
+<!-- TODO상세 페이지 클릭 시 전화 하기 모달 노출됨 -->
 <div id="modalWrap">
   <div id="modalContent">
     <div id="modalBody">

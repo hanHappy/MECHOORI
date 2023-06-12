@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantCard;
+import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantCardService;
+import com.mechoori.web.service.RestaurantDetailService;
 import com.mechoori.web.service.RestaurantService;
 
 @Controller
@@ -30,6 +32,10 @@ public class RestaurantController {
 	private MenuService menuService;
 	@Autowired
 	private CategoryService ctgService;
+	
+	@Autowired
+	private RestaurantDetailService rstnService;
+
 
 	@GetMapping("/list/category/{id}")
 	public String list(
@@ -59,9 +65,11 @@ public class RestaurantController {
 
 		Restaurant restaurant = service.getDetail(restaurantId);
 		List<Menu> menuList = menuService.getList(restaurantId);
+		RestaurantDetail rstnDetail = rstnService.getDetail(restaurantId);
 
-		model.addAttribute("restaurant", restaurant)
-				.addAttribute("menuList", menuList);
+		model.addAttribute("restaurant", restaurant);
+		model.addAttribute("menuList", menuList);
+		model.addAttribute("rstnDetail", rstnDetail);
 
 		return "restaurant/detail";
 	}
