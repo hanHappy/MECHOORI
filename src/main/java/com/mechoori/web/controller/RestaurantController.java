@@ -8,11 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.service.CategoryService;
+import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantService;
 
 @Controller
@@ -22,12 +24,14 @@ public class RestaurantController {
 	@Autowired
 	private RestaurantService service;
 	@Autowired
+	private MenuService menuService;
+	@Autowired
 	private CategoryService ctgService;
 	
 
 	// /restaurant/list/category/{id}(id=${c.id})}
 	@GetMapping("/list/category/{id}")
-	public String list(
+	public String listByCategoryId(
 			@PathVariable("id") int categoryId,
 			Model model) {
 
@@ -40,9 +44,15 @@ public class RestaurantController {
 		
 
 		model.addAttribute("list", list)
-			 .addAttribute("category", category);
-
+				.addAttribute("category", category);
+		
 		return "restaurant/category";
+	}
+
+	@GetMapping("/list")
+	public String listByQuery(@RequestParam(name = "q", required = false) String query){
+		// service.getListByQuery(query);
+		return "restaurant/list";
 	}
 
 	@GetMapping("{id}")
@@ -51,11 +61,18 @@ public class RestaurantController {
 			Model model) {
 
 		Restaurant restaurant = service.getDetail(restaurantId);
-		List<Menu> menuList = service.getMenuList(restaurantId);
+		List<Menu> menuList = menuService.getList(restaurantId);
 
 		model.addAttribute("restaurant", restaurant)
 				.addAttribute("menuList", menuList);
 
 		return "restaurant/detail";
+	}
+
+	@GetMapping("{id}/rate")
+	public String rate(@PathVariable("id") int restaurantId,Integer menuId,
+					   Model model){
+
+		return "restaurant/rate";
 	}
 }

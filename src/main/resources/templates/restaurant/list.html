@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>search result</title>
-    <link rel="stylesheet" href="/css/search-result-by-input.css">
-    <script src="/js/search-result-by-input.js" defer="defer"></script>
+    <link rel="stylesheet" href="/css/restaurant/list.css">
+    <script src="/js/restaurant/list.js" defer="defer"></script>
 </head>
 
 <body>
+    <div class="sticky-header">
     <header>
         <div class="search-container">
             <div class="search-inner">
@@ -26,14 +28,17 @@
     </header>
 
     <main>
-        <div class="search-result-box">
-            <p>검색결과(<span class="search-result-count">2</span>)</p>
-            <select name="filter" class="select">
-                <option value="">가나다순</option>
-                <option value="">가성비순</option>
-                <option value="">가격순</option>
-            </select>
+        <div>
+            <div class="search-result-box">
+                <p>검색결과(<span class="search-result-count">2</span>)</p>
+                <select name="filter" class="select">
+                    <option value="">가나다순</option>
+                    <option value="">가성비순</option>
+                    <option value="">가격순</option>
+                </select>
+            </div>
         </div>
+    </div>
         <!-- 컨텐츠 -->
         <section>
             <section class="content">

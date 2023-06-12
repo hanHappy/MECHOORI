@@ -1,3 +1,5 @@
+@import url("style.css");
+
 /* ---------전체 ----------*/
 
 html,
@@ -12,7 +14,7 @@ body {
 /* ---------헤더 ----------*/
 
 .header-logo {
-  background-image: url(/images/assets/logo_1.png);
+  background-image: url("/images/assets/logo_1.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -28,15 +30,13 @@ body {
   top: 75px;
 }
 
-
-
 /* ---------메인 ----------*/
 .login2_image {
   width: 166px;
   height: 182px;
   position: relative;
   justify-items: center;
-  background-image: url(../images/assets/login2.png);
+  background-image: url("../images/assets/login2.png");
   background-repeat: no-repeat;
   background-position: center;
   margin-top: 112px;
@@ -145,50 +145,40 @@ a {
 
 .findId {
   position: absolute;
-  width: 69px;
+  width: 81px;
   height: 19px;
-  left: 49px;
-  top: 659px;
+  left: 25px;
+
   font-size: 14px;
   line-height: 19px;
-  /* identical to box height */
-
-  /* hint */
-
-  color: rgba(157, 153, 153, 0.6);
+  color: gray;
+  font-weight: 700;
 }
 
 .findPwd {
   position: absolute;
   width: 81px;
   height: 19px;
-  left: 152px;
-  top: 659px;
-
+  left: 130px;
   font-size: 14px;
   line-height: 19px;
-  /* identical to box height */
-
-  /* hint */
-
-  color: rgba(157, 153, 153, 0.6);
+  color: gray;
+  font-weight: 700;
 }
 
 .idAndPwd {
   display: flex;
-  width: 300px;
+  width: 200px;
   position: absolute;
-  top: 10px;
+  top: 665px;
 }
 
 .btw {
   position: absolute;
   width: 20px;
   height: 0px;
-  left: 125px;
-  top: 677px;
-
-  /* hint */
+  left: 120px;
+  top: 675px;
 
   border: 1px solid rgba(157, 153, 153, 0.6);
   transform: rotate(90deg);

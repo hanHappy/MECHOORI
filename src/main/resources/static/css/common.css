@@ -1,5 +1,4 @@
-@import url("../css/style.css");
-
+@import url("/style.css");
 
 html,
 body {
@@ -36,7 +35,7 @@ header {
   color: var(--font-color);
 }
 .header-logo {
-  background-image: url(/images/assets/logo_1.png);
+  background-image: url("../images/icons/로고.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -73,8 +72,6 @@ header {
   margin: 70px 30px 0 0;
 }
 
-main{
-  padding: 20px;
-
+main {
+  padding: 0 20px;
 }
-

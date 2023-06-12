@@ -1,22 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rate</title>
-    <!-- <link rel="stylesheet" href="/css/reset.css"> -->
-    <link rel="stylesheet" href="/css/rate.css">
-    <script src="/js/rate.js" defer="defer"></script>
+    <link rel="stylesheet" href="/css/restaurant/rate.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/restaurant/rate.js" defer="defer"></script>
 </head>
 
 <body>
     <!-- ================ header ================ -->
     <header>
-        <a><button class="header-icon-back">버튼</button></a>
-        <h1 class="header-logo">로고</h1>
-        <a><button class="header-icon-home">버튼</button></a>
+        <div class="header-side left">
+            <a href=""><button class="header-icon back">버튼</button></a>
+        </div>
+        <h1 class="header-icon logo">로고</h1>
+        <div class="header-side right">
+            <a href=""><button class="header-icon home">버튼</button></a>
+        </div>
     </header>
 
     <!-- ================ main ================ -->
@@ -28,7 +32,7 @@
 
         <!-- 상호명 -->
         <div class="restaurant-name-wrapper">
-            <p>청화원 신촌점</p>
+            <div th:text="${restaurant.name}">청화원 신촌점</div>
         </div>
 
         <!-- -------------- 사용자 입력단 -------------- -->
@@ -37,12 +41,8 @@
             <section class="menu-selection">
                 <h1>메뉴를 선택해주세요</h1>
                 <select class="menu-dropbox">
-                    <option value="" disabled selected>메뉴 선택</option>
-                    <option value="">우육도삭면</option>
-                    <option value="">쇼마이</option>
-                    <option value="">유발도삭면</option>
-                    <option value="">새우 아스파라거스</option>
-                    <option value="">마라두부</option>
+                    <option value="메뉴선택" disabled selected>메뉴 선택</option>
+                    <option th:each="item : ${list}" th:text="${item.name}" th:value="${item.name}">우육도삭면</option>
                 </select>
             </section>
 
@@ -52,7 +52,7 @@
                 <div class="selling-price-box">
                     <p>판매가격</p>
                     <div class="selling-price">
-                        <span>8000</span>
+                        <div th:text="${menu.price}">8000</div>
                         <span>원</span>
                     </div>
                 </div>

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.repository.RestaurantRepository;
 
@@ -17,23 +16,15 @@ public class RestaurantServiceImp implements RestaurantService{
 	
 	@Override
 	public List<Restaurant> getList(int categoryId) {
-		
-		List<Restaurant> list = repository.findAll(categoryId);
-		
-	return list;
+
+		return repository.findAll(categoryId);
 	}
 
 	@Override
 	public Restaurant getDetail(int restaurantId) {
-		Restaurant restaurant = repository.findById(restaurantId);
-		return restaurant;
+		return repository.findById(restaurantId);
 	}
 
-	@Override
-	public List<Menu> getMenuList(int restaurantId) {
-		List<Menu> menuList = repository.findMenuListByRestaurantId(restaurantId);
-		return menuList;
-	}
 
 	// TODO : 예외처리 생각합시다
 //	@Override

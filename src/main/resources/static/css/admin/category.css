@@ -1,0 +1,15 @@
+.edit{
+    background-image: url(/images/components/admin-edit-btn.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 30px;
+    height: 19px;
+    background-color: transparent;
+    border: none;
+    text-indent: -999px;
+    overflow: hidden;
+}
+
+.edit:hover{
+    filter: brightness(0.8);
+}

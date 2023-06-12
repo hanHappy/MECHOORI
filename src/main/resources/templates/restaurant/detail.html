@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>손 안의 메뉴 추천 리스트, 메추리</title>
-    <link rel="stylesheet" type="text/css" href="/CSS/restaurant/detail.css">
-    <link rel="stylesheet" type="text/css" href="/CSS/style.css">
-    <script>
-  
-    </script>
+    <link rel="stylesheet" type="text/css" href="/css/restaurant/detail.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
 </head>
 
 <body>
     <header>
         <div class="search-container">
-            <!-- <div class="search-inner"> -->
-                <!-- <div class="icon_searching"> -->
                     <button type="button" onclick="history.back()"><img src="/images/icons/icon-backwardw.svg"></button>
                     <p>상세페이지</p>
                     <button type="button" onclick="location.href='../index.html'" ><img src="/images/icons/icon-home.svg"></button>
-                <!-- </div> -->
             </div>
         </div>
         
@@ -30,7 +25,7 @@
       <div class="detail">
         <img src="/images/foods/청화원2.png">
         <div class="title">
-          <p th:text="${restaurant.name}">식당명</p>
+          <p th:text="${restaurant.id}">식당명</p>
           <img src="/images/icons/icon-like.svg">
           <img src="/images/icons/icon-share.svg">
         </div>
@@ -76,7 +71,9 @@
             <div class="map-detail">
                 <div class="map-column">
                   <div class="map-image">
-                    <img src="/images/components/thumb-map.png">
+                    <!-- <img src="/images/components/thumb-map.png"> -->
+                    <div id="map1" class = "KaKaomap"></div>
+                
                   </div>
                   <div class="map-button">
                     <div class="map-button-image" id=btnWrap>
@@ -84,8 +81,10 @@
                     </div>
                    
                     <div class="map-button-image">
-                        <img src="/images/icons/icon-map.svg">지도보기
-                    </div>
+                      <a class = " mapBtn" href="kakaomap://route?sp=&ep=37.5502,126.9381&by=CAR">
+                      <img src="/images/icons/icon-map.svg">지도보기
+                      </a>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -126,10 +125,6 @@
         </div>
 
     </main>
-
-<!-- <div id="btnWrap">
-  <button typ="button" id="popupBtn">모달 팝업 tst</button>
-</div> -->
 
 <div id="modalWrap">
   <div id="modalContent">

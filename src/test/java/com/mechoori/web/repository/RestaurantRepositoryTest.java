@@ -5,19 +5,19 @@ import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 
-import com.mechoori.web.entity.Restaurant;
+import com.mechoori.web.entity.Menu;
 
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class RestaurantRepositoryTest {
 	
 	@Autowired
-	private RestaurantRepository repository;
+	private MenuRepository repository;
 
 	@Test
 	void testFindById() {
-		Restaurant restaurant = repository.findById(132);
-		System.out.println(restaurant);
+		Menu menu = repository.findById(132);
+		System.out.println(menu);
 	}
 
 }

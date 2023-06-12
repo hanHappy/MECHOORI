@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Category</title>
+    <link rel="stylesheet" href="/css/admin/category/edit.css">
+    <script src="/js/admin/category/edit.js" defer="defer"></script>
+</head>
+
+<body>
+    <h1>수정 및 삭제</h1>
+    <hr>
+    <form action="" method="post" th:object="${category}">
+        <table>
+            <tr>
+                <td th:text="${category.id}">id</td>
+                <td th:text="${category.name}" class="data"></td>
+                <td><input type="text" th:field="*{name}" class="input"></td>
+                <td th:text="${category.image}" class="data"></td>
+                <td><input type="text" th:field="*{image}" class="input"></td>
+                <td><button>삭제</button></td>
+                <td class="edit"><button type="button">편집</button></td>
+                <td class="cmplt"><button>완료</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

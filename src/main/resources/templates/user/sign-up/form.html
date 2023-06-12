@@ -2,24 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../css/SignUp.css" />
-    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="/css/signup.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+
     <link
       rel="stylesheet"
       href="//fonts.googleapis.com/earlyaccess/notosanskr.css"
     />
-    <script src = "../js/SignUp.js"></script>
+    <script src="/js/SignUp.js"></script>
   </head>
   <body>
     <header>
       <div class="header-text">정보 입력</div>
       <div class="back">
-      <a href="main_hsm.html"></a>
-    </div>
-      <div class = "home">
+        <a href="main_hsm.html"></a>
+      </div>
+      <div class="home">
         <a href="#"></a>
       </div>
     </header>
@@ -69,17 +71,17 @@
             class="input3"
             id="password"
             placeholder="  *영문, 숫자, 특수문자를 포함하여 8자리 이상 입력"
-            />
+          />
         </div>
         <div class="pwParent">
           <div class="pwText text">비밀번호 확인</div>
-          <input 
-          type="password" 
-          class="input4" 
-          id="password1"
-          placeholder=" 비밀번호 확인"/>
-          <!-- <button class = "PwdCheck" id="passwordCheckButton">비밀번호 확인</button> -->
-          <div id="passwordCheck"></div>
+          <input
+            type="password"
+            class="input4"
+            id="password1"
+            placeholder=" 비밀번호 확인"
+          />
+          <div id="passwordCheck" class="check"></div>
         </div>
         <div class="emailParent">
           <div class="emailText text">이메일</div>
@@ -88,11 +90,10 @@
               type="email"
               class="input5"
               placeholder="  * 이메일  주소  입력"
-              id = "email"
+              id="email"
             />
             <input type="submit" value="인증 요청" />
-            <div id="emailCheck"></div>
-
+            <div id="emailCheck" class="check"></div>
           </div>
           <div class="numParent">
             <div class="numText text">인증 번호 입력</div>
@@ -106,12 +107,12 @@
             <input
               type="text"
               class="input6"
-              id = "phone"
+              id="phone"
               placeholder='   "ㅡ" 는 제외하고 입력하여 주십시오'
               maxlength="13"
             />
             <input type="submit" value="인증 요청" />
-            <div id="numberCheck"></div>
+            <div id="numberCheck" class="check"></div>
           </div>
         </div>
         <div class="numParent">
@@ -119,12 +120,11 @@
           <input type="text" class="input7" />
           <input type="submit" value="확 인" />
         </div>
+        <div class="line1"></div>
+        <a href="SignIn2.html">
+          <div class="next">가입</div>
+        </a>
       </section>
-      <div class="line1"> </div>
-
-      <a href="SignIn2.html">
-        <div class="next">가입</div>
-      </a>
     </main>
   </body>
 </html>

@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category</title>
+  <link rel="stylesheet" href="/css/admin/category.css">
 </head>
+
 <body>
-    <h1>카테고리</h1>
-    <th>id</th>
-    <th>name</th>
-    <th>img</th>
-  </tr>
-  <tr th:each="">
-    <td>데이터 1</td>
-    <td>데이터 2</td>
-    <td>데이터 3</td>
-  </tr>
+
+  <h1>카테고리</h1>
+
+  <hr>
+
+  <h2>수정 및 삭제</h2>
+  <form method="GET" th:action="@{/admin/category/edit}">
+    <table>
+      <th>id</th>
+      <th>name</th>
+      <th>img</th>
+      <th></th>
+      <tr th:each="c: ${list}">
+        <td th:text="${c.id}">id</td>
+        <td th:text="${c.name}">name</td>
+        <td th:text="${c.image}">img</td>
+        <td><input type="submit" th:value="${c.id}" name="id" class="edit"></td>
+      </tr>
+    </table>
+  </form>
+
+  <p> </p>
+
+  <h2>추가</h2>
+  <form method="POST" th:object="${category}">
+    <span><strong>name </strong></span><input type="text" th:field="*{name}" required />
+    <p> </p>
+    <span><strong>image </strong></span><input type="text" th:field="*{image}" required />
+    <input type="submit" value="SAVE" />
+  </form>
 </body>
+
 </html>
