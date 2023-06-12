@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <title>손 안의 메뉴 추천 리스트, 메추리</title>
     <link rel="stylesheet" type="text/css" href="/css/restaurant/category.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="/js/restaurant/list.js" defer="defer"></script>
 </head>
 
 <body>
@@ -22,16 +24,34 @@
     </header>
 
     <main>
-        <div class="menu-box">
-            <div class="menu">
-                <ul>
-                    <li class="rs-menu non-click"><a href="/index" th:href="@{/restaurant/list/category/{id}(id=1)}">한식</a></li>
-                    <li class="rs-menu non-click"><a href="/index">중식</a></li>
-                    <li class="rs-menu non-click"><a href="/index">일식</a></li>
-                    <li class="rs-menu non-click"><a href="/index">양식</a></li>
-                    <li class="rs-menu non-click"><a href="/index">분식</a></li>
-                    <li class="rs-menu non-click"><a href="/index">기타</a></li>
-                </ul>
+        <!-- 카테고리 -->
+        <div class="category top">
+            <a class="rs-menu non-click" href="#">전체</a>
+            <a class="rs-menu non-click" href="#" th:href="@{/restaurant/list/category/{id}(id=1)}">한식</a>
+            <a class="rs-menu non-click" href="#">중식</a>
+            <a class="rs-menu non-click" href="#">일식</a>
+            <a class="rs-menu non-click" href="#">양식</a>
+            <a class="rs-menu non-click" href="#">분식</a>
+            <a class="rs-menu non-click others" href="#">기타</a>
+        </div>
+        <!-- 기타 카테고리 -->
+        <div class="category-others-container">
+            <div class="category others">
+                <a class="category-tag active" href="#" >#베트남</a>
+                <a class="category-tag" href="#" >#멕시칸</a>
+                <a class="category-tag" href="#" >#인도</a>
+                <a class="category-tag" href="#" >#태국</a>
+                <a class="category-tag" href="#" >#터키</a>
+            </div>
+        </div>
+        <!-- 필터 -->
+        <div>
+            <div class="filter-box">
+                <select name="filter">
+                    <option value="">가나다순</option>
+                    <option value="">가성비순</option>
+                    <option value="">가격순</option>
+                </select>
             </div>
         </div>
 
@@ -42,7 +62,7 @@
                 <div class="image-box">
                     <img src="/images/foods/청화원2.png" alt="청화원" class="image">
                     <!-- 하트 -->
-                    <button class="like inactive">좋아요</button>
+                    <button class="like">좋아요</button>
                     <div class="data-box">
                         <p>좋아요 수</p>
                         <p th:text="${restaurant.likedCount}">718</p>
@@ -62,10 +82,12 @@
                 <!-- 버튼 -->
                 <div class="btn-box">
                     <div>
-                        <a href="/restaurant/1" th:href="@{/restaurant/{id}(id=${restaurant.id})}"><button>상세 보기</button></a>
-                    </div>	
+                        <a href="/restaurant/1" th:href="@{/restaurant/{id}(id=${restaurant.id})}"><button>상세
+                                보기</button></a>
+                    </div>
                     <div>
-                        <a href="/restaurant/{id}/rate" th:href="@{/restaurant/{id}/rate(id=${restaurant.id})}"><button>평가하기</button></a>
+                        <a href="/restaurant/{id}/rate"
+                            th:href="@{/restaurant/{id}/rate(id=${restaurant.id})}"><button>평가하기</button></a>
                     </div>
                 </div>
             </section>

@@ -31,10 +31,7 @@ public class CategoryController {
     }
 
     @PostMapping("/admin/category")
-    public String category(Category category, int[] id) {
-        if (id != null)
-            service.delete(id);
-        else
+    public String saveCategory(Category category) {
             service.save(category);
         return "redirect:/admin/category";
     }
@@ -47,7 +44,7 @@ public class CategoryController {
     }
 
     @PostMapping("/admin/category/edit")
-    public String category(Category category){
+    public String editCategory(Category category){
         service.update(category);
         return "redirect:/admin/category";
     }
