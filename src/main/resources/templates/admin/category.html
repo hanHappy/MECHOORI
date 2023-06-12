@@ -15,7 +15,7 @@
 
   <hr>
 
-  <h2>수정</h2>
+  <h2>수정 및 삭제</h2>
   <form method="GET" th:action="@{/admin/category/edit}">
     <table>
       <th>id</th>
@@ -29,24 +29,6 @@
         <td><input type="submit" th:value="${c.id}" name="id" class="edit"></td>
       </tr>
     </table>
-  </form>
-
-  <h2>삭제</h2>
-  <form method="POST">
-    <table>
-      <th></th>
-      <th>id</th>
-      <th>name</th>
-      <th>img</th>
-      <th></th>
-      <tr th:each="c: ${list}">
-        <td><input type="checkbox" th:value="${c.id}" name="id"></td>
-        <td th:text="${c.id}">id</td>
-        <td th:text="${c.name}">name</td>
-        <td th:text="${c.image}">img</td>
-      </tr>
-    </table>
-    <input type="submit" value="DELETE">
   </form>
 
   <p> </p>
