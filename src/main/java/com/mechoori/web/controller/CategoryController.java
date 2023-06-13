@@ -8,44 +8,44 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.mechoori.web.entity.Category;
-import com.mechoori.web.service.CategoryService;
+import com.mechoori.web.entity.TopCategory;
+import com.mechoori.web.service.TopCategoryService;
 
 @Controller
 public class CategoryController {
 
     @Autowired
-    private CategoryService service;
+    private TopCategoryService topCtgservice;
 
     @GetMapping("/admin/category")
     public String category(Model model) {
 
         // 조회
-        List<Category> list = service.getList();
+        List<TopCategory> list = topCtgservice.getList();
 
         // POST 데이터 담을 빈 객체
         model.addAttribute("list", list)
-            .addAttribute("category", new Category());
+            .addAttribute("category", new TopCategory());
 
         return "admin/category";
     }
 
     @PostMapping("/admin/category")
-    public String saveCategory(Category category) {
-            service.save(category);
+    public String saveCategory(TopCategory category) {
+            topCtgservice.save(category);
         return "redirect:/admin/category";
     }
 
     @GetMapping("/admin/category/edit")
     public String editCategory(int id, Model model){
-        Category category = service.getDetail(id);
+        TopCategory category = topCtgservice.getDetail(id);
         model.addAttribute("category", category);
         return "admin/category/edit";
     }
 
     @PostMapping("/admin/category/edit")
-    public String editCategory(Category category){
-        service.update(category);
+    public String editCategory(TopCategory category){
+        topCtgservice.update(category);
         return "redirect:/admin/category";
     }
 }

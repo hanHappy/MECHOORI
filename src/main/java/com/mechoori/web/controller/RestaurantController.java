@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mechoori.web.entity.Menu;
-import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantCard;
 import com.mechoori.web.entity.RestaurantDetail;
-import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantCardService;
 import com.mechoori.web.service.RestaurantDetailService;
 import com.mechoori.web.service.RestaurantService;
+import com.mechoori.web.service.TopCategoryService;
 
 @Controller
 @RequestMapping("/restaurant")
@@ -31,30 +30,26 @@ public class RestaurantController {
 	@Autowired
 	private MenuService menuService;
 	@Autowired
-	private CategoryService ctgService;
-	
+	private TopCategoryService ctgService;
+
 	@Autowired
 	private RestaurantDetailService rstnService;
 
-
-	@GetMapping("/list/category/{id}")
+	@GetMapping("/list")
 	public String list(
-			@PathVariable("id") int categoryId,
+			@RequestParam(name = "q", required = false) String query,
+			@RequestParam(name = "c", required = false) Integer ctgId,
 			Model model) {
 
-	
+		List<RestaurantCard> list = null;
 		// 식당 리스트 출력
-		List<RestaurantCard> list = rescService.getList(categoryId);
-		
+		if (query != null)
+			list = rescService.getListByQuery(query);
+		else if (ctgId != null)
+			list = rescService.getListByCtgId(ctgId);
 
 		model.addAttribute("list", list);
-		
-		return "restaurant/category";
-	}
 
-	@GetMapping("/list")
-	public String listByQuery(@RequestParam(name = "q", required = false) String query){
-		// service.getListByQuery(query);
 		return "restaurant/list";
 	}
 
@@ -63,11 +58,9 @@ public class RestaurantController {
 			@PathVariable("id") int restaurantId,
 			Model model) {
 
-		Restaurant restaurant = service.getDetail(restaurantId);
 		List<Menu> menuList = menuService.getList(restaurantId);
 		RestaurantDetail rstnDetail = rstnService.getDetail(restaurantId);
 
-		model.addAttribute("restaurant", restaurant);
 		model.addAttribute("menuList", menuList);
 		model.addAttribute("rstnDetail", rstnDetail);
 
@@ -75,8 +68,8 @@ public class RestaurantController {
 	}
 
 	@GetMapping("{id}/rate")
-	public String rate(@PathVariable("id") int restaurantId,Integer menuId,
-					   Model model){
+	public String rate(@PathVariable("id") int restaurantId, Integer menuId,
+			Model model) {
 
 		return "restaurant/rate";
 	}

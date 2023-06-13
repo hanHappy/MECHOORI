@@ -22,12 +22,12 @@
       </div>
     </header>
 
-        <form class="search-bar">
-            <label class="search-input" for="search-input">
-                <img src="/images/icons/검색버튼.png">
-            </label>
-            <input type="text" id="search-input" placeholder="한상민님, 오늘은 짜장상회 어떠세요?">
-        </form>
+    <form class="search-bar" action="restaurant/list">
+        <label class="search-input" for="search-input">
+            <img src="/images/icons/검색버튼.png">
+        </label>
+        <input type="text" id="search-input" name="q" placeholder="한상민님, 오늘은 짜장상회 어떠세요?">
+    </form>
 
     <main>
       <section class="ad">
@@ -36,7 +36,7 @@
 
       <section class="type">
         <ul class="typelist">
-          <li th:each="c : ${list}"> <a href="/restaurant/list/category/1" th:href="@{/restaurant/list/category/{id}(id=${c.id})}" > <img src="/images/icons/한식.svg" th:src="@{/images/icons/{img}(img=${c.image})}"> </a></li>
+          <li th:each="c : ${list}"> <a href="/restaurant/list?c=1" th:href="@{/restaurant/list(c=${c.id})}" > <img src="/images/icons/한식.svg" th:src="@{/images/icons/{img}(img=${c.image})}"> </a></li>
         </ul>
       </section>
 
