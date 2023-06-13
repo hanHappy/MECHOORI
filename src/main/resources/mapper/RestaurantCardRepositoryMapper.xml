@@ -13,6 +13,10 @@
 		from restaurant_card
 		where name like '%${query}%'
 	</select>
+	<select id="findAll" resultType="RestaurantCard">
+		select *
+		from restaurant_card
+	</select>
 	
 
 </mapper>

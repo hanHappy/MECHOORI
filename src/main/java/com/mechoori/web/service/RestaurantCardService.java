@@ -10,4 +10,6 @@ public interface RestaurantCardService {
     
     List<RestaurantCard> getListByQuery(String query);
 
+    List<RestaurantCard> getList();
+
 }

@@ -43,7 +43,9 @@ public class RestaurantController {
 
 		List<RestaurantCard> list = null;
 		// 식당 리스트 출력
-		if (query != null)
+		if(query==null&&ctgId==null)
+			list = rescService.getList();
+		else if (query != null)
 			list = rescService.getListByQuery(query);
 		else if (ctgId != null)
 			list = rescService.getListByCtgId(ctgId);

@@ -13,4 +13,6 @@ public interface RestaurantCardRepository {
 
     List<RestaurantCard> findAllByQuery(String query);
 
+    List<RestaurantCard> findAll();
+
 }
