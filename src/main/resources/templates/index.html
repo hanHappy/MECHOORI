@@ -36,7 +36,7 @@
 
       <section class="type">
         <ul class="typelist">
-          <li th:each="c : ${list}"> <a href="/restaurant/list/category/1" th:href="@{/restaurant/list/category/{id}(id=${c.id})}" > <img src="/images/icons/한식.svg" th:src="@{/images/icons/{img}(img=${c.image})}"> </a></li>
+          <li th:each="c : ${list}"> <a href="/restaurant/list(c=c.id)" th:href="@{/restaurant/list/category/{id}(id=${c.id})}" > <img src="/images/icons/한식.svg" th:src="@{/images/icons/{img}(img=${c.image})}"> </a></li>
         </ul>
       </section>
 

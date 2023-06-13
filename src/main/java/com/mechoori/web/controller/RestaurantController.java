@@ -8,11 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantCard;
 import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
@@ -37,7 +35,7 @@ public class RestaurantController {
 	private RestaurantDetailService rstnService;
 
 
-	@GetMapping("/list/category/{id}")
+	@GetMapping("/list{id}")
 	public String list(Model model) {
 
 	
