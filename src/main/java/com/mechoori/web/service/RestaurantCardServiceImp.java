@@ -14,8 +14,13 @@ public class RestaurantCardServiceImp implements RestaurantCardService{
     RestaurantCardRepository repository;
 
     @Override
-    public List<RestaurantCard> getList(int categoryId) {
-        return repository.findAll(categoryId);
+    public List<RestaurantCard> getListByCtgId(int categoryId) {
+        return repository.findAllByCtgId(categoryId);
+    }
+
+    @Override
+    public List<RestaurantCard> getListByQuery(String query) {
+        return repository.findAllByQuery(query);
     }
     
 }

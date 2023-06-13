@@ -6,6 +6,8 @@ import com.mechoori.web.entity.RestaurantCard;
 
 public interface RestaurantCardService {
 
-    List<RestaurantCard> getList(int categoryId);
+    List<RestaurantCard> getListByCtgId(int categoryId);
+    
+    List<RestaurantCard> getListByQuery(String query);
 
 }

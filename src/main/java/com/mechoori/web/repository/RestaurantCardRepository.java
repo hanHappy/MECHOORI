@@ -9,6 +9,8 @@ import com.mechoori.web.entity.RestaurantCard;
 @Mapper
 public interface RestaurantCardRepository {
 
-    List<RestaurantCard> findAll(int categoryId);
+    List<RestaurantCard> findAllByCtgId(int categoryId);
+
+    List<RestaurantCard> findAllByQuery(String query);
 
 }
