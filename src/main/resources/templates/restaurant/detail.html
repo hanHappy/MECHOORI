@@ -58,7 +58,7 @@
 
           <div class="price">
             <p class="rating-price">가성비  <span th:text="${rstnDetail.value}">80</span>% (<span th:text="${rstnDetail.ratedCount}">99</span>)</p>
-            <p>평균가격 <span th:text="${rstnDetail.avgPrice}">6,000</span>원</p>
+            <p>평균 <span th:text="${rstnDetail.avgPrice}">6,000</span>원 · 평가 <span th:text="${rstnDetail.avgRatedPrice}"></span>원</p>
           </div>
       </div>
     </div>
@@ -93,7 +93,7 @@
             <p>위치 안내</p>
           </div>
           <div class="map-address">
-              <p>서울특별시 마포구 백범로 52</p>
+              <p th:text="${rstnDetail.address}">서울특별시 마포구 백범로 52</p>
               <img src="/images/icons/icon-mapmore.svg" width="16px">
           </div>
       </div>

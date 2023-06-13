@@ -19,5 +19,6 @@ public class RestaurantDetail {
     private Integer likedCount;
     private Integer ratedCount;
     private Integer avgPrice;
+    private Integer avgRatedPrice;
     private Integer value;
 }
