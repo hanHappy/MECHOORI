@@ -2,29 +2,29 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.mechoori.web.repository.CategoryRepository">
-	<select id="findAll" resultType="Category">
+<mapper namespace="com.mechoori.web.repository.TopCategoryRepository">
+	<select id="findAll" resultType="TopCategory">
 		select * 
-		from category
+		from top_category
 	</select>
-	<select id="findById" resultType="Category">
+	<select id="findById" resultType="TopCategory">
 		select *
-		from category
+		from top_category
 		where id = #{categoryId}
 	</select>
-	<insert id="save" parameterType="Category">
-		insert into category(name, image)
+	<insert id="save" parameterType="TopCategory">
+		insert into top_category(name, image)
 		values(#{name}, #{image})
 	</insert>
 	<delete id="delete" parameterType="java.util.List">
-		delete from category
+		delete from top_category
 		where id in
 		<foreach item="id" collection="id" open="(" separator="," close=")">
 			#{id}
 		</foreach>
 	</delete>
-	<update id="update" parameterType="Category">
-		UPDATE category
+	<update id="update" parameterType="TopCategory">
+		UPDATE top_category
 		set
 		name = #{name},
 		image = #{image}
