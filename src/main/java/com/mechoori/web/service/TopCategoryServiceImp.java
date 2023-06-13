@@ -5,27 +5,27 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mechoori.web.entity.Category;
-import com.mechoori.web.repository.CategoryRepository;
+import com.mechoori.web.entity.TopCategory;
+import com.mechoori.web.repository.TopCategoryRepository;
 
 @Service
-public class CategoryServiceImp implements CategoryService {
+public class TopCategoryServiceImp implements TopCategoryService {
 
     @Autowired
-    private CategoryRepository repository;
+    private TopCategoryRepository repository;
 
     @Override
-    public List<Category> getList() {
+    public List<TopCategory> getList() {
         return repository.findAll();
     }
 
     @Override
-    public Category getDetail(int categoryId) {
+    public TopCategory getDetail(int categoryId) {
         return repository.findById(categoryId);
     }
 
     @Override
-    public void save(Category category) {
+    public void save(TopCategory category) {
         repository.save(category);
     }
 
@@ -35,7 +35,7 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
-    public void update(Category category) {
+    public void update(TopCategory category) {
         repository.update(category);
     }
 

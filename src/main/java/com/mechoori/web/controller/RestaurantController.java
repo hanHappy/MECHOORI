@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantDetail;
-import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantCardService;
 import com.mechoori.web.service.RestaurantDetailService;
 import com.mechoori.web.service.RestaurantService;
+import com.mechoori.web.service.TopCategoryService;
 
 @Controller
 @RequestMapping("/restaurant")
@@ -29,7 +29,7 @@ public class RestaurantController {
 	@Autowired
 	private MenuService menuService;
 	@Autowired
-	private CategoryService ctgService;
+	private TopCategoryService ctgService;
 	
 	@Autowired
 	private RestaurantDetailService rstnService;
@@ -53,11 +53,11 @@ public class RestaurantController {
 			@PathVariable("id") int restaurantId,
 			Model model) {
 
-		Restaurant restaurant = service.getDetail(restaurantId);
+		// Restaurant restaurant = service.getDetail(restaurantId);
 		List<Menu> menuList = menuService.getList(restaurantId);
 		RestaurantDetail rstnDetail = rstnService.getDetail(restaurantId);
 
-		model.addAttribute("restaurant", restaurant);
+		// model.addAttribute("restaurant", restaurant);
 		model.addAttribute("menuList", menuList);
 		model.addAttribute("rstnDetail", rstnDetail);
 
