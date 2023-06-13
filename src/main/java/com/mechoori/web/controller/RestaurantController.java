@@ -38,24 +38,16 @@ public class RestaurantController {
 
 
 	@GetMapping("/list/category/{id}")
-	public String list(
-			@PathVariable("id") int categoryId,
-			Model model) {
+	public String list(Model model) {
 
 	
 		// 식당 리스트 출력
-		List<RestaurantCard> list = rescService.getList(categoryId);
+		// List<RestaurantCard> list = rescService.getList();
 		
 
-		model.addAttribute("list", list);
+		// model.addAttribute("list", list);
 		
 		return "restaurant/category";
-	}
-
-	@GetMapping("/list")
-	public String listByQuery(@RequestParam(name = "q", required = false) String query){
-		// service.getListByQuery(query);
-		return "restaurant/list";
 	}
 
 	@GetMapping("{id}")
