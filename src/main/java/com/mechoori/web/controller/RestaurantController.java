@@ -53,11 +53,9 @@ public class RestaurantController {
 			@PathVariable("id") int restaurantId,
 			Model model) {
 
-		// Restaurant restaurant = service.getDetail(restaurantId);
 		List<Menu> menuList = menuService.getList(restaurantId);
 		RestaurantDetail rstnDetail = rstnService.getDetail(restaurantId);
 
-		// model.addAttribute("restaurant", restaurant);
 		model.addAttribute("menuList", menuList);
 		model.addAttribute("rstnDetail", rstnDetail);
 
