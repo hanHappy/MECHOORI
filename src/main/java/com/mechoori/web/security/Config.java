@@ -1,8 +1,5 @@
 package com.mechoori.web.security;
 
-import javax.sql.DataSource;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,8 +11,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class Config {
-    @Autowired
-	private DataSource datasource;
 
 	// 권한을 위한 필터 객체
 	// HttpSecurity가 필터를 만들 수 있도록 하는 class
@@ -25,7 +20,7 @@ public class Config {
 			.csrf(csrf->csrf.disable())	// cross origin에 대해 403을 띄우는 것 방지(안전 모드를 해제하는 느낌)
 			.authorizeHttpRequests( // 인증을 위한 요청 URL 설정
 				auth->auth
-					.requestMatchers("/admin/**").hasAnyRole("ADMIN") // authority 칼럼이 ROLE_ADMIN로 되어 있는 경우
+					.requestMatchers("/admin/**").hasAnyRole("ADMIN")
 					.anyRequest().permitAll()) // 이외의 요청은 전부 승인함
 			.formLogin(
 				form->form
