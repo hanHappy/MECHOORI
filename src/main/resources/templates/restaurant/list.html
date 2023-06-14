@@ -13,86 +13,90 @@
 </head>
 
 <body>
-    <header>
-        <div class="header-side left">
-            <a href=""><button class="header-icon back">버튼</button></a>
-        </div>
-        <a href="/index"><h1 class="header-icon logo">로고</h1></a>
-        <div class="header-side right">
-            <a href=""><button class="header-icon search">버튼</button></a>
-        </div>
-    </header>
-
-    <main>
-        <!-- 카테고리 -->
-        <div class="category top">
-            <a class="rs-menu non-click" href="/restaurant/list">전체</a>
-            <a class="rs-menu non-click" href="/restaurant/list?c=1">한식</a>
-            <a class="rs-menu non-click" href="/restaurant/list?c=2">중식</a>
-            <a class="rs-menu non-click" href="/restaurant/list?c=3">일식</a>
-            <a class="rs-menu non-click" href="/restaurant/list?c=4">양식</a>
-            <a class="rs-menu non-click" href="/restaurant/list?c=5">분식</a>
-            <a class="rs-menu non-click others">기타</a>
-        </div>
-        <!-- 기타 카테고리 -->
-        <div class="category-others-container">
-            <div class="category others">
-                <a class="category-tag" href="#">#베트남</a>
-                <a class="category-tag" href="#">#태국</a>
-                <a class="category-tag" href="#" >#멕시칸</a>
-                <a class="category-tag" href="#" >#인도</a>
-                <a class="category-tag" href="#" >#태국</a>
-                <a class="category-tag" href="#" >#터키</a>
+    <div class="fixed-area">
+        <header>
+            <div class="header-side left">
+                <a href=""><button class="header-icon back">버튼</button></a>
             </div>
-        </div>
-        <!-- 필터 -->
-        <div>
-            <div class="filter-box">
-                <select name="filter">
-                    <option value="">가나다순</option>
-                    <option value="">가성비순</option>
-                    <option value="">가격순</option>
-                </select>
+            <a href="/index">
+                <h1 class="header-icon logo">로고</h1>
+            </a>
+            <div class="header-side right">
+                <a><button class="header-icon search">버튼</button></a>
             </div>
-        </div>
+        </header>
 
-        <!-- 컨텐츠 -->
-        <section>
-            <section class="content" th:each="r : ${list}">
-                <!-- 이미지 -->
-                <div class="image-box">
-                    <img src="/images/foods/청화원2.png" th:src="@{/images/foods/{img}(img=${r.img})}" alt="이미지" class="image">
-                    <!-- 하트 -->
-                    <button class="like">좋아요</button>
-                    <div class="data-box">
-                        <p>좋아요 수</p>
-                        <p th:text="${r.likedCount}">718</p>
-                        <p>평가 수</p>
-                        <p th:text="${r.ratedCount}">207</p>
-                    </div>
+        <main>
+            <!-- 카테고리 -->
+            <div class="category top">
+                <a class="rs-menu non-click" href="/restaurant/list">전체</a>
+                <a class="rs-menu non-click" href="/restaurant/list?c=1">한식</a>
+                <a class="rs-menu non-click" href="/restaurant/list?c=2">중식</a>
+                <a class="rs-menu non-click" href="/restaurant/list?c=3">일식</a>
+                <a class="rs-menu non-click" href="/restaurant/list?c=4">양식</a>
+                <a class="rs-menu non-click" href="/restaurant/list?c=5">분식</a>
+                <a class="rs-menu non-click others">기타</a>
+            </div>
+            <!-- 기타 카테고리 -->
+            <div class="category-others-container">
+                <div class="category others">
+                    <a class="category-tag" href="#">#베트남</a>
+                    <a class="category-tag" href="#">#태국</a>
+                    <a class="category-tag" href="#">#멕시칸</a>
+                    <a class="category-tag" href="#">#인도</a>
+                    <a class="category-tag" href="#">#태국</a>
+                    <a class="category-tag" href="#">#터키</a>
                 </div>
-                <!-- 정보 -->
-                <div class="info-box">
-                    <p th:text="${r.name}">식당명</p>
-                    <p>평균가격</p>
-                    <p th:text="${r.avgPrice}">10,000원</p>
-                    <p>·</p>
-                    <p>가성비</p>
-                    <p th:text="${r.value} + ' %'">113%</p>
+            </div>
+            <!-- 필터 -->
+            <div>
+                <div class="filter-box">
+                    <select name="filter">
+                        <option value="">가나다순</option>
+                        <option value="">가성비순</option>
+                        <option value="">가격순</option>
+                    </select>
                 </div>
-                <!-- 버튼 -->
-                <div class="btn-box">
-                    <div>
-                        <a href="/restaurant/1" th:href="@{/restaurant/{id}(id=${r.id})}"><button>상세
-                                보기</button></a>
-                    </div>
-                    <div>
-                        <a href="/restaurant/{id}/rate"
-                            th:href="@{/restaurant/{id}/rate(id=${r.id})}"><button>평가하기</button></a>
-                    </div>
+            </div>
+    </div>
+
+    <!-- 컨텐츠 -->
+    <section>
+        <section class="content" th:each="r : ${list}">
+            <!-- 이미지 -->
+            <div class="image-box">
+                <img src="/images/foods/청화원2.png" th:src="@{/images/foods/{img}(img=${r.img})}" alt="이미지" class="image">
+                <!-- 하트 -->
+                <button class="like">좋아요</button>
+                <div class="data-box">
+                    <p>좋아요 수</p>
+                    <p th:text="${r.likedCount}">718</p>
+                    <p>평가 수</p>
+                    <p th:text="${r.ratedCount}">207</p>
                 </div>
-            </section>
+            </div>
+            <!-- 정보 -->
+            <div class="info-box">
+                <p th:text="${r.name}">식당명</p>
+                <p>평균가격</p>
+                <p th:text="${r.avgPrice}">10,000원</p>
+                <p>·</p>
+                <p>가성비</p>
+                <p th:text="${r.value} + ' %'">113%</p>
+            </div>
+            <!-- 버튼 -->
+            <div class="btn-box">
+                <div>
+                    <a href="/restaurant/1" th:href="@{/restaurant/{id}(id=${r.id})}"><button>상세
+                            보기</button></a>
+                </div>
+                <div>
+                    <a href="/restaurant/{id}/rate"
+                        th:href="@{/restaurant/{id}/rate(id=${r.id})}"><button>평가하기</button></a>
+                </div>
+            </div>
         </section>
+    </section>
 
     </main>
 

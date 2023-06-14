@@ -21,6 +21,14 @@
 }
 
 /* ------------------------------- */
+.fixed-area {
+    /* layout */
+    width: 100%;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+}
+
 .search-container {
     width: 100%;
     display: flex;
