@@ -9,14 +9,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class MechooriUserDetails implements UserDetails{
 	   private int id;
-	   private String password;
-       private int genderId;
 	   private String username;
+	   private String password;
        private String nickname;
 	   private String email;
 	   private String phoneNumber;
-	   private Date regDate;
+       private int genderId;
 	   private Date birthDate;
+	   private Date regDate;
        private List<GrantedAuthority> authorities;
 
 

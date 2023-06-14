@@ -6,8 +6,10 @@
 	<select id="findById" resultType="Member">
 		select * from member where id=#{id}
 	</select>
-	
 	<select id="findByUsername" resultType="Member">
       select * from member where username=#{username}
+   </select>
+	<select id="findRoleByUsername" resultType="String">
+      select role_name from member_with_role where username = #{username}
    </select>
 </mapper>

@@ -3,10 +3,8 @@ package com.mechoori.web.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -39,16 +37,5 @@ public class Config {
 	public PasswordEncoder passwordEncoder() {
 		// 콩자루에 담는 작업
 		return new BCryptPasswordEncoder();
-	}
-
-	@Bean
-	public UserDetailsService jdbcUserDetailsService() {
-		JdbcUserDetailsManager manager = new JdbcUserDetailsManager(datasource);
-
-		manager.setUsersByUsernameQuery("select username, password, 1 enabled from member where username = ?"); // username,
-		manager.setAuthoritiesByUsernameQuery(
-				"select m.username, r.name authority from role r join member m on m.role_id = r.id where m.username=?"); // username,
-
-		return manager;
 	}
 }
