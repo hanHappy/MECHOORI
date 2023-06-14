@@ -3,7 +3,6 @@ let categoryBtns = document.querySelectorAll('.rs-menu');
 let categoryOthersContainer = document.querySelector('.category-others-container');
 let otherCategories = categoryOthersContainer.querySelector('.others');
 let tags = otherCategories.querySelectorAll('.category-tag');
-let activeTag = otherCategories.querySelector('.active');
 
 let likeControl = function (e) {
     let isLiked = e.target.classList.contains("active");
@@ -14,6 +13,7 @@ let likeControl = function (e) {
 }
 
 let tagControl = function (e){
+    let activeTag = otherCategories.querySelector('.active');
     if(activeTag != null)
         activeTag.classList.remove('active');
     e.target.classList.add('active');
