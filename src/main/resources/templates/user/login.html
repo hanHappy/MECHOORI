@@ -1,63 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/login.css" />
-    <link rel="stylesheet" href="/css/style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/user/login.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="/js/user/login.js" defer="defer"></script>
+</head>
 
-    <link
-      rel="stylesheet"
-      href="//fonts.googleapis.com/earlyaccess/notosanskr.css"
-    />
-  </head>
-  <body>
-    <header>
-      <div class="header-logo"></div>
-      <a class="back" href="main_hsm.html"> </a>
-    </header>
+<body>
+  <header>
+    <div class="header-side left">
+      <a><button class="d-none"></button></a>
+    </div>
+    <h1 class="header-icon logo"></h1>
+    <div class="header-side right">
+      <a><button class="header-icon cancle"></button></a>
+    </div>
+  </header>
 
-    <main>
-      <div class="login2_image"></div>
-
-      <div class="idAndPw">
-        <form>
-          <span class="login"> 아이디 </span>
-        </form>
+  <main>
+    <div class="login_image"></div>
+    <form action="/user/login" method="post">
+    <div class="idAndPw">
+        <span class="login"> 아이디 </span>
         <span class="id">
-          <input
-            type="email"
-            placeholder="가입하신 이메일을 입력해주세요."
-            di="email"
-          />
+          <input type="email" name="username" placeholder="가입하신 이메일을 입력해주세요." id="email" />
         </span>
-
-        <form>
-          <span class="pass">비밀번호</span>
-        </form>
+        <span class="pass">비밀번호</span>
         <span class="pw">
-          <input
-            type="password"
-            placeholder="비밀번호을 입력해주세요."
-            required
-          />
+          <input type="password" name="password" placeholder="비밀번호을 입력해주세요." required />
         </span>
-      </div>
+    </div>
 
-      <div class="input-container">
-        <button class="submitbtn">
-          <a href="main.html">확인 </a>
-        </button>
-      </div>
+    <div class="input-container">
+      <button class="submitbtn">
+        <input type="hidden" name="returnURL" th:value="${param.returnURL}">
+        <a href="">로그인 </a>
+      </button>
+    </div>
+    </form>
 
-      <div class="idAndPwd">
-        <a href="./find-id.html" class="findId">아이디 찾기</a>
-        <a href="./find-pwd.html" class="findPwd">비밀번호 찾기</a>
-      </div>
+    <div class="idAndPwd">
+      <button class="findId" id="popupBtn">계정 찾기</button>
+
+      <a href="sign-up/form.html">
+        <div class="signup">회원 가입</div>
+      </a>
       <div class="btw"></div>
-    </main>
-  </body>
+    </div>
+    <div th:if="${param.error}">
+      아이디 혹은 비밀번호가 일치하지 않습니다.
+    </div>
+
+    <div class="onlyImg"></div>
+  </main>
+
+  <!-- <div id=modalWrap>
+    <div class="pop">
+      <div class="area">
+        <a href="index.html"><button id="findEmail">이메일 찾기</button></a>
+        <a href="index.html"><button id="findP">비밀번호 찾기</button></a>
+      </div>
+    </div>
+  </div> -->
+
+</body>
+
 </html>
