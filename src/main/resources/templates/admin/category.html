@@ -17,8 +17,7 @@
 
   <hr>
 
-  <h2>수정 및 삭제</h2>
-  <form method="GET" th:action="@{/admin/category/edit}">
+  <form>
     <table>
       <th>id</th>
       <th>name</th>
@@ -28,20 +27,13 @@
         <td th:text="${c.id}">id</td>
         <td th:text="${c.name}">name</td>
         <td th:text="${c.image}">img</td>
-        <td><button th:value="${c.id}" name="id">편집</button></td>
+        <td><button href="category/update" th:value="${c.id}" name="id">EDIT</button></td>
+        <td><button href="category/delete" th:value="${c.id}" name="id">DEL</button></td>
       </tr>
     </table>
   </form>
-
-  <p> </p>
-
-  <h2>추가</h2>
-  <form method="POST">
-    <span><strong>name </strong></span><input type="text" required />
-    <p> </p>
-    <span><strong>image </strong></span><input type="text" required />
-    <input type="submit" value="SAVE" />
-  </form>
+  <p></p>
+  <a href="category/save"><button>추가</button></a>
 </body>
 
 
