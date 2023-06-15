@@ -14,26 +14,19 @@ import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.RestaurantCard;
 import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.service.MenuService;
-import com.mechoori.web.service.RestaurantCardService;
-import com.mechoori.web.service.RestaurantDetailService;
 import com.mechoori.web.service.RestaurantService;
-import com.mechoori.web.service.TopCategoryService;
+import com.mechoori.web.service.CategoryService;
 
 @Controller
 @RequestMapping("/restaurant")
 public class RestaurantController {
 
 	@Autowired
-	private RestaurantService service;
-	@Autowired
-	private RestaurantCardService rescService;
+	private RestaurantService rstrService;
 	@Autowired
 	private MenuService menuService;
 	@Autowired
-	private TopCategoryService ctgService;
-
-	@Autowired
-	private RestaurantDetailService rstnService;
+	private CategoryService ctgService;
 
 	@GetMapping("/list")
 	public String list(
@@ -44,11 +37,11 @@ public class RestaurantController {
 		List<RestaurantCard> list = null;
 		// 식당 리스트 출력
 		if(query==null&&ctgId==null)
-			list = rescService.getList();
+			list = rstrService.getRestaurantCardList();
 		else if (query != null)
-			list = rescService.getListByQuery(query);
+			list = rstrService.getRestaurantCardListByQuery(query);
 		else if (ctgId != null)
-			list = rescService.getListByCtgId(ctgId);
+			list = rstrService.getRestaurantCardListByCtgId(ctgId);
 
 		model.addAttribute("list", list);
 
@@ -61,7 +54,7 @@ public class RestaurantController {
 			Model model) {
 
 		List<Menu> menuList = menuService.getList(restaurantId);
-		RestaurantDetail rstnDetail = rstnService.getDetail(restaurantId);
+		RestaurantDetail rstnDetail = rstrService.getRestaurantDetailById(restaurantId);
 
 		model.addAttribute("menuList", menuList);
 		model.addAttribute("rstnDetail", rstnDetail);

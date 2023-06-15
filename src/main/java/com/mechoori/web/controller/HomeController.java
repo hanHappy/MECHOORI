@@ -8,18 +8,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.mechoori.web.entity.TopCategory;
-import com.mechoori.web.service.TopCategoryService;
+import com.mechoori.web.service.CategoryService;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
-	private	TopCategoryService service;
+	private	CategoryService service;
 	
 	@GetMapping("/index")
 	public String index(Model model) {
 
-		List<TopCategory> list = service.getList();
+		List<TopCategory> list = service.getTopCategoryList();
 
 		model.addAttribute("list", list);
 
