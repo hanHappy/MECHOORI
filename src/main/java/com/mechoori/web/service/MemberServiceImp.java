@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mechoori.web.entity.Member;
-import com.mechoori.web.entity.MemberWithRoleView;
 import com.mechoori.web.repository.MemberRepository;
 
 @Service

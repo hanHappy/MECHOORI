@@ -1,6 +1,5 @@
 package com.mechoori.web.entity;
 
-import jakarta.annotation.sql.DataSourceDefinition;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
