@@ -31,4 +31,19 @@ public class UserController {
         return "redirect:complete";
     }
 
+    @GetMapping("my-page/edit-info/phone")
+    public String editPhone(){
+        return "user/my-page/edit-info/phone";
+    }
+
+    @GetMapping("my-page/edit-info/email")
+    public String editEmail(){
+        return "user/my-page/edit-info/email";
+    }
+
+    @GetMapping("my-page/edit-info/withdraw")
+    public String withdraw(){
+        return "user/my-page/edit-info/withdraw";
+    }
+
 }
