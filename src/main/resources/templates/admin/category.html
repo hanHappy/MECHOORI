@@ -13,7 +13,7 @@
 
 <body>
 
-  <h1>카테고리</h1>
+  <h1>Top Category</h1>
 
   <hr>
 
@@ -36,10 +36,10 @@
   <p> </p>
 
   <h2>추가</h2>
-  <form method="POST" th:object="${category}">
-    <span><strong>name </strong></span><input type="text" th:field="*{name}" required />
+  <form method="POST">
+    <span><strong>name </strong></span><input type="text" required />
     <p> </p>
-    <span><strong>image </strong></span><input type="text" th:field="*{image}" required />
+    <span><strong>image </strong></span><input type="text" required />
     <input type="submit" value="SAVE" />
   </form>
 </body>
