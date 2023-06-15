@@ -26,6 +26,7 @@ let categoryControl = function(e){
     else
         categoryOthersContainer.classList.remove('slide-open');
 }
+// TODO : 수정 (영역 전체에 click event 적용 후 prevent default - event bubbling 막기)
 
 for (let btn of likeBtns)
     btn.onclick = likeControl;
