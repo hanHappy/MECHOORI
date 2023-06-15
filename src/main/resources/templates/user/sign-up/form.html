@@ -11,6 +11,10 @@
   <script src="/js/user/sign-up/form.js"></script>
 </head>
 
+<!-- TODO : 생년월일, 성별 추가 -->
+<!-- TODO : input box 입력값 left padding -> 10정도? -->
+<!-- TODO : css 손봐야 할듯 -->
+
 <body>
   <header>
     <div class="header-side left">
@@ -35,27 +39,27 @@
       <div class="circleText2 circleText">정보 입력</div>
       <div class="circleText3 circleText">가입 완료</div>
     </div>
-    <!-- TODO : 생년월일, 성별 추가 -->
+
     <span class="line"> </span>
     <form action="form" method="post">
       <section class="sectionBox">
         <div class="nameParent">
           <div class="nameText text">이름</div>
           <div>
-            <input name="username" type="text" class="input1" placeholder="  *한글 10자, 영문 20자 이내" />
+            <input name="username" type="text" class="input1" placeholder="* 성과 이름 입력" />
           </div>
         </div>
 
         <div class="nickNameParent">
           <div class="nickNameText text">닉네임</div>
           <div class="nick">
-            <input name="nickname" type="text" class="input2" placeholder="  *6자리 이상의 영문 혹은 숫자 조합" />
+            <input name="nickname" type="text" class="input2" placeholder="* 8자 이내 입력" />
             <input type="submit" value="중복 확인" />
           </div>
         </div>
         <div class="passwordParent">
           <div class="passwordText text">비밀번호</div>
-          <input name="password" type="password" class="input3" id="password" placeholder="  *영문, 숫자, 특수문자를 포함하여 8자리 이상 입력" />
+          <input name="password" type="password" class="input3" id="password" placeholder="* 영문, 숫자를 포함하여 8자리 이상 입력" />
         </div>
         <div class="pwParent">
           <div class="pwText text">비밀번호 확인</div>
@@ -80,7 +84,7 @@
         <div class="PhoneNumParent">
           <div class="phoneText text">휴대폰 번호</div>
           <div class="phone">
-            <input name="phoneNumber" type="text" class="input6" id="phone" placeholder='   "ㅡ" 는 제외하고 입력하여 주십시오' maxlength="13" />
+            <input name="phoneNumber" type="text" class="input6" id="phone" maxlength="13" />
             <input type="submit" value="인증 요청" />
             <div id="numberCheck"></div>
           </div>

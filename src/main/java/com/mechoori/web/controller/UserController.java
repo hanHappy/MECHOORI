@@ -37,4 +37,9 @@ public class UserController {
         return "redirect:complete";
     }
 
+    @GetMapping("sign-up/complete")
+    public String complete(){
+        return "user/sign-up/complete";
+    }
+
 }
