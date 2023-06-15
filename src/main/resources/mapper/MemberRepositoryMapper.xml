@@ -8,10 +8,10 @@
          from member where id=#{id}
 	</select>
 	<select id="findByEmail" resultType="Member">
-      select * from member where email=#{email}
+      select * from member where email = #{email}
    </select>
 	<select id="findRoleByEmail" resultType="String">
-      select role_name from member_with_role where email = #{email}
+      select role_name from email_with_role where email = #{email}
    </select>
    <insert id="save" parameterType="Member">
       insert into 
