@@ -1,23 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/css/findIdAndPwd.css" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/user/login/findIdAndPwd.css" />
+
+
   </head>
 
   <body>
     <header>
-      <div class="header-text">아이디 찾기</div>
-      <div class="back">
-        <a href="main_hsm.html"></a>
+      <div class="header-side left">
+        <a><button class="header-icon back"></button></a>
       </div>
-      <div class="home">
-        <a href="#"></a>
+      <h1 class="header-icon logo"></h1>
+      <div class="header-side right">
+        <a><button class="header-icon home"></button></a>
       </div>
     </header>
 
@@ -41,7 +44,11 @@
           <input type="text" />
         </div>
 
-        <div class="next">다음</div>
+        <form method="post" action="/user/find-id-result">
+          <input type="submit" class="next">다음</input>
+        </form>
+
+
       </section>
     </main>
   </body>

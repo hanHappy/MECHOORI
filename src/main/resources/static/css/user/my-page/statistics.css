@@ -1,146 +1,149 @@
-@import url("/css/style.css");
-
-/* ---------전체 ----------*/
-
-html,
-body {
-  background-color: var(--background-color);
-}
-* {
-  font-family: var(--font);
-}
-
 /* 메인 */
 
 .mainTitle {
   font-weight: bold;
+  display: flex;
   font-size: 18px;
-  width: 100%;
+  align-items: center;
+  padding-left: 20px;
+  width: 375px;
   height: 61px;
   box-shadow: var(--block-shadow);
   background-color: white;
 }
-
-.maintext {
-  position: relative;
-  top: 20px;
-  padding-left: 20px;
-}
+/**/
 
 .regdate {
   height: 51px;
   width: 100%;
+  margin: 0;
 }
 
 button {
   background-repeat: no-repeat;
   border-style: none;
   background-color: rgb(245, 245, 247);
-  margin-top: 10px;
+  margin-top:10px;
   height: 15.63px;
   cursor: pointer;
 }
-.leftBtn {
-  background-image: url("../images/icons/left.svg");
+.leftBtn{
+  background-image: url("../../../images/icons/left.svg");
+  justify-content: center;
 }
 
-.rightBtn {
-  background-image: url("../images/icons/right.svg");
+.rightBtn{
+  background-image: url("../../../images/icons/right.svg");
 }
 .up {
-  background-image: url("../images/icons/upbtn.svg");
+  background-image: url("../../../images/icons/upbtn.svg");
   position: absolute;
   width: 12px;
   height: 12px;
-  top: 410px;
+  top: 90px;
   left: 230px;
   z-index: 999;
 }
-.percent {
+.percent{
   position: absolute;
   width: 32px;
   height: 22px;
-  top: 425px;
+  top: 100px;
   left: 220px;
   z-index: 999;
   color: #f98f78;
 }
 
+
 ul {
-  width: 100%;
+  width: 375px;
   height: 45px;
   display: flex;
   justify-content: center;
   z-index: 999;
-  list-style: none;
-  padding: 0;
-  align-items: center;
-  justify-content: space-around;
+  list-style:none;
+  /* margin: 20px 35px 10px 35px; */
+  padding:0;
+
 }
 
 li {
-  float: none;
-  margin: 0px 20px;
+  float:none;
+  margin:0px 28px;
   height: 38px;
-  width: 65px;
+  width: 42px;
   justify-content: center;
   align-items: center;
   font-size: 24px;
   text-align: center;
-  /* padding: 0; */
 }
 
 .rec {
   position: absolute;
   width: 67px;
   height: 6px;
-  top: 265px;
-  left: 50%;
-  transform: translateX(-50%);
-
+  left: 154px;
+  top: 205px;
+  
   background: rgba(34, 146, 249, 0.7);
   border-radius: var(--border-radius);
+
 }
 .dateTxt {
   position: absolute;
-  width: auto;
-  height: 22px;
-  top: 275px;
-  left: 50%;
-  transform: translateX(-50%);
+width: 180px;
+height: 22px;
+left: 98px;
+top: 227px;
+
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 22px;
+/* identical to box height */
+
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #000000;
 }
 
+
 /*유저 평균*/
+
+
 
 .MiddleBack {
   width: 100%;
   height: 450px;
-  /* position: absolute; */
-  margin-top: 50px;
-}
-.middle {
-  width: 100%;
-  height: 450px;
-  background-color: rgba(217, 217, 217, 0.3);
-  display: flex;
-  border-radius: var(--border-radius);
-
-  flex-direction: column;
-  align-items: center;
-
-  padding: 20px 0;
-  gap: 20px;
+  position: absolute;
+  margin-top: 35px;
 }
 
 .graphLine {
   position: absolute;
   width: 135px;
   height: 0px;
-  top: 450px;
+  top: 130px;
   z-index: 999;
   /* sub2 */
 
   border: 1px dashed #f98f78;
+}
+
+.middle {
+  width: 335px;
+  height: 450px;
+  background-color: rgba(217, 217, 217, 0.3);
+  display: flex;
+  grid-template-columns: 32fr 1fr 32fr;
+  margin: 15px 20px;
+  border-radius: var(--border-radius);
+
+  flex-direction: column;
+  align-items: center;
 }
 
 .middleText {
@@ -157,7 +160,7 @@ li {
   position: absolute;
   width: 143px;
   height: 178px;
-  top: 381px;
+  top: 61px;
   margin-top: 20px;
   display: flex;
   align-items: flex-end;
@@ -208,7 +211,7 @@ li {
 }
 
 .rateImg {
-  background-image: url("../images/icons/rateImg.svg");
+  background-image: url("../../../images/icons/rateImg.svg");
   background-repeat: no-repeat;
   width: 84px;
   height: 73px;
@@ -229,6 +232,6 @@ li {
   height: 44px;
   left: 50%;
   transform: translateX(-50%);
-  top: 675px;
+  top: 350px;
   font-weight: 800;
 }

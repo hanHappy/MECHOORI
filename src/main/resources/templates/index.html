@@ -7,108 +7,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="/js/index.js" defer="defer"></script> 
 </head>
 
 <body>
     <header>
-      <div class="userBtn">
-        <a href="/html/mypage-unlogined.html">
-          <img class="userBtn-img" src="/images/icons/햄버거btn.png" alt=""
-        /></a>
-      </div>
-      <div class="logo">
-        <img class="logo-img" src="/images/icons/로고.png" alt="" />
-      </div>
+        <div class="header-side left">
+           <a href=""> <img class="" src="" alt=""></a>
+        </div>
+        <div class="header-icon logo">
+            <img src="/assets/logo.svg" alt="">
+        </div>
+        <div class="header-side right">
+            <a href="/html/mypage-unlogined.html"> <img class="userBtn-img" src="/images/icons/햄버거btn.png" alt=""></a>
+        </div>
     </header>
 
-    <form class="search-bar" action="restaurant/list">
-        <label class="search-input" for="search-input">
-            <img src="/images/icons/검색버튼.png">
-        </label>
-        <input type="text" id="search-input" name="q" placeholder="한상민님, 오늘은 짜장상회 어떠세요?">
-    </form>
+        <form class="search-bar">
+            <label class="search-input" for="search-input">
+                <img src="/images/icons/검색버튼.png">
+            </label>
+            <input type="text" id="search-input" placeholder="한상민님, 오늘은 짜장상회 어떠세요?">
+            <img class="search-map" src="/images/icons/지도아이콘.svg" alt="">
+        </form>
 
     <main>
-      <section class="ad">
-        <img src="/images/icons/ad.png" alt="" />
-      </section>
 
-      <section class="type">
-        <ul class="typelist">
-          <li th:each="c : ${list}"> <a href="/restaurant/list?c=1" th:href="@{/restaurant/list(c=${c.id})}" > <img src="/images/icons/한식.svg" th:src="@{/images/icons/{img}(img=${c.image})}"> </a></li>
-        </ul>
-      </section>
+        <section class="ad">
+            <img src="/images/components/main-ad.svg" alt="">
+        </section>
 
-      <section class="section">
+
+        <section class="type">
+            <ul class="typelist">             
+                <li th:each="c : ${list}"> <a href="/restaurant/list/category/1" th:href="@{/restaurant/list(c=${c.id})}" > <img src="/images/icons/한식.svg" th:src="@{/images/icons/{img}(img=${c.image})}"> </a></li>
+            </ul>
+        </section>
+
+
+
+    <section class="ranking">
         <h1>가성비 랭킹 TOP5</h1>
-        <input type="radio" name="slide" id="slide01" checked />
-        <input type="radio" name="slide" id="slide02" />
-        <input type="radio" name="slide" id="slide03" />
-        <input type="radio" name="slide" id="slide04" />
-        <input type="radio" name="slide" id="slide05" />
-        <input type="radio" name="slide" id="slide06" />
+            <div class="slidebox">
+                <input type="radio" name="slide" id="slide01" checked>
+                <input type="radio" name="slide" id="slide02">
+                <input type="radio" name="slide" id="slide03">
+                <input type="radio" name="slide" id="slide04">
+                <input type="radio" name="slide" id="slide05">
+                <input type="radio" name="slide" id="slide06">
 
-        <div class="slidewrap">
-          <ul class="slidelist">
-            <li>
-              <a>
-                <label for="slide06" class="left"></label>
-                <img src="/images/foods/1위.png" alt="" />
-                <label for="slide02" class="right"></label>
-              </a>
-            </li>
-            <li>
-              <a>
-                <label for="slide01" class="left"></label>
-                <img src="/images/foods/2위.png" alt="" />
-                <label for="slide03" class="right"></label>
-              </a>
-            </li>
-            <li>
-              <a>
-                <label for="slide02" class="left"></label>
-                <img src="/images/foods/3위.png" alt="" />
-                <label for="slide04" class="right"></label>
-              </a>
-            </li>
-            <li>
-              <a>
-                <label for="slide03" class="left"></label>
-                <img src="/images/foods/4위.png" alt="" />
-                <label for="slide05" class="right"></label>
-              </a>
-            </li>
-            <li>
-              <a>
-                <label for="slide04" class="left"></label>
-                <img src="/images/foods/5위.png" alt="" />
-                <label for="slide06" class="right"></label>
-              </a>
-            </li>
-            <li>
-              <a>
-                <label for="slide05" class="left"></label>
-                <img src="/images/foods/랭킹 전체 보기.png" alt="" />
-                <label for="slide01" class="right"></label>
-              </a>
-            </li>
-          </ul>
+                <ul class="slidelist">
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide06" class="left"></label>
+                            <div class="imgTest1">
+                                <img src="/images/foods/2한식더미.svg" alt="">
+                                <div class="textTest1">
+                                    <span>1위</span>
+                                    <span>호남식당</span>
+                                    <span>(가성비 110%)</span>
+                                </div>
+                            </div>
+                            <label for="slide02" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide01" class="left"></label>
+                            <div class="imgTest2">
+                                <img src="/images/foods/2분식더미.svg" alt="">
+                                <div class="textTest2">
+                                    <span>2위</span>
+                                    <span>소구장</span>
+                                    <span>(가성비 108%)</span>
+                                </div>
+                            </div>
+                            <label for="slide03" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide02" class="left"></label>
+                            <div class="imgTest3">
+                                <img src="/images/foods/2일식더미.svg" alt="">
+                                <div class="textTest3">
+                                    <span>3위</span>
+                                    <span>뜸들이다</span>
+                                    <span>(가성비 106%)</span>
+                                </div>
+                            </div>
+                            <label for="slide04" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide03" class="left"></label>
+                            <div class="imgTest4">
+                                <img src="/images/foods/2양식더미.svg" alt="">
+                                <div class="textTest4">
+                                    <span>4위</span>
+                                    <span>니즈버거</span>
+                                    <span>(가성비 104%)</span>
+                                </div>
+                            </div>
+                            <label for="slide05" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide04" class="left"></label>
+                            <div class="imgTest5">
+                                <img src="/images/foods/2중식더미.svg" alt="">
+                                <div class="textTest5">
+                                    <span>5위</span>
+                                    <span>짜장상회</span>
+                                    <span>(가성비 103%)</span>
+                                </div>
+                            </div>
+                            <label for="slide06" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <label for="slide05" class="left"></label>
+                            <div class="imgTest6">
+                                <img src="/images/foods/1랭킹더미.svg" alt="">
+                                <div class="textTest6">
+                                    <!-- <span>랭킹 전체 보기</span> -->
+                                    <!-- <span>짜장상회</span>
+                                    <span>가성비 100%</span> -->
+                                </div>
+                            </div>
+                        <a><label for="slide01" class="right"></label></a>
+                    </li>
+                </ul>
+            </div>
+    </section>
+
+
+
+
+
+        <section class="comparison1">
+            <h1>나의 가성비 성과 비교</h1>
+            <div class="comparison-img">
+                <img  src="/images/icons/index-성과비교.svg" alt="">
+                <div class="comparison-text">
+                    <span>내가 누린 가성비는?</span>
+                    <span>맘껏 누려온 가성비를 확인해보세요</span>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <div class="adBox">
+            <img class="rateAd" src="/images/icons/bannerAd1.png" alt="">
+            <img class="rateAd" src="/images/icons/bannerAd2.png" alt="">
         </div>
-      </section>
 
-
-      <section class="comparison">
-        <h1>나의 가성비 성과 비교</h1>
-        <a href="/html/rate-list.html">
-          <img src="/images/icons/성과비교img.png" alt="" />
-        </a>
-      </section>
-
-      <div class="adBox">
-        <img class="rateAd" src="/images/icons/bannerAd1.png" alt="" />
-        <img class="rateAd" src="/images/icons/bannerAd2.png" alt="" />
-      </div>
     </main>
-  </body>
+
+
+</body>
+
 </html>
