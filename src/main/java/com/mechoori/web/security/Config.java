@@ -26,6 +26,7 @@ public class Config {
 				form->form
 					.loginPage("/user/login") // GET 요청
 					.loginProcessingUrl("/user/login") // POST 요청
+					.usernameParameter("email")
 					.defaultSuccessUrl("/index")) // 다른 페이지에서 온 게 아니라 바로 로그인 버튼 눌렀을 때
 			.logout(
 				logout->logout

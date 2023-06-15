@@ -18,13 +18,18 @@ public class MemberServiceImp implements MemberService {
     }
 
     @Override
-    public Member getByUsername(String username) {
-        return repository.findByUsername(username);
+    public Member getByEmail(String email) {
+        return repository.findByEmail(email);
     }
 
     @Override
-    public String getRoleByUserName(String username) {
-        return repository.findRoleByUsername(username);
+    public String getRoleByEmail(String email) {
+        return repository.findRoleByEmail(email);
+    }
+
+    @Override
+    public void add(Member member) {
+        repository.save(member);
     }
 
 }
