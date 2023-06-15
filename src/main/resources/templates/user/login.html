@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
   <link rel="stylesheet" href="/css/user/login.css" />
-  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/style.css"/>
   <script src="/js/user/login.js" defer="defer"></script>
 </head>
 
@@ -28,7 +28,7 @@
     <div class="idAndPw">
         <span class="login"> 아이디 </span>
         <span class="id">
-          <input type="email" name="username" placeholder="가입하신 이메일을 입력해주세요." id="email" />
+          <input type="email" name="email" placeholder="가입하신 이메일을 입력해주세요." id="email" />
         </span>
         <span class="pass">비밀번호</span>
         <span class="pw">
@@ -45,6 +45,7 @@
     </form>
 
     <div class="idAndPwd">
+      <!-- TODO 버튼 스타일 지우기 -->
       <button class="findId" id="popupBtn">계정 찾기</button>
 
       <a href="sign-up/policy">
@@ -52,6 +53,7 @@
       </a>
       <div class="btw"></div>
     </div>
+    <!-- TODO 버튼이랑 겹침 -->
     <div th:if="${param.error}">
       아이디 혹은 비밀번호가 일치하지 않습니다.
     </div>

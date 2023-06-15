@@ -3,9 +3,11 @@ package com.mechoori.web.service;
 import com.mechoori.web.entity.Member;
 
 public interface MemberService {
-	   Member getById(int id);
+	Member getById(int id);
 
-	   Member getByUsername(String username);
+	Member getByEmail(String email);
 
-	   String getRoleByUserName(String username);
+	String getRoleByEmail(String email);
+
+	void add(Member member);
 }
