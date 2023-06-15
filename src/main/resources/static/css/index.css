@@ -7,7 +7,10 @@
  list-style: none;
 }
 
-
+.username {
+    margin-left: 10px;
+    font-size: 12px;
+}
 
 .userBtn img{
     min-width: 45px;
