@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html 
+    lang="en" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +18,9 @@
 <body>
     <header>
         <div class="header-side left">
-           <a href=""> <img class="" src="" alt=""></a>
+           <a sec:authorize="isAuthenticated()" href="/admin/category"> 
+                <img class="" src="/images/icons/admin_btn.svg" alt="">
+            </a>
         </div>
         <div class="header-icon logo">
             <img src="/assets/logo.svg" alt="">
