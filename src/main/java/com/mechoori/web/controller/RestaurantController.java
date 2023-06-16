@@ -56,6 +56,8 @@ public class RestaurantController {
 		List<Menu> menuList = menuService.getList(restaurantId);
 		RestaurantDetailView rstnDetail = rstrService.getRestaurantDetailById(restaurantId);
 
+
+
 		model.addAttribute("menuList", menuList);
 		model.addAttribute("rstnDetail", rstnDetail);
 

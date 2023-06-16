@@ -10,3 +10,4 @@ mybatis:
   - classpath*:mapper/*Mapper.xml
   configuration:
     map-underscore-to-camel-case: true
+
