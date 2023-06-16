@@ -16,10 +16,11 @@ public class Member {
 	   private Integer roleId;
        private Integer genderId;
 	   private String username;
+	   private String name;
        private String nickname;
-	   private String password;
 	   private String email;
+	   private String password;
 	   private String phoneNumber;
-	   private Date regDate;
 	   private Date birthDate;
+	   private Date regDate;
 	}

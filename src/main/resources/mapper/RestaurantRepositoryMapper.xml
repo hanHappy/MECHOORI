@@ -13,21 +13,21 @@
 		from restaurant
 		where id = #{restaurantId}
 	</select>
-	<select id="findAllRestaurantCard" resultType="RestaurantCard">
+	<select id="findAllRestaurantCard" resultType="RestaurantCardView">
 		select *
 		from restaurant_card
 	</select>
-	<select id="findAllRestaurantCardByCtgId" resultType="RestaurantCard">
+	<select id="findAllRestaurantCardByCtgId" resultType="RestaurantCardView">
 		select *
 		from restaurant_card
 		where category_id = #{categoryId}
 	</select>
-	<select id="findAllRestaurantCardByQuery" resultType="RestaurantCard">
+	<select id="findAllRestaurantCardByQuery" resultType="RestaurantCardView">
 		select *
 		from restaurant_card
 		where name like '%${query}%'
 	</select>
-		<select id="findRestaurantDetailById" resultType="RestaurantDetail">
+		<select id="findRestaurantDetailById" resultType="RestaurantDetailView">
 		select * 
 		from restaurant_detail
 		where id = #{restaurantId}

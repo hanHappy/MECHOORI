@@ -18,21 +18,22 @@
 <body>
     <header>
         <div class="header-side left">
-           <a sec:authorize="isAuthenticated()" href="/admin/category"> 
+           <a sec:authorize="isAuthenticated()" href="admin"> 
                 <img class="" src="/images/icons/admin_btn.svg" alt="">
             </a>
+            <span sec:authorize="isAuthenticated()" sec:authentication="principal.nickname" class="username"></span>
         </div>
         <div class="header-icon logo">
             <img src="/assets/logo.svg" alt="">
         </div>
         <div class="header-side right">
-            <a href="/html/mypage-unlogined.html"> <img class="userBtn-img" src="/images/icons/햄버거btn.png" alt=""></a>
+            <a href="/html/mypage-unlogined.html"> <img class="userBtn-img" src="/images/icons/햄버거Btn.svg" alt=""></a>
         </div>
     </header>
 
         <form class="search-bar">
             <label class="search-input" for="search-input">
-                <img src="/images/icons/검색버튼.png">
+                <img src="/images/icons/돋보기.svg">
             </label>
             <input type="text" id="search-input" placeholder="한상민님, 오늘은 짜장상회 어떠세요?">
             <img class="search-map" src="/images/icons/지도아이콘.svg" alt="">
@@ -41,7 +42,7 @@
     <main>
 
         <section class="ad">
-            <img src="/images/components/main-ad.svg" alt="">
+            <img src="/images/assets/mainAD.svg" alt="">
         </section>
 
 
@@ -157,7 +158,7 @@
         <section class="comparison1">
             <h1>나의 가성비 성과 비교</h1>
             <div class="comparison-img">
-                <img  src="/images/icons/index-성과비교.svg" alt="">
+                <img  src="/images/components/index-성과비교.svg" alt="">
                 <div class="comparison-text">
                     <span>내가 누린 가성비는?</span>
                     <span>맘껏 누려온 가성비를 확인해보세요</span>
