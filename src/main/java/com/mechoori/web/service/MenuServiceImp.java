@@ -23,6 +23,4 @@ public class MenuServiceImp implements MenuService{
 	public Menu getDetail(int menuId) {
 		return repository.findById(menuId);
 	}
-
-
 }
