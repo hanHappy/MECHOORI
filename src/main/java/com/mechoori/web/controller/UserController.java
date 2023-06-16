@@ -11,9 +11,9 @@ import com.mechoori.web.entity.Member;
 @RequestMapping("user")
 public class UserController {
     @GetMapping("login")
-    public String login(){
-        return "user/login";
-    }
+        public String login(){
+            return "user/login";
+        }
 
     @GetMapping("sign-up/policy")
         public String signUp(){
@@ -26,12 +26,12 @@ public class UserController {
             return "user/sign-up/form";
         }
 
-    @PostMapping("sign-up/form"){
+    @PostMapping("sign-up/form")
         public String form(Member member){
-
+            System.out.println(member);
             return "redirect:complete";
         }
 
-    }
+    
     
 }
