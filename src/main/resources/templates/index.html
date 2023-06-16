@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<html 
-    lang="en" 
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <meta charset="UTF-8">
@@ -12,16 +9,16 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/style.css">
-    <script src="/js/index.js" defer="defer"></script> 
+    <script src="/js/index.js" defer="defer"></script>
 </head>
 
 <body>
     <header>
         <div class="header-side left">
-           <a sec:authorize="isAuthenticated()" href="admin"> 
+            <a sec:authorize="isAuthenticated()" href="admin">
                 <img class="" src="/images/icons/admin_btn.svg" alt="">
             </a>
-            <span sec:authentication="principal.nickname" class="username"></span>
+            <span sec:authorize="isAuthenticated()" sec:authentication="principal.nickname" class="username"></span>
         </div>
         <div class="header-icon logo">
             <img src="/assets/logo.svg" alt="">
@@ -31,13 +28,13 @@
         </div>
     </header>
 
-        <form class="search-bar">
-            <label class="search-input" for="search-input">
-                <img src="/images/icons/검색버튼.png">
-            </label>
-            <input type="text" id="search-input" placeholder="한상민님, 오늘은 짜장상회 어떠세요?">
-            <img class="search-map" src="/images/icons/지도아이콘.svg" alt="">
-        </form>
+    <form class="search-bar">
+        <label class="search-input" for="search-input">
+            <img src="/images/icons/검색버튼.png">
+        </label>
+        <input type="text" id="search-input" placeholder="한상민님, 오늘은 짜장상회 어떠세요?">
+        <img class="search-map" src="/images/icons/지도아이콘.svg" alt="">
+    </form>
 
     <main>
 
@@ -47,15 +44,23 @@
 
 
         <section class="type">
-            <ul class="typelist">             
-                <li th:each="c : ${list}"> <a href="/restaurant/list/category/1" th:href="@{/restaurant/list(c=${c.id})}" > <img src="/images/icons/한식.svg" th:src="@{/images/icons/{img}(img=${c.image})}"> </a></li>
+            <ul class="typelist">
+                <li th:each="c : ${list}"> 
+                    <a 
+                        href="/restaurant/list/category/1"
+                        th:href="@{/restaurant/list(c=${c.id})}"> 
+                        <img 
+                            src="/images/icons/한식.svg"
+                            th:src="@{/images/icons/{img}(img=${c.image})}"> 
+                    </a>
+                </li>
             </ul>
         </section>
 
 
 
-    <section class="ranking">
-        <h1>가성비 랭킹 TOP5</h1>
+        <section class="ranking">
+            <h1>가성비 랭킹 TOP5</h1>
             <div class="slidebox">
                 <input type="radio" name="slide" id="slide01" checked>
                 <input type="radio" name="slide" id="slide02">
@@ -137,19 +142,19 @@
                     </li>
                     <li class="slideitem">
                         <label for="slide05" class="left"></label>
-                            <div class="imgTest6">
-                                <img src="/images/foods/1랭킹더미.svg" alt="">
-                                <div class="textTest6">
-                                    <!-- <span>랭킹 전체 보기</span> -->
-                                    <!-- <span>짜장상회</span>
+                        <div class="imgTest6">
+                            <img src="/images/foods/1랭킹더미.svg" alt="">
+                            <div class="textTest6">
+                                <!-- <span>랭킹 전체 보기</span> -->
+                                <!-- <span>짜장상회</span>
                                     <span>가성비 100%</span> -->
-                                </div>
                             </div>
+                        </div>
                         <a><label for="slide01" class="right"></label></a>
                     </li>
                 </ul>
             </div>
-    </section>
+        </section>
 
 
 
@@ -158,7 +163,7 @@
         <section class="comparison1">
             <h1>나의 가성비 성과 비교</h1>
             <div class="comparison-img">
-                <img  src="/images/icons/index-성과비교.svg" alt="">
+                <img src="/images/icons/index-성과비교.svg" alt="">
                 <div class="comparison-text">
                     <span>내가 누린 가성비는?</span>
                     <span>맘껏 누려온 가성비를 확인해보세요</span>
