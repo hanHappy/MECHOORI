@@ -7,7 +7,10 @@
  list-style: none;
 }
 
-
+.username {
+    margin-left: 10px;
+    font-size: 12px;
+}
 
 .userBtn img{
     min-width: 45px;
@@ -68,8 +71,8 @@ main{
     top: 70px;
 
     background: #FFFFFF;
-    border: 1px solid #F7BB0A;
-    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+    /* border: 1px solid #F7BB0A; */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     z-index: 999;
     /* display: flex; */

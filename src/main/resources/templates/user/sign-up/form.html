@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/user/sign-up/form.css" />
-    <link rel="stylesheet" href="/css/style.css">
-    <script src = "/js/user/sign-up/form.js"></script>
-  </head>
-  <body>
-    <header>
-      <div class="header-side left">
-        <a><button class="header-icon back"></button></a>
-      </div>
-      <h1 class="header-icon logo"></h1>
-      <div class="header-side right">
-        <a><button class="header-icon home"></button></a>
-      </div>
-    </header>
 
-    <main>
-      <div class="circleParent">
-        <span class="circle1 circle">1</span>
-        <span class="circle2 circle">2</span>
-        <span class="circle3 circle">3</span>
-        <span class="Inline"></span>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/user/sign-up/form.css" />
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/user/sign-up/form.js"></script>
+</head>
 
-      <div class="circleTextMain">
-        <div class="circleText1 circleText">약관 동의</div>
-        <div class="circleText2 circleText">정보 입력</div>
-        <div class="circleText3 circleText">가입 완료</div>
-      </div>
+<!-- TODO : 생년월일, 성별 추가 -->
+<!-- TODO : input box 입력값 left padding -> 10정도? -->
+<!-- TODO : css 손봐야 할듯 -->
+
+<body>
+  <header>
+    <div class="header-side left">
+      <a><button class="header-icon back"></button></a>
+    </div>
+    <h1 class="header-icon logo"></h1>
+    <div class="header-side right">
+      <a><button class="header-icon home"></button></a>
+    </div>
+  </header>
+
+  <main>
+    <div class="circleParent">
+      <span class="circle1 circle">1</span>
+      <span class="circle2 circle">2</span>
+      <span class="circle3 circle">3</span>
+      <span class="Inline"></span>
+    </div>
+
+    <div class="circleTextMain">
+      <div class="circleText1 circleText">약관 동의</div>
+      <div class="circleText2 circleText">정보 입력</div>
+      <div class="circleText3 circleText">가입 완료</div>
+    </div>
 
       <span class="line"> </span>
       <section class="sectionBox">
@@ -50,11 +56,7 @@
         <div class="nickNameParent">
           <div class="nickNameText text">닉네임</div>
           <div class="nick">
-            <input
-              type="text"
-              class="input2"
-              placeholder="  *6자리 이상의 영문 혹은 숫자 조합"
-            />
+            <input name="nickname" type="text" class="input2" placeholder="* 8자 이내 입력" />
             <input type="submit" value="중복 확인" />
           </div>
         </div>
@@ -69,11 +71,7 @@
         </div>
         <div class="pwParent">
           <div class="pwText text">비밀번호 확인</div>
-          <input 
-          type="password" 
-          class="input4" 
-          id="password1"
-          placeholder=" 비밀번호 확인"/>
+          <input type="password" class="input4" id="password1" placeholder=" 비밀번호 확인" />
           <!-- <button class = "PwdCheck" id="passwordCheckButton">비밀번호 확인</button> -->
           <div id="passwordCheck"></div>
         </div>

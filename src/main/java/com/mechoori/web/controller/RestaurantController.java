@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mechoori.web.entity.Menu;
-import com.mechoori.web.entity.RestaurantCard;
-import com.mechoori.web.entity.RestaurantDetail;
+import com.mechoori.web.entity.RestaurantCardView;
+import com.mechoori.web.entity.RestaurantDetailView;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantService;
 import com.mechoori.web.service.CategoryService;
@@ -34,7 +34,7 @@ public class RestaurantController {
 			@RequestParam(name = "c", required = false) Integer ctgId,
 			Model model) {
 
-		List<RestaurantCard> list = null;
+		List<RestaurantCardView> list = null;
 		// 식당 리스트 출력
 		if(query==null&&ctgId==null)
 			list = rstrService.getRestaurantCardList();
@@ -54,7 +54,7 @@ public class RestaurantController {
 			Model model) {
 
 		List<Menu> menuList = menuService.getList(restaurantId);
-		RestaurantDetail rstnDetail = rstrService.getRestaurantDetailById(restaurantId);
+		RestaurantDetailView rstnDetail = rstrService.getRestaurantDetailById(restaurantId);
 
 
 

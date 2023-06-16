@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantCard;
-import com.mechoori.web.entity.RestaurantDetail;
+import com.mechoori.web.entity.RestaurantCardView;
+import com.mechoori.web.entity.RestaurantDetailView;
 import com.mechoori.web.repository.RestaurantRepository;
 
 @Service
@@ -27,22 +27,22 @@ public class RestaurantServiceImp implements RestaurantService{
 	}
 
 	@Override
-	public List<RestaurantCard> getRestaurantCardList() {
+	public List<RestaurantCardView> getRestaurantCardList() {
 		return repository.findAllRestaurantCard();
 	}
 
 	@Override
-	public List<RestaurantCard> getRestaurantCardListByCtgId(int categoryId) {
+	public List<RestaurantCardView> getRestaurantCardListByCtgId(int categoryId) {
 		return repository.findAllRestaurantCardByCtgId(categoryId);
 	}
 
 	@Override
-	public List<RestaurantCard> getRestaurantCardListByQuery(String query) {
+	public List<RestaurantCardView> getRestaurantCardListByQuery(String query) {
 		return repository.findAllRestaurantCardByQuery(query);
 	}
 
 	@Override
-	public RestaurantDetail getRestaurantDetailById(int restaurantId) {
+	public RestaurantDetailView getRestaurantDetailById(int restaurantId) {
 		return repository.findRestaurantDetailById(restaurantId);
 	}
 	
