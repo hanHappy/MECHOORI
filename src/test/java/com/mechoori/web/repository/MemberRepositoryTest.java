@@ -18,7 +18,7 @@ public class MemberRepositoryTest {
     public void testFindByEmail(){
         Member member = repository.findByEmail("sangmin950706@gmail.com");
         System.out.println(member);
-        System.out.println(member.getUsername());
+        System.out.println(member.getNickname());
     }
 
 
