@@ -1,6 +1,6 @@
 package com.mechoori.web.entity;
 
-public class MemberWithRoleView {
+public class EmailWithRoleView {
     private String username;
     private String roleName;
 }
