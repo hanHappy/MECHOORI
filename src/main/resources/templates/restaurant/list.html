@@ -18,7 +18,7 @@
     <div class="fixed-area">
         <header>
             <div class="header-side left">
-                <a href=""><button class="header-icon back">버튼</button></a>
+                <a href="/index"><button class="header-icon back">버튼</button></a>
             </div>
             <a href="/index">
                 <h1 class="header-icon logo">로고</h1>
@@ -28,36 +28,48 @@
             </div>
         </header>
 
+        <!-- TODO 검색 버튼 transition -->
+
         <main>
             <!-- 카테고리 -->
-            <nav class="category top">
-                <a class="rs-menu non-click" href="/restaurant/list">전체</a>
-                <a class="rs-menu non-click" href="/restaurant/list?c=1">한식</a>
-                <a class="rs-menu non-click" href="/restaurant/list?c=2">중식</a>
-                <a class="rs-menu non-click" href="/restaurant/list?c=3">일식</a>
-                <a class="rs-menu non-click" href="/restaurant/list?c=4">양식</a>
-                <a class="rs-menu non-click" href="/restaurant/list?c=5">분식</a>
-                <a class="rs-menu non-click others">기타</a>
-    </div>
+            <nav class="category top-category-nav">
+                <ul class="category-list top-category-list">
+                    <li>
+                        <a class="rs-menu non-click" href="/restaurant/list">전체</a>
+                    </li>
+                    <li th:each="c : ${mainCtgList}">
+                        <a 
+                            class="rs-menu non-click" 
+                            href="/restaurant/list?c=1"
+                            th:href="@{/restaurant/list(c=${c.id})}"
+                            th:text="${c.name}">한식
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
     <!-- 기타 카테고리 -->
-    <nav class="category-others-container">
-        <nav class="category others">
-            <a class="category-tag" href="#">#베트남</a>
-            <a class="category-tag" href="#">#태국</a>
-            <a class="category-tag" href="#">#멕시칸</a>
-            <a class="category-tag" href="#">#인도</a>
-            <a class="category-tag" href="#">#태국</a>
-            <a class="category-tag" href="#">#터키</a>
-        </nav>
-    </nav>
+        <div class="category-others-container">
+            <nav class="category others">
+                <ul class="category-list other-category-list">
+                    <li th:each="c : ${otherCtgList}">
+                        <button
+                            class="category-tag" 
+                            href="#"
+                            th:text="'#' + ${c.name}">#베트남
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     <!-- 필터 -->
-    <div class="filter-box">
-        <select name="filter">
-            <option value="">가나다순</option>
-            <option value="">가성비순</option>
-            <option value="">가격순</option>
-        </select>
-    </div>
+        <div class="filter-box">
+            <select name="filter">
+                <option value="">가나다순</option>
+                <option value="">가성비순</option>
+                <option value="">가격순</option>
+            </select>
+        </div>
     </div>
 
     <!-- 컨텐츠 -->
