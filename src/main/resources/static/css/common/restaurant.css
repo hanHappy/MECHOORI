@@ -1,0 +1,40 @@
+.restaurant-list {
+    
+}
+
+/* ---------------------- restaurant-1 ---------------------- */
+.restaurant-1 {
+    display: grid;
+    grid-template: 
+    "img img" 140px
+    "name info" 1fr 220px
+    "btn1 btn2" 
+}
+
+.like {
+    background-image: url("/images/icons/빈하트.svg");
+
+    text-indent: -999px;
+    overflow: hidden;
+}
+
+.like.active {
+    background-image: url("/images/icons/하트.svg");
+}
+
+.data-box span:nth-child(1) {
+    background-image: url("/images/icons/하트.svg");
+
+    /* layout */
+    width: 10px;
+    height: 9px;
+}
+
+.data-box span:nth-child(3) {
+    background-image: url("/images/icons/평가.svg");
+
+    /* layout */
+    width: 12px;
+    height: 11px;
+    margin-left: 10px;
+}

@@ -1,31 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
-:root {
-    /* --------- width, height --------- */
-    --img-width: 335px;
-    --img-height: 140px;
-
-    /*  --------- margin, padding --------- */
-    /* 식당 정보 p태그 마진 */
-    --info-margin: 0 3px 0 3px;
-    /* 컨텐트 내 요소 간 상하 간격 */
-    --element-margin: 10px;
-    /* 이미지 내 하트 및 데이터 마진 */
-    --img-elements-margin: 13px;
-
-    /* --------- font --------- */
-    /* 식당 정보 p태그 letter-spacing */
-    --letter-space: -1px;
-    /* data-box font size */
-    --data-font-size: 14px;
-}
-
 header {
-    position: relative;
-}
-
-/* ------------------------------- */
-.fixed-area {
     /* layout */
     width: 100%;
     position: sticky;
@@ -33,8 +8,62 @@ header {
     top: 0;
 }
 
-main {
-    background: var(--background-color);
+.header-wrapper{
+    background-color: var(--main-color);
+    
+    /* layout */
+    position: relative;
+    height: 90px;
+    padding: 0 20px;
+
+    /* items layout */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-side {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.header-side.left{
+    justify-content: start;
+}
+.header-side.right{
+    justify-content: end;
+}
+
+.header-icon {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+
+    /* layout */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-indent: -999px;
+}
+
+.header-icon.logo {
+    background-image: url(/images/assets/logo.png);
+    width: 72px;
+    height: 44px;
+}
+.header-icon.back {
+    background-image: url(/images/icons/back.svg);
+    width: 13px;
+    height: 21px;
+}
+
+.header-icon.search {
+    background-image: url(/images/icons/icon-search.svg);
+    width: 21px;
+    height: 21px;
 }
 
 /* ------------ 카테고리 ------------ */
@@ -97,7 +126,7 @@ main {
     }
 }
 
-/* ------------ 기타 카테고리 (베트남, 태국, ...) ------------ */
+/* ----- 기타 카테고리 (베트남, 태국, ...) ----- */
 .category-others-container{
     overflow: hidden;
     height: 0;
@@ -176,163 +205,6 @@ select option {
     color: #4E4E4E;
 }
 
-/* ---------------------- 컨텐츠 ---------------------- */
-.content {
-    background-color: #fff;
-    border-bottom: var(--border-bottom);
-
-    /* item layout */
-    box-sizing: border-box;
-    width: 100%;
-    padding: 15px 20px;
-    display: flex;
-    flex-direction: column;
+main {
+    background: var(--background-color);
 }
-
-/* ----------- 식당 이미지 ----------- */
-.image-box {
-    position: relative;
-    line-height: 0;
-}
-
-.image {
-    border-radius: var(--border-radius);
-    width: var(--img-width);
-    height: var(--img-height);
-    background-size: cover;
-}
-
-/* 좋아요 */
-.image-box button {
-    /* style */
-    background-color: transparent;
-    border: none;
-
-    /* layout */
-    position: absolute;
-    padding: 0;
-    width: 21px;
-    height: 20px;
-    top: var(--img-elements-margin);
-    right: var(--img-elements-margin);
-}
-.like {
-    background-image: url("/images/icons/빈하트.svg");
-
-    text-indent: -999px;
-    overflow: hidden;
-}
-
-.like.active {
-    background-image: url("/images/icons/하트.svg");
-}
-
-/* 좋아요, 평가 수 데이터 */
-.data-box {
-    /* layout */
-    position: absolute;
-    right: var(--img-elements-margin);
-    bottom: var(--img-elements-margin);
-
-    /* item layout */
-    display: flex;
-    align-items: center;
-}
-
-.data-box p {
-    font-size: var(--data-font-size);
-    line-height: var(--data-font-size);
-    color: #fff;
-    margin: 0;
-}
-
-.data-box p:nth-child(2n+1) {
-    /* image */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-
-    /* layout */
-    text-indent: -999px;
-    overflow: hidden;
-    margin-right: 3px;
-}
-
-.data-box p:nth-child(1) {
-    background-image: url("/images/icons/하트.svg");
-
-    /* layout */
-    width: 10px;
-    height: 9px;
-}
-
-.data-box p:nth-child(3) {
-    background-image: url("/images/icons/평가.svg");
-
-    /* layout */
-    width: 12px;
-    height: 11px;
-    margin-left: 10px;
-}
-
-/* ---------------------- 식당 정보 (상호 - 평균 가격 - 가성비) ---------------------- */
-.info-box {
-    /* layout */
-    margin-top: var(--element-margin);
-
-    /* item layout */
-    display: flex;
-    align-items: end;
-}
-
-.info-box p {
-    font-size: 14px;
-    letter-spacing: var(--letter-space);
-    margin: var(--info-margin);
-}
-
-.info-box p:first-child {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.info-box p:nth-child(2) {
-    margin-left: auto;
-}
-
-.info-box p:nth-child(4) {
-    margin: 0;
-}
-
-.info-box P:nth-child(5) {
-    font-weight: bold;
-    color: var(--sub-color);
-}
-
-.info-box P:nth-child(6) {
-    /* font-weight: bold; */
-    color: var(--sub-color);
-}
-
-/* ---------------------- 버튼 (상세보기, 평가하기) ---------------------- */
-.btn-box {
-    /* layout */
-    margin-top: var(--element-margin);
-
-    /* item layout */
-    display: flex;
-    justify-content: space-between;
-}
-
-.btn-box>div {
-    width: 100%;
-}
-
-.btn-box>div:first-child {
-    padding-right: 5px;
-}
-
-.btn-box>div:last-child {
-    padding-left: 5px;
-}
-
