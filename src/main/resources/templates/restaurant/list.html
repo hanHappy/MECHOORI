@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html 
-    lang="en"
-    xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -11,6 +8,7 @@
     <title>손 안의 메뉴 추천 리스트, 메추리</title>
     <link rel="stylesheet" type="text/css" href="/css/restaurant/list.css">
     <link rel="stylesheet" type="text/css" href="/css/common/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/common/component.css">
     <link rel="stylesheet" href="/css/common/header.css">
     <link rel="stylesheet" href="/css/common/button.css">
     <script src="/js/restaurant/list.js" defer="defer"></script>
@@ -28,6 +26,19 @@
             <div class="header-side right">
                 <a><button class="header-icon search">버튼</button></a>
             </div>
+            <div class="search-container d-none">
+                <form action="list" method="get">
+                    <div>
+                        <a href="/index">
+                            <button class="back-btn text-hidden">버튼</button>
+                        </a>
+                    </div>
+                    <input type="text" name="q">
+                    <div>
+                        <button class="search-btn text-hidden">버튼</button>
+                    </div>
+                </form>
+            </div>
         </header>
 
         <main>
@@ -38,38 +49,32 @@
                         <a class="rs-menu non-click" href="/restaurant/list">전체</a>
                     </li>
                     <li th:each="c : ${mainCtgList}">
-                        <a 
-                            class="rs-menu non-click" 
-                            href="/restaurant/list?c=1"
-                            th:href="@{/restaurant/list(c=${c.id})}"
-                            th:text="${c.name}">한식
+                        <a class="rs-menu non-click" href="/restaurant/list?c=1"
+                            th:href="@{/restaurant/list(c=${c.id})}" th:text="${c.name}">한식
                         </a>
                     </li>
                 </ul>
             </nav>
 
-    <!-- 기타 카테고리 -->
-        <div class="category-others-container">
-            <nav class="category others">
-                <ul class="category-list other-category-list">
-                    <li th:each="c : ${otherCtgList}">
-                        <button
-                            class="category-tag" 
-                            href="#"
-                            th:text="'#' + ${c.name}">#베트남
-                        </button>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    <!-- 필터 -->
-        <div class="filter-box">
-            <select name="filter">
-                <option value="">가나다순</option>
-                <option value="">가성비순</option>
-                <option value="">가격순</option>
-            </select>
-        </div>
+            <!-- 기타 카테고리 -->
+            <div class="category-others-container">
+                <nav class="category others">
+                    <ul class="category-list other-category-list">
+                        <li th:each="c : ${otherCtgList}">
+                            <button class="category-tag" href="#" th:text="'#' + ${c.name}">#베트남
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- 필터 -->
+            <div class="filter-box">
+                <select name="filter">
+                    <option value="">가나다순</option>
+                    <option value="">가성비순</option>
+                    <option value="">가격순</option>
+                </select>
+            </div>
     </div>
 
     <!-- 컨텐츠 -->
