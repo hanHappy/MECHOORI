@@ -44,23 +44,26 @@
             </div>
         </nav>
         <!-- 카테고리 -->
-        <nav class="category top-category-nav">
-            <ul class="category-list top-category-list">
-                <li>
-                    <a class="rs-menu non-click" href="/restaurant/list">전체</a>
-                </li>
-                <li th:each="c : ${mainCtgList}">
-                    <a class="rs-menu non-click" href="/restaurant/list?c=1" th:href="@{/restaurant/list(c=${c.id})}"
-                        th:text="${c.name}">한식
-                    </a>
-                </li>
-            </ul>
+        <nav class="top-category-section">
+            <div class="category">
+                <ul class="category-list top-category-list">
+                    <li>
+                        <a class="rs-menu non-click" href="/restaurant/list">전체</a>
+                    </li>
+                    <li th:each="c : ${mainCtgList}">
+                        <a class="rs-menu non-click" href="/restaurant/list?c=1" th:href="@{/restaurant/list(c=${c.id})}"
+                            th:text="${c.name}">한식
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
 
         <!-- 기타 카테고리 -->
-        <nav class="category-others-container">
+        <nav class="other-category-section">
             <div class="category others">
                 <ul class="category-list other-category-list">
+                    <li><button class="category-tag" href="#">#전체</button></li>
                     <li th:each="c : ${otherCtgList}">
                         <button class="category-tag" href="#" th:text="'#' + ${c.name}">#베트남
                         </button>
