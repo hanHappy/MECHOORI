@@ -1,48 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Document</title>
-    <link rel="stylesheet" href="/css/user/login/findIdAndPwd.css" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <!-- <link rel="stylesheet" href="/css/user/login/findIdAndPwd.css"/>
+    <link rel="stylesheet" href="/css/style.css"/> -->
+ <!-- <link rel="stylesheet" href="/css/user/login/findIdAndPwd.css"/> -->
+ <link rel="stylesheet" href="../../../static/css/user/login/findIdAndPwd.css"/>
+ <!-- <link rel="stylesheet" href="../../../static/css/style.css"/> -->
+</head>
 
-  </head>
-
-  <body>
-    <header>
-      <div class="header-text">비밀번호 찾기</div>
-      <div class="back">
-      <a href="main_hsm.html"></a>
+<body>
+<header>
+    <div class="header-side left">
+        <a>
+            <button class="header-icon back"></button>
+        </a>
     </div>
-      <div class="home">
-        <a href ="#"></a>
-      </div>
-    </header>
+    <h1>비밀번호 찾기</h1>
+    <div class="header-side right">
+        <a>
+            <button class="d-none"></button>
+        </a>
+    </div>
+</header>
 
-    <main>
-      <div class="withNumber">휴대폰 번호로 인증</div>
+<main>
 
-      <section class="info">
+
+    <div class="withNumber">휴대폰 번호로 인증</div>
+    <form method="post" action="/user/find-pwd">
+
+    <section class="info">
         <div class="name">
-          아이디
-          <input type="text" placeholder="user@mechoori.com" />
+            아이디
+            <div class="info-inputbox">
+            <input type="text" placeholder="user@mechoori.com"/>
         </div>
+    </div>
 
         <div class="number">
-          휴대폰 번호
-          <input type="text" placeholder="010-0000-0000" id="numberText" />
-          <input type="submit" value="인증번호 받기" />
+            휴대폰 번호
+            <input type="text" placeholder="010-0000-0000" id="numberText"/>
+            <input type="button" value="인증번호 받기"/>
         </div>
 
         <div class="number2">
-          인증번호 입력
-          <input type="text" />
+            인증번호 입력
+            <input type="text"/>
         </div>
 
-        <div class="next">다음</div>
-      </section>
-    </main>
-  </body>
+        <input type="submit" value="확인"></input>
+    </section>
+    </form>
+</main>
+</body>
 </html>
