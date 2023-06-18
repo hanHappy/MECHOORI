@@ -87,37 +87,46 @@
             <h1 style="display: none;">식당 목록</h1>
             <div class="restaurant-list">
                 <section class="restaurant-1" th:each="r : ${list}">
-                    <!-- 이미지 -->
-                    <div class="image-box">
-                        <img src="/images/foods/청화원2.png" th:src="@{/images/foods/{img}(img=${r.img})}" alt="이미지"
-                            class="image">
-                        <!-- 하트 -->
-                        <button class="like">좋아요</button>
-                        <div class="data-box">
-                            <span>좋아요 수</span>
-                            <span th:text="${r.likedCount}">718</span>
-                            <span>평가 수</span>
-                            <span th:text="${r.ratedCount}">207</span>
+                    <div class="content">
+                        <!-- 이미지 -->
+                        <div class="image-box">
+                            <img src="/images/foods/청화원2.png" th:src="@{/images/foods/{img}(img=${r.img})}" alt="이미지"
+                                class="image">
+                            <!-- 하트 -->
+                            <button class="like">좋아요</button>
+                            <div class="data-box">
+                                <p>
+                                    <span>좋아요 이미지</span>
+                                    <span th:text="${r.likedCount}">718</span>
+                                    <span>평가 이미지</span>
+                                    <span th:text="${r.ratedCount}">207</span>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <!-- 정보 -->
-                    <div class="info-box">
-                        <p th:text="${r.name}">식당명</p>
-                        <p>평균가격</p>
-                        <p th:text="${r.avgPrice}">10,000원</p>
-                        <p>·</p>
-                        <p>가성비</p>
-                        <p th:text="${r.value} + ' %'">113%</p>
-                    </div>
-                    <!-- 버튼 -->
-                    <div class="btn-box">
-                        <div>
-                            <a href="/restaurant/1" th:href="@{/restaurant/{id}(id=${r.id})}">
-                                <button class="button button-12">상세보기</button></a>
+                        <!-- 정보 -->
+                        <div class="info-box">
+                            <div class="name-wrapper">
+                                <span th:text="${r.name}" class="name">식당명</span>
+                            </div>
+                            <div class="info">
+                                <p>
+                                    평균가격
+                                    <span th:text="${r.avgPrice}">10,000원</span>
+                                    <span class="value subject">· 가성비</span>
+                                    <span th:text="${r.value} + '%'" class="value">113%</span>
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <a href="/restaurant/{id}/rate" th:href="@{/restaurant/{id}/rate(id=${r.id})}">
-                                <button class="button button-12">평가하기</button></a>
+                        <!-- 버튼 -->
+                        <div class="btn-box">
+                            <div>
+                                <a href="/restaurant/1" th:href="@{/restaurant/{id}(id=${r.id})}">
+                                    <button class="button button-12">상세보기</button></a>
+                            </div>
+                            <div>
+                                <a href="/restaurant/{id}/rate" th:href="@{/restaurant/{id}/rate(id=${r.id})}">
+                                    <button class="button button-12">평가하기</button></a>
+                            </div>
                         </div>
                     </div>
                 </section>

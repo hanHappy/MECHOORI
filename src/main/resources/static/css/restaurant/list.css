@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
+body {
+    background-color: var(--background-color);
+}
+
 header {
     /* layout */
     width: 100%;
@@ -203,8 +207,4 @@ select {
 
 select option {
     color: #4E4E4E;
-}
-
-main {
-    background: var(--background-color);
 }
