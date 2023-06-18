@@ -1,5 +1,6 @@
 package com.mechoori.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
+import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantCardView;
-import com.mechoori.web.entity.RestaurantDetailView;
+import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.entity.TopCategory;
+import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantService;
-import com.mechoori.web.service.CategoryService;
 
 @Controller
 @RequestMapping("/restaurant")
@@ -62,12 +64,11 @@ public class RestaurantController {
 			Model model) {
 
 		List<Menu> menuList = menuService.getList(restaurantId);
-		RestaurantDetailView rstnDetail = rstrService.getRestaurantDetailById(restaurantId);
-
-
+		RestaurantDetail restaurant = rstrService.getRestaurantDetailById(restaurantId);
+		
 
 		model.addAttribute("menuList", menuList);
-		model.addAttribute("rstnDetail", rstnDetail);
+		model.addAttribute("r", restaurant);
 
 		return "restaurant/detail";
 	}
