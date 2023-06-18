@@ -36,6 +36,10 @@
         </span>
     </div>
 
+      <div th:if="${param.error}" class="text">
+        아이디 혹은 비밀번호가 일치하지 않습니다.
+      </div>
+
     <div class="input-container">
       <!-- TODO 텍스트 색상 -> #fff -->
       <button class="submitbtn">
@@ -54,22 +58,18 @@
       </a>
       <div class="btw"></div>
     </div>
-    <!-- TODO 버튼이랑 겹침 -->
-    <div th:if="${param.error}">
-      아이디 혹은 비밀번호가 일치하지 않습니다.
-    </div>
 
-    <div class="onlyImg"></div>
+
   </main>
 
-  <!-- <div id=modalWrap>
+   <div id=modalWrap>
     <div class="pop">
       <div class="area">
-        <a href="index.html"><button id="findEmail">이메일 찾기</button></a>
-        <a href="index.html"><button id="findP">비밀번호 찾기</button></a>
+        <a href="/user/login/find-id"><button id="findEmail">이메일 찾기</button></a>
+        <a href="/user/login/find-pwd"><button id="findP">비밀번호 찾기</button></a>
       </div>
     </div>
-  </div> -->
+  </div>
 
 </body>
 
