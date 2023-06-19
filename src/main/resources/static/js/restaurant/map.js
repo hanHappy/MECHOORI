@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         var map = new kakao.maps.Map(container, options);
 
-
         let l = document.getElementById("map-address-copy-text").innerText;
         let name = document.getElementById("resintro").innerText;
 

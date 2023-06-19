@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rate</title>
     <link rel="stylesheet" href="/css/restaurant/rate.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/button.css">
     <script src="/js/restaurant/rate.js" defer="defer"></script>
 </head>
 
@@ -15,11 +17,11 @@
     <!-- ================ header ================ -->
     <header>
         <div class="header-side left">
-            <a href=""><button class="header-icon back">버튼</button></a>
+            <button class="header-icon back">버튼</button>
         </div>
-        <h1 class="header-icon logo">로고</h1>
+        <a href="/index"><h1 class="header-icon logo">로고</h1></a>
         <div class="header-side right">
-            <a href=""><button class="header-icon home">버튼</button></a>
+            <button class="header-icon home">버튼</button>
         </div>
     </header>
 
@@ -32,72 +34,77 @@
 
         <!-- 상호명 -->
         <div class="restaurant-name-wrapper">
-            <div th:text="${restaurant.name}">청화원 신촌점</div>
+            <div th:text="${r.name}">청화원 신촌점</div>
         </div>
 
         <!-- -------------- 사용자 입력단 -------------- -->
-        <section class="input-contents-wrapper">
-            <!-- 메뉴 선택 -->
-            <section class="menu-selection">
-                <h1>메뉴를 선택해주세요</h1>
-                <select class="menu-dropbox">
-                    <option value="메뉴선택" disabled selected>메뉴 선택</option>
-                    <option th:each="item : ${list}" th:text="${item.name}" th:value="${item.name}">우육도삭면</option>
-                </select>
+        <form action="rate" method="post">
+            <section class="input-contents-wrapper">
+                <!-- 메뉴 선택 -->
+                <section class="menu-selection">
+                    <h1>메뉴를 선택해주세요</h1>
+                    <select class="menu-dropbox">
+                        <option value="메뉴선택" disabled selected>메뉴 선택</option>
+                        <option
+                            th:each="menu : ${menuList}" 
+                            th:text="${menu.name}"
+                            th:value="${menu.price}" 
+                            th:data-id="${menu.id}">우육도삭면</option>
+                    </select>
+                </section>
+
+                <!-- 평가 가격 -->
+                <section class="rate">
+                    <h1>평가가격을 입력해주세요</h1>
+                    <div class="selling-price-box">
+                        <p>판매가격</p>
+                        <div class="selling-price">
+                            <div class="selling-price-value"></div>
+                            <span>원</span>
+                        </div>
+                    </div>
+                    <div class="my-price-box">
+                        <p>나의 평가가격</p>
+                        <div class="my-price">
+                            <input id="demo" type="number">
+                            <span>원</span>
+                        </div>
+                    </div>
+                    <!-- 가격 슬라이더 -->
+                    <div class="slide-container">
+                        <input type="range" min="0" max="10000" value="5000" step="100" class="slider" id="my-range">
+                    </div>
+                </section>
+
+                <!-- 한줄평 -->
+                <section class="comment">
+                    <h1>한줄평을 작성해주세요</h1>
+                    <textarea rows="5" placeholder="100자 내로 리뷰를 작성해주세요"></textarea>
+                </section>
+
+                <!-- 평가하기 버튼 -->
+                <div class="rate-btn-container">
+                    <button type="button" class="button button-1 rate-btn">평가하기</button>
+                </div>
             </section>
 
-            <!-- 평가 가격 -->
-            <section class="rate">
-                <h1>평가가격을 입력해주세요</h1>
-                <div class="selling-price-box">
-                    <p>판매가격</p>
-                    <div class="selling-price">
-                        <div th:text="${menu.price}">8000</div>
-                        <span>원</span>
+        
+            <!-- 모달 /완료 확인-->
+            <div class="modal check-complete d-none">
+                <div class="modal-box">
+                    <div class="question-box">
+                        <img src="/images/assets/메추리-OK.png" alt="">
+                        <p>평가를 완료할까요?</p>
+                    </div>
+                    <div class="check-btn-box">
+                        <button type="button" class="no">아니오</button>
+                        <a href="/index"><button class="yes">네</button></a>
                     </div>
                 </div>
-                <div class="my-price-box">
-                    <p>나의 평가가격</p>
-                    <div class="my-price">
-                        <input id="demo" type="number">
-                        <span>원</span>
-                    </div>
-                </div>
-                <!-- 가격 슬라이더 -->
-                <div class="slide-container">
-                    <input type="range" min="6000" max="10000" value="8000" step="100" class="slider" id="my-range">
-                </div>
-            </section>
-
-            <!-- 한줄평 -->
-            <section class="comment">
-                <h1>한줄평을 작성해주세요</h1>
-                <!-- <input type="text" placeholder="100자 내로 리뷰를 작성해주세요"> -->
-                <textarea rows="5" placeholder="100자 내로 리뷰를 작성해주세요"></textarea>
-            </section>
-
-            <!-- 평가하기 버튼 -->
-            <div class="rate-btn-container">
-                <button class="rate-btn">평가하기</button>
             </div>
-        </section>
-
-
-        <!-- 모달 /완료 확인-->
-        <div class="modal check-complete">
-            <div class="modal-box">
-                <div class="question-box">
-                    <img src="/images/assets/메추리-OK.png" alt="">
-                    <p>평가를 완료할까요?</p>
-                </div>
-                <div class="check-btn-box">
-                    <button class="no">아니오</button>
-                    <a href="./rate-result.html"><button class="yes">네</button></a>
-                </div>
-            </div>
-        </div>
+        </form>
         <!-- 모달 /이전 화면 확인-->
-        <div class="modal check-back">
+        <div class="modal check-back d-none">
             <div class="modal-box">
                 <div class="question-box">
                     <img src="/images/assets/coca-물음표.png" alt="">
@@ -108,12 +115,12 @@
                 </div>
                 <div class="check-btn-box">
                     <button class="no">아니오</button>
-                    <a href="/html/search-result-by-input.html"><button class="yes">네</button></a>
+                    <a href="/restaurant/list"><button class="yes">네</button></a>
                 </div>
             </div>
         </div>
         <!-- 모달 /홈으로 확인-->
-        <div class="modal check-home">
+        <div class="modal check-home d-none">
             <div class="modal-box">
                 <div class="question-box">
                     <img src="/images/assets/coca-물음표.png" alt="">
@@ -124,7 +131,7 @@
                 </div>
                 <div class="check-btn-box">
                     <button class="no">아니오</button>
-                    <a href="/index.html"><button class="yes">네</button></a>
+                    <a href="/index"><button class="yes">네</button></a>
                 </div>
             </div>
         </div>
