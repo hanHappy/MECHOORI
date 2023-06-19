@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantCardView;
-import com.mechoori.web.entity.RestaurantDetailView;
 
 @Mapper
 public interface RestaurantRepository {
@@ -20,9 +19,4 @@ public interface RestaurantRepository {
     List<RestaurantCardView> findAllRestaurantCardByCtgId(int categoryId);
 
     List<RestaurantCardView> findAllRestaurantCardByQuery(String query);
-
-    RestaurantDetailView findRestaurantDetailById(int restaurantId);
-
-
-	
 }

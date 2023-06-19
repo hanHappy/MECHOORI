@@ -1,0 +1,152 @@
+/* ---------------------- 컨텐츠 ---------------------- */
+.content {
+    background-color: #fff;
+    border-bottom: var(--border-bottom);
+
+    /* item layout */
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ----------- 식당 이미지 ----------- */
+.image-box {
+    position: relative;
+    line-height: 0;
+}
+
+.image {
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+/* 좋아요 */
+.image-box button {
+    /* style */
+    background-color: transparent;
+    border: none;
+
+    /* layout */
+    position: absolute;
+    padding: 0;
+    width: 21px;
+    height: 20px;
+    top: 12px;
+    right: 12px;
+}
+.like {
+    background-image: url("/images/icons/빈하트.svg");
+
+    text-indent: -999px;
+    overflow: hidden;
+}
+
+.like.active {
+    background-image: url("/images/icons/하트.svg");
+}
+
+/* 좋아요, 평가 수 데이터 */
+.data-box {
+    /* layout */
+    position: absolute;
+    right: 12px;
+    bottom: 10px;
+
+}
+
+.data-box p {
+    margin: 0;
+}
+.data-box span {
+    font-size: 16px;
+    color: #fff;
+    display: inline-block;
+}
+
+.data-box span:nth-child(2n+1) {
+    /* image */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    /* layout */
+    text-indent: -999px;
+    overflow: hidden;
+    margin-right: 3px;
+}
+
+.data-box span:nth-child(1) {
+    background-image: url("/images/icons/하트.svg");
+
+    /* layout */
+    width: 10px;
+    height: 12px;
+}
+
+.data-box span:nth-child(3) {
+    background-image: url("/images/icons/평가.svg");
+
+    /* layout */
+    width: 12px;
+    height: 11px;
+    margin-left: 10px;
+}
+
+/* ---------------------- 식당 정보 (상호 - 평균 가격 - 가성비) ---------------------- */
+.info-box {
+    /* layout */
+    height: 40px;
+
+    /* item layout */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info-box {
+    font-size: 16px;
+}
+.name-wrapper {
+    width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.name {
+    font-weight: bold;
+}
+.info p{
+    letter-spacing: -1px;
+}
+.value {
+    color: var(--sub-color);
+}
+.value.subject {
+    font-weight: bold;
+}
+
+/* ---------------------- 버튼 (상세보기, 평가하기) ---------------------- */
+.btn-box {
+    /* layout */
+    margin-top: var(--element-margin);
+
+    /* item layout */
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-box>div {
+    width: 100%;
+}
+
+.btn-box>div:first-child {
+    padding-right: 5px;
+}
+
+.btn-box>div:last-child {
+    padding-left: 5px;
+}

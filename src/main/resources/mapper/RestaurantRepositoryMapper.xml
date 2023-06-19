@@ -27,9 +27,4 @@
 		from restaurant_card
 		where name like '%${query}%'
 	</select>
-		<select id="findRestaurantDetailById" resultType="RestaurantDetailView">
-		select * 
-		from restaurant_detail
-		where id = #{restaurantId}
-	</select>
 </mapper>
