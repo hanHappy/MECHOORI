@@ -45,9 +45,9 @@
                 <select class="menu-dropbox">
                     <option value="메뉴선택" disabled selected>메뉴 선택</option>
                     <option
-                        th:each="menu : ${list}" 
-                        th:text="${menu.name}" 
-                        th:value="${menu.name}"
+                        th:each="menu : ${menuList}" 
+                        th:text="${menu.name}"
+                        th:value="${menu.price}" 
                         th:data-id="${menu.id}">우육도삭면</option>
                 </select>
             </section>
@@ -58,7 +58,7 @@
                 <div class="selling-price-box">
                     <p>판매가격</p>
                     <div class="selling-price">
-                        <div></div>
+                        <div class="selling-price-value"></div>
                         <span>원</span>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                 </div>
                 <!-- 가격 슬라이더 -->
                 <div class="slide-container">
-                    <input type="range" min="6000" max="10000" value="8000" step="100" class="slider" id="my-range">
+                    <input type="range" min="0" max="10000" value="5000" step="100" class="slider" id="my-range">
                 </div>
             </section>
 

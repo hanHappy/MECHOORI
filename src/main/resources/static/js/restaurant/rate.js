@@ -57,8 +57,13 @@ window.addEventListener('click', function(e) {
     no[i].addEventListener('click', closeModal);
 
 let dropbox = document.querySelector('.menu-dropbox');
-let option = dropbox.querySelector('.option');
 
-option.onchange = function(e){
-  console.log(e.target);
+dropbox.onchange = function(e){
+  let menuPrice = document.querySelector('.selling-price-value');
+  let value = e.target.value;
+  menuPrice.innerText = value;
+  slider.min = value * 0.8;
+  slider.max = value * 1.2;
+  slider.value = value;
+  output.value = "";
 }

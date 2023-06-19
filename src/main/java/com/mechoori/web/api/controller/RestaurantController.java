@@ -40,12 +40,4 @@ public class RestaurantController {
 		return list;
 	}
 
-	@GetMapping("{id}/rate")
-	public Menu rate(@PathVariable("id") int menuId) {
-
-        Menu menu = menuService.getDetail(menuId);
-
-		return menu;
-	}
-
 }
