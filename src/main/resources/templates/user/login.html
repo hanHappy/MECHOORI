@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
   <link rel="stylesheet" href="/css/user/login.css" />
-  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="/css/common/style.css"/>
+  <link rel="stylesheet" href="/css/common/header.css">
   <script src="/js/user/login.js" defer="defer"></script>
 </head>
 
@@ -36,12 +37,8 @@
         </span>
     </div>
 
-      <div th:if="${param.error}" class="text">
-        아이디 혹은 비밀번호가 일치하지 않습니다.
-      </div>
-
     <div class="input-container">
-      <!-- TODO 텍스트 색상 -> #fff -->
+      <!-- FIXME 텍스트 색상 -> #fff -->
       <button class="submitbtn">
         <input type="hidden" name="returnURL" th:value="${param.returnURL}">
         <a href="">로그인 </a>
@@ -50,7 +47,7 @@
     </form>
 
     <div class="idAndPwd">
-      <!-- TODO 버튼 스타일 지우기 -->
+      <!-- FIXME 버튼 스타일 지우기 -->
       <button class="findId" id="popupBtn">계정 찾기</button>
 
       <a href="sign-up/policy">
@@ -58,18 +55,22 @@
       </a>
       <div class="btw"></div>
     </div>
+    <!-- FIXME 버튼이랑 겹침 -->
+    <div th:if="${param.error}">
+      아이디 혹은 비밀번호가 일치하지 않습니다.
+    </div>
 
-
+    <div class="onlyImg"></div>
   </main>
 
-   <div id=modalWrap>
+  <!-- <div id=modalWrap>
     <div class="pop">
       <div class="area">
-        <a href="/user/login/find-id"><button id="findEmail">이메일 찾기</button></a>
-        <a href="/user/login/find-pwd"><button id="findP">비밀번호 찾기</button></a>
+        <a href="index.html"><button id="findEmail">이메일 찾기</button></a>
+        <a href="index.html"><button id="findP">비밀번호 찾기</button></a>
       </div>
     </div>
-  </div>
+  </div> -->
 
 </body>
 
