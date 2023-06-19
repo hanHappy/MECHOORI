@@ -1,6 +1,6 @@
 // 슬라이더 --------------------------------------
 let slider = document.querySelector("#my-range");
-let output = document.querySelector("#demo");
+let output = document.querySelector("#my-price-value");
 
 // 슬라이더 조작 -> input 값 업데이트
 slider.oninput = function () {
@@ -48,6 +48,7 @@ window.addEventListener('click', function (e) {
   }
 });
 
+// 아니요 버튼 클릭 시 모달 닫기
 modalBack.onclick = function(e){
   if(e.target == noBack)
     modalBack.classList.add('d-none');
@@ -61,6 +62,7 @@ modalComplete.onclick = function(e){
     modalComplete.classList.add('d-none');
 }
 
+// dropbox에서 메뉴 선택 시 판매 가격 업데이트
 let dropbox = document.querySelector('.menu-dropbox');
 
 dropbox.onchange = function (e) {

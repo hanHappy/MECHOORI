@@ -3,19 +3,23 @@ package com.mechoori.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
+import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantCardView;
 import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.entity.TopCategory;
+import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantService;
@@ -83,4 +87,12 @@ public class RestaurantController {
 
 		return "restaurant/rate";
 	}
+
+	@PostMapping("{id}/rate")
+	public String rate(Rate rate, @AuthenticationPrincipal MechooriUserDetails user){
+		System.out.println(rate);
+		// FIXME index -> rate-result로 수정해야 함
+		return "redirect:/index";
+	}
+
 }
