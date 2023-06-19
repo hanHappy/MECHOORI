@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rate</title>
     <link rel="stylesheet" href="/css/restaurant/rate.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/button.css">
     <script src="/js/restaurant/rate.js" defer="defer"></script>
 </head>
 
@@ -32,7 +34,7 @@
 
         <!-- 상호명 -->
         <div class="restaurant-name-wrapper">
-            <div th:text="${restaurant.name}">청화원 신촌점</div>
+            <div th:text="${r.name}">청화원 신촌점</div>
         </div>
 
         <!-- -------------- 사용자 입력단 -------------- -->
@@ -42,7 +44,11 @@
                 <h1>메뉴를 선택해주세요</h1>
                 <select class="menu-dropbox">
                     <option value="메뉴선택" disabled selected>메뉴 선택</option>
-                    <option th:each="item : ${list}" th:text="${item.name}" th:value="${item.name}">우육도삭면</option>
+                    <option
+                        th:each="menu : ${list}" 
+                        th:text="${menu.name}" 
+                        th:value="${menu.name}"
+                        th:data-id="${menu.id}">우육도삭면</option>
                 </select>
             </section>
 
@@ -52,7 +58,7 @@
                 <div class="selling-price-box">
                     <p>판매가격</p>
                     <div class="selling-price">
-                        <div th:text="${menu.price}">8000</div>
+                        <div></div>
                         <span>원</span>
                     </div>
                 </div>
@@ -78,7 +84,7 @@
 
             <!-- 평가하기 버튼 -->
             <div class="rate-btn-container">
-                <button class="rate-btn">평가하기</button>
+                <button class="button button-1">평가하기</button>
             </div>
         </section>
 

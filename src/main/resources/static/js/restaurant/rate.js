@@ -55,3 +55,10 @@ window.addEventListener('click', function(e) {
   // 아니오 버튼 클릭시 모달 닫기
   for(let i = 0; i < no.length; i++)
     no[i].addEventListener('click', closeModal);
+
+let dropbox = document.querySelector('.menu-dropbox');
+let option = dropbox.querySelector('.option');
+
+option.onchange = function(e){
+  console.log(e.target);
+}

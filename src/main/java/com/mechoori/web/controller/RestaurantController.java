@@ -1,6 +1,5 @@
 package com.mechoori.web.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +25,11 @@ import com.mechoori.web.service.RestaurantService;
 public class RestaurantController {
 
 	@Autowired
-	private RestaurantService rstrService;
+	private RestaurantService restaurantService;
 	@Autowired
 	private MenuService menuService;
 	@Autowired
-	private CategoryService ctgService;
+	private CategoryService categoryService;
 
 	@GetMapping("/list")
 	public String list(
@@ -38,18 +37,18 @@ public class RestaurantController {
 			@RequestParam(name = "c", required = false) Integer ctgId,
 			Model model) {
 
-		List<TopCategory> mainCtgList = ctgService.getTopCategoryList();
-		List<Category> otherCtgList = ctgService.getOtherCategoryList();
+		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
+		List<Category> otherCtgList = categoryService.getOtherCategoryList();
 		
 
 		List<RestaurantCardView> list = null;
 		// 식당 리스트 출력
 		if(query==null&&ctgId==null)
-			list = rstrService.getRestaurantCardList();
+			list = restaurantService.getRestaurantCardList();
 		else if (query != null)
-			list = rstrService.getRestaurantCardListByQuery(query);
+			list = restaurantService.getRestaurantCardListByQuery(query);
 		else if (ctgId != null)
-			list = rstrService.getRestaurantCardListByCtgId(ctgId);
+			list = restaurantService.getRestaurantCardListByCtgId(ctgId);
 
 		model.addAttribute("list", list)
 			.addAttribute("mainCtgList", mainCtgList)
@@ -64,7 +63,7 @@ public class RestaurantController {
 			Model model) {
 
 		List<Menu> menuList = menuService.getList(restaurantId);
-		RestaurantDetail restaurant = rstrService.getRestaurantDetailById(restaurantId);
+		RestaurantDetail restaurant = restaurantService.getRestaurantDetailById(restaurantId);
 		
 
 		model.addAttribute("menuList", menuList);
@@ -74,9 +73,13 @@ public class RestaurantController {
 	}
 
 	@GetMapping("{id}/rate")
-	public String rate(@PathVariable("id") int restaurantId, Integer menuId,
-			Model model) {
+	public String rate(@PathVariable("id") int restaurantId, Model model) {
 
+		Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+		List<Menu> menuList = menuService.getList(restaurantId);
+
+		model.addAttribute("r", restaurant)
+			 .addAttribute("list", menuList);
 		return "restaurant/rate";
 	}
 }
