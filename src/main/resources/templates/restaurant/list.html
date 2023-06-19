@@ -10,7 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>손 안의 메뉴 추천 리스트, 메추리</title>
     <link rel="stylesheet" type="text/css" href="/css/restaurant/list.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/button.css">
     <script src="/js/restaurant/list.js" defer="defer"></script>
 </head>
 
@@ -27,8 +29,6 @@
                 <a><button class="header-icon search">버튼</button></a>
             </div>
         </header>
-
-        <!-- TODO 검색 버튼 transition -->
 
         <main>
             <!-- 카테고리 -->
@@ -99,12 +99,12 @@
             <!-- 버튼 -->
             <div class="btn-box">
                 <div>
-                    <a href="/restaurant/1" th:href="@{/restaurant/{id}(id=${r.id})}"><button>상세
-                            보기</button></a>
+                    <a href="/restaurant/1" th:href="@{/restaurant/{id}(id=${r.id})}">
+                        <button class="button button-12">상세보기</button></a>
                 </div>
                 <div>
-                    <a href="/restaurant/{id}/rate"
-                        th:href="@{/restaurant/{id}/rate(id=${r.id})}"><button>평가하기</button></a>
+                    <a href="/restaurant/{id}/rate" th:href="@{/restaurant/{id}/rate(id=${r.id})}">
+                        <button class="button button-12">평가하기</button></a>
                 </div>
             </div>
         </section>

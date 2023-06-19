@@ -179,6 +179,7 @@ main {
 
 select {
     /* style */
+    color: var(--font-color);
     border: none;
     appearance: none;
     -webkit-appearance: none;
@@ -195,7 +196,6 @@ select {
     /* layout */
     padding-left: 5px;
     padding-right: 15px;
-    color: #4E4E4E;
 }
 
 select option {
@@ -362,16 +362,3 @@ select option {
     padding-left: 5px;
 }
 
-.btn-box button {
-    /* style */
-    font-size: 16px;
-    background-color: var(--box-color);
-    font-family: var(--font);
-    border: none;
-    border-radius: var(--border-radius);
-
-    /* layout */
-    width: 100%;
-    height: 40px;
-    padding: 0;
-}

@@ -169,17 +169,6 @@ main {
   max-width:8em;
 }
 
-.menu-check-box {
-  width: 100%;
-  background-color: #EEEEEE;
-  border-radius: 8px;
-  color: #282828;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 30px;
-}
-
 .togle {
   color: var(--sub-color);
 }
@@ -404,21 +393,6 @@ tr:nth-child(2) td:first-child {
 
 .review-title img {
   margin-right: 5px;
-}
-
-.rate-button{
-  width: 70px;
-  height: 28px;
-  background: #EEEEEE;
-  border-radius: 8px;
-  border: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  padding: 3px;
-  outline: none; /* after - 포커스 표시 삭제 */
 }
 
 .review-button:hover {
