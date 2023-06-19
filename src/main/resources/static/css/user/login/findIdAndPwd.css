@@ -1,4 +1,7 @@
-@import url("../../style.css");
+@import url(../../style.css);
+*{
+  font-weight: bolder;
+}
 
 .withNumber {
   box-sizing: border-box;
@@ -85,30 +88,22 @@
   margin-bottom: -20px;
 }
 
-input[type="submit"] {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  gap: 10px;
-
+input[type="button"] {
   position: absolute;
   width: 101px;
   height: 39px;
   left: 254px;
-  top: 146px;
-
+  top: 147px;
   background: #ffffff;
-  /* han/흰버튼 */
-
   box-shadow: 0px 0px 5px rgba(117, 117, 117, 0.25);
   border-radius: var(--border-radius);
+  cursor: pointer;
 }
 
 ::placeholder {
   font-weight: 700;
   color: rgb(119, 119, 119);
+  padding-left: 10px;
 }
 
 .number2 {
@@ -125,7 +120,7 @@ input[type="submit"] {
   /* Inside auto layout */
 
   flex: none;
-  order: 2;
+  order: 1;
   flex-grow: 0;
   z-index: 2;
   margin-bottom: -20px;
@@ -149,31 +144,12 @@ input {
   border-radius: var(--border-radius);
 }
 
-.next {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 
-  margin: 20px 0;
-  position: absolute;
-  width: 335px;
-  height: 40px;
-  left: 20px;
-  top: 291px;
-
-  /* sub */
-
-  background: var(--sub-color);
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-  border-radius: var(--border-radius);
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 3;
-  flex-grow: 0;
-  z-index: 3;
-
+input[type=submit] {
+  position: relative;
+  top:30px;
+  background-color: var(--sub-color);
+  
   color: white;
+  font-size: 18px
 }
