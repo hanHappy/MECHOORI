@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../static/css/restaurant/ranking.css" />
+<!--    <link rel="stylesheet" href="../../static/css/restaurant/ranking.css" />-->
+  <link rel="stylesheet" href="/css/restaurant/ranking.css" />
+  <link rel="stylesheet" href="/css/common/style.css">
+  <link rel="stylesheet" href="/css/common/header.css">
+  <link rel="stylesheet" href="/css/common/button.css">
 
 </head>
 <body>
@@ -23,13 +27,14 @@
 
       <section class = "mainTop">
         <div class = "name">가성비 식당 랭킹</div>
-        <select class = "category">
-          <option value = "0">카테고리순</option> <!-- 전체랭킹을 보여 주는 식으로 운영 해야 될 것 같ㄷ다-->
-          <option value = "1">한식</option>
-          <option value = "2">일식</option>
-          <option value = "3">중식</option>
-          <option value = "4">양식</option>
-          <option value = "5">기타</option>
+        <select class = "category" name="category" required>
+          <option value="카테고리 선택" disabled selected>카테고리 선택</option>
+
+          <option value = "0"
+            th:each="ctg:${ctg}"
+            th:text="${ctg.name}"
+          >전체</option> <!-- 전체랭킹을 보여 주는 식으로 운영 해야 될 것 같ㄷ다-->
+
         </select>
       </section> 
 
@@ -44,27 +49,18 @@
       </div>
       <main>
         
-        <section class= "sections">
-          <div> 
+        <section class= "ranking-list-sections">
+          <div th:each="list:${list}">
             <div class = "position"></div>
-              <div class="sec">
+              <div class="ranking-list">
                 <p>1</p>
                 <div class = "img1 img"></div>
-                <p>짜장상회 <br>6,000<span style="color: blue;">(8,000)</span></p>
+                <p th:text="${list.name}">짜장상회</p> <br>
+                <p th:text="${list.price}"></p>
+                <span style="color: blue;"> <p th:text="${list.cumulativeRatedPrice}"></p></span>
                 <p> 133%</p>
             </div>
           </div>
-
-          <div> 
-            <div class = "position"></div>
-              <div class="sec">
-                <p>2</p>
-                <div class = "img1 img"></div>
-                <p>짜장상회 <br>6,000(8,000)</p>
-                <p> 133%</p>
-            </div>
-          </div>
-
         </section>
 
         <button class = "moreInfo">

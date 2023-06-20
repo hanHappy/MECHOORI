@@ -23,4 +23,10 @@ public class MenuServiceImp implements MenuService{
 	public Menu getDetail(int menuId) {
 		return repository.findById(menuId);
 	}
+
+	@Override
+	public List<Menu> getRanking() {
+		return repository.getRanking();
+	}
+
 }
