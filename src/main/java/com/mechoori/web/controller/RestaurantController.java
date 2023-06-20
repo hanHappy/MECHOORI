@@ -22,6 +22,7 @@ import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
+import com.mechoori.web.service.RateService;
 import com.mechoori.web.service.RestaurantService;
 
 @Controller
@@ -34,7 +35,9 @@ public class RestaurantController {
 	private MenuService menuService;
 	@Autowired
 	private CategoryService categoryService;
-
+	@Autowired
+	private RateService rateService;
+	
 	@GetMapping("/list")
 	public String list(
 			@RequestParam(name = "q", required = false) String query,
@@ -57,7 +60,7 @@ public class RestaurantController {
 		model.addAttribute("list", list)
 			 .addAttribute("mainCtgList", mainCtgList)
 			 .addAttribute("otherCtgList", otherCtgList);
-
+			
 		return "restaurant/list";
 	}
 
@@ -90,10 +93,10 @@ public class RestaurantController {
 
 	@PostMapping("{id}/rate")
 	public String rate(
-					Rate rate, 
+					Rate rate,
 					@AuthenticationPrincipal MechooriUserDetails user){
-		System.out.println(rate);
-		// FIXME index -> rate-result로 수정해야 함
+		rateService.add(rate, user.getId());
+						// FIXME index -> rate-result로 수정해야 함
 		return "redirect:/index";
 	}
 
