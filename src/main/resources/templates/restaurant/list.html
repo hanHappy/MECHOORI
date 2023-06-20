@@ -51,8 +51,11 @@
                         <a class="rs-menu non-click" href="/restaurant/list">전체</a>
                     </li>
                     <li th:each="c : ${mainCtgList}">
-                        <a class="rs-menu non-click" href="/restaurant/list?c=1" th:href="@{/restaurant/list(c=${c.id})}"
-                            th:text="${c.name}">한식
+                        <a class="rs-menu non-click" 
+                           href="/restaurant/list?c=1" 
+                           th:data-id="${c.id}"
+                           th:href="@{/restaurant/list(c=${c.id})}"
+                           th:text="${c.name}">한식
                         </a>
                     </li>
                 </ul>
