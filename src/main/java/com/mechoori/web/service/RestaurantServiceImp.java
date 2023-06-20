@@ -21,8 +21,13 @@ public class RestaurantServiceImp implements RestaurantService {
 	private MenuRepository menuRepository;
 
 	@Override
+	public List<Restaurant> getList() {
+		return repository.findAll();
+	}
+
+	@Override
 	public List<Restaurant> getListByCtgId(int categoryId) {
-		return repository.findAllByCtgId(categoryId);
+		return repository.findAll(categoryId);
 	}
 
 	@Override
@@ -36,13 +41,13 @@ public class RestaurantServiceImp implements RestaurantService {
 	}
 
 	@Override
-	public List<RestaurantCardView> getRestaurantCardListByCtgId(int categoryId) {
-		return repository.findAllRestaurantCardByCtgId(categoryId);
+	public List<RestaurantCardView> getRestaurantCardListByCtgId(Integer categoryId, String query) {
+		return repository.findAllRestaurantCard(categoryId, null);
 	}
 
 	@Override
-	public List<RestaurantCardView> getRestaurantCardListByQuery(String query) {
-		return repository.findAllRestaurantCardByQuery(query);
+	public List<RestaurantCardView> getRestaurantCardListByQuery(Integer categoryId, String query) {
+		return repository.findAllRestaurantCard(null, query);
 	}
 
 	@Override
@@ -76,6 +81,8 @@ public class RestaurantServiceImp implements RestaurantService {
 
 		return restaurant;
 	}
+
+
 
 }
 

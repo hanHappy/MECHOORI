@@ -135,6 +135,7 @@ let likeControl = function (e) {
 }
 
 for (let btn of likeBtns)
+<<<<<<< HEAD
     btn.onclick = likeControl;
 
 // 필터 사용
@@ -156,3 +157,6 @@ document.addEventListener("click", function(){
         }
     });
 })
+=======
+    btn.onclick = likeControl;
+>>>>>>> 03a8bd1b02c389346f711a56aad1ca6f291c296f

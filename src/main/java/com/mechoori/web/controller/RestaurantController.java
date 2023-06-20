@@ -50,13 +50,13 @@ public class RestaurantController {
 		if(query==null&&ctgId==null)
 			list = restaurantService.getRestaurantCardList();
 		else if (query != null)
-			list = restaurantService.getRestaurantCardListByQuery(query);
+			list = restaurantService.getRestaurantCardListByQuery(ctgId, query);
 		else if (ctgId != null)
-			list = restaurantService.getRestaurantCardListByCtgId(ctgId);
+			list = restaurantService.getRestaurantCardListByCtgId(ctgId, query);
 
 		model.addAttribute("list", list)
-			.addAttribute("mainCtgList", mainCtgList)
-			.addAttribute("otherCtgList", otherCtgList);
+			 .addAttribute("mainCtgList", mainCtgList)
+			 .addAttribute("otherCtgList", otherCtgList);
 
 		return "restaurant/list";
 	}
@@ -89,7 +89,9 @@ public class RestaurantController {
 	}
 
 	@PostMapping("{id}/rate")
-	public String rate(Rate rate, @AuthenticationPrincipal MechooriUserDetails user){
+	public String rate(
+					Rate rate, 
+					@AuthenticationPrincipal MechooriUserDetails user){
 		System.out.println(rate);
 		// FIXME index -> rate-result로 수정해야 함
 		return "redirect:/index";
