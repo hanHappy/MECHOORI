@@ -92,7 +92,7 @@ public class RestaurantController {
 	public String rate(
 					Rate rate, 
 					@AuthenticationPrincipal MechooriUserDetails user){
-		System.out.println(rate);
+		rateService.add(rate, user.getId());
 		// FIXME index -> rate-result로 수정해야 함
 		return "redirect:/index";
 	}
