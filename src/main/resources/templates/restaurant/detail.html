@@ -28,7 +28,9 @@
 
   <main>
     <div class="detail">
-      <img src="/images/foods/청화원2.png" class="rstr-thumb">
+      <img src="/images/foods/청화원2.png" 
+           th:src="@{/images/foods/${r.img}}"
+           class="rstr-thumb">
 
       <div class="detail-content">
         <div class="title">
