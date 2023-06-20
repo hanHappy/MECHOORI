@@ -8,12 +8,15 @@ import com.mechoori.web.entity.RestaurantDetail;
 
 public interface RestaurantService {
 
-	List<Restaurant> getListByCtgId(int categoryId);
 	Restaurant getDetailById(int restaurantId);
-
-	List<RestaurantCardView> getRestaurantCardList();
-	List<RestaurantCardView> getRestaurantCardListByCtgId(int categoryId);
-	List<RestaurantCardView> getRestaurantCardListByQuery(String query);
 	
     RestaurantDetail getRestaurantDetailById(int restaurantId);
+
+	List<Restaurant> getList();
+	List<Restaurant> getListByCtgId(int categoryId);
+
+	List<RestaurantCardView> getRestaurantCardList();
+	List<RestaurantCardView> getRestaurantCardListByCtgId(Integer categoryId, String query);
+	List<RestaurantCardView> getRestaurantCardListByQuery(Integer categoryId, String query);
+	
 }
