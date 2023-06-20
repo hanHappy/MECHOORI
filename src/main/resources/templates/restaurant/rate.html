@@ -44,12 +44,13 @@
                 <section class="menu-selection">
                     <h1>메뉴를 선택해주세요</h1>
                     <!-- TODO 필수 선택 -->
-                    <select class="menu-dropbox" required>
+                    <select class="menu-dropbox" name="menuId" required>
                         <option value="메뉴선택" disabled selected>메뉴 선택</option>
                         <option
                             th:each="menu : ${menuList}" 
                             th:text="${menu.name}"
-                            th:value="${menu.price}"
+                            th:value="${menu.id}"
+                            th:data-price="${menu.price}"
                             >우육도삭면</option>
                     </select>
                 </section>
