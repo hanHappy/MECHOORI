@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.service.CategoryService;
@@ -25,6 +24,7 @@ public class AdminController {
         return "/admin";
     }
 
+    // ================= 카테고리 =================
     @GetMapping("category")
     public List<TopCategory> category(Model model) {
         List<TopCategory> list = ctgService.getTopCategoryList();
@@ -59,5 +59,11 @@ public class AdminController {
     @PostMapping("category")
     public String deleteTopCategory(int id){
         return "redirect:";
+    }
+
+    // ================= 식당 =================
+    @GetMapping("restaurant")
+    public String restaurant(Model model){
+        return "admin/restaurant";
     }
 }
