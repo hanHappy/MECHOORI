@@ -22,6 +22,7 @@ import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
+import com.mechoori.web.service.RateService;
 import com.mechoori.web.service.RestaurantService;
 
 @Controller
@@ -34,6 +35,8 @@ public class RestaurantController {
 	private MenuService menuService;
 	@Autowired
 	private CategoryService categoryService;
+	@Autowired
+	private RateService rateService;
 
 	@GetMapping("/list")
 	public String list(
@@ -94,6 +97,7 @@ public class RestaurantController {
 					@AuthenticationPrincipal MechooriUserDetails user){
 		System.out.println(rate);
 		// FIXME index -> rate-result로 수정해야 함
+		rateService.add(rate, user.getId());
 		return "redirect:/index";
 	}
 

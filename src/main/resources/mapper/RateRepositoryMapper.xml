@@ -1,0 +1,10 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mechoori.web.repository.RateRepository">
+	<insert id="add" parameterType="Rate">
+		insert into rate(user_id, menu_id, price, review) 
+        values(#{userId}, #{menuId}, #{price}, #{review})
+	</insert>
+</mapper>

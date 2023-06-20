@@ -117,7 +117,7 @@ tagArea.onclick = function (e) {
 
     //========== 추가
     if (e.target.innerText == '#전체') {
-        let url = 'http://localhost:8080/api/restaurant/list?c=6..8...10?';
+        let url = 'http://localhost:8080/api/restaurant/list?c=6';
         restaurantListLoad(url);
     } else {
         let url = `http://localhost:8080/api/restaurant/list?c=${e.target.dataset.id}`;

@@ -33,11 +33,9 @@ public class RestaurantController {
 		if(query==null&&ctgId==null)
 			list = rstrService.getRestaurantCardList();
 		else if (query != null)
-			list = rstrService.getRestaurantCardListByQuery(query);
+			list = rstrService.getRestaurantCardListByQuery(ctgId, query);
 		else if (ctgId != null)
-			list = rstrService.getRestaurantCardListByCtgId(ctgId);
-
+			list = rstrService.getRestaurantCardListByCtgId(ctgId, query);
 		return list;
 	}
-
 }
