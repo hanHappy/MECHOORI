@@ -3,14 +3,19 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mechoori.web.repository.MenuRepository">
-	<select id="findAll" resultType="com.mechoori.web.entity.Menu">
+	<select id="findAll" resultType="Menu">
 		select *
         from menu
         where restaurant_id = #{restaurantId};
 	</select>
-	<select id="findById" resultType="Restaurant">
+	<select id="findById" resultType="Menu">
 		select *
 		from menu
-		where id = #{restaurantId}
+		where id = #{menuId}
 	</select>
+	<update id="update" parameterType="Menu">
+	update menu 
+	set cumulative_rated_price = #{cumulativeRatedPrice}
+	where id = #{id}
+	</update>
 </mapper>
