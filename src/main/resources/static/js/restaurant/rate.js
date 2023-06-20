@@ -67,7 +67,9 @@ let dropbox = document.querySelector('.menu-dropbox');
 
 dropbox.onchange = function (e) {
   let menuPrice = document.querySelector('.selling-price-value');
-  let value = e.target.value;
+  let selectedIndex = dropbox.selectedIndex;
+  let selectedOption = dropbox.options[selectedIndex];
+  let value = selectedOption.dataset.price;
   menuPrice.innerText = value;
   slider.min = value * 0.8;
   slider.max = value * 1.2;
