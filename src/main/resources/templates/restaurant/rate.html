@@ -43,13 +43,14 @@
                 <!-- 메뉴 선택 -->
                 <section class="menu-selection">
                     <h1>메뉴를 선택해주세요</h1>
-                    <select class="menu-dropbox">
+                    <!-- TODO 필수 선택 -->
+                    <select class="menu-dropbox" required>
                         <option value="메뉴선택" disabled selected>메뉴 선택</option>
                         <option
                             th:each="menu : ${menuList}" 
                             th:text="${menu.name}"
-                            th:value="${menu.price}" 
-                            th:data-id="${menu.id}">우육도삭면</option>
+                            th:value="${menu.price}"
+                            >우육도삭면</option>
                     </select>
                 </section>
 
@@ -66,7 +67,7 @@
                     <div class="my-price-box">
                         <p>나의 평가가격</p>
                         <div class="my-price">
-                            <input id="demo" type="number">
+                            <input id="my-price-value" name="price" type="number" required>
                             <span>원</span>
                         </div>
                     </div>
@@ -79,7 +80,7 @@
                 <!-- 한줄평 -->
                 <section class="comment">
                     <h1>한줄평을 작성해주세요</h1>
-                    <textarea rows="5" placeholder="100자 내로 리뷰를 작성해주세요"></textarea>
+                    <textarea name="review" rows="5" placeholder="100자 내로 리뷰를 작성해주세요"></textarea>
                 </section>
 
                 <!-- 평가하기 버튼 -->
