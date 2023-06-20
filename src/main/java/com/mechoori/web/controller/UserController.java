@@ -8,15 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-<<<<<<< HEAD
-import com.mechoori.web.entity.Member;
-<<<<<<< HEAD
-=======
-import com.mechoori.web.service.MemberService;
->>>>>>> 775252bd50ee071f2b78c38c64b3dc2b56cb13e9
-
-=======
->>>>>>> df7bc32d19c677c4ce78c5bf37743ff5d3eee319
 @Controller
 @RequestMapping("user")
 public class UserController {
@@ -25,26 +16,10 @@ public class UserController {
     private MemberService service;
 
     @GetMapping("login")
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> df7bc32d19c677c4ce78c5bf37743ff5d3eee319
     public String login() {
         return "user/login";
     }
 
-<<<<<<< HEAD
-    @GetMapping("sign-up/policy")
-    public String policy() {
-=======
-        public String login(){
-            return "user/login";
-        }
-
-    @GetMapping("sign-up/policy")
-    public String policy(){
->>>>>>> 775252bd50ee071f2b78c38c64b3dc2b56cb13e9
-=======
     @GetMapping("/login/find-id")
     public String findId() {
         return "user/login/find-id";
@@ -68,26 +43,11 @@ public class UserController {
 
     @GetMapping("sign-up/policy")
     public String policy() {
->>>>>>> df7bc32d19c677c4ce78c5bf37743ff5d3eee319
         return "user/sign-up/policy";
     }
 
     @GetMapping("sign-up/form")
-<<<<<<< HEAD
-<<<<<<< HEAD
     public String form() {
-        return "user/sign-up/form";
-    }
-
-    @GetMapping("sign-up/form")
-    public String form(Member member) {
-        return "redirect:complete";
-    }
-=======
-    public String form(){
-=======
-    public String form() {
->>>>>>> df7bc32d19c677c4ce78c5bf37743ff5d3eee319
         return "user/sign-up/form";
     }
 
@@ -112,5 +72,4 @@ public class UserController {
         return "user/my-page/edit-info/withdraw";
     }
 
->>>>>>> 775252bd50ee071f2b78c38c64b3dc2b56cb13e9
 }
