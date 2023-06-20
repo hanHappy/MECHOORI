@@ -4,17 +4,19 @@ import java.util.List;
 
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantCardView;
-import com.mechoori.web.entity.RestaurantDetailView;
+import com.mechoori.web.entity.RestaurantDetail;
 
 public interface RestaurantService {
 
-	List<Restaurant> getListByCtgId(int categoryId);
 	Restaurant getDetailById(int restaurantId);
+	
+    RestaurantDetail getRestaurantDetailById(int restaurantId);
+
+	List<Restaurant> getList();
+	List<Restaurant> getListByCtgId(int categoryId);
 
 	List<RestaurantCardView> getRestaurantCardList();
-	List<RestaurantCardView> getRestaurantCardListByCtgId(int categoryId);
-	List<RestaurantCardView> getRestaurantCardListByQuery(String query);
-
-	RestaurantDetailView getRestaurantDetailById(int restaurantId);
-
+	List<RestaurantCardView> getRestaurantCardListByCtgId(Integer categoryId, String query);
+	List<RestaurantCardView> getRestaurantCardListByQuery(Integer categoryId, String query);
+	
 }

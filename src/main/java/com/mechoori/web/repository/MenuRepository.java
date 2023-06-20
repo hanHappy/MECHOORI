@@ -10,4 +10,6 @@ public interface MenuRepository {
 	List<Menu> findAll(int restaurantId);
 
     Menu findById(int menuId);
+
+    void update(Menu menu);
 }
