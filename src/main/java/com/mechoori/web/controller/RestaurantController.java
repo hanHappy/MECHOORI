@@ -89,7 +89,9 @@ public class RestaurantController {
 	}
 
 	@PostMapping("{id}/rate")
-	public String rate(Rate rate, @AuthenticationPrincipal MechooriUserDetails user){
+	public String rate(
+					Rate rate, 
+					@AuthenticationPrincipal MechooriUserDetails user){
 		System.out.println(rate);
 		// FIXME index -> rate-result로 수정해야 함
 		return "redirect:/index";
