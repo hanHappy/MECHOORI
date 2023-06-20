@@ -133,5 +133,26 @@ let likeControl = function (e) {
     else
         e.target.classList.add('active');
 }
+
 for (let btn of likeBtns)
     btn.onclick = likeControl;
+
+// 필터 사용
+
+document.addEventListener("click", function(){
+    let fliterSelect = document.querySelector("select[name='filter']");
+    
+    fliterSelect.addEventListener()("change", function(e){
+        let selectValue = e.target.value;
+        console.log(selectValue);
+        let restaurantList = document.querySelector(".restaurant-list"); 
+
+        if(selectValue === "가나다순"){
+            let sortedRestaurants = Array.from(restaurantList).sort(function(a,b){
+                let nameA = a.querySelector(".name").textContent;
+                let nameB = b.querySelector(".name").textContent;
+                return nameA.localeCompare(nameB, "ko-KR");   
+            })
+        }
+    });
+})
