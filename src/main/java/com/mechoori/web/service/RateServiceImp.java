@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mechoori.web.entity.Menu;
+import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Rate;
+import com.mechoori.web.repository.MenuRepository;
 import com.mechoori.web.repository.MenuRepository;
 import com.mechoori.web.repository.RateRepository;
 
@@ -15,6 +17,10 @@ public class RateServiceImp implements RateService{
     private RateRepository repository;
     @Autowired
     private MenuRepository menuRepository;
+
+    @Autowired
+    private MenuRepository menuRepository;
+
 
     @Override
     public void add(Rate rate, int userId) {
@@ -38,5 +44,4 @@ public class RateServiceImp implements RateService{
         menu.setCumulativeRatedPrice(result);
         menuRepository.update(menu);
     }
-    
 }

@@ -88,7 +88,7 @@
         </div>
         <div>
           <span th:text="${menu.price + '원'}">가격</span>
-          <span th:text="${'('+r.value+'%)'}" class="menu-detail-rp">가성비</span>
+          <span th:text="${'('+((menu.cumulativeRatedPrice/menu.price)/2)*100+'%)'}" class="menu-detail-rp">가성비</span>
         </div>
       </div>
 
@@ -103,9 +103,8 @@
         </ul>
       </div> -->
 
-      <div class="button button-6">
+      <div class="button-6">
         <input id="check-btn" type="checkbox">
-        <!-- FIXME 104번줄 class명 수정했는데 버튼 클릭했을 때 아래 컨텐츠들이 밀려나지 않고 텍스트만 나타남.. 죄송합니다... -->
         <label for="check-btn">메뉴 더보기</label>
         <span class="togle">▼</span>
         <ul class="menubars" th:each="menu, iterStat : ${menuList}" th:if="${iterStat.index} &gt;= 4">
@@ -114,7 +113,7 @@
             <span>…………</span>
             <div>
               <span th:text="${menu.price}+'원'">가격</span>
-              <span th:text="${r.value}" class="menu-detail-rp">가성비</span>
+              <span th:text="${'('+((menu.cumulativeRatedPrice/menu.price)/2)*100+'%)'}" class="menu-detail-rp">가성비</span>
             </div>
           </div>
         </ul>

@@ -9,8 +9,10 @@
         where restaurant_id = #{restaurantId};
 	</select>
 	<select id="findById" resultType="Menu">
+	<select id="findById" resultType="Menu">
 		select *
 		from menu
+		where id = #{menuId}
 		where id = #{menuId}
 	</select>
 	<update id="update" parameterType="Menu">
