@@ -1,9 +1,6 @@
 package com.mechoori.web.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 public class Menu {
@@ -12,5 +9,5 @@ public class Menu {
     private Integer adminId;
     private String name;
     private Integer price;
-    private Integer cumulativeRatedPrice;
+    private Integer ratedPrice;
 }
