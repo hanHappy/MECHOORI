@@ -97,7 +97,6 @@ public class RestaurantController {
 					@AuthenticationPrincipal MechooriUserDetails user){
 		rateService.add(rate, user.getId());
 		// FIXME index -> rate-result로 수정해야 함
-		rateService.add(rate, user.getId());
 		return "redirect:/index";
 	}
 
