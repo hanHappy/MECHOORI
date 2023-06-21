@@ -20,6 +20,6 @@ public interface RestaurantService {
 	List<RestaurantCardView> getRestaurantCardListByQuery(Integer categoryId, String query);
 
 
-	List<Restaurant> getRanking();
+	List<RestaurantCardView> getRanking(Integer categoryId);
 
 }

@@ -18,6 +18,6 @@ public interface RestaurantRepository {
     List<RestaurantCardView> findAllRestaurantCard();
     List<RestaurantCardView> findAllRestaurantCard(Integer categoryId, String query);
 
-    List<Restaurant> getRanking();
+    List<RestaurantCardView> getRanking(Integer categoryId);
 
 }
