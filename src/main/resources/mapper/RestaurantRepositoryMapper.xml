@@ -31,4 +31,9 @@
 			</if>
 		</trim>
 	</select>
+	<select id="getRanking" resultType="Menu">
+		SELECT *
+		FROM menu
+		ORDER BY cumulative_rated_price DESC;
+	</select>
 </mapper>

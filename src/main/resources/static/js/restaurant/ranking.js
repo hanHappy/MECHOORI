@@ -8,10 +8,6 @@ function restaurantListLoad(url) {
         .then(response => response.json())
         .then(list => {
 
-            if(list === 한식)
-
-
-
             // 방 비우기
             rankingList.innerHTML = "";
             console.log("click");

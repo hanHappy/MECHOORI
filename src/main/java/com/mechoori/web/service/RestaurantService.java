@@ -18,5 +18,8 @@ public interface RestaurantService {
 	List<RestaurantCardView> getRestaurantCardList();
 	List<RestaurantCardView> getRestaurantCardListByCtgId(Integer categoryId, String query);
 	List<RestaurantCardView> getRestaurantCardListByQuery(Integer categoryId, String query);
-	
+
+
+	List<Restaurant> getRanking();
+
 }

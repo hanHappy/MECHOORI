@@ -83,9 +83,14 @@ public class RestaurantServiceImp implements RestaurantService {
 		return restaurant;
 	}
 
-
+	@Override
+	public List<Restaurant> getRanking() {
+		return repository.getRanking();
+	}
 
 }
+
+
 
 // TODO : 예외처리 생각합시다
 // @Override

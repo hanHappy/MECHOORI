@@ -2,6 +2,7 @@ package com.mechoori.web.api.controller;
 
 import java.util.List;
 
+import com.mechoori.web.entity.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,4 +38,18 @@ public class RestaurantController {
 
 		return list;
 	}
+
+
+//	@GetMapping("/ranking")
+//	public List<Menu> list(
+//			@RequestParam(name ="ctg.id", required = false) String
+//			) {
+
+
+
+//		return list;
+//	}
+
+//}
+
 }

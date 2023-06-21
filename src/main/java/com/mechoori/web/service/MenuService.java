@@ -10,7 +10,6 @@ public interface MenuService {
 
     Menu getDetail(int menuId);
 
-    List<Menu> getRanking();
 
 
 

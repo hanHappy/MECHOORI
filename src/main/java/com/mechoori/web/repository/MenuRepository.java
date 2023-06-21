@@ -17,7 +17,6 @@ public interface MenuRepository {
 
     void update(Menu menu);
 
-    List<Menu> getRanking();
 
 
 }
