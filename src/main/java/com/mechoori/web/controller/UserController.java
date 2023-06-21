@@ -4,6 +4,7 @@ import com.mechoori.web.entity.Member;
 import com.mechoori.web.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -70,8 +71,9 @@ public class UserController {
     public String statistics() {
         return "user/my-page/statistics";
     }
+
     @GetMapping("my-page/rate-list")
-    public String rateList() {
+    public String rateList(Model model, User user) {
         return "user/my-page/rate-list";
     }
 

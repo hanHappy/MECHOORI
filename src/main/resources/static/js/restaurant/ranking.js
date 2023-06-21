@@ -40,7 +40,6 @@ dropbox.onchange = function (e) {
     let selectedIndex = dropbox.selectedIndex;
     let selectedOption = dropbox.options[selectedIndex];
     let value = selectedOption.dataset.id;
-
     console.log(value);
 
         let url = `http://localhost:8080/api/restaurant/ranking?ctgId=${value}`;
