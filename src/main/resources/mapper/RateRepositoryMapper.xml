@@ -9,5 +9,4 @@
         rate(user_id, menu_id, price, review)
 		values(#{userId}, #{menuId}, #{price}, #{review})
 	</insert>
-
 </mapper>
