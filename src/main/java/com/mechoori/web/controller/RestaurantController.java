@@ -92,14 +92,9 @@ public class RestaurantController {
 	}
 
 	@PostMapping("{id}/rate")
-<<<<<<< HEAD
-	public String rate(Rate rate, @AuthenticationPrincipal MechooriUserDetails user){
-		System.out.println(rate);
-=======
 	public String rate(
 					Rate rate, 
 					@AuthenticationPrincipal MechooriUserDetails user){
->>>>>>> 832f05406ce47f99864688f1bf69134aa554562e
 		rateService.add(rate, user.getId());
 		// FIXME index -> rate-result로 수정해야 함
 		rateService.add(rate, user.getId());
