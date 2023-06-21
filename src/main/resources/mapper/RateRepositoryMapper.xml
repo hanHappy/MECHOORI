@@ -3,20 +3,10 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mechoori.web.repository.RateRepository">
-<<<<<<< HEAD
-   
-   <insert id="add" parameterType="Rate">
-      insert into 
-        rate(user_id, menu_id, price, review)
-      values(#{userId}, #{menuId}, #{price}, #{review})
-   </insert>
-
-=======
 	
 	<insert id="add" parameterType="Rate">
 		insert into 
         rate(user_id, menu_id, price, review)
 		values(#{userId}, #{menuId}, #{price}, #{review})
 	</insert>
->>>>>>> 832f05406ce47f99864688f1bf69134aa554562e
 </mapper>
