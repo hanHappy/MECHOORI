@@ -1,15 +1,45 @@
-let header = document.querySelector('header');
-let logo = header.querySelector('.logo');
-let headerSide = header.querySelectorAll('.header-side');
-let searchContainer = header.querySelector('.search-container');
-let topCategorySection = header.querySelector('.top-category-section');
-let otherCategorySection = header.querySelector('.other-category-section');
-let otherCategories = otherCategorySection.querySelector('.others');
-let tagArea = otherCategorySection.querySelector('.category.others');
-let likeBtns = this.document.querySelectorAll('.like');
+const header = document.querySelector('header');
+const logo = header.querySelector('.logo');
+const headerSide = header.querySelectorAll('.header-side');
+const searchContainer = header.querySelector('.search-container');
+const topCategorySection = header.querySelector('.top-category-section');
+const otherCategorySection = header.querySelector('.other-category-section');
+const otherCategories = otherCategorySection.querySelector('.others');
+const tagArea = otherCategorySection.querySelector('.category.others');
+const likeBtns = this.document.querySelectorAll('.like');
+const searchBar = header.querySelector('#search-bar');
+const searchBtn = header.querySelector('.search-btn');
 
+// index 검색어
+let searchParam = new URLSearchParams(window.location.search);
+const query = searchParam.get('q');
 
-//카테고리 클릭 시 api 요청
+// 검색바 보이기()
+function showSearchBar(){
+    headerSide[0].style.display = 'none';
+    headerSide[1].style.display = 'none';
+    logo.style.display = 'none';
+    searchContainer.classList.remove('d-none');
+}
+
+// Header 돋보기 버튼 클릭 -> 검색바 나타나기
+header.onclick = function(e){
+    let isSearchBtn = e.target.className.includes('search');
+    if(!isSearchBtn)
+        return;
+    showSearchBar();
+}
+// index에서 검색으로 넘어왔다면 검색바+키워드 보여주기
+if(query != null){
+    // 검색바에 검색 키워드 남겨놓기
+    searchBar.value = query;
+    // URLSearchParams 인스턴스 초기화 안 해주면 
+    // index 페이지든 list 페이지든 검색바랑 키워드 계속 떠있음
+    // => 검색바에 키워드 남아있지 않도록 초기화
+    searchParam = null;
+    showSearchBar();
+}
+
 function restaurantListLoad(url){
     let restaurantListSection = document.querySelector(".restaurant-list-section");
     let restaurantList = restaurantListSection.querySelector(".restaurant-list");
@@ -75,38 +105,41 @@ function restaurantListLoad(url){
           });
  }
 
-// Header 돋보기 버튼 클릭 -> input 나타나게
-header.onclick = function(e){
-    if(!e.target.className.includes('search')){
-        return;
-    }
-    headerSide[0].style.display = 'none';
-    headerSide[1].style.display = 'none';
-    logo.style.display = 'none';
-    searchContainer.classList.remove('d-none');
+
+// 검색어 입력 시 RESTful API 요청
+function getListByQuery(e) {
+    e.preventDefault();
+    let url = `/api/restaurant/list?q=${searchBar.value}`;
+    restaurantListLoad(url);
 }
+searchBar.onchange = getListByQuery;
+searchBtn.onclick = getListByQuery;
 
 // Top Category 영역
+// Top Category 클릭 시 RESTful API 요청
 topCategorySection.onclick = function(e){
+    searchBar.value = "";
     e.preventDefault();
     if(e.target.tagName !== 'A')
         return;
     //========== 추가
     if(e.target.innerText == '전체') {
-        let url = 'http://localhost:8080/api/restaurant/list';
+        let url = '/api/restaurant/list';
         restaurantListLoad(url);
         otherCategorySection.classList.remove('slide-open');
     } else if(e.target.innerText == '기타')
         otherCategorySection.classList.add('slide-open');
     else {
-        let url = `http://localhost:8080/api/restaurant/list?c=${e.target.dataset.id}`;
+        let url = `/api/restaurant/list?c=${e.target.dataset.id}`;
         restaurantListLoad(url);
         otherCategorySection.classList.remove('slide-open');
     }
 };
 
-// 기타 태그 영역
+// 기타 카테고리(태그) 영역
+// 기타 카테고리 클릭 시 RESTful API 요청
 tagArea.onclick = function (e) {
+    searchBar.value = "";
     e.preventDefault();
     if(e.target.tagName !== 'BUTTON')
         return;
@@ -119,15 +152,16 @@ tagArea.onclick = function (e) {
 
     //========== 추가
     if (e.target.innerText == '#전체') {
-        let url = `http://localhost:8080/api/restaurant/list?c=6`;
+        let url = `/api/restaurant/list?c=6`;
         restaurantListLoad(url);
     } else {
-        let url = `http://localhost:8080/api/restaurant/list?c=${e.target.dataset.id}`;
+        let url = `/api/restaurant/list?c=${e.target.dataset.id}`;
         restaurantListLoad(url);
     }
 };
 
 // 좋아요 버튼
+// FIXME 좋아요 버튼 Rland처럼 수정해야 함
 let likeControl = function (e) {
     let isLiked = e.target.classList.contains("active");
     if (isLiked)

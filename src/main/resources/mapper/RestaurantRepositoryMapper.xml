@@ -20,15 +20,17 @@
 	</select>
 
 	<select id="findAllRestaurantCard" resultType="RestaurantCardView">
-		select *
+		select distinct restaurant_card.*
 		from restaurant_card
+		left join menu on restaurant_card.id = menu.restaurant_id
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<if test="categoryId != null">
 				category_id = #{categoryId}
 			</if>
 			<if test="query != null">
-				name like '%${query}%'
+				restaurant_card.name like '%${query}%' or menu.name like '%${query}%'
 			</if>
 		</trim>
 	</select>
+	
 </mapper>
