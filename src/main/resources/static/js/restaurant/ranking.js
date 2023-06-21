@@ -7,7 +7,10 @@ function restaurantListLoad(url) {
     fetch(url)
         .then(response => response.json())
         .then(list => {
-            //.then(menu=>menu.name);
+
+            if(list === 한식)
+
+
 
             // 방 비우기
             rankingList.innerHTML = "";
@@ -34,19 +37,24 @@ function restaurantListLoad(url) {
         });
 }
 
-let dropbox = document.querySelector(".category")
 
-dropbox.onchange =(e)=>{
+    let dropbox = document.getElementById("categoryDropBox")
+    dropbox.onchange = function (e){
 
-    e.preventDefault()
+        e.preventDefault()
 
-    let categoryValue = e.target.value;
-    let url = `/api/ranking?category=${categoryValue}`;
-    console.log(url);
+        // let categoryValue = e.target.value;
+        console.log("click");
 
-    console.log("click");
-    // 랭킹 목록 로드
-    restaurantListLoad(url);
 
-}
+
+
+        // 랭킹 목록 로드
+        restaurantListLoad(url);
+
+        if(e.target.innerText ==="한식")
+        let url = 'http://localhost:8080/api/restaurant/ranking?ctgId=${e.target.dataset.ctgId}';
+
+    }
+
 

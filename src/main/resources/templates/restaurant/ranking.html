@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/css/common/style.css">
   <link rel="stylesheet" href="/css/common/header.css">
   <link rel="stylesheet" href="/css/common/button.css">
+  <script src="/js/restaurant/ranking.js" defer="defer"></script>
 
 </head>
 <body>
@@ -27,10 +28,11 @@
 
       <section class = "mainTop">
         <div class = "name">가성비 식당 랭킹</div>
-        <select class = "category" name="category" required>
+        <select class = "category" name="category" id="categoryDropBox"required >
           <option value="카테고리 선택" disabled selected>카테고리 선택</option>
 
-          <option value = "0"
+          <option
+            th:data-category-id="${ctg.id}"
             th:each="ctg:${ctg}"
             th:text="${ctg.name}"
           >전체</option> <!-- 전체랭킹을 보여 주는 식으로 운영 해야 될 것 같ㄷ다-->
