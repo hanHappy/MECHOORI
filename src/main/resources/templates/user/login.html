@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/css/user/login.css" />
   <link rel="stylesheet" href="/css/common/style.css"/>
   <link rel="stylesheet" href="/css/common/header.css">
+  <link rel="stylesheet" href="/css/common/button.css">
   <script src="/js/user/login.js" defer="defer"></script>
 </head>
 
@@ -19,7 +20,8 @@
     </div>
     <h1 class="header-icon logo"></h1>
     <div class="header-side right">
-      <a><button class="header-icon cancle"></button></a>
+      <!-- 6/21(Han) : anchor 링크 추가 -->
+      <a onclick="history.back()"><button class="header-icon cancle"></button></a>
     </div>
   </header>
 
@@ -38,16 +40,15 @@
     </div>
 
     <div class="input-container">
-      <!-- FIXME 텍스트 색상 -> #fff -->
-      <button class="submitbtn">
-        <input type="hidden" name="returnURL" th:value="${param.returnURL}">
-        <a href="">로그인 </a>
+      <a href=""></a>
+      <button class="button button-1">
+        로그인
       </button>
+    </a>
     </div>
     </form>
 
     <div class="idAndPwd">
-      <!-- FIXME 버튼 스타일 지우기 -->
       <button class="findId" id="popupBtn">계정 찾기</button>
 
       <a href="sign-up/policy">
