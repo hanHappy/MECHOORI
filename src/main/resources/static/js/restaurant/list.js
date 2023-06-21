@@ -115,9 +115,11 @@ tagArea.onclick = function (e) {
         activeTag.classList.remove('active');
     e.target.classList.add('active');
 
+    
+
     //========== 추가
     if (e.target.innerText == '#전체') {
-        let url = 'http://localhost:8080/api/restaurant/list?c=6';
+        let url = `http://localhost:8080/api/restaurant/list?c=6`;
         restaurantListLoad(url);
     } else {
         let url = `http://localhost:8080/api/restaurant/list?c=${e.target.dataset.id}`;

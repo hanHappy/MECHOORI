@@ -8,9 +8,14 @@
         from menu
         where restaurant_id = #{restaurantId};
 	</select>
-	<select id="findById" resultType="Restaurant">
+	<select id="findById" resultType="Menu">
 		select *
 		from menu
-		where id = #{restaurantId}
+		where id = #{menuId}
 	</select>
+	<update id="update" parameterType="Menu">
+		UPDATE menu
+		SET cumulative_rated_price = #{cumulativeRatedPrice}
+  		WHERE id = #{id}
+	</update>
 </mapper>
