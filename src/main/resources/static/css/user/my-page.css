@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-@import url('/css/style.css');
+@import url('/css/common/style.css');
 
-body{
+/* body{
     width: 375px;
     margin: 0 auto;
     padding: 0;
     font-family: var(--font);
     list-style: none;
-}
+} */
 
-a{
+/* a{
     text-decoration: none;
-}
+} */
 
 /* 회원정보수정 목록들 텍스트*/
 .main li{
@@ -21,7 +21,7 @@ a{
     text-align: center;
 }
 
-.header {
+/* .header {
     height: 145px;
     display: grid; 
     align-items: center;
@@ -29,16 +29,16 @@ a{
     background-color: var(--main-color);
     justify-items: center; 
     
-}
+} */
 /* 메추리 로고 */
-.logo{
+/* .logo{
     /* background-image: url("/picture/메추리.png"); */
     background-repeat: no-repeat;
     grid-template-columns: 2;
     margin-top: 15px;
     margin-left: 25px;
     padding : 0;
-}
+} */
 
 .logo > h1{
     text-align: center;
@@ -64,20 +64,21 @@ a{
     background-repeat: no-repeat;
     overflow: hidden;
     margin: -40px 0 0 135px;
-    border-radius: 50%;
-    /* text-align: center; */
+    border-radius: 50%; 
+    text-align: center;
     background-color: #fff;
     box-shadow: var(--btn-shadow);
-} 
+}
 
 .profile-circle img{
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
     padding : 6px 0px 0px 0px;
     top:0;
     left:0;
     object-fit: cover;
+    z-index: -1;
 }
 
 .profile-circle li{

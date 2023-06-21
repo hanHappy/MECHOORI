@@ -57,6 +57,11 @@ public class UserController {
         return "redirect:complete";
     }
 
+    @GetMapping("my-page")
+    public String myPage(){
+        return "user/my-page";
+    }
+
     @GetMapping("my-page/edit-info/phone")
     public String editPhone() {
         return "user/my-page/edit-info/phone";
