@@ -71,7 +71,7 @@ public class RestaurantController {
 
 		List<Menu> menuList = menuService.getList(restaurantId);
 		RestaurantDetail restaurant = restaurantService.getRestaurantDetailById(restaurantId);
-		
+
 
 		model.addAttribute("menuList", menuList);
 		model.addAttribute("r", restaurant);
@@ -117,6 +117,21 @@ public class RestaurantController {
 
 
 		return "/restaurant/ranking";
+	}
+
+	@GetMapping("/mapPage/{id}")
+	public String map(
+			@PathVariable("id") int restaurantId,
+			Model model) {
+
+		Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+		RestaurantDetail res = restaurantService.getRestaurantDetailById(restaurantId);
+
+		model.addAttribute("list",restaurant);
+		model.addAttribute("r",res);
+
+
+		return "/mapPage";
 	}
 
 

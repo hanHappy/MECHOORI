@@ -59,7 +59,7 @@ public class RestaurantServiceImp implements RestaurantService {
 		
 		for(Menu menu : menuList){
 			avgPrice = (((avgPrice + menu.getPrice())/2)/100) * 100;
-			avgRatedPrice = (((avgRatedPrice + menu.getCumulativeRatedPrice())/2)/100) * 100;
+			avgRatedPrice = (((avgRatedPrice + menu.getRatedPrice())/2)/100) * 100;
 		}
 		
 		int value = (int)(((double)avgRatedPrice/avgPrice) * 100);

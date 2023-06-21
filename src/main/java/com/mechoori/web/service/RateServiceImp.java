@@ -32,11 +32,11 @@ public class RateServiceImp implements RateService{
 
         // 메뉴 테이블의 누적 평가 가격
         Menu menu = menuRepository.findById(rate.getMenuId());
-        int cumulativeRatedPrice = menu.getCumulativeRatedPrice();
+        int cumulativeRatedPrice = menu.getRatedPrice();
         
         int result = (ratePrice + cumulativeRatedPrice)/2;
 
-        menu.setCumulativeRatedPrice(result);
+        menu.setRatedPrice(result);
         menuRepository.update(menu);
     }
 }

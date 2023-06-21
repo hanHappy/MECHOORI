@@ -73,7 +73,7 @@ public class UserController {
     }
 
     @GetMapping("my-page/rate-list")
-    public String rateList(Model model, User user) {
+    public String rateList(Model model  ) {
         return "user/my-page/rate-list";
     }
 
