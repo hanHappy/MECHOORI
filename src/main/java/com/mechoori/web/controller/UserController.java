@@ -57,24 +57,49 @@ public class UserController {
         return "redirect:complete";
     }
 
+    //내 정보
     @GetMapping("my-page")
     public String myPage(){
         return "user/my-page";
     }
 
+    //내 정보 변경
+    @GetMapping("my-page/edit-info")
+    public String editInfo(){
+        return "user/my-page/edit-info";
+    }
+
+    //내 휴대폰 번호 변경
     @GetMapping("my-page/edit-info/phone")
     public String editPhone() {
         return "user/my-page/edit-info/phone";
     }
-
+    //내 이메일 주소 변경
     @GetMapping("my-page/edit-info/email")
     public String editEmail() {
         return "user/my-page/edit-info/email";
     }
 
+    //회원탈퇴
     @GetMapping("my-page/edit-info/withdraw")
     public String withdraw() {
         return "user/my-page/edit-info/withdraw";
+    }  
+    // 회원탈퇴 완료 페이지
+    @GetMapping("my-page/edit-info/withdraw-complete")
+    public String withdrawComplete() {
+        return "user/my-page/edit-info/withdraw-complete";
     }
 
+    //찜한목록
+    @GetMapping("my-page/like-list")
+    public String likeList(){
+        return "user/my-page/like-list";
+    }
+
+    //평가목록
+    @GetMapping("my-page/rate-list")
+    public String rateList(){
+        return "user/my-page/rate-list";
+    }
 }
