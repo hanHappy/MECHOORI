@@ -1,8 +1,6 @@
 package com.mechoori.web.repository;
 
 import java.util.List;
-
-import com.mechoori.web.entity.Restaurant;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.mechoori.web.entity.Member;
@@ -16,7 +14,4 @@ public interface MenuRepository {
     Menu findById(int menuId);
 
     void update(Menu menu);
-
-
-
 }

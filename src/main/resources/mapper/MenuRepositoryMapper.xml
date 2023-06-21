@@ -19,6 +19,4 @@
 		set cumulative_rated_price = #{cumulativeRatedPrice}
 		where id = #{id}
 	</update>
-
-
 </mapper>
