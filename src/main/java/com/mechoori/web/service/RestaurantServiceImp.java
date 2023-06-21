@@ -64,6 +64,7 @@ public class RestaurantServiceImp implements RestaurantService {
 		
 		int value = (int)(((double)avgRatedPrice/avgPrice) * 100);
 		
+		
 		Restaurant temp = getDetailById(restaurantId);
 		RestaurantDetail restaurant = new RestaurantDetail();
 		// TODO 줄여쓸 수 있는 방법 알아보자

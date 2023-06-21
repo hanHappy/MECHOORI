@@ -4,12 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.RestaurantCardView;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantService;
@@ -33,11 +31,10 @@ public class RestaurantController {
 		if(query==null&&ctgId==null)
 			list = rstrService.getRestaurantCardList();
 		else if (query != null)
-			list = rstrService.getRestaurantCardListByQuery(query);
+			list = rstrService.getRestaurantCardListByQuery(ctgId, query);
 		else if (ctgId != null)
-			list = rstrService.getRestaurantCardListByCtgId(ctgId);
+			list = rstrService.getRestaurantCardListByCtgId(ctgId, query);
 
 		return list;
 	}
-
 }
