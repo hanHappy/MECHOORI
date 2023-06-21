@@ -8,5 +8,4 @@ import com.mechoori.web.entity.Rate;
 public interface RateRepository {
 
     void add(Rate rate);
-
 }
