@@ -20,7 +20,7 @@ public class RateServiceImp implements RateService{
 
 
     @Override
-    public void add(Rate rate, int userId) {
+    public void rate(Rate rate, int userId) {
         rate.setId(null);
         rate.setUserId(userId);
         repository.add(rate);
