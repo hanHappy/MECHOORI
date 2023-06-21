@@ -9,70 +9,71 @@ let tagArea = otherCategorySection.querySelector('.category.others');
 let likeBtns = this.document.querySelectorAll('.like');
 
 
-// 카테고리 클릭 시 api 요청
+//카테고리 클릭 시 api 요청
 function restaurantListLoad(url){
-	let restaurantListSection = document.querySelector(".restaurant-list-section");
-	let restaurantList = restaurantListSection.querySelector(".restaurant-list");
-	
-	fetch(url)
-			.then(response => response.json())
-			.then(list => {
-				// 방 비우기
-				restaurantList.innerHTML = "";
-
-				// 아이템 채우기
-				for (let r of list) {
-					let itemTemplate =
-						`<section class="restaurant-1">
-                        <div class="content">
-                            <!-- 이미지 -->
-                            <div class="image-box">
-                                <img src="/images/foods/${r.img}" alt="이미지"
-                                    class="image">
-                                <!-- 하트 -->
-                                <button class="like">좋아요</button>
-                                <div class="data-box">
-                                    <p>
-                                        <span>좋아요 이미지</span>
-                                        <span>${r.likedCount}</span>
-                                        <span>평가 이미지</span>
-                                        <span>${r.ratedCount}</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- 정보 -->
-                            <div class="info-box">
-                                <div class="name-wrapper">
-                                    <span class="name">${r.name}</span>
-                                </div>
-                                <div class="info">
-                                    <p>
-                                        평균가격
-                                        <span>${r.avgPrice}</span>
-                                        <span class="value subject">· 가성비</span>
-                                        <span class="value">${r.value}%</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- 버튼 -->
-                            <div class="btn-box">
-                                <div>
-                                    <a href="/restaurant/${r.id}">
-                                        <button class="button button-12">상세보기</button></a>
-                                </div>
-                                <div>
-                                    <a href="/restaurant/${r.id}/rate">
-                                        <button class="button button-12">평가하기</button></a>
-                                </div>
-                            </div>
-                        </div>
-                    </section>`;
-
-					restaurantList.insertAdjacentHTML("beforeend", itemTemplate);
-				}
-			});
-}
-
+    let restaurantListSection = document.querySelector(".restaurant-list-section");
+    let restaurantList = restaurantListSection.querySelector(".restaurant-list");
+    
+    fetch(url)
+          .then(response => response.json())
+          .then(list => {
+             //.then(menu=>menu.name);
+ 
+             // 방 비우기
+             restaurantList.innerHTML = "";
+ 
+            //  // 아이템 채우기
+             for (let r of list) {
+                let itemTemplate =
+                   `<section class="restaurant-1">
+                   <div class="content">
+                       <!-- 이미지 -->
+                       <div class="image-box">
+                           <img src="/images/foods/${r.img}"  alt="이미지"
+                               class="image">
+                           <!-- 하트 -->
+                           <button class="like">좋아요</button>
+                           <div class="data-box">
+                               <p>
+                                   <span>좋아요 이미지</span>
+                                   <span>${r.likedCount}</span>
+                                   <span>평가 이미지</span>
+                                   <span>${r.ratedCount}</span>
+                               </p>
+                           </div>
+                       </div>
+                       <!-- 정보 -->
+                       <div class="info-box">
+                           <div class="name-wrapper">
+                               <span class="name">${r.name}</span>
+                           </div>
+                           <div class="info">
+                               <p>
+                                   평균가격
+                                   <span>${r.avgPrice}</span>
+                                   <span class="value subject">· 가성비</span>
+                                   <span class="value">${r.value}%</span>
+                               </p>
+                           </div>
+                       </div>
+                       <!-- 버튼 -->
+                       <div class="btn-box">
+                           <div>
+                               <a href="/restaurant/${r.id}">
+                                   <button class="button button-12">상세보기</button></a>
+                           </div>
+                           <div>
+                               <a href="/restaurant/${r.id}/rate">
+                                   <button class="button button-12">평가하기</button></a>
+                           </div>
+                       </div>
+                   </div>
+               </section>`;
+ 
+                restaurantList.insertAdjacentHTML("beforeend", itemTemplate);
+             }
+          });
+ }
 
 // Header 돋보기 버튼 클릭 -> input 나타나게
 header.onclick = function(e){
@@ -90,15 +91,18 @@ topCategorySection.onclick = function(e){
     e.preventDefault();
     if(e.target.tagName !== 'A')
         return;
-        
-    if(e.target.innerText == '기타')
-        otherCategorySection.classList.add('slide-open');
-    else{
+    //========== 추가
+    if(e.target.innerText == '전체') {
+        let url = 'http://localhost:8080/api/restaurant/list';
+        restaurantListLoad(url);
         otherCategorySection.classList.remove('slide-open');
+    } else if(e.target.innerText == '기타')
+        otherCategorySection.classList.add('slide-open');
+    else {
         let url = `http://localhost:8080/api/restaurant/list?c=${e.target.dataset.id}`;
         restaurantListLoad(url);
+        otherCategorySection.classList.remove('slide-open');
     }
-    
 };
 
 // 기타 태그 영역
@@ -110,6 +114,17 @@ tagArea.onclick = function (e) {
     if (activeTag != null)
         activeTag.classList.remove('active');
     e.target.classList.add('active');
+
+    
+
+    //========== 추가
+    if (e.target.innerText == '#전체') {
+        let url = `http://localhost:8080/api/restaurant/list?c=6`;
+        restaurantListLoad(url);
+    } else {
+        let url = `http://localhost:8080/api/restaurant/list?c=${e.target.dataset.id}`;
+        restaurantListLoad(url);
+    }
 };
 
 // 좋아요 버튼
@@ -122,4 +137,3 @@ let likeControl = function (e) {
 }
 for (let btn of likeBtns)
     btn.onclick = likeControl;
-

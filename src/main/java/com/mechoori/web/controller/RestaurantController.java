@@ -22,6 +22,7 @@ import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
+import com.mechoori.web.service.RateService;
 import com.mechoori.web.service.RestaurantService;
 
 @Controller
@@ -34,6 +35,8 @@ public class RestaurantController {
 	private MenuService menuService;
 	@Autowired
 	private CategoryService categoryService;
+	@Autowired
+	private RateService rateService;
 
 	@GetMapping("/list")
 	public String list(
@@ -50,13 +53,13 @@ public class RestaurantController {
 		if(query==null&&ctgId==null)
 			list = restaurantService.getRestaurantCardList();
 		else if (query != null)
-			list = restaurantService.getRestaurantCardListByQuery(query);
+			list = restaurantService.getRestaurantCardListByQuery(ctgId, query);
 		else if (ctgId != null)
-			list = restaurantService.getRestaurantCardListByCtgId(ctgId);
+			list = restaurantService.getRestaurantCardListByCtgId(ctgId, query);
 
 		model.addAttribute("list", list)
-			.addAttribute("mainCtgList", mainCtgList)
-			.addAttribute("otherCtgList", otherCtgList);
+			 .addAttribute("mainCtgList", mainCtgList)
+			 .addAttribute("otherCtgList", otherCtgList);
 
 		return "restaurant/list";
 	}
@@ -89,10 +92,17 @@ public class RestaurantController {
 	}
 
 	@PostMapping("{id}/rate")
+<<<<<<< HEAD
 	public String rate(Rate rate, @AuthenticationPrincipal MechooriUserDetails user){
 		System.out.println(rate);
+=======
+	public String rate(
+					Rate rate, 
+					@AuthenticationPrincipal MechooriUserDetails user){
+>>>>>>> 832f05406ce47f99864688f1bf69134aa554562e
 		rateService.add(rate, user.getId());
 		// FIXME index -> rate-result로 수정해야 함
+		rateService.add(rate, user.getId());
 		return "redirect:/index";
 	}
 
