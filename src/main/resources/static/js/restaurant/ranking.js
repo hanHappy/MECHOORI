@@ -1,56 +1,48 @@
 function restaurantListLoad(url) {
-    let rankingSection = document.querySelector(".ranking-list-sections");
-    let rankingList = rankingSection.querySelector(".ranking-list");
-
-
+    let rankingList = document.querySelector(".ranking-list-sections");
 
     fetch(url)
         .then(response => response.json())
         .then(list => {
-
             // 방 비우기
             rankingList.innerHTML = "";
-            console.log("click");
-            //  // 아이템 채우기
+            // 아이템 채우기
+            console.log(list);
+
             for (let l of list) {
                 let itemTemplate =
-                `<section class= "ranking-list-sections">
-             <div>
-                <div class = "position"></div>
-                 <div class="sec">
-            <p>1</p>
-            <div class = "img1 img"></div>
-            <p>${l.name}</p> <br>
-            <p>${l.price}</p>
-            <span style="color: blue;"> <p>${l.cumulativeRatedPrice}</p></span>
-                <p> 133%</p>
+                    `
+          <div>
+            <div class = "position"></div>
+              <div class="ranking-list">
+                <p>1</p>
+                <div class = "img1 img"></div>
+                <span>${l.name}</span><span>${l.avgPrice}</span><span style="color: blue;"> ${l.avgRatedPrice}</span>
+                <p>${l.value}</p>
             </div>
-              </div>
-            </section>`;
+          </div>`;
+
+
 
                 rankingList.insertAdjacentHTML("beforeend", itemTemplate);
             }
+        })
+        .catch(error => {
+            console.log("Error fetching data:", error);
+
         });
 }
 
+let dropbox = document.getElementById("categoryDropBox");
+dropbox.onchange = function (e) {
+    e.preventDefault();
 
-    let dropbox = document.getElementById("categoryDropBox")
-    dropbox.onchange = function (e){
+    let selectedIndex = dropbox.selectedIndex;
+    let selectedOption = dropbox.options[selectedIndex];
+    let value = selectedOption.dataset.id;
 
-        e.preventDefault()
+    console.log(value);
 
-        // let categoryValue = e.target.value;
-        console.log("click");
-
-
-
-
-        // 랭킹 목록 로드
+        let url = `http://localhost:8080/api/restaurant/ranking?ctgId=${value}`;
         restaurantListLoad(url);
-
-        if(e.target.innerText ==="한식")
-        let url = 'http://localhost:8080/api/restaurant/ranking?ctgId=${e.target.dataset.ctgId}';
-
-    }
-
-
+}

@@ -102,11 +102,14 @@ public class RestaurantController {
 	}
 
 	@GetMapping("/ranking")
-	public String ranking(Model model) {
+	public String ranking(Model model, String category) {
 
-		List<Restaurant> list = restaurantService.getRanking();
+
+//		List<Restaurant> list = restaurantService.getRanking(category);
 
 		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
+
+		List<RestaurantCardView> list = restaurantService.getRestaurantCardList();
 
 
 		model.addAttribute("list",list);

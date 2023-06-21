@@ -16,7 +16,7 @@ public class RestaurantCardView {
     private String img;
     private Integer likedCount;
     private Integer ratedCount;
-    private Integer avgPrice;
     private Integer avgRatedPrice;
+    private Integer avgPrice;
     private Integer value;
 }

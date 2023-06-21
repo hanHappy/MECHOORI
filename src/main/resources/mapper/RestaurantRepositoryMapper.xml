@@ -31,9 +31,10 @@
 			</if>
 		</trim>
 	</select>
-	<select id="getRanking" resultType="Menu">
+	<select id="getRanking" resultType="RestaurantCardView">
 		SELECT *
-		FROM menu
-		ORDER BY cumulative_rated_price DESC;
+		from restaurant_card
+		where category_id = ${categoryId}
+		ORDER BY avg_rated_price DESC;
 	</select>
 </mapper>

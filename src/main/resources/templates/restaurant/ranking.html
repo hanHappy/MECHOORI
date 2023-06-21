@@ -29,9 +29,8 @@
         <div class = "name">가성비 식당 랭킹</div>
         <select class = "category" name="category" id="categoryDropBox"required >
           <option value="카테고리 선택" disabled selected>카테고리 선택</option>
-
           <option
-            th:data-category-id="${ctg.id}"
+            th:data-id="${ctg.id}"
             th:each="ctg:${ctg}"
             th:text="${ctg.name}"
           >전체</option> <!-- 전체랭킹을 보여 주는 식으로 운영 해야 될 것 같ㄷ다-->
@@ -56,10 +55,9 @@
               <div class="ranking-list">
                 <p>1</p>
                 <div class = "img1 img"></div>
-                <p th:text="${list.name}">짜장상회</p> <br>
-                <p th:text="${list.price}"></p>
-                <span style="color: blue;"> <p th:text="${list.cumulativeRatedPrice}"></p></span>
-                <p> 133%</p>
+                <span th:text="${list.name}">짜장상회</span><span th:text="${list.avgPrice}"></span><span style="color: blue;" th:text="${list.avgRatedPrice}"></span>
+                <p th:text="${list.value}"> 133%</p>
+
             </div>
           </div>
         </section>
