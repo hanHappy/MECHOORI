@@ -22,11 +22,7 @@ main{
     max-width: 1200px;
 }
 .d-none{
-    display: none !important;
-}
-.text-hidden {
-    text-indent: -999px; 
-    overflow: hidden;
+    display: none;
 }
 
 :root {

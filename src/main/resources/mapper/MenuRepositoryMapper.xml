@@ -20,4 +20,11 @@
 	set cumulative_rated_price = #{cumulativeRatedPrice}
 	where id = #{id}
 	</update>
+	<select id="getRanking" resultType="Menu">
+		SELECT *
+		FROM menu
+		ORDER BY cumulative_rated_price DESC;
+	</select>
+
+
 </mapper>

@@ -56,6 +56,25 @@ public class UserController {
         service.add(member);
         return "redirect:complete";
     }
+    @GetMapping("sign-up/complet")
+    public String complete(){
+        return "user/sign-up/complete";
+    }
+
+
+    @GetMapping("my-page")
+    public String myPage() {
+        return "user/my-page";
+    }
+    @GetMapping("my-page/statistics")
+    public String statistics() {
+        return "user/my-page/statistics";
+    }
+    @GetMapping("my-page/rate-list")
+    public String rateList() {
+        return "user/my-page/rate-list";
+    }
+
 
     @GetMapping("my-page/edit-info/phone")
     public String editPhone() {

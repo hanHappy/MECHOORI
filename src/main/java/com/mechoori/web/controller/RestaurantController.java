@@ -101,4 +101,20 @@ public class RestaurantController {
 		return "redirect:/index";
 	}
 
+	@GetMapping("/ranking")
+	public String ranking(Model model) {
+
+		List<Menu> list = menuService.getRanking();
+
+		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
+
+
+		model.addAttribute("list",list);
+		model.addAttribute("ctg",mainCtgList);
+
+
+		return "/restaurant/ranking";
+	}
+
+
 }
