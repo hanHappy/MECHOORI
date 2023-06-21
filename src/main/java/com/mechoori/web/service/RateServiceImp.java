@@ -18,9 +18,6 @@ public class RateServiceImp implements RateService{
     @Autowired
     private MenuRepository menuRepository;
 
-    @Autowired
-    private MenuRepository menuRepository;
-
 
     @Override
     public void add(Rate rate, int userId) {
