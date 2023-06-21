@@ -12,7 +12,6 @@
 		select *
 		from menu
 		where id = #{menuId}
-		where id = #{menuId}
 	</select>
 	<update id="update" parameterType="Menu">
 		update menu 

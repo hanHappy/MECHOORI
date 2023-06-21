@@ -54,13 +54,18 @@ public class RestaurantServiceImp implements RestaurantService {
 	public RestaurantDetail getRestaurantDetailById(int restaurantId) {
 		List<Menu> menuList = menuRepository.findAll(restaurantId);
 		
-		int avgPrice = 0;
-		int avgRatedPrice = 0;
-		
+		int totalPrice = 0;	
+		int totalRatedPrice = 0;
+		int count = 0;
+
 		for(Menu menu : menuList){
-			avgPrice = (((avgPrice + menu.getPrice())/2)/100) * 100;
-			avgRatedPrice = (((avgRatedPrice + menu.getRatedPrice())/2)/100) * 100;
+			totalPrice += menu.getPrice();
+			totalRatedPrice += menu.getRatedPrice();
+			count++;
 		}
+		 
+		int avgPrice = ((totalPrice/count)/100) * 100;
+		int avgRatedPrice = ((totalRatedPrice/count)/100) * 100;
 		
 		int value = (int)(((double)avgRatedPrice/avgPrice) * 100);
 		
