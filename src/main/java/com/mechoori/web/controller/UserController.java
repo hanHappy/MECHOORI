@@ -80,6 +80,12 @@ public class UserController {
         return "user/my-page/edit-info/email";
     }
 
+    //비밀번호 변경
+    @GetMapping("my-page/edit-info/pwd")
+    public String changePwd(){
+        return "user/my-page/edit-info/pwd";
+    }
+
     //회원탈퇴
     @GetMapping("my-page/edit-info/withdraw")
     public String withdraw() {
