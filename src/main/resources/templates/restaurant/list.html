@@ -21,7 +21,7 @@
         <nav class="header">
             <div class="header-wrapper">
                 <div class="header-side left">
-                    <a href="/index"><button class="header-icon back">버튼</button></a>
+                    <a onclick="history.back()"><button class="header-icon back">버튼</button></a>
                 </div>
                 <a href="/index">
                     <h1 class="header-icon logo">로고</h1>
@@ -32,7 +32,7 @@
                 <div class="search-container d-none">
                     <form action="list" method="get">
                         <div>
-                            <a href="/index">
+                            <a href="/">
                                 <button class="back-btn text-hidden">버튼</button>
                             </a>
                         </div>
@@ -69,7 +69,10 @@
                 <ul class="category-list other-category-list">
                     <li><button class="category-tag" href="#">#전체</button></li>
                     <li th:each="c : ${otherCtgList}">
-                        <button class="category-tag" href="#" th:text="'#' + ${c.name}">#베트남
+                        <button class="category-tag" 
+                                href="#" 
+                                th:data-id="${c.id}"
+                                th:text="'#' + ${c.name}">#베트남
                         </button>
                     </li>
                 </ul>

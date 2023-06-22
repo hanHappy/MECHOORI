@@ -55,7 +55,7 @@ public class UserController {
     @PostMapping("sign-up/form")
     public String form(Member member) {
         service.add(member);
-        return "redirect:complete";
+        return "redirect:/";
     }
     @GetMapping("sign-up/complet")
     public String complete(){
@@ -68,7 +68,7 @@ public class UserController {
     }
 
     @GetMapping("my-page/rate-list")
-    public String rateList(Model model, User user) {
+    public String rateList(Model model) {
         return "user/my-page/rate-list";
     }
 
