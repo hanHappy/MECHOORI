@@ -36,7 +36,6 @@ public class RestaurantServiceImp implements RestaurantService {
 		return repository.findAll(null, null, page, size);
 	}
 
-	
 	@Override
 	public List<Restaurant> getListByQuery(String query, Integer page, Integer size) {
 		return repository.findAll(null, query, page, size);
@@ -65,18 +64,17 @@ public class RestaurantServiceImp implements RestaurantService {
 	@Override
 	public RestaurantDetail getRestaurantDetailById(int restaurantId) {
 		List<Menu> menuList = menuRepository.findAll(restaurantId);
-		
+
 		int avgPrice = 0;
 		int avgRatedPrice = 0;
-		
-		for(Menu menu : menuList){
-			avgPrice = (((avgPrice + menu.getPrice())/2)/100) * 100;
-			avgRatedPrice = (((avgRatedPrice + menu.getRatedPrice())/2)/100) * 100;
+
+		for (Menu menu : menuList) {
+			avgPrice = (((avgPrice + menu.getPrice()) / 2) / 100) * 100;
+			avgRatedPrice = (((avgRatedPrice + menu.getRatedPrice()) / 2) / 100) * 100;
 		}
-		
-		int value = (int)(((double)avgRatedPrice/avgPrice) * 100);
-		
-		
+
+		int value = (int) (((double) avgRatedPrice / avgPrice) * 100);
+
 		Restaurant temp = getDetailById(restaurantId);
 		RestaurantDetail restaurant = new RestaurantDetail();
 		// TODO 줄여쓸 수 있는 방법 알아보자
@@ -95,24 +93,21 @@ public class RestaurantServiceImp implements RestaurantService {
 		return restaurant;
 	}
 
-
 	@Override
 	public List<Integer> getPages() {
 		List<Restaurant> list = repository.findAll();
-		int restaurantNums = (int)Math.ceil((double)list.size()/10);
+		int restaurantNums = (int) Math.ceil((double) list.size() / 10);
 		List<Integer> pages = new ArrayList<>();
-		for(int i = 0; i < restaurantNums; i++)
-            pages.add(i+1);
+		for (int i = 0; i < restaurantNums; i++)
+			pages.add(i + 1);
 		return pages;
 	}
 
 	@Override
 	public List<RestaurantCardView> getRanking(Integer categoryId) {
 		return repository.getRanking(categoryId);
-
+	}
 }
-
-
 
 // TODO : 예외처리 생각합시다
 // @Override
