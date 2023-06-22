@@ -51,9 +51,8 @@ h1{
     color:#282828;
 }
 
-ul{
-    margin:0 20px 0 0;
-    padding-left: 25px;
+main ul{
+    margin-left: 25px;
     font-size: 14px;
     color: #282828;
     font-weight: bold;

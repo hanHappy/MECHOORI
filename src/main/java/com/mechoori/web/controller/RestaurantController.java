@@ -37,7 +37,7 @@ public class RestaurantController {
 	private CategoryService categoryService;
 	@Autowired
 	private RateService rateService;
-
+	
 	@GetMapping("/list")
 	public String list(
 			@RequestParam(name = "q", required = false) String query,
@@ -60,7 +60,7 @@ public class RestaurantController {
 		model.addAttribute("list", list)
 			 .addAttribute("mainCtgList", mainCtgList)
 			 .addAttribute("otherCtgList", otherCtgList);
-
+			
 		return "restaurant/list";
 	}
 
@@ -93,7 +93,7 @@ public class RestaurantController {
 
 	@PostMapping("{id}/rate")
 	public String rate(
-					Rate rate, 
+					Rate rate,
 					@AuthenticationPrincipal MechooriUserDetails user){
 		rateService.add(rate, user.getId());
 		// FIXME index -> rate-result로 수정해야 함

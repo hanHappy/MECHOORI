@@ -14,6 +14,7 @@ public interface RestaurantService {
 
 	List<Restaurant> getList();
 	List<Restaurant> getListByCtgId(int categoryId);
+	
 
 	List<RestaurantCardView> getRestaurantCardList();
 	List<RestaurantCardView> getRestaurantCardListByCtgId(Integer categoryId, String query);

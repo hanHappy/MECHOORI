@@ -62,11 +62,6 @@ public class UserController {
         return "user/sign-up/complete";
     }
 
-
-    @GetMapping("my-page")
-    public String myPage() {
-        return "user/my-page";
-    }
     @GetMapping("my-page/statistics")
     public String statistics() {
         return "user/my-page/statistics";
@@ -78,6 +73,19 @@ public class UserController {
     }
 
 
+    //내 정보
+    @GetMapping("my-page")
+    public String myPage(){
+        return "user/my-page";
+    }
+
+    //내 정보 변경
+    @GetMapping("my-page/edit-info")
+    public String editInfo(){
+        return "user/my-page/edit-info";
+    }
+
+    //내 휴대폰 번호 변경
     @GetMapping("my-page/edit-info/phone")
     public String editPhone() {
         return "user/my-page/edit-info/phone";
@@ -88,9 +96,32 @@ public class UserController {
         return "user/my-page/edit-info/email";
     }
 
+    //비밀번호 변경
+    @GetMapping("my-page/edit-info/pwd")
+    public String changePwd(){
+        return "user/my-page/edit-info/pwd";
+    }
+
+    //회원탈퇴
     @GetMapping("my-page/edit-info/withdraw")
     public String withdraw() {
         return "user/my-page/edit-info/withdraw";
+    }  
+    // 회원탈퇴 완료 페이지
+    @GetMapping("my-page/edit-info/withdraw-complete")
+    public String withdrawComplete() {
+        return "user/my-page/edit-info/withdraw-complete";
     }
 
+    //찜한목록
+    @GetMapping("my-page/like-list")
+    public String likeList(){
+        return "user/my-page/like-list";
+    }
+
+    //가성비 평가목록
+    @GetMapping("my-page/statistics")
+    public String rateStatistics(){
+        return "user/my-page/statistics";
+    }
 }
