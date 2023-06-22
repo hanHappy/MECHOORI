@@ -57,18 +57,14 @@ public class UserController {
         service.add(member);
         return "redirect:complete";
     }
-    @GetMapping("sign-up/complet")
+    @GetMapping("sign-up/complete")
     public String complete(){
         return "user/sign-up/complete";
     }
 
-    @GetMapping("my-page/statistics")
-    public String statistics() {
-        return "user/my-page/statistics";
-    }
 
     @GetMapping("my-page/rate-list")
-    public String rateList(Model model, User user) {
+    public String rateList(Model model) {
         return "user/my-page/rate-list";
     }
 
