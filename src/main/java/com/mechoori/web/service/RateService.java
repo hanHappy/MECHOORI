@@ -4,6 +4,6 @@ import com.mechoori.web.entity.Rate;
 
 public interface RateService {
 
-    void add(Rate rate, int userId);
+    void rate(Rate rate, int userId);
 
 }

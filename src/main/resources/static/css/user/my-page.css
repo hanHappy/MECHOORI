@@ -1,17 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-@import url('/css/style.css');
-
-body{
-    width: 375px;
-    margin: 0 auto;
-    padding: 0;
-    font-family: var(--font);
-    list-style: none;
-}
-
-a{
-    text-decoration: none;
-}
+@import url('/css/common/style.css');
 
 /* 회원정보수정 목록들 텍스트*/
 .main li{
@@ -21,40 +9,8 @@ a{
     text-align: center;
 }
 
-.header {
-    height: 145px;
-    display: grid; 
-    align-items: center;
-    grid-template-columns:15% 1fr 15%;
-    background-color: var(--main-color);
-    justify-items: center; 
-    
-}
 /* 메추리 로고 */
-.logo{
-    /* background-image: url("/picture/메추리.png"); */
-    background-repeat: no-repeat;
-    grid-template-columns: 2;
-    margin-top: 15px;
-    margin-left: 25px;
-    padding : 0;
-}
 
-.logo > h1{
-    text-align: center;
-    /* padding-bottom: 10px; */
-    font-size: 12px;
-    margin-top: 0;
-    padding-right:33px;
-    font-weight: bold;
-}
-
-.cls{
-    background-repeat: no-repeat;
-    grid-template-columns: 3;
-    background-position: center;
-    margin: 5px 10px 0 0 ;
-}   
 
 /* 프로필 사진 틀 */
 .profile-circle{
@@ -63,21 +19,23 @@ a{
     height: 100px;
     background-repeat: no-repeat;
     overflow: hidden;
-    margin: -40px 0 0 135px;
-    border-radius: 50%;
-    /* text-align: center; */
-    background-color: #fff;
+    margin: 0px 0 0 135px;
+    border-radius: 50%; 
+    border: 2px solid #fff;
+    text-align: center;
+    /* background-color: #fff;   */
     box-shadow: var(--btn-shadow);
-} 
+}
 
 .profile-circle img{
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    position: relative;
+    /* width: 100%;
+    height: 100%; */
     padding : 6px 0px 0px 0px;
     top:0;
     left:0;
     object-fit: cover;
+    z-index: -1;
 }
 
 .profile-circle li{
@@ -104,7 +62,7 @@ li{
     
 }
 
-img{
+.user-modi-list img {
     padding: 0 54px 0 14px;
 }
 

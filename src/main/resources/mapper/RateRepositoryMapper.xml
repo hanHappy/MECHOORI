@@ -9,4 +9,9 @@
         rate(user_id, menu_id, price, review)
 		values(#{userId}, #{menuId}, #{price}, #{review})
 	</insert>
+	<select id="findAll" resultType="Rate">
+		select *
+		from rate
+		where menu_id = #{menuId};
+	</select>
 </mapper>

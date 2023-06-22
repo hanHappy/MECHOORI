@@ -20,24 +20,24 @@
         <nav class="header">
             <div class="header-wrapper">
                 <div class="header-side left">
-                    <a href="/index"><button class="header-icon back">버튼</button></a>
+                    <a href="/"><button class="header-icon back">버튼</button></a>
                 </div>
-                <a href="/index">
+                <a href="/">
                     <h1 class="header-icon logo">로고</h1>
                 </a>
                 <div class="header-side right">
                     <a><button class="header-icon search">버튼</button></a>
                 </div>
                 <div class="search-container d-none">
-                    <form action="list" method="get">
+                    <form action="list" method="get" onsubmit="return false">
                         <div>
-                            <a href="/index">
-                                <button class="back-btn text-hidden">버튼</button>
+                            <a href="/">
+                                <button type="button" class="back-btn text-hidden">뒤로가기</button>
                             </a>
                         </div>
-                        <input type="text" name="q">
+                        <input id="search-bar" type="text" name="q">
                         <div>
-                            <button class="search-btn text-hidden">버튼</button>
+                            <button type="button" class="search-btn text-hidden">검색</button>
                         </div>
                     </form>
                 </div>
@@ -78,9 +78,9 @@
         <nav>
             <div class="filter-box">
                 <select name="filter">
-                    <option value="">가나다순</option>
-                    <option value="">가성비순</option>
-                    <option value="">가격순</option>
+                    <option value="가나다순">가나다순</option>
+                    <option value="가성비순">가성비순</option>
+                    <option value="가격순">가격순</option>
                 </select>
             </div>
         </nav>
