@@ -5,23 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/main/resources/static/css/user/my-page/edit-info/email.css">
-    <title>이메일 재설정</title>
+    <link rel="stylesheet" href="/css/user/my-page/edit-info/email.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/common/button.css">
     <title>이메일 재설정</title>
 </head>
 
 <body>
-    <header class="header">
-        <div class ="goback">
-            <img src="/images/뒤로가기.png" alt="">
+    <header>
+        <div class="header-side left">
+            <a href="/user/my-page/edit-info"> <img class="header-icon back" src="" alt=""></a>
         </div>
-        <div class ="change-phone-number-text">
-            <h1>이메일 재설정</h1>
+        <div class="header-icon logo">
+            <img src="/assets/logo.svg" alt="">
         </div>
-        <div class="back-to-index">
-            <img src="/images/HomeButton.png" alt="">
+        <div class="header-side right">
+            <a href="/index"> <img class="userBtn-img" src="/images/icons/햄버거Btn.svg" alt=""></a>
         </div>
-    </header>
+    </header> 
     <main>
         <div class="maintext"><h2>새로운 이메일 주소를 입력해 주세요.</h2></div>
 
@@ -41,7 +43,7 @@
             <a class="confirm-btn" href="#">확인</a>
         </div>
         </div>
-        <button><a href="#">완료</a></button>
+        <a href="/user/my-page/edit-info"><button>완료</button></a>
     </main>
 
 </body>
