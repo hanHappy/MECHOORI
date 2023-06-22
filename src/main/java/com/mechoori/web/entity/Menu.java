@@ -15,5 +15,5 @@ public class Menu {
     private Integer adminId;
     private String name;
     private Integer price;
-    private Integer cumulativeRatedPrice;
+    private Integer ratedPrice;
 }

@@ -37,7 +37,7 @@
 
       <div class="detail-content">
         <div class="title">
-          <p th:text="${r.name}">짜장상회</p>
+          <p th:text="${r.name}" id="resName">짜장상회</p>
           <div>
             <img src="/images/icons/icon-like.svg">
             <img src="/images/icons/icon-share.svg">
@@ -55,7 +55,7 @@
         </div>
 
         <div class="intro">
-          <p th:text="${r.intro}" id="resintro">소개글</p>
+          <p th:text="${r.intro}">소개글</p>
           <p th:text="${r.address}">서울 · 신촌</p>
         </div>
 
@@ -91,7 +91,7 @@
         </div>
         <div>
           <span th:text="${menu.price + '원'}">가격</span>
-          <span th:text="${'('+(menu.ratedPrice/menu.price)*100+'%)'}" class="menu-detail-rp">가성비</span>
+          <span th:text="${'('+((menu.ratedPrice/menu.price)/2)*100+'%)'}" class="menu-detail-rp">가성비</span>
         </div>
       </div>
 
@@ -147,26 +147,14 @@
               </div>
             </div>
             <div class="map-button-image">
+              <a href="/restaurant/mapPage" th:href="@{mapPage/{id}(id=${r.id})}">
               <img src="/images/icons/icon-map.svg">지도보기
+              </a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 지도 테이블 -->
-      <!-- <table>
-        <tr>
-          <td colspan="2" class="">
-          </td>
-        </tr>
-        <tr>
-          <td>
-          </td>
-          <td>
-          </td>
-        </tr>
-      </table> -->
-      <!--  -->
 
     </div>
 
