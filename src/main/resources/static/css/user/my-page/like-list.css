@@ -8,12 +8,9 @@ h1{
 
 li{
     color: #282828;
+    font-size:18px;
 }
-ul{
-    /* color: #545454; */
-    font-size: 18px;
-    font-weight: 900;
-}
+
 
 /* 찜한 목록 / 평가 목록 텍스트 */
 .mypage-text{

@@ -22,10 +22,10 @@
             <span sec:authorize="isAuthenticated()" sec:authentication="principal.nickname" class="username"></span> -->
         </div>
         <div class="header-icon logo">  
-            <img src="/assets/logo.svg" alt="">
+            <a href="/"><img src="/assets/logo.svg" alt=""></a>
         </div>
         <div class="header-side right">
-            <a href="/"> <img class="userBtn-img" src="/images/icons/엑스.svg" alt=""></a>
+            <a onclick="history.back()"> <img class="userBtn-img" src="/images/icons/엑스.svg" alt=""></a>
         </div>
     </header> 
     
