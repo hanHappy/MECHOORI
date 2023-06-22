@@ -14,9 +14,8 @@
 		where id = #{menuId}
 	</select>
 	<update id="update" parameterType="Menu">
-		UPDATE menu
-		set
-		cumulative_rated_price = #{cumulativeRatedPrice}
-		WHERE id = #{id}
+		update menu 
+		set rated_price = #{ratedPrice}
+		where id = #{id}
 	</update>
 </mapper>
