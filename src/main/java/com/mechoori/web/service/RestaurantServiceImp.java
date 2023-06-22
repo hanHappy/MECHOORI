@@ -1,5 +1,6 @@
 package com.mechoori.web.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,19 @@ public class RestaurantServiceImp implements RestaurantService {
 	}
 
 	@Override
-	public List<Restaurant> getListByCtgId(int categoryId) {
-		return repository.findAll(categoryId);
+	public List<Restaurant> getListByCtgId(Integer categoryId) {
+		return repository.findAll(categoryId, null, null, null);
+	}
+
+	@Override
+	public List<Restaurant> getListByPage(Integer page, Integer size) {
+		return repository.findAll(null, null, page, size);
+	}
+
+	
+	@Override
+	public List<Restaurant> getListByQuery(String query, Integer page, Integer size) {
+		return repository.findAll(null, query, page, size);
 	}
 
 	@Override
@@ -83,10 +95,20 @@ public class RestaurantServiceImp implements RestaurantService {
 		return restaurant;
 	}
 
+
+	@Override
+	public List<Integer> getPages() {
+		List<Restaurant> list = repository.findAll();
+		int restaurantNums = (int)Math.ceil((double)list.size()/10);
+		List<Integer> pages = new ArrayList<>();
+		for(int i = 0; i < restaurantNums; i++)
+            pages.add(i+1);
+		return pages;
+	}
+
 	@Override
 	public List<RestaurantCardView> getRanking(Integer categoryId) {
 		return repository.getRanking(categoryId);
-	}
 
 }
 
