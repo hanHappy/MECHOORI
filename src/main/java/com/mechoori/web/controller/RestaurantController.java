@@ -126,6 +126,8 @@ public class RestaurantController {
 		Restaurant restaurant = restaurantService.getDetailById(restaurantId);
 		RestaurantDetail res = restaurantService.getRestaurantDetailById(restaurantId);
 
+
+
 		model.addAttribute("list",restaurant);
 		model.addAttribute("r",res);
 

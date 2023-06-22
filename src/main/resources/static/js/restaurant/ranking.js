@@ -1,6 +1,7 @@
 function restaurantListLoad(url) {
     let rankingList = document.querySelector(".ranking-list-sections");
 
+
     fetch(url)
         .then(response => response.json())
         .then(list => {
@@ -10,19 +11,14 @@ function restaurantListLoad(url) {
             console.log(list);
 
             for (let l of list) {
-                let itemTemplate =
-                    `
-          <div>
-            <div class = "position"></div>
-              <div class="ranking-list">
-                <p>1</p>
-                <div class = "img1 img"></div>
-                <span>${l.name}</span><span>${l.avgPrice}</span><span style="color: blue;"> ${l.avgRatedPrice}</span>
-                <p>${l.value}</p>
-            </div>
-          </div>`;
-
-
+                let itemTemplate = `
+            <td class="tableName">${list.id}</td>
+            <td >${list.name}</td>
+            <td>
+              <span>${list.avgPrice}</span><br />
+              <span>(${list.avgRatedPrice})</span>
+            </td>
+            <td>${list.value}%</td>`;
 
                 rankingList.insertAdjacentHTML("beforeend", itemTemplate);
             }
@@ -42,6 +38,6 @@ dropbox.onchange = function (e) {
     let value = selectedOption.dataset.id;
     console.log(value);
 
-        let url = `http://localhost:8080/api/restaurant/ranking?ctgId=${value}`;
+        let url = `http://localhost:10222/api/restaurant/ranking?ctgId=${value}`;
         restaurantListLoad(url);
 }

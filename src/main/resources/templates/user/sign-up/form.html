@@ -43,64 +43,65 @@
       <div class="circleText3 circleText">가입 완료</div>
     </div>
 
-    <span class="line"> </span>
+
+    <!--------------------회 원 정 보 입 력 란--------------------------------------------------------->
+
     <form action="form" method="post">
       <section class="sectionBox">
         <div class="nameParent">
           <div class="nameText text">이름</div>
           <div>
-            <input name="username" type="text" class="input1" placeholder="* 성과 이름 입력" />
+            <input name="username" type="text" class="input1" placeholder="* 성과 이름 입력" required />
           </div>
         </div>
 
         <div class="nickNameParent">
           <div class="nickNameText text">닉네임</div>
           <div class="nick">
-            <input name="nickname" type="text" class="input2" placeholder="* 8자 이내 입력" />
+            <input name="nickname" type="text" class="input2" placeholder="* 8자 이내 입력" required />
             <input type="submit" value="중복 확인" />
           </div>
         </div>
         <div class="passwordParent">
           <div class="passwordText text">비밀번호</div>
-          <input name="password" type="password" class="input3" id="password" placeholder="* 영문, 숫자를 포함하여 8자리 이상 입력" />
+          <input name="password" type="password" class="input3" id="password" placeholder="* 영문, 숫자를 포함하여 8자리 이상 입력" required />
         </div>
         <div class="pwParent">
           <div class="pwText text">비밀번호 확인</div>
-          <input type="password" class="input4" id="password1" placeholder=" 비밀번호 확인" />
+          <input type="password" class="input4" id="password1" placeholder=" 비밀번호 확인" required />
           <!-- <button class = "PwdCheck" id="passwordCheckButton">비밀번호 확인</button> -->
           <div id="passwordCheck"></div>
         </div>
         <div class="emailParent">
           <div class="emailText text">이메일</div>
           <div class="email">
-            <input name="email" type="email" class="input5" placeholder="  * 이메일  주소  입력" id="email" />
+            <input name="email" type="email" class="input5" placeholder="  * 이메일  주소  입력" id="email" required />
             <input type="submit" value="인증 요청" />
             <div id="emailCheck"></div>
 
           </div>
           <div class="numParent">
             <div class="numText text">인증 번호 입력</div>
-            <input type="text" class="input9" />
+            <input type="text" class="input9" required />
             <input type="submit" value="확 인" />
           </div>
         </div>
         <div class="PhoneNumParent">
           <div class="phoneText text">휴대폰 번호</div>
           <div class="phone">
-            <input name="phoneNumber" type="text" class="input6" id="phone" maxlength="13" />
+            <input name="phoneNumber" type="text" class="input6" id="phone" maxlength="13" required />
             <input type="submit" value="인증 요청" />
             <div id="numberCheck"></div>
           </div>
         </div>
         <div class="numParent">
           <div class="numText text">인증 번호 입력</div>
-          <input type="text" class="input7" />
+          <input type="text" class="input7" required />
           <input type="submit" value="확 인" />
         </div>
       </section>
-      <div class="line1"> </div>
 
-      <a href="complete">
+      <a href="sign-up/complete">
         <button class="next">가입</button>
       </a>
     </form>
