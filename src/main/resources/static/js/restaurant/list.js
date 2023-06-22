@@ -135,29 +135,29 @@ topCategorySection.onclick = function(e){
         otherCategorySection.classList.remove('slide-open');
     }
 };
-
+// TODO기타 카테고리 클릭시 아래 슬라이드 오픈, 클로즈가 안된다..
 // 기타 카테고리(태그) 영역
 // 기타 카테고리 클릭 시 RESTful API 요청
 tagArea.onclick = function (e) {
-    searchBar.value = "";
+    // searchBar.value = "";
     e.preventDefault();
     if(e.target.tagName !== 'BUTTON')
         return;
     let activeTag = otherCategories.querySelector('.active');
-    if (activeTag != null)
+    if (activeTag != null){
         activeTag.classList.remove('active');
-    e.target.classList.add('active');
-
+        e.target.classList.add('active');
+    } else {
+        url = `http://localhost:8080/api/restaurant/list?c=${e.target.dataset.id}`;
+        restaurantListLoad(url);
+    }
     
 
     //========== 추가
-    if (e.target.innerText == '#전체') {
-        let url = `/api/restaurant/list?c=6`;
-        restaurantListLoad(url);
-    } else {
-        let url = `/api/restaurant/list?c=${e.target.dataset.id}`;
-        restaurantListLoad(url);
-    }
+    // if (e.target.innerText == '#전체') {
+    //     let url = `/api/restaurant/list?c=6`;
+    //     restaurantListLoad(url);
+    // } 
 };
 
 // 좋아요 버튼

@@ -54,7 +54,7 @@ public class UserController {
     @PostMapping("sign-up/form")
     public String form(Member member) {
         service.add(member);
-        return "redirect:complete";
+        return "redirect:/";
     }
 
     //내 정보
