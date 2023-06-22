@@ -16,7 +16,7 @@ public class HomeController {
 	@Autowired
 	private	CategoryService service;
 	
-	@GetMapping("/index")
+	@GetMapping("/")
 	public String index(Model model) {
 
 		List<TopCategory> list = service.getTopCategoryList();
