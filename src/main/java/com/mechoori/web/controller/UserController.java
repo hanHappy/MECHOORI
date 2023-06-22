@@ -115,6 +115,11 @@ public class UserController {
         return "user/my-page/like-list";
     }
 
+    @GetMapping("my-page/rate-list")
+    public String rateList(){
+        return "user/my-page/rate-list";
+    }
+
     //가성비 평가목록
     @GetMapping("my-page/statistics")
     public String rateStatistics(){

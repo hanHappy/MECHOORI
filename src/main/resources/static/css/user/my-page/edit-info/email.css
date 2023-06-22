@@ -8,32 +8,7 @@ body{
     background-color: #f7f7f7;
     font-weight: bold;
 }
-
-.header {
-    height: 145px;
-    display: flex; 
-    align-items: center;
-    background-color: #FFE551;
-    justify-content: center;
-    text-align: center;
-}
-
-.goback{
-    width:60px;
-    margin-top: 50px;
-}
-
-.back-to-index{
-    margin-left: 30px;
-    background-image: url("../images/HomeButton.svg");
-    background-size:100%;
-    width: 40px;
-    height: 40px;
-    background-repeat: no-repeat;
-    margin:60px 0px 0px 30px;
-    
-    /* background-color: black; */
-    } 
+/*  */
 
 .change-phone-number-text{
     flex-grow: 0.75;
@@ -155,13 +130,14 @@ button{
     font-size: 18px;
     font-weight: bold;
     border-radius: 8px;
-    margin: 30px 20px;
+    
     box-shadow: 2px 2px 4px #00000025;
     
     
 }
-button a{
+a button{
     color: #ffffff;
+    margin: 30px 20px;
 }
 
 a{

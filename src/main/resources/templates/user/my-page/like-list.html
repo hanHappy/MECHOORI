@@ -12,21 +12,21 @@
 <body>
     <header>
         <div class="header-side left">
-            <a href="/user/my-page"> <img class="header-icon back" src="" alt=""></a>
+            <a onclick="history.back()"> <img class="header-icon back" src="" alt=""></a>
         </div>
         <div class="header-icon logo">
-            <img src="/assets/logo.svg" alt="">
+            <a href ="/"><img src="/assets/logo.svg" alt=""></a>
         </div>
         <div class="header-side right">
-            <a href="/"> <img class="userBtn-img" src="/images/icons/햄버거Btn.svg" alt=""></a>
+            <a href="/user/my-page"> <img class="userBtn-img" src="/images/icons/햄버거Btn.svg" alt=""></a>
         </div>
     </header> 
     <main>  
         <!--찜한 목록 / 평가목록-->
         <div class="mypage-list-wrapper">
             <div class="mypage-list">
-                <ul class="like-list ">찜한 목록</ul>
-                <ul class="value-list ">평가 목록</ul>
+                <a href="like-list"><li class="like-list ">찜한 목록</li></a>
+                <a href="rate-list"><li class="value-list ">평가 목록</li></a>
             </div>
         </div>
         <!--사진 식당이름 가성비-->
@@ -37,7 +37,7 @@
                 </div>
                 <div class="resto-name"><li>짜장상회</li></div>
                 <div class="like-img">
-                    <img src="/images/icons/하트.svg" alt="">
+                    <img src="/images/icons/heart.svg" alt="">
                 </div>
                 <div></div>
                 <div class ="row-list1">가성비 6,000원(56+)</div>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="resto-name"><li>짜장상회</li></div>
                 <div class="like-img">
-                    <img src="/images/icons/빈하트.svg" alt="">
+                    <img src="/images/icons/heart.svg" alt="">
                 </div>
                 <div></div>
                 <div class ="row-list2">가성비 6,000원(56+)</div>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="resto-name"><li>짜장상회</li></div>
                 <div class="like-img">
-                    <img src="/images/icons/빈하트.svg" alt="">
+                    <img src="/images/icons/heart.svg" alt="">
                 </div>
                 <div></div>
                 <div class ="row-list3">가성비 6,000원(56+)</div>
