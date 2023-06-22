@@ -1,0 +1,34 @@
+body {
+    padding: 20px;
+}
+
+input {
+    width: 85%;
+    height: 30px;
+    font-size: 20px;
+}
+
+.search-btn {
+    height: 35px;
+}
+
+.page-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pages {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.page a{
+    font-size: 20px;
+    text-decoration: none;
+    color: blue;
+}

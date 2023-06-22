@@ -16,7 +16,13 @@
 			<if test="categoryId != null">
 				category_id = #{categoryId};
 			</if>
+			<if test="query != null">
+				name like '%${query}%'
+			</if>
 		</trim>
+		<if test="page != null">
+			limit #{page}, #{size}
+		</if>
 	</select>
 
 	<select id="findAllRestaurantCard" resultType="RestaurantCardView">

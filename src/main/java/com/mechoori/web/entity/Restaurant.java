@@ -6,7 +6,7 @@ import lombok.Data;
 public class Restaurant {
     private Integer id;
 	private Integer adminId;
-	private Integer foodTypeId;
+	private Integer categoryId;
 	private String name;
 	private String img;
 	private String intro;
