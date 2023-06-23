@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 
 import com.mechoori.web.entity.Restaurant;
+import com.mechoori.web.entity.RestaurantView;
 
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -18,7 +19,7 @@ class RestaurantRepositoryTest {
 	
 	@Test
 	void testFindAllIntegerInteger() {
-		List<Restaurant> list = repository.findAll();
+		List<RestaurantView> list = repository.findAllRestaurantView(3);
 		System.out.println(list);
 	}
 

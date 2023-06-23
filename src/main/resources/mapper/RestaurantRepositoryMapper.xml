@@ -25,7 +25,10 @@
 		</if>
 	</select>
 
-	<select id="findAllRestaurantCard" resultType="RestaurantCardView">
+
+
+
+	<select id="findAllRestaurantCard" resultType="RestaurantView">
 		select distinct restaurant_card.*
 		from restaurant_card
 		left join menu on restaurant_card.id = menu.restaurant_id
@@ -39,7 +42,76 @@
 		</trim>
 	</select>
 
-	<select id="getRanking" resultType="RestaurantCardView">
+	<select id="findAllRestaurantView" resultType="RestaurantView">
+		SELECT
+    r.*,
+    ROUND(m.avg_rated_price, -2) AS avg_rated_price,
+    ROUND(m.avg_price, -2) AS avg_price,
+    CASE
+        WHEN m.avg_price &gt; 0 THEN ROUND((m.avg_rated_price / m.avg_price) * 100)
+        ELSE 0
+    END AS value,
+    COALESCE(l.like_count, 0) AS like_count,
+    COALESCE(l.likes, 0) AS `like`,
+    COALESCE(r2.rate_count, 0) AS rate_count,
+    COALESCE(r2.rate, 0) AS rate
+FROM
+    restaurant AS r
+LEFT JOIN
+    (
+        SELECT
+            menu.restaurant_id,
+            AVG(menu.rated_price) AS avg_rated_price,
+            AVG(menu.price) AS avg_price
+        FROM
+            menu
+        GROUP BY
+            menu.restaurant_id
+    ) AS m ON r.id = m.restaurant_id
+LEFT JOIN
+    (
+		<if test="memberId != null">
+			SELECT
+				restaurant_id,
+				COUNT(*) AS like_count,
+				COUNT(CASE WHEN member_id = #{memberId} THEN 1 END) AS likes
+		</if>
+		<if test="memberId == null">
+			SELECT
+				restaurant_id,
+				COUNT(*) AS like_count,
+				0 AS likes
+		</if>
+        FROM
+            restaurant_like
+        GROUP BY
+            restaurant_id
+    ) AS l ON r.id = l.restaurant_id
+LEFT JOIN
+    (
+		<if test="memberId != null">
+			SELECT
+				menu.restaurant_id,
+				COUNT(*) AS rate_count,
+				COUNT(CASE WHEN rate.member_id = #{memberId} THEN 1 END) AS rate
+		</if>
+		<if test="memberId == null">
+			SELECT
+				menu.restaurant_id,
+				COUNT(*) AS rate_count,
+				0 AS rate
+		</if>
+        FROM
+            menu
+        INNER JOIN
+            rate ON menu.id = rate.menu_id
+        GROUP BY
+            menu.restaurant_id
+    ) AS r2 ON r.id = r2.restaurant_id
+
+	</select>
+
+	<select id="getRanking" resultType="RestaurantView">
 		SELECT *
 		from restaurant_card
 		where category_id = ${categoryId}
