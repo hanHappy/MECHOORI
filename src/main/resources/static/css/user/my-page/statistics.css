@@ -5,7 +5,7 @@
   display: flex;
   font-size: 18px;
   align-items: center;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   width: 375px;
   height: 61px;
   box-shadow: var(--block-shadow);
@@ -35,7 +35,7 @@ button {
 .rightBtn{
   background-image: url("../../../images/icons/right.svg");
 }
-.up {
+/* .up {
   background-image: url("../../../images/icons/upbtn.svg");
   position: absolute;
   width: 12px;
@@ -43,7 +43,8 @@ button {
   top: 90px;
   left: 230px;
   z-index: 999;
-}
+} */
+
 .percent{
   position: absolute;
   width: 32px;
@@ -78,7 +79,7 @@ li {
   text-align: center;
 }
 
-.rec {
+/* .rec {
   position: absolute;
   width: 67px;
   height: 6px;
@@ -88,7 +89,8 @@ li {
   background: rgba(34, 146, 249, 0.7);
   border-radius: var(--border-radius);
 
-}
+} */
+
 .dateTxt {
   position: absolute;
 width: 180px;
@@ -122,93 +124,17 @@ color: #000000;
   margin-top: 35px;
 }
 
-.graphLine {
-  position: absolute;
-  width: 135px;
-  height: 0px;
-  top: 130px;
-  z-index: 999;
-  /* sub2 */
 
-  border: 1px dashed #f98f78;
-}
 
-.middle {
-  width: 335px;
-  height: 450px;
-  background-color: rgba(217, 217, 217, 0.3);
-  display: flex;
-  grid-template-columns: 32fr 1fr 32fr;
-  margin: 15px 20px;
-  border-radius: var(--border-radius);
 
-  flex-direction: column;
-  align-items: center;
-}
 
-.middleText {
-  width: 251px;
-  height: 30px;
-  font-size: 22px;
-  line-height: 30px;
-  text-align: center;
-  font-weight: 900;
-}
+
 
 /*=============== 그 래 프  ===============*/
-.graphs {
-  position: absolute;
-  width: 143px;
-  height: 178px;
-  top: 61px;
-  margin-top: 20px;
-  display: flex;
-  align-items: flex-end;
-  left: 118px;
-}
 
-.graph1 {
-  position: absolute;
-  width: 46px;
-  height: 148px;
-  top: 1%;
-  margin-left: 94px;
-  background: rgba(34, 146, 249, 0.7);
-  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
-}
 
-.graph2 {
-  position: absolute;
-  width: 46px;
-  height: 94px;
-  top: 56px;
-  margin-right: 94px;
-  background: rgba(255, 229, 81, 0.7);
-  box-shadow: 5px 5px 3px 1px rgba(0, 0, 0, 0.25);
-}
-.txte {
-  position: absolute;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 22px;
-  width: 70px;
-  height: 22px;
-  color: rgba(109, 109, 109, 1);
-}
-.graph1Text {
-  left: -10px;
-}
 
-.graph2Text {
-  left: 85px;
-}
 
-.middleText2 {
-  margin-top: 98px;
-  width: 271px;
-  height: 130px;
-}
 
 .rateImg {
   background-image: url("../../../images/icons/rateImg.svg");
@@ -234,4 +160,8 @@ color: #000000;
   transform: translateX(-50%);
   top: 350px;
   font-weight: 800;
+}
+
+#barChart{
+  margin-top: 30%;
 }
