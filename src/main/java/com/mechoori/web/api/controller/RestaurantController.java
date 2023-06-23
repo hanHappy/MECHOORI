@@ -2,7 +2,6 @@ package com.mechoori.web.api.controller;
 
 import java.util.List;
 
-import com.mechoori.web.entity.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

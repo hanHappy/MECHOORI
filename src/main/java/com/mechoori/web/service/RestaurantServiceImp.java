@@ -80,6 +80,7 @@ public class RestaurantServiceImp implements RestaurantService {
 		// TODO 줄여쓸 수 있는 방법 알아보자
 		restaurant.setId(temp.getId());
 		restaurant.setName(temp.getName());
+		restaurant.setImg(temp.getImg());
 		restaurant.setIntro(temp.getIntro());
 		restaurant.setAddress(temp.getAddress());
 		restaurant.setOperatingTime(temp.getOperatingTime());

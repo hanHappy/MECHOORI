@@ -32,7 +32,7 @@
   <main>
     <div class="detail">
       <img src="/images/foods/청화원2.png"
-           th:src="@{/images/foods/${r.img}}"
+           th:src="@{/images/foods/{img}(img = ${r.img})}"
            class="rstr-thumb">
 
       <div class="detail-content">
