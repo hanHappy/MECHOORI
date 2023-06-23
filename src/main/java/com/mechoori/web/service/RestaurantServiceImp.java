@@ -79,6 +79,7 @@ public class RestaurantServiceImp implements RestaurantService {
 		RestaurantDetail restaurant = new RestaurantDetail();
 		// TODO 줄여쓸 수 있는 방법 알아보자
 		restaurant.setId(temp.getId());
+		restaurant.setImg(temp.getImg());
 		restaurant.setName(temp.getName());
 		restaurant.setIntro(temp.getIntro());
 		restaurant.setAddress(temp.getAddress());

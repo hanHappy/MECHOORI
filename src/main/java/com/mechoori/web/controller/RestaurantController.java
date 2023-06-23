@@ -72,7 +72,6 @@ public class RestaurantController {
 		List<Menu> menuList = menuService.getList(restaurantId);
 		RestaurantDetail restaurant = restaurantService.getRestaurantDetailById(restaurantId);
 
-
 		model.addAttribute("menuList", menuList);
 		model.addAttribute("r", restaurant);
 

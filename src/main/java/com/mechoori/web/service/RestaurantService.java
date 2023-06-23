@@ -8,7 +8,8 @@ import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantCardView;
 import com.mechoori.web.entity.RestaurantDetail;
 
-public interface RestaurantService {
+public interface
+RestaurantService {
 
 	Restaurant getDetailById(int restaurantId);
 	
