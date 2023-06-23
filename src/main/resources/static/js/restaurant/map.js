@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var map = new kakao.maps.Map(container, options);
 
         let l = document.getElementById("map-address-copy-text").innerText;
-        let name = document.getElementById("resintro").innerText;
+        let name = document.getElementById("resName").innerText;
 
         // let l = /*[[${rstnDetail.address}]]*/ '';  //위치
         //let name = /*[[${name}]]*/ '';             //마커내용
@@ -38,7 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
                 map.setCenter(coords);
             }
-
         });
     });
+
+
 });

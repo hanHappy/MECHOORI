@@ -41,7 +41,7 @@ public class RestaurantController {
 	private CategoryService categoryService;
 	@Autowired
 	private RateService rateService;
-
+	
 	@GetMapping("/list")
 	public String list(
 			@RequestParam(name = "q", required = false) String query,
@@ -64,7 +64,7 @@ public class RestaurantController {
 		model.addAttribute("list", list)
 			 .addAttribute("mainCtgList", mainCtgList)
 			 .addAttribute("otherCtgList", otherCtgList);
-
+			
 		return "restaurant/list";
 	}
 
@@ -134,12 +134,47 @@ public class RestaurantController {
 
 	@PostMapping("{id}/rate")
 	public String rate(
-					Rate rate, 
+					Rate rate,
 					@AuthenticationPrincipal MechooriUserDetails user){
 		rateService.add(rate, user.getId());
 		// FIXME index -> rate-result로 수정해야 함
-		rateService.add(rate, user.getId());
-		return "redirect:/index";
+		return "redirect:/";
 	}
+
+	@GetMapping("/ranking")
+	public String ranking(Model model, String category) {
+
+
+//		List<Restaurant> list = restaurantService.getRanking(category);
+
+		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
+
+		List<RestaurantCardView> list = restaurantService.getRestaurantCardList();
+
+
+		model.addAttribute("list",list);
+		model.addAttribute("ctg",mainCtgList);
+
+
+		return "/restaurant/ranking";
+	}
+
+	@GetMapping("/mapPage/{id}")
+	public String map(
+			@PathVariable("id") int restaurantId,
+			Model model) {
+
+		Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+		RestaurantDetail res = restaurantService.getRestaurantDetailById(restaurantId);
+
+
+
+		model.addAttribute("list",restaurant);
+		model.addAttribute("r",res);
+
+
+		return "/mapPage";
+	}
+
 
 }

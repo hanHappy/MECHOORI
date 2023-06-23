@@ -16,19 +16,33 @@
 			<if test="categoryId != null">
 				category_id = #{categoryId};
 			</if>
+			<if test="query != null">
+				name like '%${query}%'
+			</if>
 		</trim>
+		<if test="page != null">
+			limit #{page}, #{size}
+		</if>
 	</select>
 
 	<select id="findAllRestaurantCard" resultType="RestaurantCardView">
-		select *
+		select distinct restaurant_card.*
 		from restaurant_card
+		left join menu on restaurant_card.id = menu.restaurant_id
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<if test="categoryId != null">
 				category_id = #{categoryId}
 			</if>
 			<if test="query != null">
-				name like '%${query}%'
+				restaurant_card.name like '%${query}%' or menu.name like '%${query}%'
 			</if>
 		</trim>
+	</select>
+
+	<select id="getRanking" resultType="RestaurantCardView">
+		SELECT *
+		from restaurant_card
+		where category_id = ${categoryId}
+		ORDER BY avg_rated_price DESC;
 	</select>
 </mapper>

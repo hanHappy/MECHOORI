@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/change-pwd.css">
+    <link rel="stylesheet" type="text/css" href="/css/user/my-page/edit-info/pwd.css">
     <title>비밀번호 변경</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/images/icons/탈퇴메추리.ico" />
-    <link rel="stylesheet" href="/css/style.css">
+   
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/common/button.css">
     <script src="password.js"></script>
 </head>
 <body>
-    <header class="header">
-        <div class ="goback">
-            <img src="/images/뒤로가기.png" alt="">
-        </div>
-        <div class ="change-pwd-text">
-            <h1>비밀번호 재설정</h1>
-        </div>
-        <div class="back-to-index">
-            <img src="/images/HomeButton.png" alt="">
-        </div>
-
-    </header>
+        <header>
+            <div class="header-side left">
+                <a onclick = "history.back()"> <img class="header-icon back" src="" alt=""></a>
+            </div>
+            <div class="header-icon logo">
+                <a href="/"><img src="/assets/logo.svg" alt=""></a>
+            </div>
+            <div class="header-side right">
+                <a href="/user/my-page"> <img class="userBtn-img" src="/images/icons/햄버거Btn.svg" alt=""></a>
+            </div>
+        </header> 
     <main>
         <h2>새로운 비밀번호를 입력해주세요.</h2>
         <div class="input-change-pwd-wrapper">
@@ -38,7 +39,7 @@
         <li>다른 사이트에서 사용하는 것과 동일하거나 쉬운 비밀번호는<br>사용하지 마세요.</li>
         <li>안전한 계정 사용을 위해 비밀번호는 주기적으로 변경해 주세요.</li>
 
-        <button><a href="#">완료</a></A></button>
+        <a href="/user/my-page/edit-info"><button>완료</button></a>
     </main>
 </body>
 </html>

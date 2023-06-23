@@ -5,36 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/user/my-page/edit-info.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/style.css">
+    
     <title>가입 정보</title>
 </head>
 <body>
-    <header class="header">
-        <div class ="goback">
-            <img src="/images/icons/뒤로가기.svg" alt="">
+    <header>
+        <div class="header-side left">
+            <a onclick = "history.back()"> <img class="header-icon back" src="" alt=""></a>
         </div>
-        <div class ="mypage-text">
-            <h1>가입 정보</h1>
+        <div class="header-icon logo">
+            <a href="/"><img src="/assets/logo.svg" alt=""></a>
         </div>
-        <div class="back-to-index">
-            <img src="/images/icons/홈.svg" alt="">
+        <div class="header-side right">
+            <a href="/user/my-page"> <img class="userBtn-img" src="/images/icons/햄버거Btn.svg" alt=""></a>
         </div>
-    </header>
+    </header> 
     <main>  
      
-        <div class="edit-user-total">
+        <div class="edit-user-total">   <!---TODO 회원 정보를 담아 입력되야함 -->
             <div class="edit-user-wrapper">
                 <!-------------- 닉네임 ---------------------->
                 <div class="nickname"><ul>닉네임</ul></div>
                 <div class="info-box">
                     <div class ="box"><li>메추리</li></div>
+                    <!-- TODO 폼태그 url -> a태그에 href에 넣기완료. 닉네임 변경은 어떻게 할까?-->
                     <a class="change-btn" href="#">변경</a>
                 </div>
             </div>
                 <!-------------- 이메일주소 ---------------------->
             <div class="edit-user-wrapper">
-                <div><ul>이메일 주소</ul></div>
+                <div><ul>이메일 주소</ul></div> 
                 <div class="info-box">
-                    <div class ="box"><li>admin@mechuri.com</li></div>
+                    <div class ="box">
+                        <li>admin@mechuri.com</li>
+                    </div>
                     <a class="change-btn" href="edit-info/email">변경</a>
                 </div>
                 
@@ -43,8 +49,9 @@
             <div class="edit-user-wrapper">
                 <div><ul>휴대폰 번호</ul></div>
                 <div class="info-box">
-                    <div class ="box"><li>010-0000-0000</li></div>
-                    
+                    <div class ="box">
+                        <li>010-0000-0000</li>
+                    </div>
                     <a class="change-btn" href="edit-info/phone">변경</a>
                 </div>
             </div>
@@ -52,7 +59,7 @@
             <!-------------- 비밀번호 ---------------------->
             <div class="change-pwd-wrapper">
                 <span class="change-pwd-text">비밀번호</span>
-                <a class="pwd-change-btn">변경</a>
+                <a class="pwd-change-btn" href="edit-info/pwd">변경</a>
             </div>
         </div>
 

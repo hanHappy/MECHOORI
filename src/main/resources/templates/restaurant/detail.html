@@ -16,24 +16,27 @@
 </head>
 
 <body>
-  <header>
-      <div class="header-side left">
-        <button class="header-icon back" onclick="history.back()"></button>
-      </div>
-      <h1 class="header-icon logo">로고</h1>
-      <div class="header-side right">
-        <button class="header-icon home" onclick="location.href='../index.html'"></button>
-      </div>
-  </header>
+    <header>
+        <div class="search-container">
+            <div class="header-side left">
+              <button class="header-icon back" onclick="history.back()"></button>
+          </div>
+          <h1 class="header-icon logo">로고</h1>
+          <div class="header-side right">
+              <button class="header-icon home" onclick="location.href='../index.html'" ></button>
+          </div>
+        </div>
+
+    </header>
 
   <main>
     <div class="detail">
-      <img src="/images/foods/청화원2.png" 
+      <img src="/images/foods/청화원2.png"
            th:src="@{/images/foods/${r.img}}"
            class="rstr-thumb">
       <div class="detail-content">
         <div class="title">
-          <p th:text="${r.name}">짜장상회</p>
+          <p th:text="${r.name}" id="resName">짜장상회</p>
           <div>
             <img src="/images/icons/icon-like.svg">
             <img src="/images/icons/icon-share.svg">
@@ -51,7 +54,7 @@
         </div>
 
         <div class="intro">
-          <p th:text="${r.intro}" id="resintro">소개글</p>
+          <p th:text="${r.intro}">소개글</p>
           <p th:text="${r.address}">서울 · 신촌</p>
         </div>
 
@@ -81,7 +84,7 @@
         </div>
         <div>
           <span th:text="${menu.price + '원'}">가격</span>
-          <span th:text="'(' + ${((menu.ratedPrice*100/menu.price*100)/100)} + '%)'"></span>
+          <span th:text="'(' + ${((menu.ratedPrice*100/menu.price*100)/100)} + '%)'" class="menu-detail-rp"></span>
         </div>
       </div>
 
@@ -95,7 +98,7 @@
             <span>…………</span>
             <div>
               <span th:text="${menu.price}+'원'">가격</span>
-              <span th:text="'(' + ${((menu.ratedPrice*100/menu.price*100)/100)} + '%)'"></span>
+              <span th:text="'(' + ${((menu.ratedPrice*100/menu.price*100)/100)} + '%)'" class="menu-detail-rp"></span>
             </div>
           </div>
         </ul>
@@ -114,8 +117,10 @@
         </div>
       </div>
 
+      <!-- TODO UI 수정 -->
       <div class="map-detail">
         <div class="map-table">
+          <!--            <img src="/images/components/thumb-map.png" class="map-image">-->
           <div id="map" style="height: 300px; width: 300px;"></div>
           <div class="map-button">
             <div class="map-button-image" id=btnWrap>
@@ -124,7 +129,9 @@
               </div>
             </div>
             <div class="map-button-image">
+              <a href="/restaurant/mapPage" th:href="@{mapPage/{id}(id=${r.id})}">
               <img src="/images/icons/icon-map.svg">지도보기
+              </a>
             </div>
           </div>
         </div>
@@ -155,10 +162,10 @@
 </main>
 
 
-  <!-- ============================================================= -->
+<!-- ============================================================= -->
 
-  <!-- 주소 복사 모달 -->
-  <!-- <div id="address-copy-modal" class="address-copy-modal">
+<!-- 주소 복사 모달 -->
+<!-- <div id="address-copy-modal" class="address-copy-modal">
   <div class="address-copy-modal-content">
     <p id="copy-notification-message"></p>
   </div>

@@ -12,36 +12,31 @@ import com.mechoori.web.repository.RateRepository;
 
 @Service
 public class RateServiceImp implements RateService{
-
+    
     @Autowired
     private RateRepository repository;
+    
     @Autowired
     private MenuRepository menuRepository;
-
 
     @Override
     public void add(Rate rate, int userId) {
         rate.setId(null);
         rate.setUserId(userId);
         repository.add(rate);
-
-        // rate 객체에 menuId;
-        // (rate 객체의 price + menu 객체의 평가 가격)/2
-        // 업데이트
-
-        // 내 평가 가격
+        // 메뉴테이블의 누적 가성비를 가져와서 더해줌?
         int ratePrice = rate.getPrice();
 
         // 메뉴 테이블의 누적 평가 가격
         Menu menu = menuRepository.findById(rate.getMenuId());
-        int ratedPrice = menu.getRatedPrice();
+        int cumulativeRatedPrice = menu.getRatedPrice();
         
-        int result = (ratePrice + ratedPrice)/2;
+        int result = (ratePrice + cumulativeRatedPrice)/2;
 
         menu.setRatedPrice(result);
         menuRepository.update(menu);
     }
-
+    
     // @Override
     // public List<Rate> getListByRestaurantId(int restaurantId) {
     //     // TODO Auto-generated method stub
@@ -52,5 +47,4 @@ public class RateServiceImp implements RateService{
     public List<Rate> getListByMenuIds(List<Integer> menuIds) {
         return repository.findByMenuIds(menuIds);
     }
-
 }

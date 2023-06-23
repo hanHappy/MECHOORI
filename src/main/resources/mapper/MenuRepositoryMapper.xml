@@ -14,7 +14,7 @@
 		where id = #{menuId}
 	</select>
 	<update id="update" parameterType="Menu">
-		update menu 
+		update menu
 		set rated_price = #{ratedPrice}
 		where id = #{id}
 	</update>

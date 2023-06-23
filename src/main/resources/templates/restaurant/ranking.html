@@ -1,71 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../static/css/restaurant/ranking.css" />
+<!--    <link rel="stylesheet" href="../../static/css/restaurant/ranking.css" />-->
+  <link rel="stylesheet" href="/css/restaurant/ranking.css" />
+  <link rel="stylesheet" href="/css/common/style.css">
+  <link rel="stylesheet" href="/css/common/header.css">
+  <link rel="stylesheet" href="/css/common/button.css">
+  <script src="/js/restaurant/ranking.js" defer="defer"></script>
+<style>
+
+  main{
+    font-weight: 900;
+    justify-content: center;
+  }
+
+  .table-header{
+    position: relative;
+    top:60px;
+    width: 100%;
+    text-align: center;
+  }
+  .table-section {
+    box-shadow: 0px 1px 4px 0px #0002;
+    height: 55px;
+  }
+
+  .ranking-list-sections{
+    padding: 0 20px;
+    height: 76px;
+    box-shadow: 0px 1px 4px 0px #0002;
+
+
+  }
+
+</style>
+
+
 
 </head>
 <body>
-    
 
     <header>
       <div class="header-side left">
-        <a><button class="header-icon back"></button></a>
+        <a onclick = "history.back()"><button class="header-icon back"></button></a>
       </div>
       <h1 class="header-icon logo"></h1>
       <div class="header-side right">
-        <a><button class="header-icon home"></button></a>
+        <a href="/"><button class="header-icon home"></button></a>
       </div>
       </header>
 
       <section class = "mainTop">
         <div class = "name">가성비 식당 랭킹</div>
-        <select class = "category">
-          <option value = "0">카테고리순</option> <!-- 전체랭킹을 보여 주는 식으로 운영 해야 될 것 같ㄷ다-->
-          <option value = "1">한식</option>
-          <option value = "2">일식</option>
-          <option value = "3">중식</option>
-          <option value = "4">양식</option>
-          <option value = "5">기타</option>
+        <select class = "category" name="category" id="categoryDropBox"required >
+          <option value="카테고리 선택" disabled selected>카테고리 선택</option>
+          <option
+            th:data-id="${ctg.id}"
+            th:each="ctg:${ctg}"
+            th:text="${ctg.name}"
+          >전체</option> <!-- 전체랭킹을 보여 주는 식으로 운영 해야 될 것 같ㄷ다-->
+
         </select>
       </section> 
 
-      
-      <div class ="ul-option">
-        <ul class = "tags-option">
-          <li>순위</li>
-          <li>상호</li>
-          <li>평균가격(평가가격)</li>
-          <li>가성비</li>
-        </ul>
-      </div>
       <main>
-        
-        <section class= "sections">
-          <div> 
-            <div class = "position"></div>
-              <div class="sec">
-                <p>1</p>
-                <div class = "img1 img"></div>
-                <p>짜장상회 <br>6,000<span style="color: blue;">(8,000)</span></p>
-                <p> 133%</p>
-            </div>
-          </div>
 
-          <div> 
-            <div class = "position"></div>
-              <div class="sec">
-                <p>2</p>
-                <div class = "img1 img"></div>
-                <p>짜장상회 <br>6,000(8,000)</p>
-                <p> 133%</p>
-            </div>
-          </div>
+        <table class="table-header">
 
-        </section>
+          <tr class ="table-section">
+            <th style="width: 80px">순위</th>
+            <th style="width:70px ">상호</th>
+            <th style="width: 80px">평균가격<br />(평가가격)</th>
+            <th style="width: 60px">가성비</th>
+          </tr>
+
+          <tr class="ranking-list-sections" th:each="list:${list}">
+            <td class="tableName" th:text="${list.id}">1</td>
+            <td th:text="${list.name}">맘마니</td>
+            <td>
+              <span th:text="${list.avgPrice}">8,800원</span><br />
+              <span th:text="'('+${list.avgRatedPrice}+')'"></span>
+            </td>
+            <td th:text="${list.value}+'%'">123%</td>
+          </tr>
+
+        </table>
+
 
         <button class = "moreInfo">
           더보기
