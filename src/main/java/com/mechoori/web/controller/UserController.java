@@ -74,6 +74,12 @@ public class UserController {
         return "user/my-page/edit-info";
     }
 
+    //내 닉네임 변경
+    @GetMapping("my-page/edit-info/nickname")
+    public String editNickname(){
+        return "user/my-page/edit-info/nickname";
+    }
+
     //내 휴대폰 번호 변경
     @GetMapping("my-page/edit-info/phone")
     public String editPhone() {
