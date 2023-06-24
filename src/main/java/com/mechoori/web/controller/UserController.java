@@ -1,7 +1,6 @@
 package com.mechoori.web.controller;
 
 import com.mechoori.web.entity.Member;
-import com.mechoori.web.service.MailSendService;
 import com.mechoori.web.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("user")
@@ -17,22 +15,12 @@ public class UserController {
 
     @Autowired
     private MemberService service;
-    @Autowired
-    private MailSendService mailService;
 
     //이메일 인증
 
     @GetMapping("/mailcheck")
-    public String email() {
-
+    public String email(String email) {
         return "user/mailcheck";
-    }
-    @PostMapping("/mailcheck")
-    @ResponseBody
-    public void mailCheck(String email) {
-        System.out.println("이메일 인증 요청이 들어옴!");
-        System.out.println("이메일 인증 이메일: " + email);
-        mailService.joinEmail(email);
     }
 
 
