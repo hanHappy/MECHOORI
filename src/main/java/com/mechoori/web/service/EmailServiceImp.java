@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-
 import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
@@ -31,7 +30,7 @@ public class EmailServiceImp implements EmailService {
         MimeMessage message = emailsender.createMimeMessage();
 
         message.addRecipients(Message.RecipientType.TO, to);// 보내는 대상
-        message.setSubject("GoodJob 회원가입 이메일 인증");// 제목
+        message.setSubject("메추리 회원가입 이메일 인증");// 제목
 
         String msgg = "";
         msgg += "<div style='margin:100px;'>";
@@ -49,7 +48,7 @@ public class EmailServiceImp implements EmailService {
         msgg += "</div>";
         message.setText(msgg, "utf-8", "html");// 내용, charset 타입, subtype
         // 보내는 사람의 이메일 주소, 보내는 사람 이름
-        message.setFrom(new InternetAddress("goodjobproject@naver.com", "GoodJob_Admin"));// 보내는 사람
+        message.setFrom(new InternetAddress("mechoori2023@naver.com", "mechoori"));// 보내는 사람
 
         return message;
     }
