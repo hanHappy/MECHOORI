@@ -18,4 +18,9 @@
       member(username, nickname, email, password, phone_number) 
       values(#{username}, #{nickname}, #{email}, #{password}, #{phoneNumber})
    </insert>
+
+    <select id="searchEmail" resultType="String">
+        select email from member where email = #{email}
+    </select>
+
 </mapper>

@@ -1,6 +1,6 @@
-
 document.addEventListener('DOMContentLoaded', function () {
     let emailConfirmCode = '';
+    let emailConfirm = document.getElementById("emailCheck");
 
     // Function to send email confirmation request
     function sendEmailConfirmationRequest() {
@@ -8,8 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData();
         formData.append('e', email);
 
-
-        fetch('/api/sign-up/form', {
+        fetch('/api/sign-up/emailCheck', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -24,13 +23,60 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             })
             .then(function (data) {
-                emailConfirmCode = data;
-                console.log('인증코드가 이메일로 전송되었습니다.');
+
+                if (data === "0") {
+
+                    emailConfirm.innerText = `이메일 확인 후 다시 입력 해주세요`
+                    emailConfirm.style.color = "red";
+
+                    console.log("nope");
+                } else {
+                    //아이디 없을 때
+                    emailConfirmCode = data;
+                    console.log('인증코드가 이메일로 전송되었습니다.');
+                }
             })
             .catch(function (error) {
                 console.log(error.message);
             });
     }
+
+    function nicknameCheck() {
+        const nickname = document.getElementById('nickname').value
+        const nicknameCheck = document.getElementById('check');
+
+        console.log("ggegegeg")
+
+        const formData = new FormData();
+        formData.append('nickname', nickname);
+
+        fetch('/api/sign-up/nicknameCheck', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams(formData),
+        })
+            .then(function (response) {
+                if (response.ok) {
+                    return response.text();
+                }
+            })
+            .then(function (data) {
+
+                if (data === "cantuse") {
+                    nicknameCheck.style.color = "red";
+                    nicknameCheck.innerText = `닉네임이 이미 사용 중 입니다`
+                } else {
+                    nicknameCheck.style.color = "blue";
+                    nicknameCheck.innerText = `닉네임을 사용하실 수 있습니다.`
+                }
+            })
+            .catch(function (error) {
+                console.log(error.message);
+            });
+    }
+
 
     function checkEmailConfirmationCode() {
         const userCode = document.getElementById('memailconfirm').value;
@@ -53,16 +99,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Event handler for email confirmation button click
-    document.getElementById('checkEmail').addEventListener('click', function() {
+    document.getElementById('checkEmail').addEventListener('click', function () {
         sendEmailConfirmationRequest();
     });
 
     // Event handler for email confirmation code input
-    document.getElementById('memailconfirm').addEventListener('keyup', function() {
+    document.getElementById('memailconfirm').addEventListener('keyup', function () {
         checkEmailConfirmationCode();
     });
 
-    //////////////////////////////////////////
+    // Event handler for email confirmation button click
+    document.getElementById('nickname').addEventListener('input', function () {
+        nicknameCheck();
+    });
+
+
+    //////////////////////////////////////////////////////////
     let password = document.querySelector("#password");
     let password1 = document.querySelector("#password1");
     let passwordCheck = document.getElementById("passwordCheck");
@@ -81,8 +133,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.key === "Backspace") { // Backspace 키 입력 시 inner 글자 지움
             passwordCheck.innerText = "";
         }
-    };
-////////////////////////////
+    }
+///////////////////////////////////////////////////////
     let email = document.getElementById("email");
     let emailCheck = document.getElementById("emailCheck");
     let Epattern = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
@@ -96,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
             emailCheck.style.color = "black";
         }
     };
-/////////////////////////
+///////////////////////////////////////////////
 
     let phone = document.querySelector("#phone");
     let numberCheck = document.getElementById("numberCheck");

@@ -10,4 +10,8 @@ public interface MemberService {
 	String getRoleByEmail(String email);
 
 	void add(Member member);
+
+
+
+
 }

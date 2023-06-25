@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantCardView;
+import com.mechoori.web.entity.RestaurantCard;
 
 @Mapper
 public interface RestaurantRepository {
@@ -15,9 +15,11 @@ public interface RestaurantRepository {
     List<Restaurant> findAll();
     List<Restaurant> findAll(Integer categoryId, String query, Integer page, Integer size);
 
-    List<RestaurantCardView> findAllRestaurantCard();
-    List<RestaurantCardView> findAllRestaurantCard(Integer categoryId, String query);
+    List<RestaurantCard> findAllRestaurantCard();
+    List<RestaurantCard> findAllRestaurantCard(Integer categoryId, String query);
 
-    List<RestaurantCardView> getRanking(Integer categoryId);
+    List<RestaurantCard> getRanking(Integer categoryId);
+
+
 
 }
