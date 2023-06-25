@@ -26,5 +26,8 @@ public interface RestaurantService {
 	List<Integer> getPages();
 
 	List<RestaurantCard> getRanking(Integer categoryId);
+
+	List<Restaurant> findAllRestaurant();
+
 	
 }

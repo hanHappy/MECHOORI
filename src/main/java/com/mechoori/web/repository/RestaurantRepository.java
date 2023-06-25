@@ -21,5 +21,6 @@ public interface RestaurantRepository {
     List<RestaurantCard> getRanking(Integer categoryId);
 
 
+    List<Restaurant> findAllRestaurant();
 
 }

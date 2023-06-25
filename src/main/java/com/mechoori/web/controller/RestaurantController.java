@@ -126,13 +126,16 @@ public class RestaurantController {
 		RestaurantDetail res = restaurantService.getRestaurantDetailById(restaurantId);
 
 
-
 		model.addAttribute("list",restaurant);
 		model.addAttribute("r",res);
 
 
-		return "/mapPage";
+		return "/restaurant/mapPage";
 	}
+
+
+
+
 
 
 }
