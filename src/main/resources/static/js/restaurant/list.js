@@ -66,9 +66,9 @@ function restaurantListLoad(url){
                            <div class="data-box">
                                <p>
                                    <span>좋아요 이미지</span>
-                                   <span>${r.likedCount}</span>
+                                   <span>${r.likeCount}</span>
                                    <span>평가 이미지</span>
-                                   <span>${r.ratedCount}</span>
+                                   <span>${r.rateCount}</span>
                                </p>
                            </div>
                        </div>
