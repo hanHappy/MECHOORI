@@ -16,7 +16,7 @@ import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantCardView;
+import com.mechoori.web.entity.RestaurantCard;
 import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
@@ -48,7 +48,7 @@ public class RestaurantController {
 		List<Category> otherCtgList = categoryService.getOtherCategoryList();
 		
 
-		List<RestaurantCardView> list = null;
+		List<RestaurantCard> list = null;
 		// 식당 리스트 출력
 		if(query==null&&ctgId==null)
 			list = restaurantService.getRestaurantCardList();
@@ -107,7 +107,7 @@ public class RestaurantController {
 
 		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 
-		List<RestaurantCardView> list = restaurantService.getRestaurantCardList();
+		List<RestaurantCard> list = restaurantService.getRestaurantCardList();
 
 
 		model.addAttribute("list",list);

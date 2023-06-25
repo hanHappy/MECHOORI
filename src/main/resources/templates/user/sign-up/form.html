@@ -57,10 +57,11 @@
         </div>
 
         <div class="nickNameParent">
-          <div class="nickNameText text">닉네임</div>
+          <div class="nickNameText text"></div>
           <div class="nick">
-            <input name="nickname" type="text" class="input2" placeholder="* 8자 이내 입력" required />
-            <input type="submit" value="중복 확인" />
+            <label for="nickname">닉네임</label>
+              <input id="nickname" name="nickname" type="text" class="input2" placeholder="* 8자 이내 입력" required />
+              <div id="check"></div>
           </div>
         </div>
         <div class="passwordParent">
@@ -76,7 +77,7 @@
         <div class="emailParent">
           <div class="emailText text"></div>
           <div class="email">
-            <label for="email" id="mailTxt">이메일을 입력해주세요</label>
+            <label for="email" id="mailTxt">이메일</label>
             <input name="email" type="email" id="email" class="input5" placeholder="  * 이메일  주소  입력"  required />
             <button type="button" id="checkEmail">인증 요청</button>
             <div id="emailCheck"></div>

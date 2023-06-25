@@ -1,5 +1,6 @@
 package com.mechoori.web.service;
 
+import com.mechoori.web.repository.MemberRepository;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.InternetAddress;
@@ -17,6 +18,10 @@ public class EmailServiceImp implements EmailService {
 
     @Autowired
     private JavaMailSender emailsender; // Bean 등록해둔 MailConfig 를 emailsender 라는 이름으로 autowired
+    @Autowired
+    private MemberRepository repository;
+
+
 
     private String ePw; // 인증번호
 
@@ -103,5 +108,19 @@ public class EmailServiceImp implements EmailService {
 
         return ePw; // 메일로 보냈던 인증 코드를 서버로 반환
     }
+
+
+    @Override
+    public boolean confirmEmail(String email) {
+
+
+
+          String emailCheck = repository.searchEmail(email);
+
+
+        return emailCheck == null;
+
+    }
+
 
 }

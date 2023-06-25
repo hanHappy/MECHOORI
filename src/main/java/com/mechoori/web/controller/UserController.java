@@ -1,7 +1,11 @@
 package com.mechoori.web.controller;
 
 import com.mechoori.web.entity.Member;
+import com.mechoori.web.entity.Restaurant;
+import com.mechoori.web.entity.RestaurantCard;
 import com.mechoori.web.service.MemberService;
+import com.mechoori.web.service.MenuService;
+import com.mechoori.web.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,20 +13,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("user")
 public class UserController {
 
     @Autowired
+    private RestaurantService restaurantService;
+    @Autowired
     private MemberService service;
-
-    //이메일 인증
-
-    @GetMapping("/mailcheck")
-    public String email(String email) {
-        return "user/mailcheck";
-    }
-
 
     @GetMapping("login")
     public String login() {
@@ -75,6 +75,11 @@ public class UserController {
 
     @GetMapping("my-page/rate-list")
     public String rateList(Model model) {
+
+      List<RestaurantCard> list = restaurantService.getRestaurantCardList();
+      //수정 필요
+      model.addAttribute("list",list);
+
         return "user/my-page/rate-list";
     }
 

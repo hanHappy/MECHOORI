@@ -31,10 +31,17 @@ public class MemberServiceImp implements MemberService {
     @Override
     public void add(Member member) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
         member.setPassword(passwordEncoder.encode(member.getPassword()));
 
         repository.save(member);
     }
+
+    @Override
+    public void restaurantLike(int id) {
+
+        repository.restaurantLIke(id);
+
+    }
+
 
 }

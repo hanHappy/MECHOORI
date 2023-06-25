@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mechoori.web.entity.RestaurantCardView;
+import com.mechoori.web.entity.RestaurantCard;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantService;
 
@@ -23,11 +23,11 @@ public class RestaurantController {
 	private MenuService menuService;
 
 	@GetMapping("/list")
-	public List<RestaurantCardView> list(
+	public List<RestaurantCard> list(
 			@RequestParam(name = "q", required = false) String query,
 			@RequestParam(name = "c", required = false) Integer ctgId) {
 
-		List<RestaurantCardView> list = null;
+		List<RestaurantCard> list = null;
 		// 식당 리스트 출력
 		if (query == null && ctgId == null)
 			list = rstrService.getRestaurantCardList();
@@ -39,18 +39,18 @@ public class RestaurantController {
 		return list;
 	}
 
-
 	@GetMapping("/ranking")
-	public List<RestaurantCardView> list(
+	public List<RestaurantCard> list(
 			@RequestParam(name = "ctgId", required = false) Integer categoryId) {
-
 
 		if (categoryId != null) {
 			System.out.println("category");
 			return rstrService.getRanking(categoryId);
-
 		}
-
 		return rstrService.getRanking(categoryId);
 	}
+
+
+
+
 }
