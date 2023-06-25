@@ -24,6 +24,13 @@ public class MenuServiceImp implements MenuService{
 		return repository.findById(menuId);
 	}
 
-
-
+	@Override
+	public String getMenuName(int menuId, List<Menu> menuList) {
+	    for (Menu menu : menuList) {
+			if (menu.getId() == menuId) {
+				return menu.getName();
+        	}
+    	}
+    	return "";
+    }
 }

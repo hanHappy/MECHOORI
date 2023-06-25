@@ -62,13 +62,6 @@ public class UserController {
         return "user/sign-up/complete";
     }
 
-
-    @GetMapping("my-page/rate-list")
-    public String rateList(Model model) {
-        return "user/my-page/rate-list";
-    }
-
-
     //내 정보
     @GetMapping("my-page")
     public String myPage(){
