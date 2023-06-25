@@ -47,17 +47,17 @@ public class RestaurantServiceImp implements RestaurantService {
 	}
 
 	@Override
-	public List<RestaurantView> getRestaurantCardList() {
+	public List<RestaurantView> getRestaurantViewList() {
 		return repository.findAllRestaurantCard();
 	}
 
 	@Override
-	public List<RestaurantView> getRestaurantCardListByCtgId(Integer categoryId, String query) {
+	public List<RestaurantView> getRestaurantViewListByCtgId(Integer categoryId, String query) {
 		return repository.findAllRestaurantCard(categoryId, null);
 	}
 
 	@Override
-	public List<RestaurantView> getRestaurantCardListByQuery(Integer categoryId, String query) {
+	public List<RestaurantView> getRestaurantViewListByQuery(Integer categoryId, String query) {
 		return repository.findAllRestaurantCard(null, query);
 	}
 
