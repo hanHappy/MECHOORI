@@ -12,6 +12,28 @@ input {
     height: 35px;
 }
 
+.column-box {
+    font-weight: bold;
+    text-align: center;
+
+    width: 80vw;
+
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+}
+.restaurant {
+    text-align: center;
+
+    width: 90vw;
+    margin-bottom: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+}
+.restaurant p{
+    margin: 0;
+}
+
 .page-container {
     width: 100%;
     display: flex;
@@ -31,4 +53,14 @@ input {
     font-size: 20px;
     text-decoration: none;
     color: blue;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.buttons button {
+    width: 55px;
 }
