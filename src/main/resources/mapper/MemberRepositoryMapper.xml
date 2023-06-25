@@ -23,4 +23,9 @@
         select email from member where email = #{email}
     </select>
 
+    <select id="restaurantLIke" resultType="int">
+        select member_id from restaurant_like where member_id = #{memberId}
+    </select>
+
+
 </mapper>

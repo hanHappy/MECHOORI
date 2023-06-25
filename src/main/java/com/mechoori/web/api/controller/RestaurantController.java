@@ -39,18 +39,18 @@ public class RestaurantController {
 		return list;
 	}
 
-
 	@GetMapping("/ranking")
 	public List<RestaurantCard> list(
 			@RequestParam(name = "ctgId", required = false) Integer categoryId) {
 
-
 		if (categoryId != null) {
 			System.out.println("category");
 			return rstrService.getRanking(categoryId);
-
 		}
-
 		return rstrService.getRanking(categoryId);
 	}
+
+
+
+
 }

@@ -16,4 +16,7 @@ public interface MemberRepository {
     void save(Member member);
 
     String searchEmail(String email);
+
+    void restaurantLIke(int id);
+
 }

@@ -1,6 +1,5 @@
 package com.mechoori.web.api.controller;
 
-
 import com.mechoori.web.service.EmailService;
 import com.mechoori.web.service.SignUpService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,13 +34,11 @@ public class SignUpController {
 
     }
 
-
     @PostMapping("/nicknameCheck")
     @ResponseBody
     String nickNameConfirm(
             @RequestParam("nickname") String nickname)
             throws Exception {
-
 
         boolean checknickname = signUpService.checkNickName(nickname);
         System.out.println(checknickname);
@@ -52,7 +49,6 @@ public class SignUpController {
         else{
             return "cantuse";
         }
-
     }
 
 }

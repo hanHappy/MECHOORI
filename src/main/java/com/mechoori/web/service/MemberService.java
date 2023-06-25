@@ -13,5 +13,5 @@ public interface MemberService {
 
 
 
-
+	void restaurantLike(int Id);
 }

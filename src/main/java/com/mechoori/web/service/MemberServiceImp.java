@@ -33,9 +33,14 @@ public class MemberServiceImp implements MemberService {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         member.setPassword(passwordEncoder.encode(member.getPassword()));
 
-        //이메일 인증 요청시 db에 아이디 중복확인 하고 >>> 번호주거나 말거나.....
-
         repository.save(member);
+    }
+
+    @Override
+    public void restaurantLike(int id) {
+
+        repository.restaurantLIke(id);
+
     }
 
 
