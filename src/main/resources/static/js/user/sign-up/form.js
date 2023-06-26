@@ -199,4 +199,23 @@ document.addEventListener('DOMContentLoaded', function () {
         return phone;
     }
 
+
+
+    const form = document.querySelector("#form__wrap");
+
+
+    form.addEventListener("submit", (e) => e.preventDefault());
+
+
+
+
+
+
+
+
+
+
+
+
+
 });

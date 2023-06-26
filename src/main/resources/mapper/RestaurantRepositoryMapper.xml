@@ -4,7 +4,7 @@
 
 <mapper namespace="com.mechoori.web.repository.RestaurantRepository">
 	<select id="findById" resultType="Restaurant">
-		select * 
+		select *
 		from restaurant
 		where id = #{restaurantId}
 	</select>
@@ -25,7 +25,7 @@
 		</if>
 	</select>
 
-	<select id="findAllRestaurantCard" resultType="RestaurantCard">
+	<select id="findAllRestaurantView" resultType="RestaurantView">
 		select distinct restaurant_card.*
 		from restaurant_card
 		left join menu on restaurant_card.id = menu.restaurant_id
@@ -39,7 +39,25 @@
 		</trim>
 	</select>
 
-	<select id="getRanking" resultType="RestaurantCard">
+	<select id="findAllRestaurantView" resultType="RestaurantView">
+		SELECT r.*,
+		IF(rl.restaurant_id IS NOT NULL, 1, 0) AS `like`,
+		IFNULL(rt.rate_count, 0) AS `rate`
+		FROM restaurant_view r
+		LEFT JOIN (
+		SELECT DISTINCT restaurant_id
+		FROM restaurant_like
+		WHERE member_id = 1
+		) rl ON r.id = rl.restaurant_id
+		LEFT JOIN (
+		SELECT menu.restaurant_id, COUNT(rate.member_id) AS rate_count
+		FROM menu
+		LEFT JOIN rate ON menu.id = rate.menu_id AND rate.member_id = 1
+		GROUP BY menu.restaurant_id
+		) rt ON r.id = rt.restaurant_id;
+	</select>
+
+	<select id="getRanking" resultType="RestaurantView">
 		SELECT *
 		from restaurant_card
 		where category_id = ${categoryId}

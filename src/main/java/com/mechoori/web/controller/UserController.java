@@ -2,7 +2,7 @@ package com.mechoori.web.controller;
 
 import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantCard;
+import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.service.MemberService;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantService;
@@ -76,7 +76,7 @@ public class UserController {
     @GetMapping("my-page/rate-list")
     public String rateList(Model model) {
 
-      List<RestaurantCard> list = restaurantService.getRestaurantCardList();
+      List<RestaurantView> list = restaurantService.getRestaurantViewList();
       //수정 필요
       model.addAttribute("list",list);
 

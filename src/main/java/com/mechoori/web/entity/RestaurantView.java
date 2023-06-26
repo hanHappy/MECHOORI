@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RestaurantCard {
+public class RestaurantView {
     private Integer id;
     private Integer categoryId;
     private String name;
