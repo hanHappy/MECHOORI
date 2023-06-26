@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>손 안의 메뉴 추천 리스트, 메추리</title>
   <link rel="stylesheet" type="text/css" href="/css/restaurant/detail.css">
@@ -34,7 +34,6 @@
       <img src="/images/foods/청화원2.png"
            th:src="@{/images/foods/{img}(img = ${r.img})}"
            class="rstr-thumb">
-
       <div class="detail-content">
         <div class="title">
           <p th:text="${r.name}" id="resName">짜장상회</p>
@@ -76,12 +75,6 @@
         <p>대표메뉴</p>
       </div>
 
-      <!-- <div class="menu-detail" th:each="menu, iter : ${menuList}" th:if="${iter.index} &lt; 4">
-          <p><span th:text="${menu.name}">메뉴명</span> <span>………………………………</span>
-          <span th:text="${menu.price + '원'}">가격</span>
-          <span th:text="${'('+r.value+'%)'}" class="menu-detail-rp">가성비</span></p>
-      </div> -->
-
       <div class="menu-detail" th:each="menu, iter : ${menuList}" th:if="${iter.index} &lt; 4">
         <div class="menu-detail-name">
           <span th:text="${menu.name}">메뉴명</span>
@@ -91,20 +84,9 @@
         </div>
         <div>
           <span th:text="${menu.price + '원'}">가격</span>
-          <span th:text="${'('+((menu.ratedPrice/menu.price)/2)*100+'%)'}" class="menu-detail-rp">가성비</span>
+          <span th:text="'(' + ${((menu.ratedPrice*100/menu.price*100)/100)} + '%)'" class="menu-detail-rp"></span>
         </div>
       </div>
-
-      <!-- <div class="menu-check-box">
-        <input id="check-btn" type="checkbox">
-        <label for="check-btn">메뉴 더보기</label>
-        <span class="togle">▼</span>
-        <ul class="menubars" th:each="menu, iterStat : ${menuList}" th:if="${iterStat.index} &gt;= 4">
-          <p><span th:text="${menu.name}">메뉴명</span> ……………………
-          <span th:text="${menu.price}+'원'">가격</span>
-          <span th:text="${ ' '+'(' + (menu.ratedPrice/menu.price*100) + '%)'}" class="menu-detail-rp"></span></p>
-        </ul>
-      </div> -->
 
       <div class="button-6">
         <input id="check-btn" type="checkbox">
@@ -116,7 +98,7 @@
             <span>…………</span>
             <div>
               <span th:text="${menu.price}+'원'">가격</span>
-              <span th:text="${'('+(menu.ratedPrice/menu.price)*100+'%)'}" class="menu-detail-rp">가성비</span>
+              <span th:text="'(' + ${((menu.ratedPrice*100/menu.price*100)/100)} + '%)'"></span>
             </div>
           </div>
         </ul>
@@ -138,7 +120,6 @@
       <!-- TODO UI 수정 -->
       <div class="map-detail">
         <div class="map-table">
-          <!--            <img src="/images/components/thumb-map.png" class="map-image">-->
           <div id="map" style="height: 300px; width: 300px;"></div>
           <div class="map-button">
             <div class="map-button-image" id=btnWrap>
@@ -154,49 +135,30 @@
           </div>
         </div>
       </div>
-
-
     </div>
-
-    <div class="review">
-      <div class="review-title-box">
-        <div class="review-title">
-          <img src="/images/icons/icon-line.svg">
-          <p>리뷰 (<span class="review-span">99</span>+)</p>
-        </div>
-        <!-- 6/21(Han) : 평가하기 버튼 anchor 추가 -->
-        <a th:href="@{/restaurant/{id}/rate(id=${r.id})}"><button class="button button-11">평가하기</button></a>
+    
+    <!----------- 변경 중 --------------->
+  <div class="review">
+    <div class="review-title-box">
+      <div class="review-title">
+        <img src="/images/icons/icon-line.svg">
+        <p>리뷰 (<span class="review-span">99</span>+)</p>
       </div>
-      <div class="review-contents">
-        <img src="/images/components/식당_1(75x75).png" alt="식당사진" width="65px">
-        <div class="review-content">
-          <span class="rate-title">가성비 평가</span>
-          <p class="rate-menu">메뉴명</p>
-          <span class="review-nickname">닉네임</span>
-          <p class="review-text">리뷰</p>
-        </div>
-      </div>
-      <div class="review-contents">
-        <img src="/images/components/식당_1(75x75).png" alt="식당사진" width="65px">
-        <div class="review-content">
-          <span class="rate-title">가성비 평가</span>
-          <p class="rate-menu">메뉴명</p>
-          <span class="review-nickname">닉네임</span>
-          <p class="review-text">리뷰</p>
-        </div>
-      </div>
-      <div class="review-contents">
-        <img src="/images/components/식당_1(75x75).png" alt="식당사진" width="65px">
-        <div class="review-content">
-          <span class="rate-title">가성비 평가</span>
-          <p class="rate-menu">메뉴명</p>
-          <span class="review-nickname">닉네임</span>
-          <p class="review-text">리뷰</p>
-        </div>
+      <a href="/restaurant/{id}/rate" th:href="@{/restaurant/{id}/rate(id=${r.id})}"><button class="button button-11">평가하기</button></a>
+    </div>
+    <div class="review-contents"  th:each="rate, index: ${top4Rates}">
+      <img src="/images/components/식당_1(75x75).png" alt="식당사진" width="65px">
+      <div class="review-content">
+        <span class="rate-title" th:text="'가성비 평가 : '+${rate.price}">가성비 평가 가격</span>
+        <p class="rate-menu" th:text="'메뉴명 : '+${menuNames[__${index.index}__]}">메뉴명</p>
+        <span class="review-nickname" th:text="'닉네임 : '+${rate.userId}">닉네임</span>
+        <p class="review-text" th:text="'리뷰 내용 : '+${rate.review}">리뷰</p>
       </div>
     </div>
+  </div>
 
-  </main>
+ 
+</main>
 
 
 <!-- ============================================================= -->

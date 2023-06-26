@@ -1,6 +1,10 @@
 package com.mechoori.web.controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -42,20 +46,26 @@ public class RestaurantController {
 	public String list(
 			@RequestParam(name = "q", required = false) String query,
 			@RequestParam(name = "c", required = false) Integer ctgId,
+			@AuthenticationPrincipal MechooriUserDetails member,
 			Model model) {
 
 		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 		List<Category> otherCtgList = categoryService.getOtherCategoryList();
-		
 
 		List<RestaurantView> list = null;
+
+		Integer memberId = null;
+
+		if(member != null)
+			memberId = member.getId();
+
 		// 식당 리스트 출력
 		if(query==null&&ctgId==null)
-			list = restaurantService.getRestaurantViewList();
+			list = restaurantService.getRestaurantViewList(memberId);
 		else if (query != null)
-			list = restaurantService.getRestaurantViewListByQuery(ctgId, query);
+			list = restaurantService.getRestaurantViewListByQuery(memberId, query);
 		else if (ctgId != null)
-			list = restaurantService.getRestaurantViewListByCtgId(ctgId, query);
+			list = restaurantService.getRestaurantViewListByCtgId(memberId, ctgId);
 
 		model.addAttribute("list", list)
 			 .addAttribute("mainCtgList", mainCtgList)
@@ -63,6 +73,7 @@ public class RestaurantController {
 			
 		return "restaurant/list";
 	}
+
 
 	@GetMapping("{id}")
 	public String detail(
@@ -72,9 +83,45 @@ public class RestaurantController {
 		List<Menu> menuList = menuService.getList(restaurantId);
 		RestaurantDetail restaurant = restaurantService.getRestaurantDetailById(restaurantId);
 
+		//아이디
+		List<Integer> menuIds = new ArrayList<>();
+		for (Menu menu : menuList) {
+			menuIds.add(menu.getId());
+		}
+		//리뷰
+		List<Rate> rateList = rateService.getListByMenuIds(menuIds);
+		List<String> menuNames = new ArrayList<>();
+
+		//리뷰 최신순 4개
+		List<Rate> top4Rates;
+		if (rateList.size() < 4) {
+			List<Rate> sortedList = new ArrayList<>(rateList);
+			sortedList.sort(Comparator.comparing(Rate::getRegDate).reversed());
+			top4Rates = sortedList.subList(0, rateList.size());
+		} else {
+			List<Rate> sortedList = new ArrayList<>(rateList);
+			sortedList.sort(Comparator.comparing(Rate::getRegDate).reversed());
+			top4Rates = sortedList.subList(0, 4);
+		}
+
+		for (Rate rate : rateList) {
+			int menuId = rate.getMenuId();
+			String menuName = menuService.getMenuName(menuId, menuList);
+			menuNames.add(menuName);
+		}
 
 		model.addAttribute("menuList", menuList);
 		model.addAttribute("r", restaurant);
+		model.addAttribute("rateList", rateList);
+		model.addAttribute("menuNames", menuNames);
+		model.addAttribute("top4Rates", top4Rates);
+
+		//테스트
+		// if (rateList.isEmpty()) {
+		// 	System.out.println("비었음");
+		// } else {
+		// 	System.out.println("리뷰는 " + rateList.size());
+		// }
 
 		return "restaurant/detail";
 	}

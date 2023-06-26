@@ -406,6 +406,7 @@ tr:nth-child(2) td:first-child {
 .review-contents {
   display: inline-flex;
   align-items: flex-start;
+  width:100%;
 }
 
 .review-contents img {
@@ -430,7 +431,7 @@ tr:nth-child(2) td:first-child {
   font-weight: 700;
   font-size: 18px;
   line-height: 30px;
-  color: var(--hint-color);
+  color: var(--sub-color);
 }
 
 .rate-menu {

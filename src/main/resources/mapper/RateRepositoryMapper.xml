@@ -9,4 +9,13 @@
         rate(user_id, menu_id, price, review)
 		values(#{userId}, #{menuId}, #{price}, #{review})
 	</insert>
+    <select id="findByMenuIds" parameterType="java.util.List" resultType="Rate">
+        SELECT *
+        FROM rate
+        WHERE menu_id IN
+        <foreach item="menuId" collection="list" open="(" separator="," close=")">
+            #{menuId}
+        </foreach>
+    </select>
+	
 </mapper>
