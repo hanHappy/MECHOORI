@@ -21,8 +21,8 @@ public class RestaurantView {
     private Integer avgPrice;
     private Integer avgRatedPrice;
     private Integer value;
-    private Integer likeCount;
-    private Integer like;
+    private Integer likeCount; // 식당 라이크 수
+    private Integer like;       // 유저가 좋아요했으면 1 아니면 0
     private Integer rateCount;
     private Integer rate;
 }
