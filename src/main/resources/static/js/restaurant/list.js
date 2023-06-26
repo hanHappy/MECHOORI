@@ -129,11 +129,11 @@ topCategorySection.onclick = function(e){
         otherCategorySection.classList.remove('slide-open');
     } else if(e.target.innerText == '기타')
         otherCategorySection.classList.add('slide-open');
-    else {
-        let url = `/api/restaurant/list?c=${e.target.dataset.id}`;
-        restaurantListLoad(url);
-        otherCategorySection.classList.remove('slide-open');
-    }
+        else {
+            let url = `/api/restaurant/list?c=${e.target.dataset.id}`;
+            restaurantListLoad(url);
+            otherCategorySection.classList.remove('slide-open');
+        }
 };
 // TODO기타 카테고리 클릭시 아래 슬라이드 오픈, 클로즈가 안된다..
 // 기타 카테고리(태그) 영역
@@ -142,14 +142,15 @@ tagArea.onclick = function (e) {
     // searchBar.value = "";
     e.preventDefault();
     if(e.target.tagName !== 'BUTTON')
-        return;
+    return;
+        activeTag.classList.remove('active');
     let activeTag = otherCategories.querySelector('.active');
     if (activeTag != null){
-        activeTag.classList.remove('active');
-        e.target.classList.add('active');
+        activeTag.classList.add('active');
     } else {
         url = `http://localhost:8080/api/restaurant/list?c=${e.target.dataset.id}`;
         restaurantListLoad(url);
+        activeTag.classList.add('active');
     }
     
 

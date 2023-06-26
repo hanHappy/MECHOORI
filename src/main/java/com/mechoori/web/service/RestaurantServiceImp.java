@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantCardView;
+import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.repository.MenuRepository;
 import com.mechoori.web.repository.RestaurantRepository;
@@ -47,18 +47,18 @@ public class RestaurantServiceImp implements RestaurantService {
 	}
 
 	@Override
-	public List<RestaurantCardView> getRestaurantCardList() {
-		return repository.findAllRestaurantCard();
+	public List<RestaurantView> getRestaurantViewList() {
+		return repository.findAllRestaurantView();
 	}
 
 	@Override
-	public List<RestaurantCardView> getRestaurantCardListByCtgId(Integer categoryId, String query) {
-		return repository.findAllRestaurantCard(categoryId, null);
+	public List<RestaurantView> getRestaurantViewListByCtgId(Integer categoryId, String query) {
+		return repository.findAllRestaurantView(categoryId, null);
 	}
 
 	@Override
-	public List<RestaurantCardView> getRestaurantCardListByQuery(Integer categoryId, String query) {
-		return repository.findAllRestaurantCard(null, query);
+	public List<RestaurantView> getRestaurantViewListByQuery(Integer categoryId, String query) {
+		return repository.findAllRestaurantView(null, query);
 	}
 
 	@Override
@@ -104,7 +104,7 @@ public class RestaurantServiceImp implements RestaurantService {
 	}
 
 	@Override
-	public List<RestaurantCardView> getRanking(Integer categoryId) {
+	public List<RestaurantView> getRanking(Integer categoryId) {
 		return repository.getRanking(categoryId);
 	}
 }
