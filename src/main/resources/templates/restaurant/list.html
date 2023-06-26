@@ -91,7 +91,7 @@
         <section class="restaurant-list-section">
             <h1 style="display: none;">식당 목록</h1>
             <div class="restaurant-list">
-                <section class="restaurant-1" th:each="r : ${list}">
+                <section class="restaurant" th:each="r : ${list}">
                     <div class="content">
                         <!-- 이미지 -->
                         <div class="image-box">
@@ -105,10 +105,12 @@
                                 th:data-restaurant-id="${r.id}"
                                 class="like" 
                                 th:classappend="${r.like}?'active' : ''">좋아요</button>
-                            <button
+                            <a href="/user/login">
+                                <button
                                 type="button"
                                 sec:authorize="isAnonymous()"  
                                 class="like">좋아요</button>
+                            </a>
                             <div class="data-box">
                                 <p>
                                     <span>좋아요 이미지</span>
