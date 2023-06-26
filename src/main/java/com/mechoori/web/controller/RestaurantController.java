@@ -20,7 +20,7 @@ import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantCardView;
+import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
@@ -52,14 +52,14 @@ public class RestaurantController {
 		List<Category> otherCtgList = categoryService.getOtherCategoryList();
 		
 
-		List<RestaurantCardView> list = null;
+		List<RestaurantView> list = null;
 		// 식당 리스트 출력
 		if(query==null&&ctgId==null)
-			list = restaurantService.getRestaurantCardList();
+			list = restaurantService.getRestaurantViewList();
 		else if (query != null)
-			list = restaurantService.getRestaurantCardListByQuery(ctgId, query);
+			list = restaurantService.getRestaurantViewListByQuery(ctgId, query);
 		else if (ctgId != null)
-			list = restaurantService.getRestaurantCardListByCtgId(ctgId, query);
+			list = restaurantService.getRestaurantViewListByCtgId(ctgId, query);
 
 		model.addAttribute("list", list)
 			 .addAttribute("mainCtgList", mainCtgList)
@@ -141,23 +141,23 @@ public class RestaurantController {
 		return "redirect:/";
 	}
 
-	@GetMapping("/ranking")
-	public String ranking(Model model, String category) {
+// 	@GetMapping("/ranking")
+// 	public String ranking(Model model, String category) {
 
 
-//		List<Restaurant> list = restaurantService.getRanking(category);
+// //		List<Restaurant> list = restaurantService.getRanking(category);
 
-		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
+// 		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 
-		List<RestaurantCardView> list = restaurantService.getRestaurantCardList();
-
-
-		model.addAttribute("list",list);
-		model.addAttribute("ctg",mainCtgList);
+// 		List<RestaurantView> list = restaurantService.getRestaurantViewList();
 
 
-		return "/restaurant/ranking";
-	}
+// 		model.addAttribute("list",list);
+// 		model.addAttribute("ctg",mainCtgList);
+
+
+// 		return "/restaurant/ranking";
+// 	}
 
 	@GetMapping("/mapPage/{id}")
 	public String map(

@@ -24,6 +24,10 @@ main{
 .d-none{
     display: none;
 }
+.text-hidden{
+    text-indent: -999px;
+    overflow: hidden;
+}
 
 :root {
     /* 폰트 */
