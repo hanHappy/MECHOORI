@@ -25,7 +25,6 @@
 		</if>
 	</select>
 
-	<!-- TODO 새로운 쿼리문 작성 -->
 	<select id="findAllRestaurantView" resultType="RestaurantView">
 		<if test="memberId == null">
 			select
@@ -55,7 +54,7 @@
 		</if>
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<if test="categoryId != null">
-				r.category_id = #{categoryId};
+				r.category_id = #{categoryId}
 			</if>
 			<if test="query != null">
 				r.name like '%${query}%'

@@ -10,6 +10,9 @@
 
 <body>
     <a href="../restaurant">식당 관리 페이지로</a>
+
+    <hr>
+
     <div class="column-container">
         <div class="column-box">
             <p>id</p>
@@ -22,19 +25,21 @@
             <p>연락처</p>
         </div>
     </div>
-    <section class="restaurant">
-        <div></div>
-        <input placeholder="ex 한식"></input>
-        <input placeholder=""></input>
-        <input placeholder=""></input>
-        <input placeholder=""></input>
-        <input placeholder=""></input>
-        <input placeholder=""></input>
-        <input placeholder=""></input>
-        <div class="buttons">
-            <a><button>완료</button></a>
-        </div>
-    </section>
+    <form action="add" method="POST">
+        <section class="restaurant">
+            <div></div>
+            <input name="categoryId" placeholder="2"></input>
+            <input name="name" placeholder="짜장상회"></input>
+            <input name="img" placeholder="짜장상회.jpg"></input>
+            <input name="intro" placeholder="맛있다해~"></input>
+            <input name="address" placeholder="백범로 24"></input>
+            <input name="operatingTime" placeholder=""></input>
+            <input name="contactNumber" placeholder="02-000-0000"></input>
+            <div class="buttons">
+                <a><button>완료</button></a>
+            </div>
+        </section>
+    </form>
 </body>
 
 </html>
