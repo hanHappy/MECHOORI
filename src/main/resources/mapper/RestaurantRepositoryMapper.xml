@@ -98,7 +98,7 @@
 		</trim>
 	</select>
 
-	<select id="getRanking" resultType="RestaurantCardView">
+	<select id="getRanking" resultType="RestaurantView">
 		SELECT *
 		from restaurant_card
 		where category_id = ${categoryId}
