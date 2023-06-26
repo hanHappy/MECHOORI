@@ -57,15 +57,12 @@
 				r.category_id = #{categoryId}
 			</if>
 			<if test="query != null">
+				<!-- TODO 메뉴명도 검색될 수 있도록 하거나 -->
+				<!-- 식당 칼럼 하나 만들어서 연관 키워드 넣기 -->
 				r.name like '%${query}%'
 			</if>
 		</trim>
 	</select>
-
-	<insert id="add" parameterType = "Restaurant">
-		insert into restaurant(category_id, name, img, intro, address, operating_time, contact_number)
-		values(#{categoryId}, #{name}, #{img}, #{intro}, #{address}, #{operatingTime}, #{contactNumber})
-	</insert>
 
 	<insert id="add" parameterType = "Restaurant">
 		insert into restaurant(category_id, name, img, intro, address, operating_time, contact_number)
