@@ -77,7 +77,6 @@ public class RestaurantServiceImp implements RestaurantService {
 
 		Restaurant temp = getDetailById(restaurantId);
 		RestaurantDetail restaurant = new RestaurantDetail();
-		// TODO 줄여쓸 수 있는 방법 알아보자
 		restaurant.setId(temp.getId());
 		restaurant.setName(temp.getName());
 		restaurant.setImg(temp.getImg());
@@ -85,8 +84,6 @@ public class RestaurantServiceImp implements RestaurantService {
 		restaurant.setAddress(temp.getAddress());
 		restaurant.setOperatingTime(temp.getOperatingTime());
 		restaurant.setContactNumber(temp.getContactNumber());
-		restaurant.setLikedCount(temp.getLikedCount());
-		restaurant.setRatedCount(temp.getRatedCount());
 		restaurant.setAvgPrice(avgPrice);
 		restaurant.setAvgRatedPrice(avgRatedPrice);
 		restaurant.setValue(value);
@@ -107,6 +104,11 @@ public class RestaurantServiceImp implements RestaurantService {
 	@Override
 	public List<RestaurantView> getRanking(Integer categoryId) {
 		return repository.getRanking(categoryId);
+	}
+
+	@Override
+	public void add(Restaurant restaurant) {
+		repository.add(restaurant);
 	}
 }
 
