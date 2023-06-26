@@ -47,18 +47,18 @@ public class RestaurantServiceImp implements RestaurantService {
 	}
 
 	@Override
-	public List<RestaurantView> getRestaurantCardList() {
-		return repository.findAllRestaurantCard();
+	public List<RestaurantView> getRestaurantViewList(Integer memberId) {
+		return repository.findAllRestaurantView(memberId);
 	}
 
 	@Override
-	public List<RestaurantView> getRestaurantCardListByCtgId(Integer categoryId, String query) {
-		return repository.findAllRestaurantCard(categoryId, null);
+	public List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId, String query) {
+		return repository.findAllRestaurantView(memberId, categoryId, null);
 	}
 
 	@Override
-	public List<RestaurantView> getRestaurantCardListByQuery(Integer categoryId, String query) {
-		return repository.findAllRestaurantCard(null, query);
+	public List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, Integer categoryId, String query) {
+		return repository.findAllRestaurantView(memberId, null, query);
 	}
 
 	@Override
@@ -80,6 +80,7 @@ public class RestaurantServiceImp implements RestaurantService {
 		// TODO 줄여쓸 수 있는 방법 알아보자
 		restaurant.setId(temp.getId());
 		restaurant.setName(temp.getName());
+		restaurant.setImg(temp.getImg());
 		restaurant.setIntro(temp.getIntro());
 		restaurant.setAddress(temp.getAddress());
 		restaurant.setOperatingTime(temp.getOperatingTime());
