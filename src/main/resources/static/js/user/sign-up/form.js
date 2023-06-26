@@ -125,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function () {
         nicknameCheck();
     });
 
-
     //////////////////////////////////////////////////////////
     let password = document.querySelector("#password");
     let password1 = document.querySelector("#password1");
@@ -136,9 +135,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (password.value !== password1.value) {
             passwordCheck.innerText = "일치하지 않습니다.";
             passwordCheck.style.color = "red";
+            submitBtn.disabled = true;
+
         } else {
             passwordCheck.innerText = "일치합니다.";
             passwordCheck.style.color = "black";
+            submitBtn.disabled = false;
+
         }
     };
 
@@ -147,6 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
             passwordCheck.innerText = "";
         }
     }
+
 ///////////////////////////////////////////////////////
     let email = document.getElementById("email");
     let emailCheck = document.getElementById("emailCheck");
