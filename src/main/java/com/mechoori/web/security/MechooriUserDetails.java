@@ -14,7 +14,6 @@ public class MechooriUserDetails implements UserDetails {
     private String nickname;
     private String email;
     private String password;
-    private String phoneNumber;
     private Date birthDate;
     private Date regDate;
     private List<GrantedAuthority> authorities;
@@ -60,12 +59,6 @@ public class MechooriUserDetails implements UserDetails {
     }
     public void setPassword(String password) {
         this.password = password;
-    }
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
     public Date getBirthDate() {
         return birthDate;
