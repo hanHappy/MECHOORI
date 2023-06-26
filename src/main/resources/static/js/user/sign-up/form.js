@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function nicknameCheck() {
         const nickname = document.getElementById('nickname').value
         const nicknameCheck = document.getElementById('check');
+        const submitBtn = document.querySelector(".next");
+
 
         console.log("ggegegeg")
 
@@ -67,9 +69,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (data === "cantuse") {
                     nicknameCheck.style.color = "red";
                     nicknameCheck.innerText = `닉네임이 이미 사용 중 입니다`
+                    submitBtn.disabled = true;
                 } else {
                     nicknameCheck.style.color = "blue";
                     nicknameCheck.innerText = `닉네임을 사용하실 수 있습니다.`
+                    submitBtn.disabled = false;
+
                 }
             })
             .catch(function (error) {
@@ -82,6 +87,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const userCode = document.getElementById('memailconfirm').value;
         const memailconfirmTxt = document.getElementById('memailconfirmTxt');
         const emconfirmchk = document.getElementById('emconfirmchk');
+        const submitBtn = document.querySelector(".next");
+
 
         if (userCode !== emailConfirmCode) {
             memailconfirmTxt.innerHTML = '<span id="emconfirmchk">인증번호가 잘못되었습니다.</span>';
@@ -89,12 +96,17 @@ document.addEventListener('DOMContentLoaded', function () {
             emconfirmchk.style.fontWeight = 'bold';
             emconfirmchk.style.fontSize = '10px';
             console.log('인증번호가 잘못되었습니다.');
+            submitBtn.disabled = true;
+
         } else {
             memailconfirmTxt.innerHTML = '<span id="emconfirmchk">인증번호 확인 완료</span>';
             emconfirmchk.style.color = '#0D6EFD';
             emconfirmchk.style.fontWeight = 'bold';
             emconfirmchk.style.fontSize = '10px';
             console.log('인증번호 확인 완료');
+            submitBtn.disabled = false;
+
+
         }
     }
 
@@ -120,6 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let passwordCheck = document.getElementById("passwordCheck");
 
     password1.oninput = function () {
+
         if (password.value !== password1.value) {
             passwordCheck.innerText = "일치하지 않습니다.";
             passwordCheck.style.color = "red";
@@ -148,55 +161,40 @@ document.addEventListener('DOMContentLoaded', function () {
             emailCheck.style.color = "black";
         }
     };
-///////////////////////////////////////////////
+});
 
-    let phone = document.querySelector("#phone");
-    let numberCheck = document.getElementById("numberCheck");
-    let Ppattern = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+/////////////////////////////////////////////////////////
+const form = document.querySelector("#form__wrap");
+const submitBtn = document.querySelector(".next");
 
-    phone.oninput = function () {
-        let phoneNumber = phone.value.replace(/[^0-9]/g, ""); // 입력된 번호에서 숫자만 추출
-        let formattedNumber = formatPhoneNumber(phoneNumber); // 하이픈이 추가된 형식으로 변환
-        phone.value = formattedNumber; // 변환된 번호를 입력란에 설정
+form.addEventListener("input", function () {
+    needFilmAll();
+});
 
-        if (!Ppattern.test(phoneNumber)) {
-            numberCheck.innerText = "유효하지 않은 번호입니다.";
-            numberCheck.style.color = "red";
-        } else {
-            numberCheck.innerText = "유효한 번호입니다.";
-            numberCheck.style.color = "black";
-        }
-    };
-
-    phone.onkeydown = function (e) {
-        if (e.key === "Backspace") { // Backspace 키 입력 시 inner 글자 지움
-            numberCheck.innerText = "";
-        }
-    };
-
-    function formatPhoneNumber(number) {
-        let phone = "";
-
-        if (number.length < 4) {
-            return number;
-        } else if (number.length < 7) {
-            phone += number.substr(0, 3);
-            phone += "-";
-            phone += number.substr(3);
-        } else if (number.length < 11) {
-            phone += number.substr(0, 3);
-            phone += "-";
-            phone += number.substr(3, 3);
-            phone += "-";
-            phone += number.substr(6);
-        } else {
-            phone += number.substr(0, 3);
-            phone += "-";
-            phone += number.substr(3, 4);
-            phone += "-";
-            phone += number.substr(7);
-        }
-        return phone;
+function needFilmAll() {
+    let userName = document.querySelector(".input1").value;
+    let nickname = document.querySelector(".input2").value;
+    let password = document.querySelector(".input3").value;
+    let passwordCheck = document.querySelector(".input4").value;
+    let email = document.querySelector(".input5").value;
+    let emailConfirm = document.querySelector(".input9").value;
+    if (
+        userName !== "" &&
+        nickname !== "" &&
+        password !== "" &&
+        passwordCheck !== "" &&
+        email !== "" &&
+        emailConfirm !== ""
+    ) {
+        submitBtn.disabled = false;
+        console.log("false");
+    } else {
+        submitBtn.disabled = true;
+        console.log("nope");
     }
 
-});
+
+
+}
+
+

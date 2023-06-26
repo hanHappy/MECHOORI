@@ -57,15 +57,33 @@ public class UserController {
         return "user/sign-up/policy";
     }
 
+    @GetMapping("sign-up/emailConfirm")
+    public String confirm() {
+
+
+        return "user/sign-up/emailConfirm";
+    }
+
+    @PostMapping("sign-up/emailConfirm")
+    public String confirm(String email) {
+
+
+        return "redirect: sign-up/form";
+    }
+
+
     @GetMapping("sign-up/form")
-    public String form() {
+    public String form(String email) {
+
+
+
         return "user/sign-up/form";
     }
 
     @PostMapping("sign-up/form")
     public String form(Member member) {
         service.add(member);
-        return "redirect:/";
+        return "redirect:/user/sign-up/complete";
     }
     @GetMapping("sign-up/complete")
     public String complete(){
