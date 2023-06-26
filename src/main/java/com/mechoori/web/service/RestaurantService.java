@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 
 import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantCard;
+import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.RestaurantDetail;
 
 public interface RestaurantService {
@@ -19,12 +19,12 @@ public interface RestaurantService {
     List<Restaurant> getListByQuery(String query, Integer page, Integer size);
 	List<Restaurant> getListByPage(Integer page, Integer size);
 
-	List<RestaurantCard> getRestaurantCardList();
-	List<RestaurantCard> getRestaurantCardListByCtgId(Integer categoryId, String query);
-	List<RestaurantCard> getRestaurantCardListByQuery(Integer categoryId, String query);
+	List<RestaurantView> getRestaurantViewList(Integer memberId);
+	List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId, String query);
+	List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, Integer categoryId, String query);
 
 	List<Integer> getPages();
 
-	List<RestaurantCard> getRanking(Integer categoryId);
+	List<RestaurantView> getRanking(Integer categoryId);
 	
 }

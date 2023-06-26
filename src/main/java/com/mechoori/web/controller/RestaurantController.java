@@ -1,6 +1,10 @@
 package com.mechoori.web.controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,7 +20,7 @@ import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantCard;
+import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
@@ -48,14 +52,14 @@ public class RestaurantController {
 		List<Category> otherCtgList = categoryService.getOtherCategoryList();
 		
 
-		List<RestaurantCard> list = null;
+		List<RestaurantView> list = null;
 		// 식당 리스트 출력
 		if(query==null&&ctgId==null)
-			list = restaurantService.getRestaurantCardList();
+			list = restaurantService.getRestaurantViewList();
 		else if (query != null)
-			list = restaurantService.getRestaurantCardListByQuery(ctgId, query);
+			list = restaurantService.getRestaurantViewListByQuery(ctgId, query);
 		else if (ctgId != null)
-			list = restaurantService.getRestaurantCardListByCtgId(ctgId, query);
+			list = restaurantService.getRestaurantViewListByCtgId(ctgId, query);
 
 		model.addAttribute("list", list)
 			 .addAttribute("mainCtgList", mainCtgList)
@@ -72,8 +76,45 @@ public class RestaurantController {
 		List<Menu> menuList = menuService.getList(restaurantId);
 		RestaurantDetail restaurant = restaurantService.getRestaurantDetailById(restaurantId);
 
+		//아이디
+		List<Integer> menuIds = new ArrayList<>();
+		for (Menu menu : menuList) {
+			menuIds.add(menu.getId());
+		}
+		//리뷰
+		List<Rate> rateList = rateService.getListByMenuIds(menuIds);
+		List<String> menuNames = new ArrayList<>();
+
+		//리뷰 최신순 4개
+		List<Rate> top4Rates;
+		if (rateList.size() < 4) {
+			List<Rate> sortedList = new ArrayList<>(rateList);
+			sortedList.sort(Comparator.comparing(Rate::getRegDate).reversed());
+			top4Rates = sortedList.subList(0, rateList.size());
+		} else {
+			List<Rate> sortedList = new ArrayList<>(rateList);
+			sortedList.sort(Comparator.comparing(Rate::getRegDate).reversed());
+			top4Rates = sortedList.subList(0, 4);
+		}
+
+		for (Rate rate : rateList) {
+			int menuId = rate.getMenuId();
+			String menuName = menuService.getMenuName(menuId, menuList);
+			menuNames.add(menuName);
+		}
+
 		model.addAttribute("menuList", menuList);
 		model.addAttribute("r", restaurant);
+		model.addAttribute("rateList", rateList);
+		model.addAttribute("menuNames", menuNames);
+		model.addAttribute("top4Rates", top4Rates);
+
+		//테스트
+		// if (rateList.isEmpty()) {
+		// 	System.out.println("비었음");
+		// } else {
+		// 	System.out.println("리뷰는 " + rateList.size());
+		// }
 
 		return "restaurant/detail";
 	}
@@ -99,23 +140,23 @@ public class RestaurantController {
 		return "redirect:/";
 	}
 
-	@GetMapping("/ranking")
-	public String ranking(Model model, String category) {
+// 	@GetMapping("/ranking")
+// 	public String ranking(Model model, String category) {
 
 
-//		List<Restaurant> list = restaurantService.getRanking(category);
+// //		List<Restaurant> list = restaurantService.getRanking(category);
 
-		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
+// 		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 
-		List<RestaurantCard> list = restaurantService.getRestaurantCardList();
-
-
-		model.addAttribute("list",list);
-		model.addAttribute("ctg",mainCtgList);
+// 		List<RestaurantView> list = restaurantService.getRestaurantViewList();
 
 
-		return "/restaurant/ranking";
-	}
+// 		model.addAttribute("list",list);
+// 		model.addAttribute("ctg",mainCtgList);
+
+
+// 		return "/restaurant/ranking";
+// 	}
 
 	@GetMapping("/mapPage/{id}")
 	public String map(

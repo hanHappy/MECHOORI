@@ -1,5 +1,7 @@
 package com.mechoori.web.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,16 @@ public class RateServiceImp implements RateService{
 
         menu.setRatedPrice(result);
         menuRepository.update(menu);
-    }   
+    }
     
+    // @Override
+    // public List<Rate> getListByRestaurantId(int restaurantId) {
+    //     // TODO Auto-generated method stub
+	// 	return repository.findAll(restaurantId);
+    // }
+
+    @Override
+    public List<Rate> getListByMenuIds(List<Integer> menuIds) {
+        return repository.findByMenuIds(menuIds);
+    }
 }
