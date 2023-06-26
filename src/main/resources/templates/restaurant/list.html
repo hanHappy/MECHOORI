@@ -52,7 +52,6 @@
                     </li>
                     <li th:each="c : ${mainCtgList}">
                         <a class="rs-menu non-click" 
-                           href="/restaurant/list?c=1" 
                            th:data-id="${c.id}"
                            th:href="@{/restaurant/list(c=${c.id})}"
                            th:text="${c.name}">한식
@@ -99,7 +98,17 @@
                             <img src="/images/foods/청화원2.png" th:src="@{/images/foods/{img}(img=${r.img})}" alt="이미지"
                                 class="image">
                             <!-- 하트 -->
-                            <button class="like">좋아요</button>
+                            <button
+                                type="button"
+                                sec:authorize="isAuthenticated()" 
+                                th:data-member-id="${#authentication.principal.id}"
+                                th:data-restaurant-id="${r.id}"
+                                class="like" 
+                                th:classappend="${r.like}?'active' : ''">좋아요</button>
+                            <button
+                                type="button"
+                                sec:authorize="isAnonymous()"  
+                                class="like">좋아요</button>
                             <div class="data-box">
                                 <p>
                                     <span>좋아요 이미지</span>
