@@ -81,6 +81,9 @@
 		</if>
 	</select>
 
+
+
+
 	<select id="findAllRestaurantCard" resultType="RestaurantView">
 		select distinct restaurant_card.*
 		from restaurant_card
@@ -95,7 +98,7 @@
 		</trim>
 	</select>
 
-	<select id="getRanking" resultType="RestaurantView">
+	<select id="getRanking" resultType="RestaurantCardView">
 		SELECT *
 		from restaurant_card
 		where category_id = ${categoryId}

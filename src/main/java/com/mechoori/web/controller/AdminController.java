@@ -79,7 +79,7 @@ public class AdminController {
         if(query != null)
             list = restaurantService.getListByQuery(query, page, size);
         else
-            list = restaurantService.getListByPage(page, size);
+            list = restaurantService.getListByPage((page*10)-10, size);
 
         List<Integer> pages = restaurantService.getPages();
 
@@ -87,5 +87,17 @@ public class AdminController {
              .addAttribute("pages", pages);
         
         return "admin/restaurant";
+    }
+
+    @GetMapping("restaurant/add")
+    public String addRestaurant(){
+        return "admin/restaurant/add";
+    }
+
+    // ================= 메뉴 =================
+
+    @GetMapping("menu")
+    public String menu(){
+        return "admin/menu";
     }
 }
