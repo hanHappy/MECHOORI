@@ -21,6 +21,7 @@ import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantView;
+import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;

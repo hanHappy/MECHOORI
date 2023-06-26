@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantView;
+import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.repository.MenuRepository;
 import com.mechoori.web.repository.RestaurantRepository;

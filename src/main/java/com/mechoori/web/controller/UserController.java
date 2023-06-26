@@ -62,6 +62,15 @@ public class UserController {
         return "user/sign-up/complete";
     }
 
+<<<<<<< HEAD
+=======
+
+    @GetMapping("my-page/rate-list")
+    public String rateList(Model model) {
+        return "user/my-page/rate-list";
+    }
+
+>>>>>>> test/likeUp-1
     //내 정보
     @GetMapping("my-page")
     public String myPage(){
@@ -108,14 +117,18 @@ public class UserController {
         return "user/my-page/like-list";
     }
 
-    @GetMapping("my-page/rate-list")
-    public String rateList(){
-        return "user/my-page/rate-list";
-    }
-
-    //가성비 평가목록
+    //가성비 성과 페이지
     @GetMapping("my-page/statistics")
     public String rateStatistics(){
         return "user/my-page/statistics";
     }
+
+
+    //가성비 성과페이지
+    // 맴버 평가 평균 데이터, 유저 평가 평균 데이터
+    // rate table에서 user_id, menu_id, price
+    
+    // 맴버 평균 데이터 : rate > user_id(전체), price(전체)
+    // 유저 평균 데이터 : rate > user_id(한명), price
+
 }

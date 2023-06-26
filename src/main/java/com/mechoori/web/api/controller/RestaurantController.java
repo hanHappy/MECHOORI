@@ -29,11 +29,11 @@ public class RestaurantController {
 		List<RestaurantView> list = null;
 		// 식당 리스트 출력
 		if (query == null && ctgId == null)
-			list = rstrService.getRestaurantCardList();
+			list = rstrService.getRestaurantViewList();
 		else if (query != null)
-			list = rstrService.getRestaurantCardListByQuery(ctgId, query);
+			list = rstrService.getRestaurantViewListByQuery(ctgId, query);
 		else if (ctgId != null)
-			list = rstrService.getRestaurantCardListByCtgId(ctgId, query);
+			list = rstrService.getRestaurantViewListByCtgId(ctgId, query);
 
 		return list;
 	}

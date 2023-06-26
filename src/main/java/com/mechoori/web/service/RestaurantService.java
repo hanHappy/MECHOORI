@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantView;
+import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.RestaurantDetail;
 
 public interface RestaurantService {
@@ -25,6 +26,7 @@ public interface RestaurantService {
 
 	List<Integer> getPages();
 
+	List<RestaurantView> getRanking(Integer categoryId);
 	List<RestaurantView> getRanking(Integer categoryId);
 	
 }
