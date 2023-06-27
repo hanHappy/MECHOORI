@@ -4,8 +4,10 @@
     height: 40px;
     border: none;
     border-radius: var(--border-radius);
-    padding: 0;
+    padding: 0
 }
+
+
 
 .button-1 {
     font-size: 18px;

@@ -27,5 +27,11 @@
         select member_id from restaurant_like where member_id = #{memberId}
     </select>
 
+    <update id="resetPwd" parameterType="Member">
+        UPDATE member
+        SET password = #{password}
+        WHERE email = #{email}
+    </update>
+
 
 </mapper>

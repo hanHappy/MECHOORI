@@ -26,13 +26,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (data === "0") {
 
-                    emailConfirm.innerText = `이메일 확인 후 다시 입력 해주세요`
+                    emailConfirm.innerText = `사용 중 이거나, 이메일 확인 후 다시 입력 해주세요`
                     emailConfirm.style.color = "red";
-
-                    console.log("nope");
                 } else {
                     //아이디 없을 때
                     emailConfirmCode = data;
+                    emailConfirm.innerText = `인증코드가 이메일로 전송되었습니다`
                     console.log('인증코드가 이메일로 전송되었습니다.');
                 }
             })
@@ -47,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const submitBtn = document.querySelector(".next");
 
 
-        console.log("ggegegeg")
 
         const formData = new FormData();
         formData.append('nickname', nickname);

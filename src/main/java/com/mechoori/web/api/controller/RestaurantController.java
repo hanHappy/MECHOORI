@@ -27,6 +27,7 @@ public class RestaurantController {
 			@RequestParam(name = "q", required = false) String query,
 			@RequestParam(name = "c", required = false) Integer ctgId) {
 
+
 		List<RestaurantCard> list = null;
 		// 식당 리스트 출력
 		if (query == null && ctgId == null)

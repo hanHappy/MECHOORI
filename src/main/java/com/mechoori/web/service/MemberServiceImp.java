@@ -37,6 +37,16 @@ public class MemberServiceImp implements MemberService {
     }
 
     @Override
+    public void resetPwd(Member member) {
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        member.setPassword(passwordEncoder.encode(member.getPassword()));
+
+        repository.resetPwd(member);
+
+    }
+
+    @Override
     public void restaurantLike(int id) {
 
         repository.restaurantLIke(id);
