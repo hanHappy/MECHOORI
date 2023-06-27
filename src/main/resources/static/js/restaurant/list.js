@@ -53,14 +53,28 @@ function restaurantListLoad(url){
             //  // 아이템 채우기
              for (let r of list) {
                 let itemTemplate =
-                   `<section class="restaurant-1">
+                   `
+                    <section class="restaurant">
                         <div class="content">
                             <!-- 이미지 -->
                             <div class="image-box">
-                                <img src="/images/foods/${r.img}"  alt="이미지"
-                                    class="image">
+                                <img src="/images/foods/${r.img}" alt="이미지" class="image">
                                 <!-- 하트 -->
-                                <button class="like">좋아요</button>
+                                <button
+                                    type="button"
+                                    sec:authorize="isAuthenticated()" 
+                                    data-member-id=${memberId}
+                                    data-restaurant-id="${r.id}"
+                                    class="like" 
+                                    classappend="${r.like}?'active' : ''">좋아요
+                                </button>
+                                <a href="/user/login">
+                                    <button
+                                        type="button"
+                                        sec:authorize="isAnonymous()"  
+                                        class="like">좋아요
+                                    </button>
+                                </a>
                                 <div class="data-box">
                                     <p>
                                         <span>좋아요 이미지</span>
@@ -87,16 +101,17 @@ function restaurantListLoad(url){
                             <!-- 버튼 -->
                             <div class="btn-box">
                                 <div>
-                                    <a href="/restaurant/${r.id}">
-                                        <button class="button button-12">상세보기</button></a>
+                                    <a href="/restaurant/1" href="/restaurant/{id}(id=${r.id})">
+                                    <button class="button button-12">상세보기</button></a>
                                 </div>
                                 <div>
-                                    <a href="/restaurant/${r.id}/rate">
-                                        <button class="button button-12">평가하기</button></a>
+                                    <a href="/restaurant/{id}/rate" href="/restaurant/{id}/rate(id=${r.id})">
+                                    <button class="button button-12">평가하기</button></a>
                                 </div>
                             </div>
                         </div>
-                    </section>`;
+                    </section>
+                `;
  
                 restaurantList.insertAdjacentHTML("beforeend", itemTemplate);
              }
@@ -116,10 +131,11 @@ searchBtn.onclick = getListByQuery;
 // Top Category 영역 ==================================================
 // Top Category 클릭 시 RESTful API 요청
 topCategorySection.onclick = function(e){
+    console.log("c");
     searchBar.value = "";
+    e.preventDefault();
     if(e.target.tagName !== 'A')
         return;
-    e.preventDefault();
     //========== 추가
     if(e.target.innerText == '전체') {
         let url = '/api/restaurant/list';
