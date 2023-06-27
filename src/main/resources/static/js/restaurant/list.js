@@ -42,6 +42,8 @@ if(query != null){
 }
 
 function restaurantListLoad(url){
+    let memberId = document.querySelector("#member-id").value;
+
     fetch(url)
           .then(response => response.json())
           .then(list => {
@@ -50,9 +52,10 @@ function restaurantListLoad(url){
              // 방 비우기
              restaurantList.innerHTML = "";
  
-            //  // 아이템 채우기
+            // 아이템 채우기
              for (let r of list) {
                 let itemTemplate =
+                
                    `
                     <section class="restaurant">
                         <div class="content">
@@ -65,7 +68,7 @@ function restaurantListLoad(url){
                                     sec:authorize="isAuthenticated()" 
                                     data-member-id=${memberId}
                                     data-restaurant-id="${r.id}"
-                                    class="like" 
+                                    class="like member-like" 
                                     classappend="${r.like}?'active' : ''">좋아요
                                 </button>
                                 <a href="/user/login">
@@ -101,11 +104,11 @@ function restaurantListLoad(url){
                             <!-- 버튼 -->
                             <div class="btn-box">
                                 <div>
-                                    <a href="/restaurant/1" href="/restaurant/{id}(id=${r.id})">
+                                    <a href="/restaurant/${r.id}">
                                     <button class="button button-12">상세보기</button></a>
                                 </div>
                                 <div>
-                                    <a href="/restaurant/{id}/rate" href="/restaurant/{id}/rate(id=${r.id})">
+                                    <a href="/restaurant/${r.id}/rate">
                                     <button class="button button-12">평가하기</button></a>
                                 </div>
                             </div>
@@ -131,7 +134,6 @@ searchBtn.onclick = getListByQuery;
 // Top Category 영역 ==================================================
 // Top Category 클릭 시 RESTful API 요청
 topCategorySection.onclick = function(e){
-    console.log("c");
     searchBar.value = "";
     e.preventDefault();
     if(e.target.tagName !== 'A')
@@ -176,10 +178,62 @@ tagArea.onclick = function (e) {
 
 // 좋아요 버튼 ================================================================
 restaurantList.onclick = function(e){
-    let likeBtn = e.target;
-
-    if(!likeBtn.classList.contains("like"))
+    let el = e.target;
+    
+    if(!el.classList.contains("member-like"))
         return;
     
+    let {restaurantId, memberId} = el.dataset; // destructuring
+
+    // Like 삭제		
+		if(el.classList.contains("active")){
+			fetch(`/api/menulikes/${menuId}/members/${memberId}`,{
+				method:"DELETE"
+			})
+			.then(response=>response.text())
+			.then(value=>parseInt(value))
+			.then(result=>{
+				if(result == 1){
+					el.classList.remove("icon-heart-fill");
+										
+					fetch(`/api/menulikes/count?mn=${menuId}`)
+					.then(response=>response.text())
+					.then(value=>parseInt(value))
+					.then(count=>{
+						el.nextElementSibling.innerText = count;
+						console.log(`count is ${count}`);
+					});
+				}
+			});
+		}
+		// Like 추가
+		else {
+			let data = `mb=${memberId}&mn=${menuId}`;
+			// POST
+			// /api/menulikes
+			console.log(data);
+			fetch("/api/menulikes",{
+			    method: 'POST',
+			    headers: {
+			      'Content-Type': 'application/x-www-form-urlencoded'
+			    },
+			    body: new URLSearchParams(data)
+			  })
+			.then(response=>response.text())
+			.then(value=>parseInt(value))
+			.then(result=>{
+				if(result == 1){
+					el.classList.add("icon-heart-fill");
+					
+					fetch(`/api/menulikes/count?mn=${menuId}`)
+					.then(response=>response.text())
+					.then(value=>parseInt(value))
+					.then(count=>{
+						el.nextElementSibling.innerText = count;
+						console.log(`count is ${count}`);
+					});
+				} // if(result == 1)
+			}); // then
+		} // else
 
 }

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html 
+    lang="en" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <meta charset="UTF-8">
@@ -102,7 +105,7 @@
                                 sec:authorize="isAuthenticated()" 
                                 th:data-member-id="${#authentication.principal.id}"
                                 th:data-restaurant-id="${r.id}"
-                                class="like" 
+                                class="like member-like" 
                                 th:classappend="${r.like}?'active' : ''">좋아요</button>
                             <a href="/user/login">
                                 <button
@@ -150,7 +153,7 @@
             </div>
         </section>
 
-        <input type="hidden" th:value="${#authentication.principal.id}" id="member-id">
+        <input type="hidden" sec:authorize="isAuthenticated()" th:value="${#authentication.principal.id}" id="member-id">
 
     </main>
 
