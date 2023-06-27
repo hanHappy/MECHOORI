@@ -56,11 +56,16 @@
 			<if test="categoryId != null">
 				r.category_id = #{categoryId}
 			</if>
-			<if test="query != null">
-				<!-- TODO 메뉴명도 검색될 수 있도록 하거나 -->
-				<!-- 식당 칼럼 하나 만들어서 연관 키워드 넣기 -->
-				r.name like '%${query}%'
-			</if>
+		<if test="query != null">
+			(
+				r.name LIKE '%${query}%'
+				OR r.id IN (
+					SELECT DISTINCT restaurant_id
+					FROM menu
+					WHERE name LIKE '%${query}%'
+				)
+			)
+		</if>
 		</trim>
 	</select>
 
