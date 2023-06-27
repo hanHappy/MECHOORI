@@ -122,7 +122,7 @@ function restaurantListLoad(url){
 // 검색어 입력 시 RESTful API 요청 ===================================
 function getListByQuery(e) {
     e.preventDefault();
-    let url - `/api/restaurant/list?q=${searchBar.value}`;
+    let url = `/api/restaurant/list?q=${searchBar.value}`;
     restaurantListLoad(url);
 }
 searchBar.onchange = getListByQuery;
