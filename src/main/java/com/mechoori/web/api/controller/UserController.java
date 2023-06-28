@@ -26,8 +26,7 @@ public class UserController {
         @AuthenticationPrincipal MechooriUserDetails member){
 
         Map<String, Integer> data = rateService.getDate(member.getId());
-
-            System.out.println(data);
+        System.out.println(data);
 
         return data;
     }

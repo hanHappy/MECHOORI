@@ -71,8 +71,23 @@ public class RateServiceImp implements RateService{
 
         List<Statistics> list = repository.findData(memberId);
 
-        data.put("me", (Integer)list.get(0).getOverallRatedAvgPrice()); 
-        data.put("other", (Integer)list.get(1).getOverallRatedAvgPrice()); 
+        int valueMe = list.get(0).getValue();
+        int valueOther = list.get(1).getValue();
+        // 가성비 계산
+        valueMe = (int)(((double) list.get(0).getOverallRatedAvgPrice() / list.get(0).getOverallAvgPrice()) * 100);
+        valueOther = (int)(((double) list.get(1).getOverallRatedAvgPrice() / list.get(1).getOverallAvgPrice()) * 100);
+
+        System.out.println(valueMe);
+        System.out.println(valueOther);
+        // 가성비 set
+        list.get(0).setValue(valueMe);
+        list.get(1).setValue(valueOther);
+
+        System.out.println(list.get(0));
+        System.out.println(list.get(1));
+        // 가성비 get 후 data에 추가
+        data.put("me", list.get(0).getValue()); 
+        data.put("other", list.get(1).getValue()); 
 
         return data;
     }

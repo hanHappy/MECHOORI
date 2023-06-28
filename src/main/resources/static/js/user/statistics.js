@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 window.addEventListener("DOMContentLoaded", function () {
   let leftBtn = document.querySelector(".leftBtn");
   let rightBtn = document.querySelector(".rightBtn");
@@ -64,27 +54,20 @@ window.addEventListener("DOMContentLoaded", function () {
     let day = ("0" + date.getDate()).slice(-2);
     return year + "." + month + "." + day;
   }
-
   updateDateRange();
-
-
 
 
   async function updateDateRange() {
 
-    let priceData = {other:0,me:0};
-
-    await fetch(`/api/user/statistics`)
-    // .then(function(response){
-    //   console.log(response.json);
-    //   return response.json
-    // })
+    let valueData = {other:0,me:0};
+    let url = `/api/user/statistics`;
+    await fetch(url)
       .then(response => response.json())
-      .then(data => {
+      .then(data =>{
         console.log(data);
-        priceData = data;
-
+        valueData = data;
       })
+
 
     new Chart(document.getElementById("barChart"), {
       type: 'bar',
@@ -94,7 +77,7 @@ window.addEventListener("DOMContentLoaded", function () {
           {
             // label: "Population (millions)",
             backgroundColor: ["#2292F9", "#FFE551"],
-           data: [priceData.other, priceData.me],
+            data: [valueData.other, valueData.me],
             // borderWidth: 10,
             barThickness: 1,
             maxBarThickness: 3
@@ -133,8 +116,8 @@ window.addEventListener("DOMContentLoaded", function () {
           yAxes: [{
             ticks: {
               min: 0, // y축 최소값
-              max: 15000, // y축 최대값
-              stepSize: 3000, // y축 눈금 간격
+              max: 100, // y축 최대값
+              stepSize: 20, // y축 눈금 간격
               fontColor: "#333", // y축 눈금의 글자 색상
               fontSize: 12 // y축 눈금의 글자 크기
             }
@@ -152,3 +135,18 @@ window.addEventListener("DOMContentLoaded", function () {
 
 });
 
+
+
+// let priceData = {other:0,me:0};
+
+// await fetch(`/api/user/statistics`)
+// // .then(function(response){
+// //   console.log(response.json);
+// //   return response.json
+// // })
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data);
+//     priceData = data;
+
+//   })
