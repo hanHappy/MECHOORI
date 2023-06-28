@@ -12,7 +12,7 @@
 .edit-image img{
     position: relative;
     top:30px;
-    left:230px;
+    left:215px;
     /* z-index: 1; */
 }
 
@@ -31,6 +31,8 @@
 }
 
 .profile-circle img{
+    width:inherit;
+    height: inherit;
     position: inherit;
     object-fit:cover;
     z-index: -1;
@@ -54,6 +56,10 @@ main ul{
     font-size: 14px;
     color: #282828;
     font-weight: bold;
+}
+
+.box li{
+    list-style: none;
 }
 
 li{
