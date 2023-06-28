@@ -147,23 +147,18 @@ public class RestaurantController {
 		return "redirect:/";
 	}
 
-// 	@GetMapping("/ranking")
-// 	public String ranking(Model model, String category) {
+	@GetMapping("/ranking")
+	public String ranking(Model model, String category) {
 
+		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 
-// //		List<Restaurant> list = restaurantService.getRanking(category);
+		List<RestaurantView> list = restaurantService.getRestaurantCardList();
 
-// 		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
+		model.addAttribute("list",list);
+		model.addAttribute("ctg",mainCtgList);
 
-// 		List<RestaurantView> list = restaurantService.getRestaurantViewList();
-
-
-// 		model.addAttribute("list",list);
-// 		model.addAttribute("ctg",mainCtgList);
-
-
-// 		return "/restaurant/ranking";
-// 	}
+		return "/restaurant/ranking";
+	}
 
 	@GetMapping("/mapPage/{id}")
 	public String map(
@@ -174,12 +169,11 @@ public class RestaurantController {
 		RestaurantDetail res = restaurantService.getRestaurantDetailById(restaurantId);
 
 
-
 		model.addAttribute("list",restaurant);
 		model.addAttribute("r",res);
 
 
-		return "/mapPage";
+		return "/restaurant/mapPage";
 	}
 
 

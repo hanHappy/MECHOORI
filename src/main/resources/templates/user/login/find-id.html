@@ -10,8 +10,6 @@
     <title>Document</title>
      <link rel="stylesheet" href="/css/user/login/findIdAndPwd.css"/>
 <!--    <link rel="stylesheet" href="../../../static/css/user/login/findIdAndPwd.css"/>-->
-
-
 </head>
 
 <body>
@@ -40,14 +38,14 @@
         <div class="number">
             휴대폰 번호
             <input type="text" placeholder="010-0000-0000" id="numberText"/>
-            <input type="button" value="인증번호 받기"/>
+            <input type="button"  class="btn btn-primary" id="mail-Check-Btn" value="인증번호 받기"/>
         </div>
 
         <div class="number2">
             인증번호 입력
-            <input type="text"/>
+            <input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
         </div>
-
+        <span id="mail-check-warn"></span>
             <input type="submit" value="확인"></input>
  
     </section>

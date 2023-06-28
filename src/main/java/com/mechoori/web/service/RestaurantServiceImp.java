@@ -110,6 +110,11 @@ public class RestaurantServiceImp implements RestaurantService {
 	public void add(Restaurant restaurant) {
 		repository.add(restaurant);
 	}
+
+	@Override
+	public List<Restaurant> findAllRestaurant() {
+		return repository.findAllRestaurant();
+	}
 }
 
 // TODO : 예외처리 생각합시다

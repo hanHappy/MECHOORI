@@ -10,4 +10,8 @@ public interface MemberService {
 	String getRoleByEmail(String email);
 
 	void add(Member member);
+
+	void resetPwd(Member member);
+
+	void restaurantLike(int Id);
 }
