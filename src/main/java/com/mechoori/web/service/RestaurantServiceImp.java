@@ -108,6 +108,11 @@ public class RestaurantServiceImp implements RestaurantService {
 	public List<RestaurantView> getRanking(Integer categoryId) {
 		return repository.getRanking(categoryId);
 	}
+
+	@Override
+	public List<Restaurant> findAllRestaurant() {
+		return repository.findAllRestaurant();
+	}
 }
 
 // TODO : 예외처리 생각합시다

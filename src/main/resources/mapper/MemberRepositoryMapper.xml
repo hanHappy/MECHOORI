@@ -15,7 +15,7 @@
    </select>
    <insert id="save" parameterType="Member">
       insert into 
-      member(username, nickname, email, password) 
+      member(username, nickname, email, password)
       values(#{username}, #{nickname}, #{email}, #{password})
    </insert>
 
@@ -26,6 +26,12 @@
     <select id="restaurantLIke" resultType="int">
         select member_id from restaurant_like where member_id = #{memberId}
     </select>
+
+    <update id="resetPwd" parameterType="Member">
+        UPDATE member
+        SET password = #{password}
+        WHERE email = #{email}
+    </update>
 
 
 </mapper>

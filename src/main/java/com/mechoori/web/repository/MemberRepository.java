@@ -19,4 +19,5 @@ public interface MemberRepository {
 
     void restaurantLIke(int id);
 
+    void resetPwd(Member member);
 }

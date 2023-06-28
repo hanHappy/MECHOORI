@@ -63,4 +63,13 @@
 		where category_id = ${categoryId}
 		ORDER BY avg_rated_price DESC;
 	</select>
+
+
+	<select id="findAllRestaurant" resultType="Restaurant">
+		select * from restaurant
+	</select>
+
+
+
+
 </mapper>

@@ -34,21 +34,25 @@ public class UserController {
         return "user/login/find-id";
     }
 
-
-
-    @GetMapping("/login/find-id-result")
-    public String findIdResult() {
-        return "user/login/find-id-result";
-    }
-
     @GetMapping("/login/find-pwd")
     public String findPwd() {
         return "user/login/find-pwd";
     }
 
-    @GetMapping("/login/find-pwd-result")
-    public String findPwdResult() {
-        return "user/login/find-pwd-result";
+
+
+//    @GetMapping("/login/find-pwd-result")
+//    public String findPwdResult(String email) {
+//        return "user/login/find-pwd-result";
+//    }
+
+    @PostMapping("login/find-pwd")
+    public String resetPwd(Member member)    {
+        System.out.println(member);
+        System.out.println(member.getPassword());
+        service.resetPwd(member);
+
+        return "redirect:/";
     }
 
 
@@ -65,7 +69,7 @@ public class UserController {
     @PostMapping("sign-up/form")
     public String form(Member member) {
         service.add(member);
-        return "redirect:/";
+        return "redirect:/user/sign-up/complete";
     }
     @GetMapping("sign-up/complete")
     public String complete(){

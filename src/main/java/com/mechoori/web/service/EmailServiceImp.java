@@ -113,13 +113,16 @@ public class EmailServiceImp implements EmailService {
     @Override
     public boolean confirmEmail(String email) {
 
-
-
           String emailCheck = repository.searchEmail(email);
-
-
         return emailCheck == null;
 
+    }
+
+    @Override
+    public boolean findAccount(String email) {
+
+        String emailCheck = repository.searchEmail(email);
+        return emailCheck != null;
     }
 
 

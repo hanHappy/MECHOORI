@@ -11,7 +11,7 @@ public interface MemberService {
 
 	void add(Member member);
 
-
+	void resetPwd(Member member);
 
 	void restaurantLike(int Id);
 }
