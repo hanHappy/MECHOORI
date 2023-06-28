@@ -1,3 +1,21 @@
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+
+      `<canvas id="barChart" width="375" height="230"></canvas>`
+
+
+
+    })
+
+
+
+
+
+
+
+
+
 window.addEventListener("DOMContentLoaded", function() {
   let leftBtn = document.querySelector(".leftBtn");
   let rightBtn = document.querySelector(".rightBtn");

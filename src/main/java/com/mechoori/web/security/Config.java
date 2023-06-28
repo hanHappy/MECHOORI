@@ -3,8 +3,6 @@ package com.mechoori.web.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -22,6 +20,8 @@ public class Config {
 				auth->auth
 					.requestMatchers("/admin/**").hasAnyRole("ADMIN")
 					.requestMatchers("/restaurant/*/rate").hasAnyRole("ADMIN", "USER")
+					.requestMatchers("/user/my-page/**").hasAnyRole("ADMIN", "MEMBER")
+					//.requestMatchers("/user/login/**").hasAnyRole("ADMIN", "MEMBER")
 					.anyRequest().permitAll()) // 이외의 요청은 전부 승인함
 			.formLogin(
 				form->form

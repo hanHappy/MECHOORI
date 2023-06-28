@@ -1,8 +1,18 @@
 package com.mechoori.web.controller;
 
 import com.mechoori.web.entity.Member;
+import com.mechoori.web.entity.Rate;
+import com.mechoori.web.entity.Statistics;
+import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
+import com.mechoori.web.service.RateService;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +25,10 @@ public class UserController {
 
     @Autowired
     private MemberService service;
+
+    @Autowired
+    private RateService ratedService;
+
 
     @GetMapping("login")
     public String login() {
@@ -110,9 +124,39 @@ public class UserController {
 
     //가성비 성과 페이지
     @GetMapping("my-page/statistics")
-    public String rateStatistics(){
+    public String rateStatistics(
+        ){
+        
+        // Integer memberId = null;
+
+        // if (member != null) {
+        //     memberId = member.getId();
+        // }    
+        //List<Rate> list = rateService.getRatedPrice(rate, memberId);
+
+       // Map<String, Statistics> data = ratedService.getDate(member.getId());
+        
+        //model.addAttribute("data", data);
+
+
         return "user/my-page/statistics";
     }
+
+    // reg-date,  
+
+    // @GetMapping("/statistics")
+    // public String statistics(
+    //      @AuthenticationPrincipal MechooriUserDetails member) {
+   
+    //      Integer memberId = member.getId();
+
+    //     if (memberId == null) {
+    //     return "user/login";
+    // }
+    //     return "restaurant/statistics";
+         
+    // }   
+
 
 
     //가성비 성과페이지

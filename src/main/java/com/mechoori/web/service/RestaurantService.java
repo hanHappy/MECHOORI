@@ -17,13 +17,14 @@ public interface RestaurantService {
     List<Restaurant> getListByQuery(String query, Integer page, Integer size);
 	List<Restaurant> getListByPage(Integer page, Integer size);
 
-	// List<RestaurantView> getRestaurantViewList(Integer memberId);
-	// List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId, String query);
-	// List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, Integer categoryId, String query);
-
+	
 	List<Integer> getPages();
-
+	
 	List<RestaurantView> getRanking(Integer categoryId);
+	
+	List<RestaurantView> getRestaurantViewList(Integer memberId);
+    List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, Integer ctgId, String query);
+    List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer ctgId, String query);
 	
 	
 }
