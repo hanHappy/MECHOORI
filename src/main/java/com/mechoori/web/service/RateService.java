@@ -1,8 +1,10 @@
 package com.mechoori.web.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.mechoori.web.entity.Rate;
+import com.mechoori.web.entity.Statistics;
 
 public interface RateService {
 
@@ -10,5 +12,5 @@ public interface RateService {
 
     // List<Rate> getListByRestaurantId(int restaurantId);
     List<Rate> getListByMenuIds(List<Integer> menuIds);
-
+    Map<String, Statistics> getData(int memberId);
 }

@@ -1,8 +1,15 @@
 package com.mechoori.web.controller;
 
 import com.mechoori.web.entity.Member;
+import com.mechoori.web.entity.Statistics;
+import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
+import com.mechoori.web.service.RateService;
+
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +22,9 @@ public class UserController {
 
     @Autowired
     private MemberService service;
+
+    @Autowired
+    private RateService rateService;
 
     @GetMapping("login")
     public String login() {
@@ -119,9 +129,15 @@ public class UserController {
         return "user/my-page/rate-list";
     }
 
-    //가성비 평가목록
+    //가성비 평가목록 비교
     @GetMapping("my-page/statistics")
-    public String rateStatistics(){
+    public String rateStatistics(Model model, @AuthenticationPrincipal MechooriUserDetails member){
+        
+
+        
+        Map<String, Statistics> data = rateService.getData(member.getId());
+        
+        model.addAttribute("data", data);
         return "user/my-page/statistics";
     }
 }

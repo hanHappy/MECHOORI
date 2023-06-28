@@ -56,4 +56,75 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   updateDateRange();
+
+
+
+
+
+function updateDateRange(){
+
+  new Chart(document.getElementById("barChart"), {
+    type: 'bar',
+    data: {
+      labels: ["유저평균", "나의평균"],
+      datasets: [
+        {
+          // label: "Population (millions)",
+          backgroundColor: ["#2292F9", "#FFE551"],
+          data: [7000, 10000],
+          // borderWidth: 10,
+          barThickness: 1,
+          maxBarThickness: 3
+          // inflateAmount: 1, 
+          // borderColor: #333
+        }
+      ]
+    },
+    options: {
+  
+      legend: { display: false },
+  
+      title: {
+        display: false,
+        text: '가성비 성과 비교'
+      },
+  
+      // responsive: true, // 차트가 반응형으로 크기 조절 여부
+      // maintainAspectRatio: false, // 차트의 가로 세로 비율 유지 여부
+      layout: {
+        padding: {
+          left: 30,
+          right: 30,
+          top: 0,
+          bottom: 10
+        },
+      },
+  
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: "#333", // x축 눈금의 글자 색상
+            fontSize: 12 // x축 눈금의 글자 크기
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            min: 0, // y축 최소값
+            max: 15000, // y축 최대값
+            stepSize: 5000, // y축 눈금 간격
+            fontColor: "#333", // y축 눈금의 글자 색상
+            fontSize: 12 // y축 눈금의 글자 크기
+          }
+        }]
+      },
+  
+      animation: {
+      duration: 3000 // 애니메이션 지속 시간 (밀리초)
+      }
+  
+    }
+  });
+
+}
+
 });

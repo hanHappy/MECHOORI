@@ -21,7 +21,8 @@ public class Config {
 			.authorizeHttpRequests( // 인증을 위한 요청 URL 설정
 				auth->auth
 					.requestMatchers("/admin/**").hasAnyRole("ADMIN")
-					.requestMatchers("/restaurant/*/rate").hasAnyRole("ADMIN", "USER")
+					.requestMatchers("/restaurant/*/rate").hasAnyRole("ADMIN", "MEMBER")
+					.requestMatchers("/user/my-page/**").hasAnyRole("ADMIN", "MEMBER")
 					.anyRequest().permitAll()) // 이외의 요청은 전부 승인함
 			.formLogin(
 				form->form

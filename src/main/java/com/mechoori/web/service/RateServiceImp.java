@@ -1,12 +1,15 @@
 package com.mechoori.web.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Rate;
+import com.mechoori.web.entity.Statistics;
 import com.mechoori.web.repository.MenuRepository;
 import com.mechoori.web.repository.RateRepository;
 
@@ -46,5 +49,12 @@ public class RateServiceImp implements RateService{
     @Override
     public List<Rate> getListByMenuIds(List<Integer> menuIds) {
         return repository.findByMenuIds(menuIds);
+    }
+
+    @Override
+    public Map<String, Statistics> getData(int memberId) {
+        Map<String, Statistics> data = new HashMap<>();
+
+        return repository.getData(memberId);
     }
 }
