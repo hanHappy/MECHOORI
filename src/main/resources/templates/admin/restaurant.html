@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html 
+    lang="en" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+    >
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/admin/restaurant.css">
-    <link rel="stylesheet" href="/css/common/style.css">
+    <!-- <link rel="stylesheet" href="/css/common/style.css"> -->
     <script src="/js/admin/restaurant.js" defer="defer"></script>
     <title>Restaurant</title>
 </head>
@@ -13,7 +17,7 @@
 <body>
     <a href="../admin">관리자 페이지로</a>
 
-    <h1>Restaurant</h1>
+    <a style="color: #282828;" href="restaurant"><h1>Restaurant</h1></a>
 
     <hr>
     <br>
@@ -38,7 +42,7 @@
         </div>
     </div>
     <section class="restaurant-list-section">
-        <h1 class="d-none">식당 리스트</h1>
+        <h1 style="display: none;">식당 리스트</h1>
         <div class="restaurant-list">
             <section class="restaurant" th:each="r: ${list}">
                 <p align="center" th:text="${r.id}">id</p>
@@ -50,7 +54,7 @@
                 <p align="center" th:text="${r.operatingTime}">operating_time</p>
                 <p align="center" th:text="${r.contactNumber}">contact_number</p>
                 <div class="buttons">
-                    <a th:href="@{restaurant/{id}/update(id=${r.id})}"><button>MENU</button></a>
+                    <a th:href="@{restaurant/{id}/menu(id=${r.id})}"><button>MENU</button></a>
                     <a th:href="@{restaurant/{id}/update(id=${r.id})}"><button>EDIT</button></a>
                     <a th:href="@{restaurant/{id}/delete(id=${r.id})}"><button>DEL</button></a>
                 </div>

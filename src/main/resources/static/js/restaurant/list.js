@@ -6,9 +6,10 @@ const topCategorySection = header.querySelector('.top-category-section');
 const otherCategorySection = header.querySelector('.other-category-section');
 const otherCategories = otherCategorySection.querySelector('.others');
 const tagArea = otherCategorySection.querySelector('.category.others');
-const likeBtns = this.document.querySelectorAll('.like');
 const searchBar = header.querySelector('#search-bar');
 const searchBtn = header.querySelector('.search-btn');
+const restaurantListSection = document.querySelector(".restaurant-list-section");
+const restaurantList = restaurantListSection.querySelector(".restaurant-list");
 
 // index 검색어
 let searchParam = new URLSearchParams(window.location.search);
@@ -22,7 +23,7 @@ function showSearchBar(){
     searchContainer.classList.remove('d-none');
 }
 
-// Header 돋보기 버튼 클릭 -> 검색바 나타나기
+// Header 돋보기 버튼 클릭() -> 검색바 나타나기
 header.onclick = function(e){
     let isSearchBtn = e.target.className.includes('search');
     if(!isSearchBtn)
@@ -41,9 +42,6 @@ if(query != null){
 }
 
 function restaurantListLoad(url){
-    let restaurantListSection = document.querySelector(".restaurant-list-section");
-    let restaurantList = restaurantListSection.querySelector(".restaurant-list");
-    
     fetch(url)
           .then(response => response.json())
           .then(list => {
@@ -55,50 +53,65 @@ function restaurantListLoad(url){
             //  // 아이템 채우기
              for (let r of list) {
                 let itemTemplate =
-                   `<section class="restaurant-1">
-                   <div class="content">
-                       <!-- 이미지 -->
-                       <div class="image-box">
-                           <img src="/images/foods/${r.img}"  alt="이미지"
-                               class="image">
-                           <!-- 하트 -->
-                           <button class="like">좋아요</button>
-                           <div class="data-box">
-                               <p>
-                                   <span>좋아요 이미지</span>
-                                   <span>${r.likedCount}</span>
-                                   <span>평가 이미지</span>
-                                   <span>${r.ratedCount}</span>
-                               </p>
-                           </div>
-                       </div>
-                       <!-- 정보 -->
-                       <div class="info-box">
-                           <div class="name-wrapper">
-                               <span class="name">${r.name}</span>
-                           </div>
-                           <div class="info">
-                               <p>
-                                   평균가격
-                                   <span>${r.avgPrice}</span>
-                                   <span class="value subject">· 가성비</span>
-                                   <span class="value">${r.value}%</span>
-                               </p>
-                           </div>
-                       </div>
-                       <!-- 버튼 -->
-                       <div class="btn-box">
-                           <div>
-                               <a href="/restaurant/${r.id}">
-                                   <button class="button button-12">상세보기</button></a>
-                           </div>
-                           <div>
-                               <a href="/restaurant/${r.id}/rate">
-                                   <button class="button button-12">평가하기</button></a>
-                           </div>
-                       </div>
-                   </div>
-               </section>`;
+                   `
+                    <section class="restaurant">
+                        <div class="content">
+                            <!-- 이미지 -->
+                            <div class="image-box">
+                                <img src="/images/foods/${r.img}" alt="이미지" class="image">
+                                <!-- 하트 -->
+                                <button
+                                    type="button"
+                                    sec:authorize="isAuthenticated()" 
+                                    data-member-id=${memberId}
+                                    data-restaurant-id="${r.id}"
+                                    class="like" 
+                                    classappend="${r.like}?'active' : ''">좋아요
+                                </button>
+                                <a href="/user/login">
+                                    <button
+                                        type="button"
+                                        sec:authorize="isAnonymous()"  
+                                        class="like">좋아요
+                                    </button>
+                                </a>
+                                <div class="data-box">
+                                    <p>
+                                        <span>좋아요 이미지</span>
+                                        <span>${r.likeCount}</span>
+                                        <span>평가 이미지</span>
+                                        <span>${r.rateCount}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- 정보 -->
+                            <div class="info-box">
+                                <div class="name-wrapper">
+                                    <span class="name">${r.name}</span>
+                                </div>
+                                <div class="info">
+                                    <p>
+                                        평균가격
+                                        <span>${r.avgPrice}</span>
+                                        <span class="value subject">· 가성비</span>
+                                        <span class="value">${r.value}%</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- 버튼 -->
+                            <div class="btn-box">
+                                <div>
+                                    <a href="/restaurant/1" href="/restaurant/{id}(id=${r.id})">
+                                    <button class="button button-12">상세보기</button></a>
+                                </div>
+                                <div>
+                                    <a href="/restaurant/{id}/rate" href="/restaurant/{id}/rate(id=${r.id})">
+                                    <button class="button button-12">평가하기</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `;
  
                 restaurantList.insertAdjacentHTML("beforeend", itemTemplate);
              }
@@ -106,7 +119,7 @@ function restaurantListLoad(url){
  }
 
 
-// 검색어 입력 시 RESTful API 요청
+// 검색어 입력 시 RESTful API 요청 ===================================
 function getListByQuery(e) {
     e.preventDefault();
     let url = `/api/restaurant/list?q=${searchBar.value}`;
@@ -115,13 +128,14 @@ function getListByQuery(e) {
 searchBar.onchange = getListByQuery;
 searchBtn.onclick = getListByQuery;
 
-// Top Category 영역
+// Top Category 영역 ==================================================
 // Top Category 클릭 시 RESTful API 요청
 topCategorySection.onclick = function(e){
+    console.log("c");
     searchBar.value = "";
+    e.preventDefault();
     if(e.target.tagName !== 'A')
         return;
-    e.preventDefault();
     //========== 추가
     if(e.target.innerText == '전체') {
         let url = '/api/restaurant/list';
@@ -136,7 +150,7 @@ topCategorySection.onclick = function(e){
     }
 };
 
-// 기타 카테고리(태그) 영역
+// 기타 카테고리(태그) 영역 ==================================================
 // 기타 카테고리 클릭 시 RESTful API 요청
 tagArea.onclick = function (e) {
     searchBar.value = "";
@@ -160,14 +174,12 @@ tagArea.onclick = function (e) {
     }
 };
 
-// 좋아요 버튼
-// FIXME 좋아요 버튼 Rland처럼 수정해야 함
-let likeControl = function (e) {
-    let isLiked = e.target.classList.contains("active");
-    if (isLiked)
-        e.target.classList.remove('active');
-    else
-        e.target.classList.add('active');
+// 좋아요 버튼 ================================================================
+restaurantList.onclick = function(e){
+    let likeBtn = e.target;
+
+    if(!likeBtn.classList.contains("like"))
+        return;
+    
+
 }
-for (let btn of likeBtns)
-    btn.onclick = likeControl;

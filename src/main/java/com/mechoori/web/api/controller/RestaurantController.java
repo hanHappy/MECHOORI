@@ -3,12 +3,14 @@ package com.mechoori.web.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mechoori.web.entity.RestaurantView;
+import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantService;
 
@@ -24,17 +26,23 @@ public class RestaurantController {
 	@GetMapping("/list")
 	public List<RestaurantView> list(
 			@RequestParam(name = "q", required = false) String query,
-			@RequestParam(name = "c", required = false) Integer ctgId) {
+			@RequestParam(name = "c", required = false) Integer ctgId,
+			@AuthenticationPrincipal MechooriUserDetails member) {
 
 		List<RestaurantView> list = null;
+
+		Integer memberId = null;
+
+		if(member != null)
+			memberId = member.getId();
+
 		// 식당 리스트 출력
 		if (query == null && ctgId == null)
-			list = rstrService.getRestaurantViewList();
+			list = rstrService.getRestaurantViewList(memberId);
 		else if (query != null)
-			list = rstrService.getRestaurantViewListByQuery(ctgId, query);
+			list = rstrService.getRestaurantViewListByQuery(memberId, query);
 		else if (ctgId != null)
-			list = rstrService.getRestaurantViewListByCtgId(ctgId, query);
-
+			list = rstrService.getRestaurantViewListByCtgId(memberId, ctgId);
 		return list;
 	}
 

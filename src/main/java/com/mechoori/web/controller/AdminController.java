@@ -77,7 +77,7 @@ public class AdminController {
         
         List<Restaurant> list = null;
         if(query != null)
-            list = restaurantService.getListByQuery(query, page, size);
+            list = restaurantService.getListByQuery(query, (page*10)-10, size);
         else
             list = restaurantService.getListByPage((page*10)-10, size);
 
@@ -92,6 +92,12 @@ public class AdminController {
     @GetMapping("restaurant/add")
     public String addRestaurant(){
         return "admin/restaurant/add";
+    }
+
+    @PostMapping("restaurant/add")
+    public String addRestaurant(Restaurant restaurant){
+        restaurantService.add(restaurant);
+        return "redirect:../restaurant";
     }
 
     // ================= 메뉴 =================

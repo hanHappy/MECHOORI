@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/common/button.css">
     <link rel="stylesheet" href="/css/common/restaurant.css">
     <link rel="stylesheet" href="/css/restaurant/list.css">
-    <script src="/js/restaurant/list.js" defer="defer"></script>
+    <script src="/js/restaurant/list.js" defer></script>
 </head>
 
 <body>
@@ -48,13 +48,11 @@
             <div class="category">
                 <ul class="category-list top-category-list">
                     <li>
-                        <a class="rs-menu non-click" href="/restaurant/list">전체</a>
+                        <a class="rs-menu non-click">전체</a>
                     </li>
                     <li th:each="c : ${mainCtgList}">
                         <a class="rs-menu non-click" 
-                           href="/restaurant/list?c=1" 
                            th:data-id="${c.id}"
-                           th:href="@{/restaurant/list(c=${c.id})}"
                            th:text="${c.name}">한식
                         </a>
                     </li>
@@ -92,14 +90,27 @@
         <section class="restaurant-list-section">
             <h1 style="display: none;">식당 목록</h1>
             <div class="restaurant-list">
-                <section class="restaurant-1" th:each="r : ${list}">
+                <section class="restaurant" th:each="r : ${list}">
                     <div class="content">
                         <!-- 이미지 -->
                         <div class="image-box">
                             <img src="/images/foods/청화원2.png" th:src="@{/images/foods/{img}(img=${r.img})}" alt="이미지"
                                 class="image">
                             <!-- 하트 -->
-                            <button class="like">좋아요</button>
+                            <button
+                                type="button"
+                                sec:authorize="isAuthenticated()" 
+                                th:data-member-id="${#authentication.principal.id}"
+                                th:data-restaurant-id="${r.id}"
+                                class="like" 
+                                th:classappend="${r.like}?'active' : ''">좋아요</button>
+                            <a href="/user/login">
+                                <button
+                                    type="button"
+                                    sec:authorize="isAnonymous()"  
+                                    class="like">좋아요
+                                </button>
+                            </a>
                             <div class="data-box">
                                 <p>
                                     <span>좋아요 이미지</span>
@@ -138,6 +149,8 @@
                 </section>
             </div>
         </section>
+
+        <input type="hidden" th:value="${#authentication.principal.id}" id="member-id">
 
     </main>
 

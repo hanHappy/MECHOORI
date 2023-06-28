@@ -25,91 +25,54 @@
 		</if>
 	</select>
 
-
-
-
-	<select id="findAllRestaurantCard" resultType="RestaurantView">
-		select distinct restaurant_card.*
-		from restaurant_card
-		left join menu on restaurant_card.id = menu.restaurant_id
+	<select id="findAllRestaurantView" resultType="RestaurantView">
+		<if test="memberId == null">
+			select
+				r.*,
+				0 `like`,
+				0 rate
+			from restaurant_view r
+		</if>
+		<if test="memberId != null">
+			SELECT r.*,
+				IF(rl.restaurant_id IS NOT NULL, 1, 0) AS `like`,
+				IFNULL(rt.rate_count, 0) AS rate
+			FROM restaurant_view r
+			LEFT JOIN (
+				SELECT 
+					DISTINCT restaurant_id
+				FROM restaurant_like
+				WHERE member_id = #{memberId}
+			) rl ON r.id = rl.restaurant_id
+			LEFT JOIN (
+				SELECT 
+					menu.restaurant_id, 
+					COUNT(rate.member_id) AS rate_count
+				FROM menu
+				LEFT JOIN rate ON menu.id = rate.menu_id AND rate.member_id = #{memberId}
+				GROUP BY menu.restaurant_id) rt ON r.id = rt.restaurant_id
+		</if>
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<if test="categoryId != null">
-				category_id = #{categoryId}
+				r.category_id = #{categoryId}
 			</if>
-			<if test="query != null">
-				restaurant_card.name like '%${query}%' or menu.name like '%${query}%'
-			</if>
+		<if test="query != null">
+			(
+				r.name LIKE '%${query}%'
+				OR r.id IN (
+					SELECT DISTINCT restaurant_id
+					FROM menu
+					WHERE name LIKE '%${query}%'
+				)
+			)
+		</if>
 		</trim>
 	</select>
 
-	<select id="findAllRestaurantView" resultType="RestaurantView">
-		SELECT
-    r.*,
-    ROUND(m.avg_rated_price, -2) AS avg_rated_price,
-    ROUND(m.avg_price, -2) AS avg_price,
-    CASE
-        WHEN m.avg_price &gt; 0 THEN ROUND((m.avg_rated_price / m.avg_price) * 100)
-        ELSE 0
-    END AS value,
-    COALESCE(l.like_count, 0) AS like_count,
-    COALESCE(l.likes, 0) AS `like`,
-    COALESCE(r2.rate_count, 0) AS rate_count,
-    COALESCE(r2.rate, 0) AS rate
-FROM
-    restaurant AS r
-LEFT JOIN
-    (
-        SELECT
-            menu.restaurant_id,
-            AVG(menu.rated_price) AS avg_rated_price,
-            AVG(menu.price) AS avg_price
-        FROM
-            menu
-        GROUP BY
-            menu.restaurant_id
-    ) AS m ON r.id = m.restaurant_id
-LEFT JOIN
-    (
-		<if test="memberId != null">
-			SELECT
-				restaurant_id,
-				COUNT(*) AS like_count,
-				COUNT(CASE WHEN member_id = #{memberId} THEN 1 END) AS likes
-		</if>
-		<if test="memberId == null">
-			SELECT
-				restaurant_id,
-				COUNT(*) AS like_count,
-				0 AS likes
-		</if>
-        FROM
-            restaurant_like
-        GROUP BY
-            restaurant_id
-    ) AS l ON r.id = l.restaurant_id
-LEFT JOIN
-    (
-		<if test="memberId != null">
-			SELECT
-				menu.restaurant_id,
-				COUNT(*) AS rate_count,
-				COUNT(CASE WHEN rate.member_id = #{memberId} THEN 1 END) AS rate
-		</if>
-		<if test="memberId == null">
-			SELECT
-				menu.restaurant_id,
-				COUNT(*) AS rate_count,
-				0 AS rate
-		</if>
-        FROM
-            menu
-        INNER JOIN
-            rate ON menu.id = rate.menu_id
-        GROUP BY
-            menu.restaurant_id
-    ) AS r2 ON r.id = r2.restaurant_id
-
-	</select>
+	<insert id="add" parameterType = "Restaurant">
+		insert into restaurant(category_id, name, img, intro, address, operating_time, contact_number)
+		values(#{categoryId}, #{name}, #{img}, #{intro}, #{address}, #{operatingTime}, #{contactNumber})
+	</insert>
 
 	<select id="getRanking" resultType="RestaurantView">
 		SELECT *
