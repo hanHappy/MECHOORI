@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log(email);
 
                 let itemTemplate = `
-          <main>
+          
           
             <form action="/user/login/find-pwd" method="POST">
               <input type="text" name="email" value="${email}" readonly>
@@ -81,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <label for="checkPasswordReset">비밀번호 재확인</label>
             <input type="text" class="checkPasswordReset" id="checkPasswordReset" placeholder="비밀번호를 다시 입력해주세요">
             
-          </main>
         `;
                 main.insertAdjacentHTML("beforeend", itemTemplate);
             })

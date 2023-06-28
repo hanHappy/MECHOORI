@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/sign-up")
+@RequestMapping("api")
 public class SignUpController {
 
     @Autowired
@@ -14,7 +14,7 @@ public class SignUpController {
     @Autowired
     private SignUpService signUpService;
 
-    @PostMapping("/emailCheck")
+    @PostMapping("sign-up/emailCheck")
     @ResponseBody
     String mailConfirm(
             @RequestParam("e") String email)
