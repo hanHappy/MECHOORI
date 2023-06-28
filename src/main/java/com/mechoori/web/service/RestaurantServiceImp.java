@@ -63,32 +63,33 @@ public class RestaurantServiceImp implements RestaurantService {
 
 	@Override
 	public RestaurantDetail getRestaurantDetailById(int restaurantId) {
-		List<Menu> menuList = menuRepository.findAll(restaurantId);
+		// FIXME RestaurantView로 넘겨주기
+		// List<Menu> menuList = menuRepository.findAll(restaurantId);
 
-		int avgPrice = 0;
-		int avgRatedPrice = 0;
+		// int avgPrice = 0;
+		// int avgRatedPrice = 0;
 
-		for (Menu menu : menuList) {
-			avgPrice = (((avgPrice + menu.getPrice()) / 2) / 100) * 100;
-			avgRatedPrice = (((avgRatedPrice + menu.getRatedPrice()) / 2) / 100) * 100;
-		}
+		// for (Menu menu : menuList) {
+		// 	avgPrice = (((avgPrice + menu.getPrice()) / 2) / 100) * 100;
+		// 	avgRatedPrice = (((avgRatedPrice + menu.getRatedPrice()) / 2) / 100) * 100;
+		// }
 
-		int value = (int) (((double) avgRatedPrice / avgPrice) * 100);
+		// int value = (int) (((double) avgRatedPrice / avgPrice) * 100);
 
-		Restaurant temp = getDetailById(restaurantId);
-		RestaurantDetail restaurant = new RestaurantDetail();
-		restaurant.setId(temp.getId());
-		restaurant.setName(temp.getName());
-		restaurant.setImg(temp.getImg());
-		restaurant.setIntro(temp.getIntro());
-		restaurant.setAddress(temp.getAddress());
-		restaurant.setOperatingTime(temp.getOperatingTime());
-		restaurant.setContactNumber(temp.getContactNumber());
-		restaurant.setAvgPrice(avgPrice);
-		restaurant.setAvgRatedPrice(avgRatedPrice);
-		restaurant.setValue(value);
+		// Restaurant temp = getDetailById(restaurantId);
+		// RestaurantDetail restaurant = new RestaurantDetail();
+		// restaurant.setId(temp.getId());
+		// restaurant.setName(temp.getName());
+		// restaurant.setImg(temp.getImg());
+		// restaurant.setIntro(temp.getIntro());
+		// restaurant.setAddress(temp.getAddress());
+		// restaurant.setOperatingTime(temp.getOperatingTime());
+		// restaurant.setContactNumber(temp.getContactNumber());
+		// restaurant.setAvgPrice(avgPrice);
+		// restaurant.setAvgRatedPrice(avgRatedPrice);
+		// restaurant.setValue(value);
 
-		return restaurant;
+		return new RestaurantDetail();
 	}
 
 	@Override

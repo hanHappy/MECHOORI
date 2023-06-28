@@ -20,21 +20,10 @@ public class RateServiceImp implements RateService{
     private MenuRepository menuRepository;
 
     @Override
-    public void add(Rate rate, int userId) {
+    public void add(Rate rate, int memberId) {
         rate.setId(null);
-        rate.setUserId(userId);
+        rate.setMemberId(memberId);
         repository.add(rate);
-        // 메뉴테이블의 누적 가성비를 가져와서 더해줌?
-        int ratePrice = rate.getPrice();
-
-        // 메뉴 테이블의 누적 평가 가격
-        Menu menu = menuRepository.findById(rate.getMenuId());
-        int cumulativeRatedPrice = menu.getRatedPrice();
-        
-        int result = (ratePrice + cumulativeRatedPrice)/2;
-
-        menu.setRatedPrice(result);
-        menuRepository.update(menu);
     }
     
     // @Override

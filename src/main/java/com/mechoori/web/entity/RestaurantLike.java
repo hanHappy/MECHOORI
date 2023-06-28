@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Menu {
-    private int id;
-    private int restaurantId;
-    private String name;
-    private int price;
+public class RestaurantLike {
+    private int memberId;
+    private int restaurantId;   
 }
