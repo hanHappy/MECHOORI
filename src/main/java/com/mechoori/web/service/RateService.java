@@ -15,6 +15,6 @@ public interface RateService {
 
     // List<Rate> getRatedPrice(Rate rate, Integer memberId);
 
-    Map<String, Statistics> getDate(int memberId);
+    Map<String, Integer> getDate(int memberId);
 
 }

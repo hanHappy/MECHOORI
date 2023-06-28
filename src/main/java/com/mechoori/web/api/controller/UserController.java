@@ -22,10 +22,12 @@ public class UserController {
 
 
     @GetMapping("/statistics")
-    public Map<String, Statistics> statistics(
+    public Map<String, Integer> statistics(
         @AuthenticationPrincipal MechooriUserDetails member){
 
-        Map<String, Statistics> data = rateService.getDate(member.getId());
+        Map<String, Integer> data = rateService.getDate(member.getId());
+
+            System.out.println(data);
 
         return data;
     }
