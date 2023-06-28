@@ -9,6 +9,41 @@
 }
 
 
+.edit-image img{
+    position: relative;
+    top:30px;
+    left:230px;
+    z-index: 1;
+}
+
+/* 프로필 사진 틀 */
+.profile-circle{
+    position: relative;
+    width:100px;  /*부모(헤더)의 영향을 받음*/
+    height: 100px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    margin: 0px 0 0 135px;
+    /* top:20px; */
+    border-radius: 50%;
+    border: 2px solid #ffffff00;
+    box-shadow: var(--btn-shadow);
+}
+
+.profile-circle img{
+    position: inherit;
+    object-fit:cover;
+    z-index: -1;
+    /* right: 10px; */
+}
+
+.user-name{
+    position: relative;
+    font-weight: bold;
+    text-align: center;
+    margin: 0
+}
+
 h1{
     font-size: 20px;
     color:#282828;
