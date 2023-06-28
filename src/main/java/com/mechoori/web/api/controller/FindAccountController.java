@@ -37,7 +37,6 @@ public class FindAccountController {
 
 
     @PostMapping("/find-pwd")
-    @ResponseBody
     public String resetPwd(
             @RequestParam("email") String email){
 

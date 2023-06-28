@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>손 안의 메뉴 추천 리스트, 메추리</title>
     <script type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
+            src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
     <script src="/js/map.js" defer="defer"></script>
     <link rel="stylesheet" href="/css/common/style.css">
     <link rel="stylesheet" href="/css/common/header.css">
@@ -37,9 +37,18 @@
 
     <div id="map" style="width: 100%; height: 550px"></div>
     <div th:each="address:${address}">
-        <div th:text="${address.address}" hidden="hidden" class="addresses"></div>
+        <div th:text="${address.address}" class="addresses"></div>
+
+        <div class="info">
+            <span th:text="${address.name}"></span>
+            <span th:text="${address.address}"></span>
+            <span th:text="${address.intro}"></span>
+        </div>
+
 
     </div>
+
+
 
 
 </section>

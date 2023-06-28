@@ -31,29 +31,26 @@ public class UserController {
 
     @GetMapping("/login/find-id")
     public String findId() {
+
         return "user/login/find-id";
     }
-
-
-
-//    @GetMapping("/login/find-id-result")
-//    public String findIdResult() {
-//        return "user/login/find-id-result";
-//    }
 
     @GetMapping("/login/find-pwd")
     public String findPwd() {
         return "user/login/find-pwd";
     }
 
-    @GetMapping("/login/find-pwd-result")
-    public String findPwdResult(String email) {
-        return "user/login/find-pwd-result";
-    }
 
-    @PostMapping("/login/find-pwd")
+
+//    @GetMapping("/login/find-pwd-result")
+//    public String findPwdResult(String email) {
+//        return "user/login/find-pwd-result";
+//    }
+
+    @PostMapping("login/find-pwd")
     public String resetPwd(Member member)    {
-
+        System.out.println(member);
+        System.out.println(member.getPassword());
         service.resetPwd(member);
 
         return "redirect:/";

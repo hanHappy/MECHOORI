@@ -56,6 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
             body: new URLSearchParams(formData),
         })
             .then(function (response) {
+                if(response.ok)
+                    return response.text();
+                else
+                    throw new Error("전송 실패")
                 // Check response status and handle accordingly
             })
             .then(function (data) {
@@ -65,17 +69,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 let itemTemplate = `
           <main>
-            <form action="find-pwd-result" method="post">
+          
+            <form action="/user/login/find-pwd" method="POST">
+              <input type="text" name="email" value="${email}" readonly>
               <label for="passwordReset">비밀번호 재설정</label>
               <input type="text" name="password" class="passwordReset" id="passwordReset" placeholder="비밀번호를 입력해주세요">
               <!-- 이메일 값 전달 -->
-              <input type="hidden" name="email" value="${email}">
+              <button type="submit" id="submitBtn">재설정 하기</button>
+              
             </form>
             <label for="checkPasswordReset">비밀번호 재확인</label>
             <input type="text" class="checkPasswordReset" id="checkPasswordReset" placeholder="비밀번호를 다시 입력해주세요">
-            <a href="/">
-              <button type="submit" id="submitBtn">재설정 하기</button>
-            </a>
+            
           </main>
         `;
                 main.insertAdjacentHTML("beforeend", itemTemplate);
@@ -136,5 +141,13 @@ document.addEventListener("DOMContentLoaded", function () {
         let email = document.querySelector("#emailText").value;
         resetPassword(email);
     });
+
+    /*      document.querySelector(".passwordReset").addEventListener("keyup", function (e){
+
+              e.preventDefault();
+
+              let con = document.querySelector(".passwordReset").innerText;
+             console.log(con)
+       })*/
 
 });
