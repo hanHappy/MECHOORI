@@ -152,6 +152,7 @@ public class RestaurantServiceImp implements RestaurantService {
 	}
 
 	@Override
+	// FIXME 너 정체가 뭐야
 	public List<Restaurant> findAllRestaurant() {
 		return repository.findAllRestaurant();
 	}
