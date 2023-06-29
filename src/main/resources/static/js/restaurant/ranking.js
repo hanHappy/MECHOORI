@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div>${item.value}%</div>
             </section>
         </section>
-            
             `;
 
                     rankingList.insertAdjacentHTML("beforeend", itemTemplate);

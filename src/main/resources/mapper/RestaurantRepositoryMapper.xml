@@ -74,14 +74,28 @@
 		values(#{categoryId}, #{name}, #{img}, #{intro}, #{address}, #{operatingTime}, #{contactNumber})
 	</insert>
 
-	<select id="getRanking" resultType="RestaurantView">
-		SELECT *
-		from restaurant_view
-		<if test="categoryId != null">
-		where category_id = #{categoryId}
-		</if>
-		ORDER BY value DESC
-	</select>
+<!--	<select id="getRanking" resultType="RestaurantView">-->
+<!--		SELECT *-->
+<!--		from restaurant_view-->
+<!--		<if test="categoryId != null">-->
+<!--		where category_id = #{categoryId}-->
+<!--		</if>-->
+<!--		ORDER BY value DESC-->
+<!--	</select>-->
+
+<select id="getRanking" resultType="RestaurantView">
+	SELECT *,
+	(SELECT COUNT(*)
+	FROM (SELECT *
+	FROM restaurant_view
+	<if test="categoryId != null">
+		WHERE category_id = #{categoryId}
+	</if>
+	ORDER BY value DESC) AS subquery
+	WHERE subquery.value >= restaurant_view.value) AS rank
+	FROM restaurant_view
+	ORDER BY value DESC
+		</select>
 
 	<select id="findAllRestaurant" resultType="Restaurant">
 		select * from restaurant

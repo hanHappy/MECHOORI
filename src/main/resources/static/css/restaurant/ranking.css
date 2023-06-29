@@ -65,14 +65,9 @@ main {
     align-items: center;
     box-shadow: var(--block-shadow);
 
-    counter-increment: numbering;
-
 }
 
-.rankingNum {
-    counter-increment: numbering;
-    content : counter(numbering);
-}
+
 
 .img {
     width: 100%;
@@ -85,4 +80,12 @@ main {
 .ranking-list-sections {
 
     margin-top: 15px;
+}
+
+.up{
+    color: #7676ff;
+}
+
+.down{
+    color: #b95151;
 }

@@ -53,11 +53,11 @@
 <main>
 
     <section class="ranking-list-sections">
-        <section th:each="list, iter:${list}"  th:if="${iter.index} &lt; 10">
+        <section th:each="list, iter:${list}"  th:if="${iter.index} &lt; 9">
             <img th:src="@{/images/foods/{img}(img=${list.img})}" class="img">
 
             <section class="ranking-list">
-                <div class="rankingNum">1</div>
+                <div class="rankingNum" th:text="${list.rank}">1</div>
                 <div th:text="${list.name}">맘마니</div>
                 <div>
                     <span th:text="${#numbers.formatDecimal(list.avgPrice, 0, 'COMMA', 0, 'POINT')}">8,800원</span><br/>
