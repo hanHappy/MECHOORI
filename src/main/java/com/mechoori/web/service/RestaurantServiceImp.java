@@ -53,14 +53,39 @@ public class RestaurantServiceImp implements RestaurantService {
 	}
 
 	@Override
-	public List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId, String query) {
-		return repository.findAllRestaurantView(memberId, null, null);
+	public List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId) {
+		return repository.findAllRestaurantView(memberId, null);
+	}
+                                                     
+	@Override
+	public List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, String query) {
+		return repository.findAllRestaurantView(memberId, null);
 	}
 
+
 	@Override
-	public List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, Integer categoryId, String query) {
-		return repository.findAllRestaurantView(memberId, null, null);
+	public List<RestaurantView> getRestaurantViewListByFilter(Integer memberId, Integer ctgId, String query, Integer filterId) {
+
+		String filter = null;
+
+		switch(filterId){
+			case 1: filter = "value";
+				break;
+			case 2: filter = "avg_price desc";
+				break;	
+			case 3: filter = "avg_price";
+				break;	
+			case 4: filter = "like_count";
+				break;	
+			case 5: filter = "rate_count";
+				break;	
+		}
+		
+		return repository.findAllRestaurantView(memberId, null, null, filterId);
 	}
+
+
+
 
 	@Override
 	public RestaurantDetail getRestaurantDetailById(int restaurantId) {
@@ -109,6 +134,8 @@ public class RestaurantServiceImp implements RestaurantService {
 	public List<RestaurantView> getRanking(Integer categoryId) {
 		return repository.getRanking(categoryId);
 	}
+
+
 }
 
 // TODO : 예외처리 생각합시다

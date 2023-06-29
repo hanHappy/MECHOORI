@@ -17,7 +17,7 @@ public interface RestaurantRepository {
     List<Restaurant> findAll(Integer categoryId, String query, Integer page, Integer size);
 
     List<RestaurantView> findAllRestaurantView(Integer memberId);
-    List<RestaurantView> findAllRestaurantView(Integer memberId, Integer categoryId, String query);
+    List<RestaurantView> findAllRestaurantView(Integer memberId, Integer categoryId, String query, Integer filter);
 
     List<RestaurantView> getRanking(Integer categoryId);
 

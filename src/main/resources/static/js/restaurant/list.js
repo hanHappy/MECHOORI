@@ -10,12 +10,21 @@ const likeBtns = this.document.querySelectorAll('.like');
 const searchBar = header.querySelector('#search-bar');
 const searchBtn = header.querySelector('.search-btn');
 
+const filter = header.querySelector(".filter-box");
+
+
+
+
 // index 검색어
 let searchParam = new URLSearchParams(window.location.search);
 const query = searchParam.get('q');
+let categoryId = searchParam.get('c');
+console.log(query);
+console.log(categoryId);
+
 
 // 검색바 보이기()
-function showSearchBar(){
+function showSearchBar() {
     headerSide[0].style.display = 'none';
     headerSide[1].style.display = 'none';
     logo.style.display = 'none';
@@ -23,14 +32,14 @@ function showSearchBar(){
 }
 
 // Header 돋보기 버튼 클릭 -> 검색바 나타나기
-header.onclick = function(e){
+header.onclick = function (e) {
     let isSearchBtn = e.target.className.includes('search');
-    if(!isSearchBtn)
+    if (!isSearchBtn)
         return;
     showSearchBar();
 }
 // index에서 검색으로 넘어왔다면 검색바+키워드 보여주기
-if(query != null){
+if (query != null) {
     // 검색바에 검색 키워드 남겨놓기
     searchBar.value = query;
     // URLSearchParams 인스턴스 초기화 안 해주면 
@@ -40,22 +49,22 @@ if(query != null){
     showSearchBar();
 }
 
-function restaurantListLoad(url){
+function restaurantListLoad(url) {
     let restaurantListSection = document.querySelector(".restaurant-list-section");
     let restaurantList = restaurantListSection.querySelector(".restaurant-list");
-    
+
     fetch(url)
-          .then(response => response.json())
-          .then(list => {
-             //.then(menu=>menu.name);
- 
-             // 방 비우기
-             restaurantList.innerHTML = "";
- 
+        .then(response => response.json())
+        .then(list => {
+            //.then(menu=>menu.name);
+
+            // 방 비우기
+            restaurantList.innerHTML = "";
+
             //  // 아이템 채우기
-             for (let r of list) {
+            for (let r of list) {
                 let itemTemplate =
-                   `<section class="restaurant-1">
+                    `<section class="restaurant-1">
                    <div class="content">
                        <!-- 이미지 -->
                        <div class="image-box">
@@ -99,11 +108,11 @@ function restaurantListLoad(url){
                        </div>
                    </div>
                </section>`;
- 
+
                 restaurantList.insertAdjacentHTML("beforeend", itemTemplate);
-             }
-          });
- }
+            }
+        });
+}
 
 
 // 검색어 입력 시 RESTful API 요청
@@ -117,17 +126,17 @@ searchBtn.onclick = getListByQuery;
 
 // Top Category 영역
 // Top Category 클릭 시 RESTful API 요청
-topCategorySection.onclick = function(e){
+topCategorySection.onclick = function (e) {
     searchBar.value = "";
-    if(e.target.tagName !== 'A')
+    if (e.target.tagName !== 'A')
         return;
     e.preventDefault();
     //========== 추가
-    if(e.target.innerText == '전체') {
+    if (e.target.innerText == '전체') {
         let url = '/api/restaurant/list';
         restaurantListLoad(url);
         otherCategorySection.classList.remove('slide-open');
-    } else if(e.target.innerText == '기타')
+    } else if (e.target.innerText == '기타')
         otherCategorySection.classList.add('slide-open');
     else {
         let url = `/api/restaurant/list?c=${e.target.dataset.id}`;
@@ -141,14 +150,14 @@ topCategorySection.onclick = function(e){
 tagArea.onclick = function (e) {
     searchBar.value = "";
     e.preventDefault();
-    if(e.target.tagName !== 'BUTTON')
+    if (e.target.tagName !== 'BUTTON')
         return;
     let activeTag = otherCategories.querySelector('.active');
     if (activeTag != null)
         activeTag.classList.remove('active');
-    e.target.classList.add('active');
+        e.target.classList.add('active');
 
-    
+
 
     //========== 추가
     if (e.target.innerText == '#전체') {
@@ -159,6 +168,17 @@ tagArea.onclick = function (e) {
         restaurantListLoad(url);
     }
 };
+
+//============= 필터링
+filter.onchange = function (e) {
+
+    let url = `/api/restaurant/list?c=${categoryId}&?f=${e.target.value}`
+
+    restaurantListLoad(url);
+}
+
+
+
 
 // 좋아요 버튼
 // FIXME 좋아요 버튼 Rland처럼 수정해야 함

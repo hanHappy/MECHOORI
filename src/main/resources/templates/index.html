@@ -48,6 +48,7 @@
         <section class="type">
             <ul class="typelist">
                 <li th:each="c : ${list}"> 
+                    <input name="c" type="hidden" th:value="${c.id}">
                     <a 
                         href="/restaurant/list/category/1"
                         th:href="@{/restaurant/list(c=${c.id})}"> 
