@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
+import com.mechoori.web.entity.MenuView;
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantView;
@@ -80,13 +81,14 @@ public class RestaurantController {
 			@PathVariable("id") int restaurantId,
 			Model model) {
 
-		List<Menu> menuList = menuService.getList(restaurantId);
-		RestaurantView restaurant = restaurantService.getViewDetailById(restaurantId);
+		// List<Menu> menuList = menuService.getList(restaurantId);
+		RestaurantView restaurantView = restaurantService.getViewDetailById(restaurantId);
+		List<MenuView> menuViewList = menuService.getViewListByRestaurantId(restaurantId);
 
 		//아이디
 		List<Integer> menuIds = new ArrayList<>();
-		for (Menu menu : menuList) {
-			menuIds.add(menu.getId());
+		for (MenuView menuView : menuViewList) {
+			menuIds.add(menuView.getId());
 		}
 		//리뷰
 		List<Rate> rateList = rateService.getListByMenuIds(menuIds);
@@ -106,15 +108,17 @@ public class RestaurantController {
 
 		for (Rate rate : rateList) {
 			int menuId = rate.getMenuId();
-			String menuName = menuService.getMenuName(menuId, menuList);
+			String menuName = menuService.getMenuName(menuId, menuViewList);
 			menuNames.add(menuName);
 		}
 
-		model.addAttribute("menuList", menuList);
-		model.addAttribute("r", restaurant);
+		model.addAttribute("menuViewList", menuViewList);
+		model.addAttribute("r", restaurantView);
 		model.addAttribute("rateList", rateList);
 		model.addAttribute("menuNames", menuNames);
 		model.addAttribute("top4Rates", top4Rates);
+
+		System.out.println("테스트" + menuViewList);
 
 		//테스트
 		// if (rateList.isEmpty()) {

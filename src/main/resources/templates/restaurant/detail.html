@@ -68,14 +68,14 @@
         </div>
       </div>
     </div>
-<!-- 
+
     <div class="menu">
       <div class="menu-title">
         <img src="/images/icons/icon-line.svg">
         <p>대표메뉴</p>
       </div>
 
-      <div class="menu-detail" th:each="menu, iter : ${menuList}" th:if="${iter.index} &lt; 4">
+      <div class="menu-detail" th:each="menu, iter : ${menuViewList}" th:if="${iter.index} &lt; 4">
         <div class="menu-detail-name">
           <span th:text="${menu.name}">메뉴명</span>
         </div>
@@ -84,7 +84,7 @@
         </div>
         <div>
           <span th:text="${menu.price + '원'}">가격</span>
-          <span th:text="'(' + ${((menu.ratedPrice*100/menu.price*100)/100)} + '%)'" class="menu-detail-rp"></span>
+          <span th:text="${menu.value} + '%'" class="menu-detail-rp"></span>
         </div>
       </div>
 
@@ -92,18 +92,18 @@
         <input id="check-btn" type="checkbox">
         <label for="check-btn">메뉴 더보기</label>
         <span class="togle">▼</span>
-        <ul class="menubars" th:each="menu, iterStat : ${menuList}" th:if="${iterStat.index} &gt;= 4">
+        <ul class="menubars" th:each="menu, iterStat : ${menuViewList}" th:if="${iterStat.index} &gt;= 4">
           <div class="menubars-content">
             <span class="menu-detail-name" th:text="${menu.name}">메뉴명</span>
             <span>…………</span>
             <div>
               <span th:text="${menu.price}+'원'">가격</span>
-              <span th:text="'(' + ${((menu.ratedPrice*100/menu.price*100)/100)} + '%)'"></span>
+              <span th:text="${menu.value} + '%'"></span>
             </div>
           </div>
         </ul>
       </div>
-    </div> -->
+    </div>
 
     <div class="map">
       <div class="map-title-box">
