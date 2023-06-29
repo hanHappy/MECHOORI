@@ -152,12 +152,16 @@ public class RestaurantController {
 
 		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 
-		List<RestaurantView> list = restaurantService.getRestaurantCardList();
 
-		model.addAttribute("list",list);
+		List<RestaurantView> listRanking = restaurantService.getRanking(null);
+
+
+		System.out.println(listRanking);
+
+		model.addAttribute("list",listRanking);
 		model.addAttribute("ctg",mainCtgList);
 
-		return "/restaurant/ranking";
+		return "restaurant/ranking";
 	}
 
 	@GetMapping("/mapPage/{id}")

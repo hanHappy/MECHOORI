@@ -53,7 +53,7 @@ public class RestaurantController {
 			@RequestParam(name = "ctgId", required = false) Integer categoryId) {
 
 		if (categoryId != null) {
-			System.out.println("category");
+			System.out.println(categoryId);
 			return rstrService.getRanking(categoryId);
 		}
 		return rstrService.getRanking(categoryId);

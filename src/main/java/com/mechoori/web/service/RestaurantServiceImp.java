@@ -107,6 +107,11 @@ public class RestaurantServiceImp implements RestaurantService {
 	}
 
 	@Override
+	public List<RestaurantView> getRanking() {
+		return repository.getRanking();
+	}
+
+	@Override
 	public void add(Restaurant restaurant) {
 		repository.add(restaurant);
 	}

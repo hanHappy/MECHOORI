@@ -195,7 +195,5 @@ function needFilmAll() {
         console.log("nope");
     }
 
-
 }
 
-});

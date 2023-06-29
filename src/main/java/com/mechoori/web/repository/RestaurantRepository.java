@@ -19,7 +19,9 @@ public interface RestaurantRepository {
     List<RestaurantView> findAllRestaurantView(Integer memberId, Integer categoryId, String query);
 
     List<RestaurantView> getRanking(Integer categoryId);
+    List<RestaurantView> getRanking();
 
     void add(Restaurant restaurant);
 
+    List<Restaurant> findAllRestaurant();
 }

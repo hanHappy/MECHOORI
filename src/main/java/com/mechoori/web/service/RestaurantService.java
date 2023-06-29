@@ -24,7 +24,7 @@ public interface RestaurantService {
 	List<Integer> getPages();
 
 	List<RestaurantView> getRanking(Integer categoryId);
-
+	List<RestaurantView> getRanking();
     void add(Restaurant restaurant);
 
 	List<Restaurant> findAllRestaurant();
