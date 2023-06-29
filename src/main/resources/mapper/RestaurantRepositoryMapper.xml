@@ -53,25 +53,34 @@
 				GROUP BY menu.restaurant_id) rt ON r.id = rt.restaurant_id
 		</if>
 		<trim prefix="where" prefixOverrides="AND|OR">
+			<if test="topCategoryId != null">
+				r.top_category_id = #{topCategoryId}
+			</if>
 			<if test="categoryId != null">
 				r.category_id = #{categoryId}
 			</if>
-		<if test="query != null">
-			(
-				r.name LIKE '%${query}%'
-				OR r.id IN (
-					SELECT DISTINCT restaurant_id
-					FROM menu
-					WHERE name LIKE '%${query}%'
+			<if test="query != null">
+				(
+					r.name LIKE '%${query}%'
+					OR r.id IN (
+						SELECT DISTINCT restaurant_id
+						FROM menu
+						WHERE name LIKE '%${query}%'
+					)
 				)
-			)
-		</if>
+			</if>
 		</trim>
+		<trim prefix="order by" prefixOverrides="AND | OR">
+			<if test="filter != null">
+				${filter}
+			</if>
+		</trim>
+		
 	</select>
 
 	<insert id="add" parameterType = "Restaurant">
-		insert into restaurant(category_id, name, img, intro, address, operating_time, contact_number)
-		values(#{categoryId}, #{name}, #{img}, #{intro}, #{address}, #{operatingTime}, #{contactNumber})
+		insert into restaurant(top_category_id, category_id, name, img, intro, address, operating_time, contact_number)
+		values(#{topCategoryId}, #{categoryId}, #{name}, #{img}, #{intro}, #{address}, #{operatingTime}, #{contactNumber})
 	</insert>
 
 	<select id="getRanking" resultType="RestaurantView">

@@ -310,31 +310,18 @@ main {
 
         /* layout */
         position: fixed;
-        margin: auto;
-        width: 315px;
         padding: 30px;
-        height: 269px;
+        width: 315px;
+        max-height: auto;
 
         /* items layout */
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 15px;
     }
     
-    /* 모달 박스 (이전화면, 홈으로) */
-    .modal.check-back .modal-box,
-    .modal.check-home .modal-box {
-        /* items layout */
-        justify-content: space-between;
-    }
-
-    /* 모달 박스 (평가 완료) */
-    .modal.check-complete .modal-box {
-        /* items layout */
-        gap: 20px
-    }
-
         /* 메추리 + 텍스트(질문) 박스 */
         .question-box {
             display: flex;
