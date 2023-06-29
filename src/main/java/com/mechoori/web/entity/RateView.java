@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StatisticsData {
-    private int id; 
-    private Integer userAverage; // (총 합- 내꺼 합(있으면 더 하고 없으면 총합)) / 인원수
-    private Integer myAverage; 
-    private 
+public class RateView {
+    private Integer memberId;
+    private Integer restaurantId;
+    private Integer ratedAveragePrice;
+    private Integer averagePrice;
 }
