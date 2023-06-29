@@ -80,6 +80,9 @@ main {
 
 .restaurant-img {
     width: 100%;
+    min-height: 140px;
+    max-height: 150px;
+    object-fit: cover;
 }
 
 /* ----------- 상호명 ----------- */

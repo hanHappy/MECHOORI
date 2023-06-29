@@ -20,4 +20,6 @@ public interface RestaurantRepository {
 
     List<RestaurantView> getRanking(Integer categoryId);
 
+    void add(Restaurant restaurant);
+
 }

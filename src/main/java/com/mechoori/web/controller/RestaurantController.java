@@ -46,20 +46,26 @@ public class RestaurantController {
 	public String list(
 			@RequestParam(name = "q", required = false) String query,
 			@RequestParam(name = "c", required = false) Integer ctgId,
+			@AuthenticationPrincipal MechooriUserDetails member,
 			Model model) {
 
 		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 		List<Category> otherCtgList = categoryService.getOtherCategoryList();
-		
 
 		List<RestaurantView> list = null;
+
+		Integer memberId = null;
+
+		if(member != null)
+			memberId = member.getId();
+
 		// 식당 리스트 출력
 		if(query==null&&ctgId==null)
-			list = restaurantService.getRestaurantViewList();
+			list = restaurantService.getRestaurantViewList(memberId);
 		else if (query != null)
-			list = restaurantService.getRestaurantViewListByQuery(ctgId, query);
+			list = restaurantService.getRestaurantViewListByQuery(memberId, query);
 		else if (ctgId != null)
-			list = restaurantService.getRestaurantViewListByCtgId(ctgId, query);
+			list = restaurantService.getRestaurantViewListByCtgId(memberId, ctgId);
 
 		model.addAttribute("list", list)
 			 .addAttribute("mainCtgList", mainCtgList)
