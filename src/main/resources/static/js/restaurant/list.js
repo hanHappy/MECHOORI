@@ -189,12 +189,12 @@ restaurantList.onclick = function(e){
     
     let {restaurantId, memberId} = el.dataset; // destructuring
 
+    console.log(memberId);
+
     // 회원 아니면 return
     if(memberId==null)
         return;
-
     e.preventDefault();
-
     
     // Like 추가
     if(!el.classList.contains("active")){
