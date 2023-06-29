@@ -17,19 +17,20 @@ import com.mechoori.web.service.RateService;
 @RequestMapping("api/user")
 public class UserController {
     
-    @Autowired
-    private RateService rateService; 
 
+
+    @Autowired
+    private RateService rateService;
 
     @GetMapping("/statistics")
     public Map<String, Integer> statistics(
         @AuthenticationPrincipal MechooriUserDetails member){
 
         Map<String, Integer> data = rateService.getDate(member.getId());
-        System.out.println(data);
+        System.out.println("data : "+  data);
 
         return data;
     }
 
-
+//http://localhost:8080/user/my-page/statistics
 }

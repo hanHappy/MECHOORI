@@ -115,9 +115,9 @@ window.addEventListener("DOMContentLoaded", function () {
           }],
           yAxes: [{
             ticks: {
-              min: 0, // y축 최소값
-              max: 100, // y축 최대값
-              stepSize: 20, // y축 눈금 간격
+              min: 80, // y축 최소값
+              max: 120, // y축 최대값
+              stepSize: 10, // y축 눈금 간격
               fontColor: "#333", // y축 눈금의 글자 색상
               fontSize: 12 // y축 눈금의 글자 크기
             }

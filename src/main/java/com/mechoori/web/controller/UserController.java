@@ -124,21 +124,14 @@ public class UserController {
 
     //가성비 성과 페이지
     @GetMapping("my-page/statistics")
-    public String rateStatistics(
-        ){
-        
+    public String rateStatistics(){
         // Integer memberId = null;
-
         // if (member != null) {
         //     memberId = member.getId();
         // }    
         //List<Rate> list = rateService.getRatedPrice(rate, memberId);
-
        // Map<String, Statistics> data = ratedService.getDate(member.getId());
-        
         //model.addAttribute("data", data);
-
-
         return "user/my-page/statistics";
     }
 
