@@ -51,12 +51,13 @@
             <ul class="typelist">
                 <li th:each="c : ${list}"> 
                     <a 
-                        href="/restaurant/list/category/1"
-                        th:href="@{/restaurant/list(c=${c.id})}"> 
+                       href="/restaurant/list/category/1"
+                       th:href="@{/restaurant/list(c=${c.id})}"> 
                         <img 
                             src="/images/icons/한식.svg"
                             th:src="@{/images/icons/{img}(img=${c.image})}"> 
                     </a>
+                    <input type="hidden" name="c" th:value="${c.id}">
                 </li>
             </ul>
         </section>

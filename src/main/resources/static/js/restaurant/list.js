@@ -1,22 +1,23 @@
-const header = document.querySelector('header');
-const logo = header.querySelector('.logo');
-const headerSide = header.querySelectorAll('.header-side');
-const searchContainer = header.querySelector('.search-container');
-const topCategorySection = header.querySelector('.top-category-section');
-const otherCategorySection = header.querySelector('.other-category-section');
-const otherCategories = otherCategorySection.querySelector('.others');
-const tagArea = otherCategorySection.querySelector('.category.others');
-const searchBar = header.querySelector('#search-bar');
-const searchBtn = header.querySelector('.search-btn');
+const header = document.querySelector("header");
+const logo = header.querySelector(".logo");
+const headerSide = header.querySelectorAll(".header-side");
+const searchContainer = header.querySelector(".search-container");
+const topCategorySection = header.querySelector(".top-category-section");
+const otherCategorySection = header.querySelector(".other-category-section");
+const otherCategories = otherCategorySection.querySelector(".others");
+const tagBox = otherCategorySection.querySelector(".category.others");
+const filterBox = header.querySelector(".filter-box");
+const searchBar = header.querySelector("#search-bar");
+const searchBtn = header.querySelector(".search-btn");
 const restaurantListSection = document.querySelector(".restaurant-list-section");
 const restaurantList = restaurantListSection.querySelector(".restaurant-list");
-let memberId = null;
 
-// index 검색어
+// index 검색어 & 카테고리 검색
 let searchParam = new URLSearchParams(window.location.search);
-const query = searchParam.get('q');
+let query = searchParam.get('q');
+let categoryId = searchParam.get('c');
 
-// 검색바 보이기()
+// 검색바 보이기() -------------------------------------------------
 function showSearchBar(){
     headerSide[0].style.display = 'none';
     headerSide[1].style.display = 'none';
@@ -24,14 +25,14 @@ function showSearchBar(){
     searchContainer.classList.remove('d-none');
 }
 
-// Header 돋보기 버튼 클릭() -> 검색바 나타나기
+// Header 돋보기 버튼 클릭() -> 검색바 나타나기 -----------------------
 header.onclick = function(e){
     let isSearchBtn = e.target.className.includes('search');
     if(!isSearchBtn)
         return;
     showSearchBar();
 }
-// index에서 검색으로 넘어왔다면 검색바+키워드 보여주기
+// index에서 검색으로 넘어왔다면 검색바+키워드 보여주기 -----------------
 if(query != null){
     // 검색바에 검색 키워드 남겨놓기
     searchBar.value = query;
@@ -42,7 +43,10 @@ if(query != null){
     showSearchBar();
 }
 
+// ======================================================================
+
 function restaurantListLoad(url){
+    let memberId = null;
     if(document.querySelector("#member-id")!=null)
         memberId = document.querySelector("#member-id").value;
 
@@ -108,14 +112,13 @@ function restaurantListLoad(url){
                         </div>
                     </section>
                 `;
- 
                 restaurantList.insertAdjacentHTML("beforeend", itemTemplate);
              }
           });
  }
 
 
-// 검색어 입력 시 RESTful API 요청 ===================================
+// 검색어 입력 시 RESTful API 요청 ----------------------------------------------
 function getListByQuery(e) {
     e.preventDefault();
     let url = `/api/restaurant/list?q=${searchBar.value}`;
@@ -124,7 +127,7 @@ function getListByQuery(e) {
 searchBar.onchange = getListByQuery;
 searchBtn.onclick = getListByQuery;
 
-// Top Category 영역 ==================================================
+// Top Category 영역 ------------------------------------------------------------
 // Top Category 클릭 시 RESTful API 요청
 topCategorySection.onclick = function(e){
     searchBar.value = "";
@@ -133,6 +136,7 @@ topCategorySection.onclick = function(e){
         return;
     
     if(e.target.innerText == '전체') {
+        categoryId = null;
         let url = '/api/restaurant/list';
         restaurantListLoad(url);
         otherCategorySection.classList.remove('slide-open');
@@ -142,26 +146,26 @@ topCategorySection.onclick = function(e){
         let url = `/api/restaurant/list?c=${e.target.dataset.id}`;
         restaurantListLoad(url);
         otherCategorySection.classList.remove('slide-open');
+        categoryId = e.target.dataset.id;
     }
 };
 
-// 기타 카테고리(태그) 영역 ==================================================
+// 기타 카테고리(태그) 영역 ----------------------------------------------------
 // 기타 카테고리 클릭 시 RESTful API 요청
-tagArea.onclick = function (e) {
+tagBox.onclick = function (e) {
     searchBar.value = "";
     e.preventDefault();
     if(e.target.tagName !== 'BUTTON')
         return;
+    
+    // 기타 카테고리 태그 불 켰다껐다
     let activeTag = otherCategories.querySelector('.active');
     if (activeTag != null)
         activeTag.classList.remove('active');
     e.target.classList.add('active');
 
-    
-
-    //========== 추가
     if (e.target.innerText == '#전체') {
-        let url = `/api/restaurant/list?c=6`;
+        let url = "/api/restaurant/list?tc=6";
         restaurantListLoad(url);
     } else {
         let url = `/api/restaurant/list?c=${e.target.dataset.id}`;
@@ -169,7 +173,13 @@ tagArea.onclick = function (e) {
     }
 };
 
-// 좋아요 버튼 ================================================================
+// 필터링 ----------------------------------------------------------------
+filterBox.onchange = function(e){
+    let url = `/api/restaurant/list?c=${categoryId}&f=${e.target.value}`;
+    restaurantListLoad(url);
+}
+
+// 좋아요 버튼 ------------------------------------------------------------
 restaurantList.onclick = function(e){
     let el = e.target;
     let likeCount = el.parentElement.parentElement.querySelector("#like-count");
@@ -179,12 +189,12 @@ restaurantList.onclick = function(e){
     
     let {restaurantId, memberId} = el.dataset; // destructuring
 
+    console.log(memberId);
+
     // 회원 아니면 return
     if(memberId==null)
         return;
-
     e.preventDefault();
-
     
     // Like 추가
     if(!el.classList.contains("active")){
@@ -204,7 +214,6 @@ restaurantList.onclick = function(e){
                 // 하트 불 밝히기
                 el.classList.add("active");
                 
-                // 
                 fetch(`/api/restaurantlike/count?rid=${restaurantId}`)
                 .then(response=>response.json())
                 .then(count=>{
@@ -222,6 +231,7 @@ restaurantList.onclick = function(e){
         .then(response=>response.json())
         .then(result=>{
             if(result == 1){
+                // 하트 불 끄기
                 el.classList.remove("active");
                                     
                 fetch(`/api/restaurantlike/count?rid=${restaurantId}`)

@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class Restaurant {
     private Integer id;
+	private Integer topCategoryId;
 	private Integer categoryId;
 	private String name;
 	private String img;

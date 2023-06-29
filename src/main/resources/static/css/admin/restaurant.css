@@ -23,7 +23,7 @@ input {
     width: 80vw;
 
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(9, 1fr);
 }
 .restaurant {
     text-align: center;
@@ -32,7 +32,7 @@ input {
     margin-bottom: 10px;
 
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(10, 1fr);
 }
 .restaurant p{
     margin: 0;

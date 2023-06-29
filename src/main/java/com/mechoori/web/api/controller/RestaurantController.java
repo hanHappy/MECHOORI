@@ -27,7 +27,9 @@ public class RestaurantController {
 	@GetMapping("/list")
 	public List<RestaurantView> list(
 			@RequestParam(name = "q", required = false) String query,
+			@RequestParam(name = "tc", required = false) Integer topCtgId,
 			@RequestParam(name = "c", required = false) Integer ctgId,
+			@RequestParam(name = "f", required = false) Integer filterId,
 			@AuthenticationPrincipal MechooriUserDetails member) {
 
 		List<RestaurantView> list = null;
@@ -38,12 +40,17 @@ public class RestaurantController {
 			memberId = member.getId();
 
 		// 식당 리스트 출력
-		if (query == null && ctgId == null)
+		if (query == null && ctgId == null && topCtgId == null && filterId == null)
 			list = rstrService.getRestaurantViewList(memberId);
+		else if (filterId != null)
+			list = rstrService.getRestaurantViewListByFilter(memberId, ctgId, filterId);
 		else if (query != null)
 			list = rstrService.getRestaurantViewListByQuery(memberId, query);
+		else if (topCtgId != null)
+			list = rstrService.getRestaurantViewListByTopCtgId(memberId, topCtgId);
 		else if (ctgId != null)
 			list = rstrService.getRestaurantViewListByCtgId(memberId, ctgId);
+
 		return list;
 	}
 
