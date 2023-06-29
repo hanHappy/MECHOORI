@@ -6,15 +6,26 @@ import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
 import com.mechoori.web.service.RateService;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("user")
@@ -25,6 +36,12 @@ public class UserController {
 
     @Autowired
     private RateService rateService;
+
+    @Autowired
+	private ResourceLoader resourceLoader;
+	
+	@Value("${upload.path}")
+	private String uploadPath;
 
     @GetMapping("login")
     public String login() {
@@ -140,4 +157,43 @@ public class UserController {
         model.addAttribute("data", data);
         return "user/my-page/statistics";
     }
+
+    // 사진 등록 
+    @GetMapping("reg")
+	public String reg() {
+		return "user/my-page/reg";
+	}
+
+    @PostMapping("{id}/image")
+	public List<String> add(@RequestParam("file") MultipartFile[] files, @PathVariable int id) throws IOException {
+		List<String> returnFiles = new ArrayList<>();
+		
+		for(MultipartFile file : files)
+		{
+			String fileName = file.getOriginalFilename();
+			System.out.println(fileName);
+			
+	//		String uploadPath="/upload/menu/c/1/2023/";
+			Resource resource = resourceLoader.getResource(uploadPath);
+			
+			//Unix에서는 파일과 폴더가 구분되어 있지 않습니다.
+			File pathFile = resource.getFile();
+	//		pathFile.mkdir();
+			if(pathFile.exists())
+				pathFile.mkdirs();
+			
+			
+	//		안좋은 방법 : String realPath = pathFile.getAbsolutePath()+"\\"+fileName;
+	//		조금 나은 방법 : String realPath = pathFile.getAbsolutePath()+File.separator+fileName;
+			String realPath = Paths.get(pathFile.getAbsolutePath(),fileName).toString();
+			
+			System.out.println(realPath);
+			
+			file.transferTo(new File(realPath));
+			
+			returnFiles.add(Paths.get(uploadPath, fileName).toString());
+		}
+		
+		return returnFiles;
+	}
 }

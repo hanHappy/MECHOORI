@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{inc/layout}">
+<head>
+	<link rel="stylesheet" href="../../css/menu.css" />
+    <link rel="stylesheet" href="../../css/admin/menu/list.css" />
+</head>
+
+<body>
+    <div class="menu-reg-background">
+      <!--  section/ container 등 이름 크게 정하기.  -->
+      <section class="menu-reg-section">
+        <h1>메뉴 등록 페이지</h1>
+        <form class="menu-reg-form">
+          <section class="menu-reg-img">
+            <h1>메뉴 사진 추가</h1>
+            <label for="menu-reg-img-input" class="icon icon-plus"
+              >메뉴 사진 추가</label
+            >
+            <input type="file" alt="사진 추가" id="menu-reg-img-input" />
+          </section>
+          <!-- --------------------------------------------------------------------입력폼 -->
+          <section class="menu-reg-input-list">
+            <h1>메뉴 등록 정보 입력 목록</h1>
+            <select name="" id="">
+              <option>카테고리를 선택하세요.</option>
+              <option value="커피">커피</option>
+              <option value="수제청">수제청</option>
+              <option value="샌드위치">샌드위치</option>
+              <option value="쿠키">쿠키</option>
+            </select>
+            <input type="text" placeholder="메뉴 이름을 입력하세요." />
+            <input type="text" placeholder="메뉴 영문이름을 입력하세요." />
+            <input type="number" placeholder="메뉴 가격을 입력하세요." />
+            <textarea
+              name=""
+              id=""
+              placeholder="메뉴 설명을 입력하세요."
+            ></textarea>
+          </section>
+          <!-- --------------------------------------------------------------------옵션 -->
+          <section class="menu-reg-input-checkbox">
+            <h1>옵션 가능 여부</h1>
+            <div class="menu-reg-input-checkbox-list">
+              <div>
+                <input type="checkbox" name="" id="menu-size" />
+                <label for="menu-size">Small</label>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="menu-option" />
+                <label for="menu-option">ICED</label>
+              </div>
+            </div>
+            <div class="deco icon-exclamation-circle-fill">
+              사이즈와 옵션 여부를 선택하세요.
+            </div>
+          </section>
+          <!-- --------------------------------------------------------------------버튼 -->
+          <div class="btn-bottom">
+            <div class="">
+              <a href="list.html" class="btn" title="뒤로 가기">취소</a>
+            </div>
+            <div class="">
+              <input class="btn" type="submit" value="저장" />
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <!-- 메뉴등록 모달 -->
+    <div class="modal-background d-none">
+      <div class="modal-box-sm">
+        <div>사진을 등록하시겠습니까?</div>
+        <div class="modal-box-sm-2btn">
+          <a href="" class="btn btn-shadow">아니오</a>
+          <a href="" class="btn btn-default">네</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-background">
+      <div class="modal-box-sm">
+        <div>메뉴가 등록되었습니다!</div>
+        <div class="modal-box-sm-1btn">
+          <a href="../../admin/menu/list.html" class="btn btn-default wd-200"
+            >추천 메뉴 등록</a
+          >
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>

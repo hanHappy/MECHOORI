@@ -9,8 +9,201 @@
     <link rel="stylesheet" href="/css/user/my-page.css">
     <link rel="stylesheet" href="/css/common/header.css">
     <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/user/my-page/reg.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
+    <style>
+        .invalid-for-over{
+			background-color: peachpuff;
+		}
+		
+		.invalid-for-drop,
+		.invalid-for-drop-size{	
+			background-color: red;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.invalid for-drop::after{
+			display: inline-block;
+			position:relative;
+			top:-100px;
+			
+			content:'파일은 한개만 드랍될 수 있습니다.'
+		}
+		
+		.invalid for-drop-size::after{
+			display: inline-block;
+			position:relative;
+			top:-100px;
+			
+			content:'파일은 100메가 이상은 전송할 수 없습니다.'
+		}
+    </style>
+    <script src="/js/components/modal-alert.js" defer></script>
+    <script src="/js/components/modal-panel.js" defer></script>
+    <script>
+		window.addEventListener("load", function(){
+			let modalPanel = document.querySelector("modal-panel");
+			let imgEditSection = document.querySelector(".img-edit-section");
+			let imgDropZone = document.querySelector(".img-drop-zone")
+			let btnOk = document.querySelector(".btn-ok");
+			
+			let file = null;
+			let imgFiles = null;
+			
+			btnOk.onclick = function(e){
+				e.preventDefault();
+				
+				
+				
+				//let request = new XMLHttpRequest();
+				//request.open("POST", "/api/files");
+				//request.send(formData); --> fetch api 로 바꿈
+				
+				(async ()=>{
+					
+				/*let newOne = null;	
+				{	
+					let form = document.querySelector(".menu-reg-form");
+					let inputs = form.elements;
+					
+					let categoryId = inputs["category-id"].value;
+					let korName = inputs["kor-name"].value;
+					let engName = inputs["eng-name"].value;
+					let price = inputs["price"].value;
+					let description = inputs["description"].value;
+					let regMemberId = inputs["reg-member-id"].value;
+					
+					//let queryString = ; // urlencoded 
+					let formData = {categoryId, korName, engName, price, description, regMemberId};
+					let jsonData = JSON.stringify(formData);
+					console.log(jsonData);
+					//let XmlData = ;
+					
+					//메뉴를 등록	
+					let response = await fetch("/api/menus",{
+						method:'POST',
+						headers: {
+					      "Content-Type": "application/json",
+					      // 'Content-Type': 'application/x-www-form-urlencoded',
+					    },
+						body:jsonData
+					});
+					//그 결과가 완료
+					 newOne=await response.json();
+				}
+				
+				if(newOne)*/
+				{
+					if(!file) //DND 또는 Copy&Paste 또는 Select 박스에서 선택된 이미지가 있는지 확인
+						return;
+											
+					let formData = new FormData();
+					for(let file of imgFiles)
+						formData.append("file",file);
+					
+					let response = await fetch(`/api/menus/1/image`,{
+						method:'POST',
+						body:formData
+				});
+					
+					
+					let imgUrls=await response.json();
+					console.log(imgUrls);
+					
+				
+				}
+			})();
+			
+			imgDropZone.ondragenter = function(e){
+				console.log("enter")
+				imgDropZone.classList.add("invalid-for-over");
+			};
+			
+			imgDropZone.ondragleave = function(e){
+				console.log("leave")
+				imgDropZone.classList.remove("invalid-for-over");
+			};
+			
+			imgDropZone.ondragover = function(e){
+				e.preventDefault();
+				
+				console.log("over")
+				
+				let valid = e.dataTransfer.types.indexOf("Files") >= 0; // 드래그 한 내용이 파일인지 ?
+								
+				if(valid)
+					console.log("내려놔~~");
+					
+				//파일을 가지고 왔다.
+				
+				//for(let att in e.dataTransfer.types)
+				//console.log(att);
+			};
+			
+			
+			imgDropZone.ondrop = function(e){
+				e.preventDefault();
+				
+				if(e.dataTransfer.files.length>1){
+					imgDropZone.classList.add("invalid-for-drop");
+					setTimeout(()=>{
+						imgDropZone.classList.remove("invalid-for-drop");
+						imgDropZone.classList.remove("invalid-for-over");
+					},1500);
+				
+				return;
+			};
+				
+				if(e.dataTransfer.files[0].size > 100*1024*1024){
+					imgDropZone.classList.add("invalid-for-drop-size");
+					setTimeout(()=>{
+						imgDropZone.classList.remove("invalid-for-drop-size");
+						imgDropZone.classList.remove("invalid-for-over");
+					},1500);
+				
+					return;
+				
+				}
+				//if() e.dataTransfer.files[0].type.indexOf("image/") image/ jpg, image/png, image/gif..
+				
+				// imgFiles는 상단에 전역변수로 두었습니다.
+				imgFiles =e.dataTransfer.files;
+				
+				let imgFile = e.dataTransfer.files[0]; // 선택한 파일 정보
+				file = imgFile;
+				
+				
+				let imgReader = new FileReader();
+				imgReader.onload = function(evt){
+					let img = document.createElement("img");
+					img.src = evt.target.result; // 바이너리 이미지
+					
+					img.style.transform="translateY(-180px)";
+				    img.style.objectFit="cover";
+				    img.style.width="100%";
+				    img.style.height="100%";
+
+					e.target.appendChild(img);
+					
+				}
+
+				imgReader.readAsDataURL(imgFile);
+				
+				console.log("drop")
+				}
+			};
+			
+			imgEditSection.onclick = function(e){
+				e.preventDefault();
+				console.log("이미지 편집!!!!!")
+				modalPanel.show(true);
+			};
+			
+		});
+	</script>
 </head>
 
 <body>
@@ -30,57 +223,66 @@
     </header> 
     
     <main>
-        <div href=""class ="edit-image" alt="">
-            <img src="/images/icons/이미지수정.svg" alt="edit-image-icon">
-        </div>
-        <div class="profile-circle">
-            <img src="/images/components/프사메추리.png" alt="프로필사진">
-        </div>
-        <li class="user-name">메추리님</li>
 
+        <section class="img-edit-section">
+            <div href=""class ="edit-image" alt="">
+                <img src="/images/icons/이미지수정.svg" alt="edit-image-icon">
+            </div>
+            <div class="profile-circle">
+                <img src="/images/components/프사메추리.png" alt="프로필사진">
+            </div>
+        </section>
+        <li class="user-name">메추리님</li>
+        
         <div class ="main">
+            <!-- FIXME 버튼 클릭 가능 영역 수정 필요 -->
             <div class="user-modi-list">
-                <!-- FIXME 버튼 클릭 가능 영역 수정 필요 -->
                 <!-- 회원 정보 수정 --> 
-                <a href="my-page/edit-info">
+				<div>
                 <button class="user-modify-info" href="#">
-                    <div class="key-icon">
+					<a href="my-page/edit-info">
+                    <div href="" class="key-icon">
                         <img class="mypage-icon" src="/images/icons/key.svg" alt="usermodi">
                         <li>회원 정보 수정</li>
                     </div>
+                	</a>
                 </button>
-                </a>
-
+				</div>
                 <!-- 찜목록 -->
-                <a href="my-page/like-list">
-                <button class="like-list" href="#">
-                    <div class="like-icon">
-                        <img class="mypage-icon" src="/images/icons/heart.svg" alt="likelist">
-                        <li>찜 목록</li>
-                    </div>
-                </button>
-                </a>
+				<div>
+					<button class="like-list" href="#">
+					<a href="my-page/like-list">
+						<div class="like-icon">
+							<img class="mypage-icon" src="/images/icons/heart.svg" alt="likelist">
+							<li>찜 목록</li>
+						</div>
+					</a>
+					</button>
+				</div>
                 <!-- 평가목록 -->
+				<div>
+				<button class="value-list" href="#">
                 <a href="my-page/rate-list">
-                <button class="value-list" href="#">
                     <div class="value-icon">
                         <img class="mypage-icon" src="/images/icons/review.svg" alt="valuelist">
                         <li>평가 목록</li>
                     </div>
-                </button>
                 </a>
+				</button>
+				</div>
                 <!-- 가성비 평가 비교 -->
-                
-                <a href="my-page/statistics">
-                <button class="compare-value" href="#">
+                <div>
+				<button class="compare-value" href="#">
+					<a href="my-page/statistics">
                     <div class="compare-icon">
                         <img class="mypage-icon" src="/images/icons/compare-value.svg" alt="valuelist">
                         <li>가성비 평가비교</li>
                     </div>
+                	</a>
                 </button>
-                </a>
-
+				</div>
                 <!-- 로그아웃 -->
+				
                 <a href="/">
                 <button class="value-list" href="#">
                     <div class="value-icon">
@@ -92,6 +294,21 @@
             </div>
         </div>
         </div>
+        
+        <!-- 이미지 추가 -->
+            <modal-panel class="d-none" data-show="false">
+			<section class="menu-reg-section" slot="content">
+	        <h1>메뉴 등록 페이지</h1>
+	        <form class="menu-reg-form">
+	          <section class="menu-reg-img">
+	            <h1>메뉴 사진 추가</h1>
+	            <label for="menu-reg-img-input" class="icon icon-plus img-drop-zone"
+	              >메뉴 사진 추가</label
+	            >
+	            <input type="file" alt="사진 추가" id="menu-reg-img-input" />
+              </section>
+            </form>
+            </modal-panel>
     </main>
 </body>
 
