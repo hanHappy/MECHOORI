@@ -9,6 +9,12 @@
 		where id = #{restaurantId}
 	</select>
 
+	<select id="findViewById" resultType="RestaurantView">
+		select * 
+		from restaurant_view
+		where id = #{restaurantId}
+	</select>
+
 	<select id="findAll" resultType="Restaurant">
 		select *
 		from restaurant

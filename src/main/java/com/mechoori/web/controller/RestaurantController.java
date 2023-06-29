@@ -81,7 +81,7 @@ public class RestaurantController {
 			Model model) {
 
 		List<Menu> menuList = menuService.getList(restaurantId);
-		RestaurantDetail restaurant = restaurantService.getRestaurantDetailById(restaurantId);
+		RestaurantView restaurant = restaurantService.getViewDetailById(restaurantId);
 
 		//아이디
 		List<Integer> menuIds = new ArrayList<>();

@@ -45,11 +45,11 @@
         <div class="rated-result">
           <div>
             <img src="/images/icons/icon-like-result.svg">
-            <p th:text="${r.likedCount}">찜하기수</p>
+            <p th:text="${r.likeCount}">찜하기수</p>
           </div>
           <div>
             <img src="/images/icons/icon-rated-result.svg">
-            <p th:text="${r.ratedCount}">평가수</p>
+            <p th:text="${r.rateCount}">평가수</p>
           </div>
         </div>
 
@@ -59,7 +59,7 @@
         </div>
 
         <div class="price">
-          <p class="rating-price">가성비 <span th:text="${r.value}">80</span>% (<span th:text="${r.ratedCount}">99</span>)
+          <p class="rating-price">가성비 <span th:text="${r.value}">80</span>% (<span th:text="${r.rateCount}">99</span>)
           </p>
           <!-- 상민(6/18) : 평가 가격 추가-->
           <p>평균 <span th:text="${r.avgPrice}">6,000</span>원 · 평가 <span th:text="${r.avgRatedPrice}"></span>원</p>
@@ -68,7 +68,7 @@
         </div>
       </div>
     </div>
-
+<!-- 
     <div class="menu">
       <div class="menu-title">
         <img src="/images/icons/icon-line.svg">
@@ -103,7 +103,7 @@
           </div>
         </ul>
       </div>
-    </div>
+    </div> -->
 
     <div class="map">
       <div class="map-title-box">
@@ -128,9 +128,10 @@
               </div>
             </div>
             <div class="map-button-image">
+              <img src="/images/icons/icon-map.svg">
               <a href="/restaurant/mapPage" th:href="@{mapPage/{id}(id=${r.id})}">
-              <img src="/images/icons/icon-map.svg">지도보기
-              </a>
+                지도보기
+              </a> 
             </div>
           </div>
         </div>
@@ -151,7 +152,7 @@
       <div class="review-content">
         <span class="rate-title" th:text="'가성비 평가 : '+${rate.price}">가성비 평가 가격</span>
         <p class="rate-menu" th:text="'메뉴명 : '+${menuNames[__${index.index}__]}">메뉴명</p>
-        <span class="review-nickname" th:text="'닉네임 : '+${rate.userId}">닉네임</span>
+        <span class="review-nickname" th:text="'닉네임 : '+${rate.memberId}">닉네임</span>
         <p class="review-text" th:text="'리뷰 내용 : '+${rate.review}">리뷰</p>
       </div>
     </div>

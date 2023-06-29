@@ -47,6 +47,12 @@ public class RestaurantServiceImp implements RestaurantService {
 	}
 
 	@Override
+	public RestaurantView getViewDetailById(int restaurantId) {
+		return repository.findViewById(restaurantId);
+	}
+
+
+	@Override
 	public List<RestaurantView> getRestaurantViewList(Integer memberId) {
 		return repository.findAllRestaurantView(memberId, null, null);
 	}
