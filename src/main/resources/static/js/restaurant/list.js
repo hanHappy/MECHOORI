@@ -10,6 +10,7 @@ const searchBar = header.querySelector('#search-bar');
 const searchBtn = header.querySelector('.search-btn');
 const restaurantListSection = document.querySelector(".restaurant-list-section");
 const restaurantList = restaurantListSection.querySelector(".restaurant-list");
+let memberId = null;
 
 // index 검색어
 let searchParam = new URLSearchParams(window.location.search);
@@ -42,43 +43,38 @@ if(query != null){
 }
 
 function restaurantListLoad(url){
+    if(document.querySelector("#member-id")!=null)
+        memberId = document.querySelector("#member-id").value;
+
     fetch(url)
           .then(response => response.json())
           .then(list => {
-             //.then(menu=>menu.name);
  
              // 방 비우기
              restaurantList.innerHTML = "";
  
-            //  // 아이템 채우기
+            // 아이템 채우기
              for (let r of list) {
                 let itemTemplate =
-                   `
+                `
                     <section class="restaurant">
                         <div class="content">
                             <!-- 이미지 -->
                             <div class="image-box">
                                 <img src="/images/foods/${r.img}" alt="이미지" class="image">
                                 <!-- 하트 -->
-                                <button
-                                    type="button"
-                                    sec:authorize="isAuthenticated()" 
-                                    data-member-id=${memberId}
-                                    data-restaurant-id="${r.id}"
-                                    class="like" 
-                                    classappend="${r.like}?'active' : ''">좋아요
-                                </button>
                                 <a href="/user/login">
                                     <button
                                         type="button"
-                                        sec:authorize="isAnonymous()"  
-                                        class="like">좋아요
+                                        data-member-id=${memberId}
+                                        data-restaurant-id="${r.id}"
+                                        class="like ${r.like ? 'active' : ''}">좋아요
                                     </button>
                                 </a>
                                 <div class="data-box">
                                     <p>
                                         <span>좋아요 이미지</span>
-                                        <span>${r.likeCount}</span>
+                                        <span id="like-count">${r.likeCount}</span>
                                         <span>평가 이미지</span>
                                         <span>${r.rateCount}</span>
                                     </p>
@@ -101,11 +97,11 @@ function restaurantListLoad(url){
                             <!-- 버튼 -->
                             <div class="btn-box">
                                 <div>
-                                    <a href="/restaurant/1" href="/restaurant/{id}(id=${r.id})">
+                                    <a href="/restaurant/${r.id}">
                                     <button class="button button-12">상세보기</button></a>
                                 </div>
                                 <div>
-                                    <a href="/restaurant/{id}/rate" href="/restaurant/{id}/rate(id=${r.id})">
+                                    <a href="/restaurant/${r.id}/rate">
                                     <button class="button button-12">평가하기</button></a>
                                 </div>
                             </div>
@@ -131,12 +127,11 @@ searchBtn.onclick = getListByQuery;
 // Top Category 영역 ==================================================
 // Top Category 클릭 시 RESTful API 요청
 topCategorySection.onclick = function(e){
-    console.log("c");
     searchBar.value = "";
     e.preventDefault();
     if(e.target.tagName !== 'A')
         return;
-    //========== 추가
+    
     if(e.target.innerText == '전체') {
         let url = '/api/restaurant/list';
         restaurantListLoad(url);
@@ -176,10 +171,65 @@ tagArea.onclick = function (e) {
 
 // 좋아요 버튼 ================================================================
 restaurantList.onclick = function(e){
-    let likeBtn = e.target;
-
-    if(!likeBtn.classList.contains("like"))
+    let el = e.target;
+    let likeCount = el.parentElement.parentElement.querySelector("#like-count");
+    
+    if(!el.classList.contains("like"))
         return;
     
+    let {restaurantId, memberId} = el.dataset; // destructuring
 
+    // 회원 아니면 return
+    if(memberId==null)
+        return;
+
+    e.preventDefault();
+
+    
+    // Like 추가
+    if(!el.classList.contains("active")){
+        let data = {memberId, restaurantId};
+        let jsonData = JSON.stringify(data);
+
+        fetch("/api/restaurantlike",{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: jsonData
+            })
+        .then(response=>response.json())
+        .then(result=>{
+            if(result == 1){
+                // 하트 불 밝히기
+                el.classList.add("active");
+                
+                // 
+                fetch(`/api/restaurantlike/count?rid=${restaurantId}`)
+                .then(response=>response.json())
+                .then(count=>{
+                    likeCount.textContent = count;
+                });
+            }
+        });
+    }
+
+    // Like 삭제
+    else {
+        fetch(`/api/restaurantlike/${restaurantId}/members/${memberId}`, {
+            method:"DELETE",
+        })
+        .then(response=>response.json())
+        .then(result=>{
+            if(result == 1){
+                el.classList.remove("active");
+                                    
+                fetch(`/api/restaurantlike/count?rid=${restaurantId}`)
+                .then(response=>response.json())
+                .then(count=>{
+                    likeCount.innerText = count;
+                });
+            }
+        });
+    }
 }
