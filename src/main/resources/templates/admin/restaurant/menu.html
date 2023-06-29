@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html 
+    lang="en" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+    >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/admin/restaurant.css">
+    <title>Menu</title>
+</head>
+
+<body>
+    <a href="../../restaurant">식당 페이지로</a>
+
+    <a style="color: #282828;" href="menu"><h1>Menu</h1></a>
+
+    <hr>
+    <br>
+    <form method="get">
+        <input name="q" class="search-input" type="text" placeholder="식당 검색">
+        <button class="search-btn">검색</button>
+    </form>
+    <br>
+
+    <a href="menu/add"><button>추가</button></a>
+
+    <div class="column-container">
+        <div class="column-box">
+            <p>id</p>
+            <p>식당id</p>
+            <p>메뉴명</p>
+            <p>가격</p>
+        </div>
+    </div>
+    <section class="restaurant-list-section">
+        <h1 style="display: none;">식당 리스트</h1>
+        <div class="restaurant-list">
+            <section class="restaurant" th:each="m: ${list}">
+                <p align="center" th:text="${m.id}">id</p>
+                <p align="center" th:text="${m.restaurantId}">restaurant_id</p>
+                <p align="center" th:text="${m.name}">name</p>
+                <p align="center" th:text="${m.price}">price</p>
+                <div class="buttons">
+                    <a th:href="@{'restaurant/' + ${r.id} + '/menu/' + ${mid}}"><button>EDIT</button></a>
+                    <a th:href="@{restaurant/{rid}/menu/{mid}}"><button>DEL</button></a>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <section id="restaurant-list-section">
+
+    </section>
+
+    <br>
+
+    <a href="menu/add"><button>추가</button></a>
+
+    <br>
+
+    <div class="page-container">
+        <ul class="pages">
+            <li class="page" th:each="p : ${pages}">
+                <a th:href="@{/admin/restaurant(p=${p})}" th:text="${p}"></a>
+            </li>
+        </ul>
+    </div>
+
+    <br>
+
+</body>
+
+</html>
