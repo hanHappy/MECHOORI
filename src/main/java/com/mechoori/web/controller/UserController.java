@@ -80,10 +80,6 @@ public class UserController {
     @GetMapping("my-page/rate-list")
     public String rateList(Model model) {
 
-      List<RestaurantView> list = restaurantService.getRestaurantViewList();
-      //수정 필요
-      model.addAttribute("list",list);
-
         return "user/my-page/rate-list";
     }
 
