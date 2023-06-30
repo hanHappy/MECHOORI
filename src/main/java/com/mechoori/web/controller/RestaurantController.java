@@ -33,40 +33,47 @@ import com.mechoori.web.service.RestaurantService;
 @RequestMapping("/restaurant")
 public class RestaurantController {
 
-	@Autowired
-	private RestaurantService restaurantService;
-	@Autowired
-	private MenuService menuService;
-	@Autowired
-	private CategoryService categoryService;
-	@Autowired
-	private RateService rateService;
-	
-	@GetMapping("/list")
-	public String list(
-			@RequestParam(name = "q", required = false) String query,
-			@RequestParam(name = "c", required = false) Integer ctgId,
-			Model model) {
+   @Autowired
+   private RestaurantService restaurantService;
+   @Autowired
+   private MenuService menuService;
+   @Autowired
+   private CategoryService categoryService;
+   @Autowired
+   private RateService rateService;
+   
+   @GetMapping("/list")
+   public String list(
+         @RequestParam(name = "q", required = false) String query,
+         @RequestParam(name = "c", required = false) Integer ctgId,
+         @AuthenticationPrincipal MechooriUserDetails member,
+         Model model) {
 
-		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
-		List<Category> otherCtgList = categoryService.getOtherCategoryList();
-		
+      List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
+      List<Category> otherCtgList = categoryService.getOtherCategoryList();
 
-		List<RestaurantView> list = null;
-		// 식당 리스트 출력
-		if(query==null&&ctgId==null)
-			list = restaurantService.getRestaurantViewList();
-		else if (query != null)
-			list = restaurantService.getRestaurantViewListByQuery(ctgId, query);
-		else if (ctgId != null)
-			list = restaurantService.getRestaurantViewListByCtgId(ctgId, query);
+      List<RestaurantView> list = null;
+
+      Integer memberId = null;
+
+      if(member != null)
+         memberId = member.getId();
+
+      // 식당 리스트 출력
+      if(query==null&&ctgId==null)
+         list = restaurantService.getRestaurantViewList(memberId);
+      else if (query != null)
+         list = restaurantService.getRestaurantViewListByQuery(memberId, query);
+      else if (ctgId != null)
+         list = restaurantService.getRestaurantViewListByCtgId(memberId, ctgId);
 
       model.addAttribute("list", list)
-            .addAttribute("mainCtgList", mainCtgList)
-            .addAttribute("otherCtgList", otherCtgList);
-
+          .addAttribute("mainCtgList", mainCtgList)
+          .addAttribute("otherCtgList", otherCtgList);
+         
       return "restaurant/list";
    }
+
 
    @GetMapping("{id}")
    public String detail(
@@ -76,16 +83,16 @@ public class RestaurantController {
       List<Menu> menuList = menuService.getList(restaurantId);
       RestaurantDetail restaurant = restaurantService.getRestaurantDetailById(restaurantId);
 
-      // 아이디
+      //아이디
       List<Integer> menuIds = new ArrayList<>();
       for (Menu menu : menuList) {
          menuIds.add(menu.getId());
       }
-      // 리뷰
+      //리뷰
       List<Rate> rateList = rateService.getListByMenuIds(menuIds);
       List<String> menuNames = new ArrayList<>();
 
-      // 리뷰 최신순 4개
+      //리뷰 최신순 4개
       List<Rate> top4Rates;
       if (rateList.size() < 4) {
          List<Rate> sortedList = new ArrayList<>(rateList);
@@ -109,11 +116,11 @@ public class RestaurantController {
       model.addAttribute("menuNames", menuNames);
       model.addAttribute("top4Rates", top4Rates);
 
-      // 테스트
+      //테스트
       // if (rateList.isEmpty()) {
-      // System.out.println("비었음");
+      //    System.out.println("비었음");
       // } else {
-      // System.out.println("리뷰는 " + rateList.size());
+      //    System.out.println("리뷰는 " + rateList.size());
       // }
 
       return "restaurant/detail";
@@ -126,37 +133,37 @@ public class RestaurantController {
       List<Menu> menuList = menuService.getList(restaurantId);
 
       model.addAttribute("menuList", menuList)
-            .addAttribute("r", restaurant);
+          .addAttribute("r", restaurant);
 
       return "restaurant/rate";
    }
 
    @PostMapping("{id}/rate")
    public String rate(
-         Rate rate,
-         @AuthenticationPrincipal MechooriUserDetails user) {
+               Rate rate,
+               @AuthenticationPrincipal MechooriUserDetails user){
       rateService.add(rate, user.getId());
       // FIXME index -> rate-result로 수정해야 함
       return "redirect:/";
    }
 
-	@GetMapping("/ranking")
-	public String ranking(Model model, String category) {
+//    @GetMapping("/ranking")
+//    public String ranking(Model model, String category) {
 
 
-//		List<Restaurant> list = restaurantService.getRanking(category);
+// //      List<Restaurant> list = restaurantService.getRanking(category);
 
-   // List<RestaurantView> list = restaurantService.getRestaurantViewList();
+//       List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 
-		List<RestaurantView> list = restaurantService.getRestaurantViewList();
-
-
-		model.addAttribute("list",list);
-		model.addAttribute("ctg",mainCtgList);
+//       List<RestaurantView> list = restaurantService.getRestaurantViewList();
 
 
-		return "/restaurant/ranking";
-	}
+//       model.addAttribute("list",list);
+//       model.addAttribute("ctg",mainCtgList);
+
+
+//       return "/restaurant/ranking";
+//    }
 
    @GetMapping("/mapPage/{id}")
    public String map(
@@ -168,12 +175,12 @@ public class RestaurantController {
 
 
 
-		model.addAttribute("list",restaurant);
-		model.addAttribute("r",res);
+      model.addAttribute("list",restaurant);
+      model.addAttribute("r",res);
 
 
-		return "/mapPage";
-	}
+      return "/mapPage";
+   }
 
 
 }

@@ -14,7 +14,8 @@ const restaurantList = restaurantListSection.querySelector(".restaurant-list");
 
 // index 검색어 & 카테고리 검색
 let searchParam = new URLSearchParams(window.location.search);
-const query = searchParam.get('q');
+let query = searchParam.get('q');
+let categoryId = searchParam.get('c');
 
 // 검색바 보이기() -------------------------------------------------
 function showSearchBar(){
@@ -27,7 +28,7 @@ function showSearchBar(){
 // Header 돋보기 버튼 클릭() -> 검색바 나타나기 -----------------------
 header.onclick = function(e){
     let isSearchBtn = e.target.className.includes('search');
-    if (!isSearchBtn)
+    if(!isSearchBtn)
         return;
     showSearchBar();
 }
@@ -42,10 +43,13 @@ if(query != null){
     showSearchBar();
 }
 
+// ======================================================================
+
 function restaurantListLoad(url){
-    let restaurantListSection = document.querySelector(".restaurant-list-section");
-    let restaurantList = restaurantListSection.querySelector(".restaurant-list");
-    
+    let memberId = null;
+    if(document.querySelector("#member-id")!=null)
+        memberId = document.querySelector("#member-id").value;
+
     fetch(url)
           .then(response => response.json())
           .then(list => {
@@ -56,55 +60,62 @@ function restaurantListLoad(url){
             // 아이템 채우기
              for (let r of list) {
                 let itemTemplate =
-                   `<section class="restaurant-1">
-                   <div class="content">
-                       <!-- 이미지 -->
-                       <div class="image-box">
-                           <img src="/images/foods/${r.img}"  alt="이미지"
-                               class="image">
-                           <!-- 하트 -->
-                           <button class="like">좋아요</button>
-                           <div class="data-box">
-                               <p>
-                                   <span>좋아요 이미지</span>
-                                   <span>${r.likedCount}</span>
-                                   <span>평가 이미지</span>
-                                   <span>${r.ratedCount}</span>
-                               </p>
-                           </div>
-                       </div>
-                       <!-- 정보 -->
-                       <div class="info-box">
-                           <div class="name-wrapper">
-                               <span class="name">${r.name}</span>
-                           </div>
-                           <div class="info">
-                               <p>
-                                   평균가격
-                                   <span>${r.avgPrice}</span>
-                                   <span class="value subject">· 가성비</span>
-                                   <span class="value">${r.value}%</span>
-                               </p>
-                           </div>
-                       </div>
-                       <!-- 버튼 -->
-                       <div class="btn-box">
-                           <div>
-                               <a href="/restaurant/${r.id}">
-                                   <button class="button button-12">상세보기</button></a>
-                           </div>
-                           <div>
-                               <a href="/restaurant/${r.id}/rate">
-                                   <button class="button button-12">평가하기</button></a>
-                           </div>
-                       </div>
-                   </div>
-               </section>`;
- 
+                `
+                    <section class="restaurant">
+                        <div class="content">
+                            <!-- 이미지 -->
+                            <div class="image-box">
+                                <img src="/images/foods/${r.img}" alt="이미지" class="image">
+                                <!-- 하트 -->
+                                <a href="/user/login">
+                                    <button
+                                        type="button"
+                                        data-member-id=${memberId}
+                                        data-restaurant-id="${r.id}"
+                                        class="like ${r.like ? 'active' : ''}">좋아요
+                                    </button>
+                                </a>
+                                <div class="data-box">
+                                    <p>
+                                        <span>좋아요 이미지</span>
+                                        <span id="like-count">${r.likeCount}</span>
+                                        <span>평가 이미지</span>
+                                        <span>${r.rateCount}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- 정보 -->
+                            <div class="info-box">
+                                <div class="name-wrapper">
+                                    <span class="name">${r.name}</span>
+                                </div>
+                                <div class="info">
+                                    <p>
+                                        평균가격
+                                        <span>${r.avgPrice}</span>
+                                        <span class="value subject">· 가성비</span>
+                                        <span class="value">${r.value}%</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- 버튼 -->
+                            <div class="btn-box">
+                                <div>
+                                    <a href="/restaurant/${r.id}">
+                                    <button class="button button-12">상세보기</button></a>
+                                </div>
+                                <div>
+                                    <a href="/restaurant/${r.id}/rate">
+                                    <button class="button button-12">평가하기</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `;
                 restaurantList.insertAdjacentHTML("beforeend", itemTemplate);
-            }
-        });
-}
+             }
+          });
+ }
 
 
 // 검색어 입력 시 RESTful API 요청 ----------------------------------------------
@@ -118,7 +129,7 @@ searchBtn.onclick = getListByQuery;
 
 // Top Category 영역 ------------------------------------------------------------
 // Top Category 클릭 시 RESTful API 요청
-topCategorySection.onclick = function (e) {
+topCategorySection.onclick = function(e){
     searchBar.value = "";
     e.preventDefault();
     if(e.target.tagName !== 'A')
@@ -129,7 +140,7 @@ topCategorySection.onclick = function (e) {
         let url = '/api/restaurant/list';
         restaurantListLoad(url);
         otherCategorySection.classList.remove('slide-open');
-    } else if (e.target.innerText == '기타')
+    } else if(e.target.innerText == '기타')
         otherCategorySection.classList.add('slide-open');
     else {
         let url = `/api/restaurant/list?c=${e.target.dataset.id}`;
@@ -144,18 +155,15 @@ topCategorySection.onclick = function (e) {
 tagBox.onclick = function (e) {
     searchBar.value = "";
     e.preventDefault();
-    if (e.target.tagName !== 'BUTTON')
+    if(e.target.tagName !== 'BUTTON')
         return;
     
     // 기타 카테고리 태그 불 켰다껐다
     let activeTag = otherCategories.querySelector('.active');
     if (activeTag != null)
         activeTag.classList.remove('active');
-        e.target.classList.add('active');
+    e.target.classList.add('active');
 
-
-
-    //========== 추가
     if (e.target.innerText == '#전체') {
         let url = "/api/restaurant/list?tc=6";
         restaurantListLoad(url);
@@ -165,12 +173,71 @@ tagBox.onclick = function (e) {
     }
 };
 
-// 좋아요 버튼
-// FIXME 좋아요 버튼 Rland처럼 수정해야 함
-let likeControl = function (e) {
-    let isLiked = e.target.classList.contains("active");
-    if (isLiked)
-        e.target.classList.remove('active');
-    else
-        e.target.classList.add('active');
+// 필터링 ----------------------------------------------------------------
+filterBox.onchange = function(e){
+    let url = `/api/restaurant/list?c=${categoryId}&f=${e.target.value}`;
+    restaurantListLoad(url);
+}
+
+// 좋아요 버튼 ------------------------------------------------------------
+restaurantList.onclick = function(e){
+    let el = e.target;
+    let likeCount = el.parentElement.parentElement.querySelector("#like-count");
+    
+    if(!el.classList.contains("like"))
+        return;
+    
+    let {restaurantId, memberId} = el.dataset; // destructuring
+
+    // 회원 아니면 return
+    if(memberId=='null')
+        return;
+    e.preventDefault();
+    
+    // Like 추가
+    if(!el.classList.contains("active")){
+        let data = {memberId, restaurantId};
+        let jsonData = JSON.stringify(data);
+
+        fetch("/api/restaurantlike",{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: jsonData
+            })
+        .then(response=>response.json())
+        .then(result=>{
+            if(result == 1){
+                // 하트 불 밝히기
+                el.classList.add("active");
+                
+                fetch(`/api/restaurantlike/count?rid=${restaurantId}`)
+                .then(response=>response.json())
+                .then(count=>{
+                    likeCount.textContent = count;
+                });
+            }
+        });
+    }
+
+    // Like 삭제
+    else {
+        fetch(`/api/restaurantlike/${restaurantId}/members/${memberId}`, {
+            method:"DELETE",
+        })
+        .then(response=>response.json())
+        .then(result=>{
+            if(result == 1){
+                // 하트 불 끄기
+                el.classList.remove("active");
+                                    
+                fetch(`/api/restaurantlike/count?rid=${restaurantId}`)
+                .then(response=>response.json())
+                .then(count=>{
+                    likeCount.innerText = count;
+                });
+            }
+        });
+    }
 }

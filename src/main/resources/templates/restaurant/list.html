@@ -26,6 +26,7 @@
                     <a href="/"><button class="header-icon back">버튼</button></a>
                 </div>
                 <a href="/">
+                <a href="/">
                     <h1 class="header-icon logo">로고</h1>
                 </a>
                 <div class="header-side right">
@@ -92,56 +93,71 @@
 
     <main>
 
-    <!-- 컨텐츠 -->
-    <section class="restaurant-list-section">
-        <h1 style="display: none;">식당 목록</h1>
-        <div class="restaurant-list">
-            <section class="restaurant-1" th:each="r : ${list}">
-                <div class="content">
-                    <!-- 이미지 -->
-                    <div class="image-box">
-                        <img src="/images/foods/청화원2.png" th:src="@{/images/foods/{img}(img=${r.img})}" alt="이미지"
-                             class="image">
-                        <!-- 하트 -->
-                        <button class="like">좋아요</button>
-                        <div class="data-box">
-                            <p>
-                                <span>좋아요 이미지</span>
-                                <span th:text="${r.likedCount}">718</span>
-                                <span>평가 이미지</span>
-                                <span th:text="${r.ratedCount}">207</span>
-                            </p>
+        <!-- 컨텐츠 -->
+        <section class="restaurant-list-section">
+            <h1 style="display: none;">식당 목록</h1>
+            <div class="restaurant-list">
+                <section class="restaurant" th:each="r : ${list}">
+                    <div class="content">
+                        <!-- 이미지 -->
+                        <div class="image-box">
+                            <img src="/images/foods/청화원2.png" th:src="@{/images/foods/{img}(img=${r.img})}" alt="이미지"
+                                class="image">
+                            <!-- 하트 -->
+                            <a href="">
+                                <button
+                                    type="button"
+                                    sec:authorize="isAuthenticated()" 
+                                    th:data-member-id="${#authentication.principal.id}"
+                                    th:data-restaurant-id="${r.id}"
+                                    class="like" 
+                                    th:classappend="${r.like}?'active' : ''">좋아요
+                                </button>
+                            </a>
+                            <a href="/user/login" sec:authorize="isAnonymous()">
+                                <button
+                                    type="button"
+                                    class="like">좋아요
+                                </button>
+                            </a>
+                            <div class="data-box">
+                                <p>
+                                    <span>좋아요 이미지</span>
+                                    <span th:text="${r.likeCount}" id="like-count">718</span>
+                                    <span>평가 이미지</span>
+                                    <span th:text="${r.rateCount}">207</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 정보 -->
+                        <div class="info-box">
+                            <div class="name-wrapper">
+                                <span th:text="${r.name}" class="name">식당명</span>
+                            </div>
+                            <div class="info">
+                                <p>
+                                    평균가격
+                                    <span th:text="${r.avgPrice}">10,000원</span>
+                                    <span class="value subject">· 가성비</span>
+                                    <span th:text="${r.value} + '%'" class="value">113%</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 버튼 -->
+                        <div class="btn-box">
+                            <div>
+                                <a href="/restaurant/1" th:href="@{/restaurant/{id}(id=${r.id})}">
+                                    <button class="button button-12">상세보기</button></a>
+                            </div>
+                            <div>
+                                <a href="/restaurant/{id}/rate" th:href="@{/restaurant/{id}/rate(id=${r.id})}">
+                                    <button class="button button-12">평가하기</button></a>
+                            </div>
                         </div>
                     </div>
-                    <!-- 정보 -->
-                    <div class="info-box">
-                        <div class="name-wrapper">
-                            <span th:text="${r.name}" class="name">식당명</span>
-                        </div>
-                        <div class="info">
-                            <p>
-                                평균가격
-                                <span th:text="${r.avgPrice}">10,000원</span>
-                                <span class="value subject">· 가성비</span>
-                                <span th:text="${r.value} + '%'" class="value">113%</span>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- 버튼 -->
-                    <div class="btn-box">
-                        <div>
-                            <a href="/restaurant/1" th:href="@{/restaurant/{id}(id=${r.id})}">
-                                <button class="button button-12">상세보기</button></a>
-                        </div>
-                        <div>
-                            <a href="/restaurant/{id}/rate" th:href="@{/restaurant/{id}/rate(id=${r.id})}">
-                                <button class="button button-12">평가하기</button></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </section>
+                </section>
+            </div>
+        </section>
 
         <input type="hidden" sec:authorize="isAuthenticated()" th:value="${#authentication.principal.id}" id="member-id">
 
