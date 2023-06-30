@@ -2,6 +2,7 @@ package com.mechoori.web.api.controller;
 
 import java.util.List;
 
+import com.mechoori.web.entity.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,13 +59,10 @@ public class RestaurantController {
 	public List<RestaurantView> list(
 			@RequestParam(name = "ctgId", required = false) Integer categoryId) {
 
-
 		if (categoryId != null) {
-			System.out.println("category");
+			System.out.println(categoryId);
 			return rstrService.getRanking(categoryId);
-
 		}
-
 		return rstrService.getRanking(categoryId);
 	}
 }

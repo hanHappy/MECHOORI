@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantView;
+import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.repository.MenuRepository;
 import com.mechoori.web.repository.RestaurantRepository;
@@ -139,10 +140,23 @@ public class RestaurantServiceImp implements RestaurantService {
 	}
 
 	@Override
+	public List<RestaurantView> getRanking() {
+
+
+
+		return repository.getRanking();
+	}
+
+	@Override
 	public void add(Restaurant restaurant) {
 		repository.add(restaurant);
 	}
 
+	@Override
+	// FIXME 너 정체가 뭐야
+	public List<Restaurant> findAllRestaurant() {
+		return repository.findAllRestaurant();
+	}
 }
 
 // TODO : 예외처리 생각합시다

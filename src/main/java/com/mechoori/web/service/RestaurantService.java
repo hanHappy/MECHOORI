@@ -5,6 +5,7 @@ import java.util.List;
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.entity.RestaurantView;
+import com.mechoori.web.entity.RestaurantView;
 
 public interface RestaurantService {
 
@@ -26,9 +27,10 @@ public interface RestaurantService {
 	List<Integer> getPages();
 
 	List<RestaurantView> getRanking(Integer categoryId);
-
+	List<RestaurantView> getRanking();
     void add(Restaurant restaurant);
 
+	List<Restaurant> findAllRestaurant();
 
-	
+
 }

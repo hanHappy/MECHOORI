@@ -39,14 +39,14 @@
 				IFNULL(rt.rate_count, 0) AS rate
 			FROM restaurant_view r
 			LEFT JOIN (
-				SELECT 
+				SELECT
 					DISTINCT restaurant_id
 				FROM restaurant_like
 				WHERE member_id = #{memberId}
 			) rl ON r.id = rl.restaurant_id
 			LEFT JOIN (
-				SELECT 
-					menu.restaurant_id, 
+				SELECT
+					menu.restaurant_id,
 					COUNT(rate.member_id) AS rate_count
 				FROM menu
 				LEFT JOIN rate ON menu.id = rate.menu_id AND rate.member_id = #{memberId}
@@ -83,10 +83,34 @@
 		values(#{topCategoryId}, #{categoryId}, #{name}, #{img}, #{intro}, #{address}, #{operatingTime}, #{contactNumber})
 	</insert>
 
-	<select id="getRanking" resultType="RestaurantView">
-		SELECT *
-		from restaurant_card
-		where category_id = ${categoryId}
-		ORDER BY avg_rated_price DESC;
+<!--	<select id="getRanking" resultType="RestaurantView">-->
+<!--		SELECT *-->
+<!--		from restaurant_view-->
+<!--		<if test="categoryId != null">-->
+<!--		where category_id = #{categoryId}-->
+<!--		</if>-->
+<!--		ORDER BY value DESC-->
+<!--	</select>-->
+
+<select id="getRanking" resultType="RestaurantView">
+	SELECT *,
+	(SELECT COUNT(*)
+	FROM (SELECT *
+	FROM restaurant_view
+	<if test="categoryId != null">
+		WHERE category_id = #{categoryId}
+	</if>
+	ORDER BY value DESC) AS subquery
+	WHERE subquery.value >= restaurant_view.value) AS rank
+	FROM restaurant_view
+	ORDER BY value DESC
+		</select>
+
+	<select id="findAllRestaurant" resultType="Restaurant">
+		select * from restaurant
 	</select>
+
+
+
+
 </mapper>

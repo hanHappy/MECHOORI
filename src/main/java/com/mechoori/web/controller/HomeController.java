@@ -2,6 +2,8 @@ package com.mechoori.web.controller;
 
 import java.util.List;
 
+import com.mechoori.web.entity.Restaurant;
+import com.mechoori.web.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,10 @@ public class HomeController {
 	
 	@Autowired
 	private	CategoryService service;
+	@Autowired
+	private RestaurantService restaurantService;
+
+
 	
 	@GetMapping("/")
 	public String index(Model model) {
@@ -25,4 +31,19 @@ public class HomeController {
 
 		return "index";
 	}
+
+
+
+	@GetMapping("map")
+	public String map(Model model){
+
+		List<Restaurant> address = restaurantService.findAllRestaurant();
+
+		model.addAttribute("address",address);
+
+		System.out.println(address);
+
+		return "map";
+	}
+
 }
