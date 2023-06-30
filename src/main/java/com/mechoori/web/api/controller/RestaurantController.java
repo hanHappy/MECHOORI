@@ -63,6 +63,6 @@ public class RestaurantController {
 			System.out.println(categoryId);
 			return rstrService.getRanking(categoryId);
 		}
-		return rstrService.getRanking(categoryId);
+		return rstrService.getRanking();
 	}
 }

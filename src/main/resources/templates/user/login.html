@@ -43,9 +43,8 @@
       <!-- FIXME 텍스트 색상 -> #fff -->
       <button class="submitbtn">
         <input type="hidden" name="returnURL" th:value="${param.returnURL}">
-        <!-- FIXME 버튼 클릭하면 로그인 안 되고 엔터 눌러야 됨 -->
         <!-- 아마 a -> button으로 고치면 될듯? -->
-        <a href="/">로그인 </a>
+        <a href=returnUrl>로그인 </a>
       </button>
     </div>
     </form>

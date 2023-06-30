@@ -12,23 +12,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log(list);
 
                 for (let item of list) {
-                    let formattedAvgPrice = item.avgPrice.toLocaleString();
-                    let formattedAvgRatedPrice = item.avgRatedPrice.toLocaleString();
                     let itemTemplate = `
-                 <section>
+        
+         <section >
             <img src="/images/foods/${item.img}" class="img">
 
-            <section class="ranking-list">
-                <div class="rankingNum">1</div>
-                <div>${item.name}</div>
-                <div>
-                   <span>${formattedAvgPrice}</span><br/>
-                    <span>(${formattedAvgRatedPrice})</span>
-                </div>
-                <div>${item.value}%</div>
-            </section>
+
+            <ul class="ranking-list">
+                <li class="rankingNum">${item.rank}</li>
+                <li>${item.name}</li>
+                <li>
+                    <span>${item.avgPrice}</span><br/>
+                    <span>(${item.avgRatedPrice})</span>
+                </li>
+                <li>${item.value}%</li>
+            </ul>
         </section>
-            `;
+      `;
 
                     rankingList.insertAdjacentHTML("beforeend", itemTemplate);
                 }
