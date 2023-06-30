@@ -54,17 +54,17 @@ public class RestaurantServiceImp implements RestaurantService {
 
 	@Override
 	public List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId) {
-		return repository.findAllRestaurantView(memberId, null);
+		return repository.findAllRestaurantView(memberId, categoryId, null, null);// imp와 순서맞춰서
 	}
-                                                     
+	
 	@Override
 	public List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, String query) {
-		return repository.findAllRestaurantView(memberId, null);
+		return repository.findAllRestaurantView(memberId, null, query, null);//
 	}
 
 
 	@Override
-	public List<RestaurantView> getRestaurantViewListByFilter(Integer memberId, Integer ctgId, String query, Integer filterId) {
+	public List<RestaurantView> getRestaurantViewListByFilter(Integer memberId, Integer ctgId, Integer filterId) {
 
 		String filter = null;
 
@@ -75,13 +75,13 @@ public class RestaurantServiceImp implements RestaurantService {
 				break;	
 			case 3: filter = "avg_price";
 				break;	
-			case 4: filter = "like_count";
+			case 4: filter = "rate_count";
 				break;	
-			case 5: filter = "rate_count";
+			case 5: filter = "like_count";
 				break;	
 		}
 		
-		return repository.findAllRestaurantView(memberId, null, null, filterId);
+		return repository.findAllRestaurantView(memberId, ctgId, null, filter);//
 	}
 
 

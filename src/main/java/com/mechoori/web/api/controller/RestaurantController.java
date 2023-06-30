@@ -41,11 +41,11 @@ public class RestaurantController {
       if (query == null && ctgId == null && filter == null)
          list = rstrService.getRestaurantViewList(memberId);
       else if (filter != null)
-         list = rstrService.getRestaurantViewListByFilter(memberId, ctgId, query, filter);
+         list = rstrService.getRestaurantViewListByFilter(memberId, ctgId, filter);
       else if (query != null)
-         list = rstrService.getRestaurantViewListByQuery(memberId, ctgId);
+         list = rstrService.getRestaurantViewListByQuery(memberId, query);
       else if (ctgId != null)
-         list = rstrService.getRestaurantViewListByCtgId(memberId, query);
+         list = rstrService.getRestaurantViewListByCtgId(memberId, ctgId);
       return list;
    }
 

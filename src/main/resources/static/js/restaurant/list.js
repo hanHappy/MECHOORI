@@ -133,6 +133,7 @@ topCategorySection.onclick = function (e) {
     e.preventDefault();
     //========== 추가
     if (e.target.innerText == '전체') {
+        categoryId = null;
         let url = '/api/restaurant/list';
         restaurantListLoad(url);
         otherCategorySection.classList.remove('slide-open');

@@ -23,10 +23,10 @@ public interface RestaurantService {
 	List<RestaurantView> getRanking(Integer categoryId);
 	
 	List<RestaurantView> getRestaurantViewList(Integer memberId);
+
     List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, String query);
     List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer ctgId);
-
-    List<RestaurantView> getRestaurantViewListByFilter(Integer memberId, Integer ctgId, String query, Integer filter);
+    List<RestaurantView> getRestaurantViewListByFilter(Integer memberId, Integer ctgId, Integer filter);
 	
 	
 }
