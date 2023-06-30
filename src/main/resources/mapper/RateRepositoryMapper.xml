@@ -19,7 +19,29 @@
     </select>
 
 
-
+    <select id="findData" resultType="Statistics">
+        SELECT #{memberId} AS member_id, ROUND(AVG(rated_avg_price), -2) AS overall_rated_avg_price, ROUND(AVG(avg_price), -2) AS overall_avg_price
+        FROM (
+        SELECT rv.restaurant_id, AVG(rv.avg_rated_price) AS rated_avg_price, AVG(rv.avg_price) AS avg_price
+        FROM rate_view rv
+        INNER JOIN (
+            SELECT restaurant_id
+            FROM rate_view
+            WHERE member_id = #{memberId}
+        ) m ON rv.restaurant_id = m.restaurant_id
+        WHERE rv.member_id = #{memberId}
+        GROUP BY rv.restaurant_id
+        ) subquery
+        UNION ALL
+        SELECT 0 AS member_id, ROUND(AVG(rated_avg_price), -2) AS overall_rated_avg_price, ROUND(AVG(avg_price), -2) AS overall_avg_price
+        FROM (
+        SELECT rv.restaurant_id, AVG(rv.avg_rated_price) AS rated_avg_price, AVG(rv.avg_price) AS avg_price
+        FROM rate_view rv
+        WHERE rv.member_id != #{memberId}
+        GROUP BY rv.restaurant_id
+        ) subquery
+    
+    </select>
 
 	
 </mapper>

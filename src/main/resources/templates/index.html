@@ -50,6 +50,7 @@
         <section class="type">
             <ul class="typelist">
                 <li th:each="c : ${list}"> 
+                    <input name="c" type="hidden" th:value="${c.id}">
                     <a 
                        href="/restaurant/list/category/1"
                        th:href="@{/restaurant/list(c=${c.id})}"> 
@@ -167,11 +168,10 @@
 
 
         <!-- TODO 클릭 시 rate-list 페이지로 이동 -->
-        <!-- 비로그인 회원이라면 login 페이지로 이동 -->
         <section class="comparison1">
             <h1>나의 가성비 성과 비교</h1>
             <div class="comparison-img">
-                <img  src="/images/components/index-성과비교.svg" alt="">
+                <a href="user/my-page/statistics"><img  src="/images/components/index-성과비교.svg" alt=""></a>
                 <div class="comparison-text">
                     <span>내가 누린 가성비는?</span>
                     <span>맘껏 누려온 가성비를 확인해보세요</span>

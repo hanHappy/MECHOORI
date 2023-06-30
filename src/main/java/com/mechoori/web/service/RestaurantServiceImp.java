@@ -66,7 +66,7 @@ public class RestaurantServiceImp implements RestaurantService {
 	public List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, String query) {
 		return repository.findAllRestaurantView(memberId, null, null, query, null);
 	}
-
+	
 	@Override
 	public List<RestaurantView> getRestaurantViewListByFilter(Integer memberId, Integer ctgId, Integer filterId) {
 
@@ -92,6 +92,9 @@ public class RestaurantServiceImp implements RestaurantService {
 
 		return repository.findAllRestaurantView(memberId, null, ctgId, null, filter);
 	}
+
+
+
 
 	@Override
 	public RestaurantDetail getRestaurantDetailById(int restaurantId) {
