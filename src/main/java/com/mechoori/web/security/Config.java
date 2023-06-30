@@ -20,7 +20,8 @@ public class Config {
 				auth->auth
 					.requestMatchers("/admin/**").hasAnyRole("ADMIN")
 					.requestMatchers("/restaurant/*/rate").hasAnyRole("ADMIN", "USER")
-					// TODO user 페이지 권한 걸기
+					.requestMatchers("/user/my-page/**").hasAnyRole("ADMIN", "MEMBER")
+					//.requestMatchers("/user/login/**").hasAnyRole("ADMIN", "MEMBER")
 					.anyRequest().permitAll()) // 이외의 요청은 전부 승인함
 			.formLogin(
 				form->form

@@ -1,7 +1,8 @@
 package com.mechoori.web.entity;
 
-import groovy.transform.builder.Builder;
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,11 +10,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MenuView{
-    private int id;
-    private int restaurantId;
-    private String name;
-    private int price;
-    private int ratedPrice;
+public class Statistics {
+    private int memberId;
+    private int overallRatedAvgPrice;
+    private int overallAvgPrice;
     private int value;
 }

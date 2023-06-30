@@ -3,9 +3,15 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mechoori.web.repository.RestaurantRepository">
-	<select id="findById" resultType="Restaurant">
+   <select id="findById" resultType="Restaurant">
+      select * 
+      from restaurant
+      where id = #{restaurantId}
+   </select>
+
+	<select id="findViewById" resultType="RestaurantView">
 		select * 
-		from restaurant
+		from restaurant_view
 		where id = #{restaurantId}
 	</select>
 
