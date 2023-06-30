@@ -44,8 +44,8 @@
                 <p align="center" th:text="${m.name}">name</p>
                 <p align="center" th:text="${m.price}">price</p>
                 <div class="buttons">
-                    <a th:href="@{/restaurant/ + ${r.id} + /menu/ + ${m.id} + /edit}"><button>EDIT</button></a>
-                    <a th:href="@{/restaurant/ + ${r.id} + /menu/ + ${m.id} + /delete}"><button>DEL</button></a>
+                    <a th:href="@{menu/{mid}/edit(mid=${m.id})}"><button>EDIT</button></a>
+                    <a th:href="@{menu/{mid}/delete(mid=${m.id})}"><button>DEL</button></a>
                 </div>
             </section>
         </div>
