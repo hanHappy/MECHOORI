@@ -18,6 +18,7 @@ public class UserController {
 
     @Autowired
     private RestaurantService restaurantService;
+
     @Autowired
     private MemberService service;
 
@@ -94,6 +95,13 @@ public class UserController {
     //내 정보 변경
     @GetMapping("my-page/edit-info")
     public String editInfo(){
+        return "user/my-page/edit-info";
+    }
+
+    //로그인되 있는 내정보를 위한 맵핑
+    @GetMapping("my-page/edit-info")
+    public String editInfo(Member member){
+        service.add(member);
         return "user/my-page/edit-info";
     }
 

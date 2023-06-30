@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/css/common/style.css">
     
     <title>가입 정보</title>
+    <script src ="/js/user/edit-info.js" defer="defer"></script>
+    
 </head>
 <body>
     <header>
@@ -24,9 +26,14 @@
     </header> 
     <main>  
         <!-- 이미지 수정 아이콘 -->
-        <div href=""class ="edit-image" alt="">
+        <!-- <div href=""class ="edit-image" alt="">
             <img src="/images/icons/이미지수정.svg" alt="edit-image-icon">
+        </div> -->
+        <div class="real-upload">
+            <img class="img-click" src="/images/icons/이미지수정.svg" alt="">
+            <input type="file" class="upload" accept="image/*">
         </div>
+
         <div class="profile-circle">
             <img src="/images/components/프사메추리.png" alt="프로필사진">
         </div>

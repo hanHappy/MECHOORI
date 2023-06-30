@@ -1,3 +1,6 @@
+let btn = document.getElementById('button');
+
+
 function loadFile(input) {
     var file = input.files[0];	//선택된 파일 가져오기
 
@@ -35,4 +38,8 @@ function showImage() {
     document.getElementById('image-upload').style.visibility = 'hidden';
 
     document.getElementById('fileName').textContent = null;     //기존 파일 이름 지우기
+}
+
+function btn.onclick(){
+  
 }
