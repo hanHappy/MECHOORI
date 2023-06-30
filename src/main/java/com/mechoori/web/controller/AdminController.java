@@ -109,8 +109,13 @@ public class AdminController {
 
     @GetMapping("restaurant/{id}/menu")
     public String menu(@PathVariable("id") int restaurantId, Model model){
+        
         List<Menu> list = menuService.getList(restaurantId);
-        model.addAttribute("list", list);
+        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+
+        model.addAttribute("list", list)
+             .addAttribute("r", restaurant);
+
         return "admin/restaurant/menu";
     }
 }

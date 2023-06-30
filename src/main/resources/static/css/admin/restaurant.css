@@ -25,7 +25,16 @@ input {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
 }
-.restaurant {
+.menu.column-box {
+    font-weight: bold;
+    text-align: center;
+
+    width: 60vw;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.data {
     text-align: center;
 
     width: 90vw;
@@ -33,6 +42,15 @@ input {
 
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+}
+.data.menu {
+    text-align: center;
+
+    width: 75vw;
+    margin-bottom: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
 }
 .restaurant p{
     margin: 0;

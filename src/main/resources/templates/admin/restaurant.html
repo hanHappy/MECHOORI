@@ -45,7 +45,7 @@
     <section class="restaurant-list-section">
         <h1 style="display: none;">식당 리스트</h1>
         <div class="restaurant-list">
-            <section class="restaurant" th:each="r: ${list}">
+            <section class="data restaurant" th:each="r: ${list}">
                 <p align="center" th:text="${r.id}">id</p>
                 <p align="center" th:text="${r.topCategoryId}">top_category_id</p>
                 <p align="center" th:text="${r.categoryId}">category_id</p>
