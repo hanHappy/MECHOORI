@@ -99,7 +99,7 @@ public class UserController {
     }
 
     //로그인되 있는 내정보를 위한 맵핑
-    @GetMapping("my-page/edit-info")
+    @PostMapping("my-page/edit-info")
     public String editInfo(Member member){
         service.add(member);
         return "user/my-page/edit-info";
