@@ -92,7 +92,6 @@ public class RestaurantController {
 		}
 		//리뷰
 		List<Rate> rateList = rateService.getListByMenuIds(menuIds);
-		List<String> menuNames = new ArrayList<>();
 
 		//리뷰 최신순 4개
 		List<Rate> top4Rates;
@@ -106,7 +105,9 @@ public class RestaurantController {
 			top4Rates = sortedList.subList(0, 4);
 		}
 
-		for (Rate rate : rateList) {
+		List<String> menuNames = new ArrayList<>();
+
+		for (Rate rate : top4Rates) {
 			int menuId = rate.getMenuId();
 			String menuName = menuService.getMenuName(menuId, menuViewList);
 			menuNames.add(menuName);
