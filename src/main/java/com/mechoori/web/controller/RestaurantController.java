@@ -108,8 +108,6 @@ public class RestaurantController {
 
 	@GetMapping("/ranking")
 	public String ranking(Model model, String category) {
-	@GetMapping("/ranking")
-	public String ranking(Model model, String category) {
 
 		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 
