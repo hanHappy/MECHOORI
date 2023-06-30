@@ -180,7 +180,7 @@ public class RestaurantController {
       model.addAttribute("r",res);
 
 
-      return "/mapPage";
+      return "restaurant/mapPage";
    }
 
 
