@@ -13,5 +13,6 @@ public interface MenuRepository {
 
     Menu findById(int menuId);
 
+    void add(Menu menu);
     void update(Menu menu);
 }

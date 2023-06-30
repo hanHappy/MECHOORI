@@ -79,12 +79,22 @@ input {
     color: blue;
 }
 
-.buttons {
+.button-box {
     display: flex;
     flex-direction: column;
     gap: 3px;
 }
 
-.buttons button {
+.button-box button {
     width: 55px;
+    border: none;
+}
+
+.menu-btn{
+    background-color: var(--sub-color);
+    color: white;
+}
+
+.delete-btn{
+    background-color: #F98F78;
 }

@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/admin/restaurant.css">
+    <link rel="stylesheet" href="/css/common/style.css">
     <!-- <link rel="stylesheet" href="/css/common/style.css"> -->
     <script src="/js/admin/restaurant.js" defer="defer"></script>
     <title>Restaurant</title>
@@ -55,10 +56,10 @@
                 <p align="center" th:text="${r.address}">address</p>
                 <p align="center" th:text="${r.operatingTime}">operating_time</p>
                 <p align="center" th:text="${r.contactNumber}">contact_number</p>
-                <div class="buttons">
-                    <a th:href="@{restaurant/{id}/menu(id=${r.id})}"><button>MENU</button></a>
-                    <a th:href="@{restaurant/{id}/update(id=${r.id})}"><button>EDIT</button></a>
-                    <a th:href="@{restaurant/{id}/delete(id=${r.id})}"><button>DEL</button></a>
+                <div class="button-box">
+                    <a th:href="@{restaurant/{id}/menu(id=${r.id})}"><button class="menu-btn">MENU</button></a>
+                    <a th:href="@{restaurant/{id}/edit(id=${r.id})}"><button class="edit-btn">EDIT</button></a>
+                    <a th:href="@{restaurant/{id}/delete(id=${r.id})}"><button class="delete-btn">DEL</button></a>
                 </div>
             </section>
         </div>

@@ -11,4 +11,8 @@ public interface MenuService {
     Menu getDetail(int menuId);
 
     String getMenuName(int menuId, List<Menu> menuList);
+
+    void add(Menu menu);
+    void update(Menu menu);
+
 }

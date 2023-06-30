@@ -19,11 +19,6 @@
 
     <hr>
     <br>
-    <form method="get">
-        <input name="q" class="search-input" type="text" placeholder="식당 검색">
-        <button class="search-btn">검색</button>
-    </form>
-    <br>
 
     <a href="menu/add"><button>추가</button></a>
 
@@ -43,9 +38,9 @@
                 <p align="center" th:text="${m.restaurantId}">restaurant_id</p>
                 <p align="center" th:text="${m.name}">name</p>
                 <p align="center" th:text="${m.price}">price</p>
-                <div class="buttons">
-                    <a th:href="@{menu/{mid}/edit(mid=${m.id})}"><button>EDIT</button></a>
-                    <a th:href="@{menu/{mid}/delete(mid=${m.id})}"><button>DEL</button></a>
+                <div class="button-box">
+                    <a th:href="@{menu/{mid}/edit(mid=${m.id})}"><button class="edit-btn">EDIT</button></a>
+                    <a th:href="@{menu/{mid}/delete(mid=${m.id})}"><button class="delete-btn">DEL</button></a>
                 </div>
             </section>
         </div>

@@ -33,4 +33,16 @@ public class MenuServiceImp implements MenuService{
     	}
     	return "";
     }
+	
+	@Override
+	public void add(Menu menu) {
+		repository.add(menu);
+	}
+
+	@Override
+	public void update(Menu menu) {
+		if(menu.getName()=="")
+			menu.setName(null);
+		repository.update(menu);
+	}
 }
