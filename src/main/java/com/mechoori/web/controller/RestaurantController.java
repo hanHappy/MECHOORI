@@ -124,13 +124,8 @@ public class RestaurantController {
 		// 	System.out.println("리뷰는 " + rateList.size());
 		// }
 
-<<<<<<< HEAD
       return "restaurant/detail";
    }
-=======
-	@GetMapping("/ranking")
-	public String ranking(Model model, String category) {
->>>>>>> feat/admin-menu
 
    @GetMapping("{id}/rate")
    public String rate(@PathVariable("id") int restaurantId, Model model) {
