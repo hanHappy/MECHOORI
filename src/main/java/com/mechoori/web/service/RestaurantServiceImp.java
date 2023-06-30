@@ -70,7 +70,7 @@ public class RestaurantServiceImp implements RestaurantService {
 	public List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, String query) {
 		return repository.findAllRestaurantView(memberId, null, null, query, null);
 	}
-	
+
 	@Override
 	public List<RestaurantView> getRestaurantViewListByFilter(Integer memberId, Integer ctgId, Integer filterId) {
 
@@ -159,17 +159,11 @@ public class RestaurantServiceImp implements RestaurantService {
 		repository.add(restaurant);
 	}
 
-	@Override
-	// FIXME 너 정체가 뭐야
-	public List<Restaurant> findAllRestaurant() {
-		return repository.findAllRestaurant();
-	}
 }
 
 // TODO : 예외처리 생각합시다
 // @Override
 // public Restaurant getDetail(int id) throws 식당없음예외 {
-//
 // Restaurant restaurant = repository.getDetail();
 // if(restaurant==null)
 // throw new 식당없음예외();

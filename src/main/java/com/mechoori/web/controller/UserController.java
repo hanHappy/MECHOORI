@@ -1,6 +1,13 @@
 package com.mechoori.web.controller;
 
+import com.mechoori.web.entity.Member;
+import com.mechoori.web.entity.Restaurant;
+import com.mechoori.web.entity.RestaurantView;
+import com.mechoori.web.service.MemberService;
+import com.mechoori.web.service.MenuService;
+import com.mechoori.web.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,16 +20,15 @@ import com.mechoori.web.service.RateService;
 import com.mechoori.web.service.RestaurantService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
 
     @Autowired
     private RestaurantService restaurantService;
     @Autowired
     private MemberService service;
-
     @Autowired
-    private RateService ratedService;
+    private RateService rateService;
 
 
     @GetMapping("login")
@@ -78,11 +84,17 @@ public class UserController {
     }
 
 
-    @GetMapping("my-page/rate-list")
-    public String rateList(Model model) {
-
-        return "user/my-page/rate-list";
-    }
+//    @GetMapping("my-page/rate-list")
+//    public String rateList(Model model,
+//               @AuthenticationPrincipal MechooriUserDetails user) {
+//
+//      List<Rate> list  = rateService.getList(user.getId());
+//        model.addAttribute("list",list);
+//
+//        System.out.println(list);
+//
+//        return "user/my-page/rate-list";
+//    }
 
 
     //내 정보
@@ -137,34 +149,34 @@ public class UserController {
         // Integer memberId = null;
         // if (member != null) {
         //     memberId = member.getId();
-        // }    
+        // }
         //List<Rate> list = rateService.getRatedPrice(rate, memberId);
        // Map<String, Statistics> data = ratedService.getDate(member.getId());
         //model.addAttribute("data", data);
         return "user/my-page/statistics";
     }
 
-    // reg-date,  
+    // reg-date,
 
     // @GetMapping("/statistics")
     // public String statistics(
     //      @AuthenticationPrincipal MechooriUserDetails member) {
-   
+
     //      Integer memberId = member.getId();
 
     //     if (memberId == null) {
     //     return "user/login";
     // }
     //     return "restaurant/statistics";
-         
-    // }   
+
+    // }
 
 
 
     //가성비 성과페이지
     // 맴버 평가 평균 데이터, 유저 평가 평균 데이터
     // rate table에서 user_id, menu_id, price
-    
+
     // 맴버 평균 데이터 : rate > user_id(전체), price(전체)
     // 유저 평균 데이터 : rate > user_id(한명), price
 

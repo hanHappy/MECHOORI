@@ -13,6 +13,7 @@ public interface RateService {
     // List<Rate> getListByRestaurantId(int restaurantId);
     List<Rate> getListByMenuIds(List<Integer> menuIds);
 
+    List<Rate> getList(int memberId);
     // List<Rate> getRatedPrice(Rate rate, Integer memberId);
 
     Map<String, Integer> getDate(int memberId);
