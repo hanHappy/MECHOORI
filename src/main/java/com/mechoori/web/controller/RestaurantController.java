@@ -1,10 +1,8 @@
 package com.mechoori.web.controller;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -21,8 +19,8 @@ import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.MenuView;
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.RestaurantDetail;
+import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
@@ -106,7 +104,6 @@ public class RestaurantController {
 		}
 
 		List<String> menuNames = new ArrayList<>();
-
 		for (Rate rate : top4Rates) {
 			int menuId = rate.getMenuId();
 			String menuName = menuService.getMenuName(menuId, menuViewList);
@@ -119,8 +116,7 @@ public class RestaurantController {
 		model.addAttribute("menuNames", menuNames);
 		model.addAttribute("top4Rates", top4Rates);
 
-		System.out.println("테스트" + top4Rates);
-
+		// System.out.println("테스트" + top4Rates);
 		//테스트
 		// if (rateList.isEmpty()) {
 		// 	System.out.println("비었음");

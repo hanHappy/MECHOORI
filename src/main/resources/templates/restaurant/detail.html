@@ -84,7 +84,7 @@
         </div>
         <div>
           <span th:text="${menu.price + '원'}">가격</span>
-          <span th:text="${menu.value} + '%'" class="menu-detail-rp"></span>
+          <span th:text="'(' + ${menu.value} + '%)'" class="menu-detail-rp"></span>
         </div>
       </div>
 
@@ -98,7 +98,7 @@
             <span>…………</span>
             <div>
               <span th:text="${menu.price}+'원'">가격</span>
-              <span th:text="${menu.value} + '%'"></span>
+              <span th:text="'(' + ${menu.value} + '%)'" class="menu-detail-rp"></span>
             </div>
           </div>
         </ul>
@@ -143,7 +143,8 @@
     <div class="review-title-box">
       <div class="review-title">
         <img src="/images/icons/icon-line.svg">
-        <p>리뷰 (<span class="review-span">99</span>+)</p>
+        <p>리뷰 (<span class="review-span" th:text="${rateList.size()}">99</span>+)</p>
+
       </div>
       <a href="/restaurant/{id}/rate" th:href="@{/restaurant/{id}/rate(id=${r.id})}"><button class="button button-11">평가하기</button></a>
     </div>
