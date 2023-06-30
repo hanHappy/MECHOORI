@@ -8,6 +8,25 @@
     font-weight: bold;
     text-align: center;
 }
+.button {
+    position : relative;
+    top:51px;
+    left:210px;
+    justify-content: center;
+}
+
+.button img {
+    width: 25px;
+}
+label {
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/* 못생긴 기존 input 숨기기 */
+#chooseFile {
+    visibility: hidden;
+}
 
 
 /* 아이콘 이동 */

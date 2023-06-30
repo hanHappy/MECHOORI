@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/css/user/my-page/reg.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
+	<script src="/js/user/my-page.js" defer></script>
     <style>
         .invalid-for-over{
 			background-color: peachpuff;
@@ -224,9 +225,14 @@
 
         <section class="img-edit-section">
 			<a href="/user/my-page/reg">
-            <div href=""class ="edit-image" alt="">
-                <img src="/images/icons/이미지수정.svg" alt="edit-image-icon">
-            </div>
+				<form method="post" enctype="multipart/form-data">
+					<div class="button">
+						<label for="chooseFile">
+							<img src="/images/icons/이미지수정.svg" alt="">
+						</label>
+					</div>
+					<input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+				</form>
             <div class="profile-circle">
                 <img src="/images/components/프사메추리.png" alt="프로필사진">
             </div>

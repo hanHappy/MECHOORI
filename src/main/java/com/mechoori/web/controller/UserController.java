@@ -36,7 +36,7 @@ public class UserController {
 
     @Autowired
     private RateService rateService;
-
+    
     @Autowired
 	private ResourceLoader resourceLoader;
 	
