@@ -16,6 +16,7 @@ input {
     height: 35px;
 }
 
+/* -------------- 칼럼 -------------- */
 .column-box {
     font-weight: bold;
     text-align: center;
@@ -25,7 +26,17 @@ input {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
 }
-.restaurant {
+.menu.column-box {
+    font-weight: bold;
+    text-align: center;
+
+    width: 60vw;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+/* -------------- 데이터 -------------- */
+.data {
     text-align: center;
 
     width: 90vw;
@@ -33,6 +44,15 @@ input {
 
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+}
+.data.menu {
+    text-align: center;
+
+    width: 75vw;
+    margin-bottom: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
 }
 .restaurant p{
     margin: 0;
@@ -59,12 +79,22 @@ input {
     color: blue;
 }
 
-.buttons {
+.button-box {
     display: flex;
     flex-direction: column;
     gap: 3px;
 }
 
-.buttons button {
+.button-box button {
     width: 55px;
+    border: none;
+}
+
+.menu-btn{
+    background-color: var(--sub-color);
+    color: white;
+}
+
+.delete-btn{
+    background-color: #F98F78;
 }
