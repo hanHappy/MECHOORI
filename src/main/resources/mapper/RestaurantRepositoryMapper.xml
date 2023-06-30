@@ -9,21 +9,27 @@
       where id = #{restaurantId}
    </select>
 
-   <select id="findAll" resultType="Restaurant">
-      select *
-      from restaurant
-      <trim prefix="where" prefixOverrides="AND|OR">
-         <if test="categoryId != null">
-            category_id = #{categoryId};
-         </if>
-         <if test="query != null">
-            name like '%${query}%'
-         </if>
-      </trim>
-      <if test="page != null">
-         limit #{page}, #{size}
-      </if>
-   </select>
+	<select id="findViewById" resultType="RestaurantView">
+		select * 
+		from restaurant_view
+		where id = #{restaurantId}
+	</select>
+
+	<select id="findAll" resultType="Restaurant">
+		select *
+		from restaurant
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<if test="categoryId != null">
+				category_id = #{categoryId};
+			</if>
+			<if test="query != null">
+				name like '%${query}%'
+			</if>
+		</trim>
+		<if test="page != null">
+			limit #{page}, #{size}
+		</if>
+	</select>
 
 	<select id="findAllRestaurantView" resultType="RestaurantView">
 		<if test="memberId == null">

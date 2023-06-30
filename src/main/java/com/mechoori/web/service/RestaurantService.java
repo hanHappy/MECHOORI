@@ -10,6 +10,7 @@ import com.mechoori.web.entity.RestaurantView;
 public interface RestaurantService {
 
 	Restaurant getDetailById(int restaurantId);
+	RestaurantView getViewDetailById(int restaurantId);
 	
     RestaurantDetail getRestaurantDetailById(int restaurantId);
 

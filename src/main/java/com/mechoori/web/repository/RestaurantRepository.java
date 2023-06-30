@@ -12,6 +12,7 @@ import com.mechoori.web.entity.RestaurantView;
 public interface RestaurantRepository {
 
     Restaurant findById(int restaurantId);
+    RestaurantView findViewById(int restaurantId);
 
     List<Restaurant> findAll();
     List<Restaurant> findAll(Integer categoryId, String query, Integer page, Integer size);

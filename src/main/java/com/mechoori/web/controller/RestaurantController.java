@@ -1,10 +1,8 @@
 package com.mechoori.web.controller;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,10 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
+import com.mechoori.web.entity.MenuView;
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.RestaurantDetail;
+import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
@@ -80,17 +79,17 @@ public class RestaurantController {
          @PathVariable("id") int restaurantId,
          Model model) {
 
-      List<Menu> menuList = menuService.getList(restaurantId);
-      RestaurantDetail restaurant = restaurantService.getRestaurantDetailById(restaurantId);
+		// List<Menu> menuList = menuService.getList(restaurantId);
+		RestaurantView restaurantView = restaurantService.getViewDetailById(restaurantId);
+		List<MenuView> menuViewList = menuService.getViewListByRestaurantId(restaurantId);
 
-      //아이디
-      List<Integer> menuIds = new ArrayList<>();
-      for (Menu menu : menuList) {
-         menuIds.add(menu.getId());
-      }
-      //리뷰
-      List<Rate> rateList = rateService.getListByMenuIds(menuIds);
-      List<String> menuNames = new ArrayList<>();
+		//아이디
+		List<Integer> menuIds = new ArrayList<>();
+		for (MenuView menuView : menuViewList) {
+			menuIds.add(menuView.getId());
+		}
+		//리뷰
+		List<Rate> rateList = rateService.getListByMenuIds(menuIds);
 
       //리뷰 최신순 4개
       List<Rate> top4Rates;
@@ -104,24 +103,26 @@ public class RestaurantController {
          top4Rates = sortedList.subList(0, 4);
       }
 
-      for (Rate rate : rateList) {
-         int menuId = rate.getMenuId();
-         String menuName = menuService.getMenuName(menuId, menuList);
-         menuNames.add(menuName);
-      }
+		List<String> menuNames = new ArrayList<>();
+		for (Rate rate : top4Rates) {
+			int menuId = rate.getMenuId();
+			String menuName = menuService.getMenuName(menuId, menuViewList);
+			menuNames.add(menuName);
+		}
 
-      model.addAttribute("menuList", menuList);
-      model.addAttribute("r", restaurant);
-      model.addAttribute("rateList", rateList);
-      model.addAttribute("menuNames", menuNames);
-      model.addAttribute("top4Rates", top4Rates);
+		model.addAttribute("menuViewList", menuViewList);
+		model.addAttribute("r", restaurantView);
+		model.addAttribute("rateList", rateList);
+		model.addAttribute("menuNames", menuNames);
+		model.addAttribute("top4Rates", top4Rates);
 
-      //테스트
-      // if (rateList.isEmpty()) {
-      //    System.out.println("비었음");
-      // } else {
-      //    System.out.println("리뷰는 " + rateList.size());
-      // }
+		// System.out.println("테스트" + top4Rates);
+		//테스트
+		// if (rateList.isEmpty()) {
+		// 	System.out.println("비었음");
+		// } else {
+		// 	System.out.println("리뷰는 " + rateList.size());
+		// }
 
       return "restaurant/detail";
    }

@@ -9,7 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MenuView extends Menu{
+public class MenuView{
+    private int id;
+    private int restaurantId;
+    private String name;
+    private int price;
     private int ratedPrice;
     private int value;
 }
