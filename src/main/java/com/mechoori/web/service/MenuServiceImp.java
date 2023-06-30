@@ -22,7 +22,7 @@ public class MenuServiceImp implements MenuService{
 	}
 
 	// @Override
-	// public List<MenuView> getViewList(int restaurantId) {
+	// public List<MenuView> getViewListByRestaurantId(int restaurantId) {
 	// 	List<MenuView> viewList = new ArrayList<>();
 	// 	List<Menu> menuList = getList(restaurantId);
 
@@ -32,8 +32,8 @@ public class MenuServiceImp implements MenuService{
 	// 		menuView.setRestaurantId(menu.getRestaurantId());
 	// 		menuView.setName(menu.getName());
 	// 		menuView.setPrice(menu.getPrice());
-	// 		menuView.setRatedPrice(?);
-	// 		menuView.setValue(?);
+	// 		menuView.setRatedPrice(menuView.getRatedPrice());
+    //     	menuView.setValue(menuView.getValue());
 
 	// 		viewList.add(menuView);
 	// 	}

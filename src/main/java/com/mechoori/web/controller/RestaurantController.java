@@ -118,7 +118,7 @@ public class RestaurantController {
 		model.addAttribute("menuNames", menuNames);
 		model.addAttribute("top4Rates", top4Rates);
 
-		System.out.println("테스트" + menuViewList);
+		System.out.println("테스트" + top4Rates);
 
 		//테스트
 		// if (rateList.isEmpty()) {
