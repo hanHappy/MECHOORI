@@ -34,12 +34,19 @@
     <main>
 
         <section class="img-edit-section">
-            <div href=""class ="edit-image" alt="">
-                <img src="/images/icons/이미지수정.svg" alt="edit-image-icon">
-            </div>
+			<a href="/user/my-page/reg">
+				<form method="post" enctype="multipart/form-data">
+					<div class="button">
+						<label for="chooseFile">
+							<img src="/images/icons/이미지수정.svg" alt="">
+						</label>
+					</div>
+					<input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+				</form>
             <div class="profile-circle">
                 <img src="/images/components/프사메추리.png" alt="프로필사진">
             </div>
+			</a>
         </section>
         <li class="user-name">메추리님</li>
         
@@ -90,15 +97,16 @@
                 </button>
 				</div>
                 <!-- 로그아웃 -->
-				
-                <a href="/">
+				<div>
                 <button class="value-list" href="#">
+					<a href="/">
                     <div class="value-icon">
                         <img class="mypage-icon" src="/images/icons/logout.svg" alt="valuelist">
                         <li>로그아웃</li>
                     </div>
-                </button>
-                </a>
+                	</a>
+				</button>
+				</div>
             </div>
         </div>
         </div>
