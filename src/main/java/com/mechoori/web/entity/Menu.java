@@ -13,5 +13,5 @@ public class Menu {
     private int id;
     private int restaurantId;
     private String name;
-    private int price;
+    private Integer price;
 }

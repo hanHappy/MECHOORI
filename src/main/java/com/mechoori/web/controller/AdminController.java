@@ -108,8 +108,44 @@ public class AdminController {
 
     @GetMapping("restaurant/{id}/menu")
     public String menu(@PathVariable("id") int restaurantId, Model model){
+        
         List<Menu> list = menuService.getList(restaurantId);
-        model.addAttribute("list", list);
-        return "admin/restaurant/menu";
+        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+
+        model.addAttribute("list", list)
+             .addAttribute("r", restaurant);
+
+        return "/admin/restaurant/menu";
     }
+
+    @GetMapping("restaurant/{rid}/menu/{mid}/edit")
+    public String editMenu(Model model, @PathVariable("mid") int menuId, @PathVariable("rid") int restaurantId){
+        Menu menu = menuService.getDetail(menuId);
+        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+        model.addAttribute("m", menu)
+             .addAttribute("r", restaurant);
+        return "admin/restaurant/menu/edit";
+    }
+
+    @PostMapping("restaurant/{rid}/menu/{mid}/edit")
+    public String editMenu(Menu menu, String rid){
+        menuService.update(menu);
+        return "redirect:/admin/restaurant/"+rid+"/menu";
+    }
+
+    @GetMapping("restaurant/{rid}/menu/add")
+    public String addMenu(Model model, @PathVariable("rid") int rid){
+
+        model.addAttribute("rid", rid);
+
+        return "admin/restaurant/menu/add";
+    }
+
+    @PostMapping("restaurant/{rid}/menu/add")
+    public String addMenu(Menu menu, @PathVariable("rid") int rid){
+        System.out.println(menu);
+        menuService.add(menu);
+        return "redirect:/admin/restaurant/"+rid+"/menu";
+    }
+
 }

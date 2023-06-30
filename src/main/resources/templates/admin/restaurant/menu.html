@@ -19,16 +19,11 @@
 
     <hr>
     <br>
-    <form method="get">
-        <input name="q" class="search-input" type="text" placeholder="식당 검색">
-        <button class="search-btn">검색</button>
-    </form>
-    <br>
 
     <a href="menu/add"><button>추가</button></a>
 
     <div class="column-container">
-        <div class="column-box">
+        <div class="menu column-box">
             <p>id</p>
             <p>식당id</p>
             <p>메뉴명</p>
@@ -38,14 +33,14 @@
     <section class="restaurant-list-section">
         <h1 style="display: none;">식당 리스트</h1>
         <div class="restaurant-list">
-            <section class="restaurant" th:each="m: ${list}">
+            <section class="data menu" th:each="m: ${list}">
                 <p align="center" th:text="${m.id}">id</p>
                 <p align="center" th:text="${m.restaurantId}">restaurant_id</p>
                 <p align="center" th:text="${m.name}">name</p>
                 <p align="center" th:text="${m.price}">price</p>
-                <div class="buttons">
-                    <a th:href="@{'restaurant/' + ${r.id} + '/menu/' + ${mid}}"><button>EDIT</button></a>
-                    <a th:href="@{restaurant/{rid}/menu/{mid}}"><button>DEL</button></a>
+                <div class="button-box">
+                    <a th:href="@{menu/{mid}/edit(mid=${m.id})}"><button class="edit-btn">EDIT</button></a>
+                    <a th:href="@{menu/{mid}/delete(mid=${m.id})}"><button class="delete-btn">DEL</button></a>
                 </div>
             </section>
         </div>
