@@ -18,6 +18,11 @@
         </foreach>
     </select>
 
+    <select id="getList" parameterType="Rate">
+        select * from rate
+        where member_id =#{memberId}
+    </select>
+
 
 
 

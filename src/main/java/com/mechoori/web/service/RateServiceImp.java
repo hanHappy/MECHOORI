@@ -36,4 +36,9 @@ public class RateServiceImp implements RateService{
     public List<Rate> getListByMenuIds(List<Integer> menuIds) {
         return repository.findByMenuIds(menuIds);
     }
+
+    @Override
+    public List<Rate> getList(int memberId) {
+        return repository.getList(memberId);
+    }
 }

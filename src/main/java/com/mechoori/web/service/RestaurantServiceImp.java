@@ -120,16 +120,11 @@ public class RestaurantServiceImp implements RestaurantService {
 		repository.add(restaurant);
 	}
 
-	@Override
-	public List<Restaurant> findAllRestaurant() {
-		return repository.findAllRestaurant();
-	}
 }
 
 // TODO : 예외처리 생각합시다
 // @Override
 // public Restaurant getDetail(int id) throws 식당없음예외 {
-//
 // Restaurant restaurant = repository.getDetail();
 // if(restaurant==null)
 // throw new 식당없음예외();

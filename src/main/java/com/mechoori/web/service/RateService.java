@@ -11,4 +11,5 @@ public interface RateService {
     // List<Rate> getListByRestaurantId(int restaurantId);
     List<Rate> getListByMenuIds(List<Integer> menuIds);
 
+    List<Rate> getList(int memberId);
 }
