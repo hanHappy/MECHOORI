@@ -25,5 +25,5 @@ public class RestaurantView {
     private Integer like;
     private Integer rateCount;
     private Integer rate;
-
+    private Integer rank;
 }

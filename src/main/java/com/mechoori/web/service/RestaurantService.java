@@ -18,13 +18,18 @@ public interface RestaurantService {
 	List<Restaurant> getListByPage(Integer page, Integer size);
 
 	List<RestaurantView> getRestaurantViewList(Integer memberId);
+    List<RestaurantView> getRestaurantViewListByTopCtgId(Integer memberId, Integer topCategoryId);
 	List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId);
 	List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, String query);
+    List<RestaurantView> getRestaurantViewListByFilter(Integer memberId, Integer ctgId, Integer filterId);
 
 	List<Integer> getPages();
 
 	List<RestaurantView> getRanking(Integer categoryId);
-
+	List<RestaurantView> getRanking();
     void add(Restaurant restaurant);
-	
+
+	List<Restaurant> findAllRestaurant();
+
+
 }

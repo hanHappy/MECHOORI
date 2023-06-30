@@ -69,7 +69,7 @@
                 <ul class="category-list other-category-list">
                     <li><button class="category-tag" href="#">#전체</button></li>
                     <li th:each="c : ${otherCtgList}">
-                        <button class="category-tag" href="#" th:text="'#' + ${c.name}">#베트남
+                        <button class="category-tag" th:data-id="${c.id}" th:text="'#' + ${c.name}">#베트남
                         </button>
                     </li>
                 </ul>
@@ -78,10 +78,13 @@
         <!-- 필터 -->
         <nav>
             <div class="filter-box">
-                <select name="filter">
-                    <option value="">가나다순</option>
-                    <option value="">가성비순</option>
-                    <option value="">가격순</option>
+                <select name="filter" required>
+                    <option disabled selected>필터</option>
+                    <option value="1">가성비순</option>
+                    <option value="2">낮은가격순</option>
+                    <option value="3">높은가격순</option>
+                    <option value="4">평가순</option>
+                    <option value="5">좋아요순</option>
                 </select>
             </div>
         </nav>

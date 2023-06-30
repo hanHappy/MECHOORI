@@ -14,4 +14,10 @@ public interface MemberRepository {
     String findRoleByEmail(String email);
 
     void save(Member member);
+
+    String searchEmail(String email);
+
+    void restaurantLIke(int id);
+
+    void resetPwd(Member member);
 }

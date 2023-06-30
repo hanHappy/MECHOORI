@@ -95,45 +95,78 @@
 				IFNULL(rt.rate_count, 0) AS rate
 			FROM restaurant_view r
 			LEFT JOIN (
-				SELECT 
+				SELECT
 					DISTINCT restaurant_id
 				FROM restaurant_like
 				WHERE member_id = #{memberId}
 			) rl ON r.id = rl.restaurant_id
 			LEFT JOIN (
-				SELECT 
-					menu.restaurant_id, 
+				SELECT
+					menu.restaurant_id,
 					COUNT(rate.member_id) AS rate_count
 				FROM menu
 				LEFT JOIN rate ON menu.id = rate.menu_id AND rate.member_id = #{memberId}
 				GROUP BY menu.restaurant_id) rt ON r.id = rt.restaurant_id
 		</if>
 		<trim prefix="where" prefixOverrides="AND|OR">
+			<if test="topCategoryId != null">
+				r.top_category_id = #{topCategoryId}
+			</if>
 			<if test="categoryId != null">
 				r.category_id = #{categoryId}
 			</if>
-		<if test="query != null">
-			(
-				r.name LIKE '%${query}%'
-				OR r.id IN (
-					SELECT DISTINCT restaurant_id
-					FROM menu
-					WHERE name LIKE '%${query}%'
+			<if test="query != null">
+				(
+					r.name LIKE '%${query}%'
+					OR r.id IN (
+						SELECT DISTINCT restaurant_id
+						FROM menu
+						WHERE name LIKE '%${query}%'
+					)
 				)
-			)
-		</if>
+			</if>
 		</trim>
+		<trim prefix="order by" prefixOverrides="AND | OR">
+			<if test="filter != null">
+				${filter}
+			</if>
+		</trim>
+		
 	</select>
 
 	<insert id="add" parameterType = "Restaurant">
-		insert into restaurant(category_id, name, img, intro, address, operating_time, contact_number)
-		values(#{categoryId}, #{name}, #{img}, #{intro}, #{address}, #{operatingTime}, #{contactNumber})
+		insert into restaurant(top_category_id, category_id, name, img, intro, address, operating_time, contact_number)
+		values(#{topCategoryId}, #{categoryId}, #{name}, #{img}, #{intro}, #{address}, #{operatingTime}, #{contactNumber})
 	</insert>
 
-	<select id="getRanking" resultType="RestaurantView">
-		SELECT *
-		from restaurant_card
-		where category_id = ${categoryId}
-		ORDER BY avg_rated_price DESC;
+<!--	<select id="getRanking" resultType="RestaurantView">-->
+<!--		SELECT *-->
+<!--		from restaurant_view-->
+<!--		<if test="categoryId != null">-->
+<!--		where category_id = #{categoryId}-->
+<!--		</if>-->
+<!--		ORDER BY value DESC-->
+<!--	</select>-->
+
+<select id="getRanking" resultType="RestaurantView">
+	SELECT *,
+	(SELECT COUNT(*)
+	FROM (SELECT *
+	FROM restaurant_view
+	<if test="categoryId != null">
+		WHERE category_id = #{categoryId}
+	</if>
+	ORDER BY value DESC) AS subquery
+	WHERE subquery.value >= restaurant_view.value) AS rank
+	FROM restaurant_view
+	ORDER BY value DESC
+		</select>
+
+	<select id="findAllRestaurant" resultType="Restaurant">
+		select * from restaurant
 	</select>
+
+
+
+
 </mapper>
