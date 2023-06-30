@@ -12,26 +12,29 @@
 <body>
 
 <header>
-    <div class="header-text">비밀번호 찾기</div>
-    <div class="back">
-        <a href="/index"></a>
+    <div class="header-side left">
+        <button class="d-none"></button>
     </div>
-    <div class="home">
-        <a href="#"></a>
+    <h1 class="header-icon logo"></h1>
+    <div class="header-side right">
+        <a href="/">
+            <button class="header-icon home"></button>
+        </a>
     </div>
 </header>
 
 <main>
-    <div class="withNumber">휴대폰 번호로 인증</div>
 
-    <div class="check">
-        메추리님의 비밀번호가<br>
-        재설정 되었습니다.
-    </div>
+    <form action="find-pwd-result" method="post">
+        <label for="passwordReset">비밀번호 재설정</label>
+        <input type="text" name="password" class="passwordReset" id="passwordReset" placeholder="비밀번호를 입력해주세요">
+    </form>
+    <label for="checkPasswordReset">비밀번호 재확인</label>
+    <input type="text" class="checkPasswordReset" id="checkPasswordReset" placeholder="비밀번호를 다시 입력해주세요">
 
-    <button class="complete">
-        완료
-    </button>
+    <button type="submit" id="submitBtn">재설정 하기</button>
+
+
 </main>
 
 </body>

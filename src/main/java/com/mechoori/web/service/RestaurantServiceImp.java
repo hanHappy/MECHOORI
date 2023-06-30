@@ -49,50 +49,79 @@ public class RestaurantServiceImp implements RestaurantService {
 
 	@Override
 	public List<RestaurantView> getRestaurantViewList(Integer memberId) {
-		return repository.findAllRestaurantView(memberId);
+		return repository.findAllRestaurantView(memberId, null, null, null, null);
 	}
 
 	@Override
-	public List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId, String query) {
-		return repository.findAllRestaurantView(memberId, categoryId, null);
+	public List<RestaurantView> getRestaurantViewListByTopCtgId(Integer memberId, Integer topCategoryId) {
+		return repository.findAllRestaurantView(memberId, topCategoryId, null, null, null);
 	}
 
 	@Override
-	public List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, Integer categoryId, String query) {
-		return repository.findAllRestaurantView(memberId, null, query);
+	public List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId) {
+		return repository.findAllRestaurantView(memberId, null, categoryId, null, null);
+	}
+
+	@Override
+	public List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, String query) {
+		return repository.findAllRestaurantView(memberId, null, null, query, null);
+	}
+
+	@Override
+	public List<RestaurantView> getRestaurantViewListByFilter(Integer memberId, Integer ctgId, Integer filterId) {
+
+		String filter = "";
+
+		switch(filterId){
+			case 1:
+				filter = "value desc";
+				break;
+			case 2:
+				filter = "avg_price";
+				break;
+			case 3:
+				filter = "avg_price desc";
+				break;
+			case 4:
+				filter = "rate_count desc";
+				break;
+			case 5:
+				filter = "like_count desc";
+				break;
+		}
+
+		return repository.findAllRestaurantView(memberId, null, ctgId, null, filter);
 	}
 
 	@Override
 	public RestaurantDetail getRestaurantDetailById(int restaurantId) {
-		List<Menu> menuList = menuRepository.findAll(restaurantId);
+		// FIXME RestaurantView로 넘겨주기
+		// List<Menu> menuList = menuRepository.findAll(restaurantId);
 
-		int avgPrice = 0;
-		int avgRatedPrice = 0;
+		// int avgPrice = 0;
+		// int avgRatedPrice = 0;
 
-		for (Menu menu : menuList) {
-			avgPrice = (((avgPrice + menu.getPrice()) / 2) / 100) * 100;
-			avgRatedPrice = (((avgRatedPrice + menu.getRatedPrice()) / 2) / 100) * 100;
-		}
+		// for (Menu menu : menuList) {
+		// 	avgPrice = (((avgPrice + menu.getPrice()) / 2) / 100) * 100;
+		// 	avgRatedPrice = (((avgRatedPrice + menu.getRatedPrice()) / 2) / 100) * 100;
+		// }
 
-		int value = (int) (((double) avgRatedPrice / avgPrice) * 100);
+		// int value = (int) (((double) avgRatedPrice / avgPrice) * 100);
 
-		Restaurant temp = getDetailById(restaurantId);
-		RestaurantDetail restaurant = new RestaurantDetail();
-		// TODO 줄여쓸 수 있는 방법 알아보자
-		restaurant.setId(temp.getId());
-		restaurant.setName(temp.getName());
-		restaurant.setImg(temp.getImg());
-		restaurant.setIntro(temp.getIntro());
-		restaurant.setAddress(temp.getAddress());
-		restaurant.setOperatingTime(temp.getOperatingTime());
-		restaurant.setContactNumber(temp.getContactNumber());
-		restaurant.setLikedCount(temp.getLikedCount());
-		restaurant.setRatedCount(temp.getRatedCount());
-		restaurant.setAvgPrice(avgPrice);
-		restaurant.setAvgRatedPrice(avgRatedPrice);
-		restaurant.setValue(value);
+		// Restaurant temp = getDetailById(restaurantId);
+		// RestaurantDetail restaurant = new RestaurantDetail();
+		// restaurant.setId(temp.getId());
+		// restaurant.setName(temp.getName());
+		// restaurant.setImg(temp.getImg());
+		// restaurant.setIntro(temp.getIntro());
+		// restaurant.setAddress(temp.getAddress());
+		// restaurant.setOperatingTime(temp.getOperatingTime());
+		// restaurant.setContactNumber(temp.getContactNumber());
+		// restaurant.setAvgPrice(avgPrice);
+		// restaurant.setAvgRatedPrice(avgRatedPrice);
+		// restaurant.setValue(value);
 
-		return restaurant;
+		return new RestaurantDetail();
 	}
 
 	@Override
@@ -108,6 +137,25 @@ public class RestaurantServiceImp implements RestaurantService {
 	@Override
 	public List<RestaurantView> getRanking(Integer categoryId) {
 		return repository.getRanking(categoryId);
+	}
+
+	@Override
+	public List<RestaurantView> getRanking() {
+
+
+
+		return repository.getRanking();
+	}
+
+	@Override
+	public void add(Restaurant restaurant) {
+		repository.add(restaurant);
+	}
+
+	@Override
+	// FIXME 너 정체가 뭐야
+	public List<Restaurant> findAllRestaurant() {
+		return repository.findAllRestaurant();
 	}
 }
 

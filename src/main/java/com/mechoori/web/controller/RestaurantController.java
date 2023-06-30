@@ -42,20 +42,26 @@ public class RestaurantController {
 	public String list(
 			@RequestParam(name = "q", required = false) String query,
 			@RequestParam(name = "c", required = false) Integer ctgId,
+			@AuthenticationPrincipal MechooriUserDetails member,
 			Model model) {
 
 		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 		List<Category> otherCtgList = categoryService.getOtherCategoryList();
-		
 
 		List<RestaurantView> list = null;
+
+		Integer memberId = null;
+
+		if(member != null)
+			memberId = member.getId();
+
 		// 식당 리스트 출력
 		if(query==null&&ctgId==null)
-			list = restaurantService.getRestaurantViewList();
+			list = restaurantService.getRestaurantViewList(memberId);
 		else if (query != null)
-			list = restaurantService.getRestaurantViewListByQuery(ctgId, query);
+			list = restaurantService.getRestaurantViewListByQuery(memberId, query);
 		else if (ctgId != null)
-			list = restaurantService.getRestaurantViewListByCtgId(ctgId, query);
+			list = restaurantService.getRestaurantViewListByCtgId(memberId, ctgId);
 
 		model.addAttribute("list", list)
 			 .addAttribute("mainCtgList", mainCtgList)
@@ -102,20 +108,21 @@ public class RestaurantController {
 
 	@GetMapping("/ranking")
 	public String ranking(Model model, String category) {
-
-
-//		List<Restaurant> list = restaurantService.getRanking(category);
+	@GetMapping("/ranking")
+	public String ranking(Model model, String category) {
 
 		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 
-		List<RestaurantView> list = restaurantService.getRestaurantViewList();
+
+		List<RestaurantView> listRanking = restaurantService.getRanking(null);
 
 
-		model.addAttribute("list",list);
+		System.out.println(listRanking);
+
+		model.addAttribute("list",listRanking);
 		model.addAttribute("ctg",mainCtgList);
 
-
-		return "/restaurant/ranking";
+		return "restaurant/ranking";
 	}
 
 	@GetMapping("/mapPage/{id}")
@@ -127,12 +134,11 @@ public class RestaurantController {
 		RestaurantDetail res = restaurantService.getRestaurantDetailById(restaurantId);
 
 
-
 		model.addAttribute("list",restaurant);
 		model.addAttribute("r",res);
 
 
-		return "/mapPage";
+		return "/restaurant/mapPage";
 	}
 
 

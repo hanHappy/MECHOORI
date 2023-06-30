@@ -29,7 +29,7 @@
     <main>
         <!-- 식당 사진 -->
         <div class="restaurant-img-box">
-            <img src="/images/foods/청화원2.png" class="restaurant-img" alt="식당사진">
+            <img th:src="@{/images/foods/{img}(img=${r.img})}" class="restaurant-img" alt="식당사진">
         </div>
 
         <!-- 상호명 -->

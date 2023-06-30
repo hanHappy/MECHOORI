@@ -50,23 +50,8 @@
           <p th:text="${list.ratedPrice}">6,000원</p>
         </div>
       </div>
-      <div class="adjImg1 adji">
-        <div class="foodImg1 FI" th:src="@{images/foods/{img}(img=${id})}"></div>
-        <div class="Texts" th:each="list:${list}">
-          <p th:text="${list.restaurantName}">짜장 상회</p>
-          <p th:text="${list.menuName}">짬뽕</p>
-          <p th:text="${list.ratedPrice}">6,000원</p>
-        </div>
-      </div>
-      <div class="adjImg1 adji">
-        <div class="foodImg1 FI" th:src="@{images/foods/{img}(img=${id})}"></div>
-        <div class="Texts" th:each="list:${list}">
-          <p th:text="${list.restaurantName}">짜장 상회</p>
-          <p th:text="${list.menuName}">짬뽕</p>
-          <p th:text="${list.ratedPrice}">6,000원</p>
-        </div>
-      </div>
     </div>
+
   </section>
 </main>
 </body>

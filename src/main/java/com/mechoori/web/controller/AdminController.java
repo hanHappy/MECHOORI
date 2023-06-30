@@ -6,13 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.service.CategoryService;
+import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantService;
 
 @Controller
@@ -23,6 +26,8 @@ public class AdminController {
     private CategoryService categoryService;
     @Autowired
     private RestaurantService restaurantService;
+    @Autowired
+    private MenuService menuService;
 
     @GetMapping("")
     public String admin() {
@@ -76,7 +81,7 @@ public class AdminController {
         
         List<Restaurant> list = null;
         if(query != null)
-            list = restaurantService.getListByQuery(query, page, size);
+            list = restaurantService.getListByQuery(query, (page*10)-10, size);
         else
             list = restaurantService.getListByPage((page*10)-10, size);
 
@@ -93,10 +98,18 @@ public class AdminController {
         return "admin/restaurant/add";
     }
 
+    @PostMapping("restaurant/add")
+    public String addRestaurant(Restaurant restaurant){
+        restaurantService.add(restaurant);
+        return "redirect:../restaurant";
+    }
+
     // ================= 메뉴 =================
 
-    @GetMapping("menu")
-    public String menu(){
-        return "admin/menu";
+    @GetMapping("restaurant/{id}/menu")
+    public String menu(@PathVariable("id") int restaurantId, Model model){
+        List<Menu> list = menuService.getList(restaurantId);
+        model.addAttribute("list", list);
+        return "admin/restaurant/menu";
     }
 }
