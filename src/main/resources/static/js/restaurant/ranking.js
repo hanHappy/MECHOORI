@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
          <section >
             <img src="/images/foods/${item.img}" class="img">
 
-
             <ul class="ranking-list">
                 <li class="rankingNum">${item.rank}</li>
                 <li>${item.name}</li>

@@ -63,6 +63,11 @@ public class RestaurantController {
 			System.out.println(categoryId);
 			return rstrService.getRanking(categoryId);
 		}
-		return rstrService.getRanking();
+		return rstrService.getRanking(categoryId);
 	}
+	//todo  1) 순위 겹치고 건너뛰지않게
+	// 		2) 바닥 닿을때 페이지 추가
+	//  	3) fetch 수정
+
+
 }
