@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class Rate {
     private Integer id;
-    private int userId;
+    private int memberId;
     private int menuId;
     private Date regDate;
     private int price;

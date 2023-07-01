@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     let emailConfirmCode = '';
     let emailConfirm = document.getElementById("emailCheck");
 
@@ -7,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function sendEmailConfirmationRequest() {
         const email = document.getElementById('email').value;
         const formData = new FormData();
-        // formData.append('e', email);
+        formData.append('e', email);
 
         fetch('/api/sign-up/emailCheck', {
             method: 'POST',
@@ -196,8 +195,5 @@ function needFilmAll() {
         console.log("nope");
     }
 
-
-
 }
-
 

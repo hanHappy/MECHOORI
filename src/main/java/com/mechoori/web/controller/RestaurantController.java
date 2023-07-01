@@ -1,5 +1,7 @@
 package com.mechoori.web.controller;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
+import com.mechoori.web.entity.MenuView;
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantCard;
 import com.mechoori.web.entity.RestaurantDetail;
+import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
@@ -29,108 +32,141 @@ import com.mechoori.web.service.RestaurantService;
 @RequestMapping("/restaurant")
 public class RestaurantController {
 
-	@Autowired
-	private RestaurantService restaurantService;
-	@Autowired
-	private MenuService menuService;
-	@Autowired
-	private CategoryService categoryService;
-	@Autowired
-	private RateService rateService;
-	
-	@GetMapping("/list")
-	public String list(
-			@RequestParam(name = "q", required = false) String query,
-			@RequestParam(name = "c", required = false) Integer ctgId,
-			Model model) {
+    @Autowired
+    private RestaurantService restaurantService;
+    @Autowired
+    private MenuService menuService;
+    @Autowired
+    private CategoryService categoryService;
+    @Autowired
+    private RateService rateService;
 
-		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
-		List<Category> otherCtgList = categoryService.getOtherCategoryList();
-		
+    @GetMapping("/list")
+    public String list(
+            @RequestParam(name = "q", required = false) String query,
+            @RequestParam(name = "c", required = false) Integer ctgId,
+            @AuthenticationPrincipal MechooriUserDetails member,
+            Model model) {
 
-		List<RestaurantCard> list = null;
-		// 식당 리스트 출력
-		if(query==null&&ctgId==null)
-			list = restaurantService.getRestaurantCardList();
-		else if (query != null)
-			list = restaurantService.getRestaurantCardListByQuery(ctgId, query);
-		else if (ctgId != null)
-			list = restaurantService.getRestaurantCardListByCtgId(ctgId, query);
+        List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
+        List<Category> otherCtgList = categoryService.getOtherCategoryList();
 
-		model.addAttribute("list", list)
-			 .addAttribute("mainCtgList", mainCtgList)
-			 .addAttribute("otherCtgList", otherCtgList);
-			
-		return "restaurant/list";
-	}
+        List<RestaurantView> list = null;
 
-	@GetMapping("{id}")
-	public String detail(
-			@PathVariable("id") int restaurantId,
-			Model model) {
+        Integer memberId = null;
 
-		List<Menu> menuList = menuService.getList(restaurantId);
-		RestaurantDetail restaurant = restaurantService.getRestaurantDetailById(restaurantId);
+        if (member != null)
+            memberId = member.getId();
 
-		model.addAttribute("menuList", menuList);
-		model.addAttribute("r", restaurant);
+        // 식당 리스트 출력
+        if (query == null && ctgId == null)
+            list = restaurantService.getRestaurantViewList(memberId);
+        else if (query != null)
+            list = restaurantService.getRestaurantViewListByQuery(memberId, query);
+        else if (ctgId != null)
+            list = restaurantService.getRestaurantViewListByCtgId(memberId, ctgId);
 
-		return "restaurant/detail";
-	}
+        model.addAttribute("list", list)
+                .addAttribute("mainCtgList", mainCtgList)
+                .addAttribute("otherCtgList", otherCtgList);
 
-	@GetMapping("{id}/rate")
-	public String rate(@PathVariable("id") int restaurantId, Model model) {
+        return "restaurant/list";
+    }
 
-		Restaurant restaurant = restaurantService.getDetailById(restaurantId);
-		List<Menu> menuList = menuService.getList(restaurantId);
+    @GetMapping("{id}")
+    public String detail(
+            @PathVariable("id") int restaurantId,
+            Model model) {
 
-		model.addAttribute("menuList", menuList)
-			 .addAttribute("r", restaurant);
+        // List<Menu> menuList = menuService.getList(restaurantId);
+        RestaurantView restaurantView = restaurantService.getViewDetailById(restaurantId);
+        List<MenuView> menuViewList = menuService.getViewListByRestaurantId(restaurantId);
 
-		return "restaurant/rate";
-	}
+        //아이디
+        List<Integer> menuIds = new ArrayList<>();
+        for (MenuView menuView : menuViewList) {
+            menuIds.add(menuView.getId());
+        }
+        //리뷰
+        List<Rate> rateList = rateService.getListByMenuIds(menuIds);
 
-	@PostMapping("{id}/rate")
-	public String rate(
-					Rate rate,
-					@AuthenticationPrincipal MechooriUserDetails user){
-		rateService.add(rate, user.getId());
-		// FIXME index -> rate-result로 수정해야 함
-		return "redirect:/";
-	}
+        //리뷰 최신순 4개
+        List<Rate> top4Rates;
+        if (rateList.size() < 4) {
+            List<Rate> sortedList = new ArrayList<>(rateList);
+            sortedList.sort(Comparator.comparing(Rate::getRegDate).reversed());
+            top4Rates = sortedList.subList(0, rateList.size());
+        } else {
+            List<Rate> sortedList = new ArrayList<>(rateList);
+            sortedList.sort(Comparator.comparing(Rate::getRegDate).reversed());
+            top4Rates = sortedList.subList(0, 4);
+        }
 
-	@GetMapping("/ranking")
-	public String ranking(Model model, String category) {
+        List<String> menuNames = new ArrayList<>();
+        for (Rate rate : top4Rates) {
+            int menuId = rate.getMenuId();
+            String menuName = menuService.getMenuName(menuId, menuViewList);
+            menuNames.add(menuName);
+        }
 
-		List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
+        model.addAttribute("menuViewList", menuViewList);
+        model.addAttribute("r", restaurantView);
+        model.addAttribute("rateList", rateList);
+        model.addAttribute("menuNames", menuNames);
+        model.addAttribute("top4Rates", top4Rates);
 
-		List<RestaurantCard> list = restaurantService.getRestaurantCardList();
+        return "restaurant/detail";
+    }
 
-		model.addAttribute("list",list);
-		model.addAttribute("ctg",mainCtgList);
+    @GetMapping("{id}/rate")
+    public String rate(@PathVariable("id") int restaurantId, Model model) {
 
-		return "/restaurant/ranking";
-	}
+        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+        List<Menu> menuList = menuService.getList(restaurantId);
 
-	@GetMapping("/mapPage/{id}")
-	public String map(
-			@PathVariable("id") int restaurantId,
-			Model model) {
+        model.addAttribute("menuList", menuList)
+                .addAttribute("r", restaurant);
 
-		Restaurant restaurant = restaurantService.getDetailById(restaurantId);
-		RestaurantDetail res = restaurantService.getRestaurantDetailById(restaurantId);
+        return "restaurant/rate";
+    }
 
+    @PostMapping("{id}/rate")
+    public String rate(
+            Rate rate,
+            @AuthenticationPrincipal MechooriUserDetails user) {
+        rateService.add(rate, user.getId());
+        // FIXME index -> rate-result로 수정해야 함
+        return "redirect:/";
+    }
 
-		model.addAttribute("list",restaurant);
-		model.addAttribute("r",res);
+    @GetMapping("/ranking")
+    public String ranking(Model model, String category) {
 
+       List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 
-		return "/restaurant/mapPage";
-	}
+       /// TODO: 2023-06-30  순위가 value 기준이라 순위가 겹치는 경우가 발생 
+       List<RestaurantView> list = restaurantService.getRanking();
 
+       model.addAttribute("list",list);
+       model.addAttribute("ctg",mainCtgList);
 
+       return "/restaurant/ranking";
+    }
 
+    @GetMapping("/mapPage/{id}")
+    public String map(
+            @PathVariable("id") int restaurantId,
+            Model model) {
 
+        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+        RestaurantDetail res = restaurantService.getRestaurantDetailById(restaurantId);
+
+        /// TODO: 2023-06-30 modal 구현하기
+        model.addAttribute("list", restaurant);
+        model.addAttribute("r", res);
+
+        return "restaurant/mapPage";
+    }
 
 
 }

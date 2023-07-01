@@ -20,6 +20,7 @@
     </div>
     <h1 class="header-icon logo"></h1>
     <div class="header-side right">
+      <!-- FIXME 링크 index -> history.back()으로 수정 -->
       <a href="/"><button class="header-icon cancle"></button></a>
     </div>
   </header>
@@ -42,7 +43,8 @@
       <!-- FIXME 텍스트 색상 -> #fff -->
       <button class="submitbtn">
         <input type="hidden" name="returnURL" th:value="${param.returnURL}">
-        <a href="/">로그인 </a>
+        <!-- 아마 a -> button으로 고치면 될듯? -->
+        <a href=returnUrl>로그인 </a>
       </button>
     </div>
     </form>

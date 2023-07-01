@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html 
+    lang="en" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+    >
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/admin/restaurant.css">
+    <!-- <link rel="stylesheet" href="/css/common/style.css"> -->
     <script src="/js/admin/restaurant.js" defer="defer"></script>
     <title>Restaurant</title>
 </head>
@@ -12,7 +17,7 @@
 <body>
     <a href="../admin">관리자 페이지로</a>
 
-    <h1>Restaurant</h1>
+    <a style="color: #282828;" href="restaurant"><h1>Restaurant</h1></a>
 
     <hr>
     <br>
@@ -22,35 +27,45 @@
     </form>
     <br>
 
-    <section id="restaurant-list-section">
-        <table>
-            <th>id</th>
-            <th>카테고리</th>
-            <th>이름</th>
-            <th>이미지</th>
-            <th>소개</th>
-            <th>주소</th>
-            <th>영업시간</th>
-            <th>연락처</th>
-            <th>좋아요 수</th>
-            <th>평가 수</th>
-            <tr th:each="r: ${list}">
-                <div id="restaurant-list">
-                    <td align="center" th:text="${r.id}">id</td>
-                    <td align="center" th:text="${r.categoryId}">category_id</td>
-                    <td align="center" th:text="${r.name}">name</td>
-                    <td align="center" th:text="${r.img}">img</td>
-                    <td align="center" th:text="${r.intro}">intro</td>
-                    <td align="center" th:text="${r.address}">address</td>
-                    <td align="center" th:text="${r.operatingTime}">operating_time</td>
-                    <td align="center" th:text="${r.contactNumber}">contact_number</td>
-                    <td align="center" th:text="${r.likedCount}">liked_count</td>
-                    <td align="center" th:text="${r.ratedCount}">rated_count</td>
-                    <td><a th:href="@{restaurant/{id}/update(id=${r.id})}"><button>EDIT</button></a></td>
-                    <td><a th:href="@{restaurant/{id}/delete(id=${r.id})}"><button>DEL</button></a></td>
+    <a href="restaurant/add"><button>추가</button></a>
+
+    <div class="column-container">
+        <div class="column-box">
+            <p>id</p>
+            <p>상위카테고리</p>
+            <p>카테고리</p>
+            <p>식당명</p>
+            <p>이미지</p>
+            <p>소개</p>
+            <p>주소</p>
+            <p>영업시간</p>
+            <p>연락처</p>
+        </div>
+    </div>
+    <section class="restaurant-list-section">
+        <h1 style="display: none;">식당 리스트</h1>
+        <div class="restaurant-list">
+            <section class="restaurant" th:each="r: ${list}">
+                <p align="center" th:text="${r.id}">id</p>
+                <p align="center" th:text="${r.topCategoryId}">top_category_id</p>
+                <p align="center" th:text="${r.categoryId}">category_id</p>
+                <p align="center" th:text="${r.name}">name</p>
+                <p align="center" th:text="${r.img}">img</p>
+                <p align="center" th:text="${r.intro}">intro</p>
+                <p align="center" th:text="${r.address}">address</p>
+                <p align="center" th:text="${r.operatingTime}">operating_time</p>
+                <p align="center" th:text="${r.contactNumber}">contact_number</p>
+                <div class="buttons">
+                    <a th:href="@{restaurant/{id}/menu(id=${r.id})}"><button>MENU</button></a>
+                    <a th:href="@{restaurant/{id}/update(id=${r.id})}"><button>EDIT</button></a>
+                    <a th:href="@{restaurant/{id}/delete(id=${r.id})}"><button>DEL</button></a>
                 </div>
-            </tr>
-        </table>
+            </section>
+        </div>
+    </section>
+
+    <section id="restaurant-list-section">
+
     </section>
 
     <br>

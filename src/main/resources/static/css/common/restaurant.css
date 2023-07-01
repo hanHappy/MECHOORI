@@ -121,6 +121,7 @@
 }
 .info p{
     letter-spacing: -1px;
+    white-space: nowrap;
 }
 .value {
     color: var(--sub-color);

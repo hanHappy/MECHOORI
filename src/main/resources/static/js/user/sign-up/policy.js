@@ -32,7 +32,11 @@ function checkAllStatus() {
 
 function toggleSubmitButton() {
   const { termsOfService, privacyPolicy } = agreements;
-  submitButton.disabled = !(termsOfService && privacyPolicy);
+  if (termsOfService && privacyPolicy) {
+    submitButton.disabled = false;
+  } else {
+    submitButton.disabled = true;
+  }
 }
 
 checkAll.addEventListener("click", (e) => {

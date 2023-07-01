@@ -2,15 +2,15 @@ package com.mechoori.web.service;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-
 import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantCard;
 import com.mechoori.web.entity.RestaurantDetail;
+import com.mechoori.web.entity.RestaurantView;
+import com.mechoori.web.entity.RestaurantView;
 
 public interface RestaurantService {
 
 	Restaurant getDetailById(int restaurantId);
+	RestaurantView getViewDetailById(int restaurantId);
 	
     RestaurantDetail getRestaurantDetailById(int restaurantId);
 
@@ -19,15 +19,18 @@ public interface RestaurantService {
     List<Restaurant> getListByQuery(String query, Integer page, Integer size);
 	List<Restaurant> getListByPage(Integer page, Integer size);
 
-	List<RestaurantCard> getRestaurantCardList();
-	List<RestaurantCard> getRestaurantCardListByCtgId(Integer categoryId, String query);
-	List<RestaurantCard> getRestaurantCardListByQuery(Integer categoryId, String query);
+	List<RestaurantView> getRestaurantViewList(Integer memberId);
+    List<RestaurantView> getRestaurantViewListByTopCtgId(Integer memberId, Integer topCategoryId);
+	List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId);
+	List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, String query);
+    List<RestaurantView> getRestaurantViewListByFilter(Integer memberId, Integer ctgId, Integer filterId);
 
 	List<Integer> getPages();
-
-	List<RestaurantCard> getRanking(Integer categoryId);
-
-	List<Restaurant> findAllRestaurant();
-
 	
+	List<RestaurantView> getRanking(Integer categoryId);
+	List<RestaurantView> getRanking();
+    void add(Restaurant restaurant);
+
+
+
 }

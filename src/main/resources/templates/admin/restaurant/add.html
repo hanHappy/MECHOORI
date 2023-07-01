@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/admin/restaurant.css">
     <title>ADD Restaurant</title>
 </head>
+
 <body>
-    
+    <a href="../restaurant">식당 관리 페이지로</a>
+
+    <hr>
+
+    <div class="column-container">
+        <div class="column-box">
+            <p>id</p>
+            <p>카테고리</p>
+            <p>식당명</p>
+            <p>이미지</p>
+            <p>소개</p>
+            <p>주소</p>
+            <p>영업시간</p>
+            <p>연락처</p>
+        </div>
+    </div>
+    <form action="add" method="POST">
+        <section class="restaurant">
+            <div></div>
+            <input name="categoryId" placeholder="2"></input>
+            <input name="name" placeholder="짜장상회"></input>
+            <input name="img" placeholder="짜장상회.jpg"></input>
+            <input name="intro" placeholder="맛있다해~"></input>
+            <input name="address" placeholder="백범로 24"></input>
+            <input name="operatingTime" placeholder=""></input>
+            <input name="contactNumber" placeholder="02-000-0000"></input>
+            <div class="buttons">
+                <a><button>완료</button></a>
+            </div>
+        </section>
+    </form>
 </body>
+
 </html>

@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-
     // Kakao Maps API 초기화
     kakao.maps.load(function() {
         var container = document.getElementById('map'),

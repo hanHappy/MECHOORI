@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -21,6 +25,7 @@
   </div>
     <a href ="/"><h1 class="header-icon logo">로고</h1></a>
   <div class="header-side right">
+    <!-- FIXME 홈버튼 -> 햄버거로 변경 -->
     <a href="/"><button class="header-icon home">버튼</button></a>
   </div>
 </header>
@@ -39,7 +44,10 @@
 </div>
 
 <main>
-  <section class="mainInfo">
+  <section class="mainInfo"
+           sec:authorize="isAuthenticated()"
+           th:data-member-id="${#authentication.principal.id}"
+  >
     <div class="foodList">
       <div class="adjImg1 adji">
         <div class="foodImg1 FI" th:src="@{images/foods/{img}(img=${id})}"></div>

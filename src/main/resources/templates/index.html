@@ -50,19 +50,21 @@
         <section class="type">
             <ul class="typelist">
                 <li th:each="c : ${list}"> 
+                    <input name="c" type="hidden" th:value="${c.id}">
                     <a 
-                        href="/restaurant/list/category/1"
-                        th:href="@{/restaurant/list(c=${c.id})}"> 
+                       href="/restaurant/list/category/1"
+                       th:href="@{/restaurant/list(c=${c.id})}"> 
                         <img 
                             src="/images/icons/한식.svg"
                             th:src="@{/images/icons/{img}(img=${c.image})}"> 
                     </a>
+                    <input type="hidden" name="c" th:value="${c.id}">
                 </li>
             </ul>
         </section>
 
 
-
+        <!-- TODO 사진은 클릭 안 먹게 하고 제목 옆 (전체보기) 추가하면 어떨지? -->
         <section class="ranking">
             <h1>가성비 랭킹 TOP5</h1>
             <div class="slidebox">
@@ -165,11 +167,11 @@
 
 
 
-
+        <!-- TODO 클릭 시 rate-list 페이지로 이동 -->
         <section class="comparison1">
             <h1>나의 가성비 성과 비교</h1>
             <div class="comparison-img">
-                <img  src="/images/components/index-성과비교.svg" alt="">
+                <a href="user/my-page/statistics"><img  src="/images/components/index-성과비교.svg" alt=""></a>
                 <div class="comparison-text">
                     <span>내가 누린 가성비는?</span>
                     <span>맘껏 누려온 가성비를 확인해보세요</span>
@@ -179,7 +181,7 @@
 
 
 
-
+        <!-- TODO 클릭 시 list 페이지로 넘어가게? -->
         <div class="adBox">
             <img class="rateAd" src="/images/icons/bannerAd1.png" alt="">
             <img class="rateAd" src="/images/icons/bannerAd2.png" alt="">

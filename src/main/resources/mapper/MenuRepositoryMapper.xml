@@ -8,6 +8,11 @@
         from menu
         where restaurant_id = #{restaurantId};
 	</select>
+	<select id="findViewAll" resultType="MenuView">
+		select *
+        from menu_view
+        where restaurant_id = #{restaurantId};
+	</select>
 	<select id="findById" resultType="Menu">
 		select *
 		from menu
