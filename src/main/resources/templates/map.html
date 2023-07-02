@@ -5,14 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>손 안의 메뉴 추천 리스트, 메추리</title>
-    <script type="text/javascript"
-            src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
     <script src="/js/map.js" defer="defer"></script>
     <link rel="stylesheet" href="/css/common/style.css">
     <link rel="stylesheet" href="/css/common/header.css">
-
 </head>
-
 <body>
 <header>
     <div class="header-side left">
@@ -27,30 +24,17 @@
         </a>
     </div>
 </header>
-
 <section>
-
     <div id="search-bar">
         <input type="text" id="keyword" placeholder="키워드를 입력하세요">
         <button id="search-button">검색</button>
     </div>
-
     <div id="map" style="width: 100%; height: 550px"></div>
     <div th:each="list:${list}">
-        <div th:text="${list.address}" class="addresses"></div>
-
-        <div class="info" hidden="hidden">
-            <span th:text="${list.name}"></span>
-            <span th:text="${list.address}"></span>
-            <span th:text="${list.intro}"></span>
-        </div>
-
-
+        <div th:text="${list.address}" class="addresses" hidden></div>
+        <span th:text="${list.name}" class="resName" hidden></span>
+        <span th:text="${list.contactNumber}" class="contactNumber" hidden></span>
     </div>
-
-
-
-
 </section>
 </body>
 </html>
