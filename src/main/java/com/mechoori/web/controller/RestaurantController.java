@@ -140,13 +140,15 @@ public class RestaurantController {
     }
 
     @GetMapping("/ranking")
-    public String ranking(Model model, String category) {
+    public String ranking(Model model, Integer categoryId) {
 
        List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 
-       /// TODO: 2023-06-30  순위가 value 기준이라 순위가 겹치는 경우가 발생 
        List<RestaurantView> list = restaurantService.getRanking();
 
+
+        System.out.println(mainCtgList);
+        System.out.println(list);
        model.addAttribute("list",list);
        model.addAttribute("ctg",mainCtgList);
 
@@ -161,7 +163,6 @@ public class RestaurantController {
         Restaurant restaurant = restaurantService.getDetailById(restaurantId);
         RestaurantDetail res = restaurantService.getRestaurantDetailById(restaurantId);
 
-        /// TODO: 2023-06-30 modal 구현하기
         model.addAttribute("list", restaurant);
         model.addAttribute("r", res);
 
