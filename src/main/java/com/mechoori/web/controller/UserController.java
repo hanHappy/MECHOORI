@@ -1,6 +1,7 @@
 package com.mechoori.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mechoori.web.entity.Member;
+import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
 import com.mechoori.web.service.RateService;
 import com.mechoori.web.service.RestaurantService;
@@ -94,7 +96,8 @@ public class UserController {
 
     //내 정보 변경
     @GetMapping("my-page/edit-info")
-    public String editInfo(){
+    public String editInfo(@AuthenticationPrincipal MechooriUserDetails member, Model model){
+        model.addAttribute("m", member);
         return "user/my-page/edit-info";
     }
 
