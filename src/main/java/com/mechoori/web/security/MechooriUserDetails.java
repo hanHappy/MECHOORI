@@ -9,12 +9,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class MechooriUserDetails implements UserDetails {
     private int id;
-    private int genderId;
     private String username;
     private String nickname;
     private String email;
     private String password;
-    private Date birthDate;
+    private String img;
     private Date regDate;
     private List<GrantedAuthority> authorities;
 
@@ -22,10 +21,7 @@ public class MechooriUserDetails implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
-    @Override
-    public String getPassword() {
-        return password;
-    }
+
     @Override
     public String getUsername() {
         return username;
@@ -35,12 +31,6 @@ public class MechooriUserDetails implements UserDetails {
     }
     public void setId(int id) {
         this.id = id;
-    }
-    public int getGenderId() {
-        return genderId;
-    }
-    public void setGenderId(int genderId) {
-        this.genderId = genderId;
     }
     public void setUsername(String username) {
         this.username = username;
@@ -57,14 +47,18 @@ public class MechooriUserDetails implements UserDetails {
     public void setEmail(String email) {
         this.email = email;
     }
+    @Override
+    public String getPassword() {
+        return password;
+    }
     public void setPassword(String password) {
         this.password = password;
     }
-    public Date getBirthDate() {
-        return birthDate;
+    public String getImg(){
+        return img;
     }
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setImg(String img){
+        this.img = img;
     }
     public Date getRegDate() {
         return regDate;
@@ -75,7 +69,6 @@ public class MechooriUserDetails implements UserDetails {
     public void setAuthorities(List<GrantedAuthority> authorities) {
         this.authorities = authorities;
     }
-
     @Override
     public boolean isAccountNonExpired() {
         return true;
