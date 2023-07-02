@@ -48,49 +48,56 @@
     <!--------------------회 원 정 보 입 력 란--------------------------------------------------------->
 
     <form action="/form" method="POST" id="form__wrap">
-      <section class="sectionBox">
-        <div class="nameParent">
-          <div class="nameText text">이름</div>
-          <div>
-            <input name="username" type="text" class="input input1" placeholder="* 성과 이름 입력"   />
+      <section class="form-section">
+        <div class="form-container">
+          <div class="form-item">
+            <div class="label-wrap"><span>이름</span></div>
+            <div class="form-wrap">
+              <input name="username" 
+                     type="text" 
+                     class="input input1" 
+                     placeholder="* 성과 이름 입력"
+                     required/>
+            </div>
           </div>
-        </div>
 
-        <div class="nickNameParent">
-          <div class="nickNameText text"></div>
-          <div class="nick">
-            <label for="nickname">닉네임</label>
-              <input id="nickname" name="nickname" type="text" class="input input2" placeholder="* 8자 이내 입력"   />
+          <div class="nickNameParent">
+            <div class="nickNameText text"></div>
+            <div class="nick">
+              <label for="nickname">닉네임</label>
+              <input id="nickname" name="nickname" type="text" class="input input2" placeholder="* 8자 이내 입력" />
               <div id="check"></div>
+            </div>
           </div>
-        </div>
-        <div class="passwordParent">
-          <div class="passwordText text">비밀번호</div>
-          <input name="password" type="password" class="input input3" id="password" placeholder="* 영문, 숫자를 포함하여 8자리 이상 입력"   />
-        </div>
-        <div class="pwParent">
-          <div class="pwText text">비밀번호 확인</div>
-          <input type="password" class="input input4" id="password1" placeholder=" 비밀번호 확인"   />
-          <!-- <button class = "PwdCheck" id="passwordCheckButton">비밀번호 확인</button> -->
-          <div id="passwordCheck"></div>
-        </div>
-        <div class="emailParent">
-          <div class="emailText text"></div>
-          <div class="email">
-            <label for="email" id="mailTxt">이메일</label>
-            <input name="email" type="email" id="email" class="input input5" placeholder="  * 이메일  주소  입력"    />
-            <button type="button" id="checkEmail">인증 요청</button>
-            <div id="emailCheck"></div>
+          <div class="passwordParent">
+            <div class="passwordText text">비밀번호</div>
+            <input name="password" type="password" class="input input3" id="password"
+              placeholder="* 영문, 숫자를 포함하여 8자리 이상 입력" />
           </div>
-          <div class="numParent">
-            <label for="memailconfirm" id="memailconfirmTxt">인증 번호 입력</label>
-            <input type="text" class="input input9" id="memailconfirm"   />
+          <div class="pwParent">
+            <div class="pwText text">비밀번호 확인</div>
+            <input type="password" class="input input4" id="password1" placeholder=" 비밀번호 확인" />
+            <!-- <button class = "PwdCheck" id="passwordCheckButton">비밀번호 확인</button> -->
+            <div id="passwordCheck"></div>
+          </div>
+          <div class="emailParent">
+            <div class="emailText text"></div>
+            <div class="email">
+              <label for="email" id="mailTxt">이메일</label>
+              <input name="email" type="email" id="email" class="input input5" placeholder="  * 이메일  주소  입력" />
+              <button type="button" id="checkEmail">인증 요청</button>
+              <div id="emailCheck"></div>
+            </div>
+            <div class="numParent">
+              <label for="memailconfirm" id="memailconfirmTxt">인증 번호 입력</label>
+              <input type="text" class="input input9" id="memailconfirm" />
+            </div>
           </div>
         </div>
       </section>
 
       <a href="user/sign-up/complete">
-      <button type="submit" class="next" disabled>가입</button>
+        <button type="submit" class="next" disabled>가입</button>
       </a>
 
     </form>

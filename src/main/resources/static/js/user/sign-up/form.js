@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /////////////////////////////////////////////////////////
+
 const form = document.querySelector("#form__wrap");
 const submitBtn = document.querySelector(".next");
 

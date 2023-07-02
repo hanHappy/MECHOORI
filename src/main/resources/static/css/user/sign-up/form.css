@@ -81,13 +81,15 @@
 
 /*====정보 입력 칸====*/
 
-.sectionBox {
-  display: block;
-  position: absolute;
-  transform: translateX(-50%);
-  left: 50%;
-  font-weight: 700;
+.form-section { width: 100%; }
+
+.form-container {
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
+
+
 input[type="submit"] {
   width: 60px;
   height: 45px;
