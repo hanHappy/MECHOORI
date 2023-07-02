@@ -180,18 +180,19 @@ filterBox.onchange = function(e){
 // 좋아요 버튼 ------------------------------------------------------------
 restaurantList.onclick = function(e){
     let el = e.target;
-    let likeCount = el.parentElement.parentElement.querySelector("#like-count");
+    let likeCount = el.parentElement.querySelector("#like-count");
     
     if(!el.classList.contains("like"))
         return;
-    
+
     let {restaurantId, memberId} = el.dataset; // destructuring
 
-    console.log(memberId);
-    
     // 회원 아니면 return
-    if(memberId=='null')
+    if(memberId==='null' || memberId===undefined){
         return;
+    }
+
+
     e.preventDefault();
     
     // Like 추가
