@@ -66,8 +66,10 @@
 }
 .button-10 {
     font-size: 16px;
+    background-color: #fff;
+    box-shadow: 0 0 5px 0 #75757525;
+
     width: 80px;
-    background-color: var(--box-color);
 }
 .button-11 {
     font-size: 16px;

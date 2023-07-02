@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     let emailConfirmCode = '';
-    let emailConfirm = document.getElementById("emailCheck");
+    let emailConfirmMsg = document.querySelector("#msg-email-check");
 
     // Function to send email confirmation request
     function sendEmailConfirmationRequest() {
@@ -26,12 +26,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (data === "0") {
 
-                    emailConfirm.innerText = `사용 중 이거나, 이메일 확인 후 다시 입력 해주세요`
-                    emailConfirm.style.color = "red";
+                    emailConfirmMsg.innerText = `사용 중 이거나, 이메일 확인 후 다시 입력 해주세요`
+                    emailConfirmMsg.style.color = "red";
                 } else {
                     //아이디 없을 때
                     emailConfirmCode = data;
-                    emailConfirm.innerText = `인증코드가 이메일로 전송되었습니다`
+                    emailConfirmMsg.innerText = `인증코드가 이메일로 전송되었습니다`
                     console.log('인증코드가 이메일로 전송되었습니다.');
                 }
             })
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function nicknameCheck() {
         const nickname = document.getElementById('nickname').value
-        const nicknameCheck = document.getElementById('check');
+        const nicknameCheck = document.querySelector('#msg-nickname-check');
         const submitBtn = document.querySelector(".next");
 
 
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function checkEmailConfirmationCode() {
-        const userCode = document.getElementById('memailconfirm').value;
+        const userCode = document.getElementById('email-confirm').value;
         const memailconfirmTxt = document.getElementById('memailconfirmTxt');
         const emconfirmchk = document.getElementById('emconfirmchk');
         const submitBtn = document.querySelector(".next");
@@ -109,12 +109,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Event handler for email confirmation button click
-    document.getElementById('checkEmail').addEventListener('click', function () {
+    document.querySelector('#btn-email-check').addEventListener('click', function () {
         sendEmailConfirmationRequest();
     });
 
     // Event handler for email confirmation code input
-    document.getElementById('memailconfirm').addEventListener('keyup', function () {
+    document.getElementById('email-confirm').addEventListener('keyup', function () {
         checkEmailConfirmationCode();
     });
 
@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //////////////////////////////////////////////////////////
     let password = document.querySelector("#password");
-    let password1 = document.querySelector("#password1");
-    let passwordCheck = document.getElementById("passwordCheck");
+    let password1 = document.querySelector("#password-confirm");
+    let passwordCheck = document.querySelector("#password-check");
 
     password1.oninput = function () {
 
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /////////////////////////////////////////////////////////
 
 const form = document.querySelector("#form__wrap");
-const submitBtn = document.querySelector(".next");
+const submitBtn = document.querySelector(".submit");
 
 form.addEventListener("input", function () {
     needFilmAll();
