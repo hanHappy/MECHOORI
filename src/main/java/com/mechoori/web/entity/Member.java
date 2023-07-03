@@ -15,6 +15,7 @@ public class Member {
 	   private Integer id;
 	   private Integer roleId;
 	   private String username;
+	   private String nickname;
 	   private String email;
 	   private String password;
 	   private String img;
