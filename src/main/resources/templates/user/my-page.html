@@ -37,7 +37,7 @@
         </div>
     
         <!-- 로그인 된 사용자 이름 넣기 -->
-        <div class="user-name" sec:authentication="name" th:inline="text">
+        <div class="user-name" th:text="${m.username}"} th:inline="text">
         </div>
         
         <div class ="main">

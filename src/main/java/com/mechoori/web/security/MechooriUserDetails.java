@@ -14,7 +14,6 @@ public class MechooriUserDetails implements UserDetails {
     private String email;
     private String password;
     private String img;
-    private String img;
     private Date regDate;
     private List<GrantedAuthority> authorities;
     
@@ -36,12 +35,7 @@ public class MechooriUserDetails implements UserDetails {
     public void setImg(String img) {
         this.img = img;
     }
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
-    public int getRoleId() {
-        return roleId;
-    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -67,12 +61,7 @@ public class MechooriUserDetails implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getImg(){
-        return img;
-    }
-    public void setImg(String img){
-        this.img = img;
-    }
+
     public Date getRegDate() {
         return regDate;
     }

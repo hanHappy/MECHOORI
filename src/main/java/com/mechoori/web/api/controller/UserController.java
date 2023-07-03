@@ -36,11 +36,12 @@ public class UserController {
     // @Autowired
 	// private ResourceLoader resourceLoader;
 	
+	// @Value("${upload.path}")
+	// private String uploadPath;
+    
     @Autowired
     private MemberService service;
 
-	// @Value("${upload.path}")
-	// private String uploadPath;
 
     @Autowired
     private RateService rateService;
@@ -85,5 +86,5 @@ public class UserController {
     // user.setImg(fullPath);
     // service.update(img);
     // return returnFiles;
-//http://localhost:8080/user/my-page/statistics
+    //http://localhost:8080/user/my-page/statistics
 }

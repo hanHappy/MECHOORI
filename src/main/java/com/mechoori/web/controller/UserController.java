@@ -109,14 +109,15 @@ public class UserController {
 
     //내 정보
     @GetMapping("my-page")
-    public String myPage(){
+    public String myPage(@AuthenticationPrincipal MechooriUserDetails member, Model model){
+        model.addAttribute("m", member);
         return "user/my-page";
     }
 
     //내 정보 변경
     @GetMapping("my-page/edit-info")
     public String editInfo(@AuthenticationPrincipal MechooriUserDetails member, Model model){
-        model.addAttribute("m", model);
+        model.addAttribute("m", member);
         return "user/my-page/edit-info";
     }
 

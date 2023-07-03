@@ -23,7 +23,7 @@ label {
     font-size: 1em;
 }
 
-/* 못생긴 기존 input 숨기기 */
+/* 기존 input 형식 숨기기 */
 #chooseFile {
     visibility: hidden;
 }
@@ -46,7 +46,7 @@ label {
     margin: 10px 0 0 135px;
     border-radius: 50%;
     border: 2px solid #ffffff00;
-    box-shadow: var(--btn-shadow);
+    box-shadow: var(--btn-shadow-1);
     align-content: center;
 }
 
