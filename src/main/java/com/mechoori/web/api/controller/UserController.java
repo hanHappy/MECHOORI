@@ -14,13 +14,13 @@ import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.RateService;
 
 @RestController("apiRateController")
-@RequestMapping("api/user")
+@RequestMapping("api/user/")
 public class UserController {
 
     @Autowired
     private RateService rateService;
 
-    @GetMapping("/statistics")
+    @GetMapping("my-page/statistics")
     public Map<String, Integer> statistics(
             @AuthenticationPrincipal MechooriUserDetails member) {
 

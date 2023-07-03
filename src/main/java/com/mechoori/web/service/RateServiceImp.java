@@ -59,8 +59,8 @@ public class RateServiceImp implements RateService{
         list.get(0).setValue(valueMe);
         list.get(1).setValue(valueOther);
 
-        System.out.println(list.get(0));
-        System.out.println(list.get(1));
+        // System.out.println(list.get(0));
+        // System.out.println(list.get(1));
 
         // 가성비 get 후 data에 추가
         data.put("me", list.get(0).getValue());
@@ -78,19 +78,14 @@ public class RateServiceImp implements RateService{
        // Map<String, Integer> data = new HashMap<>();
         List<Statistics2> list = repository.findData2(memberId);
 
-        System.out.println(list.get(0).getMemberId());
+        System.out.println(list.get(0).getName()); // 한식
+        System.out.println(list.get(0).getRateCount()); // 6
         
-        for(Statistics2 data : list){
-            System.out.println(data);
-        }
+        // for(Statistics2 data : list){
+        //     System.out.println(data);
+        // }
 
-        
-       // for (Statistics2 statistics2 : list) {
-         //   String categoryId = String.valueOf(statistics2.getName());
-           // int rateCount = statistics2.getRateCount();
-         //   data.put(categoryId, rateCount);
-        //}
-        // System.out.println(data);
+
         return list;
     }
 
@@ -99,8 +94,4 @@ public class RateServiceImp implements RateService{
         return repository.getList(memberId);
     }
 
-        @Override
-    public List<Rate> getList(int memberId) {
-        return repository.getList(memberId);
-    }
 }

@@ -60,12 +60,12 @@ window.addEventListener("DOMContentLoaded", function () {
   async function updateDateRange() {
 
     let valueData = {other:0,me:0};
-    let url = `/api/user/statistics`;
+    let url = `/api/user/my-page/statistics`;
     await fetch(url)
       .then(response => response.json())
       .then(data =>{
-        console.log(data);
         valueData = data;
+        console.log(data);
       })
 
 
