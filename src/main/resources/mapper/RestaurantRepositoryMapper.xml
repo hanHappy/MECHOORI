@@ -89,15 +89,6 @@
 		values(#{topCategoryId}, #{categoryId}, #{name}, #{img}, #{intro}, #{address}, #{operatingTime}, #{contactNumber})
 	</insert>
 
-<!--	<select id="getRanking" resultType="RestaurantView">-->
-<!--		SELECT *-->
-<!--		from restaurant_view-->
-<!--		<if test="categoryId != null">-->
-<!--		where category_id = #{categoryId}-->
-<!--		</if>-->
-<!--		ORDER BY value DESC-->
-<!--	</select>-->
-
 <select id="getRanking" resultType="RestaurantView">
 	SELECT *,
 	(SELECT COUNT(*)

@@ -10,7 +10,7 @@ const filterBox = header.querySelector(".filter-box");
 const searchBar = header.querySelector("#search-bar");
 const searchBtn = header.querySelector(".search-btn");
 const restaurantListSection = document.querySelector(".restaurant-list-section");
-const restaurantList = restaurantListSection.querySelector(".restaurant-list");
+const restaurantList = restaurantListSection.querySelector(".restaurant-list");//
 
 // index 검색어 & 카테고리 검색
 let searchParam = new URLSearchParams(window.location.search);

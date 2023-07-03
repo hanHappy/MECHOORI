@@ -43,5 +43,15 @@
     
     </select>
 
+    <select id="findData2" resultType="Statistics2">
+        SELECT rv.member_id, c.name, COUNT(rvv.rate_count) AS rate_count
+        FROM rate_view AS rv
+        JOIN restaurant_view AS rvv ON rv.restaurant_id = rvv.id
+        join category c on rvv.category_id = c.id
+        WHERE rv.member_id = #{memberId}
+        GROUP BY rvv.category_id;
+    
+    </select>
+
 	
 </mapper>

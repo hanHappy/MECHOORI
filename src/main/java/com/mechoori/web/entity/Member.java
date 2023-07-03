@@ -15,7 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Member {
 	   private Integer id;
 	   private Integer roleId;
-       private Integer genderId;
+    //    private Integer genderId;
 	   private String username;
 	   private String name;
        private String nickname;

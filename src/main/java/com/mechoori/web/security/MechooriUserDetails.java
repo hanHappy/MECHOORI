@@ -9,12 +9,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class MechooriUserDetails implements UserDetails {
     private int id;
-    private int genderId;
+    private int roleId;
     private String username;
     private String nickname;
     private String email;
     private String password;
-    private Date birthDate;
     private Date regDate;
     private List<GrantedAuthority> authorities;
 
@@ -36,11 +35,11 @@ public class MechooriUserDetails implements UserDetails {
     public void setId(int id) {
         this.id = id;
     }
-    public int getGenderId() {
-        return genderId;
+    public int getRoleId() {
+        return roleId;
     }
-    public void setGenderId(int genderId) {
-        this.genderId = genderId;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
     public void setUsername(String username) {
         this.username = username;
@@ -59,12 +58,6 @@ public class MechooriUserDetails implements UserDetails {
     }
     public void setPassword(String password) {
         this.password = password;
-    }
-    public Date getBirthDate() {
-        return birthDate;
-    }
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
     }
     public Date getRegDate() {
         return regDate;

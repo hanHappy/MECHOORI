@@ -100,6 +100,14 @@ main{
     padding-right: 15px;
 }
 
+/* placeholder animation */
+.search::-webkit-input-placeholder{
+    transition: all 0.5s;
+}
+.search:focus::-webkit-input-placeholder{
+    text-indent: -10px; opacity: 0;
+}
+
 
 /* <--- 메인 광고 ---> */
 .ad{
@@ -137,6 +145,23 @@ main{
     padding: 10px 20px;
     background-color: white;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.title-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title-box button{
+    background-color: transparent;
+    padding: 0px 0px 5px 0px;
+    border: none;
+    font-family: 'Noto Sans CJK KR Medium';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    color: #2292F9;
 }
 
 .ranking h1{
