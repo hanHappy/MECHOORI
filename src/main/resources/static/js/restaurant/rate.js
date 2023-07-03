@@ -74,5 +74,5 @@ dropbox.onchange = function (e) {
   slider.min = value * 0.8;
   slider.max = value * 1.2;
   slider.value = value;
-  output.value = "";
+  output.value = value;
 }

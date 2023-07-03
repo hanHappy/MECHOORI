@@ -170,10 +170,10 @@ const form = document.querySelector("#form__wrap");
 const submitBtn = document.querySelector(".submit");
 
 form.addEventListener("input", function () {
-    needFilmAll();
+    checkAnswerCompletion();
 });
 
-function needFilmAll() {
+function checkAnswerCompletion() {
     let userName = document.querySelector(".input1").value;
     let nickname = document.querySelector(".input2").value;
     let password = document.querySelector(".input3").value;
@@ -189,10 +189,8 @@ function needFilmAll() {
         emailConfirm !== ""
     ) {
         submitBtn.disabled = false;
-        console.log("false");
     } else {
         submitBtn.disabled = true;
-        console.log("nope");
     }
 
 }
