@@ -70,40 +70,10 @@ window.addEventListener("DOMContentLoaded", function () {
         console.log(data);
         categoryData = data;
 
-        // console.log(categoryData);
-        let data1 = categoryData.shift().rateCount;
-        let data2 = categoryData.shift().rateCount;
-        let data3 = categoryData.shift().rateCount;
-        let data4 = categoryData.shift().rateCount;
-        let data5 = categoryData.shift().rateCount;
-        let data6 = categoryData.shift().rateCount;
-        let data7 = categoryData.shift();
-        let data8 = categoryData.shift();
-        let data9 = categoryData.shift();
-        let data10 = categoryData.shift();
-
-        console.log(data1);
-        console.log(data2);
-        console.log(data3);
-        console.log(data4);
-        console.log(data5);
-        console.log(data6);
-        console.log(data7);
-        console.log(data8);
-        console.log(data9);
-        console.log(data10);
-
-        let dataArray = [
-          data1, data2, data3, data4, data5, data6, data7, data8, data9, data10
-        ]
-
-
-        new Chart(document.getElementById("barChart"), {
-          // type: 'bar',
+        let chart = new Chart(document.getElementById("barChart"), {
           type: 'doughnut',
           data: {
-            labels: ["한식", "중식", "일식", "양식", "분식", "베트남", "태국", "인도", "튀르키예", "멕시칸"],
-            // labels: ["한식", "중식"],
+            labels: [],
             datasets: [{
               backgroundColor: [
                 '#FFD1AA', // 살구색
@@ -117,18 +87,8 @@ window.addEventListener("DOMContentLoaded", function () {
                 '#87CEFA', // 라이트 스카이 블루
                 '#F08080' // 연분홍색
               ],
-              data: [6,2,1,null,null,2,null,null,1,1],
-              // data: dataArray
-              data: [data1.rateCount,
-                      data2.rateCount,
-                      data3.rateCount,
-                      data4.rateCount,
-                      data5.rateCount,
-                      data6.rateCount,
-                      data7.rateCount,
-                      data8.rateCount,
-                      data9.rateCount,
-                      data10.rateCount]
+              data: []
+
             }]
           },
           options: {
@@ -163,11 +123,22 @@ window.addEventListener("DOMContentLoaded", function () {
             animation: {
               animateRotate: true, // (default네)
               animateScale: true,
-              duration: 3000 // 애니메이션 지속 시간 (밀리초)
+              duration: 1000 // 애니메이션 지속 시간 (밀리초)
             }
           }
 
         });
+
+        for(let v of categoryData){
+          chart.data.labels.push(v.name);
+          chart.data.datasets[0].data.push(v.rateCount);
+        }
+
+        for(let i=0; i<categoryData.length; i++){
+          console.log(chart.data.labels[i]);
+          console.log(chart.data.datasets[0].data(i));
+        }
+
       });
   }
 

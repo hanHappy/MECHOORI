@@ -59,11 +59,11 @@ window.addEventListener("DOMContentLoaded", function () {
 
   async function updateDateRange() {
 
-    let valueData = {other:0,me:0};
+    let valueData = { other: 0, me: 0 };
     let url = `/api/user/my-page/statistics`;
     await fetch(url)
       .then(response => response.json())
-      .then(data =>{
+      .then(data => {
         valueData = data;
         console.log(data);
       })
@@ -131,22 +131,23 @@ window.addEventListener("DOMContentLoaded", function () {
       }
     });
 
+
+    let gap = this.document.querySelector("#gap");
+    let gapM = this.document.querySelector("#gapM");
+
+    gap.textContent = Math.abs(valueData.me - valueData.other);
+
+    console.log(gap.textContent);
+
+    if (valueData.me < valueData.other) {
+      gapM.textContent = "낮은"
+    } else {
+      gapM.textContent = "높은"
+    }
   }
+
 
 });
 
 
 
-// let priceData = {other:0,me:0};
-
-// await fetch(`/api/user/statistics`)
-// // .then(function(response){
-// //   console.log(response.json);
-// //   return response.json
-// // })
-//   .then(response => response.json())
-//   .then(data => {
-//     console.log(data);
-//     priceData = data;
-
-//   })

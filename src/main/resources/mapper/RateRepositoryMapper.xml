@@ -54,7 +54,8 @@
         JOIN restaurant_view AS rvv ON rv.restaurant_id = rvv.id
         join category c on rvv.category_id = c.id
         WHERE rv.member_id = #{memberId}
-        GROUP BY rvv.category_id;
+        GROUP BY rvv.category_id
+        ORDER BY rate_count desc
     
     </select>
 
