@@ -25,7 +25,6 @@ public class MechooriUserDetailService implements UserDetailsService{
         MechooriUserDetails userDetails = new MechooriUserDetails();
         userDetails.setId(member.getId());
         userDetails.setUsername(member.getUsername());
-        userDetails.setNickname(member.getNickname());
         userDetails.setEmail(email);
         userDetails.setPassword(member.getPassword());
         userDetails.setImg(member.getImg());
