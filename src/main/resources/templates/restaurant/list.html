@@ -103,21 +103,19 @@
                             <img src="/images/foods/청화원2.png" th:src="@{/images/foods/{img}(img=${r.img})}" alt="이미지"
                                 class="image">
                             <!-- 하트 -->
-                            <a href="">
-                                <button
-                                    type="button"
-                                    sec:authorize="isAuthenticated()" 
-                                    th:data-member-id="${#authentication.principal.id}"
-                                    th:data-restaurant-id="${r.id}"
-                                    class="like" 
-                                    th:classappend="${r.like}?'active' : ''">좋아요
-                                </button>
+                            <a 
+                                href=""
+                                type="button"
+                                sec:authorize="isAuthenticated()" 
+                                th:data-member-id="${#authentication.principal.id}"
+                                th:data-restaurant-id="${r.id}"
+                                class="like" 
+                                th:classappend="${r.like}?'active' : ''">좋아요
                             </a>
-                            <a href="/user/login" sec:authorize="isAnonymous()">
-                                <button
-                                    type="button"
-                                    class="like">좋아요
-                                </button>
+                            <a 
+                                sec:authorize="isAnonymous()"
+                                href="/user/login" 
+                                class="like">좋아요
                             </a>
                             <div class="data-box">
                                 <p>
