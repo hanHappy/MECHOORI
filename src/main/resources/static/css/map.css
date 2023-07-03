@@ -1,0 +1,25 @@
+.custom_typecontrol {
+
+    position: absolute;
+    top: 130px;
+
+    right: 10px;
+    overflow: hidden;
+    width: 130px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    font-size: 12px;
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+}
+
+.custom_zoomcontrol {
+    position:absolute;
+    top:170px;
+    right:10px;
+    width:36px;
+    height:80px;
+    overflow:hidden;
+    z-index:1;
+    background-color:#f5f5f5;}
