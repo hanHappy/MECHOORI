@@ -11,6 +11,8 @@ public interface MemberRepository {
 
     Member findByEmail(String email);
 
+    Member findByNickname(String nickname);
+
     String findRoleByEmail(String email);
 
     void save(Member member);
@@ -20,4 +22,6 @@ public interface MemberRepository {
     void restaurantLIke(int id);
 
     void resetPwd(Member member);
+
+
 }

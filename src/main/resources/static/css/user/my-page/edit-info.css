@@ -8,11 +8,15 @@
     margin-left: 16px;
 }
 
-
-.edit-image img{
+.real-upload {
+    display: inline-block;
     position: relative;
     top:30px;
-    left:215px;
+    left:212px;
+}
+
+.upload {
+    display: none;
 }
 
 /* 프로필 사진 틀 */
@@ -42,6 +46,7 @@
     position: relative;
     font-weight: bold;
     text-align: center;
+    padding: 0;
     margin: 0
 }
 

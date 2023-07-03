@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/css/common/style.css">
     
     <title>가입 정보</title>
+    <script src ="/js/user/edit-info.js" defer="defer"></script>
+    
 </head>
 <body>
     <header>
@@ -24,20 +26,26 @@
     </header> 
     <main>  
         <!-- 이미지 수정 아이콘 -->
-        <div href=""class ="edit-image" alt="">
+        <!-- <div href=""class ="edit-image" alt="">
             <img src="/images/icons/이미지수정.svg" alt="edit-image-icon">
+        </div> -->
+        <div class="real-upload">
+            <img class="img-click" src="/images/icons/이미지수정.svg" id="default1" alt="">
+            <input type="file" class="upload" accept="image/*">
         </div>
+
         <div class="profile-circle">
             <img src="/images/components/프사메추리.png" alt="프로필사진">
         </div>
-        <li class="user-name">메추리님</li>
+        <li class="user-name" sec:authentication="name">님</li>
 
         <div class="edit-user-total">   <!---TODO 회원 정보를 담아 입력되야함 -->
             <div class="edit-user-wrapper">
                 <!-------------- 닉네임 ---------------------->
                 <div class="nickname"><ul>닉네임</ul></div>
+                
                 <div class="info-box">
-                    <div class ="box"><li>메추리</li></div>
+                    <div class ="box" ><li>메추리</li></div>  <!--th:text="${m.getNickname}"-->
                     
                     <a class="change-btn" href="edit-info/nickname">변경</a>
                 </div>
@@ -46,7 +54,7 @@
             <div class="edit-user-wrapper">
                 <div><ul>이메일 주소</ul></div> 
                 <div class="info-box">
-                    <div class ="box">
+                    <div class ="box"> <!-- th:text="${m.getEmail}"-->
                         <li>admin@mechuri.com</li>
                     </div>
                     <a class="change-btn" href="edit-info/email">변경</a>
