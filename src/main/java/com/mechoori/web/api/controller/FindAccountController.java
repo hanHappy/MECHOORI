@@ -13,7 +13,7 @@ public class FindAccountController {
     @Autowired
     private EmailService service;
 
-    @PostMapping("find-pwd/emailCheck")
+    @PostMapping("find-pwd/email-check")
     @ResponseBody
     String mailConfirm(
             @RequestParam("email") String email)

@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     //아이디 없을 때
                     emailConfirmCode = data;
                     emailConfirmMsg.innerText = `인증코드가 이메일로 전송되었습니다`
-                    console.log('인증코드가 이메일로 전송되었습니다.');
                 }
             })
             .catch(function (error) {
