@@ -34,7 +34,9 @@
             <label class="search-input" for="search-input">
                 <img src="/images/icons/search-black.svg">
             </label>
-            <input name="q" type="text" id="search-input" placeholder="한상민님, 오늘은 짜장상회 어떠세요?">
+            <!-- <input name="q" type="text" id="search-input" 
+            th:placeholder="${#authentication.principal?.isAuthenticated() ? ${nickname} + '님, 오늘은 짜장상회 어떠세요?' : '드시고 싶은 메뉴를 입력해보세요'}"> -->
+            <input class="search" name="q" type="text" id="search-input" placeholder="님, 오늘은 짜장상회 어떠세요?">
             <a href="/map">
             <img class="search-map" src="/images/icons/지도아이콘.svg" alt="">
             </a>
@@ -64,9 +66,10 @@
         </section>
 
 
-        <!-- TODO 사진은 클릭 안 먹게 하고 제목 옆 (전체보기) 추가하면 어떨지? -->
         <section class="ranking">
-            <h1>가성비 랭킹 TOP5</h1>
+            <div class="title-box">
+            <h1>가성비 랭킹 TOP5</h1> <a href="restaurant/ranking"><button>(전체보기)</button></a>
+            </div>
             <div class="slidebox">
                 <input type="radio" name="slide" id="slide01" checked>
                 <input type="radio" name="slide" id="slide02">
@@ -181,10 +184,12 @@
 
 
 
-        <!-- TODO 클릭 시 list 페이지로 넘어가게? -->
+   
         <div class="adBox">
+            <a href="restaurant/list">
             <img class="rateAd" src="/images/icons/bannerAd1.png" alt="">
             <img class="rateAd" src="/images/icons/bannerAd2.png" alt="">
+            </a>
         </div>
 
     </main>

@@ -1,5 +1,6 @@
 package com.mechoori.web.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.Statistics;
+import com.mechoori.web.entity.Statistics2;
 import com.mechoori.web.repository.MenuRepository;
 import com.mechoori.web.repository.RateRepository;
 
@@ -29,28 +31,12 @@ public class RateServiceImp implements RateService{
         repository.add(rate);
     }
     
-    // @Override
-    // public List<Rate> getListByRestaurantId(int restaurantId) {
-    //     // TODO Auto-generated method stub
-	// 	return repository.findAll(restaurantId);
-    // }
 
     @Override
     public List<Rate> getListByMenuIds(List<Integer> menuIds) {
         return repository.findByMenuIds(menuIds);
     }
 
-    // @Override
-    // public List<Rate> getRatedPrice(Rate rate, Integer memberId) {
-
-    //     memberId, restaurantId, ratedAveragePrice, averagePrice
-
-    //     for(Rate rate : )
-
-    //     restaurantId.size().
-
-    //     return "";
-    // }
 
     @Override
     public Map<String, Integer> getDate(int memberId) {
@@ -58,7 +44,7 @@ public class RateServiceImp implements RateService{
         Map<String, Integer> data = new HashMap<>();
         List<Statistics> list = repository.findData(memberId);
 
-        System.out.println("list : " + list);
+        // System.out.println("list : " + list);
 
         int valueMe = list.get(0).getValue();
         int valueOther = list.get(1).getValue();
@@ -66,8 +52,8 @@ public class RateServiceImp implements RateService{
         valueMe = (int)(((double) list.get(0).getOverallRatedAvgPrice() / list.get(0).getOverallAvgPrice()) * 100);
         valueOther = (int)(((double) list.get(1).getOverallRatedAvgPrice() / list.get(1).getOverallAvgPrice()) * 100);
 
-        System.out.println(valueMe);
-        System.out.println(valueOther);
+        // System.out.println(valueMe);
+        // System.out.println(valueOther);
 
         // 가성비 set
         list.get(0).setValue(valueMe);
@@ -86,6 +72,34 @@ public class RateServiceImp implements RateService{
     }
 
     @Override
+    public List<Statistics2> getDate2(int memberId) {
+        
+        // List<Statistics2> list = new ArrayList<>(memberId);
+       // Map<String, Integer> data = new HashMap<>();
+        List<Statistics2> list = repository.findData2(memberId);
+
+        System.out.println(list.get(0).getMemberId());
+        
+        for(Statistics2 data : list){
+            System.out.println(data);
+        }
+
+        
+       // for (Statistics2 statistics2 : list) {
+         //   String categoryId = String.valueOf(statistics2.getName());
+           // int rateCount = statistics2.getRateCount();
+         //   data.put(categoryId, rateCount);
+        //}
+        // System.out.println(data);
+        return list;
+    }
+
+    @Override
+    public List<Rate> getList(int memberId) {
+        return repository.getList(memberId);
+    }
+
+        @Override
     public List<Rate> getList(int memberId) {
         return repository.getList(memberId);
     }

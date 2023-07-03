@@ -1,12 +1,12 @@
 package com.mechoori.web.repository;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.Statistics;
+import com.mechoori.web.entity.Statistics2;
 
 @Mapper
 public interface RateRepository {
@@ -20,4 +20,6 @@ public interface RateRepository {
     List<Rate> getList(int memberId);
 
     List<Statistics> findData(int memberId);
+
+    List<Statistics2> findData2(int memberId);
 }

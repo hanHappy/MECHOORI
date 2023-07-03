@@ -164,28 +164,12 @@ public class UserController {
         return "user/my-page/statistics";
     }
 
-    // reg-date,
+        //가성비 성과 페이지
+    @GetMapping("my-page/statistics2")
+    public String rateStatistics2(){
 
-    // @GetMapping("/statistics")
-    // public String statistics(
-    //      @AuthenticationPrincipal MechooriUserDetails member) {
-
-    //      Integer memberId = member.getId();
-
-    //     if (memberId == null) {
-    //     return "user/login";
-    // }
-    //     return "restaurant/statistics";
-
-    // }
-
-
-
-    //가성비 성과페이지
-    // 맴버 평가 평균 데이터, 유저 평가 평균 데이터
-    // rate table에서 user_id, menu_id, price
-
-    // 맴버 평균 데이터 : rate > user_id(전체), price(전체)
-    // 유저 평균 데이터 : rate > user_id(한명), price
+        return "user/my-page/statistics2";
+    }
+  
 
 }

@@ -1,7 +1,9 @@
 package com.mechoori.web.controller;
 
+import java.security.Principal;
 import java.util.List;
 
+import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.security.MechooriUserDetails;
@@ -13,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.mechoori.web.entity.TopCategory;
+import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,11 +30,21 @@ public class HomeController {
 
 	
 	@GetMapping("/")
-	public String index(Model model) {
+	public String index(
+			Model model
+			// @AuthenticationPrincipal MechooriUserDetails member //
+	) {
 
 		List<TopCategory> list = service.getTopCategoryList();
 
+		// String nickname = member.getNickname();//
+
 		model.addAttribute("list", list);
+			// .addAttribute("nickname", nickname);//
+
+		// for(int i=0; i<10; i++){
+		// 	System.out.println(nickname);
+		// }
 
 		return "index";
 	}
@@ -62,4 +75,4 @@ public class HomeController {
 		return "map";
 	}
 
-}
+	}
