@@ -66,20 +66,22 @@ function restaurantListLoad(url){
                             <!-- 이미지 -->
                             <div class="image-box">
                                 <img src="/images/foods/${r.img}" alt="이미지" class="image">
-                                <!-- 하트 -->
-                                <a 
-                                    href="/user/login"
-                                    data-member-id=${memberId}
-                                    data-restaurant-id="${r.id}"
-                                    class="like ${r.like ? 'active' : ''}">좋아요
-                                </a>
-                                <div class="data-box">
-                                    <p>
-                                        <span>좋아요 이미지</span>
-                                        <span id="like-count">${r.likeCount}</span>
-                                        <span>평가 이미지</span>
-                                        <span>${r.rateCount}</span>
-                                    </p>
+                                <div class="screen">
+                                    <!-- 하트 -->
+                                    <a 
+                                        href="/user/login"
+                                        data-member-id=${memberId}
+                                        data-restaurant-id="${r.id}"
+                                        class="like ${r.like ? 'active' : ''}">좋아요
+                                    </a>
+                                    <div class="data-box">
+                                        <p>
+                                            <span>좋아요 이미지</span>
+                                            <span id="like-count">${r.likeCount}</span>
+                                            <span>평가 이미지</span>
+                                            <span>${r.rateCount}</span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             <!-- 정보 -->
