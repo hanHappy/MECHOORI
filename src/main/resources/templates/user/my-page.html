@@ -32,28 +32,12 @@
     </header> 
     
     <main>
-
-        <section class="img-edit-section">
-				<form method="post" enctype="multipart/form-data">
-					<div class="button">
-						<label for="chooseFile">
-							<img src="/images/icons/이미지수정.svg" alt="">
-						</label>
-                        <!-- <button>
-                            <span>
-
-                            </span>
-                        </button> -->
-					</div>
-					<input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
-				</form>
-            <div class="profile-circle">
-                <img src="/images/components/프사메추리.png" alt="프로필사진">
-            </div>
-        </section>
+        <div class="profile-circle">
+            <img src="/images/components/프사메추리.png" alt="프로필사진">
+        </div>
+    
         <!-- 로그인 된 사용자 이름 넣기 -->
         <div class="user-name" sec:authentication="name" th:inline="text">
-            [[${authentication + '님'}]]
         </div>
         
         <div class ="main">

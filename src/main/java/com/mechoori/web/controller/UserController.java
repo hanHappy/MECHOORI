@@ -1,5 +1,7 @@
 package com.mechoori.web.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -97,11 +99,11 @@ public class UserController {
     //내 정보 변경
     @GetMapping("my-page/edit-info")
     public String editInfo(@AuthenticationPrincipal MechooriUserDetails member, Model model){
-        model.addAttribute("m", member);
+        model.addAttribute("m", model);
         return "user/my-page/edit-info";
     }
 
-    //로그인되 있는 내정보를 위한 맵핑
+    //로그인되 있는 내정보를 꺼내기위함
     @PostMapping("my-page/edit-info")
     public String editInfo(Member member){
         service.add(member);
@@ -161,6 +163,7 @@ public class UserController {
         return "user/my-page/statistics";
     }
 
+    
     // reg-date,  
 
     // @GetMapping("/statistics")

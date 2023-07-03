@@ -1,7 +1,18 @@
 
 let realUpload = document.querySelector('.real-upload');
 let upload = document.querySelector('.upload');
+// let defautImg = document.getElementById('default1');
 
+// defautImg.addEventListener('mouseover', function() {
+//     defautImg.setAttribute("src", "/images/icons/이미지수정클릭.svg");
+//     console.log("마우스오버");
+//   });
+
+//   // 이미지에서 마우스 벗어남 이벤트 추가
+//   defautImg.addEventListener('mouseleave', function() {
+//     defautImg.setAttribute("src", "/images/icons/이미지수정.svg");
+//     console.log("나 간다잉~~");
+//   });
 
 function getImageFiles(e) {
     let files = e.currentTarget.files;
@@ -19,6 +30,5 @@ function createElement(e, file) {
 
     return profileCircle;
 }
-console.log(e.target.result);
 realUpload.addEventListener('click', () => upload.click());
-profileCircle.addEventListener('change', getImageFiles);
+upload.addEventListener('change', getImageFiles);
