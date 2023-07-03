@@ -17,5 +17,7 @@ public interface RateRepository {
 
     List<Rate> findByMenuIds(List<Integer> menuIds);
 
+    List<Rate> getList(int memberId);
+
     List<Statistics> findData(int memberId);
 }

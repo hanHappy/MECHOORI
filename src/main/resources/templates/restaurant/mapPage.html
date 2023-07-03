@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>손 안의 메뉴 추천 리스트, 메추리</title>
     <script type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
-    <script src="/js/user/mapPage.js"></script>
+            src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
+    <script src="/js/user/mapPage.js" defer></script>
     <link rel="stylesheet" href="/css/common/style.css">
     <link rel="stylesheet" href="/css/common/header.css">
 
@@ -16,24 +16,24 @@
 <body>
 <header>
     <div class="header-side left">
-        <a onclick = "history.back()"><button class="header-icon back"></button></a>
+        <a onclick="history.back()">
+            <button class="header-icon back"></button>
+        </a>
     </div>
     <h1 class="header-icon logo"></h1>
     <div class="header-side right">
-        <a href="/static"><button class="header-icon home"></button></a>
+        <a href="/">
+            <button class="header-icon home"></button>
+        </a>
     </div>
 </header>
 
 <section>
-    <!--    <form>-->
-    <!--      <input type="submit">-->
-    <!--    </form>-->
-    <div class ="mapStyle">
+    <div class="mapStyle">
         <div id="map" style="width: 100%; height: 450px"></div>
         <p th:text="${list.address}" id="map-address-text">주소</p>
         <p th:text="${list.name}" id="resName">상호명</p>
     </div>
-
 </section>
 </body>
 </html>

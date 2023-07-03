@@ -31,7 +31,6 @@ public interface RestaurantService {
 	List<RestaurantView> getRanking();
     void add(Restaurant restaurant);
 
-	List<Restaurant> findAllRestaurant();
 
 
 }

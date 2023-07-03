@@ -67,13 +67,11 @@ function restaurantListLoad(url){
                             <div class="image-box">
                                 <img src="/images/foods/${r.img}" alt="이미지" class="image">
                                 <!-- 하트 -->
-                                <a href="/user/login">
-                                    <button
-                                        type="button"
-                                        data-member-id=${memberId}
-                                        data-restaurant-id="${r.id}"
-                                        class="like ${r.like ? 'active' : ''}">좋아요
-                                    </button>
+                                <a 
+                                    href="/user/login"
+                                    data-member-id=${memberId}
+                                    data-restaurant-id="${r.id}"
+                                    class="like ${r.like ? 'active' : ''}">좋아요
                                 </a>
                                 <div class="data-box">
                                     <p>
@@ -182,16 +180,19 @@ filterBox.onchange = function(e){
 // 좋아요 버튼 ------------------------------------------------------------
 restaurantList.onclick = function(e){
     let el = e.target;
-    let likeCount = el.parentElement.parentElement.querySelector("#like-count");
+    let likeCount = el.parentElement.querySelector("#like-count");
     
     if(!el.classList.contains("like"))
         return;
-    
+
     let {restaurantId, memberId} = el.dataset; // destructuring
 
     // 회원 아니면 return
-    if(memberId=='null')
+    if(memberId==='null' || memberId===undefined){
         return;
+    }
+
+
     e.preventDefault();
     
     // Like 추가

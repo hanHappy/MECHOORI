@@ -18,6 +18,11 @@
         </foreach>
     </select>
 
+    <select id="getList" parameterType="Rate">
+        select * from rate
+        where member_id =#{memberId}
+    </select>
+
 
     <select id="findData" resultType="Statistics">
         SELECT #{memberId} AS member_id, ROUND(AVG(rated_avg_price), -2) AS overall_rated_avg_price, ROUND(AVG(avg_price), -2) AS overall_avg_price

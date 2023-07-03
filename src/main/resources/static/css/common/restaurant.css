@@ -25,21 +25,19 @@
 }
 
 /* 좋아요 */
-.image-box button {
-    /* style */
+.like {
+    background-image: url("/images/icons/빈하트.svg");
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: transparent;
     border: none;
 
-    /* layout */
     position: absolute;
     padding: 0;
     width: 21px;
     height: 20px;
     top: 12px;
     right: 12px;
-}
-.like {
-    background-image: url("/images/icons/빈하트.svg");
 
     text-indent: -999px;
     overflow: hidden;

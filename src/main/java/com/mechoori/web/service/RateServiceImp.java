@@ -54,7 +54,7 @@ public class RateServiceImp implements RateService{
 
     @Override
     public Map<String, Integer> getDate(int memberId) {
-        
+
         Map<String, Integer> data = new HashMap<>();
         List<Statistics> list = repository.findData(memberId);
 
@@ -75,13 +75,18 @@ public class RateServiceImp implements RateService{
 
         System.out.println(list.get(0));
         System.out.println(list.get(1));
-        
+
         // 가성비 get 후 data에 추가
-        data.put("me", list.get(0).getValue()); 
-        data.put("other", list.get(1).getValue()); 
-        // data.put("me", list.get(0).getOverallRatedAvgPrice()); 
-        // data.put("other", list.get(1).getOverallRatedAvgPrice()); 
+        data.put("me", list.get(0).getValue());
+        data.put("other", list.get(1).getValue());
+        // data.put("me", list.get(0).getOverallRatedAvgPrice());
+        // data.put("other", list.get(1).getOverallRatedAvgPrice());
 
         return data;
+    }
+
+    @Override
+    public List<Rate> getList(int memberId) {
+        return repository.getList(memberId);
     }
 }

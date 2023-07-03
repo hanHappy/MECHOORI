@@ -12,6 +12,7 @@ public interface CategoryRepository {
 
     List<TopCategory> findAllTopCategory();
     TopCategory findTopCategoryById(int categoryId);
+    
     void saveTopCategory(TopCategory category);
     void updateTopCategory(TopCategory category);
     void deleteTopCategory(int[] id);

@@ -1,7 +1,7 @@
 const form = document.querySelector("#form__wrap");
 const checkAll = document.querySelector(".terms__check__all input");
 const checkBoxes = document.querySelectorAll(".input__check input");
-const submitButton = document.querySelector(".next-button");
+const submitButton = document.querySelector(".button-1");
 
 const agreements = {
   termsOfService: false,

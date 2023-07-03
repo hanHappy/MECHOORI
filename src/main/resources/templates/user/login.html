@@ -16,65 +16,56 @@
 <body>
   <header>
     <div class="header-side left">
-      <a><button class="d-none"></button></a>
     </div>
     <h1 class="header-icon logo"></h1>
     <div class="header-side right">
-      <!-- FIXME 링크 index -> history.back()으로 수정 -->
-      <a href="/"><button class="header-icon cancle"></button></a>
+      <button onclick="history.back()" class="header-icon cancle"></button>
     </div>
   </header>
 
   <main>
-    <div class="login_image"></div>
-    <form action="/user/login" method="post">
-    <div class="idAndPw">
-        <span class="login"> 아이디 </span>
-        <span class="id">
-          <input type="email" name="email" placeholder="가입하신 이메일을 입력해주세요." id="email" />
-        </span>
-        <span class="pass">비밀번호</span>
-        <span class="pw">
-          <input type="password" name="password" placeholder="비밀번호을 입력해주세요." required />
-        </span>
-    </div>
+    <!-- 이미지 -->
+    <div class="login-image"></div>
 
-    <div class="input-container">
-      <!-- FIXME 텍스트 색상 -> #fff -->
-      <button class="submitbtn">
-        <input type="hidden" name="returnURL" th:value="${param.returnURL}">
-        <!-- FIXME 버튼 클릭하면 로그인 안 되고 엔터 눌러야 됨 -->
-        <!-- 아마 a -> button으로 고치면 될듯? -->
-        <a href="/">로그인 </a>
-      </button>
-    </div>
-    </form>
+    <!-- 로그인 폼 -->
+    <section class="login-form-section">
+      <div class="login-form-container">
+        <form action="login" method="POST">
+          <div class="email-container">
+            <div class="email-label">아이디</div>
+            <div class="email-wrapper">
+              <input class="email" type="email" name="email" placeholder="이메일을 입력해주세요" id="email" />
+            </div>
+          </div>
+          <div class="pwd-container">
+            <div class="pwd-label">비밀번호</div>
+            <div class="pwd-wrapper">
+              <input class="pwd" type="password" name="password" placeholder="비밀번호을 입력해주세요" required />
+            </div>
+          </div>
 
-    <div class="idAndPwd">
-      <!-- FIXME 버튼 스타일 지우기 -->
-      <button class="findId" id="popupBtn">계정 찾기</button>
+          <div th:if="${param.error}" class="error">
+            아이디 혹은 비밀번호가 일치하지 않습니다.
+          </div>
 
-      <a href="sign-up/policy">
-        <div class="signup">회원 가입</div>
-      </a>
-      <div class="btw"></div>
-    </div>
-    <!-- FIXME 버튼이랑 겹침 -->
-    <div th:if="${param.error}">
-      아이디 혹은 비밀번호가 일치하지 않습니다.
-    </div>
+          <button class="button button-1">로그인</button>
+        </form>
+      </div>
+    </section>
 
-    <div class="onlyImg"></div>
-  </main>
-
-  <!-- <div id=modalWrap>
-    <div class="pop">
-      <div class="area">
-        <a href="index.html"><button id="findEmail">이메일 찾기</button></a>
-        <a href="index.html"><button id="findP">비밀번호 찾기</button></a>
+    <div class="account-container">
+      <div class="account-wrapper">
+        <a href="login/find-id" class="find-account-btn" id="popupBtn">아이디 찾기</a>
+      </div>
+      <div class="account-wrapper find-pwd">
+        <a href="login/find-pwd" class="find-account-btn" id="popupBtn">비밀번호 찾기</a>
+      </div>
+      <div class="account-wrapper">
+        <a href="sign-up/policy">회원 가입</a>
       </div>
     </div>
-  </div> -->
+
+  </main>
 
 </body>
 
