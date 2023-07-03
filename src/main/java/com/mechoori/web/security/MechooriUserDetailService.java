@@ -11,17 +11,24 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.mechoori.web.api.entity.Users;
+import com.mechoori.web.api.service.UserService;
 import com.mechoori.web.entity.Member;
 import com.mechoori.web.service.MemberService;
+
 
 @Service
 public class MechooriUserDetailService implements UserDetailsService{
     @Autowired
     MemberService memberService;
 
+    @Autowired
+    UserService userService;
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Member member = memberService.getByEmail(email);
+        // Users users = userService.getByEmail(email);
         MechooriUserDetails userDetails = new MechooriUserDetails();
         userDetails.setId(member.getId());
         userDetails.setGenderId(member.getGenderId());
@@ -31,6 +38,7 @@ public class MechooriUserDetailService implements UserDetailsService{
         userDetails.setPassword(member.getPassword());
         userDetails.setBirthDate(member.getBirthDate());
         userDetails.setRegDate(member.getRegDate());
+        // userDetails.setMember(users);
         
         List<GrantedAuthority> authorities = new ArrayList<>();
         // username 통해서 db의 member_with_role (view)에서 role_name을 String role에 할당

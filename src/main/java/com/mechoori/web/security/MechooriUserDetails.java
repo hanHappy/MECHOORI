@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.mechoori.web.api.entity.Users;
+
 public class MechooriUserDetails implements UserDetails {
     private int id;
     private int genderId;
@@ -17,6 +19,15 @@ public class MechooriUserDetails implements UserDetails {
     private Date birthDate;
     private Date regDate;
     private List<GrantedAuthority> authorities;
+    // private Users user; 
+
+    // public Users getUser() {
+    //     return user;
+    // }
+
+    // public void setMember(Users user) {
+    //     this.user = user;
+    // }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

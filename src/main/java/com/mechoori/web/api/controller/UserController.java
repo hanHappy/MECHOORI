@@ -1,36 +1,26 @@
 package com.mechoori.web.api.controller;
 
-import java.util.Map;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ViewResolver;
 
-import com.mechoori.web.entity.Statistics;
-import com.mechoori.web.security.MechooriUserDetails;
-import com.mechoori.web.service.RateService;
-
-
-@RestController("apiRateController")
-@RequestMapping("api/user")
+@RestController("apiUserController")
+@RequestMapping("api/users")
 public class UserController {
     
-
-
     @Autowired
-    private RateService rateService;
+    private ViewResolver viewResolver;
 
-    @GetMapping("/statistics")
-    public Map<String, Integer> statistics(
-        @AuthenticationPrincipal MechooriUserDetails member){
+    @GetMapping("/login")
+    public ModelAndView login() throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
 
-        Map<String, Integer> data = rateService.getDate(member.getId());
-        System.out.println("data : "+  data);
-
-        return data;
+        modelAndView.setView(viewResolver.resolveViewName("user/login/social-login", Locale.getDefault()));
+        return modelAndView;
     }
-
-//http://localhost:8080/user/my-page/statistics
 }

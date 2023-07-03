@@ -1,5 +1,7 @@
 package com.mechoori.web.api.service;
 
+import java.util.Optional;
+
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -7,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.mechoori.web.api.entity.Users;
 import com.mechoori.web.api.repository.UserRepository;
 import com.mechoori.web.config.jwt.JwtTokenProvider;
 
@@ -45,6 +48,10 @@ public class UserService {
         return token;
     }
     
+//     public Users getByEmail(String email) {
+//     Optional<Users> userOptional = repository.findByEmail(email);
+//     return userOptional.orElse(null);
+// }
 }
     // public Long signup(SignupForm signupForm) {
     //     boolean check = checkEmailExists(signupForm.getEmail());
