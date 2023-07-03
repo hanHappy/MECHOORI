@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (data === "0") {
 
-                    emailConfirmMsg.innerText = `사용 중 이거나, 이메일 확인 후 다시 입력 해주세요`
+                    emailConfirmMsg.innerText = "사용 중인 계정이거나 형식이 올바르지 않습니다"
                     emailConfirmMsg.style.color = "red";
                 } else {
                     //아이디 없을 때
