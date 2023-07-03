@@ -1,6 +1,8 @@
 package com.mechoori.web.api.service;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -23,7 +25,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
  
     private final MemberApiRepository memberRepository;
     private final HttpSession httpSession;
- 
+
     public CustomOAuth2UserService(MemberApiRepository memberRepository, HttpSession httpSession) {
         this.memberRepository = memberRepository;
         this.httpSession = httpSession;
@@ -31,6 +33,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
  
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+ 
+  
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
  
@@ -40,11 +44,17 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
  
         Member member = saveOrUpdate(attributes);
-        httpSession.setAttribute("user", new SessionUser(member));
- 
+        httpSession.setAttribute("member", new SessionUser(member));
+        String role = member.getRole().getKey();
+
+        Map<String, Object> userAttributes = new HashMap<>(oAuth2User.getAttributes());
+        userAttributes.put("response", attributes.getAttributes()); // 'response' 속성에 attributes 맵 추가
+
+        System.out.println("Attributes Map: " + userAttributes);
+
         return new DefaultOAuth2User(
                 // Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
-                Collections.singleton(new SimpleGrantedAuthority("ROLE_MEMBER")),
+                Collections.singleton(new SimpleGrantedAuthority(role)),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey()
         );
@@ -59,8 +69,9 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
     // 저장된 사용자 정보를 콘솔에 출력
     System.out.println("Saved Member: " + member);
-
+  
     // return memberRepository.save(user);
         return member;
     }
+
 }

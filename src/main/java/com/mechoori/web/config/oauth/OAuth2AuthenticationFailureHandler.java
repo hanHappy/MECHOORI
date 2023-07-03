@@ -2,9 +2,14 @@ package com.mechoori.web.config.oauth;
 
 import java.io.IOException;
 
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.mechoori.web.config.oauth.util.CookieUtils;
@@ -26,6 +31,8 @@ public class OAuth2AuthenticationFailureHandler extends SimpleUrlAuthenticationF
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+
+
         String targetUrl = CookieUtils.getCookie(request, REDIRECT_URI_PARAM_COOKIE_NAME)
                 .map(Cookie::getValue)
                 .orElse(("/"));
@@ -38,4 +45,6 @@ public class OAuth2AuthenticationFailureHandler extends SimpleUrlAuthenticationF
 
         getRedirectStrategy().sendRedirect(request, response, targetUrl);
     }
+
+    
 }

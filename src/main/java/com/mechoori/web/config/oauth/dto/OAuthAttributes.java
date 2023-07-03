@@ -21,6 +21,7 @@ public class OAuthAttributes {
     private LoginType loginTypeId;
     private static final RestTemplate restTemplate = new RestTemplate();
 
+    
     @Builder
     public OAuthAttributes(Map<String, Object> attributes, String nameAttributeKey, String username, String email, String picture, LoginType loginTypeId) {
         this.attributes = attributes;
@@ -85,7 +86,8 @@ public class OAuthAttributes {
                 .attributes(attributes)
                 .build();
     }
- 
+    
+    
     //     private static OAuthAttributes ofKakao(String userNameAttributeName, Map<String, Object> attributes) {
     //     if (attributes == null) {
     //         throw new IllegalArgumentException("Attributes는 null일 수 없습니다.");
@@ -134,7 +136,7 @@ public class OAuthAttributes {
         return Member.builder()
                 .username(username)
                 .email(email)
-                .role(Role.USER)
+                .role(Role.MEMBER)
                 .loginTypeId(loginTypeId)
                 .build();
     }

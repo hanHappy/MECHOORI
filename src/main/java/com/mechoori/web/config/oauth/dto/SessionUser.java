@@ -1,43 +1,45 @@
 package com.mechoori.web.config.oauth.dto;
 
-import lombok.Getter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.mechoori.web.api.entity.Member;
+import com.mechoori.web.api.entity.enums.Role;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import lombok.Getter;
 
 @Getter
-public class SessionUser implements UserDetails {
-    private Member user;
+public class SessionUser implements UserDetails, OAuth2User {
+    private Member member;
+    private Role role;
+    private Map<String, Object> attributes;
 
-    public SessionUser(Member user) {
-        this.user = user;
+    public SessionUser(Member member) {
+        this.member = member;
+        this.role = member.getRole();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        //Member 엔티티에서 Role 삭제
-        // collections.add(() -> {return "ROLE_" + user.getRole();});
-        // return collections;
-
-        Collection<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-
+       Collection<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(role.getKey()));
         return authorities;
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return member.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return member.getUsername();
     }
 
     @Override
@@ -58,5 +60,19 @@ public class SessionUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+     @Override
+    public Map<String, Object> getAttributes() {
+        return attributes;
+    }
+
+    @Override
+    public String getName() {
+        return member.getUsername();
+    }
+
+    public void setAttributes(Map<String, Object> attributes) {
+        this.attributes = attributes;
     }
 }

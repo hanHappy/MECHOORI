@@ -20,10 +20,11 @@ public class PrincipalDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Member principal = repository.findByEmail(username)
-                .orElseThrow(() -> {
-                    return new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다");
-                });
+        Member principal = repository.findByEmail(username).orElse(null);
+        if (principal == null) {
+            throw new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다");
+        }
         return new SessionUser(principal);
     }
+    
 }

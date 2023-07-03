@@ -10,7 +10,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 @Entity
-@Table(name = "login_type") // 테이블 이름을 적절하게 변경해 주세요
+@Table(name = "member")
 public enum LoginType {
     GOOGLE(2),
     NAVER(3),
@@ -22,8 +22,9 @@ public enum LoginType {
     @Column(name = "login_type_id")
     private final int loginTypeId;
 
-    LoginType(int id) {
+    private LoginType(int id) {
         this.id = id;
         this.loginTypeId = id;
     }
+ 
 }

@@ -4,11 +4,14 @@ import com.mechoori.web.api.entity.enums.LoginType;
 import com.mechoori.web.api.entity.enums.Role;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,8 +35,9 @@ public class Member {
     @JoinColumn(name = "login_type_id")
     private LoginType loginTypeId;
 
-    // @Enumerated(EnumType.STRING)
-    // private Role role;
+    @Transient
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 
     @Builder
@@ -42,7 +46,7 @@ public class Member {
         this.username = username;
         this.email = email;
         this.password = password;
-        // this.role = role;
+        this.role = role;
         this.loginTypeId = loginTypeId;
     }
 
@@ -51,9 +55,9 @@ public class Member {
         return this;
     }
 
-    // public String getRoleKey() {
-    //     return this.role.getKey();
-    // }
+    public String getRoleKey() {
+        return this.role.getKey();
+    }
 
      public int getId() {
         return id;
@@ -96,12 +100,12 @@ public class Member {
         this.loginTypeId = loginTypeId;
     }
 
-    // public Role getRole() {
-    //     return this.role;
-    // }
+    public Role getRole() {
+        return this.role;
+    }
 
-    // public void setRole(Role role) {
-    //     this.role = role;
-    // }
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
 }
