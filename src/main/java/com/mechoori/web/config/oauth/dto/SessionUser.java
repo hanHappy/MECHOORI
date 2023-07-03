@@ -2,30 +2,32 @@ package com.mechoori.web.config.oauth.dto;
 
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.mechoori.web.api.entity.Users;
+import com.mechoori.web.api.entity.Member;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Getter
 public class SessionUser implements UserDetails {
-    private Users user;
+    private Member user;
 
-    public SessionUser(Users user) {
+    public SessionUser(Member user) {
         this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Collection<GrantedAuthority> collections = new ArrayList<>();
+        //Member 엔티티에서 Role 삭제
+        // collections.add(() -> {return "ROLE_" + user.getRole();});
+        // return collections;
 
-        collections.add(() -> {
-            return "ROLE_" + user.getRole();
-        });
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-        return collections;
+        return authorities;
     }
 
     @Override
@@ -35,7 +37,7 @@ public class SessionUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getName();
+        return user.getUsername();
     }
 
     @Override

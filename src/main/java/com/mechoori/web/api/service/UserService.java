@@ -1,7 +1,5 @@
 package com.mechoori.web.api.service;
 
-import java.util.Optional;
-
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -9,8 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.mechoori.web.api.entity.Users;
-import com.mechoori.web.api.repository.UserRepository;
+import com.mechoori.web.api.repository.MemberApiRepository;
 import com.mechoori.web.config.jwt.JwtTokenProvider;
 
 import jakarta.transaction.Transactional;
@@ -20,21 +17,21 @@ import jakarta.transaction.Transactional;
 public class UserService {
 
     private final BCryptPasswordEncoder encoder;
-    private final UserRepository repository;
+    private final MemberApiRepository repository;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final JwtTokenProvider jwtTokenProvider;
     private UserDetailsService userDetailsService;
 
-    public UserService(BCryptPasswordEncoder encoder, UserRepository repository, AuthenticationManagerBuilder authenticationManagerBuilder, JwtTokenProvider jwtTokenProvider) {
+    public UserService(BCryptPasswordEncoder encoder, MemberApiRepository repository, AuthenticationManagerBuilder authenticationManagerBuilder, JwtTokenProvider jwtTokenProvider) {
         this.encoder = encoder;
         this.repository = repository;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
-    }
+    // public void configure(AuthenticationManagerBuilder auth) throws Exception {
+    // auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
+    // }
 
     public String login(String email, String password) {
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(email, password);

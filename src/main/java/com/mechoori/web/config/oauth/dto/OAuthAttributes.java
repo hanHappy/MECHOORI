@@ -2,16 +2,10 @@ package com.mechoori.web.config.oauth.dto;
 
 import java.util.Map;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mechoori.web.api.entity.Users;
+import com.mechoori.web.api.entity.Member;
+import com.mechoori.web.api.entity.enums.LoginType;
 import com.mechoori.web.api.entity.enums.Role;
 
 import lombok.Builder;
@@ -22,33 +16,46 @@ import lombok.Getter;
 public class OAuthAttributes {
     private Map<String, Object> attributes;
     private String nameAttributeKey;
-    private String name;
+    private String username;
     private String email;
+    private LoginType loginTypeId;
     private static final RestTemplate restTemplate = new RestTemplate();
 
     @Builder
-    public OAuthAttributes(Map<String, Object> attributes, String nameAttributeKey, String name, String email, String picture) {
+    public OAuthAttributes(Map<String, Object> attributes, String nameAttributeKey, String username, String email, String picture, LoginType loginTypeId) {
         this.attributes = attributes;
         this.nameAttributeKey = nameAttributeKey;
-        this.name = name;
+        this.username = username;
         this.email = email;
+        this.loginTypeId = loginTypeId;
     }
 
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
 
-        if("naver".equals(registrationId)) {
-            return ofNaver("id", attributes);
+         if ("google".equals(registrationId)) {
+            return ofGoogle(userNameAttributeName, attributes);
+        } else if ("naver".equals(registrationId)) {
+            return ofNaver(userNameAttributeName, attributes);
         } else if ("kakao".equals(registrationId)) {
-            return ofKakao("id", attributes);
+            return ofKakao(userNameAttributeName, attributes);
         }
+
+        throw new IllegalArgumentException("Unsupported registrationId: " + registrationId);
+
+        // if("naver".equals(registrationId)) {
+        //     return ofNaver("id", attributes);
+        // } else if ("kakao".equals(registrationId)) {
+        //     return ofKakao("id", attributes);
+        // }
  
-        return ofGoogle(userNameAttributeName, attributes);
+        // return ofGoogle(userNameAttributeName, attributes);
     }
  
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {
         return OAuthAttributes.builder()
-                .name((String) attributes.get("name"))
+                .username((String) attributes.get("name"))
                 .email((String) attributes.get("email"))
+                .loginTypeId(LoginType.GOOGLE)
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
@@ -58,8 +65,9 @@ public class OAuthAttributes {
         Map<String, Object> response = (Map<String, Object>) attributes.get("response");
  
         return OAuthAttributes.builder()
-                .name((String) response.get("name"))
+                .username((String) response.get("name"))
                 .email((String) response.get("email"))
+                .loginTypeId(LoginType.NAVER)
                 .attributes(response)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
@@ -70,8 +78,9 @@ public class OAuthAttributes {
         Map<String, Object> kakaoProfile = (Map<String, Object>)kakaoAccount.get("profile");
 
         return OAuthAttributes.builder()
-                .name((String) kakaoProfile.get("nickname"))
+                .username((String) kakaoProfile.get("nickname"))
                 .email((String) kakaoAccount.get("email"))
+                .loginTypeId(LoginType.KAKAO)
                 .nameAttributeKey(userNameAttributeName)
                 .attributes(attributes)
                 .build();
@@ -121,11 +130,12 @@ public class OAuthAttributes {
     //     }
     // }
  
-    public Users toEntity() {
-        return Users.builder()
-                .name(name)
+    public Member toEntity() {
+        return Member.builder()
+                .username(username)
                 .email(email)
                 .role(Role.USER)
+                .loginTypeId(loginTypeId)
                 .build();
     }
 }

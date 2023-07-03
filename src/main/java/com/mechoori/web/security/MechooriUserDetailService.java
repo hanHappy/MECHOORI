@@ -11,8 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.mechoori.web.api.entity.Users;
-import com.mechoori.web.api.service.UserService;
 import com.mechoori.web.entity.Member;
 import com.mechoori.web.service.MemberService;
 
@@ -21,9 +19,6 @@ import com.mechoori.web.service.MemberService;
 public class MechooriUserDetailService implements UserDetailsService{
     @Autowired
     MemberService memberService;
-
-    @Autowired
-    UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
