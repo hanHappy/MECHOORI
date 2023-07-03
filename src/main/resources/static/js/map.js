@@ -4,6 +4,8 @@ window.addEventListener("load", function () {
     const contactNumbers = document.querySelectorAll(".contactNumber");
     let markers = [];
 
+    var currentInfoWindow = null; // 현재 열려있는 인포윈도우 추적 변수
+
     for (let i = 0; i < addresses.length; i++) {
         const name = resNames[i].textContent;
         const address = addresses[i].textContent;
@@ -41,7 +43,22 @@ window.addEventListener("load", function () {
                         maxWidth: 500
                     });
 
-                    kakao.maps.event.addListener(marker, 'mouseover', function () {
+                    kakao.maps.event.addListener(marker, 'click', function () {
+                        if (currentInfoWindow === infowindow) {
+                            // 현재 열려있는 인포윈도우를 닫음
+                            infowindow.close();
+                            currentInfoWindow = null;
+                        } else {
+                            // 새로운 인포윈도우를 열고 현재 열려있는 인포윈도우를 업데이트
+                            if (currentInfoWindow) {
+                                currentInfoWindow.close();
+                            }
+                            infowindow.open(map, marker);
+                            currentInfoWindow = infowindow;
+                        }
+                    });
+
+                    kakao.maps.event.addListener(marker, 'touchstart', function () {
                         infowindow.open(map, marker);
                     });
 
@@ -52,6 +69,14 @@ window.addEventListener("load", function () {
                     marker.setMap(map);
                 }
             });
+        });
+
+        // 지도를 클릭했을 때 기존에 열려있는 인포윈도우를 닫음
+        kakao.maps.event.addListener(map, 'click', function () {
+            if (currentInfoWindow) {
+                currentInfoWindow.close();
+                currentInfoWindow = null;
+            }
         });
     });
 });
