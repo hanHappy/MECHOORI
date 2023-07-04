@@ -96,6 +96,7 @@
 		where category_id = #{categoryId}
 		</if>
 		ORDER BY value DESC
+
 	</select>
 
 <!--<select id="getRanking" resultType="RestaurantView">-->

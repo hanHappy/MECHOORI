@@ -12,4 +12,8 @@ public class Rate {
     private Date regDate;
     private int price;
     private String review;
+
+
+//    이미지, 메뉴 이름, 식당이름, 가격, 내가 평가한 금액
+
 }

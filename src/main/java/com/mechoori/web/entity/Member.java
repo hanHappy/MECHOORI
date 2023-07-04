@@ -15,16 +15,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Member {
 	   private Integer id;
 	   private Integer roleId;
-       private Integer genderId;
 	   private String username;
-	   private String name;
        private String nickname;
 	   private String email;
 	   private String password;
-	   private String phoneNumber;
 	   private Date regDate;
-
-		@DateTimeFormat(pattern = "yyyy-MM-dd")
-		private Date birthDate;
-
 }

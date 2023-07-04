@@ -18,9 +18,9 @@
         </foreach>
     </select>
 
-    <select id="getList" parameterType="Rate">
-        select * from rate
-        where member_id =#{memberId}
+    <select id="getList" parameterType="RateList">
+        SELECT * FROM rate_list
+        where member_id = #{memberId}
     </select>
 
 

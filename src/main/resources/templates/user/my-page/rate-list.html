@@ -44,17 +44,15 @@
 </div>
 
 <main>
-  <section class="mainInfo"
-           sec:authorize="isAuthenticated()"
-           th:data-member-id="${#authentication.principal.id}"
-  >
-    <div class="foodList">
-      <div class="adjImg1 adji">
-        <div class="foodImg1 FI" th:src="@{images/foods/{img}(img=${id})}"></div>
-        <div class="Texts" th:each="list:${list}">
-          <p th:text="${list.restaurantName}">짜장 상회</p>
-          <p th:text="${list.menuName}">짬뽕</p>
-          <p th:text="${list.ratedPrice}">6,000원</p>
+  <section class="mainInfo" >
+    <div class="foodList" >
+      <div class="adjImg1 adji" th:each="list:${list}">
+        <img th:src="@{/images/foods/{img}(img=${list.img})}" class="foodImg1 FI" alt="">
+        <div class="Texts" >
+          <p th:text="${list.resName}">짜장 상회</p>
+          <p th:text="${list.name}">짬뽕</p>
+          <p th:text="${list.price}">6,000원</p>
+          <p th:text="${list.ratePrice}">6,000원</p>
         </div>
       </div>
     </div>

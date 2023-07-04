@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="/css/common/style.css">
     <link rel="stylesheet" href="/css/common/header.css">
     <link rel="stylesheet" href="/css/common/button.css">
-    <script src="/js/restaurant/ranking.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/restaurant/ranking.js" defer></script>
 
 </head>
 <body>
@@ -35,16 +36,17 @@
 
 <section class="mainTop">
     <div class="resranking">가성비 식당 랭킹
-    <label for="categoryDropBox"></label>
-    <select class="category" name="category" id="categoryDropBox" required>
-        <option value="카테고리 선택" disabled selected>카테고리 선택</option>
-        <option
-                th:data-id="${ctg.id}"
-                th:each="ctg:${ctg}"
-                th:text="${ctg.name}"
-        >전체
-        </option> <!-- 전체랭킹을 보여 주는 식으로 운영 해야 될 것 같ㄷ다-->
-    </select>
+        <label for="categoryDropBox"></label>
+        <select class="category" name="category" id="categoryDropBox" required>
+            <option value="카테고리 선택" disabled selected>카테고리 선택</option>
+            <option value="전체보기">전체</option>
+            <option
+                    th:data-id="${ctg.id}"
+                    th:each="ctg:${ctg}"
+                    th:text="${ctg.name}"
+            >
+            </option> <!-- 전체랭킹을 보여 주는 식으로 운영 해야 될 것 같ㄷ다-->
+        </select>
     </div>
 
 </section>
@@ -62,7 +64,7 @@
         <section th:each="list:${list}" class="thymleaf">
             <img th:src="@{/images/foods/{img}(img=${list.img})}" class="img">
             <ul class="ranking-list">
-                <li class="rankingNum" ></li>
+                <li class="rankingNum"></li>
                 <li th:text="${list.name}">맘마니</li>
                 <li>
                     <span th:text="${#numbers.formatDecimal(list.avgPrice, 0, 'COMMA', 0, 'POINT')}">8,800원</span><br/>
@@ -73,10 +75,11 @@
         </section>
     </section>
 
+    <button type="submit" class = "moreInfo">
+        더보기
+    </button>
 
-    <!--        <button class = "moreInfo">-->
-    <!--          더보기       아래로 드래그시 10개 추가      -->
-    <!--        </button>-->
+
 </main>
 
 </body>

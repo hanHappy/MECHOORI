@@ -45,10 +45,11 @@
             <span th:text="${list.name}" class="resName" hidden></span>
             <span th:text="${list.contactNumber}" class="contactNumber" hidden></span>
         </div>
+
         <div id="menu_wrap" class="bg_white">
             <div class="option">
                 <div>
-                    <form return false>
+                    <form onsubmit="searchPlaces(); return false;">
                         키워드 : <input type="text" placeholder="맛집" id="keyword" size="15" class="search-bar">
                         <button type="submit" class="btn">검색하기</button>
                     </form>
@@ -60,10 +61,6 @@
         </div>
     </div>
 
-        <div class="custom_typecontrol radius_border">
-            <span id="btnRoadmap" class="selected_btn">지도</span>
-            <span id="btnSkyview" class="btn">스카이뷰</span>
-        </div>
         <div class="custom_zoomcontrol radius_border">
             <span class="zoomIn"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png"
                                       alt="확대"></span>

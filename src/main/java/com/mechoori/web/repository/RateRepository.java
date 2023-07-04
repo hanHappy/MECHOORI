@@ -3,6 +3,7 @@ package com.mechoori.web.repository;
 import java.util.List;
 import java.util.Map;
 
+import com.mechoori.web.entity.RateList;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.mechoori.web.entity.Rate;
@@ -17,7 +18,7 @@ public interface RateRepository {
 
     List<Rate> findByMenuIds(List<Integer> menuIds);
 
-    List<Rate> getList(int memberId);
+    List<RateList> getList(int memberId, int offset, int size);
 
     List<Statistics> findData(int memberId);
 }

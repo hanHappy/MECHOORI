@@ -148,9 +148,6 @@ public class RestaurantServiceImp implements RestaurantService {
 
 	@Override
 	public List<RestaurantView> getRanking() {
-
-
-
 		return repository.getRanking();
 	}
 

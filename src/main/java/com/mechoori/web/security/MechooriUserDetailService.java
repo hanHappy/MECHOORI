@@ -24,12 +24,10 @@ public class MechooriUserDetailService implements UserDetailsService{
         Member member = memberService.getByEmail(email);
         MechooriUserDetails userDetails = new MechooriUserDetails();
         userDetails.setId(member.getId());
-        userDetails.setGenderId(member.getGenderId());
         userDetails.setUsername(member.getUsername());
         userDetails.setNickname(member.getNickname());
         userDetails.setEmail(email);
         userDetails.setPassword(member.getPassword());
-        userDetails.setBirthDate(member.getBirthDate());
         userDetails.setRegDate(member.getRegDate());
         
         List<GrantedAuthority> authorities = new ArrayList<>();
