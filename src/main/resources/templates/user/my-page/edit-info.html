@@ -10,6 +10,7 @@
     
     <title>가입 정보</title>
     <script src ="/js/user/edit-info.js" defer="defer"></script>
+    <script src ="/js/components/modal-alert.js" defer="defer"></script>
     
 </head>
 <body>
@@ -31,8 +32,9 @@
         </div> -->
         <div class="real-upload">
             <img class="img-click" src="/images/icons/이미지수정.svg" id="default1" alt="">
-            <input type="file" class="upload" accept="image/*">
+            <input id ="btn1" type="file" class="upload" accept="image/*">
         </div>
+        <input type="submit" value="저장" class="submit-btn">
 
         <div class="profile-circle">
             <img src="/images/components/프사메추리.png" alt="프로필사진">

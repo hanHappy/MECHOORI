@@ -2,6 +2,7 @@ package com.mechoori.web.api.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.Statistics;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
@@ -56,13 +58,14 @@ public class UserController {
         return data;
     }
 
+    //이미지 추가
     // @PostMapping("{id}/image")
-	// public List<String> add(@RequestParam("file") MultipartFile[] files, @PathVariable int id) throws IOException {
-	// 	List<String> returnFiles = new ArrayList<>();
+	// public String add(@RequestParam("file") MultipartFile file, @PathVariable int id) throws IOException {
+	// 	String returnFile = null;
 		
-	// 	MultipartFile file = files[0];
+	// 	MultipartFile file1 = null;
 
-    //     String fileName = file.getOriginalFilename();
+    //     String fileName = file1.getOriginalFilename();
 	// 	System.out.println(fileName);
 
     //     Resource resource = resourceLoader.getResource(uploadPath);
@@ -80,11 +83,10 @@ public class UserController {
         
     //     String fullPath = uploadPath + fileName;
         
-    //     returnFiles.add(Paths.get(uploadPath, fileName).toString());
-
-    // User user = service.get(id);
-    // user.setImg(fullPath);
-    // service.update(img);
-    // return returnFiles;
+    // Member member = service.getById(id);
+    // member.setImg(fullPath);
+    // service.update(member);
+    // return returnFile;
     //http://localhost:8080/user/my-page/statistics
+    // }
 }

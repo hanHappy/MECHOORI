@@ -11,10 +11,28 @@
 .real-upload {
     display: inline-block;
     position: relative;
-    top:30px;
+    top:40px;
     left:212px;
 }
 
+.real-upload img {
+    /* 기본 이미지 */
+    content: url('/images/icons/이미지수정.svg');
+  }
+  
+.real-upload img:hover{
+    /* 호버 이미지 */
+
+    content: url('/images/icons/이미지수정호버.svg');
+  }
+
+.submit-btn{
+    border:none;
+    padding:10px;
+    position:relative;
+    top: 66px;
+    left: 242px;
+}
 .box{
     padding-left: 10px;
 }
@@ -207,3 +225,4 @@ li{
     text-decoration-line: none;
     font-size: 12px;
 }
+
