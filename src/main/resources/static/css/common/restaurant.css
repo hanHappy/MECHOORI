@@ -27,7 +27,7 @@
 
 /* 좋아요 */
 .like {
-    background-image: url("/images/icons/빈하트.svg");
+    background-image: url("/images/icons/빈하트-2.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;
@@ -45,7 +45,7 @@
 }
 
 .like.active {
-    background-image: url("/images/icons/하트.svg");
+    background-image: url("/images/icons/하트-2.svg");
 } 
 
 /* 좋아요, 평가 수 데이터 */
@@ -97,6 +97,13 @@
 
 .screen {
     background-image: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.2) 0%, 
+    rgba(0, 0, 0, 0.1) 20%, 
+    rgba(0, 0, 0, 0) 40%, 
+    rgba(0, 0, 0, 0) 60%, 
+    rgba(0, 0, 0, 0.1) 80%, 
+    rgba(0, 0, 0, 0.2) 100%
+    
     /* rgba(0, 0, 0, 0.3) 0%, 
     rgba(0, 0, 0, 0.2) 5%, 
     rgba(0, 0, 0, 0) 20%, 
@@ -104,12 +111,12 @@
     rgba(0, 0, 0, 0.2) 95%, 
     rgba(0, 0, 0, 0.3) 100% */
 
-    rgba(0, 0, 0, 0.5) 0%, 
+    /* rgba(0, 0, 0, 0.5) 0%, 
     rgba(0, 0, 0, 0.4) 5%, 
     rgba(0, 0, 0, 0) 30%, 
     rgba(0, 0, 0, 0) 75%, 
     rgba(0, 0, 0, 0.4) 95%, 
-    rgba(0, 0, 0, 0.5) 100%
+    rgba(0, 0, 0, 0.5) 100% */
 );
     border-radius: 8px;
     
