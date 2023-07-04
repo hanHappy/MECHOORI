@@ -23,7 +23,7 @@ main{
     max-width: 1200px;
 }
 .d-none{
-    display: none;
+    display: none !important;
 }
 .text-hidden{
     text-indent: -999px;

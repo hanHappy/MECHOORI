@@ -11,6 +11,7 @@ const searchBar = header.querySelector("#search-bar");
 const searchBtn = header.querySelector(".search-btn");
 const restaurantListSection = document.querySelector(".restaurant-list-section");
 const restaurantList = restaurantListSection.querySelector(".restaurant-list");
+const modalLike = document.querySelector(".modal-like");
 
 // index 검색어 & 카테고리 검색
 let searchParam = new URLSearchParams(window.location.search);
@@ -23,6 +24,9 @@ function showSearchBar(){
     headerSide[1].style.display = 'none';
     logo.style.display = 'none';
     searchContainer.classList.remove('d-none');
+    setTimeout(() => {
+        searchContainer.classList.add('visible');
+    }, 50);
 }
 
 // Header 돋보기 버튼 클릭() -> 검색바 나타나기 -----------------------
@@ -222,6 +226,16 @@ restaurantList.onclick = function(e){
                 });
             }
         });
+        modalLike.classList.remove("d-none");
+        setTimeout(() => {
+            modalLike.classList.add("active");
+            setTimeout(() => {
+                modalLike.classList.remove("active");
+                setTimeout(() => {
+                    modalLike.classList.add("d-none");
+                }, 1000);
+            }, 1200);
+        }, 100);
     }
 
     // Like 삭제
