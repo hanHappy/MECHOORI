@@ -66,7 +66,7 @@ function restaurantListLoad(url){
                             <!-- 이미지 -->
                             <div class="image-box">
                                 <img src="/images/foods/${r.img}" alt="이미지" class="image">
-                                <div class="screen">
+                                <div class="image-screen">
                                     <!-- 하트 -->
                                     <a 
                                         href="/user/login"

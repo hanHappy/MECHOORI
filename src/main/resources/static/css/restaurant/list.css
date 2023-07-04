@@ -209,3 +209,35 @@ select {
 select option {
     color: #4E4E4E;
 }
+
+.screen {
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-like {
+    color: #fff;
+    background-color: #0009;
+    border-radius: 8px;
+
+    min-width: 100px;
+    min-height: 30px;
+    padding: 5px 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-like p{
+    margin: 0;
+}
