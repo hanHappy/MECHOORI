@@ -265,22 +265,11 @@ main {
     }
 
 /* ----------- 평가 버튼 ----------- */
-.rate-btn-container {
-    margin-top: var(--contents-space);
-    width: 100%;
-    box-sizing: border-box;
+.rate-btn { margin-top: 20px; }
+.rate-btn.inactive {
+    background-color: #a6d5ff;
 }
 
-    .rate-btn {
-        height: var(--btn-height);
-        width: 100%;
-        background-color: var(--sub-color);
-        border: none;
-        border-radius: var(--border-radius);
-        font-size: 18px;
-        color: #fff;
-        font-weight: bold;
-    }
 
 /* ------------- 평가 확인 모달 ------------- */
 /* 모달 창 */

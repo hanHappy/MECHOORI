@@ -61,7 +61,7 @@
                     <div class="selling-price-box">
                         <p>판매가격</p>
                         <div class="selling-price">
-                            <div class="selling-price-value"></div>
+                            <span class="selling-price-value"></span>
                             <span>원</span>
                         </div>
                     </div>
@@ -71,6 +71,8 @@
                             <input id="my-price-value" name="price" type="number" required>
                             <span>원</span>
                         </div>
+                    </div>
+                    
                     </div>
                     <!-- 가격 슬라이더 -->
                     <div class="slide-container">
@@ -85,9 +87,8 @@
                 </section>
 
                 <!-- 평가하기 버튼 -->
-                <div class="rate-btn-container">
-                    <button type="button" class="button button-1 rate-btn">평가하기</button>
-                </div>
+                <button type="button" class="button button-1 rate-btn inactive" disabled>평가하기</button>
+
             </section>
 
         <!-- TODO 모달 JS로 옮기고 panel min height 적용 -->
