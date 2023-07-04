@@ -323,6 +323,7 @@ window.addEventListener("DOMContentLoaded", function (callback) {
     };
 
     let markers = [];
+
     let map = new kakao.maps.Map(mapContainer, mapOption);
 
     for (let i = 0; i < addresses.length; i++) {
