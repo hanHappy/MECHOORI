@@ -8,7 +8,7 @@ import com.mechoori.web.api.entity.Member;
 import com.mechoori.web.api.entity.enums.LoginType;
 
 public interface MemberApiRepository extends JpaRepository<Member, Long> {
-    Member findByEmailAndPasswordAndLoginTypeId(String email, String password, LoginType loginTypeId);
+    // Member findByEmailAndPasswordAndLoginTypeId(String email, String password, LoginType loginTypeId);
     Optional<Member> findByEmail(String email);
     boolean existsUsersByEmail(String email);
 }

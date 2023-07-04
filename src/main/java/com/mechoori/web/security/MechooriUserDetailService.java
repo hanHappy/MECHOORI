@@ -2,16 +2,13 @@ package com.mechoori.web.security;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import com.mechoori.web.entity.Member;
@@ -38,12 +35,6 @@ public class MechooriUserDetailService implements UserDetailsService{
         userDetails.setRegDate(member.getRegDate());
         // userDetails.setMember(users);
         
-        OAuth2AuthenticationToken authentication = (OAuth2AuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            Map<String, Object> attributes = authentication.getPrincipal().getAttributes();
-            userDetails.setAttributes(attributes);
-        }
-
         List<GrantedAuthority> authorities = new ArrayList<>();
         // username 통해서 db의 member_with_role (view)에서 role_name을 String role에 할당
         String role = memberService.getRoleByEmail(email);

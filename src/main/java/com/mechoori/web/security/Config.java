@@ -48,7 +48,7 @@ public class Config {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
-			.csrf(csrf->csrf.disable())	// cross origin에 대해 403을 띄우는 것 방지(안전 모드를 해제하는 느낌)
+			.csrf(csrf -> csrf.disable())
 			.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 			.authorizeHttpRequests( // 인증을 위한 요청 URL 설정
 				auth->auth
@@ -58,31 +58,30 @@ public class Config {
 					//.requestMatchers("/user/login/**").hasAnyRole("ADMIN", "MEMBER")
 					.anyRequest().permitAll()) // 이외의 요청은 전부 승인함
 			.oauth2Login(oauth2 -> oauth2
-					.successHandler((request, response, authentication) -> {
-					// 원하는 URL로 리디렉션 처리
+				.successHandler((request, response, authentication) -> {
 					response.sendRedirect("/index");
-					})
-					.authorizationEndpoint(authorization -> authorization.baseUri("/oauth2/authorize"))
-					.redirectionEndpoint(redirection -> redirection.baseUri("/login/oauth2/code/**"))
-					.userInfoEndpoint(userInfo -> userInfo.userService(customOAuth2UserService))
-					.successHandler(oAuth2AuthenticationSuccessHandler)
-					.failureHandler(oAuth2AuthenticationFailureHandler)
+				})
+				.authorizationEndpoint(authorization -> authorization.baseUri("/oauth2/authorize"))
+				.redirectionEndpoint(redirection -> redirection.baseUri("/login/oauth2/code/**"))
+				.userInfoEndpoint(userInfo -> userInfo.userService(customOAuth2UserService))
+				.successHandler(oAuth2AuthenticationSuccessHandler)
+				.failureHandler(oAuth2AuthenticationFailureHandler)
 			)
-			.addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
-			.formLogin(
-				form->form
-					.loginPage("/user/login") // GET 요청
-					.loginProcessingUrl("/user/login") // POST 요청
-					.usernameParameter("email")
-					.defaultSuccessUrl("/index")) // 다른 페이지에서 온 게 아니라 바로 로그인 버튼 눌렀을 때
-			.logout(
-				logout->logout
-				.logoutUrl("/sign-in") // logout 시 페이지
-			); 
-		
+			.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+			.formLogin(form -> form
+				.loginPage("/user/login")
+				.loginProcessingUrl("/user/login")
+				.usernameParameter("email")
+				.defaultSuccessUrl("/index"))
+			.logout(logout -> logout.logoutUrl("/sign-in"));
+
 		return http.build();
 	}
 
+	@Bean
+	public JwtAuthenticationFilter jwtAuthenticationFilter() {
+		return new JwtAuthenticationFilter(jwtTokenProvider);
+	}
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		// 콩자루에 담는 작업
