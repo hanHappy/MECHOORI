@@ -10,9 +10,17 @@
    </select>
 
 	<select id="findViewById" resultType="RestaurantView">
-		select * 
-		from restaurant_view
-		where id = #{restaurantId}
+		<if test="memberId == null">
+			select * 
+			from restaurant_view
+			where id = #{restaurantId}
+		</if>
+		<if test="memberId != null">
+			select rv.*, IF(rl.member_id is not null, 1, 0) `like`
+			from restaurant_view rv
+			left join restaurant_like rl on rv.id = rl.restaurant_id and rl.member_id = #{memberId}
+			where rv.id = #{restaurantId}
+		</if>
 	</select>
 
 	<select id="findAll" resultType="Restaurant">

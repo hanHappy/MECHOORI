@@ -76,10 +76,15 @@ public class RestaurantController {
     @GetMapping("{id}")
     public String detail(
             @PathVariable("id") int restaurantId,
+            @AuthenticationPrincipal MechooriUserDetails member,
             Model model) {
+        
+        Integer memberId = null;
+        if(member!=null)
+            memberId = member.getId();
 
         // List<Menu> menuList = menuService.getList(restaurantId);
-        RestaurantView restaurantView = restaurantService.getViewDetailById(restaurantId);
+        RestaurantView restaurantView = restaurantService.getViewDetailById(memberId, restaurantId);
         List<MenuView> menuViewList = menuService.getViewListByRestaurantId(restaurantId);
 
         //아이디
