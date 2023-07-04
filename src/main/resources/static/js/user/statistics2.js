@@ -14,20 +14,14 @@ async function updateDateRange() {
       console.log(data);
       categoryData = data;
 
-      for (let v of categoryData) {
-        chart.data.labels.push(v.name);
-        chart.data.datasets[0].data.push(v.rateCount);
-      }
-
-      chart.update();
-
       console.log(categoryData.nickname);
       console.log(categoryData);
 
-      let chart = new Chart(document.getElementById("barChart"), {
+      // let chart = 
+      new Chart(document.getElementById("barChart"), {
         type: 'doughnut',
         data: {
-          labels: [],
+          labels: ["1","2","3"],
           datasets: [{
             backgroundColor: [
               '#FF6E54',// (코랄 핑크)
@@ -41,19 +35,19 @@ async function updateDateRange() {
               '#FF69B4', //(핑크 보라)
               '#F08080' // 연분홍색
             ],
-            data: []
+            data: [10,5,2]
           }]
         },
       
 
         options: {
-          responsive: true, // 차트 크기를 반응형으로 설정할지 여부 (기본값: true)
+          // responsive: true, // 차트 크기를 반응형으로 설정할지 여부 (기본값: true)
           maintainAspectRatio: false, // 가로 세로 비율을 유지할지 여부 (기본값: true)
           cutoutPercentage: 30, // 도넛 차트의 가운데 빈 공간 크기 (0~100, 기본값: 50)
           // rotation: -0.5 * Math.PI, // 차트 시작 각도 (-0.5 * Math.PI는 12시 방향, 기본값: -0.5 * Math.PI)
           // circumference: 2 * Math.PI, // 차트의 감싸는 각도 (전체 원, 기본값: 2 * Math.PI)
           legend: {
-            display: true // 범례 표시 여부 (기본값: true)
+            // display: true // 범례 표시 여부 (기본값: true)
           },
           title: {
             display: true, // 제목 표시 여부 (기본값: true)
@@ -61,34 +55,37 @@ async function updateDateRange() {
           },
           layout: {
             padding: {
-              // left: 30, // 왼쪽 여백
-              // right: 30, // 오른쪽 여백
+              left: 5, // 왼쪽 여백
+              right: 5, // 오른쪽 여백
               top: 10, // 상단 여백
               bottom: 10 // 하단 여백
             }
           },
           animation: {
-            animateRotate: true, // 차트 회전 애니메이션 효과 여부 (기본값: true)
-            animateScale: true, // 차트 크기 애니메이션 효과 여부 (기본값: true)
-            duration: 1000, // 애니메이션 지속 시간 (밀리초)
-            onComplete: function (){
-              let cateText = document.querySelector("#cateText");
-              cateText.textContent = chart.data.labels[0];
-            }
+            // animateRotate: true, // 차트 회전 애니메이션 효과 여부 (기본값: true)
+            // animateScale: true, // 차트 크기 애니메이션 효과 여부 (기본값: true)
+            duration: 3000 // 애니메이션 지속 시간 (밀리초)
+            // onComplete: function (){
+            //   let cateText = document.querySelector("#cateText");
+            //   cateText.textContent = chart.data.labels[0];
+            // }
           }
         }
 
       });
 
-
+      // for (let v of categoryData) {
+      //   chart.data.labels.push(v.name);
+      //   chart.data.datasets[0].data.push(v.rateCount);
+      // }
 
       // for(let i=0; i<categoryData.length; i++){
       //   console.log(chart.data.labels[i]);
       //   console.log(chart.data.datasets[0].data(i));
       // }
 
-      // let cateText = document.querySelector("#cateText");
-      // cateText.textContent = chart.data.labels[0];
+      let cateText = document.querySelector("#cateText");
+      cateText.textContent = chart.data.labels[0];
 
     });
 }
