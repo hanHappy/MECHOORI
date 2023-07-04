@@ -80,6 +80,7 @@ public class RateServiceImp implements RateService{
 
         System.out.println(list.get(0).getName()); // 한식
         System.out.println(list.get(0).getRateCount()); // 6
+        System.out.println(list.get(0).getName()); // 6
         
         // for(Statistics2 data : list){
         //     System.out.println(data);

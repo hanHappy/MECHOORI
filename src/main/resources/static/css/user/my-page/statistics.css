@@ -5,14 +5,14 @@
   display: flex;
   font-size: 18px;
   align-items: center;
-  /* padding-left: 20px; */
+  padding-left: 20px;
   width: 375px;
   height: 61px;
   box-shadow: var(--block-shadow);
   background-color: white;
 }
-/**/
 
+/* 
 .regdate {
   height: 51px;
   width: 100%;
@@ -35,7 +35,7 @@ button {
 .rightBtn{
   background-image: url("../../../images/icons/right.svg");
 }
-/* .up {
+.up {
   background-image: url("../../../images/icons/upbtn.svg");
   position: absolute;
   width: 12px;
@@ -43,7 +43,7 @@ button {
   top: 90px;
   left: 230px;
   z-index: 999;
-} */
+}
 
 .percent{
   position: absolute;
@@ -63,7 +63,7 @@ ul {
   justify-content: center;
   z-index: 999;
   list-style:none;
-  /* margin: 20px 35px 10px 35px; */
+  margin: 20px 35px 10px 35px;
   padding:0;
 
 }
@@ -79,17 +79,6 @@ li {
   text-align: center;
 }
 
-/* .rec {
-  position: absolute;
-  width: 67px;
-  height: 6px;
-  left: 154px;
-  top: 205px;
-  
-  background: rgba(34, 146, 249, 0.7);
-  border-radius: var(--border-radius);
-
-} */
 
 .dateTxt {
   position: absolute;
@@ -103,14 +92,14 @@ font-style: normal;
 font-weight: 300;
 font-size: 16px;
 line-height: 22px;
-/* identical to box height */
+identical to box height
 
 display: flex;
 align-items: center;
 text-align: center;
 
 color: #000000;
-}
+} */
 
 
 
@@ -148,16 +137,21 @@ color: #000000;
   position: relative;
   border-radius: 30px;
   background-color: rgb(233, 232, 232);
-  text-align: center;
-  align-items: center;
-  /* justify-content: center; */
+  align-items: center; 
+  justify-content: center;
   /* align-items: center; */
+  display: flex;
   
 }
 
 .rateText {
-  /* font-size: 16px; */
+  text-align: center;
+  margin: 0px;
   font-weight: 800;
+  font-size: 16px;
+  
+  /* align-items: center;
+  justify-content: center; */
   /* margin-bottom: 10px; */
   /* position: absolute; */
   /* justify-content: center; */

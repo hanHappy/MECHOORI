@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/css/common/header.css">
   <link rel="stylesheet" href="/css/common/component.css">
   <link rel="stylesheet" href="/css/common/button.css">
-  <script src="/js/user/statistics.js"></script>
+  <script src="/js/user/statistics.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
 </head>
@@ -34,7 +34,7 @@
       <p>나의 가성비 데이터</p>
     </div>
 
-    <div class="regdate">
+    <!-- <div class="regdate">
       <ul>
         <button class="leftBtn"></button>
         <li>4월</li>
@@ -44,17 +44,16 @@
       </ul>
     </div>
     <div class="rec"></div>
-    <div class="dateTxt">2023.05.01 ~ 2023.05.31</div>
+    <div class="dateTxt">2023.05.01 ~ 2023.05.31</div> -->
 
-    <canvas id="barChart" width="75" height="60"></canvas>
+    <canvas id="barChart" width="55" height="60"></canvas>
 
     <section class="MiddleBack">
       <div class="rateImg"></div>
       <div class="rateTextArea">
         <p class="rateText">
-          
-          메추리 회원님들보다 <br />
-          <span id="gap">30 </span>%<span id="gapM">높은</span> 가성비를 누리셨네요!
+          메추리 전체 회원보다 <br />
+          <span id="gap">30 </span>% <span id="gapM">높은</span> 가성비를 누리셨네요!
         </p>
       </div>
     </section>

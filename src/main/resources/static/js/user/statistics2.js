@@ -1,148 +1,99 @@
-window.addEventListener("DOMContentLoaded", function () {
-  let leftBtn = document.querySelector(".leftBtn");
-  let rightBtn = document.querySelector(".rightBtn");
-  let monthElement0 = document.querySelector("ul li:nth-child(2)");
-  let monthElement1 = document.querySelector("ul li:nth-child(3)");
-  let monthElement2 = document.querySelector("ul li:nth-child(4)");
-  let dateTxt = document.querySelector(".dateTxt");
-
-  leftBtn.addEventListener("click", function () {
-    let currentMonth1 = parseInt(monthElement0.textContent);
-    monthElement0.textContent =
-      currentMonth1 - 1 <= 0 ? "12월" : currentMonth1 - 1 + "월";
-    let currentMonth2 = parseInt(monthElement1.textContent);
-    monthElement1.textContent =
-      currentMonth2 - 1 <= 0 ? "12월" : currentMonth2 - 1 + "월";
-    let currentMonth3 = parseInt(monthElement2.textContent);
-    monthElement2.textContent =
-      currentMonth3 - 1 <= 0 ? "12월" : currentMonth3 - 1 + "월";
-
-    updateDateRange();
-  });
-
-  rightBtn.addEventListener("click", function () {
-    let currentMonth1 = parseInt(monthElement0.textContent);
-    monthElement0.textContent =
-      currentMonth1 + 1 > 12 ? "1월" : currentMonth1 + 1 + "월";
-    let currentMonth2 = parseInt(monthElement1.textContent);
-    monthElement1.textContent =
-      currentMonth2 + 1 > 12 ? "1월" : currentMonth2 + 1 + "월";
-    let currentMonth3 = parseInt(monthElement2.textContent);
-    monthElement2.textContent =
-      currentMonth3 + 1 > 12 ? "1월" : currentMonth3 + 1 + "월";
-
-    updateDateRange();
-  });
-
-  function updateDateRange() {
-    let currentDate = new Date();
-    let year = currentDate.getFullYear();
-    let startMonth = parseInt(monthElement1.textContent);
-    let endMonth = startMonth + 1;
-
-    let startDate = new Date(year, startMonth - 1, 1);
-    let endDate = new Date(year, endMonth - 1, 0);
-
-    let startDateStr = formatDate(startDate);
-    let endDateStr = formatDate(endDate);
-    dateTxt.textContent = startDateStr + " ~ " + endDateStr;
-  }
-
-  function formatDate(date) {
-    let year = date.getFullYear();
-    let month = ("0" + (date.getMonth() + 1)).slice(-2);
-    let day = ("0" + date.getDate()).slice(-2);
-    return year + "." + month + "." + day;
-  }
-
-  updateDateRange();
+// window.addEventListener("DOMContentLoaded", function () {
 
 
+updateDateRange();
 
-  async function updateDateRange() {
+async function updateDateRange() {
 
-    let categoryData;
-    let url = `/api/user/my-page/statistics2`;
+  let categoryData;
+  let url = `/api/user/my-page/statistics2`;
 
-    await fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        categoryData = data;
+  await fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      categoryData = data;
 
-        let chart = new Chart(document.getElementById("barChart"), {
-          type: 'doughnut',
-          data: {
-            labels: [],
-            datasets: [{
-              backgroundColor: [
-                '#FFD1AA', // 살구색
-                '#B0E0E6', // 파우더 블루
-                '#FFC0CB', // 핑크
-                '#D8BFD8', // 산호색
-                '#E6E6FA', // 라벤더
-                '#F0E68C', // 카나리아 옐로우
-                '#98FB98', // 라이트 그린
-                '#FFA07A', // 라이트 코랄
-                '#87CEFA', // 라이트 스카이 블루
-                '#F08080' // 연분홍색
-              ],
-              data: []
+      for (let v of categoryData) {
+        chart.data.labels.push(v.name);
+        chart.data.datasets[0].data.push(v.rateCount);
+      }
 
-            }]
+      chart.update();
+
+      console.log(categoryData.nickname);
+      console.log(categoryData);
+
+      let chart = new Chart(document.getElementById("barChart"), {
+        type: 'doughnut',
+        data: {
+          labels: [],
+          datasets: [{
+            backgroundColor: [
+              '#FF6E54',// (코랄 핑크)
+              '#FFC153', //(황토색)
+              '#FFD700',// (골든 옐로우)
+              '#ACD8AA', //(민트색)
+              '#87CEEB', //(스카이 블루)
+              '#9370DB', //(퍼플)
+              '#FFB6C1', //(라이트 핑크)
+              '#FF4136',// (타마린)
+              '#FF69B4', //(핑크 보라)
+              '#F08080' // 연분홍색
+            ],
+            data: []
+          }]
+        },
+      
+
+        options: {
+          responsive: true, // 차트 크기를 반응형으로 설정할지 여부 (기본값: true)
+          maintainAspectRatio: false, // 가로 세로 비율을 유지할지 여부 (기본값: true)
+          cutoutPercentage: 30, // 도넛 차트의 가운데 빈 공간 크기 (0~100, 기본값: 50)
+          // rotation: -0.5 * Math.PI, // 차트 시작 각도 (-0.5 * Math.PI는 12시 방향, 기본값: -0.5 * Math.PI)
+          // circumference: 2 * Math.PI, // 차트의 감싸는 각도 (전체 원, 기본값: 2 * Math.PI)
+          legend: {
+            display: true // 범례 표시 여부 (기본값: true)
           },
-          options: {
-            // radius: '90%',
-
-            responsive: true, // 차트 크기 반응형 설정
-            maintainAspectRatio: false, // 가로 세로 비율 유지 여부
-            cutoutPercentage: 50, // 도넛 차트의 가운데 빈 공간 크기 (0~100)
-            rotation: -0.5 * Math.PI, // 차트 시작 각도 (-0.5 * Math.PI는 12시 방향)
-            circumference: 2 * Math.PI, // 차트의 감싸는 각도 (전체 원)
-
-            legend: {
-              display: true
-            },
-
-            title: {
-              display: true,
-              text: '내가 평가한 식당 카테고리?'
-            },
-
-
-            maintainAspectRatio: false, // 차트의 가로 세로 비율 유지 여부
-            layout: {
-              padding: {
-                left: 30,
-                right: 30,
-                top: 0,
-                bottom: 10
-              },
-            },
-
-            animation: {
-              animateRotate: true, // (default네)
-              animateScale: true,
-              duration: 1000 // 애니메이션 지속 시간 (밀리초)
+          title: {
+            display: true, // 제목 표시 여부 (기본값: true)
+            text: '내가 평가한 식당 카테고리?' // 차트 제목 텍스트
+          },
+          layout: {
+            padding: {
+              // left: 30, // 왼쪽 여백
+              // right: 30, // 오른쪽 여백
+              top: 10, // 상단 여백
+              bottom: 10 // 하단 여백
+            }
+          },
+          animation: {
+            animateRotate: true, // 차트 회전 애니메이션 효과 여부 (기본값: true)
+            animateScale: true, // 차트 크기 애니메이션 효과 여부 (기본값: true)
+            duration: 1000, // 애니메이션 지속 시간 (밀리초)
+            onComplete: function (){
+              let cateText = document.querySelector("#cateText");
+              cateText.textContent = chart.data.labels[0];
             }
           }
-
-        });
-
-        for(let v of categoryData){
-          chart.data.labels.push(v.name);
-          chart.data.datasets[0].data.push(v.rateCount);
-        }
-
-        for(let i=0; i<categoryData.length; i++){
-          console.log(chart.data.labels[i]);
-          console.log(chart.data.datasets[0].data(i));
         }
 
       });
-  }
 
-});
+
+
+      // for(let i=0; i<categoryData.length; i++){
+      //   console.log(chart.data.labels[i]);
+      //   console.log(chart.data.datasets[0].data(i));
+      // }
+
+      // let cateText = document.querySelector("#cateText");
+      // cateText.textContent = chart.data.labels[0];
+
+    });
+}
+
+// });
 
 
 
