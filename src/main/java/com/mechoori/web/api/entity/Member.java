@@ -50,8 +50,7 @@ public class Member {
     private Date regDate;
 
     @Builder
-    public Member(long id, Integer roleId, Role role, String username, String nickname, String email, String password, String img, Integer loginTypeId, Date regDate) {
-        this.id = id;
+    public Member(Integer roleId, Role role, String username, String nickname, String email, String password, String img, Integer loginTypeId, Date regDate) {
         this.roleId = roleId;
         this.role = role;
         this.username = username;

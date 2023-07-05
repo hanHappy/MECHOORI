@@ -2,7 +2,6 @@ package com.mechoori.web.api.config.auth;
 
 import java.util.Collections;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -19,19 +18,15 @@ import com.mechoori.web.api.entity.enums.Role;
 import com.mechoori.web.api.repository.MemberApiRepository;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
     
-    @Autowired
     private final MemberApiRepository memberRepository;
     private final HttpSession httpSession;
-
-    public CustomOAuth2UserService(MemberApiRepository memberRepository, HttpSession httpSession) {
-        this.memberRepository = memberRepository;
-        this.httpSession = httpSession;
-    }
-    
+   
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();

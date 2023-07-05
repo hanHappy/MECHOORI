@@ -9,7 +9,6 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@Builder
 public class OAuthAttributes {
     // OAuth2 반환하는 유저 정보 Map
     private Map<String, Object> attributes;
