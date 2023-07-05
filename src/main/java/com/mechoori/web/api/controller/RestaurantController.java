@@ -62,12 +62,11 @@ public class RestaurantController {
         List<RestaurantView> list = null;
 
         if (categoryId != null) {
-            System.out.println(categoryId);
-            list = rstrService.getRanking(categoryId);
+            list = rstrService.getRanking(categoryId,0,6);
         } else {
-			System.out.println(categoryId);
-			list = rstrService.getRanking();
-		}
+            list = rstrService.getRanking();
+
+        }
 
         return list;
 

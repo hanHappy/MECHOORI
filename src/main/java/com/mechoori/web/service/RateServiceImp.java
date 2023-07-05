@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.mechoori.web.entity.RateList;
+import com.mechoori.web.entity.RateListView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +18,6 @@ public class RateServiceImp implements RateService{
     
     @Autowired
     private RateRepository repository;
-    
-    @Autowired
-    private MenuRepository menuRepository;
 
 
     @Override
@@ -86,8 +83,9 @@ public class RateServiceImp implements RateService{
         return data;
     }
 
+
     @Override
-    public List<RateList> getList(int memberId) {
-        return repository.getList(memberId, 0, 6);
+    public List<RateListView> getList(int memberId, int offset) {
+        return repository.getList(memberId, offset, 6);
     }
 }

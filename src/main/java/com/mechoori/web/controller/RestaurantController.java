@@ -140,12 +140,18 @@ public class RestaurantController {
     }
 
     @GetMapping("/ranking")
-    public String ranking(Model model) {
+    public String ranking(Model model,
+                          Integer categoryId) {
 
        List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 
-       List<RestaurantView> list = restaurantService.getRanking();
+        List<RestaurantView> list = null;
 
+        if (categoryId != null) {
+            list = restaurantService.getRanking(categoryId,0,6);
+        } else {
+            list = restaurantService.getRanking();
+        }
 
         System.out.println(mainCtgList);
         System.out.println(list);

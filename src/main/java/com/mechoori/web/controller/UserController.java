@@ -94,9 +94,11 @@ public class UserController {
 
     @GetMapping("my-page/rate-list")
     public String rateList(Model model,
+                           @RequestParam(value = "offset", defaultValue = "0") int offset,
                            @AuthenticationPrincipal MechooriUserDetails user) {
 
-        List<RateList> list = rateService.getList(user.getId());
+//        List<RateList> list = rateService.getList(user.getId());
+        List<RateListView> list = rateService.getList(user.getId(),offset);
         model.addAttribute("list", list);
 
         System.out.println(list);
