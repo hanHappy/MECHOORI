@@ -102,28 +102,30 @@
                         <div class="image-box">
                             <img src="/images/foods/청화원2.png" th:src="@{/images/foods/{img}(img=${r.img})}" alt="이미지"
                                 class="image">
-                            <!-- 하트 -->
-                            <a 
-                                href=""
-                                type="button"
-                                sec:authorize="isAuthenticated()" 
-                                th:data-member-id="${#authentication.principal.id}"
-                                th:data-restaurant-id="${r.id}"
-                                class="like" 
-                                th:classappend="${r.like}?'active' : ''">좋아요
-                            </a>
-                            <a 
-                                sec:authorize="isAnonymous()"
-                                href="/user/login" 
-                                class="like">좋아요
-                            </a>
-                            <div class="data-box">
-                                <p>
-                                    <span>좋아요 이미지</span>
-                                    <span th:text="${r.likeCount}" id="like-count">718</span>
-                                    <span>평가 이미지</span>
-                                    <span th:text="${r.rateCount}">207</span>
-                                </p>
+                            <div class="screen">
+                                <!-- 하트 -->
+                                <a 
+                                    href=""
+                                    type="button"
+                                    sec:authorize="isAuthenticated()" 
+                                    th:data-member-id="${#authentication.principal.id}"
+                                    th:data-restaurant-id="${r.id}"
+                                    class="like" 
+                                    th:classappend="${r.like}?'active' : ''">좋아요
+                                </a>
+                                <a 
+                                    sec:authorize="isAnonymous()"
+                                    href="/user/login" 
+                                    class="like">좋아요
+                                </a>
+                                <div class="data-box">
+                                    <p>
+                                        <span>좋아요 이미지</span>
+                                        <span th:text="${r.likeCount}" id="like-count">718</span>
+                                        <span>평가 이미지</span>
+                                        <span th:text="${r.rateCount}">207</span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <!-- 정보 -->
