@@ -25,5 +25,4 @@ public class RestaurantView {
     private Integer like;       // 유저가 좋아요했으면 1 아니면 0
     private Integer rateCount;
     private Integer rate;
-    private Integer rank;
 }

@@ -37,11 +37,11 @@ public class UserController {
     public String login() {
         return "user/login";
     }
-    @PostMapping("login")
-    public String afterLogin(@RequestParam("returnUrl")String returnUrl) {
-        return "redirect:"+returnUrl;
-    }
 
+    @PostMapping("login")
+    public String afterLogin(@RequestParam("returnUrl") String returnUrl) {
+        return "redirect:" + returnUrl;
+    }
 
 
     @GetMapping("/login/find-id")
@@ -55,14 +55,13 @@ public class UserController {
     }
 
 
-
-//    @GetMapping("/login/find-pwd-result")
-//    public String findPwdResult(String email) {
-//        return "user/login/find-pwd-result";
-//    }
+    //    @GetMapping("/login/find-pwd-result")
+    //    public String findPwdResult(String email) {
+    //        return "user/login/find-pwd-result";
+    //    }
 
     @PostMapping("login/find-pwd")
-    public String resetPwd(Member member)    {
+    public String resetPwd(Member member) {
         System.out.println(member);
         System.out.println(member.getPassword());
         service.resetPwd(member);
@@ -86,18 +85,21 @@ public class UserController {
         service.add(member);
         return "redirect:/user/sign-up/complete";
     }
+
     @GetMapping("sign-up/complete")
-    public String complete(){
+    public String complete() {
         return "user/sign-up/complete";
     }
 
 
     @GetMapping("my-page/rate-list")
     public String rateList(Model model,
-               @AuthenticationPrincipal MechooriUserDetails user) {
+                           @RequestParam(value = "offset", defaultValue = "0") int offset,
+                           @AuthenticationPrincipal MechooriUserDetails user) {
 
-      List<Rate> list  = rateService.getList(user.getId());
-        model.addAttribute("list",list);
+//        List<RateList> list = rateService.getList(user.getId());
+        List<RateListView> list = rateService.getList(user.getId(),offset);
+        model.addAttribute("list", list);
 
         System.out.println(list);
 
@@ -107,13 +109,13 @@ public class UserController {
 
     //내 정보
     @GetMapping("my-page")
-    public String myPage(){
+    public String myPage() {
         return "user/my-page";
     }
 
     //내 정보 변경
     @GetMapping("my-page/edit-info")
-    public String editInfo(){
+    public String editInfo() {
         return "user/my-page/edit-info";
     }
 
@@ -130,7 +132,7 @@ public class UserController {
 
     //비밀번호 변경
     @GetMapping("my-page/edit-info/pwd")
-    public String changePwd(){
+    public String changePwd() {
         return "user/my-page/edit-info/pwd";
     }
 
@@ -138,7 +140,8 @@ public class UserController {
     @GetMapping("my-page/edit-info/withdraw")
     public String withdraw() {
         return "user/my-page/edit-info/withdraw";
-    }  
+    }
+
     // 회원탈퇴 완료 페이지
     @GetMapping("my-page/edit-info/withdraw-complete")
     public String withdrawComplete() {
@@ -147,19 +150,19 @@ public class UserController {
 
     //찜한목록
     @GetMapping("my-page/like-list")
-    public String likeList(){
+    public String likeList() {
         return "user/my-page/like-list";
     }
 
     //가성비 성과 페이지
     @GetMapping("my-page/statistics")
-    public String rateStatistics(){
+    public String rateStatistics() {
         // Integer memberId = null;
         // if (member != null) {
         //     memberId = member.getId();
         // }
         //List<Rate> list = rateService.getRatedPrice(rate, memberId);
-       // Map<String, Statistics> data = ratedService.getDate(member.getId());
+        // Map<String, Statistics> data = ratedService.getDate(member.getId());
         //model.addAttribute("data", data);
         return "user/my-page/statistics";
     }
@@ -178,7 +181,6 @@ public class UserController {
     //     return "restaurant/statistics";
 
     // }
-
 
 
     //가성비 성과페이지

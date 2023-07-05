@@ -19,55 +19,59 @@ import com.mechoori.web.service.RestaurantService;
 @RequestMapping("api/restaurant")
 public class RestaurantController {
 
-	@Autowired
-	private RestaurantService rstrService;
-	@Autowired
-	private MenuService menuService;
+    @Autowired
+    private RestaurantService rstrService;
+    @Autowired
+    private MenuService menuService;
 
-	@GetMapping("/list")
-	public List<RestaurantView> list(
-			@RequestParam(name = "q", required = false) String query,
-			@RequestParam(name = "tc", required = false) Integer topCtgId,
-			@RequestParam(name = "c", required = false) Integer ctgId,
-			@RequestParam(name = "f", required = false) Integer filterId,
-			@AuthenticationPrincipal MechooriUserDetails member) {
+    @GetMapping("/list")
+    public List<RestaurantView> list(
+            @RequestParam(name = "q", required = false) String query,
+            @RequestParam(name = "tc", required = false) Integer topCtgId,
+            @RequestParam(name = "c", required = false) Integer ctgId,
+            @RequestParam(name = "f", required = false) Integer filterId,
+            @AuthenticationPrincipal MechooriUserDetails member) {
 
-		List<RestaurantView> list = null;
+        List<RestaurantView> list = null;
 
-		Integer memberId = null;
+        Integer memberId = null;
 
-		if(member != null)
-			memberId = member.getId();
+        if (member != null)
+            memberId = member.getId();
 
-		// 식당 리스트 출력
-		if (query == null && ctgId == null && topCtgId == null && filterId == null)
-			list = rstrService.getRestaurantViewList(memberId);
-		else if (filterId != null)
-			list = rstrService.getRestaurantViewListByFilter(memberId, ctgId, filterId);
-		else if (query != null)
-			list = rstrService.getRestaurantViewListByQuery(memberId, query);
-		else if (topCtgId != null)
-			list = rstrService.getRestaurantViewListByTopCtgId(memberId, topCtgId);
-		else if (ctgId != null)
-			list = rstrService.getRestaurantViewListByCtgId(memberId, ctgId);
+        // 식당 리스트 출력
+        if (query == null && ctgId == null && topCtgId == null && filterId == null)
+            list = rstrService.getRestaurantViewList(memberId);
+        else if (filterId != null)
+            list = rstrService.getRestaurantViewListByFilter(memberId, ctgId, filterId);
+        else if (query != null)
+            list = rstrService.getRestaurantViewListByQuery(memberId, query);
+        else if (topCtgId != null)
+            list = rstrService.getRestaurantViewListByTopCtgId(memberId, topCtgId);
+        else if (ctgId != null)
+            list = rstrService.getRestaurantViewListByCtgId(memberId, ctgId);
 
-		return list;
-	}
-
-
-	@GetMapping("/ranking")
-	public List<RestaurantView> list(
-			@RequestParam(name = "ctgId", required = false) Integer categoryId) {
-
-		if (categoryId != null) {
-			System.out.println(categoryId);
-			return rstrService.getRanking(categoryId);
-		}
-		return rstrService.getRanking(null);
-	}
-	//todo  1) 순위 겹치고 건너뛰지않게
-	// 		2) 바닥 닿을때 페이지 추가
-	//  	3) fetch 수정
+        return list;
+    }
 
 
+    @GetMapping("/ranking")
+    public List<RestaurantView> list(
+            @RequestParam(name = "ctgId", required = false) Integer categoryId) {
+
+        List<RestaurantView> list = null;
+
+        if (categoryId != null) {
+            list = rstrService.getRanking(categoryId,0,6);
+        } else {
+            list = rstrService.getRanking();
+
+        }
+
+        return list;
+
+        // 		2) 바닥 닿을때 페이지 추가
+
+        // 6개  - - - - - - offset 0 size 6...
+    }
 }

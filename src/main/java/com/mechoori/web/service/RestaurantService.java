@@ -27,10 +27,11 @@ public interface RestaurantService {
 
 	List<Integer> getPages();
 	
-	List<RestaurantView> getRanking(Integer categoryId);
-	List<RestaurantView> getRanking();
+	List<RestaurantView> getRanking(Integer categoryId , int offset, int size);
     void add(Restaurant restaurant);
 
 
+	List<RestaurantView> getRanking();
 
+//	List<RestaurantView> getRanking(Integer categoryId);
 }

@@ -112,10 +112,10 @@ document.addEventListener("DOMContentLoaded", function () {
         sendEmailConfirmationRequest();
     });
 
-    let emailConfirmNumCheckBtn = document.querySelector('#btn-confirm-num-check');
-    emailConfirmNumCheckBtn.onclick = function(){
+    document.querySelector("#btn-confirm-num-check").addEventListener("click", function () {
         checkEmailConfirmationCode();
     }
+
 
     function needFilmAll() {
         let email = document.querySelector("#email").value;
@@ -127,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("false");
         } else {
             submitBtn.disabled = true;
+            submitBtn.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
             console.log("nope");
         }
     }
@@ -138,12 +139,5 @@ document.addEventListener("DOMContentLoaded", function () {
         resetPassword(email);
     });
 
-    /*      document.querySelector(".passwordReset").addEventListener("keyup", function (e){
-
-              e.preventDefault();
-
-              let con = document.querySelector(".passwordReset").innerText;
-             console.log(con)
-       })*/
 
 });
