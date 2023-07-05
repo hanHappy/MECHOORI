@@ -15,10 +15,14 @@ import jakarta.persistence.Transient;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Getter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class Member {
+    
     @Id //식별자
     @GeneratedValue(strategy = GenerationType.IDENTITY) //시퀀스
     private long id;
@@ -46,8 +50,9 @@ public class Member {
     private Date regDate;
 
     @Builder
-    public Member(long id, Role role, String username, String nickname, String email, String password, String img, Integer loginTypeId, Date regDate) {
+    public Member(long id, Integer roleId, Role role, String username, String nickname, String email, String password, String img, Integer loginTypeId, Date regDate) {
         this.id = id;
+        this.roleId = roleId;
         this.role = role;
         this.username = username;
         this.nickname = nickname;
@@ -56,6 +61,15 @@ public class Member {
         this.img = img;
         this.loginTypeId = loginTypeId;
         this.regDate = regDate;
+    }
+
+
+    public Integer getRoleId() {
+        return this.roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
     public Member update(String username){
