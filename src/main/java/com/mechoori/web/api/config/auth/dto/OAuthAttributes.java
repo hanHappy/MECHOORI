@@ -16,16 +16,18 @@ public class OAuthAttributes {
     private String username;
     private String nickname;
     private String email;
-    private String img;
+    // private String img;
 
     @Builder
-    public OAuthAttributes(Map<String,Object> attributes, String nameAttributeKey, String username, String nickname, String email, String img) {
+    public OAuthAttributes(Map<String,Object> attributes, String nameAttributeKey, String username, String nickname, String email) 
+    //, String img
+    {
         this.attributes = attributes;
         this.nameAttributeKey = nameAttributeKey;
         this.username = username;
         this.nickname = nickname;
         this.email = email;
-        this.img = img;
+        // this.img = img;
     }
 
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes){
@@ -38,7 +40,7 @@ public class OAuthAttributes {
         return OAuthAttributes.builder()
                 .username((String) attributes.get("name"))
                 .email((String) attributes.get("email"))
-                .img((String) attributes.get("picture"))
+                // .img((String) attributes.get("picture"))
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
@@ -48,7 +50,7 @@ public class OAuthAttributes {
         return Member.builder()
                 .username(username)
                 .email(email)
-                .img(img)
+                // .img(img)
                 .role(Role.MEMBER) // 기본 권한 Member
                 .build();
     }

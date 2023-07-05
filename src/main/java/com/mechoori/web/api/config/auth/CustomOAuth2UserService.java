@@ -45,10 +45,10 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         String roleKey = Role.MEMBER.getKey(); // 기본적으로 Role.MEMBER로 설정
 
         // 회원의 권한을 roleId를 기반으로 설정 
-        if (member.getRoleId() == 2) 
-            roleKey = Role.MEMBER.getKey();
-         else
-            roleKey = Role.ADMIN.getKey();
+        // if (member.getRoleId() == 2) 
+        //     roleKey = Role.MEMBER.getKey();
+        //  else
+        //     roleKey = Role.ADMIN.getKey();
 
         return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(roleKey)),
                 attributes.getAttributes(),

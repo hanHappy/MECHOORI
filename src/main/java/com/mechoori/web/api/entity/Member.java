@@ -27,8 +27,6 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //시퀀스
     private long id;
 
-    private Integer roleId;
-
     @Transient
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -42,33 +40,24 @@ public class Member {
     private String email;
     @Column
     private String password;
-    @Column
-    private String img;
+    // @Column
+    // private String img;
     @Column
     private Integer loginTypeId;
     @Column
     private Date regDate;
 
     @Builder
-    public Member(Integer roleId, Role role, String username, String nickname, String email, String password, String img, Integer loginTypeId, Date regDate) {
-        this.roleId = roleId;
+    public Member(Role role, String username, String nickname, String email, String password, Integer loginTypeId, Date regDate) {
+        //, String img
         this.role = role;
         this.username = username;
         this.nickname = nickname;
         this.email = email;
         this.password = password;
-        this.img = img;
+        // this.img = img;
         this.loginTypeId = loginTypeId;
         this.regDate = regDate;
-    }
-
-
-    public Integer getRoleId() {
-        return this.roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
     }
 
     public Member update(String username){
@@ -129,13 +118,13 @@ public class Member {
         this.password = password;
     }
 
-    public String getImg() {
-        return this.img;
-    }
+    // public String getImg() {
+    //     return this.img;
+    // }
 
-    public void setImg(String img) {
-        this.img = img;
-    }
+    // public void setImg(String img) {
+    //     this.img = img;
+    // }
 
     public Integer getLoginTypeId() {
         return this.loginTypeId;
@@ -152,5 +141,4 @@ public class Member {
     public void setRegDate(Date regDate) {
         this.regDate = regDate;
     }
-
 }

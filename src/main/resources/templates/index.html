@@ -19,10 +19,9 @@
         <div class="header-side left">
             <a sec:authorize="isAuthenticated()" href="admin">
                 <img class="" src="/images/icons/admin_btn.svg" alt="">
-                <!-- 킼 -->
                 <p th:text=${userName}></p>
             </a>
-            <span sec:authentication="principal.principal.name" class="username"><p th:text=${userName}></p></span>
+            <!-- <span sec:authentication="principal.principal.name" class="username"><p th:text=${userName}></p></span> -->
             
         </div>
         <div class="header-icon logo">
