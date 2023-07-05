@@ -31,9 +31,12 @@ public class SecurityConfig {
 					.requestMatchers("/user/my-page/**").hasAnyRole("ADMIN", "MEMBER")
                     // .antMatchers("/api/v1/**").hasRole(Role.USER.name()) // /api/v1/** 은 USER권한만 접근 가능
 					.anyRequest().permitAll())
+            .formLogin(login -> login
+                .loginPage("/user/login"))
             .logout(logout -> logout
                 .logoutSuccessUrl("/"))
             .oauth2Login(oauth2 -> oauth2
+                .defaultSuccessUrl("/")
                 .successHandler((request, response, authentication) -> {
                         response.sendRedirect("/");
                     })
