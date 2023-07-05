@@ -1,9 +1,17 @@
 spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 500MB
   datasource:
     url: jdbc:mariadb://db.newlecture.com:3306/iljodb
     driver-class-name: org.mariadb.jdbc.Driver
     username: iljo
     password: 1234
+
+upload:
+  files: "/images/member/review/"
+
 mybatis:
   type-aliases-package: com.mechoori.web.entity
   mapper-locations:

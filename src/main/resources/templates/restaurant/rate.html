@@ -38,7 +38,7 @@
         </div>
 
         <!-- -------------- 사용자 입력단 -------------- -->
-        <form action="rate" method="post">
+        <form action="rate" method="post" enctype="multipart/form-data">
             <section class="input-contents-wrapper">
                 <!-- 메뉴 선택 -->
                 <section class="menu-selection">
@@ -72,7 +72,7 @@
                             <span>원</span>
                         </div>
                     </div>
-                    
+
                     </div>
                     <!-- 가격 슬라이더 -->
                     <div class="slide-container">
@@ -80,9 +80,17 @@
                     </div>
                 </section>
 
-                <!-- 한줄평 -->
-                <section class="comment">
+                
+                <!-- 리뷰 -->
+                <section class="review">
                     <h1>한줄평을 작성해주세요</h1>
+                    <div class="review-image-wrap">
+                        <div class="icon-camera"></div>
+                        <label for="review-image" id="review-image-label">
+                            <div class="btn-upload">메뉴 사진 첨부</div>
+                        </label>
+                        <input id="review-image" class="d-none" type="file" name="image" accept="image/*">
+                    </div>
                     <textarea name="review" rows="5" placeholder="100자 내로 리뷰를 작성해주세요"></textarea>
                 </section>
 

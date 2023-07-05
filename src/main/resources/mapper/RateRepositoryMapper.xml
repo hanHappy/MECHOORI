@@ -6,8 +6,8 @@
 	
 	<insert id="add" parameterType="Rate">
 		insert into 
-        rate(member_id, menu_id, price, review)
-		values(#{memberId}, #{menuId}, #{price}, #{review})
+        rate(member_id, menu_id, price, review, img)
+		values(#{memberId}, #{menuId}, #{price}, #{review}, #{img})
 	</insert>
     <select id="findByMenuIds" parameterType="java.util.List" resultType="Rate">
         SELECT *

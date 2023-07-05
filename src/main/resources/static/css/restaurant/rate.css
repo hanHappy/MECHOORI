@@ -239,7 +239,7 @@ main {
 }
 
 /* ----------- 리뷰 ----------- */
-.comment {
+.review {
     background-color: #fff;
 
     /* layout */
@@ -248,14 +248,60 @@ main {
     margin-top: var(--contents-space);
 }
 
-    .comment h1 {
+    .review h1 {
         margin: var(--content-margin);
         font-weight: bold;
     }
 
-    .comment textarea {
+    /* ----------- 리뷰 사진 ----------- */
+    .review-image-wrap {
+        margin-top: 10px;
+
+        display: flex;
+        align-items: center;
+    }
+
+    .icon-camera {
+        background-image: url(/images/icons/camera-black.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+
+    }
+    .btn-upload {
+        font-size: 14px;
+        border-radius: 8px;
+        background-color: #EEE;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+        height: 30px;
+        width: 100px;
+        padding: 0px 10px;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        cursor: pointer;
+    }
+    .btn-upload:hover{
+        background-color: #cfcfcf;
+        /* color: #fff; */
+    }
+    .btn-upload.uploaded {
+        background-color: #cfcfcf;
+    }
+        
+
+    .review textarea {
         font-family: var(--font);
-        margin: var(--content-margin);
+        margin-top: 10px;
         background-color: var(--box-color);
         border: none;
         border-radius: var(--border-radius);

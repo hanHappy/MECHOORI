@@ -134,3 +134,23 @@ ratePrice.addEventListener("input", (e)=>{
   
   rateBtnHandler();
 })
+
+// 이미지 업로드
+let reviewSection = document.querySelector(".review");
+let reviewImgUploadBtn = reviewSection.querySelector(".btn-upload");
+let imgInput = reviewSection.querySelector("#review-image");
+imgInput.addEventListener("change", (e)=>{
+  let temp = imgInput.value.split("\\");
+  let fileName = temp[temp.length-1];
+  reviewImgUploadBtn.textContent = fileName;
+  if(imgInput.value!="")
+    reviewImgUploadBtn.classList.add("uploaded");
+  else
+    reviewImgUploadBtn.classList.remove("uploaded");
+});
+
+let reviewImageLabel = reviewSection.querySelector("#review-image-label");
+reviewImageLabel.addEventListener("change", (e)=>{
+  console.log("c");
+});
+
