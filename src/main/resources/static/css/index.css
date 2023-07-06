@@ -275,7 +275,6 @@ label.right{
     background-image: url('/images/icons/rankBack.svg');
     width: 228px;
     height: 125px;
-    display: flex;
     position: absolute;
     align-items: center;
     justify-content: center;
