@@ -11,8 +11,30 @@
 .real-upload {
     display: inline-block;
     position: relative;
-    top:30px;
+    top:40px;
     left:212px;
+}
+
+.real-upload img {
+    /* 기본 이미지 */
+    content: url('/images/icons/이미지수정.svg');
+  }
+  
+.real-upload img:hover{
+    /* 호버 이미지 */
+
+    content: url('/images/icons/이미지수정호버.svg');
+  }
+
+.submit-btn{
+    border:none;
+    padding:10px;
+    position:relative;
+    top: 66px;
+    left: 242px;
+}
+.box{
+    padding-left: 10px;
 }
 
 .upload {
@@ -29,7 +51,7 @@
     margin: 0px 0 0 135px;
     border-radius: 50%;
     border: 2px solid #ffffff00;
-    box-shadow: var(--btn-shadow);
+    box-shadow: var(--btn-shadow-1);
     align-content: center;
 }
 
@@ -47,7 +69,8 @@
     font-weight: bold;
     text-align: center;
     padding: 0;
-    margin: 0
+    margin: 0;
+    /* vertical-align:middle; */
 }
 
 h1{
@@ -155,8 +178,8 @@ li{
     text-align: center;
     line-height: 39px;
     font-size: 14px;
-    margin-right: 20px;
     font-weight: lighter;
+    margin-right: 10px;
 }
 
 .info-box a{
@@ -202,3 +225,4 @@ li{
     text-decoration-line: none;
     font-size: 12px;
 }
+

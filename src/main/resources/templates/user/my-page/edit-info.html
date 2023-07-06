@@ -10,6 +10,7 @@
     
     <title>가입 정보</title>
     <script src ="/js/user/edit-info.js" defer="defer"></script>
+    <script src ="/js/components/modal-alert.js" defer="defer"></script>
     
 </head>
 <body>
@@ -31,21 +32,24 @@
         </div> -->
         <div class="real-upload">
             <img class="img-click" src="/images/icons/이미지수정.svg" id="default1" alt="">
-            <input type="file" class="upload" accept="image/*">
+            <input id ="btn1" type="file" class="upload" accept="image/*">
         </div>
+        <input type="submit" value="저장" class="submit-btn">
 
         <div class="profile-circle">
             <img src="/images/components/프사메추리.png" alt="프로필사진">
         </div>
-        <li class="user-name" sec:authentication="name">님</li>
-
+        <div class="user-name">
+            <span th:text="${m.username}"></span>
+            <span>님</span>
+        </div>
         <div class="edit-user-total">   <!---TODO 회원 정보를 담아 입력되야함 -->
             <div class="edit-user-wrapper">
                 <!-------------- 닉네임 ---------------------->
                 <div class="nickname"><ul>닉네임</ul></div>
                 
                 <div class="info-box">
-                    <div class ="box" ><li>메추리</li></div>  <!--th:text="${m.getNickname}"-->
+                    <div class ="box" th:text="${m.username}"><li>메추리</li></div>  
                     
                     <a class="change-btn" href="edit-info/nickname">변경</a>
                 </div>
@@ -54,7 +58,7 @@
             <div class="edit-user-wrapper">
                 <div><ul>이메일 주소</ul></div> 
                 <div class="info-box">
-                    <div class ="box"> <!-- th:text="${m.getEmail}"-->
+                    <div class ="box" th:text="${m.email}"> 
                         <li>admin@mechuri.com</li>
                     </div>
                     <a class="change-btn" href="edit-info/email">변경</a>
