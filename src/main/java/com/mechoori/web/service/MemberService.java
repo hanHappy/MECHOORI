@@ -14,4 +14,6 @@ public interface MemberService {
 	void resetPwd(Member member);
 
 	void restaurantLike(int Id);
+
+    void update(Member member);
 }

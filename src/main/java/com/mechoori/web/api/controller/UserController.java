@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.mechoori.web.entity.Member;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
 import com.mechoori.web.service.RateService;
@@ -56,35 +57,35 @@ public class UserController {
         return data;
     }
 
-    //이미지 추가
-    // @PostMapping("{id}/image")
-	// public String add(@RequestParam("file") MultipartFile file, @PathVariable int id) throws IOException {
-	// 	String returnFile = null;
+    // 이미지 추가
+//     @PostMapping("{id}/image")
+// 	public String add(@RequestParam("file") MultipartFile file, @PathVariable int id) throws IOException {
+// 		String returnFile = null;
 		
-	// 	MultipartFile file1 = null;
+// 		MultipartFile file1 = null;
 
-    //     String fileName = file1.getOriginalFilename();
-	// 	System.out.println(fileName);
+//         String fileName = file1.getOriginalFilename();
+// 		System.out.println(fileName);
 
-    //     Resource resource = resourceLoader.getResource(uploadPath);
+//         Resource resource = resourceLoader.getResource(uploadPath);
 
-    //     File pathFile = resource.getFile();
+//         File pathFile = resource.getFile();
 
-    //     if(pathFile.exists())
-	// 			pathFile.mkdirs();
+//         if(pathFile.exists())
+// 				pathFile.mkdirs();
 
-    //     String realPath = Paths.get(pathFile.getAbsolutePath(),fileName).toString();
+//         String realPath = Paths.get(pathFile.getAbsolutePath(),fileName).toString();
 
-    //     System.out.println(realPath);
+//         System.out.println(realPath);
 			
-    //     file.transferTo(new File(realPath));
+//         file.transferTo(new File(realPath));
         
-    //     String fullPath = uploadPath + fileName;
+//         String fullPath = uploadPath + fileName;
         
-    // Member member = service.getById(id);
-    // member.setImg(fullPath);
-    // service.update(member);
-    // return returnFile;
-    //http://localhost:8080/user/my-page/statistics
-    // }
+//     Member member = service.getById(id);
+//     member.setImg(fullPath);
+//     //http://localhost:8080/user/my-page/statistics
+//     service.update(member);
+//     return returnFile;
+// }
 }

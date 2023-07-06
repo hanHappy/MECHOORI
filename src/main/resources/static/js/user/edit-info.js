@@ -44,37 +44,22 @@ window.addEventListener('load', function(){
         // console.log(imageUrl);
     
         profileCircleImg.src = imageUrl;
-      };
-      
-      // 선택한 파일을 Data URL 형태로 읽기
-      reader.readAsDataURL(selectedFile);
-    });
+        
+    };
+    
+    // 선택한 파일을 Data URL 형태로 읽기
+    reader.readAsDataURL(selectedFile);
+});
 
 
 
-    submitBtn.onclick = function(e){
-        e.preventDefault();
-        console.log("클릭");
-        (async () => {
-            let newOne = null;
-            {
-                let image =  profileCircleImg;
-                let imgData = image;
-                let jsonData = JSON.stringify(imgData);
-
-                let response = await fetch("/api/user", {
-                    method: "POST",
-                    headers: {
-                    "Content-Type": "application/json"
-                    },
-                    body: jsonData
-            });
-            newOne = await response.json();
-            modalAlert.show(true);
-            }
-
-        if(newOne)
-            {
+submitBtn.onclick = function(e){
+    e.preventDefault();
+    console.log("클릭");
+    let files = document.getElementById("btn1").files;
+    
+    (async () => {
+           
                 if(!file)
                     return;
                 let imgData = new ImgData();
@@ -84,7 +69,7 @@ window.addEventListener('load', function(){
                 file = imgFile;
 
                 // 사진 식별자를 이용해 파일을 업로드
-                let response = await fetch(`/api/user/${newOne.id}/image`, {
+                let response = await fetch(`/api/user/${id}/image`, {
                     method: "POST",
                     body: formData
                 });
@@ -95,9 +80,7 @@ window.addEventListener('load', function(){
 
                 console.log(imgSrc);
 
-                modalAlert.show(false);
-
-            }
+                // modalAlert.show(false);
         })();
 }
 });
