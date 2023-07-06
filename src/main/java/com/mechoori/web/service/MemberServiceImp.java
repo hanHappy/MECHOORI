@@ -55,5 +55,10 @@ public class MemberServiceImp implements MemberService {
 
     }
 
+    @Override
+    public void update(Member member) {
+        repository.findByImage(member.getImg());
+    }
+
 
 }

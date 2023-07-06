@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <meta charset="UTF-8">
@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="/css/user/my-page.css">
     <link rel="stylesheet" href="/css/common/header.css">
     <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/user/my-page/reg.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
+   
 </head>
 
 <body>
@@ -33,62 +35,72 @@
         <div class="profile-circle">
             <img src="/images/components/프사메추리.png" alt="프로필사진">
         </div>
-        <li class="user-name">메추리님</li>
-
+    
+        <!-- 로그인 된 사용자 이름 넣기 -->
+        <div class="user-name" th:text="${m.username}"} th:inline="text">
+        </div>
+        
         <div class ="main">
             <div class="user-modi-list">
-                <!-- FIXME 버튼 클릭 가능 영역 수정 필요 -->
                 <!-- 회원 정보 수정 --> 
-                <a href="my-page/edit-info">
+				<div>
                 <button class="user-modify-info" href="#">
-                    <div class="key-icon">
+					<a href="my-page/edit-info">
+                    <div href="" class="key-icon">
                         <img class="mypage-icon" src="/images/icons/key.svg" alt="usermodi">
                         <li>회원 정보 수정</li>
                     </div>
+                	</a>
                 </button>
-                </a>
-
+				</div>
                 <!-- 찜목록 -->
-                <a href="my-page/like-list">
-                <button class="like-list" href="#">
-                    <div class="like-icon">
-                        <img class="mypage-icon" src="/images/icons/heart.svg" alt="likelist">
-                        <li>찜 목록</li>
-                    </div>
-                </button>
-                </a>
+				<div>
+					<button class="like-list" href="#">
+					<a href="my-page/like-list">
+						<div class="like-icon">
+							<img class="mypage-icon" src="/images/icons/heart.svg" alt="likelist">
+							<li>찜 목록</li>
+						</div>
+					</a>
+					</button>
+				</div>
                 <!-- 평가목록 -->
+				<div>
+				<button class="value-list" href="#">
                 <a href="my-page/rate-list">
-                <button class="value-list" href="#">
                     <div class="value-icon">
                         <img class="mypage-icon" src="/images/icons/review.svg" alt="valuelist">
                         <li>평가 목록</li>
                     </div>
-                </button>
                 </a>
+				</button>
+				</div>
                 <!-- 가성비 평가 비교 -->
-                
-                <a href="my-page/statistics">
-                <button class="compare-value" href="#">
+                <div>
+				<button class="compare-value" href="#">
+					<a href="my-page/statistics">
                     <div class="compare-icon">
                         <img class="mypage-icon" src="/images/icons/compare-value.svg" alt="valuelist">
                         <li>가성비 평가비교</li>
                     </div>
+                	</a>
                 </button>
-                </a>
-
+				</div>
                 <!-- 로그아웃 -->
-                <a href="/">
+				<div>
                 <button class="value-list" href="#">
+					<a href="/">
                     <div class="value-icon">
                         <img class="mypage-icon" src="/images/icons/logout.svg" alt="valuelist">
                         <li>로그아웃</li>
                     </div>
-                </button>
-                </a>
+                	</a>
+				</button>
+				</div>
             </div>
         </div>
         </div>
+        
     </main>
 </body>
 

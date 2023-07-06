@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mechoori.web.entity.Member;
+import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
 import com.mechoori.web.service.RateService;
 import com.mechoori.web.service.RestaurantService;
@@ -27,6 +28,7 @@ public class UserController {
 
     @Autowired
     private RestaurantService restaurantService;
+
     @Autowired
     private MemberService service;
     @Autowired
@@ -107,14 +109,29 @@ public class UserController {
 
     //내 정보
     @GetMapping("my-page")
-    public String myPage(){
+    public String myPage(@AuthenticationPrincipal MechooriUserDetails member, Model model){
+        model.addAttribute("m", member);
         return "user/my-page";
     }
 
     //내 정보 변경
     @GetMapping("my-page/edit-info")
-    public String editInfo(){
+    public String editInfo(@AuthenticationPrincipal MechooriUserDetails member, Model model){
+        model.addAttribute("m", member);
         return "user/my-page/edit-info";
+    }
+
+    //로그인되 있는 내정보를 꺼내기위함
+    @PostMapping("my-page/edit-info")
+    public String editInfo(Member member){
+        service.add(member);
+        return "user/my-page/edit-info";
+    }
+
+    //내 닉네임 변경
+    @GetMapping("my-page/edit-info/nickname")
+    public String editNickname(){
+        return "user/my-page/edit-info/nickname";
     }
 
     //내 휴대폰 번호 변경
@@ -163,6 +180,8 @@ public class UserController {
         //model.addAttribute("data", data);
         return "user/my-page/statistics";
     }
+    
+    // reg-date,  
 
     // reg-date,
 
