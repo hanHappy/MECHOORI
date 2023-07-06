@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,34 +57,37 @@ public class UserController {
     }
 
     // 이미지 추가
-    @PostMapping("{id}/image")
-    public String add(@RequestParam("file") MultipartFile file, @PathVariable int id) throws IOException {
-        String returnFile = null;
-
-        MultipartFile file1 = null;
-
-        String fileName = file1.getOriginalFilename();
-        System.out.println(fileName);
-
+    @PutMapping("{id}/image")
+    public String updateProfileImage(@PathVariable("id") int memberId, @RequestParam("file") MultipartFile file) throws IOException {
+        
+        // 이미지 파일명
+        String fileName = file.getOriginalFilename();
+        
+        // 1. 경로 설정 및 디렉토리 생성
         Resource resource = resourceLoader.getResource(uploadPath);
-
         File pathFile = resource.getFile();
 
-        if (pathFile.exists())
+        if(!pathFile.exists())
             pathFile.mkdirs();
 
+        // 2. 파일 저장
+        // 절대 경로
+        // C:/~/롯데리아.jpg
         String realPath = Paths.get(pathFile.getAbsolutePath(), fileName).toString();
-
-        System.out.println(realPath);
-
+        // 파일.변신(새로운 파일(절대경로에))
         file.transferTo(new File(realPath));
 
-        String fullPath = uploadPath + fileName;
+        // 3. db 저장
+        // /images/member/profile/롯데리아.jpg
+        String dbPath = uploadPath + fileName;
 
-        Member member = service.getById(id);
-        member.setImg(fullPath);
-        // http://localhost:8080/user/my-page/statistics
+        Member member = service.getById(memberId);
+        member.setImg(dbPath);
         service.update(member);
-        return returnFile;
+
+
+        // 4. (마지막) 파일 경로 return
+
+        return dbPath;
     }
 }

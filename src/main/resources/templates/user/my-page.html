@@ -33,11 +33,11 @@
     
     <main>
         <div class="profile-circle">
-            <img src="/images/components/프사메추리.png" alt="프로필사진">
+            <img th:src="@{${m.img}}" alt="프로필사진">
         </div>
     
         <!-- 로그인 된 사용자 이름 넣기 -->
-        <div class="user-name" th:text="${m.username}"} th:inline="text">
+        <div class="user-name" th:text="${m.username}" th:inline="text">
         </div>
         
         <div class ="main">

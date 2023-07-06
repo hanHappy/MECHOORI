@@ -30,24 +30,31 @@ fileInput.addEventListener('change', function () {
     reader.readAsDataURL(selectedFile);
 });
 
-
-
+// 저장 버튼
 submitBtn.onclick = function (e) {
     let profileImgInput = document.querySelector("#profile-img-input");
     let file = profileImgInput.files[0];
     let memberId = profileImgInput.dataset.memberId;
+    let profileFrame = document.querySelector("#profile-frame");
 
-    // console.log(memberId);
+    console.log("c");
 
     // 그릇
     let formData = new FormData();
 
     formData.append("file", file);
 
-    fetch(`api/user/${memberId}/image`, {
+    fetch(`/api/user/${memberId}/image`, {
         method: "PUT",
         body: formData
     })
+    .then(response => response.text())
+    .then(path =>{
+        profileFrame.innerHTML = `<img id="profile-image" src=${path}>`;
+    });
 
-    modalAlert.show(false);
+    // 요청 결과 = 이미지 경로
+
+
+    // modalAlert.show(false);
 }

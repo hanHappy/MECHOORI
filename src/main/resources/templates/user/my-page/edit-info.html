@@ -48,8 +48,8 @@
             </div>
             <button type="button" class="submit-btn">저장</button>
 
-            <div class="profile-circle">
-                <img src="/images/components/프사메추리.png" alt="프로필사진">
+            <div id="profile-frame" class="profile-circle">
+                <img id="profile-image" th:src="@{${m.img}}" alt="프로필사진">
             </div>
         </form>
 
@@ -64,7 +64,7 @@
                 <div class="nickname"><ul>닉네임</ul></div>
                 
                 <div class="info-box">
-                    <div class ="box" th:text="${m.username}"><li>메추리</li></div>  
+                    <div class ="box" th:text="${m.nickname}"><li>메추리</li></div>  
                     
                     <a class="change-btn" href="edit-info/nickname">변경</a>
                 </div>
