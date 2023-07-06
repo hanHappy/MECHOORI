@@ -29,63 +29,61 @@ import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
 import com.mechoori.web.service.RateService;
 
-
-@RestController("apiRateController")
+@RestController("apiUserController")
 @RequestMapping("api/user")
 public class UserController {
-    
-    // @Autowired
-	// private ResourceLoader resourceLoader;
-	
-	// @Value("${upload.path}")
-	// private String uploadPath;
-    
+
+    @Autowired
+    private ResourceLoader resourceLoader;
+
+    @Value("${upload.profile}")
+    private String uploadPath;
+
     @Autowired
     private MemberService service;
-
 
     @Autowired
     private RateService rateService;
 
     @GetMapping("/statistics")
     public Map<String, Integer> statistics(
-        @AuthenticationPrincipal MechooriUserDetails member){
+            @AuthenticationPrincipal MechooriUserDetails member) {
 
         Map<String, Integer> data = rateService.getDate(member.getId());
-        System.out.println("data : "+  data);
+        System.out.println("data : " + data);
 
         return data;
     }
 
     // 이미지 추가
-//     @PostMapping("{id}/image")
-// 	public String add(@RequestParam("file") MultipartFile file, @PathVariable int id) throws IOException {
-// 		String returnFile = null;
-		
-// 		MultipartFile file1 = null;
+    @PostMapping("{id}/image")
+    public String add(@RequestParam("file") MultipartFile file, @PathVariable int id) throws IOException {
+        String returnFile = null;
 
-//         String fileName = file1.getOriginalFilename();
-// 		System.out.println(fileName);
+        MultipartFile file1 = null;
 
-//         Resource resource = resourceLoader.getResource(uploadPath);
+        String fileName = file1.getOriginalFilename();
+        System.out.println(fileName);
 
-//         File pathFile = resource.getFile();
+        Resource resource = resourceLoader.getResource(uploadPath);
 
-//         if(pathFile.exists())
-// 				pathFile.mkdirs();
+        File pathFile = resource.getFile();
 
-//         String realPath = Paths.get(pathFile.getAbsolutePath(),fileName).toString();
+        if (pathFile.exists())
+            pathFile.mkdirs();
 
-//         System.out.println(realPath);
-			
-//         file.transferTo(new File(realPath));
-        
-//         String fullPath = uploadPath + fileName;
-        
-//     Member member = service.getById(id);
-//     member.setImg(fullPath);
-//     //http://localhost:8080/user/my-page/statistics
-//     service.update(member);
-//     return returnFile;
-// }
+        String realPath = Paths.get(pathFile.getAbsolutePath(), fileName).toString();
+
+        System.out.println(realPath);
+
+        file.transferTo(new File(realPath));
+
+        String fullPath = uploadPath + fileName;
+
+        Member member = service.getById(id);
+        member.setImg(fullPath);
+        // http://localhost:8080/user/my-page/statistics
+        service.update(member);
+        return returnFile;
+    }
 }

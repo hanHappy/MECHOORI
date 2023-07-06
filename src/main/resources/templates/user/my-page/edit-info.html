@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="/css/common/style.css">
     
     <title>가입 정보</title>
-    <script src ="/js/user/edit-info.js" defer="defer"></script>
-    <script src ="/js/components/modal-alert.js" defer="defer"></script>
+    <script src ="/js/user/my-page/edit-info.js" defer></script>
+    <script src ="/js/components/modal-alert.js" defer></script>
     
 </head>
 <body>
@@ -30,18 +30,33 @@
         <!-- <div href=""class ="edit-image" alt="">
             <img src="/images/icons/이미지수정.svg" alt="edit-image-icon">
         </div> -->
-        <div class="real-upload">
-            <img class="img-click" src="/images/icons/이미지수정.svg" id="default1" alt="">
-            <input id ="btn1" type="file" class="upload" accept="image/*">
-        </div>
-        <input type="submit" value="저장" class="submit-btn">
 
-        <div class="profile-circle">
-            <img src="/images/components/프사메추리.png" alt="프로필사진">
-        </div>
+        <!-- ================== 프로필 사진 ================== -->
+
+        <form action="" method="post">
+            <div class="real-upload">
+                <label for="profile-img-input" id = profile-image-label>
+                    <!-- 이미지 업로드 버튼 -->
+                    <div class="btn-upload"></div>
+                </label>
+                <input 
+                    type="file" 
+                    class="upload"
+                    id = "profile-img-input"
+                    th:data-member-id="${#authentication.principal.id}" 
+                    accept="image/*">
+            </div>
+            <button type="button" class="submit-btn">저장</button>
+
+            <div class="profile-circle">
+                <img src="/images/components/프사메추리.png" alt="프로필사진">
+            </div>
+        </form>
+
+        <!-- ------------------------------------------------- -->
+
         <div class="user-name">
-            <span th:text="${m.username}"></span>
-            <span>님</span>
+            <span th:text="${m.nickname}"></span>
         </div>
         <div class="edit-user-total">   <!---TODO 회원 정보를 담아 입력되야함 -->
             <div class="edit-user-wrapper">
