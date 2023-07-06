@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mechoori.web.api.config.auth.dto.SessionUser;
 import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.MenuView;
@@ -133,8 +134,13 @@ public class RestaurantController {
     @PostMapping("{id}/rate")
     public String rate(
             Rate rate,
-            @AuthenticationPrincipal MechooriUserDetails user) {
-        rateService.add(rate, user.getId());
+            @AuthenticationPrincipal MechooriUserDetails user,
+            @AuthenticationPrincipal SessionUser sessionUser) {
+
+        if(user != null)
+            rateService.add(rate, user.getId());
+        else if(sessionUser != null)
+            rateService.add(rate, (int)sessionUser.getId());
         // FIXME index -> rate-result로 수정해야 함
         return "redirect:/";
     }

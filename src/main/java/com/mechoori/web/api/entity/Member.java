@@ -2,9 +2,12 @@ package com.mechoori.web.api.entity;
 
 import java.util.Date;
 
+// import com.mechoori.web.api.entity.enums.LoginType;
+// import com.mechoori.web.api.entity.enums.LoginTypeConverter;
 import com.mechoori.web.api.entity.enums.Role;
 
 import jakarta.persistence.Column;
+// import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -34,6 +37,10 @@ public class Member {
     @Column(nullable = false)
     private String username;
 
+    // @Convert(converter = LoginTypeConverter.class)
+    // @Column(name = "login_type_id")
+    // private Integer loginTypeId;
+
     @Column
     private String nickname;
     @Column
@@ -42,21 +49,20 @@ public class Member {
     private String password;
     // @Column
     // private String img;
-    @Column
-    private Integer loginTypeId;
+    // @Column
     @Column
     private Date regDate;
 
     @Builder
-    public Member(Role role, String username, String nickname, String email, String password, Integer loginTypeId, Date regDate) {
-        //, String img
+    public Member(Role role, String username, String nickname, String email, String password, Date regDate) {
+        //, String img, Integer loginTypeId
         this.role = role;
         this.username = username;
         this.nickname = nickname;
         this.email = email;
         this.password = password;
         // this.img = img;
-        this.loginTypeId = loginTypeId;
+        // this.loginTypeId = loginTypeId;
         this.regDate = regDate;
     }
 
@@ -126,13 +132,13 @@ public class Member {
     //     this.img = img;
     // }
 
-    public Integer getLoginTypeId() {
-        return this.loginTypeId;
-    }
+    // public Integer getLoginTypeId() {
+    //     return this.loginTypeId;
+    // }
 
-    public void setLoginTypeId(Integer loginTypeId) {
-        this.loginTypeId = loginTypeId;
-    }
+    // public void setLoginTypeId(Integer loginTypeId) {
+    //     this.loginTypeId = loginTypeId;
+    // }
 
     public Date getRegDate() {
         return this.regDate;

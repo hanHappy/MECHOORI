@@ -9,7 +9,8 @@ import lombok.Getter;
 
 @Getter
 public class SessionUser implements Serializable {
-        //인증된 사용자 정보만 필요
+        //인증된 사용자 정보만 필요\
+        private long id;
         private String username;
         private String nickname;
         private String email;
@@ -17,6 +18,7 @@ public class SessionUser implements Serializable {
         private Role role;
 
     public SessionUser(Member member) {
+        this.id = member.getId();
         this.username = member.getUsername();
         this.nickname = member.getNickname();
         this.email = member.getEmail();
