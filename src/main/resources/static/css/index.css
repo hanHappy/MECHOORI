@@ -161,7 +161,7 @@ main{
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
-    color: #2292F9;
+    color: #838383;
 }
 
 .ranking h1{
@@ -176,6 +176,9 @@ main{
 }
 
 
+
+/*---------- 슬라이드 -----------*/
+
 [name="slide"] {display: none;}
 .slidebox{     
     max-width: 1200px;
@@ -183,7 +186,23 @@ main{
     margin: 0 auto;
 }
 
-.slidebox img {max-width: 100%;}
+.resImg{
+    /* position: relative; */
+    object-fit:cover;
+    width: 335px;
+    height: 184px;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* .slidebox img {max-width: 100%; border-radius: 8px;} */
+
+.textTest{
+    /* position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
 
 .slidebox .slidelist{
     white-space: nowrap;
@@ -191,7 +210,7 @@ main{
     overflow: hidden;
 }
 
-.slidebox .slideitem{
+.slideitem{
     position: relative;
     display: inline-block;
     vertical-align: middle;
@@ -199,7 +218,7 @@ main{
     transition: add .5s;
 }
 
-.slidebox .slideitem label{
+.slideitem label{
     position: absolute;
     z-index: 1;
     top: 50%;
@@ -226,6 +245,74 @@ label.right{
     background-size: 30%;
     background-repeat: no-repeat;
 }
+
+
+
+
+/* <ㅡㅡㅡ 텍스트 ㅡㅡㅡ> */
+.imgTest {
+    
+}
+.slidelist{
+    
+}
+
+.textTest {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.resImg{
+    
+}
+
+
+.imgBack{
+    background-image: url('/images/icons/rankBack.svg');
+    width: 228px;
+    height: 125px;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.textTest span{
+    /* position: absolute; */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textTest span:nth-child(1) {
+    font-size: 24px;
+    font-weight:bolder;
+    top: 25%;
+    right: 149px;
+    
+}
+
+.textTest span:nth-child(2) {
+    font-size: 20px;
+    font-weight: bold;
+    top: 48%;
+    right: 130px;
+}
+
+.textTest span:nth-child(3) {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgba(185, 183, 183, 1);
+    top: 63%;
+    left: 119px;
+}
+
 
 
 
@@ -338,43 +425,11 @@ label.right{
 }
 
 
-/* <ㅡㅡㅡ 한식 텍스트 ㅡㅡㅡ> */
-.imgTest1 {
-    position: relative;
-}
 
-.textTest1 span{
-    position: absolute;
-    color: white;
-    right: 50px;
-}
-
-.textTest1 span:nth-child(1) {
-    font-size: 24px;
-    font-weight:bolder;
-    top: 25%;
-    right: 149px;
-
-}
-  
-.textTest1 span:nth-child(2) {
-    font-size: 20px;
-    font-weight: bold;
-    top: 48%;
-    right: 130px;
-}
-
-.textTest1 span:nth-child(3) {
-    font-size: 16px;
-    font-weight: bold;
-    color: rgba(185, 183, 183, 1);
-    top: 63%;
-    left: 119px;
-}
 
 
 /* <ㅡㅡㅡ 분식 텍스트 ㅡㅡㅡ> */
-.imgTest2 {
+/* .imgTest2 {
     position: relative;
 }
 
@@ -395,7 +450,6 @@ label.right{
     font-size: 20px;
     font-weight: bold;
     top: 48%;
-    /* right: 140px; */
     right: 42%;
 }
 
@@ -405,13 +459,13 @@ label.right{
     color: rgba(185, 183, 183, 1);
     top: 63%;
     left: 119px;
-}
+} */
 
 
 
 
 /* <ㅡㅡㅡ 일식 텍스트 ㅡㅡㅡ> */
-.imgTest3 {
+/* .imgTest3 {
     position: relative;
 }
 
@@ -441,10 +495,10 @@ label.right{
     color: rgba(185, 183, 183, 1);
     top: 63%;
     left: 119px;
-}
+} */
 
 /* <ㅡㅡㅡ 양식 텍스트 ㅡㅡㅡ> */
-.imgTest4 {
+/* .imgTest4 {
     position: relative;
 }
 
@@ -474,10 +528,10 @@ label.right{
     color: rgba(185, 183, 183, 1);
     top: 63%;
     left: 119px;
-}
+} */
 
 /* <ㅡㅡㅡ 중식 텍스트 ㅡㅡㅡ> */
-.imgTest5 {
+/* .imgTest5 {
     position: relative;
 }
 
@@ -507,7 +561,7 @@ label.right{
     color: rgba(185, 183, 183, 1);
     top: 63%;
     left: 119px;
-}
+} */
 
 /* <ㅡㅡㅡ 랭킹 보기 텍스트 ㅡㅡㅡ> */
 .imgTest1 {

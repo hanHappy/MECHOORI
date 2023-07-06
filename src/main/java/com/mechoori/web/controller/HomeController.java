@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.Restaurant;
+import com.mechoori.web.entity.RestaurantRankView;
 import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.RestaurantService;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
+import com.mechoori.web.service.RestaurantRankService;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -26,6 +29,9 @@ public class HomeController {
 	private	CategoryService service;
 	@Autowired
 	private RestaurantService restaurantService;
+	@Autowired
+	private RestaurantRankService restaurantRankService;
+
 
 
 	
@@ -36,12 +42,15 @@ public class HomeController {
 	) {
 
 		List<TopCategory> list = service.getTopCategoryList();
+		List<RestaurantRankView> listRank = restaurantRankService.getRankTop5();
 
 		// String nickname = member.getNickname();//
 
 		model.addAttribute("list", list);
 			// .addAttribute("nickname", nickname);//
-
+		model.addAttribute("listRank", listRank);
+		// System.out.println(listRank);
+		
 		// for(int i=0; i<10; i++){
 		// 	System.out.println(nickname);
 		// }

@@ -117,6 +117,13 @@
 		select * from restaurant
 	</select>
 
+	<select id="findRankAll" resultType="RestaurantRankView">
+		select * from restaurant_rank_view order by value desc
+		<if test="size != null">
+			limit #{size}
+		</if>
+	</select>
+
 
 
 
