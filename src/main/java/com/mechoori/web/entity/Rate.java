@@ -12,4 +12,5 @@ public class Rate {
     private Date regDate;
     private int price;
     private String review;
+    private String img;
 }

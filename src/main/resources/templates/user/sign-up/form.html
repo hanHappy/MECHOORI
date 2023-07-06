@@ -15,18 +15,13 @@
 
 </head>
 
-
-<!-- FIXME : input box 입력값 left padding -> 10정도? -->
-
-
 <body>
   <header>
     <div class="header-side left">
-      <a onclick="history.back()"><button class="header-icon back"></button></a>
+      <a onclick="history.back()" class="header-icon back"></a>
     </div>
     <h1 class="header-icon logo"></h1>
     <div class="header-side right">
-      <a href="/"><button class="header-icon home"></button></a>
     </div>
   </header>
 
@@ -51,7 +46,7 @@
       <!-- form 전체 -->
       <div class="form-container">
 
-        <form action="/form" method="POST" id="form__wrap">
+        <form action="form" method="POST" id="form__wrap">
 
           <!-- 이름 -->
           <div class="form-wrap">
@@ -94,7 +89,7 @@
                       name="email" 
                       placeholder="* 로그인 시 사용할 이메일 주소 입력" 
                       required/>
-                <button type="button" id="btn-email-check" class="button button-10">인증 요청</button>
+                <button type="button" id="btn-email-confirm-request" class="button button-10">인증 요청</button>
               </div>
             </div>
             <div id="msg-email-check"></div>
@@ -103,18 +98,18 @@
           <!-- 이메일 인증번호 -->
           <div class="form-wrap">
             <div class="form-item">
-              <label for="email-confirm" id="memailconfirmTxt">인증 번호 입력</label>
+              <label for="email-confirm" id="memailconfirmTxt">인증번호 입력</label>
               <div class="input-wrap">
                 <input 
                       type="text" 
                       id="email-confirm" 
                       class="input input9"
-                      placeholder="* 이메일 인증 번호 입력"
+                      placeholder="* 이메일 인증번호 입력"
                       required/>
                 <button type="button" id="btn-confirm-num-check" class="button button-10">확인</button>
               </div>
             </div>
-            <!-- TODO 인증번호 확인 버튼 -->
+            <div id="msg-email-confirm-result"></div>
           </div>
 
           <!-- 비밀번호 -->
@@ -147,10 +142,7 @@
             <div id="password-check"></div>
           </div>
 
-          <!-- FIXME a 태그 삭제 -->
-          <a href="user/sign-up/complete">
-            <button type="submit" class="button button-1 submit" disabled>가입</button>
-          </a>
+          <button class="button button-1 submit" disabled>가입</button>
           
         </form>
 

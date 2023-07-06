@@ -22,16 +22,8 @@ li {
 main{
     max-width: 1200px;
 }
-input {
-    background-color: var(--box-color);
-    border: none;
-    border-radius: var(--border-radius);
-  
-    height: 40px;
-    padding: 0 0 0 10px;
-}
 .d-none{
-    display: none;
+    display: none !important;
 }
 .text-hidden{
     text-indent: -999px;

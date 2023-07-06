@@ -13,6 +13,7 @@
     <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
     <script src="/js/restaurant/map.js"></script>
+    <script src="/js/restaurant/detail.js" defer></script>
 </head>
 
 <body>
@@ -38,14 +39,27 @@
             <div class="title">
                 <p th:text="${r.name}" id="resName">짜장상회</p>
                 <div>
-                    <img src="/images/icons/icon-like.svg">
-                    <img src="/images/icons/icon-share.svg">
+                    <a 
+                        href=""
+                        type="button"
+                        sec:authorize="isAuthenticated()" 
+                        th:data-member-id="${#authentication.principal.id}"
+                        th:data-restaurant-id="${r.id}"
+                        class="like" 
+                        th:classappend="${r.like}?'active' : ''">좋아요
+                    </a>
+                    <a 
+                        sec:authorize="isAnonymous()"
+                        href="/user/login" 
+                        class="like">좋아요
+                    </a>
+                    <a href="" class="share">공유하기</a>
                 </div>
             </div>
             <div class="rated-result">
                 <div>
                     <img src="/images/icons/icon-like-result.svg">
-                    <p th:text="${r.likeCount}">찜하기수</p>
+                    <p th:text="${r.likeCount}" id="like-count">찜하기수</p>
                 </div>
                 <div>
                     <img src="/images/icons/icon-rated-result.svg">

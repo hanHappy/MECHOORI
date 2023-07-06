@@ -26,13 +26,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (data === "0") {
 
-                    emailConfirmMsg.innerText = `사용 중 이거나, 이메일 확인 후 다시 입력 해주세요`
+                    emailConfirmMsg.innerText = "사용 중인 계정이거나 형식이 올바르지 않습니다"
                     emailConfirmMsg.style.color = "red";
                 } else {
                     //아이디 없을 때
                     emailConfirmCode = data;
                     emailConfirmMsg.innerText = `인증코드가 이메일로 전송되었습니다`
-                    console.log('인증코드가 이메일로 전송되었습니다.');
                 }
             })
             .catch(function (error) {
@@ -80,28 +79,26 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
-
+    // 이메일 인증번호
     function checkEmailConfirmationCode() {
         const userCode = document.getElementById('email-confirm').value;
-        const memailconfirmTxt = document.getElementById('memailconfirmTxt');
+        const emailConfirmMsg = document.querySelector('#msg-email-confirm-result');
         const emconfirmchk = document.getElementById('emconfirmchk');
         const submitBtn = document.querySelector(".next");
 
 
         if (userCode !== emailConfirmCode) {
-            memailconfirmTxt.innerHTML = '<span id="emconfirmchk">인증번호가 잘못되었습니다.</span>';
+            emailConfirmMsg.innerHTML = '<span id="emconfirmchk">인증번호가 잘못되었습니다.</span>';
             emconfirmchk.style.color = '#FA3E3E';
             emconfirmchk.style.fontWeight = 'bold';
             emconfirmchk.style.fontSize = '10px';
-            console.log('인증번호가 잘못되었습니다.');
             submitBtn.disabled = true;
 
         } else {
-            memailconfirmTxt.innerHTML = '<span id="emconfirmchk">인증번호 확인 완료</span>';
+            emailConfirmMsg.innerHTML = '<span id="emconfirmchk">인증번호가 일치합니다</span>';
             emconfirmchk.style.color = '#0D6EFD';
             emconfirmchk.style.fontWeight = 'bold';
             emconfirmchk.style.fontSize = '10px';
-            console.log('인증번호 확인 완료');
             submitBtn.disabled = false;
 
 
@@ -109,14 +106,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Event handler for email confirmation button click
-    document.querySelector('#btn-email-check').addEventListener('click', function () {
+    document.querySelector('#btn-email-confirm-request').addEventListener('click', function () {
         sendEmailConfirmationRequest();
     });
 
-    // Event handler for email confirmation code input
-    document.getElementById('email-confirm').addEventListener('keyup', function () {
+    // 인증번호 확인 버튼 클릭 시 일치 여부 판별
+    let emailConfirmNumCheckBtn = document.querySelector('#btn-confirm-num-check');
+    emailConfirmNumCheckBtn.onclick = function(){
         checkEmailConfirmationCode();
-    });
+    }
 
     // Event handler for email confirmation button click
     document.getElementById('nickname').addEventListener('input', function () {
@@ -171,10 +169,10 @@ const form = document.querySelector("#form__wrap");
 const submitBtn = document.querySelector(".submit");
 
 form.addEventListener("input", function () {
-    needFilmAll();
+    checkAnswerCompletion();
 });
 
-function needFilmAll() {
+function checkAnswerCompletion() {
     let userName = document.querySelector(".input1").value;
     let nickname = document.querySelector(".input2").value;
     let password = document.querySelector(".input3").value;
@@ -190,10 +188,8 @@ function needFilmAll() {
         emailConfirm !== ""
     ) {
         submitBtn.disabled = false;
-        console.log("false");
     } else {
         submitBtn.disabled = true;
-        console.log("nope");
     }
 
 }

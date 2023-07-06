@@ -19,6 +19,7 @@
 
 .image {
     border-radius: 8px;
+
     width: 335px;
     height: 140px;
     object-fit: cover;
@@ -26,7 +27,7 @@
 
 /* 좋아요 */
 .like {
-    background-image: url("/images/icons/빈하트.svg");
+    background-image: url("/images/icons/빈하트-2.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;
@@ -41,11 +42,15 @@
 
     text-indent: -999px;
     overflow: hidden;
+
+    transition: 0.6s;
 }
 
 .like.active {
-    background-image: url("/images/icons/하트.svg");
-}
+    background-image: url("/images/icons/하트-2.svg");
+    
+    transition: 0.6s;
+} 
 
 /* 좋아요, 평가 수 데이터 */
 .data-box {
@@ -92,6 +97,22 @@
     width: 12px;
     height: 11px;
     margin-left: 10px;
+}
+
+.image-screen {
+    background-image: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0.0) 70%,
+    rgba(0, 0, 0, 0.1) 80%,
+    rgba(0, 0, 0, 0.2) 90%, 
+    rgba(0, 0, 0, 0.3) 100%
+);
+    border-radius: 8px;
+    
+    /* z-index: 1; */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-140px);
 }
 
 /* ---------------------- 식당 정보 (상호 - 평균 가격 - 가성비) ---------------------- */
@@ -148,4 +169,36 @@
 
 .btn-box>div:last-child {
     padding-left: 5px;
+}
+
+@keyframes heart-vanish-effect{
+    from{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0.8);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
+.like{
+    animation: heart-vanish-effect 0.5s both;
+}
+
+@keyframes heart-effect{
+    from{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
+.like.active{
+    animation: heart-effect 0.5s both;
 }
