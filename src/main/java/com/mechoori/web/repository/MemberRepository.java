@@ -24,4 +24,6 @@ public interface MemberRepository {
     void resetPwd(Member member);
 
     Member findByImage(String img);
+
+    void update(Member member);
 }

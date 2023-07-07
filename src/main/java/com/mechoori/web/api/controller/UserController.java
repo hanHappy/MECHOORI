@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,11 +35,11 @@ import com.mechoori.web.service.RateService;
 @RequestMapping("api/user")
 public class UserController {
     
-    // @Autowired
-	// private ResourceLoader resourceLoader;
+    @Autowired
+	private ResourceLoader resourceLoader;
 	
-	// @Value("${upload.path}")
-	// private String uploadPath;
+	@Value("${upload.profile}")
+	private String uploadPath;
     
     @Autowired
     private MemberService service;
@@ -57,35 +58,37 @@ public class UserController {
         return data;
     }
 
+
     // 이미지 추가
-//     @PostMapping("{id}/image")
-// 	public String add(@RequestParam("file") MultipartFile file, @PathVariable int id) throws IOException {
-// 		String returnFile = null;
-		
-// 		MultipartFile file1 = null;
+    @PutMapping("{id}/image")
+	public String updateProfileImage(@PathVariable("id") int memberId, @RequestParam("file") MultipartFile file) throws IOException {
+    String fileName = file.getOriginalFilename();
+    // yml 파일에 설정 -> upload : profile : "/image"
 
-//         String fileName = file1.getOriginalFilename();
-// 		System.out.println(fileName);
+    // 1. 경로 설정 및 디렉토리 생성
+    Resource resource = resourceLoader.getResource(uploadPath);
+    File pathFile = resource.getFile();
+    
+    if(!pathFile.exists())
+        pathFile.mkdirs();
 
-//         Resource resource = resourceLoader.getResource(uploadPath);
-
-//         File pathFile = resource.getFile();
-
-//         if(pathFile.exists())
-// 				pathFile.mkdirs();
-
-//         String realPath = Paths.get(pathFile.getAbsolutePath(),fileName).toString();
-
-//         System.out.println(realPath);
-			
-//         file.transferTo(new File(realPath));
+    // 2. 파일 저장
+    // 절대 경로 + 이미지 파일명 
+        String realPath = Paths.get(pathFile.getAbsolutePath(), fileName).toString();
+    // 파일.변신(새로운 파일(절대경로에))
+        file.transferTo(new File(realPath));
         
-//         String fullPath = uploadPath + fileName;
-        
-//     Member member = service.getById(id);
-//     member.setImg(fullPath);
-//     //http://localhost:8080/user/my-page/statistics
-//     service.update(member);
-//     return returnFile;
-// }
+
+    // 3. db에 ㅈㅓ장
+    String dbPath = uploadPath + fileName;
+    
+    Member member = service.getById(memberId);
+    
+    member.setImg(dbPath);
+    
+    // 4. (마지막) 파일 경로 return -> edit-info
+    service.update(member);
+
+    return "";
+}
 }

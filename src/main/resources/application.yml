@@ -11,7 +11,7 @@ spring:
 
 upload:
   files: "/images/member/review/"
-
+  profile: "/images/member/profile/"
 mybatis:
   type-aliases-package: com.mechoori.web.entity
   mapper-locations:

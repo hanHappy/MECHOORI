@@ -15,16 +15,19 @@
     left:212px;
 }
 
-.real-upload img {
+.btn-upload {
     /* 기본 이미지 */
-    content: url('/images/icons/이미지수정.svg');
+    background-image: url('/images/icons/이미지수정.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    width: 29px;
+    height: 28px;
   }
   
-.real-upload img:hover{
-    /* 호버 이미지 */
-
-    content: url('/images/icons/이미지수정호버.svg');
-  }
+.btn-upload:hover{
+    filter: brightness(0.8);
+}
 
 .submit-btn{
     border:none;
