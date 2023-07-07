@@ -61,6 +61,8 @@ main{
     --btn-shadow-2: 0px 2px 5px 0px #00000016;
     /* 버튼 그림자 -3 */
     --btn-shadow-3: 0px 0px 5px 0px #75757525;
+    /* 버튼 그림자 -4 */
+    --btn-shadow-4: 0px 0px 10px 3px #75757525;
     /* 공통 곡률 */
     --border-radius: 8px;
     /* 아래 테두리 */

@@ -1,192 +1,104 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-@import url('/css/common/style.css');
+.profile-image-wrapper {
+    background-color: bisque;
 
-/* 회원정보수정 목록들 텍스트*/
-.main li{
-    color: #828282;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
+    width: 100vw;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
-.button {
-    position : relative;
-    top:51px;
-    left:210px;
+
+.profile-image-frame {
+    border-radius: 50%;
+    /* border: 1px solid #fff0; */
+    box-shadow: var(--btn-shadow-1);
+
+    position: relative;
+    overflow: hidden;
+
+    width: 110px;
+    height: 110px;
+}
+
+.profile-image {
+    width: inherit;
+    height: inherit;
+    position: inherit;
+    object-fit: cover;
+}
+
+.menu-list-section {
+    box-sizing: border-box;
+
+    padding: 50px 20px 0 20px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-.button img {
-    width: 25px;
-}
-label {
-    cursor: pointer;
-    font-size: 1em;
-}
-
-/* 기존 input 형식 숨기기 */
-#chooseFile {
-    visibility: hidden;
-}
-
-
-.edit-image img{
-    position: relative;
-    top:40px;
-    left:215px;
-}
-
-
-/* 프로필 사진 틀 */
-.profile-circle{
-    position: relative;
-    width:100px;  /*부모(헤더)의 영향을 받음*/
-    height: 100px;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    margin: 10px 0 0 135px;
-    border-radius: 50%;
-    border: 2px solid #ffffff00;
-    box-shadow: var(--btn-shadow-1);
-    align-content: center;
-}
-
-.profile-circle img{
-    width:inherit;
-    height: inherit;
-    position: inherit;
-    object-fit:cover;
-    z-index: -1;
-    /* right: 10px; */
-}
-
-.user-name{
-    position: relative;
-    font-weight: bold;
-    text-align: center;
-    margin: 0
-}
-
-
-.user-modi-list{
+.menu-list-section ul {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    color: #828282;
-    font-size: 14px;
-    font-weight: bold;
-    
-}
-
-.user-modi-list img {
-    padding: 0 54px 0 14px;
-}
-
-/* 회원정보수정 틀 */
-.user-modify-info{
-    width:295px;
-    position: relative;
-    background-color: white;
-    display: block;
-    margin: 70px auto 30px auto;
-    border: none;
-    /* div에 가운데 정렬을 주기 */
-    font-family: inherit;
-
-}
-
-/* 키 아이콘 --------------------*/
-.key-icon{
-    border-radius: 6px;
-    padding: 10px 0;
-    display:flex;
     align-items: center;
-    justify-items: center;
-    font-family: inherit;
-    /* box-shadow: 0px 0px 10px 3px #75757525; */
-    box-shadow: var(--block-shadow);
+    gap: 25px;
+
+    width: 100%;
 }
 
-/* ---------------------------------------- */
+.menu-list-section li {
+    box-shadow: var(--btn-shadow-4);
+    border-radius: 8px;
 
-/* 찜 아이콘 ---------------------------*/
-.like-list{
-    width:295px;
+    min-width: 275px;
+    max-width: 400px;
+    width: 100%;
+    height: 50px;
+}
+
+.menu-list-section a {
     position: relative;
-    background-color: white;
-    display: block;
-    margin: 0px auto 30px auto;
-    border: none;
-    font-family: inherit;
-}
 
-.like-icon{
-    border-radius: 6px;
-    padding: 10px 0;
-    display:flex;
+    width: 100%;
+    height: 100%;
+    display: flex;
+
     align-items: center;
-    justify-items: center;
-    /* box-shadow: 0px 0px 10px 3px #75757525; */
-    box-shadow: var(--block-shadow);
+    justify-content: center;
 }
 
-.like-icon li{
-    padding-left:20px;
-}
-/*-------------------------------*/
+.icon {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 
-/* 평가하기 ---------------------------*/
-.value-list{
-    width:295px;
-    position: relative;
-    background-color: white;
-    display: block;
-    margin: 0 auto;
-    border: none;        
-    font-family: inherit; 
+    position: absolute;
+    left: 15px;
+
+    height: 25px;
+    width: 30px;
 }
 
-
-
-.value-icon{
-    border-radius: 6px;
-    padding: 10px 0;
-    display:flex;
-    margin-bottom: 30px;
-    align-items: center;
-    justify-items: center;
-    /* box-shadow: 0px 0px 10px 3px #75757525; */
-    box-shadow: var(--block-shadow);
+.icon-key {
+    background-image: url("/images/icons/key.svg");
 }
 
-.value-icon li{
-    padding-left:12px;
+.icon-heart {
+    background-image: url("/images/icons/heart-red.svg");
 }
 
-/*---------------------------------------*/
-
-/* 가성비 평가 비교 */
-
-.compare-value{
-    width:295px;
-    position: relative;
-    background-color: white;
-    display: block;
-    margin: 0 auto;
-    border: none;        
-    font-family: inherit; 
+.icon-review {
+    background-image: url("/images/icons/review.svg");
 }
 
-.compare-icon{
-    border-radius: 6px;
-    padding: 10px 0;
-    display:flex;
-    margin-bottom: 30px;
-    align-items: center;
-    justify-items: center;
-    /* box-shadow: 0px 0px 10px 3px #75757525; */
-    box-shadow: var(--block-shadow);
+.icon-chart {
+    background-image: url("/images/icons/chart.svg");
 }
 
-.compare-icon li{
-    padding-right: 5px;
+.icon-power {
+    background-image: url("/images/icons/power.svg");
 }
