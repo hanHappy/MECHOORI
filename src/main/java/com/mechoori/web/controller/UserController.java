@@ -150,7 +150,13 @@ public class UserController {
 
     //찜한목록
     @GetMapping("my-page/like-list")
-    public String likeList() {
+    public String likeList(Model model,
+                           @AuthenticationPrincipal MechooriUserDetails user) {
+
+    List<RestaurantLike> list = service.restaurantLike(user.getId());
+
+    model.addAttribute("list",list);
+
         return "user/my-page/like-list";
     }
 

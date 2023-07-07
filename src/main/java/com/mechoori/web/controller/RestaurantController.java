@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import com.mechoori.web.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -14,14 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mechoori.web.entity.Category;
-import com.mechoori.web.entity.Menu;
-import com.mechoori.web.entity.MenuView;
-import com.mechoori.web.entity.Rate;
-import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantDetail;
-import com.mechoori.web.entity.RestaurantView;
-import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
@@ -140,25 +133,26 @@ public class RestaurantController {
     }
 
     @GetMapping("/ranking")
-    public String ranking(Model model,
-                          Integer categoryId) {
+        public String ranking(Model model,
+        @RequestParam(value = "offset", defaultValue = "0") int offset,
+        Integer categoryId) {
 
-       List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
+            List<TopCategory> mainCtgList = categoryService.getTopCategoryList();
 
-        List<RestaurantView> list = null;
+            List<RestaurantRankView> list = null;
 
-        if (categoryId != null) {
-            list = restaurantService.getRanking(categoryId,0,6);
-        } else {
-            list = restaurantService.getRanking();
-        }
+            if (categoryId != null) {
+                list = restaurantService.getRanking(categoryId, offset);
+            }
+            else
+                list = restaurantService.getRanking(categoryId, offset);
 
-        System.out.println(mainCtgList);
-        System.out.println(list);
-       model.addAttribute("list",list);
-       model.addAttribute("ctg",mainCtgList);
+            System.out.println(mainCtgList);
+            System.out.println(list);
+            model.addAttribute("list", list);
+            model.addAttribute("ctg", mainCtgList);
 
-       return "/restaurant/ranking";
+        return "/restaurant/ranking";
     }
 
     @GetMapping("/mapPage/{id}")

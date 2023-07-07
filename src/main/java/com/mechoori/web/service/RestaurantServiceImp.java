@@ -3,6 +3,7 @@ package com.mechoori.web.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mechoori.web.entity.RestaurantRankView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -142,14 +143,14 @@ public class RestaurantServiceImp implements RestaurantService {
 	}
 
 	@Override
-	public List<RestaurantView> getRanking(Integer categoryId, int offset, int size) {
-		return repository.getRanking(categoryId, offset, size);
+	public List<RestaurantRankView> getRanking(Integer categoryId, int offset) {
+		return repository.getRanking(categoryId, offset, 6);
 	}
 
-	@Override
-	public List<RestaurantView> getRanking() {
-		return repository.getRanking();
-	}
+//	@Override
+//	public List<RestaurantRankView> getRanking(int offset) {
+//		return repository.getRanking(offset);
+//	}
 
 //	@Override
 //	public List<RestaurantView> getRanking(Integer categoryId) {

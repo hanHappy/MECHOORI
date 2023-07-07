@@ -1,20 +1,20 @@
 let offset = 0;
 
 // 스크롤 이벤트 리스너 등록
-window.addEventListener("scroll", function (){
+window.addEventListener("scroll", function () {
     let documentHeight = document.documentElement.scrollHeight;
     let scrollTop = document.documentElement.scrollTop
     let windowHeight = document.documentElement.clientHeight;
 
-    let foodList =document.querySelector(".foodList")
+    let foodList = document.querySelector(".foodList")
 
 
     let url = `http://localhost:10222/api/user/my-page/rate-list?offset=${offset}`;
 
-    if(windowHeight + scrollTop == documentHeight) {
+    if (windowHeight + scrollTop == documentHeight) {
         offset += 6;
 
-        console.log("offset",offset);
+        console.log("offset", offset);
 
         fetch(url)
             .then((response) => response.json())

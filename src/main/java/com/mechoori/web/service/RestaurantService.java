@@ -2,9 +2,7 @@ package com.mechoori.web.service;
 
 import java.util.List;
 
-import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantDetail;
-import com.mechoori.web.entity.RestaurantView;
+import com.mechoori.web.entity.*;
 import com.mechoori.web.entity.RestaurantView;
 
 public interface RestaurantService {
@@ -27,11 +25,11 @@ public interface RestaurantService {
 
 	List<Integer> getPages();
 	
-	List<RestaurantView> getRanking(Integer categoryId , int offset, int size);
+	List<RestaurantRankView> getRanking(Integer categoryId , int offset);
     void add(Restaurant restaurant);
 
 
-	List<RestaurantView> getRanking();
+//	List<RestaurantRankView> getRanking(int offset);
 
 //	List<RestaurantView> getRanking(Integer categoryId);
 }

@@ -1,8 +1,10 @@
 package com.mechoori.web.api.controller;
 
-import java.util.List;
-
-import com.mechoori.web.entity.Restaurant;
+import com.mechoori.web.entity.RestaurantRankView;
+import com.mechoori.web.entity.RestaurantView;
+import com.mechoori.web.security.MechooriUserDetails;
+import com.mechoori.web.service.MenuService;
+import com.mechoori.web.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mechoori.web.entity.RestaurantView;
-import com.mechoori.web.security.MechooriUserDetails;
-import com.mechoori.web.service.MenuService;
-import com.mechoori.web.service.RestaurantService;
+import java.util.List;
 
 @RestController("apiRestaurantController")
 @RequestMapping("api/restaurant")
@@ -56,22 +55,17 @@ public class RestaurantController {
 
 
     @GetMapping("/ranking")
-    public List<RestaurantView> list(
+    public List<RestaurantRankView> list(
+            @RequestParam(value = "offset", defaultValue = "0") int offset,
             @RequestParam(name = "ctgId", required = false) Integer categoryId) {
 
-        List<RestaurantView> list = null;
+        List<RestaurantRankView> list = null;
 
-        if (categoryId != null) {
-            list = rstrService.getRanking(categoryId,0,6);
-        } else {
-            list = rstrService.getRanking();
-
-        }
+        if (categoryId != null)
+            list = rstrService.getRanking(categoryId, offset);
+        else
+            list = rstrService.getRanking(null, offset);
 
         return list;
-
-        // 		2) 바닥 닿을때 페이지 추가
-
-        // 6개  - - - - - - offset 0 size 6...
     }
 }
