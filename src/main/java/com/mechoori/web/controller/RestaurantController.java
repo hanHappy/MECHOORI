@@ -1,10 +1,16 @@
 package com.mechoori.web.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
@@ -40,6 +47,12 @@ public class RestaurantController {
     private CategoryService categoryService;
     @Autowired
     private RateService rateService;
+
+    @Value("${upload.files}")
+    private String uploadPath;
+    @Autowired
+    private ResourceLoader resourceLoader;
+
 
     @GetMapping("/list")
     public String list(
@@ -76,10 +89,15 @@ public class RestaurantController {
     @GetMapping("{id}")
     public String detail(
             @PathVariable("id") int restaurantId,
+            @AuthenticationPrincipal MechooriUserDetails member,
             Model model) {
+        
+        Integer memberId = null;
+        if(member!=null)
+            memberId = member.getId();
 
         // List<Menu> menuList = menuService.getList(restaurantId);
-        RestaurantView restaurantView = restaurantService.getViewDetailById(restaurantId);
+        RestaurantView restaurantView = restaurantService.getViewDetailById(memberId, restaurantId);
         List<MenuView> menuViewList = menuService.getViewListByRestaurantId(restaurantId);
 
         //아이디
@@ -133,8 +151,36 @@ public class RestaurantController {
     @PostMapping("{id}/rate")
     public String rate(
             Rate rate,
-            @AuthenticationPrincipal MechooriUserDetails user) {
+            @RequestParam("image") MultipartFile image,
+            @AuthenticationPrincipal MechooriUserDetails user) throws IOException {
+                
+        // 리뷰 이미지 ---------------------------------------
+        
+        // input으로 넘어온 이미지 파일명
+        String fileName = image.getOriginalFilename();
+        
+        Resource resource = resourceLoader.getResource(uploadPath);
+        
+        File pathFile = resource.getFile();
+
+        // 디렉토리 없을 시 생성
+        if(!pathFile.exists())
+            pathFile.mkdirs();
+        
+        // 디렉토리에 이미지 저장
+        // C:\Workspace\MECHOORI\src\main\webapp\images\member\review\가츠벤또.jpg
+        String realPath = Paths.get(pathFile.getAbsolutePath(), fileName).toString();
+        image.transferTo(new File(realPath));
+
+        // /images/member/review/가츠벤또.jpg
+        String fullPath = uploadPath + fileName;
+
+        // 평가 데이터에 이미지 경로 세팅
+        rate.setImg(fullPath);
+
+        // 평가 데이터 추가
         rateService.add(rate, user.getId());
+
         // FIXME index -> rate-result로 수정해야 함
         return "redirect:/";
     }

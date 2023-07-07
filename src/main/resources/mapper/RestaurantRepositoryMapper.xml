@@ -9,11 +9,19 @@
         where id = #{restaurantId}
     </select>
 
-    <select id="findViewById" resultType="RestaurantView">
-        select *
-        from restaurant_view
-        where id = #{restaurantId}
-    </select>
+	<select id="findViewById" resultType="RestaurantView">
+		<if test="memberId == null">
+			select *
+			from restaurant_view
+			where id = #{restaurantId}
+		</if>
+		<if test="memberId != null">
+			select rv.*, IF(rl.member_id is not null, 1, 0) `like`
+			from restaurant_view rv
+			left join restaurant_like rl on rv.id = rl.restaurant_id and rl.member_id = #{memberId}
+			where rv.id = #{restaurantId}
+		</if>
+	</select>
 
     <select id="findAll" resultType="Restaurant">
         select *
@@ -90,15 +98,14 @@
         #{contactNumber})
     </insert>
 
-    <select id="getRanking" resultType="RestaurantView">
-        SELECT *
-        from restaurant_view
-            <if test="categoryId != null">
-                where category_id = #{categoryId}
-            </if>
-        ORDER BY value DESC
-
-    </select>
+	<select id="getRanking" resultType="RestaurantView">
+		SELECT *
+		from restaurant_view
+		<if test="categoryId != null">
+		where category_id = #{categoryId}
+		</if>
+		ORDER BY value DESC
+	</select>
 
     <select id="findAllRestaurant" resultType="Restaurant">
         select * from restaurant

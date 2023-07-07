@@ -102,7 +102,7 @@
                         <div class="image-box">
                             <img src="/images/foods/청화원2.png" th:src="@{/images/foods/{img}(img=${r.img})}" alt="이미지"
                                 class="image">
-                            <div class="screen">
+                            <div class="image-screen">
                                 <!-- 하트 -->
                                 <a 
                                     href=""
@@ -157,9 +157,13 @@
                 </section>
             </div>
         </section>
+        <div class="screen">
+            <div class="modal-like">
+                <p>너 내가 찜했다</p>
+            </div>
+        </div>
 
         <input type="hidden" sec:authorize="isAuthenticated()" th:value="${#authentication.principal.id}" id="member-id">
-
     </main>
 
 </body>
