@@ -2,19 +2,19 @@ package com.mechoori.web.controller;
 
 import java.util.List;
 
-import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantView;
-import com.mechoori.web.security.MechooriUserDetails;
-import com.mechoori.web.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mechoori.web.api.config.auth.dto.SessionUser;
+import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.service.CategoryService;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.mechoori.web.service.RestaurantService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
@@ -27,11 +27,15 @@ public class HomeController {
 
 	
 	@GetMapping("/")
-	public String index(Model model) {
+	public String index(Model model, HttpSession httpSession) {
 
 		List<TopCategory> list = service.getTopCategoryList();
+		SessionUser member = (SessionUser) httpSession.getAttribute("member");
 
 		model.addAttribute("list", list);
+        if(member != null){
+            model.addAttribute("userName", member.getUsername());
+        }
 
 		return "index";
 	}
