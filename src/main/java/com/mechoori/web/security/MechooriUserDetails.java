@@ -16,7 +16,7 @@ public class MechooriUserDetails implements UserDetails {
     private String img;
     private Date regDate;
     private List<GrantedAuthority> authorities;
-
+    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
@@ -25,6 +25,13 @@ public class MechooriUserDetails implements UserDetails {
     public int getId() {
         return id;
     }
+    public String getImg() {
+        return img;
+    }
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -54,12 +61,7 @@ public class MechooriUserDetails implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getImg(){
-        return img;
-    }
-    public void setImg(String img){
-        this.img = img;
-    }
+
     public Date getRegDate() {
         return regDate;
     }

@@ -48,7 +48,7 @@ public class RestaurantController {
     @Autowired
     private RateService rateService;
 
-    @Value("${upload.files}")
+    @Value("${upload.review}")
     private String uploadPath;
     @Autowired
     private ResourceLoader resourceLoader;

@@ -12,24 +12,27 @@
 <body>
     <header>
         <div class="header-side left">
-            <a onclick="history.back()"> <img class="header-icon back" src="" alt=""></a>
+            <a onclick="history.back()"><button class="header-icon back">버튼</button></a>
         </div>
-        <div class="header-icon logo">
-            <a href ="/"><img src="/assets/logo.svg" alt=""></a>
-        </div>
+            <a href ="/"><h1 class="header-icon logo">로고</h1></a>
         <div class="header-side right">
-            <a href="/user/my-page"> <img class="userBtn-img" src="/images/icons/햄버거Btn.svg" alt=""></a>
+            <a href="/user/my-page"> <button class="header-icon menu">메뉴</button></a>
         </div>
     </header> 
-    <main>  
-        <!--찜한 목록 / 평가목록-->
-        <div class="mypage-list-wrapper">
-            <div class="mypage-list">
-                <!-- FIXME 평가 목록 페이지 참고하여 버튼 높이 수정 -->
-                <a href="like-list"><li class="like-list ">찜한 목록</li></a>
-                <a href="rate-list"><li class="value-list ">평가 목록</li></a>
-            </div>
+    <div class="btnarea">
+        <div class="twoBtns">
+          <div class="btnspar">
+            <button class="btn1 btn">
+              <span><a href="like-list">찜한 목록</a></span>
+            </button>
+            <button class="btn2 btn">
+              <span><a href="rate-list">평가 목록</a></span>
+            </button>
+          </div>
         </div>
+      </div>
+
+    <main>  
         <!--사진 식당이름 가성비-->
         <div class="restau-list-total">
             <div class="like-restau-list">
