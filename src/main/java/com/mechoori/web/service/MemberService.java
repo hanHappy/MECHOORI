@@ -1,6 +1,9 @@
 package com.mechoori.web.service;
 
 import com.mechoori.web.entity.Member;
+import com.mechoori.web.entity.RestaurantLike;
+
+import java.util.List;
 
 public interface MemberService {
 	Member getById(int id);
@@ -13,5 +16,5 @@ public interface MemberService {
 
 	void resetPwd(Member member);
 
-	void restaurantLike(int Id);
+	List<RestaurantLike> restaurantLike(int Id);
 }

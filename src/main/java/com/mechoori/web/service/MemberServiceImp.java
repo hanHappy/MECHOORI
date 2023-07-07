@@ -1,11 +1,14 @@
 package com.mechoori.web.service;
 
+import com.mechoori.web.entity.RestaurantLike;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mechoori.web.entity.Member;
 import com.mechoori.web.repository.MemberRepository;
+
+import java.util.List;
 
 @Service
 public class MemberServiceImp implements MemberService {
@@ -49,10 +52,11 @@ public class MemberServiceImp implements MemberService {
     }
 
     @Override
-    public void restaurantLike(int id) {
+    public List<RestaurantLike> restaurantLike(int id) {
 
         repository.restaurantLIke(id);
 
+        return null;
     }
 
 

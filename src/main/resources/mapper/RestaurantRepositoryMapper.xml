@@ -98,14 +98,15 @@
         #{contactNumber})
     </insert>
 
-	<select id="getRanking" resultType="RestaurantView">
-		SELECT *
-		from restaurant_view
-		<if test="categoryId != null">
-		where category_id = #{categoryId}
-		</if>
-		ORDER BY value DESC
-	</select>
+    <select id="getRanking" resultType="RestaurantRankView">
+        SELECT *
+        FROM restaurant_rank_view
+        <if test="categoryId != null">
+            WHERE category_id = #{categoryId}
+        </if>
+        ORDER BY value DESC
+            LIMIT #{offset}, #{size}
+    </select>
 
     <select id="findAllRestaurant" resultType="Restaurant">
         select * from restaurant
