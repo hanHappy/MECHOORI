@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <meta charset="UTF-8">
@@ -12,7 +13,7 @@
     <link rel="stylesheet" href="/css/user/my-page/reg.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
-   
+
 </head>
 
 <body>
@@ -23,84 +24,85 @@
             </a>
             <span sec:authorize="isAuthenticated()" sec:authentication="principal.nickname" class="username"></span> -->
         </div>
-        <div class="header-icon logo">  
+        <div class="header-icon logo">
             <a href="/"><img src="/assets/logo.svg" alt=""></a>
         </div>
         <div class="header-side right">
             <a onclick="history.back()"> <img class="userBtn-img" src="/images/icons/엑스.svg" alt=""></a>
         </div>
-    </header> 
-    
+    </header>
+
     <main>
         <div class="profile-circle">
             <img th:src="@{${m.img}}" alt="프로필사진">
         </div>
-    
+
         <!-- 로그인 된 사용자 이름 넣기 -->
         <div class="user-name" th:text="${m.username}" th:inline="text">
         </div>
-        
-        <div class ="main">
+
+        <div class="main">
             <div class="user-modi-list">
-                <!-- 회원 정보 수정 --> 
-				<div>
-                <button class="user-modify-info" href="#">
-					<a href="my-page/edit-info">
-                    <div href="" class="key-icon">
-                        <img class="mypage-icon" src="/images/icons/key.svg" alt="usermodi">
-                        <li>회원 정보 수정</li>
-                    </div>
-                	</a>
-                </button>
-				</div>
+                <!-- 회원 정보 수정 -->
+                <div>
+                    <button class="user-modify-info" href="#">
+                        <a href="my-page/edit-info">
+                            <div href="" class="key-icon">
+                                <img class="mypage-icon" src="/images/icons/key.svg" alt="usermodi">
+                                <li>회원 정보 수정</li>
+                            </div>
+                        </a>
+                    </button>
+                </div>
                 <!-- 찜목록 -->
-				<div>
-					<button class="like-list" href="#">
-					<a href="my-page/like-list">
-						<div class="like-icon">
-							<img class="mypage-icon" src="/images/icons/heart.svg" alt="likelist">
-							<li>찜 목록</li>
-						</div>
-					</a>
-					</button>
-				</div>
+                <div>
+                    <button class="like-list" href="#">
+                        <a href="my-page/like-list">
+                            <div class="like-icon">
+                                <img class="mypage-icon" src="/images/icons/heart.svg" alt="likelist">
+                                <li>찜 목록</li>
+                            </div>
+                        </a>
+                    </button>
+                </div>
                 <!-- 평가목록 -->
-				<div>
-				<button class="value-list" href="#">
-                <a href="my-page/rate-list">
-                    <div class="value-icon">
-                        <img class="mypage-icon" src="/images/icons/review.svg" alt="valuelist">
-                        <li>평가 목록</li>
-                    </div>
-                </a>
-				</button>
-				</div>
+                <div>
+                    <button class="value-list" href="#">
+                        <a href="my-page/rate-list">
+                            <div class="value-icon">
+                                <img class="mypage-icon" src="/images/icons/review.svg" alt="valuelist">
+                                <li>평가 목록</li>
+                            </div>
+                        </a>
+                    </button>
+                </div>
                 <!-- 가성비 평가 비교 -->
                 <div>
-				<button class="compare-value" href="#">
-					<a href="my-page/statistics">
-                    <div class="compare-icon">
-                        <img class="mypage-icon" src="/images/icons/compare-value.svg" alt="valuelist">
-                        <li>가성비 평가비교</li>
-                    </div>
-                	</a>
-                </button>
-				</div>
+                    <button class="compare-value" href="#">
+                        <a href="my-page/statistics">
+                            <div class="compare-icon">
+                                <img class="mypage-icon" src="/images/icons/compare-value.svg" alt="valuelist">
+                                <li>가성비 평가비교</li>
+                            </div>
+                        </a>
+                    </button>
+                </div>
                 <!-- 로그아웃 -->
                 <a href="/logout">
-                <button class="value-list" href="#">
-					<a href="/">
-                    <div class="value-icon">
-                        <img class="mypage-icon" src="/images/icons/logout.svg" alt="valuelist">
-                        <li>로그아웃</li>
-                    </div>
-                	</a>
-				</button>
-				</div>
+                    <button class="value-list" href="#">
+                        <a href="/logout">
+                            <div class="value-icon">
+                                <img class="mypage-icon" src="/images/icons/logout.svg" alt="valuelist">
+                                <li>로그아웃</li>
+                            </div>
+                        </a>
+                    </button>
+                </a>
             </div>
         </div>
         </div>
-        
+        </div>
+
     </main>
 </body>
 
