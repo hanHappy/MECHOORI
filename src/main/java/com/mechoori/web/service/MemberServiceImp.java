@@ -59,5 +59,10 @@ public class MemberServiceImp implements MemberService {
         return null;
     }
 
+    @Override
+    public void update(Member member) {
+        repository.update(member);
+    }
+
 
 }

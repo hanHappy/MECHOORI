@@ -10,7 +10,9 @@ spring:
     password: 1234
 
 upload:
-  files: "/images/member/review/"
+  review: "/images/member/review/"
+  profile: "/images/member/profile/"
+  
 
 mybatis:
   type-aliases-package: com.mechoori.web.entity

@@ -16,5 +16,7 @@ public interface MemberService {
 
 	void resetPwd(Member member);
 
-	List<RestaurantLike> restaurantLike(int Id);
+	void restaurantLike(int Id);
+
+    void update(Member member);
 }
