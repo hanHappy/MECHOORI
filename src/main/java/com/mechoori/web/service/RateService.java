@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.RateListView;
-import com.mechoori.web.entity.Statistics;
 
 public interface RateService {
 

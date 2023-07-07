@@ -4,13 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.mechoori.web.entity.RateListView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mechoori.web.entity.Rate;
+import com.mechoori.web.entity.RateListView;
 import com.mechoori.web.entity.Statistics;
-import com.mechoori.web.repository.MenuRepository;
 import com.mechoori.web.repository.RateRepository;
 
 @Service
