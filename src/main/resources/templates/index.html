@@ -28,7 +28,8 @@
             <img src="/assets/logo.svg" alt="">
         </div>
         <div class="header-side right">
-            <a href="" id="menu" class="header-icon menu">메뉴</a>
+            <a sec:authorize="isAnonymous()" href="/user/login" class="header-icon menu">메뉴</a>
+            <a sec:authorize="isAuthenticated()" id="menu" class="header-icon menu">메뉴</a>
         </div>
     </header>
 
@@ -193,7 +194,7 @@
                 <div class="panel">
                     <div class="profile-image-wrapper">
                         <div class="profile-image-frame">
-                            <img class="profile-image" src="/images/foods/678버거.jpg"  alt="프로필사진">
+                            <img class="profile-image" th:src="${#authentication.principal.img}"  alt="프로필사진">
                         </div>
                         <div class="nickname-wrapper">
                             <span class="nickname" th:text="${#authentication.principal.nickname}"></span>

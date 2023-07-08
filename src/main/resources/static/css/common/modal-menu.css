@@ -47,8 +47,8 @@
 }
 
 .profile-image-frame {
+    background-color: #fff;
     border-radius: 50%;
-    /* border: 1px solid #fff0; */
     box-shadow: var(--btn-shadow-1);
 
     position: relative;
