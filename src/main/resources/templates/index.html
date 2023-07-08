@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/common/style.css">
     <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/modal-menu.css">
     <script src="/js/index.js" defer="defer"></script>
     <script src="/js/map.js" defer="defer"></script>
+    <script src="/js/components/modal-menu.js" defer></script>
 </head>
 
 <body>
@@ -26,7 +28,7 @@
             <img src="/assets/logo.svg" alt="">
         </div>
         <div class="header-side right">
-            <a href="/user/my-page"> <img class="userBtn-img" src="/images/icons/햄버거Btn.svg" alt=""></a>
+            <a href="" id="menu" class="header-icon menu">메뉴</a>
         </div>
     </header>
 
@@ -179,12 +181,61 @@
             </div>
         </section>
 
-
-
         <!-- TODO 클릭 시 list 페이지로 넘어가게? -->
         <div class="adBox">
             <img class="rateAd" src="/images/icons/bannerAd1.png" alt="">
             <img class="rateAd" src="/images/icons/bannerAd2.png" alt="">
+        </div>
+
+        <!-- ============== 메뉴 모달 ============== -->
+        <div class="modal-menu">
+            <div class="screen">
+                <div class="panel">
+                    <div class="profile-image-wrapper">
+                        <div class="profile-image-frame">
+                            <img class="profile-image" src="/images/foods/678버거.jpg"  alt="프로필사진">
+                        </div>
+                        <div class="nickname-wrapper">
+                            <span class="nickname" th:text="${#authentication.principal.nickname}"></span>
+                        </div>
+                    </div>
+
+                    <nav class="menu-list-section">
+                        <ul>
+                            <li>
+                                <a href="/user/my-page/edit-info">
+                                    <div class="icon icon-key"></div>
+                                    <span>회원 정보 수정</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/like-list">
+                                    <div class="icon icon-heart"></div>
+                                    <span>찜 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/rate-list">
+                                    <div class="icon icon-review"></div>
+                                    <span>평가 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/statistics">
+                                    <div class="icon icon-chart"></div>
+                                    <span>가성비 평가 통계</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/logout">
+                                    <div class="icon icon-power"></div>
+                                    <span>로그아웃</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div>
 
     </main>
