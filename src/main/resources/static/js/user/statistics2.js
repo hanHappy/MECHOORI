@@ -14,14 +14,14 @@ async function updateDateRange() {
       console.log(data);
       categoryData = data;
 
-      console.log(categoryData.nickname);
+      // console.log(categoryData.nickname);
       console.log(categoryData);
 
-      // let chart = 
+      let chart = 
       new Chart(document.getElementById("barChart"), {
         type: 'doughnut',
         data: {
-          labels: ["1","2","3"],
+          labels: [],
           datasets: [{
             backgroundColor: [
               '#FF6E54',// (코랄 핑크)
@@ -35,7 +35,7 @@ async function updateDateRange() {
               '#FF69B4', //(핑크 보라)
               '#F08080' // 연분홍색
             ],
-            data: [10,5,2]
+            data: []
           }]
         },
       
@@ -55,8 +55,8 @@ async function updateDateRange() {
           },
           layout: {
             padding: {
-              left: 5, // 왼쪽 여백
-              right: 5, // 오른쪽 여백
+              left: 10, // 왼쪽 여백
+              right: 10, // 오른쪽 여백
               top: 10, // 상단 여백
               bottom: 10 // 하단 여백
             }
@@ -64,7 +64,7 @@ async function updateDateRange() {
           animation: {
             // animateRotate: true, // 차트 회전 애니메이션 효과 여부 (기본값: true)
             // animateScale: true, // 차트 크기 애니메이션 효과 여부 (기본값: true)
-            duration: 3000 // 애니메이션 지속 시간 (밀리초)
+            duration: 1000 // 애니메이션 지속 시간 (밀리초)
             // onComplete: function (){
             //   let cateText = document.querySelector("#cateText");
             //   cateText.textContent = chart.data.labels[0];
@@ -74,10 +74,10 @@ async function updateDateRange() {
 
       });
 
-      // for (let v of categoryData) {
-      //   chart.data.labels.push(v.name);
-      //   chart.data.datasets[0].data.push(v.rateCount);
-      // }
+      for (let v of categoryData) {
+        chart.data.labels.push(v.name);
+        chart.data.datasets[0].data.push(v.rateCount);
+      }
 
       // for(let i=0; i<categoryData.length; i++){
       //   console.log(chart.data.labels[i]);

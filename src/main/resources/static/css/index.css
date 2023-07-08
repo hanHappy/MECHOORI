@@ -19,25 +19,6 @@
     
 }
 
-.userBtn-img{
-    /* position: absolute; */
-    /* background-image: url(/images/icons/마이페이지버튼.png); */
-    /* padding-left: 10px; */
-    /* background-size: cover; */
-    /* background-repeat: no-repeat; */
-
-    width: 22px;
-    height: 24px;
-
-    overflow: hidden;
-}
-
-/* .logo{
-    grid-row: 1;
-    grid-column: 2; 
-    justify-self: center;
-} */
-
 .logo-img{
     grid-column: 2;
     width: 72px;
@@ -59,24 +40,30 @@ main{
 
 
 /* ---검색 바--- */
+.searchZone{
+    /* margin-top: 10px; */
+    margin-bottom: 8px;
+    /* position: sticky; */
+    
+}
+
 .search-bar{
     display: flex;
     align-items: center;
 
     box-sizing: border-box;
-    position: absolute;
-    width: 335px;
-    height: 38px;
+    /* position: absolute; */
+    width: 375px;
+    height: 40px;
     left: 20px;
-    top: 70px;
+    top: 100px;
 
     background: #FFFFFF;
     /* border: 1px solid #F7BB0A; */
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 8px;
+    /* border-radius: 8px; */
     z-index: 999;
     /* display: flex; */
-    position: fixed;
 }
 
 .search-bar input{
@@ -92,12 +79,12 @@ main{
 }
 
 .search-bar .search-input img{
-    padding-left: 15px;
+    padding-left: 20px;
     padding-top: 5px;
 }
 
 .search-map {
-    padding-right: 15px;
+    padding-right: 20px;
 }
 
 /* placeholder animation */
@@ -132,7 +119,7 @@ main{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     column-gap: 3px;
-    list-style: none;
+    /* list-style: none; */
     overflow-x: scroll;
 }
 
@@ -252,33 +239,35 @@ label.right{
 /* <ㅡㅡㅡ 텍스트 ㅡㅡㅡ> */
 .imgTest {
     
-}
-.slidelist{
-    
+    position: relative;
 }
 
 .textTest {
-    position: relative;
+    position: absolute;
+    left: 65px;
+    top: 30px;
+    width:200px;
+    height: 120px;
     display: flex;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: #ffffff  1px;
+    border-style: dashed ;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
 
-.resImg{
-    
-}
 
-
-.imgBack{
+/* .imgBack{
     background-image: url('/images/icons/rankBack.svg');
     width: 228px;
     height: 125px;
     position: absolute;
     align-items: center;
     justify-content: center;
-}
+} */
 
 
 .textTest span{
@@ -305,14 +294,16 @@ label.right{
 }
 
 .textTest span:nth-child(3) {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
-    color: rgba(185, 183, 183, 1);
+    /* color: rgba(185, 183, 183, 1); */
     top: 63%;
     left: 119px;
 }
 
-
+.valueText{
+    color: #FFE551 !important;
+}
 
 
 /* <클릭 슬라이드> */

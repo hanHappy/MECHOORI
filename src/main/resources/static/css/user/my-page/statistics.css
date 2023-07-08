@@ -12,102 +12,117 @@
   background-color: white;
 }
 
-/* 
-.regdate {
-  height: 51px;
-  width: 100%;
-  margin: 0;
-}
-
-button {
-  background-repeat: no-repeat;
-  border-style: none;
-  background-color: rgb(245, 245, 247);
-  margin-top:10px;
-  height: 15.63px;
-  cursor: pointer;
-}
-.leftBtn{
-  background-image: url("../../../images/icons/left.svg");
-  justify-content: center;
-}
-
-.rightBtn{
-  background-image: url("../../../images/icons/right.svg");
-}
-.up {
-  background-image: url("../../../images/icons/upbtn.svg");
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  top: 90px;
-  left: 230px;
-  z-index: 999;
-}
-
-.percent{
-  position: absolute;
-  width: 32px;
-  height: 22px;
-  top: 100px;
-  left: 220px;
-  z-index: 999;
-  color: #f98f78;
-}
-
-
-ul {
-  width: 375px;
-  height: 45px;
+/*=============== 상단 버튼 ver2  ===============*/
+.btnZone{
   display: flex;
-  justify-content: center;
-  z-index: 999;
-  list-style:none;
-  margin: 20px 35px 10px 35px;
-  padding:0;
-
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 10px;
 }
 
-li {
-  float:none;
-  margin:0px 28px;
-  height: 38px;
-  width: 42px;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  text-align: center;
+.btnZone button {
+  margin: 5px 10px 5px 10px;
+  background-color: #eee;
+  border: none;
+  /* padding: 1rem; */
+  padding: 0.6rem;
+  font-size: 14px;
+  width: 8em;
+  border-radius: 1rem;
+  color: rgb(34, 34, 34);
+  box-shadow: 0 0.4rem #dfd9d9;
+  cursor: pointer;
+ }
+ 
+ .btnZone button:active {
+  color: white;
+  box-shadow: 0 0.2rem #dfd9d9;
+  transform: translateY(0.2rem);
+ }
+ 
+ .btnZone button:hover:not(:disabled) {
+  background: lightcoral;
+  color: white;
+  text-shadow: 0 0.1rem #bcb4b4;
+ }
+ 
+ .btnZone button:disabled {
+  cursor: auto;
+  color: grey;
+ }
+
+
+
+/*=============== 상단 버튼 ver1  ===============*/
+/* .btnZone{
+  margin: 5px 10px 5px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
+.btnZone button {
+  margin: 5px 10px 5px 10px;
+  border: none;
+  display: block;
+  position: relative;
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  color: royalblue;
+  font-family: 'Noto Sans KR';
+  font-weight: 500;
+  border-radius: 8px;
+}
 
-.dateTxt {
+.btnZone button span {
   position: absolute;
-width: 180px;
-height: 22px;
-left: 98px;
-top: 227px;
+  left: 0;
+  top: 0;
+  width: 90px;
+  height: 30px;
+  background: transparent;
+  z-index: -1;
+  border: 4px solid royalblue;
+}
 
-font-family: 'Noto Sans';
-font-style: normal;
-font-weight: 300;
-font-size: 16px;
-line-height: 22px;
-identical to box height
+.btnZone button span::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8%;
+  height: 500%;
+  background: rgb(255, 255, 255);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-60deg);
+  transition: all 0.3s;
+}
 
-display: flex;
-align-items: center;
-text-align: center;
+.btnZone button:hover span::before {
+  transform: translate(-50%, -50%) rotate(-90deg);
+  width: 100%;
+  background: royalblue;
+}
 
-color: #000000;
+.btnZone button:hover {
+  color: white;
+}
+
+.btnZone button:active span::before {
+  background: #2751cd;
 } */
-
 
 
 
 /*=============== 그 래 프  ===============*/
 
 #barChart{
-  margin-top: 20%;
+  margin-top: 20px;
 }
 
 
