@@ -1,95 +1,186 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/user/my-page/edit-info.css">
     <link rel="stylesheet" href="/css/common/header.css">
     <link rel="stylesheet" href="/css/common/style.css">
-    
+    <link rel="stylesheet" href="/css/common/button.css">
+    <link rel="stylesheet" href="/css/common/modal-menu.css">
+    <link rel="stylesheet" type="text/css" href="/css/user/my-page/edit-info.css">
+    <script src="/js/user/my-page/edit-info.js" defer></script>
+    <script src="/js/components/modal-menu.js" defer></script>
+
     <title>가입 정보</title>
-    <script src ="/js/user/my-page/edit-info.js" defer></script>
-    <script src ="/js/components/modal-alert.js" defer></script>
-    
+
 </head>
+
 <body>
     <header>
         <div class="header-side left">
-            <a onclick = "history.back()"> <img class="header-icon back" src="" alt=""></a>
+            <a onclick="history.back()" class="header-icon back"></a>
         </div>
-        <div class="header-icon logo">
-            <a href="/"><img src="/assets/logo.svg" alt=""></a>
-        </div>
+        <a href="/" class="header-icon logo"></a>
         <div class="header-side right">
-            <a href="/user/my-page"> <img class="userBtn-img" src="/images/icons/햄버거Btn.svg" alt=""></a>
+            <a href="/user/my-page" id="menu" class="header-icon menu"></a>
         </div>
-    </header> 
-    <main>  
-        <!-- 이미지 수정 아이콘 -->
-        <!-- <div href=""class ="edit-image" alt="">
-            <img src="/images/icons/이미지수정.svg" alt="edit-image-icon">
-        </div> -->
+    </header>
 
-        <!-- ================== 프로필 사진 ================== -->
+    <main>
 
-        <form action="" method="post">
-            <div class="real-upload">
-                <label for="profile-img-input" id = profile-image-label>
-                    <!-- 이미지 업로드 버튼 -->
-                    <div class="btn-upload"></div>
-                </label>
-                <input 
-                    type="file" 
-                    class="upload"
-                    id = "profile-img-input"
-                    th:data-member-id="${#authentication.principal.id}" 
-                    accept="image/*">
-            </div>
-            <button type="button" class="submit-btn">저장</button>
+        <section class="edit-info-section">
+            <div class="edit-info-container">
 
-            <div id="profile-frame" class="profile-circle">
-                <img id="profile-image" th:src="@{${m.img}}" alt="프로필사진">
-            </div>
-        </form>
+                <!-- ================== 프로필 사진 ================== -->
+                <form action="" method="post">
 
-        <!-- ------------------------------------------------- -->
+                    <!-- 프로필 이미지 수정 섹션 -->
+                    <section class="edit-profile-image-section">
+                        <h1 class="d-none">프로필 이미지 수정 섹션</h1>
+                        <div class="edit-profile-image-wrapper">
+                            <div class="profile-image-wrap">
+                                <div class="profile-image-frame">
+                                    <img class="profile-image" src="" th:src="${#authentication.principal.img}" alt="프로필사진">
+                                </div>
+                                <div class="btn-profile-img-upload-wrapper">
+                                    <label for="profile-img-input" id=profile-image-label>
+                                        <!-- 이미지 업로드 버튼 -->
+                                        <div class="btn-upload"></div>
+                                    </label>
+                                    <input 
+                                        type="file" 
+                                        id="profile-img-input"
+                                        class="profile-img-input" 
+                                        th:data-member-id="${#authentication.principal.id}" 
+                                        accept="image/*">
+                                </div>
+                            </div>
+                            <div class="nickname-wrapper">
+                                <span class="nickname" th:text="${#authentication.principal.nickname}"></span>
+                            </div>
+                        </div>
+                    </section>
 
-        <div class="user-name">
-            <span th:text="${m.nickname}"></span>
-        </div>
-        <div class="edit-user-total">   <!---TODO 회원 정보를 담아 입력되야함 -->
-            <div class="edit-user-wrapper">
-                <!-------------- 닉네임 ---------------------->
-                <div class="nickname"><ul>닉네임</ul></div>
-                
-                <div class="info-box">
-                    <div class ="box" th:text="${m.nickname}"><li>메추리</li></div>  
-                    
-                    <a class="change-btn" href="edit-info/nickname">변경</a>
-                </div>
-            </div>
-                <!-------------- 이메일주소 ---------------------->
-            <div class="edit-user-wrapper">
-                <div><ul>이메일 주소</ul></div> 
-                <div class="info-box">
-                    <div class ="box" th:text="${m.email}"> 
-                        <li>admin@mechuri.com</li>
+                    <!-- 폼 섹션 -->
+                    <section class="form-section">
+                        <!-- 이름 -->
+                        <section>
+                            <h1 class="d-none">이름</h1>
+                            <div class="form-wrap">
+                                <div class="form-item">
+                                    <label for="name">이름</label>
+                                    <input
+                                        id="name"
+                                        class="name"
+                                        th:value="${#authentication.principal.username}"
+                                        readonly/>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 이메일 -->
+                        <section>
+                            <h1 class="d-none">이메일</h1>
+                            <div class="form-wrap">
+                                <div class="form-item">
+                                    <label for="email">이메일</label>
+                                    <input
+                                        id="email"
+                                        class="email"
+                                        th:value="${#authentication.principal.email}"
+                                        readonly/>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 닉네임 -->
+                        <section>
+                            <h1 class="d-none">닉네임 변경</h1>
+                            <div class="form-wrap">
+                                <div class="form-item">
+                                    <label for="nickname">닉네임</label>
+                                    <input
+                                        id="nickname"
+                                        th:value="${#authentication.principal.nickname}"
+                                        minlength="1"
+                                        maxlength="8"/>
+                                </div>
+                                <div id="msg-nickname-check"></div>
+                            </div>
+                        </section>
+
+                        <!-- 비밀번호 -->
+                        <section class="change-pwd-section">
+                            <h1 class="d-none">비밀번호 변경</h1>
+                            <div class="form-wrap">
+                                <div class="form-item pwd">
+                                    <h1>비밀번호</h1>
+                                    <a href="/user/my-page/edit-info/pwd" class="button button-10 btn-change-pwd">변경</a>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
+                    <button type="button" id="btn-save" class="button button-1 btn-save" disabled>저장</button>
+
+                </form>
+
+
+
+        <!-- ============== 메뉴 모달 ============== -->
+        <div class="modal-menu">
+            <div class="screen">
+                <div class="panel">
+                    <div class="profile-image-wrapper">
+                        <div class="profile-image-frame">
+                            <img class="profile-image" th:src="${#authentication.principal.img}" alt="프로필사진">
+                        </div>
+                        <div class="nickname-wrapper">
+                            <span class="nickname" th:text="${#authentication.principal.nickname}"></span>
+                        </div>
                     </div>
-                    <a class="change-btn" href="edit-info/email">변경</a>
-                </div>
-                
-            </div>
 
-            <!-- TODO 이메일 인증 후 비밀번호 수정 가능 -->
-            <!-------------- 비밀번호 ---------------------->
-            <div class="change-pwd-wrapper">
-                <span class="change-pwd-text">비밀번호</span>
-                <a class="pwd-change-btn" href="edit-info/email">변경</a>
+                    <nav class="menu-list-section">
+                        <ul>
+                            <li>
+                                <a href="/user/my-page/edit-info">
+                                    <div class="icon icon-key"></div>
+                                    <span>회원 정보 수정</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/like-list">
+                                    <div class="icon icon-heart"></div>
+                                    <span>찜 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/rate-list">
+                                    <div class="icon icon-review"></div>
+                                    <span>평가 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/statistics">
+                                    <div class="icon icon-chart"></div>
+                                    <span>가성비 평가 통계</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/logout">
+                                    <div class="icon icon-power"></div>
+                                    <span>로그아웃</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-            <!-- FIXME 아래 여백 조정 -->
         </div>
 
-        <div class="withdraw-btn"><a href="edit-info/withdraw">탈퇴하기</a></div>
+    </main>
 </body>
+
 </html>

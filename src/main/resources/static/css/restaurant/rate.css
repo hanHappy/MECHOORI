@@ -313,7 +313,7 @@ main {
 /* ----------- 평가 버튼 ----------- */
 .rate-btn { margin-top: 20px; }
 .rate-btn.inactive {
-    background-color: #a6d5ff;
+    background-color: var(--btn-color-2);
 }
 
 

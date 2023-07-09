@@ -12,7 +12,6 @@ spring:
 upload:
   review: "/images/member/review/"
   profile: "/images/member/profile/"
-  
 
 mybatis:
   type-aliases-package: com.mechoori.web.entity
