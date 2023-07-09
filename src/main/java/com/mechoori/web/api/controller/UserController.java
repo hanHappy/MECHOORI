@@ -34,7 +34,7 @@ public class UserController {
 
     @Value("${upload.profile}")
     private String uploadPath;
-
+ 
     @Autowired
     private MemberService service;
 
