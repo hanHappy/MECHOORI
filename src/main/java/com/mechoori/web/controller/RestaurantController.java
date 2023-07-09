@@ -2,7 +2,6 @@ package com.mechoori.web.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mechoori.web.api.config.auth.dto.SessionUser;
 import com.mechoori.web.entity.Category;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.MenuView;
@@ -153,8 +151,8 @@ public class RestaurantController {
     public String rate(
             Rate rate,
             @RequestParam("image") MultipartFile image,
-            @AuthenticationPrincipal MechooriUserDetails user,
-            @AuthenticationPrincipal SessionUser sessionUser) throws IOException {
+            @AuthenticationPrincipal MechooriUserDetails member) throws IOException {
+                //@AuthenticationPrincipal SessionUser sessionUser
                 
         // 리뷰 이미지 ---------------------------------------
         
@@ -182,11 +180,14 @@ public class RestaurantController {
 
         // 평가 데이터 추가
 
-        if(user != null)
-            rateService.add(rate, user.getId());
-
-        else if(sessionUser != null)
-            rateService.add(rate, (int)sessionUser.getId());
+        if (member != null) {
+            rateService.add(rate, member.getId());
+        } 
+        // else if (member != null) {
+        //     int memberId = (int) member.getId();
+        //     // System.out.println(memberId);
+        //     rateService.add(rate, memberId);
+        // }
         // FIXME index -> rate-result로 수정해야 함
         return "redirect:/";
     }

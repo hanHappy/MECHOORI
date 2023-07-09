@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -32,7 +34,10 @@ public class SecurityConfig {
                     // .antMatchers("/api/v1/**").hasRole(Role.USER.name()) // /api/v1/** 은 USER권한만 접근 가능
 					.anyRequest().permitAll())
             .formLogin(login -> login
-                .loginPage("/user/login"))
+                .loginPage("/user/login")
+                .loginProcessingUrl("/user/login") // POST 요청
+					.usernameParameter("email")
+					.defaultSuccessUrl("/")) // 다른 페이지에서 온 게 아니라 바로 로그인 버튼 눌렀을 때
             .logout(logout -> logout
                 .logoutSuccessUrl("/"))
             .oauth2Login(oauth2 -> oauth2
@@ -51,4 +56,10 @@ public class SecurityConfig {
 
         return http.build();
     }
+    
+    @Bean
+	public PasswordEncoder passwordEncoder() {
+		// 콩자루에 담는 작업
+		return new BCryptPasswordEncoder();
+	}
 }

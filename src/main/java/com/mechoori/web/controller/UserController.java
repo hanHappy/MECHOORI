@@ -11,15 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mechoori.web.api.config.auth.dto.SessionUser;
 import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
 import com.mechoori.web.service.RateService;
 import com.mechoori.web.service.RestaurantService;
-
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("user")
@@ -34,12 +31,7 @@ public class UserController {
 
 
     @GetMapping("/social-login")
-    public String socialLogin(Model model, HttpSession httpSession){
-        SessionUser member = (SessionUser) httpSession.getAttribute("member");
-
-        if(member != null){
-            model.addAttribute("userName", member.getUsername());
-        }
+    public String socialLogin(){
         return "user/login/social-login";
     }
 
@@ -51,8 +43,6 @@ public class UserController {
     public String afterLogin(@RequestParam("returnUrl")String returnUrl) {
         return "redirect:"+returnUrl;
     }
-
-
 
     @GetMapping("/login/find-id")
     public String findId() {

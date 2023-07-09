@@ -1,31 +1,31 @@
-package com.mechoori.web.api.config.auth.dto;
+// package com.mechoori.web.api.config.auth.dto;
 
-import java.io.Serializable;
+// import java.io.Serializable;
 
-import com.mechoori.web.api.entity.Member;
-import com.mechoori.web.api.entity.enums.Role;
+// import com.mechoori.web.entity.Member;
+// import com.mechoori.web.api.entity.enums.Role;
 
-import lombok.Getter;
+// import lombok.Getter;
 
-@Getter
-public class SessionUser implements Serializable {
-        //인증된 사용자 정보만 필요\
-        private long id;
-        private String username;
-        private String nickname;
-        private String email;
-        // private String img;
-        private Role role;
+// @Getter
+// public class SessionUser implements Serializable {
+//         //인증된 사용자 정보만 필요\
+//         private long id;
+//         private String username;
+//         private String nickname;
+//         private String email;
+//         // private String img;
+//         private Role role;
 
-    public SessionUser(Member member) {
-        this.id = member.getId();
-        this.username = member.getUsername();
-        this.nickname = member.getNickname();
-        this.email = member.getEmail();
-        // this.img = member.getImg();
-        this.role = member.getRole();
-    }
-}
+//     public SessionUser(Member member) {
+//         this.id = member.getId();
+//         this.username = member.getUsername();
+//         this.nickname = member.getNickname();
+//         this.email = member.getEmail();
+//         // this.img = member.getImg();
+//         this.role = member.getRole();
+//     }
+// }
 
 // import java.util.ArrayList;
 // import java.util.Collection;

@@ -2,9 +2,7 @@ package com.mechoori.web.api.config.auth.dto;
 
 import java.util.Map;
 
-import com.mechoori.web.api.entity.Member;
-// import com.mechoori.web.api.entity.enums.LoginType;
-import com.mechoori.web.api.entity.enums.Role;
+import com.mechoori.web.api.entity.enums.LoginType;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -17,19 +15,15 @@ public class OAuthAttributes {
     private String username;
     private String nickname;
     private String email;
-    // private String img;z
-    // private LoginType logintype;
 
     @Builder
     public OAuthAttributes(Map<String,Object> attributes, String nameAttributeKey, String username, String nickname, String email) 
-    //, String img, LoginType loginType
     {
         this.attributes = attributes;
         this.nameAttributeKey = nameAttributeKey;
         this.username = username;
         this.nickname = nickname;
         this.email = email;
-        // this.img = img;
     }
 
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes){
@@ -42,23 +36,20 @@ public class OAuthAttributes {
         return OAuthAttributes.builder()
                 .username((String) attributes.get("name"))
                 .email((String) attributes.get("email"))
-                // .img((String) attributes.get("picture"))
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
-                // .loginType(loginType)
                 .build();
     }
 
-    public Member toEntity(){
-    return Member.builder()
-            .username(username)
-            .email(email)
-            // .loginTypeId(logintype != null ? logintype.getLoginTypeId() : null)
-            // .img(img)
-            .role(Role.MEMBER) // 기본 권한: Member
-            .build();
-}
-
-
-
+    public Integer getLoginTypeId(String registrationId) {
+        if ("google".equals(registrationId)) {
+            return LoginType.GOOGLE.getLoginTypeId();
+        } else if ("naver".equals(registrationId)) {
+            return LoginType.NAVER.getLoginTypeId();
+        } else if ("kakao".equals(registrationId)) {
+            return LoginType.KAKAO.getLoginTypeId();
+        }
+        throw new IllegalArgumentException(
+            "지원되지 않는 registrationId: " + registrationId);
+    }
 }
