@@ -108,7 +108,7 @@
                                     href=""
                                     type="button"
                                     sec:authorize="isAuthenticated()" 
-                                    th:data-member-id="${#authentication.principal.id}"
+                                    th:data-member-id="${#authentication.principal['id'] ?: #authentication.principal.attributes['sub']}"
                                     th:data-restaurant-id="${r.id}"
                                     class="like" 
                                     th:classappend="${r.like}?'active' : ''">좋아요
