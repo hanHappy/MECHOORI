@@ -39,6 +39,74 @@
 		</if>
 	</select>
 
+	<select id="findAll" resultType="Restaurant">
+		select *
+		from restaurant
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<if test="categoryId != null">
+				category_id = #{categoryId};
+			</if>
+			<if test="query != null">
+				name like '%${query}%'
+			</if>
+		</trim>
+		<if test="page != null">
+			limit #{page}, #{size}
+		</if>
+	</select>
+
+	<select id="findAllRestaurantView" resultType="RestaurantView">
+		<if test="memberId == null">
+			select
+				r.*,
+				0 `like`,
+				0 rate
+			from restaurant_view r
+		</if>
+		<if test="memberId != null">
+			SELECT r.*,
+				IF(rl.restaurant_id IS NOT NULL, 1, 0) AS `like`,
+				IFNULL(rt.rate_count, 0) AS rate
+			FROM restaurant_view r
+			LEFT JOIN (
+				SELECT
+					DISTINCT restaurant_id
+				FROM restaurant_like
+				WHERE member_id = #{memberId}
+			) rl ON r.id = rl.restaurant_id
+			LEFT JOIN (
+				SELECT
+					menu.restaurant_id,
+					COUNT(rate.member_id) AS rate_count
+				FROM menu
+				LEFT JOIN rate ON menu.id = rate.menu_id AND rate.member_id = #{memberId}
+				GROUP BY menu.restaurant_id) rt ON r.id = rt.restaurant_id
+		</if>
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<if test="topCategoryId != null">
+				r.top_category_id = #{topCategoryId}
+			</if>
+			<if test="categoryId != null">
+				r.category_id = #{categoryId}
+			</if>
+			<if test="query != null">
+				(
+					r.name LIKE '%${query}%'
+					OR r.id IN (
+						SELECT DISTINCT restaurant_id
+						FROM menu
+						WHERE name LIKE '%${query}%'
+					)
+				)
+			</if>
+		</trim>
+		<trim prefix="order by" prefixOverrides="AND | OR">
+			<if test="filter != null">
+				${filter}
+			</if>
+		</trim>
+		
+	</select>
 	<select id="findAllRestaurantView" resultType="RestaurantView">
 		<if test="memberId == null">
 			select
@@ -92,10 +160,10 @@
 		
 	</select>
 
-   <insert id="add" parameterType = "Restaurant">
-      insert into restaurant(top_category_id, category_id, name, img, intro, address, operating_time, contact_number)
-      values(#{topCategoryId}, #{categoryId}, #{name}, #{img}, #{intro}, #{address}, #{operatingTime}, #{contactNumber})
-   </insert>
+	<insert id="add" parameterType = "Restaurant">
+		insert into restaurant(top_category_id, category_id, name, img, intro, address, operating_time, contact_number)
+		values(#{topCategoryId}, #{categoryId}, #{name}, #{img}, #{intro}, #{address}, #{operatingTime}, #{contactNumber})
+	</insert>
 
     <select id="getRanking" resultType="RestaurantRankView">
         SELECT *
