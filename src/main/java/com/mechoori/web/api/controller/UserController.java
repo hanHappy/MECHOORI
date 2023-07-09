@@ -24,8 +24,9 @@ public class UserController {
     public Map<String, Integer> statistics(
             @AuthenticationPrincipal MechooriUserDetails member) {
 
+        System.out.println("member: " + member);
         Map<String, Integer> data = rateService.getDate(member.getId());
-        // System.out.println("data : " + data);
+        System.out.println("data : " + data);
 
         return data;
     }
@@ -39,5 +40,15 @@ public class UserController {
 
         return data;
     }
-    // http://localhost:8080/user/my-page/statistics
+
+    @GetMapping("my-page/statistics3")
+    public List<Statistics2> statistics3(
+            @AuthenticationPrincipal MechooriUserDetails member) {
+
+        List<Statistics2> data = rateService.getDate2(member.getId());
+        System.out.println("data : " + data);
+
+        return data;
+    }
+
 }

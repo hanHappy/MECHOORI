@@ -23,25 +23,32 @@ dataBtn2.onclick = function () {
         // console.log(categoryData.nickname);
         // console.log(categoryData);
 
-        // let chart = 
+        let chart = 
         new Chart(document.getElementById("barChart"), {
           type: 'doughnut',
           data: {
-            labels: ["1", "2", "3"],
+            labels: [],
             datasets: [{
               backgroundColor: [
-                '#FF6E54',// (코랄 핑크)
-                '#FFC153', //(황토색)
-                '#FFD700',// (골든 옐로우)
+
+                
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+                // '#FF6E54',// (코랄 핑크)
+                // '#FFC153', //(황토색)
                 '#ACD8AA', //(민트색)
-                '#87CEEB', //(스카이 블루)
+                // '#87CEEB', //(스카이 블루)
                 '#9370DB', //(퍼플)
                 '#FFB6C1', //(라이트 핑크)
                 '#FF4136',// (타마린)
                 '#FF69B4', //(핑크 보라)
-                '#F08080' // 연분홍색
+                'rgb(0, 184, 148)',
+                '#F08080', // 연분홍색
+                '#FFD700'// (골든 옐로우)
+
               ],
-              data: [10, 5, 2]
+              data: []
             }]
           },
 
@@ -58,8 +65,8 @@ dataBtn2.onclick = function () {
             },
             layout: {
               padding: {
-                left: 5, // 왼쪽 여백
-                right: 5, // 오른쪽 여백
+                left: 10, // 왼쪽 여백
+                right: 10, // 오른쪽 여백
                 top: 10, // 상단 여백
                 bottom: 10 // 하단 여백
               }
@@ -67,7 +74,7 @@ dataBtn2.onclick = function () {
             animation: {
               // animateRotate: true, // 차트 회전 애니메이션 효과 여부 (기본값: true)
               // animateScale: true, // 차트 크기 애니메이션 효과 여부 (기본값: true)
-              duration: 3000
+              duration: 1000
             }
           }
 
