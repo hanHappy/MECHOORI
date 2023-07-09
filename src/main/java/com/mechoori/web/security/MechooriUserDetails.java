@@ -3,6 +3,7 @@ package com.mechoori.web.security;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +17,8 @@ public class MechooriUserDetails implements UserDetails {
     private String img;
     private Date regDate;
     private List<GrantedAuthority> authorities;
-    
+    private Map<String, Object> attributes; // Added for OAuth2 attributes
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
@@ -71,6 +73,15 @@ public class MechooriUserDetails implements UserDetails {
     public void setAuthorities(List<GrantedAuthority> authorities) {
         this.authorities = authorities;
     }
+
+    public Map<String, Object> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Map<String, Object> attributes) {
+        this.attributes = attributes;
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
