@@ -3,7 +3,6 @@ package com.mechoori.web.api.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mechoori.web.entity.Member;
-import com.mechoori.web.entity.RateListView;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
 import com.mechoori.web.service.RateService;
@@ -85,15 +83,4 @@ public class UserController {
         return dbPath;
     }
 //http://localhost:8080/user/my-page/statistics
-
-@GetMapping("/my-page/rate-list")
-    public List <RateListView> rateList(
-                           @AuthenticationPrincipal MechooriUserDetails user,
-                           @RequestParam(value = "offset") int offset) {
-
-        List<RateListView> list = rateService.getList(user.getId(),offset);
-        System.out.println(list);
-
-        return list;
-    }
 }
