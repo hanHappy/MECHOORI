@@ -19,9 +19,9 @@ ul {
 li {
     list-style: none;
 }
-main{
+/* main{
     max-width: 1200px;
-}
+} */
 .d-none{
     display: none !important;
 }
