@@ -69,7 +69,6 @@ public class MechooriOAuth2UserService extends DefaultOAuth2UserService {
         //첫 로그인(회원가입) -> nickname = null
         System.out.println("로그인한 회원: " + member);
 
-        System.out.println(userDetails.getRole());
         return userDetails;
     }
 }
