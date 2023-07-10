@@ -49,6 +49,9 @@ main {
 .detail {
   background-color: white;
   box-shadow: var(--block-shadow);
+
+
+
 }
 
 .detail-content{
@@ -57,7 +60,11 @@ main {
 
 .rstr-thumb{
   padding:0;
+
   width: 100%;
+  max-width: 500px;
+  max-height: 250px;
+
 }
 
 .rated-result, .intro{
@@ -241,11 +248,7 @@ main {
   font-size: 16px;
   font-weight: 700;
   line-height: 30px;
-}
-
-.KaKaomap {
-  width: 300px;
-  height: 181px;
+  height: 320px;
 }
 
 .map-title-box {
@@ -283,17 +286,18 @@ main {
 }
 
 .map-detail {
-  width: fit-content;
+  width: 100%;
   display: flex;
   border: 1px solid var(--hint-color);
   border-radius: 8px;
   overflow: hidden;
-  height: 170px;
+  height: 250px;
 }
 
 .map-table {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .map-image {
@@ -573,4 +577,21 @@ a {
   background: #6d6d6d;
   cursor: pointer;
   border-radius: 8px;
+}
+
+
+@media (min-width: 500px) {
+
+  .img-section{
+    display: flex;
+    justify-content: center;
+  }
+
+  .rstr-thumb{
+  }
+
+  .dot{
+    display: flex;
+    justify-content: center;
+  }
 }

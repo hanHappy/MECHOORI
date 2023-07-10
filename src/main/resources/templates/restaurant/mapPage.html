@@ -7,9 +7,10 @@
     <title>손 안의 메뉴 추천 리스트, 메추리</title>
     <script type="text/javascript"
             src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
-    <script src="/js/restaurant/mapPage.js" defer></script>
-    <link rel="stylesheet" href="/css/common/style.css">
-    <link rel="stylesheet" href="/css/common/header.css">
+    <script src="/js/restaurant/mapPage.js?ver=1" defer></script>
+    <link rel="stylesheet" href="/css/common/style.css?ver=1">
+    <link rel="stylesheet" href="/css/common/header.css?ver=1">
+    <link rel="stylesheet" href="/css/restaurant/mapPage.css?ver=1">
 
 </head>
 
@@ -17,7 +18,7 @@
 <header>
     <div class="header-side left">
         <a onclick="history.back()">
-            <button class="header-icon back"></button>
+            <button class="">햄버거</button>
         </a>
     </div>
     <h1 class="header-icon logo"></h1>
@@ -31,9 +32,22 @@
 <section>
     <div class="mapStyle">
         <div id="map" style="width: 100%; height: 450px"></div>
-        <p th:text="${list.address}" id="map-address-text">주소</p>
-        <p th:text="${list.name}" id="resName">상호명</p>
+
     </div>
 </section>
+
+<section class="bottom-sheet-section">
+    <div class="touch-section"></div>
+    <div class ="bottom-sheet">
+        <img th:src="@{/images/foods/{img}(img=${list.img})}" id="map-img" alt="">
+        <p th:text="${list.name}" id="resName">상호명</p>
+        <p th:text="${list.address}" id="map-address-text">주소</p>
+        <hr>
+    </div>
+
+
+</section>
+
+
 </body>
 </html>

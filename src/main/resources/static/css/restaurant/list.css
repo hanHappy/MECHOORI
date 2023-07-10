@@ -132,15 +132,7 @@ header {
     gap: 10px;
 }
 
-/* 모바일 미디어 쿼리 */
-@media screen and (max-width: 357px) {
 
-    /* .search_inner 너비 조정 */
-    .search_inner {
-        width: 100%;
-        max-width: 300px;
-    }
-}
 
 /* ----- 기타 카테고리 (베트남, 태국, ...) ----- */
 .other-category-section{
@@ -250,4 +242,19 @@ select option {
 
 .modal-like p{
     margin: 0;
+}
+
+
+.restaurant-list-section{
+    width: 100%;
+}
+
+/* 모바일 미디어 쿼리 */
+@media screen and (max-width: 375px) {
+
+    /* .search_inner 너비 조정 */
+    .search_inner {
+        width: 100%;
+        max-width: 300px;
+    }
 }

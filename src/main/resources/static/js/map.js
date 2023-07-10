@@ -460,33 +460,46 @@ window.addEventListener("DOMContentLoaded", function (e) {
 
 
     });
+    function getCurrentLocation() {
+        return new Promise(function (resolve, reject) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(resolve, reject);
+            } else {
+                reject(new Error('Geolocation is not supported.'));
+            }
+        });
+    }
+    function getCurrentLocation() {
+        return new Promise(function (resolve, reject) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(resolve, reject);
+            } else {
+                reject(new Error('Geolocation is not supported.'));
+            }
+        });
+    }
 
     function currentLocation() {
-        // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
-        if (navigator.geolocation) {
-
-            // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-            navigator.geolocation.getCurrentPosition(function (position) {
-
+        getCurrentLocation()
+            .then(function (position) {
                 var lat = position.coords.latitude; // 위도
                 var lon = position.coords.longitude; // 경도
 
                 var locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                var message = '<div style="font-weight:900; width: 100%; text-align: center ;">현위치</div>'; // 인포윈도우에 표시될 내용입니다
 
-                // 마커와 인포윈도우를 표시합니다
-                displayMarker(locPosition, message);
+                // 마커를 표시합니다
+                displayMarker(locPosition);
+            })
+            .catch(function (error) {
+                console.log(error);
+                var locPosition = new kakao.maps.LatLng(37.4812845080678, 126.952713197762);
+
+                // 마커를 표시합니다
+                displayMarker(locPosition);
             });
-        } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-
-            var locPosition = new kakao.maps.LatLng(37.4812845080678, 126.952713197762);
-            var message = '현재 위치를 알 수 없어 기본 위치로 이동합니다.';
-
-            displayMarker(locPosition, message);
-        }
     }
 
-    function displayMarker(locPosition, message) {
+    function displayMarker(locPosition) {
         var imageSize = new kakao.maps.Size(40, 35);
         var imageSrc = 'https://imgur.com/WKIrIDH.png'; // 마커 이미지 URL, 스프라이트 이미지를 사용합니다
         var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
@@ -497,20 +510,9 @@ window.addEventListener("DOMContentLoaded", function (e) {
             image: markerImage,
         });
 
-        var infowindow = new kakao.maps.InfoWindow({
-            content: message,
-        });
-
-        // let customOverlay= document.createElement("div");
-        // customOverlay.style.width = '100%';
-        // customOverlay.style.textAlign = 'center';
-        // customOverlay.innerHTML = content;
-
-        // infowindow.setContent(customOverlay);
-
-        infowindow.open(map, marker);
         map.setCenter(locPosition);
     }
+
     currentLocation();
 
 });

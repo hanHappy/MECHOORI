@@ -15,12 +15,14 @@
 .image-box {
     position: relative;
     line-height: 0;
+    max-width: 500px;
 }
 
 .image {
     border-radius: 8px;
-
-    width: 335px;
+    max-width: 500px;
+    /*width: 335px;*/
+    width: 100%;
     height: 140px;
     object-fit: cover;
 }
@@ -119,7 +121,7 @@
 .info-box {
     /* layout */
     height: 40px;
-
+    max-width: 500px;
     /* item layout */
     display: flex;
     align-items: center;
@@ -154,6 +156,7 @@
     /* layout */
     margin-top: var(--element-margin);
 
+    max-width: 500px;
     /* item layout */
     display: flex;
     justify-content: space-between;
@@ -201,4 +204,31 @@
 
 .like.active{
     animation: heart-effect 0.5s both;
+}
+
+.restaurant{
+    width: 100%;
+    max-width: 400px;
+}
+
+
+
+@media only screen and (min-width: 769px) {
+
+    body{
+        min-width: 1200px;
+    }
+
+    .restaurant-list{
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 380px));
+        grid-row-gap: 20px;
+        width: 100%;
+        min-width: 1200px;
+        justify-content: center;
+        gap: 20px;
+    }
+
+
+
 }

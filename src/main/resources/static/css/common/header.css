@@ -5,7 +5,6 @@ header {
     background-color: var(--main-color);
 
     /* layout */
-    width: 100%;
     position: sticky;
     z-index: 1200;
     top: 0;
@@ -17,7 +16,7 @@ header {
     justify-content: space-between;
 }
 
-header h1{
+header h1 {
     font-size: 20px;
 }
 
@@ -27,10 +26,12 @@ header h1{
     display: flex;
     align-items: center;
 }
-.header-side.left{
+
+.header-side.left {
     justify-content: start;
 }
-.header-side.right{
+
+.header-side.right {
     justify-content: end;
 }
 
@@ -53,28 +54,42 @@ header h1{
     width: 72px;
     height: 44px;
 }
+
 .header-icon.back {
     background-image: url(/images/icons/back.svg);
     width: 13px;
     height: 21px;
 }
+
 .header-icon.home {
     background-image: url(/images/icons/home.svg);
     width: 19px;
     height: 21px;
 }
+
 .header-icon.menu {
     background-image: url(/images/icons/menu.svg);
     width: 22px;
     height: 20px;
 }
+
 .header-icon.cancle {
     background-image: url(/images/icons/cancel.svg);
     width: 20px;
     height: 20px;
 }
+
 .header-icon.search {
     background-image: url(/images/icons/icon-search.svg);
     width: 21px;
     height: 21px;
+}
+
+
+@media only screen and(min-width: 769px) {
+    header {
+        height: 230px;
+        width: 100%;
+    }
+
 }

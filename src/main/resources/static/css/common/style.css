@@ -5,27 +5,30 @@ html, body, input, button, select, option {
     color: var(--font-color);
     font-family: var(--font);
 }
-a{ /* 하이퍼링크 스타일 */
+
+a { /* 하이퍼링크 스타일 */
     text-decoration: none;
     color: var(--font-color);
 }
-a:visited{ /* 방문한 하이퍼링크 색상 변화 해제 */
+
+a:visited { /* 방문한 하이퍼링크 색상 변화 해제 */
     color: inherit;
 }
+
 ul {
     padding: 0;
     margin: 0;
 }
+
 li {
     list-style: none;
 }
-main{
-    max-width: 1200px;
-}
-.d-none{
+
+.d-none {
     display: none !important;
 }
-.text-hidden{
+
+.text-hidden {
     text-indent: -999px;
     overflow: hidden;
 }
@@ -69,9 +72,8 @@ main{
     --border-bottom: 1px solid #0001;
 
 
-
     /* =============== 상민 ================== */
-    
+
     /* --------------- 레이아웃 --------------- */
     /* 블럭 간 간격 (블럭 margin-top) */
     --block-space: 8px;
@@ -81,3 +83,9 @@ main{
     --content-margin: 5px 0px;
 }
 
+@media only screen and (min-width: 769px) {
+    body {
+        min-width: 1200px;
+        background-color: #fff;
+    }
+}

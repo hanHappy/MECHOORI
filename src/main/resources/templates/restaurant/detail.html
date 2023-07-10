@@ -34,10 +34,12 @@
 
 <main>
     <div class="detail">
+        <div class="img-section">
         <img src="/images/foods/청화원2.png"
              th:src="@{/images/foods/{img}(img = ${r.img})}"
              class="rstr-thumb">
-        <div class="detail-content">
+        </div>
+            <div class="detail-content">
             <div class="title">
                 <p th:text="${r.name}" id="resName">짜장상회</p>
                 <div>
@@ -97,7 +99,7 @@
                 <span th:text="${menu.name}">메뉴명</span>
             </div>
             <div>
-                <span>………………</span>
+                <span class="dot">………………</span>
             </div>
             <div>
                 <span th:text="${menu.price + '원'}">가격</span>
@@ -137,7 +139,7 @@
         <!-- TODO UI 수정 -->
         <div class="map-detail">
             <div class="map-table">
-                <div id="map" style="height: 300px; width: 300px;"></div>
+                <div id="map" style="height: 200px; width: 100%;"></div>
                 <div class="map-button">
                     <div class="map-button-image" id=btnWrap>
                         <div id="popupBtn">
