@@ -65,6 +65,10 @@ public class MechooriUserDetails implements UserDetails, OAuth2User {
         return member.getNickname();
     }
 
+    public String getRole() {
+        return member.getRole();
+    }
+
     public String getEmail() {
         return member.getEmail();
     }
