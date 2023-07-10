@@ -1,4 +1,4 @@
-package com.mechoori.web.api.config.auth.dto;
+package com.mechoori.web.api.dto;
 
 import java.util.Map;
 
@@ -13,16 +13,14 @@ public class OAuthAttributes {
     private Map<String, Object> attributes;
     private String nameAttributeKey;
     private String username;
-    private String nickname;
     private String email;
 
     @Builder
-    public OAuthAttributes(Map<String,Object> attributes, String nameAttributeKey, String username, String nickname, String email) 
+    public OAuthAttributes(Map<String,Object> attributes, String nameAttributeKey, String username, String email) 
     {
         this.attributes = attributes;
         this.nameAttributeKey = nameAttributeKey;
         this.username = username;
-        this.nickname = nickname;
         this.email = email;
     }
 
@@ -34,7 +32,7 @@ public class OAuthAttributes {
 
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {
         return OAuthAttributes.builder()
-                .username((String) attributes.get("name"))
+                         .username((String) attributes.get("name"))
                 .email((String) attributes.get("email"))
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
@@ -50,6 +48,6 @@ public class OAuthAttributes {
             return LoginType.KAKAO.getLoginTypeId();
         }
         throw new IllegalArgumentException(
-            "지원되지 않는 registrationId: " + registrationId);
+            "지원되지 않는 " + registrationId);
     }
 }

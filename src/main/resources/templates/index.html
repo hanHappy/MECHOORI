@@ -19,11 +19,10 @@
 <body>
     <header>
         <div class="header-side left">
-            <a sec:authorize="isAuthenticated()" href="admin">
+            <a sec:authorize="hasRole('ADMIN')" href="admin">
                 <img class="" src="/images/icons/admin_btn.svg" alt="">
-                <!-- <p th:text=${userName}></p> -->
             </a>
-            <span sec:authorize="isAuthenticated()" sec:authentication="principal.nickname" class="username"></span>
+            <span sec:authorize="hasRole('ADMIN')" sec:authentication="principal.nickname" class="username"></span>
         </div>
         <div class="header-icon logo">
             <img src="/assets/logo.svg" alt="">
