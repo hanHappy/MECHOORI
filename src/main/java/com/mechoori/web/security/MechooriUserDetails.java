@@ -64,6 +64,9 @@ public class MechooriUserDetails implements UserDetails, OAuth2User {
     public String getNickname() {
         return member.getNickname();
     }
+    public void setNickname(String nickname){
+        this.member.setNickname(nickname);
+    }
 
     public String getRole() {
         return member.getRole();
@@ -75,6 +78,9 @@ public class MechooriUserDetails implements UserDetails, OAuth2User {
 
     public String getImg() {
         return member.getImg();
+    }
+    public void setImg(String img){
+        this.member.setImg(img);
     }
 
     public Date getRegDate() {

@@ -106,6 +106,8 @@ saveBtn.onclick = function (e) {
     let profileFrame = form.querySelector(".edit-profile-image-frame");
     let nicknameNew = nicknameInput.value;
     let isProfileChanged = false;
+    let isNicknameChanged = false;
+    let nickname = form.querySelector('.nickname');
 
     // 그릇
     let formData = new FormData();
@@ -117,9 +119,10 @@ saveBtn.onclick = function (e) {
     if(nicknameBefore != nicknameNew){
         formData.append("nickname", nicknameNew);
         nicknameBefore = nicknameNew
+        isNicknameChanged = true;
     }
 
-    fetch(`/api/user/${memberId}/image`, {
+    fetch(`/api/user/${memberId}`, {
         method: "PUT",
         body: formData
     })
@@ -127,7 +130,10 @@ saveBtn.onclick = function (e) {
         .then(member => {
             if(isProfileChanged)
                 profileFrame.innerHTML = `<img id="profile-image" src=${member.img}>`;
-            nicknameInput.value = member.nickname;
+            if(isNicknameChanged){
+                nicknameInput.value = member.nickname;
+                nickname.textContent = member.nickname;
+            }
         })
         .then(()=>{
             let modalSave = document.querySelector('.modal-toast');
