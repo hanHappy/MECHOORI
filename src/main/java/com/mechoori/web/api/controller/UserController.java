@@ -50,6 +50,7 @@ public class UserController {
         return data;
     }
 
+    // TODO 이미지 파일명 + id로 저장
     // 이미지 추가
     @PutMapping("{id}/image")
     public Member updateProfileImage(

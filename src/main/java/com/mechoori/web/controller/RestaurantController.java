@@ -141,6 +141,7 @@ public class RestaurantController {
         return "restaurant/rate";
     }
 
+    // TODO 리뷰 이미지 파일명 + id로 저장
     @PostMapping("{id}/rate")
     public String rate(
             Rate rate,
