@@ -1,10 +1,7 @@
 package com.mechoori.web.controller;
 
-import com.mechoori.web.entity.*;
-import com.mechoori.web.security.MechooriUserDetails;
-import com.mechoori.web.service.MemberService;
-import com.mechoori.web.service.MenuService;
-import com.mechoori.web.service.RestaurantService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -12,15 +9,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mechoori.web.entity.Member;
+import com.mechoori.web.entity.RateListView;
+import com.mechoori.web.entity.RestaurantLike;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
 import com.mechoori.web.service.RateService;
 import com.mechoori.web.service.RestaurantService;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("user")
@@ -35,6 +32,11 @@ public class UserController {
     private RateService rateService;
 
 
+    @GetMapping("/social-login")
+    public String socialLogin(){
+        return "user/login/social-login";
+    }
+
     @GetMapping("login")
     public String login() {
         return "user/login";
@@ -44,7 +46,6 @@ public class UserController {
     public String afterLogin(@RequestParam("returnUrl") String returnUrl) {
         return "redirect:" + returnUrl;
     }
-
 
     @GetMapping("/login/find-id")
     public String findId() {
