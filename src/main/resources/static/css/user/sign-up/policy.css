@@ -5,7 +5,15 @@
     padding: 0px;
 }
 
+.policy_container{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
 
+.policy_contents{
+  width: 375px;
+}
 
 
 .line0{
@@ -106,8 +114,7 @@
 main{
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-    margin-right: 20px;
+    padding: 0 20px;
 }
 
 
@@ -148,7 +155,7 @@ input[type="checkbox"] {
 
 
 .input__check{
-  width: 335px;
+  width: 375px;
   height: 32px;
   font-size: 16px;
   background-color: rgba(238, 238, 238, 1);
