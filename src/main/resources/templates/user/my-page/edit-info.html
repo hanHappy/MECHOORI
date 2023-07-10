@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="/css/common/style.css">
     <link rel="stylesheet" href="/css/common/button.css">
     <link rel="stylesheet" href="/css/common/modal-menu.css">
+    <link rel="stylesheet" href="/css/common/modal-toast.css">
     <link rel="stylesheet" type="text/css" href="/css/user/my-page/edit-info.css">
-    <script src="/js/user/my-page/edit-info.js" defer></script>
+    <script type="module" src="/js/user/my-page/edit-info.js" defer></script>
     <script src="/js/components/modal-menu.js" defer></script>
 
     <title>가입 정보</title>
@@ -41,7 +42,7 @@
                         <h1 class="d-none">프로필 이미지 수정 섹션</h1>
                         <div class="edit-profile-image-wrapper">
                             <div class="profile-image-wrap">
-                                <div class="profile-image-frame">
+                                <div class="edit-profile-image-frame">
                                     <img class="profile-image" src="" th:src="${#authentication.principal.img}" alt="프로필사진">
                                 </div>
                                 <div class="btn-profile-img-upload-wrapper">
@@ -103,6 +104,7 @@
                                     <label for="nickname">닉네임</label>
                                     <input
                                         id="nickname"
+                                        name="nickname"
                                         th:value="${#authentication.principal.nickname}"
                                         minlength="1"
                                         maxlength="8"/>
@@ -179,6 +181,12 @@
                 </div>
             </div>
         </div>
+
+        <!-- 저장 모달 -->
+        <div class="modal-toast">
+            <p>저장되었습니다</p>
+        </div>
+
 
     </main>
 </body>

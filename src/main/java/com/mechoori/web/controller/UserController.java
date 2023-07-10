@@ -65,8 +65,6 @@ public class UserController {
 
     @PostMapping("login/find-pwd")
     public String resetPwd(Member member) {
-        System.out.println(member);
-        System.out.println(member.getPassword());
         service.resetPwd(member);
 
         return "redirect:/";
@@ -103,8 +101,6 @@ public class UserController {
 //        List<RateList> list = rateService.getList(user.getId());
         List<RateListView> list = rateService.getList(user.getId(),offset);
         model.addAttribute("list", list);
-
-        System.out.println(list);
 
         return "user/my-page/rate-list";
     }

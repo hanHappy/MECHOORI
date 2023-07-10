@@ -55,23 +55,15 @@ public class RateServiceImp implements RateService{
         Map<String, Integer> data = new HashMap<>();
         List<Statistics> list = repository.findData(memberId);
 
-        System.out.println("list : " + list);
-
         int valueMe = list.get(0).getValue();
         int valueOther = list.get(1).getValue();
         // 가성비 계산
         valueMe = (int)(((double) list.get(0).getOverallRatedAvgPrice() / list.get(0).getOverallAvgPrice()) * 100);
         valueOther = (int)(((double) list.get(1).getOverallRatedAvgPrice() / list.get(1).getOverallAvgPrice()) * 100);
 
-        System.out.println(valueMe);
-        System.out.println(valueOther);
-
         // 가성비 set
         list.get(0).setValue(valueMe);
         list.get(1).setValue(valueOther);
-
-        System.out.println(list.get(0));
-        System.out.println(list.get(1));
 
         // 가성비 get 후 data에 추가
         data.put("me", list.get(0).getValue());

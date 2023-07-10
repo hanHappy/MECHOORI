@@ -15,7 +15,6 @@ public class SignUpServiceImp implements SignUpService {
     public boolean checkNickName(String nickname) {
 
         String checknickname = repository.checkNickName(nickname);
-        System.out.println(checknickname);
 
         return checknickname==null;
     }

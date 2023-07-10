@@ -193,8 +193,6 @@ public class RestaurantController {
             else
                 list = restaurantService.getRanking(categoryId, offset);
 
-            System.out.println(mainCtgList);
-            System.out.println(list);
             model.addAttribute("list", list);
             model.addAttribute("ctg", mainCtgList);
 

@@ -49,8 +49,6 @@ public class MemberServiceImp implements MemberService {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         member.setPassword(passwordEncoder.encode(member.getPassword()));
 
-        System.out.println( member.getPassword() );
-
         repository.resetPwd(member);
 
     }

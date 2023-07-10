@@ -1,3 +1,5 @@
+import ModalToast from "../../components/modal-toast.js";
+
 let form = document.querySelector('form');
 let profileImgUploadBtn = form.querySelector('#btn-upload');
 let profileImgInput = form.querySelector('#profile-img-input');
@@ -9,7 +11,7 @@ let file = null;
 let isImgChanged = false;
 
 let nicknameInput = form.querySelector('#nickname');
-let nicknameOrigin = nicknameInput.value;
+let nicknameBefore = nicknameInput.value;
 
 // 새 프로필 이미지 업로드 시 새로운 이미지로 교체 (UI만)
 profileImgInput.addEventListener('change', (e) => {
@@ -54,7 +56,7 @@ async function checkNicknameUnique() {
     })
     .then(function (data) {
         // 기존 닉네임과 동일하면 -> 확인 메시지 삭제
-        if(nicknameInput.value == nicknameOrigin){
+        if(nicknameInput.value == nicknameBefore){
             nicknameCheck.innerText = "";
             return false;
         } else if (data === "cantuse") {
@@ -76,7 +78,7 @@ async function checkNicknameUnique() {
 function checkNicknameChange() {
     let nicknameNew = nicknameInput.value;
 
-    if (nicknameOrigin == nicknameNew)
+    if (nicknameBefore == nicknameNew)
         return false;
     else
         return true;
@@ -101,21 +103,35 @@ nicknameInput.addEventListener('input', async (e) => {
 // 저장 버튼
 saveBtn.onclick = function (e) {
     let memberId = profileImgInput.dataset.memberId;
-    let profileFrame = document.querySelector("#profile-frame");
+    let profileFrame = form.querySelector(".edit-profile-image-frame");
+    let nicknameNew = nicknameInput.value;
+    let isProfileChanged = false;
 
     // 그릇
     let formData = new FormData();
-
-    formData.append("file", file);
+    
+    if(file != null){
+        formData.append("file", file);
+        isProfileChanged = true;
+    }
+    if(nicknameBefore != nicknameNew){
+        formData.append("nickname", nicknameNew);
+        nicknameBefore = nicknameNew
+    }
 
     fetch(`/api/user/${memberId}/image`, {
         method: "PUT",
         body: formData
     })
-        .then(response => response.text())
-        .then(path => {
-            profileFrame.innerHTML = `<img id="profile-image" src=${path}>`;
+        .then(response => response.json())
+        .then(member => {
+            if(isProfileChanged)
+                profileFrame.innerHTML = `<img id="profile-image" src=${member.img}>`;
+            nicknameInput.value = member.nickname;
+        })
+        .then(()=>{
+            let modalSave = document.querySelector('.modal-toast');
+            let modalToast = new ModalToast();
+            modalToast.show(modalSave);
         });
-
-    // 요청 결과 = 이미지 경로
 }

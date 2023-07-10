@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="/css/common/component.css">
     <link rel="stylesheet" href="/css/common/button.css">
     <link rel="stylesheet" href="/css/common/restaurant.css">
+    <link rel="stylesheet" href="/css/common/modal-toast.css">
     <link rel="stylesheet" href="/css/restaurant/list.css">
-    <script src="/js/restaurant/list.js" defer></script>
+    <script type="module" src="/js/restaurant/list.js" defer></script>
 </head>
 
 <body>
@@ -157,10 +158,10 @@
                 </section>
             </div>
         </section>
-        <div class="screen">
-            <div class="modal-like">
-                <p>너 내가 찜했다</p>
-            </div>
+
+        <!-- 좋아요 모달 -->
+        <div class="modal-toast">
+            <p>너 내가 찜했다</p>
         </div>
 
         <input type="hidden" sec:authorize="isAuthenticated()" th:value="${#authentication.principal.id}" id="member-id">
