@@ -103,7 +103,6 @@ public class UserController {
         MechooriUserDetails sessionMember = (MechooriUserDetails) authentication.getPrincipal();
 
         SecurityContextHolder.getContext().setAuthentication(createNewAuthentication(authentication, sessionMember.getEmail()));
-        System.out.println(sessionMember.getEmail());
         // -------------------------------------------------------
         
         return member;
