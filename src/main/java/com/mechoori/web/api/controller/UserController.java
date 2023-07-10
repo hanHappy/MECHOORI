@@ -46,45 +46,54 @@ public class UserController {
             @AuthenticationPrincipal MechooriUserDetails member) {
 
         Map<String, Integer> data = rateService.getDate(member.getId());
-        System.out.println("data : " + data);
 
         return data;
     }
-// 이미지 추가
+
+    // 이미지 추가
     @PutMapping("{id}/image")
-    public String updateProfileImage(@PathVariable("id") int memberId, @RequestParam("file") MultipartFile file) throws IOException {
-        
-        // 이미지 파일명
-        String fileName = file.getOriginalFilename();
-        
-        // 1. 경로 설정 및 디렉토리 생성
-        Resource resource = resourceLoader.getResource(uploadPath);
-        File pathFile = resource.getFile();
-
-        if(!pathFile.exists())
-            pathFile.mkdirs();
-
-        // 2. 파일 저장
-        // 절대 경로
-        // C:/~/롯데리아.jpg
-        String realPath = Paths.get(pathFile.getAbsolutePath(), fileName).toString();
-        // 파일.변신(새로운 파일(절대경로에))
-        file.transferTo(new File(realPath));
-
-        // 3. db 저장
-        // /images/member/profile/롯데리아.jpg
-        String dbPath = uploadPath + fileName;
+    public Member updateProfileImage(
+        @PathVariable("id") int memberId,
+        @RequestParam(name = "nickname", required = false) String nickname,
+        @RequestParam(name =  "file", required = false) MultipartFile file) throws IOException {
 
         Member member = service.getById(memberId);
-        member.setImg(dbPath);
+
+        // 프로필 사진 변경했다면~
+        if(file != null){
+            // 이미지 파일명
+            String fileName = file.getOriginalFilename();
+            
+            // 1. 경로 설정 및 디렉토리 생성
+            Resource resource = resourceLoader.getResource(uploadPath);
+            File pathFile = resource.getFile();
+    
+            if(!pathFile.exists())
+                pathFile.mkdirs();
+    
+            // 2. 파일 저장
+            // 절대 경로
+            // C:/~/롯데리아.jpg
+            String realPath = Paths.get(pathFile.getAbsolutePath(), fileName).toString();
+            // 파일.변신(새로운 파일(절대경로에))
+            file.transferTo(new File(realPath));
+    
+            // 3. db 저장
+            // /images/member/profile/롯데리아.jpg
+            String dbPath = uploadPath + fileName;
+
+            member.setImg(dbPath);
+        }
+
+        // 닉네임 변경했다면 ~
+        if(nickname != null)
+            member.setNickname(nickname);
+        
         service.update(member);
 
-
-        // 4. (마지막) 파일 경로 return
-
-        return dbPath;
+        // 4. (마지막) member return
+        return member;
     }
-//http://localhost:8080/user/my-page/statistics
 
 @GetMapping("/my-page/rate-list")
     public List <RateListView> rateList(
@@ -92,7 +101,6 @@ public class UserController {
                            @RequestParam(value = "offset") int offset) {
 
         List<RateListView> list = rateService.getList(user.getId(),offset);
-        System.out.println(list);
 
         return list;
     }

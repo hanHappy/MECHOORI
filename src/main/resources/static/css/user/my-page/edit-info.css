@@ -28,7 +28,7 @@
     position: relative;
 }
 
-.profile-image-frame {
+.edit-profile-image-frame {
     background-color: #fff;
     border-radius: 50%;
     box-shadow: var(--btn-shadow-1);

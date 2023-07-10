@@ -29,8 +29,6 @@ public class EmailServiceImp implements EmailService {
 
     @Override
     public MimeMessage createMessage(String to) throws MessagingException, UnsupportedEncodingException {
-//		System.out.println("보내는 대상 : " + to);
-//		System.out.println("인증 번호 : " + ePw);
 
         MimeMessage message = emailsender.createMimeMessage();
 

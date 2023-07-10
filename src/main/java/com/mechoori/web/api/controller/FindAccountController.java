@@ -22,12 +22,8 @@ public class FindAccountController {
         boolean emailCheck = service.findAccount(email);
         //not null
 
-        System.out.println(emailCheck);
-
         if (emailCheck) {
             String code = service.sendSimpleMessage(email);
-            System.out.println(email);
-            System.out.println("인증코드: " + code);
             return code;
 
         } else {

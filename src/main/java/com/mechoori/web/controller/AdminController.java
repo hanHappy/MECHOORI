@@ -143,7 +143,6 @@ public class AdminController {
 
     @PostMapping("restaurant/{rid}/menu/add")
     public String addMenu(Menu menu, @PathVariable("rid") int rid){
-        System.out.println(menu);
         menuService.add(menu);
         return "redirect:/admin/restaurant/"+rid+"/menu";
     }
