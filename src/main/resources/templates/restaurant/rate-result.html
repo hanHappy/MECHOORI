@@ -17,24 +17,12 @@
         <a href="" class="menu">메뉴</a>
     </header>
     <main>
-        <div class="award">
-            <h1>[유저]님의 평가</h1>
-            <p class="my-rate-title">[식당명] [메뉴명]에 대한<br>
-            평가가격, 가성비</p>
-            <div class="my-rate-data">
-                <p>평가가격<br>[평가가격]원</p>
-                <p>가성비<br>[가성비]%</p>
-            </div>
-            <p class="users-rate-title">회원님들의 평가<span>(누적)</span></p>
-            <div class="users-rate-data">
-                <p>평가가격<br>[평가가격]원</p>
-                <p>가성비<br>[가성비]%</p>
-            </div>
-            <p class="date">yyyy년 mm월 dd일 (인)</p>
-        </div>
-        <a href="/main_hsm.html">
-            <button class="complete-btn">완료</button>
-        </a>
+        <span>식당명</span><span th:text="${result.name}"></span>
+        <br><span>메뉴명</span><span th:text="${result.menuName}"></span>
+        <br><span>메뉴가격</span><span th:text="${result.menuPrice}"></span>
+        <br><span>메뉴평균평가가격</span><span th:text="${result.avgRatedPrice}"></span>
+        <br><span>나의 평가가격</span><span th:text="${result.myRatePrice}"></span>
+        <br><span>나의 가성비</span><span th:text="${result.myValue}"></span>
     </main>
 </body>
 

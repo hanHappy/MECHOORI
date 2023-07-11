@@ -5,9 +5,11 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import com.mechoori.web.entity.*;
+import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -22,6 +24,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.mechoori.web.entity.Category;
+import com.mechoori.web.entity.Menu;
+import com.mechoori.web.entity.MenuView;
+import com.mechoori.web.entity.Rate;
+import com.mechoori.web.entity.Restaurant;
+import com.mechoori.web.entity.RestaurantDetail;
+import com.mechoori.web.entity.RestaurantRankView;
+import com.mechoori.web.entity.RestaurantView;
+import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
@@ -175,8 +186,7 @@ public class RestaurantController {
         // 평가 데이터 추가
         rateService.add(rate, user.getId());
 
-        // FIXME index -> rate-result로 수정해야 함
-        return "redirect:/";
+        return "redirect:rate-result";
     }
 
     @GetMapping("/ranking")
@@ -212,6 +222,18 @@ public class RestaurantController {
         model.addAttribute("r", res);
 
         return "restaurant/mapPage";
+    }
+
+    @GetMapping("{id}/rate-result")
+    public String rateResult(
+        @AuthenticationPrincipal MechooriUserDetails member, 
+        @PathVariable("id") int restaurantId, 
+        Model model){
+        
+        Map<String, Object> result = rateService.getRateResult(restaurantId, member.getId());
+        model.addAttribute("result", result);
+
+        return "/restaurant/rate-result";
     }
 
 

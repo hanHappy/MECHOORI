@@ -13,7 +13,8 @@ public interface RateRepository {
 
     void add(Rate rate);
 
-    // List<Rate> findAll(int restaurantId);
+    List<Rate> findAll();
+    List<Rate> findAll(int menuId);
 
     List<Rate> findByMenuIds(List<Integer> menuIds);
 
@@ -22,4 +23,6 @@ public interface RateRepository {
     List<Statistics> findData(int memberId);
 
     List<RateListView> getList(int memberId, int offset, int size);
+
+    Rate findLatest(int memberId);
 }
