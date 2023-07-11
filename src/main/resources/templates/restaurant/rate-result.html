@@ -6,23 +6,103 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rate result</title>
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/modal-menu.css">
     <link rel="stylesheet" href="/css/restaurant/rate-result.css">
+    <script src="/js/components/modal-menu.js" defer></script>
 </head>
 
 <body>
     <!-- ================ header ================ -->
     <header>
-        <a href="/main_hsm.html" class="home">홈</a>
-        <h1 class="title">평가 결과</h1>
-        <a href="" class="menu">메뉴</a>
+        <div class="header-side left">
+        </div>
+        <a href="/"><h1 class="header-icon logo">로고</h1></a>
+        <div class="header-side right">
+            <a id="menu" class="header-icon menu">버튼</a>
+        </div>
     </header>
     <main>
-        <span>식당명</span><span th:text="${result.name}"></span>
-        <br><span>메뉴명</span><span th:text="${result.menuName}"></span>
-        <br><span>메뉴가격</span><span th:text="${result.menuPrice}"></span>
-        <br><span>메뉴평균평가가격</span><span th:text="${result.avgRatedPrice}"></span>
-        <br><span>나의 평가가격</span><span th:text="${result.myRatePrice}"></span>
-        <br><span>나의 가성비</span><span th:text="${result.myValue}"></span>
+        <div class="page-wrapper">
+            <section class="poster">
+                <h1 class="d-none">평가 완료 포스터</h1>
+                <div class="poster-bg">
+                    <section>
+                        <h1 class="d-none">평가 완료</h1>
+                    </section>
+                    <section class="data-section">
+                        <h1 class="d-none">차트 & 평가 데이터</h1>
+                        <div class="data-item">
+                            <div class="img-chart-wrapper">
+                                <div class="img-chart"></div>
+                            </div>
+                            <div class="data-text-wrapper">
+                                <p><span th:text="${result.name}"> · <span th:text="${result.menuName}"></span></p>
+                                <p>판매 가격 <span th:text="${result.menuPrice}"></span>원</p>
+                                <p>유저 평균 <span th:text="${result.avgRatedPrice}"></span>원</p>
+                                <p>나의 평가 <span th:text="${result.myRatePrice}"></span>(<span th:text="${result.myValue}"></span>)%</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h1 class="d-none">메추리의 분석</h1>
+                    </section>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============== 메뉴 모달 ============== -->
+        <div class="modal-menu">
+            <div class="screen">
+                <div class="panel">
+                    <div class="profile-image-wrapper">
+                        <div class="profile-image-frame">
+                            <img class="profile-image" th:src="${#authentication.principal.img}"  alt="프로필사진">
+                        </div>
+                        <div class="nickname-wrapper">
+                            <span class="nickname" th:text="${#authentication.principal.nickname}"></span>
+                        </div>
+                    </div>
+
+                    <nav class="menu-list-section">
+                        <ul>
+                            <li>
+                                <a href="/user/my-page/edit-info">
+                                    <div class="icon icon-key"></div>
+                                    <span>회원 정보 수정</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/like-list">
+                                    <div class="icon icon-heart"></div>
+                                    <span>찜 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/rate-list">
+                                    <div class="icon icon-review"></div>
+                                    <span>평가 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/statistics">
+                                    <div class="icon icon-chart"></div>
+                                    <span>가성비 평가 통계</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/logout">
+                                    <div class="icon icon-power"></div>
+                                    <span>로그아웃</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        
     </main>
 </body>
 
