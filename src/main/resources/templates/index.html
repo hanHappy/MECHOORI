@@ -98,7 +98,7 @@
                                 <div class="textTest">
                                     <span>1위</span>
                                     <span th:text="${listRank[0].name}">호남식당</span>
-                                    <span>(가성비 <span class="valueText" th:text="${listRank[0].value}"> 110</span>%)</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[0].value} + '%'"> 110</span>)</span>
                                 </div>
                             </div>
                             <label for="slide02" class="right"></label>
@@ -113,7 +113,7 @@
                                 <div class="textTest">
                                     <span>2위</span>
                                     <span th:text="${listRank[1].name}">소구장</span>
-                                    <span>(가성비 <span class="valueText" th:text="${listRank[1].value}"> 110</span>%)</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[1].value} + '%'"> 110</span>)</span>
                                 </div>
                             </div>
                             <label for="slide03" class="right"></label>
@@ -128,7 +128,7 @@
                                 <div class="textTest">
                                     <span >3위</span>
                                     <span th:text="${listRank[2].name}">뜸들이다</span>
-                                    <span>(가성비 <span class="valueText" th:text="${listRank[2].value}"> 110</span>%)</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[2].value} + '%'"> 110</span>)</span>
                                 </div>
                             </div>
                             <label for="slide04" class="right"></label>
@@ -143,7 +143,7 @@
                                 <div class="textTest">
                                     <span>4위</span>
                                     <span th:text="${listRank[3].name}">니즈버거</span>
-                                    <span>(가성비 <span class="valueText" th:text="${listRank[3].value}"> 110</span>%)</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[3].value} + '%'"> 110</span>)</span>
                                 </div>
                             </div>
                             <label for="slide05" class="right"></label>
@@ -158,7 +158,7 @@
                                 <div class="textTest">
                                     <span>5위</span>
                                     <span th:text="${listRank[4].name}">짜장상회</span>
-                                    <span>(가성비 <span class="valueText" th:text="${listRank[4].value}"> 110</span>%)</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[4].value} + '%'"> 110</span>)</span>
                                 </div>
                             </div>
                             <label for="slide06" class="right"></label>
@@ -188,12 +188,15 @@
         
         <!-- TODO 클릭 시 rate-list 페이지로 이동 -->
         <section class="comparison1">
-            <h1>나의 가성비 성과 비교</h1>
+            <h1>나만의 가성비 차트</h1>
+            <!-- <h1>나의 가성비 성과 비교</h1> -->
             <div class="comparison-img">
                 <a href="user/my-page/statistics"><img  src="/images/components/index-성과비교.svg" alt=""></a>
                 <div class="comparison-text">
                     <span>내가 누린 가성비는?</span>
-                    <span>맘껏 누려온 가성비를 확인해보세요</span>
+                    <span>다양한 나만의 데이터를 확인해보세요</span>
+                    <!-- <span>내가 누린 가성비는?</span> -->
+                    <!-- <span>맘껏 누려온 가성비를 확인해보세요</span> -->
                 </div>
             </div>
         </section>

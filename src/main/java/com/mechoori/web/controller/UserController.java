@@ -164,12 +164,19 @@ public class UserController {
         return "user/my-page/statistics";
     }
 
-        //가성비 성과 페이지
+    //가성비 성과 페이지
     @GetMapping("my-page/statistics2")
     public String rateStatistics2(){
 
         return "user/my-page/statistics2";
     }
   
+
+    //가성비 성과 페이지
+    @GetMapping("my-page/statistics3")
+    public String rateStatistics3(){
+
+        return "user/my-page/statistics3";
+    }
 
 }

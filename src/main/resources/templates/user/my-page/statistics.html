@@ -48,17 +48,23 @@
     </span> -->
 
 
-    <canvas id="barChart" width="55" height="60"></canvas>
+    <section id="dataSection">
+      <canvas id="barChart" width="55" height="60"></canvas>
 
-    <section class="MiddleBack">
-      <div class="rateImg"></div>
-      <div class="rateTextArea">
-        <p class="rateText">
-          메추리 전체 회원보다 <br />
-          <span id="gap">30 </span>% <span id="gapM">높은</span> 가성비를 누리셨네요!
-        </p>
-      </div>
+      <section class="MiddleBack">
+        <div class="rateImg"></div>
+        <div class="rateTextArea">
+          <p class="rateText">
+            메추리 전체 회원보다 <br />
+            <span id="gap" style="color: #2292F9">30</span><span style="color: #2292F9">%</span> <span
+              id="gapM">높은</span> 가성비를 누리셨네요!
+          </p>
+        </div>
+      </section>
     </section>
+
+    <input type="hidden" th:data-nickName="${#authentication.principal.nickname}" id="nickName">
+
   </main>
 </body>
 

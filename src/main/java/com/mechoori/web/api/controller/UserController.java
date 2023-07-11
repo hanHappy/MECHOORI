@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mechoori.web.entity.Statistics2;
+import com.mechoori.web.entity.Statistics3;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.RateService;
 
@@ -26,7 +27,7 @@ public class UserController {
 
         System.out.println("member: " + member);
         Map<String, Integer> data = rateService.getDate(member.getId());
-        System.out.println("data : " + data);
+        // System.out.println("data : " + data);
 
         return data;
     }
@@ -36,17 +37,17 @@ public class UserController {
             @AuthenticationPrincipal MechooriUserDetails member) {
 
         List<Statistics2> data = rateService.getDate2(member.getId());
-        System.out.println("data : " + data);
+        // System.out.println("data : " + data);
 
         return data;
     }
 
     @GetMapping("my-page/statistics3")
-    public List<Statistics2> statistics3(
+    public   List<Statistics3> statistics3(
             @AuthenticationPrincipal MechooriUserDetails member) {
 
-        List<Statistics2> data = rateService.getDate2(member.getId());
-        System.out.println("data : " + data);
+            List<Statistics3> data = rateService.getDate3(member.getId());
+        // System.out.println("data : " + data);
 
         return data;
     }

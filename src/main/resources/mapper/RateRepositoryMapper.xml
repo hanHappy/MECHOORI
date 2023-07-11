@@ -4,6 +4,15 @@
 
 <mapper namespace="com.mechoori.web.repository.RateRepository">
 	
+    <select id="findAll" parameterType="Rate">
+        SELECT * FROM rate
+        <if test= "menu_id != null">
+            where menu_id = #{menuId};
+        </if>
+
+    </select>
+
+
 	<insert id="add" parameterType="Rate">
 		insert into 
         rate(member_id, menu_id, price, review)
@@ -57,6 +66,23 @@
         WHERE rv.member_id = #{memberId}
         GROUP BY rvv.category_id
         ORDER BY rate_count DESC
+    </select>
+
+    <select id="findData3" resultType="Statistics3">
+    SELECT rv.member_id, rv.restaurant_id, rv.avg_price, rv.avg_rated_price,
+       ROUND((rv.avg_rated_price / rv.avg_price) * 100) AS value,
+       r.name AS res_name
+    FROM rate_view rv
+    JOIN restaurant r ON rv.restaurant_id = r.id
+    WHERE rv.member_id = #{memberId}
+    order by value desc
+    limit 10
+    </select>
+
+    <select id="findLatest" resultType="Rate">
+        SELECT * FROM rate 
+        where member_id = #{memberId} 
+        order by reg_date desc limit 1
     </select>
 
 	

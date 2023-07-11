@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
-  <link rel="stylesheet" href="/css/user/my-page/statistics2.css" />
+  <link rel="stylesheet" href="/css/user/my-page/statistics3.css" />
   <link rel="stylesheet" href="/css/common/style.css" />
   <link rel="stylesheet" href="/css/common/header.css">
   <link rel="stylesheet" href="/css/common/component.css">
   <link rel="stylesheet" href="/css/common/button.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-  <script src="/js/user/statistics2.js" defer></script>
+  <script src="/js/user/statistics3.js" defer></script>
   <!-- <script src="/js/user/statistics.js" defer></script> -->
 
 </head>
@@ -32,20 +32,17 @@
 
   <main>
     <div class="mainTitle">
-      <p>나의 가성비 성과</p>
+      <p>나의 평가 랭킹</p>
     </div>
 
-    <canvas id="barChart" width="375" height="130"></canvas>
+    <canvas id="aaChart" width="375" height="540"></canvas>
 
     <section class="MiddleBack">
         <div class="rateImg"></div>
         <div class="rateTextArea">
           <p class="rateText">
-            <span sec:authorize="isAuthenticated()" sec:authentication="principal.nickname" class="username">???</span>
-             회원님은 <br/>
-            <span id="cateText">중식</span>을 
-            가장 많이 드셨군요!
-            
+            <span sec:authorize="isAuthenticated()" sec:authentication="principal.nickname" class="username"> 회원</span> 님이 평가한 가성비 1등<br/>
+           식당은 <span id="resText" style="color: #2292F9">000</span>네요!
           </p>
         </div>
       </div>

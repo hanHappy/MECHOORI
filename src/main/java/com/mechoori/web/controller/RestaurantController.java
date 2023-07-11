@@ -3,6 +3,7 @@ package com.mechoori.web.controller;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -135,9 +136,31 @@ public class RestaurantController {
             Rate rate,
             @AuthenticationPrincipal MechooriUserDetails user) {
         rateService.add(rate, user.getId());
-        // FIXME index -> rate-result로 수정해야 함
-        return "redirect:/";
+        // FIXME index -> rate-result로 수정해야 함//
+        return "redirect:rate-result";
     }
+
+    @GetMapping("{id}/rate-result")
+    public String rateResult(
+        @PathVariable("id") int restaurantId,
+        Model model,
+        @AuthenticationPrincipal MechooriUserDetails member){
+
+        // 임프에서 받은 맵을 모델에 담아서 뷰에 넘겨준다
+        // 방금평가한 데이터가 필요하기 때문에 rate테이블이 필요하고 
+        // 레코드를 가져오기 위해 member(id)를 넘겨준다
+
+        Map<String, Object> result =  rateService.getRateResult(restaurantId, member.getId());
+        model.addAttribute("result", result);
+
+        return "/restaurnat/rate-result";
+
+    }
+
+//get mapping
+//model -> map<>  =
+// data 
+
 
     @GetMapping("/ranking")
     public String ranking(Model model, Integer categoryId) {
@@ -168,6 +191,6 @@ public class RestaurantController {
 
         return "restaurant/mapPage";
     }
-
+//ep
 
 }
