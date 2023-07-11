@@ -132,15 +132,7 @@ header {
     gap: 10px;
 }
 
-/* 모바일 미디어 쿼리 */
-@media screen and (max-width: 357px) {
 
-    /* .search_inner 너비 조정 */
-    .search_inner {
-        width: 100%;
-        max-width: 300px;
-    }
-}
 
 /* ----- 기타 카테고리 (베트남, 태국, ...) ----- */
 .other-category-section{
@@ -220,4 +212,77 @@ select {
 
 select option {
     color: #4E4E4E;
+}
+
+.modal-like {
+    color: #fff;
+    background-color: #000000c0;
+    border-radius: 8px;
+    opacity: 0;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    min-width: 100px;
+    min-height: 30px;
+    padding: 5px 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 1s;
+}
+
+.modal-like.active {
+    opacity: 1;
+}
+
+.modal-like p{
+    margin: 0;
+}
+
+
+.restaurant-list-section{
+    width: 100%;
+}
+
+/* 모바일 미디어 쿼리 */
+@media screen and (max-width: 375px) {
+
+    /* .search_inner 너비 조정 */
+    .search_inner {
+        width: 100%;
+        max-width: 300px;
+    }
+
+
+}
+
+@media only screen and (min-width: 679px) {
+
+    header {
+        height: 300px;
+        width: 100%;
+        background-image: url(/images/foods/main.svg);
+        /*background-color: transparent;*/
+        /*background-repeat: no-repeat;*/
+        background-size: cover;
+        z-index: 80;
+        position: relative;
+    }
+
+    .header-wrapper{
+        display: none;
+    }
+
+    .category{
+        justify-content: center;
+    }
+    .category-list{
+        gap:100px;
+
+    }
 }

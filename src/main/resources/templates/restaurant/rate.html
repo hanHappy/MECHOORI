@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rate</title>
-    <link rel="stylesheet" href="/css/restaurant/rate.css">
-    <link rel="stylesheet" href="/css/common/style.css">
-    <link rel="stylesheet" href="/css/common/header.css">
-    <link rel="stylesheet" href="/css/common/button.css">
-    <script src="/js/restaurant/rate.js" defer></script>
+    <link rel="stylesheet" href="/css/common/style.css?ver=1">
+    <link rel="stylesheet" href="/css/common/header.css?ver=1">
+    <link rel="stylesheet" href="/css/restaurant/rate.css?ver=1">
+    <link rel="stylesheet" href="/css/common/button.css?ver=1">
+    <script src="/js/restaurant/rate.js?ver=1" defer="defer"></script>
+
 </head>
 
 <body>
@@ -25,6 +26,7 @@
         </div>
     </header>
 
+
     <!-- ================ main ================ -->
     <main>
         <!-- 식당 사진 -->
@@ -38,7 +40,7 @@
         </div>
 
         <!-- -------------- 사용자 입력단 -------------- -->
-        <form action="rate" method="post" enctype="multipart/form-data">
+        <form action="rate" method="post" enctype="multipart/form-data" >
             <section class="input-contents-wrapper">
                 <!-- 메뉴 선택 -->
                 <section class="menu-selection">
@@ -73,7 +75,6 @@
                         </div>
                     </div>
 
-                    </div>
                     <!-- 가격 슬라이더 -->
                     <div class="slide-container">
                         <input type="range" min="0" max="10000" value="5000" step="100" class="slider" id="my-range">
@@ -98,7 +99,6 @@
                 <button type="button" class="button button-1 rate-btn inactive" disabled>평가하기</button>
 
             </section>
-
         <!-- TODO 모달 JS로 옮기고 panel min height 적용 -->
             <!-- 모달 /완료 확인-->
             <div class="modal check-complete d-none">
@@ -109,11 +109,12 @@
                     </div>
                     <div class="check-btn-box">
                         <button type="button" class="no">아니오</button>
-                        <a href="/index"><button class="yes">네</button></a>
+                        <a href="/"><button class="yes">네</button></a>
                     </div>
                 </div>
             </div>
         </form>
+
         <!-- 모달 /이전 화면 확인-->
         <div class="modal check-back d-none">
             <div class="modal-box">
@@ -142,7 +143,7 @@
                 </div>
                 <div class="check-btn-box">
                     <button class="no">아니오</button>
-                    <a href="/index"><button class="yes">네</button></a>
+                    <a href="/"><button class="yes">네</button></a>
                 </div>
             </div>
         </div>

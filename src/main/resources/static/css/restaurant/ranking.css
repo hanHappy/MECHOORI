@@ -57,6 +57,7 @@ main {
     align-items: center;
     box-shadow: var(--block-shadow);
 
+    max-width: 500px;
 }
 
 
@@ -65,6 +66,7 @@ main {
     height: 140px;
     object-fit: cover;
     border-radius: 8px 8px 0 0;
+    max-width: 500px;
 }
 
 
@@ -95,4 +97,12 @@ main {
     width: 100%;
     z-index: 999;
     height: 30px;
+}
+
+@media (max-width: 800px) {
+
+    .thymeleaf{
+
+    }
+
 }

@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Kakao Maps API 초기화
-    kakao.maps.load(function() {
+    kakao.maps.load(function () {
         var container = document.getElementById('map'),
             options = {
                 center: new kakao.maps.LatLng(33.450701, 126.570667),
-                level: 3
+                level: 1
             };
 
         var map = new kakao.maps.Map(container, options);
@@ -30,10 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 // 인포윈도우로 장소에 대한 설명을 표시합니다
-                var infowindow = new kakao.maps.InfoWindow({
-                    content: `<div style="width:150px;text-align:center;padding:6px 0;">${name}</div>`,
-                });
-                infowindow.open(map, marker);
+                // var infowindow = new kakao.maps.InfoWindow({
+                //     content: `<div style="width:150px;text-align:center;padding:6px 0;">${name}</div>`,
+                // });
+                // infowindow.open(map, marker);
 
                 // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
                 map.setCenter(coords);
@@ -41,5 +41,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    let section = document.querySelector(".bottom-sheet-section")
+    let isUpper = false;
 
+    section.addEventListener("touchstart", function (e) {
+        if (isUpper) {
+            downSection();
+            isUpper = false;
+        } else {
+            upperSection();
+            isUpper = true;
+        }
+    });
+
+    function upperSection() {
+        section.style.transform = "translateY(-90%)";
+    }
+
+    function downSection() {
+        section.style.transform = "translateY(-20%)";
+    }
 });
