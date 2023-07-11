@@ -9,10 +9,23 @@ spring:
     username: iljo
     password: 1234
 
+  aop:
+    proxy-target-class: true
+  profiles:
+    include: oauth
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        order-inserts: true
+        order-updates: true
+        format-sql: true
+        show-sql: true
+
 upload:
   review: "/images/member/review/"
   profile: "/images/member/profile/"
-  
 
 mybatis:
   type-aliases-package: com.mechoori.web.entity

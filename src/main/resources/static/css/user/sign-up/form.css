@@ -1,5 +1,19 @@
 @import url("../../style.css");
 
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  width: 100%;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
 
 /* ========메인========== */
 .circleParent {
@@ -81,12 +95,14 @@
 
 /* ================= 정보 입력 칸 ================= */
 
-.form-section { width: 100%; }
-
 .form-container {
   width: 100%;
-  padding: 0 20px;
-  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-contents{
+  width: 375px;
 }
 
 .form-wrap {

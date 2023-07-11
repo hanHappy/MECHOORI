@@ -10,30 +10,36 @@
     <title>찜한목록</title>
 </head>
 <body>
-    <header>
-        <div class="header-side left">
-            <a onclick="history.back()"><button class="header-icon back">버튼</button></a>
-        </div>
-            <a href ="/"><h1 class="header-icon logo">로고</h1></a>
-        <div class="header-side right">
-            <a href="/user/my-page"> <button class="header-icon menu">메뉴</button></a>
-        </div>
-    </header> 
-    <div class="btnarea">
+
+<header>
+  <div class="header-side left">
+    <a onclick = "history.back()"><button class="header-icon back">버튼</button></a>
+  </div>
+    <a href ="/"><h1 class="header-icon logo">로고</h1></a>
+  <div class="header-side right">
+    <!-- FIXME 홈버튼 -> 햄버거로 변경 -->
+    <a href="/"><button class="header-icon home">버튼</button></a>
+  </div>
+</header>
+
+    <div class="btnarea-container">
+        <div class="btnarea">
         <div class="twoBtns">
-          <div class="btnspar">
+            <div class="btnspar">
             <button class="btn1 btn">
-              <span><a href="like-list">찜한 목록</a></span>
+                <span><a href="like-list">찜한 목록</a></span>
             </button>
             <button class="btn2 btn">
-              <span><a href="rate-list">평가 목록</a></span>
+                <span><a href="rate-list">평가 목록</a></span>
             </button>
-          </div>
+            </div>
         </div>
-      </div>
+        </div>
+    </div>
 
     <main>  
         <!--사진 식당이름 가성비-->
+        
         <div class="restau-list-total">
             <div class="like-restau-list">
                 <div class ="like-restau-img1">
@@ -47,6 +53,7 @@
                 <div class ="row-list1">가성비 6,000원(56+)</div>
             </div>
         </div>
+
     </main>
 </body>
 </html>

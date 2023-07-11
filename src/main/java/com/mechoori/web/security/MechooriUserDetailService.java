@@ -16,29 +16,26 @@ import com.mechoori.web.service.MemberService;
 
 @Service
 public class MechooriUserDetailService implements UserDetailsService{
+
     @Autowired
     MemberService memberService;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Member member = memberService.getByEmail(email);
-        MechooriUserDetails userDetails = new MechooriUserDetails();
-        userDetails.setId(member.getId());
-        userDetails.setUsername(member.getUsername());
-        userDetails.setNickname(member.getNickname());
-        userDetails.setEmail(email);
-        userDetails.setPassword(member.getPassword());
-        userDetails.setImg(member.getImg());
-        userDetails.setRegDate(member.getRegDate());
-        
+
+        if (member == null) {
+            throw new UsernameNotFoundException("Member not found");
+        }
+
         List<GrantedAuthority> authorities = new ArrayList<>();
         // username 통해서 db의 member_with_role (view)에서 role_name을 String role에 할당
         String role = memberService.getRoleByEmail(email);
         // 얻어온 role을 authorities 리스트에 추가
         authorities.add(new SimpleGrantedAuthority(role));
-        userDetails.setAuthorities(authorities);
 
+        MechooriUserDetails userDetails = new MechooriUserDetails(member);
+        userDetails.setAuthorities(authorities);
         return userDetails;
     }
-    
 }

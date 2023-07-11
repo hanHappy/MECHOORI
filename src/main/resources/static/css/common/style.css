@@ -19,9 +19,9 @@ ul {
 li {
     list-style: none;
 }
-main{
+/* main{
     max-width: 1200px;
-}
+} */
 .d-none{
     display: none !important;
 }
@@ -49,6 +49,8 @@ main{
     --box-color: #EEE;
     /* #EEE 버튼 "클릭" 배경색 */
     --btn-color1: #BDBDBD;
+    /* sub-color 버튼 비활성 색 */
+    --btn-color-2: #a6d5ff;
     /* 아이콘 색상 */
     --icon-color: #6D6D6D;
 

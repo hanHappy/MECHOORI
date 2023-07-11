@@ -16,6 +16,10 @@ public class MemberServiceImp implements MemberService {
     @Autowired
     private MemberRepository repository;
 
+    public MemberServiceImp(MemberRepository repository) {
+        this.repository = repository;
+    }
+
     @Override
     public Member getById(int id) {
         return repository.findById(id);
@@ -44,8 +48,6 @@ public class MemberServiceImp implements MemberService {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         member.setPassword(passwordEncoder.encode(member.getPassword()));
-
-        System.out.println( member.getPassword() );
 
         repository.resetPwd(member);
 

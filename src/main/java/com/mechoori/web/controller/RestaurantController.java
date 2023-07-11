@@ -141,35 +141,37 @@ public class RestaurantController {
         return "restaurant/rate";
     }
 
+    // TODO 리뷰 이미지 파일명 + id로 저장
     @PostMapping("{id}/rate")
     public String rate(
             Rate rate,
-            @RequestParam("image") MultipartFile image,
+            @RequestParam(name = "image", required = false) MultipartFile image,
             @AuthenticationPrincipal MechooriUserDetails user) throws IOException {
                 
         // 리뷰 이미지 ---------------------------------------
-        
-        // input으로 넘어온 이미지 파일명
-        String fileName = image.getOriginalFilename();
-        
-        Resource resource = resourceLoader.getResource(uploadPath);
-        
-        File pathFile = resource.getFile();
-
-        // 디렉토리 없을 시 생성
-        if(!pathFile.exists())
-            pathFile.mkdirs();
-        
-        // 디렉토리에 이미지 저장
-        // C:\Workspace\MECHOORI\src\main\webapp\images\member\review\가츠벤또.jpg
-        String realPath = Paths.get(pathFile.getAbsolutePath(), fileName).toString();
-        image.transferTo(new File(realPath));
-
-        // /images/member/review/가츠벤또.jpg
-        String fullPath = uploadPath + fileName;
-
-        // 평가 데이터에 이미지 경로 세팅
-        rate.setImg(fullPath);
+        if(image != null && !image.isEmpty()){
+            // input으로 넘어온 이미지 파일명
+            String fileName = image.getOriginalFilename();
+            
+            Resource resource = resourceLoader.getResource(uploadPath);
+            
+            File pathFile = resource.getFile();
+    
+            // 디렉토리 없을 시 생성
+            if(!pathFile.exists())
+                pathFile.mkdirs();
+            
+            // 디렉토리에 이미지 저장
+            // C:\Workspace\MECHOORI\src\main\webapp\images\member\review\가츠벤또.jpg
+            String realPath = Paths.get(pathFile.getAbsolutePath(), fileName).toString();
+            image.transferTo(new File(realPath));
+    
+            // /images/member/review/가츠벤또.jpg
+            String fullPath = uploadPath + fileName;
+    
+            // 평가 데이터에 이미지 경로 세팅
+            rate.setImg(fullPath);
+        }
 
         // 평가 데이터 추가
         rateService.add(rate, user.getId());
@@ -193,8 +195,6 @@ public class RestaurantController {
             else
                 list = restaurantService.getRanking(categoryId, offset);
 
-            System.out.println(mainCtgList);
-            System.out.println(list);
             model.addAttribute("list", list);
             model.addAttribute("ctg", mainCtgList);
 

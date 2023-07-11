@@ -1,6 +1,7 @@
 package com.mechoori.web.repository;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import com.mechoori.web.entity.Member;
 
