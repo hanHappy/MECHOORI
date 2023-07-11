@@ -18,4 +18,6 @@ public interface RateService {
     Map<String, Integer> getDate(int memberId);
 
     List<RateListView> getList(int id, int offset);
+
+    Map<String, Object> getRateResult(int restaurantId, int memberId);
 }
