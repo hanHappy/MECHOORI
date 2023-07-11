@@ -8,6 +8,7 @@
     <title>rate result</title>
     <link rel="stylesheet" href="/css/common/style.css">
     <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/button.css">
     <link rel="stylesheet" href="/css/common/modal-menu.css">
     <link rel="stylesheet" href="/css/restaurant/rate-result.css">
     <script src="/js/components/modal-menu.js" defer></script>
@@ -24,7 +25,7 @@
         </div>
     </header>
     <main>
-        <div class="page-wrapper">
+        <div class="page-wrap">
             <section class="poster">
                 <h1 class="d-none">평가 완료 포스터</h1>
                 <div class="poster-bg">
@@ -34,22 +35,35 @@
                     <section class="data-section">
                         <h1 class="d-none">차트 & 평가 데이터</h1>
                         <div class="data-item">
-                            <div class="img-chart-wrapper">
+                            <div class="img-chart-wrap">
                                 <div class="img-chart"></div>
                             </div>
-                            <div class="data-text-wrapper">
-                                <p><span th:text="${result.name}"> · <span th:text="${result.menuName}"></span></p>
-                                <p>판매 가격 <span th:text="${result.menuPrice}"></span>원</p>
-                                <p>유저 평균 <span th:text="${result.avgRatedPrice}"></span>원</p>
-                                <p>나의 평가 <span th:text="${result.myRatePrice}"></span>(<span th:text="${result.myValue}"></span>)%</p>
+                            <div class="data-text-wrap">
+                                <p><span th:text="${result.name}"></span> · <span th:text="${result.menuName}"></span></p>
+                                <p>판매 가격 &nbsp;&nbsp;<span th:text="${result.menuPrice}"></span>원</p>
+                                <p>유저 평균 &nbsp;&nbsp;<span th:text="${result.avgRatedPrice}"></span>원</p>
+                                <p>나의 평가 &nbsp;&nbsp;<span th:text="${result.myRatePrice}"></span>원 (<span th:text="${result.myValue}"></span>%)</p>
                             </div>
                         </div>
                     </section>
                     <section>
                         <h1 class="d-none">메추리의 분석</h1>
+                        <div class="coca-analysis-wrap">
+                            <div class="coca-analysis-item">
+                                <div class="img-coca"></div>
+                                <div class="text-bg">
+                                    <div class="text">
+                                        메추리 회원님들보다<br>
+                                        <span id=""></span>원 <span></span> 평가하셨네요!
+                                    </div>
+                                </div>
+                                <a href="/user/my-page/statistics" class="go-statistics">통계 보러 가기 ></a>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </section>
+            <a href="/"><button type="button" class="button button-1 btn-to-home">홈으로</button></a>
         </div>
 
         <!-- ============== 메뉴 모달 ============== -->
