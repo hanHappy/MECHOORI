@@ -25,17 +25,45 @@ public class OAuthAttributes {
     }
 
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes){
+
         // provider 구분
-        
+        if ("naver".equals(registrationId)) {
+            return ofNaver(userNameAttributeName, attributes);
+        } else if ("kakao".equals(registrationId)) {
+            return ofKakao(userNameAttributeName, attributes);
+        }
         return ofGoogle(userNameAttributeName, attributes);
     }
 
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {
         return OAuthAttributes.builder()
-                         .username((String) attributes.get("name"))
+                .username((String) attributes.get("name"))
                 .email((String) attributes.get("email"))
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
+                .build();
+    }
+
+    private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes) {
+        Map<String, Object> response = (Map<String, Object>) attributes.get("response");
+ 
+        return OAuthAttributes.builder()
+                .username((String) response.get("name"))
+                .email((String) response.get("email"))
+                .attributes(response)
+                .nameAttributeKey(userNameAttributeName)
+                .build();
+    }
+
+    private static OAuthAttributes ofKakao(String userNameAttributeName, Map<String, Object> attributes) {
+        Map<String, Object> kakaoAccount = (Map<String, Object>)attributes.get("kakao_account");
+        Map<String, Object> kakaoProfile = (Map<String, Object>)kakaoAccount.get("profile");
+
+        return OAuthAttributes.builder()
+                .username((String) kakaoProfile.get("nickname"))
+                .email((String) kakaoAccount.get("email"))
+                .nameAttributeKey(userNameAttributeName)
+                .attributes(attributes)
                 .build();
     }
 
