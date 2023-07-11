@@ -44,14 +44,17 @@ header {
 
 main {
   background-color: var(--background-color);
+
 }
 
 .detail {
   background-color: white;
   box-shadow: var(--block-shadow);
-
-
-
+  max-width: 900px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 20px;
 }
 
 .detail-content{
@@ -151,10 +154,17 @@ main {
   padding: 15px 20px;
   background-color: white;
   box-shadow: var(--block-shadow);
+
+  max-width: 900px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .menu-title, .menu-detail{
   margin-bottom: 15px;
+  width: 100%;
+
 }
 
 .menu-title {
@@ -163,6 +173,8 @@ main {
   font-size: 16px;
   font-weight: 700;
   line-height: 30px;
+
+  width: 100%;
 }
 
 .menu-title img {
@@ -249,6 +261,11 @@ main {
   font-weight: 700;
   line-height: 30px;
   height: 320px;
+
+  max-width: 900px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .map-title-box {
@@ -389,6 +406,12 @@ tr:nth-child(2) td:first-child {
   font-weight: 700;
   line-height: 30px;
   color: #282828;
+
+  max-width: 900px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
 }
 
 .review-title-box{
@@ -579,19 +602,63 @@ a {
   border-radius: 8px;
 }
 
+.img-section{
+  display: flex;
+  justify-content: center;
+}
 
-@media (min-width: 500px) {
+@media (min-width: 769px) {
 
-  .img-section{
-    display: flex;
-    justify-content: center;
-  }
+  main{
+  background-color: #FFFFFF;
+}
 
-  .rstr-thumb{
+  header {
+    height: 300px;
+    width: 100%;
+    background-image: url(/images/foods/main.svg);
+    /*background-color: transparent;*/
+    /*background-repeat: no-repeat;*/
+    background-size: cover;
+    z-index: 80;
+    position: relative;
   }
 
   .dot{
     display: flex;
     justify-content: center;
+  }
+
+  .detail{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    margin-top: 30px;
+    padding: 50px 20px;
+
+  }
+  .detail-content {
+    padding: 0 20px 20px 20px;
+    margin-right: 170px;
+    position: relative;
+    left: 50px;
+  }
+
+  .forWeb{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 380px));
+    background-color: #FFFFFF;
+    justify-content: center;
+    max-width: 940px;
+    width: 100%;
+
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    box-shadow: var(--block-shadow);
+    margin: 10px 0;
+    padding: 10px 0;
   }
 }
