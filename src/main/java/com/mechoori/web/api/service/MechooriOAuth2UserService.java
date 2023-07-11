@@ -39,7 +39,7 @@ public class MechooriOAuth2UserService extends DefaultOAuth2UserService {
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
         String username = attributes.getUsername();
-        // String nickname = attributes.getNickname();
+        // String nickname = null;
         String email = attributes.getEmail();
         String role = Role.MEMBER.getKey();
         Integer roleId = Role.MEMBER.getRoleId();
@@ -59,12 +59,15 @@ public class MechooriOAuth2UserService extends DefaultOAuth2UserService {
         } else{
             member.setRole(role);
         }
-
+        
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(role));
-
+        
         MechooriUserDetails userDetails = new MechooriUserDetails(member, oAuth2User.getAttributes());
         userDetails.setAuthorities(authorities);
+
+        String nickname = memberRepository.getNicknameByEmail(email);
+        member.setNickname(nickname);
 
         //첫 로그인(회원가입) -> nickname = null
         System.out.println("로그인한 회원: " + member);
