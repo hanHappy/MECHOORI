@@ -18,7 +18,9 @@
     <script src="/js/user/rate-list.js"></script>
 
 </head>
+
 <body>
+
 <header>
   <div class="header-side left">
     <a onclick = "history.back()"><button class="header-icon back">버튼</button></a>
@@ -30,21 +32,23 @@
   </div>
 </header>
 
-<div class="btnarea">
-  <div class="twoBtns">
-    <div class="btnspar">
-      <button class="btn1 btn">
-        <span><a href="like-list">찜한 목록</a></span>
-      </button>
-      <button class="btn2 btn">
-        <span><a href="rate-list">평가 목록</a></span>
-      </button>
-    </div>
+  <div class="btnarea-container">
+      <div class="btnarea">
+        <div class="twoBtns">
+          <div class="btnspar">
+            <button class="btn1 btn">
+              <span><a href="like-list">찜한 목록</a></span>
+            </button>
+            <button class="btn2 btn">
+              <span><a href="rate-list">평가 목록</a></span>
+            </button>
+          </div>
+        </div>
+      </div>
   </div>
-</div>
-
+  
 <main>
-
+  
   <section class="mainInfo" >
     <div class="foodList" >
       <div class="adjImg1 adji" th:each="list:${list}">
