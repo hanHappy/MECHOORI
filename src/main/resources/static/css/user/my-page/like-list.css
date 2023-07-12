@@ -1,7 +1,13 @@
 h1, p { margin: 0; }
 
 .like-list-section { background-color: var(--background-color); }
-.like-list { padding: 8px 20px; }
+.like-list { 
+  padding: 8px 20px; 
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
 .item {
   border-radius: 8px;

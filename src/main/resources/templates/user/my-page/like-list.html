@@ -36,14 +36,14 @@
         <section class="like-list-section">
             <h1 class="d-none">찜 목록</h1>
             <div class="like-list">
-                <section class="item">
+                <section class="item" th:each="r : ${list}">
                     <div class="img-wrap">
-                        <img src="/images/foods/짜장상회2.jpg" alt="">
+                        <img src="/images/foods/짜장상회2.jpg" th:src = "@{/images/foods/{img}(img = ${r.img})}" alt="">
                     </div>
                     <div class="text-wrap">
-                        <h1>짜장상회</h1>
-                        <p>평균 가격 &nbsp;<span>6,000</span>원</p>
-                        <p>가성비 &nbsp;<span></span>%</p>
+                        <h1 th:text="${r.restaurantName}">짜장상회</h1>
+                        <p>평균 가격 &nbsp;<span th:text="${r.avgPrice}">6,000</span>원</p>
+                        <p>가성비 &nbsp;<span th:text="${r.value}"></span>%</p>
                     </div>
                     <button class="like text-hidden">좋아요</button>
                 </section>

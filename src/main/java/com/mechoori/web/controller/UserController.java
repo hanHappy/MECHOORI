@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mechoori.web.entity.LikeList;
 import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.RateListView;
 import com.mechoori.web.entity.RestaurantLike;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
 import com.mechoori.web.service.RateService;
+import com.mechoori.web.service.RestaurantLikeService;
 import com.mechoori.web.service.RestaurantService;
 
 @Controller
@@ -25,11 +27,12 @@ public class UserController {
 
     @Autowired
     private RestaurantService restaurantService;
-
     @Autowired
     private MemberService service;
     @Autowired
     private RateService rateService;
+    @Autowired
+    private RestaurantLikeService restaurantLikeService;
 
 
     @GetMapping("/social-login")
@@ -162,10 +165,13 @@ public class UserController {
         return "user/my-page/edit-info/withdraw-complete";
     }
 
-    //찜한목록
+
     @GetMapping("my-page/like-list")
-    public String likeList(Model model,
-                           @AuthenticationPrincipal MechooriUserDetails user) {
+    public String likeList(Model model, @AuthenticationPrincipal MechooriUserDetails member){
+
+        List<LikeList> list = restaurantLikeService.getList(member.getId());
+
+        model.addAttribute("list", list);
 
         return "user/my-page/like-list";
     }
