@@ -39,6 +39,10 @@ public class UserController {
     private ResourceLoader resourceLoader;
     @Value("${upload.profile}")
     private String uploadPath;
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> Choe
     @Autowired
     private MemberService service;
     @Autowired

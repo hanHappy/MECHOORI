@@ -1,7 +1,14 @@
 package com.mechoori.web.controller;
 
+<<<<<<< HEAD
 import java.util.List;
 
+=======
+import com.mechoori.web.entity.*;
+import com.mechoori.web.security.MechooriUserDetails;
+import com.mechoori.web.service.MemberService;
+import com.mechoori.web.service.RestaurantService;
+>>>>>>> Choe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -12,12 +19,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mechoori.web.entity.Member;
+<<<<<<< HEAD
 import com.mechoori.web.entity.RateListView;
 import com.mechoori.web.entity.RestaurantLike;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
 import com.mechoori.web.service.RateService;
 import com.mechoori.web.service.RestaurantService;
+=======
+import com.mechoori.web.service.RateService;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+>>>>>>> Choe
 
 @Controller
 @RequestMapping("user")
