@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/user/my-page/like-list.css">
     <link rel="stylesheet" href="/css/common/header.css">
     <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/user/my-page/like-list.css">
+    <script src="/js/user/my-page/like-list.js" defer></script>
     <title>찜한목록</title>
 </head>
 <body>
@@ -19,20 +20,18 @@
             <a href="/user/my-page"> <button class="header-icon menu">메뉴</button></a>
         </div>
     </header> 
-    <div class="btnarea">
-        <div class="twoBtns">
-          <div class="btnspar">
-            <button class="btn1 btn">
-              <span><a href="like-list">찜한 목록</a></span>
-            </button>
-            <button class="btn2 btn">
-              <span><a href="rate-list">평가 목록</a></span>
-            </button>
-          </div>
-        </div>
-      </div>
 
-    <main>  
+    <main>
+        <nav class="btn-section">
+            <ul class="btn-wrap">
+                <li class="btn-like-list">
+                    <a href=""><span>찜한 목록</span></a>
+                </li>
+                <li class="btn-rate-list">
+                    <a href=""><span>평가 목록</span></a>
+                </li>
+            </ul>
+        </nav>
         <section class="like-list-section">
             <h1 class="d-none">찜 목록</h1>
             <div class="like-list">
@@ -45,7 +44,11 @@
                         <p>평균 가격 &nbsp;<span th:text="${r.avgPrice}">6,000</span>원</p>
                         <p>가성비 &nbsp;<span th:text="${r.value}"></span>%</p>
                     </div>
-                    <button class="like text-hidden">좋아요</button>
+                    <button 
+                        th:data-restaurant-id="${r.restaurantId}"  
+                        th:data-member-id="${r.memberId}"
+                        type="button" 
+                        class="like text-hidden">좋아요</button>
                 </section>
             </div>
         </section>
