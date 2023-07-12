@@ -45,6 +45,8 @@ main{
     --font-color: #282828;
     /* 힌트 색상 */
     --hint-color: #9D9999;
+    /* 비활성 색상 */
+    --inactive-color: #B9B7B7;
     /* input 박스 배경색 */
     --box-color: #EEE;
     /* #EEE 버튼 "클릭" 배경색 */

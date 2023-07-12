@@ -16,9 +16,11 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,10 +28,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.RateListView;
+import com.mechoori.web.entity.RestaurantLike;
 import com.mechoori.web.security.MechooriUserDetailService;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
 import com.mechoori.web.service.RateService;
+import com.mechoori.web.service.RestaurantLikeService;
 
 @RestController("apiUserController")
 @RequestMapping("api/user")
@@ -43,6 +47,8 @@ public class UserController {
     private MemberService service;
     @Autowired
     private RateService rateService;
+    @Autowired
+    private RestaurantLikeService restaurantLikeService;
     @Autowired
     private MechooriUserDetailService mechooriUserDetailService;
 
@@ -125,5 +131,10 @@ public class UserController {
         List<RateListView> list = rateService.getList(user.getId(),offset);
 
         return list;
+    }
+
+    @DeleteMapping("my-page/like-list")
+    public int delete(RestaurantLike restaurantLike){
+        return restaurantLikeService.delete(restaurantLike);
     }
 }
