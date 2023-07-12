@@ -167,10 +167,6 @@ public class UserController {
     public String likeList(Model model,
                            @AuthenticationPrincipal MechooriUserDetails user) {
 
-    List<RestaurantLike> list = service.restaurantLike(user.getId());
-
-    model.addAttribute("list",list);
-
         return "user/my-page/like-list";
     }
 
