@@ -109,16 +109,16 @@ const nickName = document.querySelector("#nickName").dataset.nickname;
 
 console.log(nickName);
 dataBtn2.onclick = function () {
-    // console.log("클릭");
-    dataSection.innerHTML = "";
+  // console.log("클릭");
+  dataSection.innerHTML = "";
 
 
-    (async () => {
-  
-      let categoryData;
-      let url = `/api/user/my-page/statistics2`;
-  
-      dataSection.innerHTML=
+  (async () => {
+
+    let categoryData;
+    let url = `/api/user/my-page/statistics2`;
+
+    dataSection.innerHTML =
       `
       <canvas id="barChart" width="375" height="130"></canvas>
 
@@ -136,13 +136,13 @@ dataBtn2.onclick = function () {
         </div>
       </section>
       `
-  
-      await fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          categoryData = data;
- 
-          let chart = 
+
+    await fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        categoryData = data;
+
+        let chart =
           new Chart(document.getElementById("barChart"), {
             // type: 'line',
             // type: 'pie',
@@ -151,26 +151,26 @@ dataBtn2.onclick = function () {
               labels: [],
               datasets: [{
                 backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)',
-                'rgb(0, 184, 148)',
-                '#9370DB', //(퍼플)
-                '#FFC153', //(황토색)
-                '#FF6E54',// (코랄 핑크)
-                '#FFB6C1', //(라이트 핑크)
-                '#ACD8AA', //(민트색)
-                '#FF4136',// (타마린)
-                // '#FFD700',// (골든 옐로우)
+                  'rgb(255, 99, 132)',
+                  'rgb(54, 162, 235)',
+                  'rgb(255, 205, 86)',
+                  'rgb(0, 184, 148)',
+                  '#9370DB', //(퍼플)
+                  '#FFC153', //(황토색)
+                  '#FF6E54',// (코랄 핑크)
+                  '#FFB6C1', //(라이트 핑크)
+                  '#ACD8AA', //(민트색)
+                  '#FF4136',// (타마린)
+                  // '#FFD700',// (골든 옐로우)
                 ],
                 data: []
               }]
             },
-  
+
             options: {
               maintainAspectRatio: false, // 가로 세로 비율을 유지할지 여부 (기본값: true)
               cutoutPercentage: 30, // 도넛 차트의 가운데 빈 공간 크기 (0~100, 기본값: 50)
-  
+
               legend: {
                 // display: false
                 display: true // 범례 표시 여부 (기본값: true)
@@ -194,69 +194,70 @@ dataBtn2.onclick = function () {
                 animateScale: true, // 차트 크기 애니메이션 효과 여부 (기본값: true)
                 duration: 1000
               },
-            //   pieceLabel: {
-            //     mode:"label",
-            //     position:"outside",
-            //     fontSize: 8,
-            //     fontStyle: 'bold'
-            //  },
+              //   pieceLabel: {
+              //     mode:"label",
+              //     position:"outside",
+              //     fontSize: 8,
+              //     fontStyle: 'bold'
+              //  },
             }
-  
+
           });
-  
-          for (let v of categoryData) {
-            chart.data.labels.push(v.name);
-            chart.data.datasets[0].data.push(v.rateCount);
-          }
-  
-          let cateText = document.querySelector("#cateText");
-          cateText.textContent = chart.data.labels[0];
-  
-        });
-    })()
-  
-  }
-  
-  dataBtn1.onclick =function(){
 
-    dataSection.innerHTML=
-    `    <section id="dataSection">
-    <canvas id="barChart" width="55" height="60"></canvas>
+        for (let v of categoryData) {
+          chart.data.labels.push(v.name);
+          chart.data.datasets[0].data.push(v.rateCount);
+        }
 
-    <section class="MiddleBack">
-      <div class="rateImg"></div>
-      <div class="rateTextArea">
-        <p class="rateText">
-          메추리 전체 회원보다 <br />
-          <span id="gap" style="color: #2292F9">30</span><span style="color: #2292F9">%</span> <span
-            id="gapM">높은</span> 가성비를 누리셨네요!
-        </p>
-      </div>
-    </section>
-  </section>`
+        let cateText = document.querySelector("#cateText");
+        cateText.textContent = chart.data.labels[0];
 
-    updateDateRange();
-  }
+      });
+  })()
+
+}
 
 
-  // ---------- 3번 차트 -----------------
 
-  dataBtn3.onclick = function(){
 
-    async function updateDateRange() {
+
+
+// ---------- 3번 차트 -----------------
+
+dataBtn3.onclick = function () {
+  console.log("3번 차트")
+  dataSection.innerHTML = "";
+
+    (async () => {
 
       let myRankDate;
       let url = `/api/user/my-page/statistics3`;
-    
+
+      dataSection.innerHTML =
+        `
+    <canvas id="aaChart" width="375" height="540"></canvas>
+
+    <section class="MiddleBack">
+        <div class="rateImg"></div>
+        <div class="rateTextArea">
+          <p class="rateText">
+            <span sec:authorize="isAuthenticated()" sec:authentication="principal.nickname" class="username"> 회원</span> 님이 평가한 가성비 1등<br/>
+           식당은 <span id="resText" style="color: #2292F9">000</span>네요!
+          </p>
+        </div>
+      </div>
+    </section>
+    `
+
       await fetch(url)
         .then(response => response.json())
         .then(data => {
           // console.log(data);
           myRankDate = data;
-    
+
           // console.log(myRankDate(0));
           console.log(data);
-    
+
           let chart =
             new Chart(document.getElementById("aaChart"), {
               type: 'bar',
@@ -322,28 +323,54 @@ dataBtn2.onclick = function () {
                   duration: 3000 // 애니메이션 지속 시간 (밀리초)
                 },
               }
-    
+
             });
-            // let chartContainer = document.getElementById("aaChart");
-            // chartContainer.style.width = "500px";
-            // chartContainer.style.height = "400px";
-    
-            for (let m of myRankDate){
-              chart.data.labels.push(m.resName);
-              chart.data.datasets[0].data.push(m.value);
-            }
-    
-    
-          for(let i=0; i<myRankDate.length; i++){
-            console.log(chart.data.labels[i]);
-            console.log(chart.data.datasets[0].data[i]);
+          // let chartContainer = document.getElementById("aaChart");
+          // chartContainer.style.width = "500px";
+          // chartContainer.style.height = "400px";
+
+          for (let m of myRankDate) {
+            chart.data.labels.push(m.resName);
+            chart.data.datasets[0].data.push(m.value);
           }
-    
+
+
+          // for(let i=0; i<myRankDate.length; i++){
+          //   console.log(chart.data.labels[i]);
+          //   console.log(chart.data.datasets[0].data[i]);
+          // }
+
           let resText = document.querySelector("#resText");
           resText.textContent = chart.data.labels[0];
-    
-        });
-    }
-    
 
+        });
+    })()
+
+
+
+
+
+
+}
+
+  // ------- 1번 버튼---------
+  dataBtn1.onclick = function () {
+
+    dataSection.innerHTML =
+      `    <section id="dataSection">
+      <canvas id="barChart" width="55" height="60"></canvas>
+  
+      <section class="MiddleBack">
+        <div class="rateImg"></div>
+        <div class="rateTextArea">
+          <p class="rateText">
+            메추리 전체 회원보다 <br />
+            <span id="gap" style="color: #2292F9">30</span><span style="color: #2292F9">%</span> <span
+              id="gapM">높은</span> 가성비를 누리셨네요!
+          </p>
+        </div>
+      </section>
+    </section>`
+
+    updateDateRange();
   }

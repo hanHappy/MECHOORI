@@ -1,10 +1,7 @@
 package com.mechoori.web.controller;
 
-import com.mechoori.web.entity.*;
-import com.mechoori.web.security.MechooriUserDetails;
-import com.mechoori.web.service.MemberService;
-import com.mechoori.web.service.MenuService;
-import com.mechoori.web.service.RestaurantService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -12,14 +9,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mechoori.web.entity.LikeList;
 import com.mechoori.web.entity.Member;
+import com.mechoori.web.entity.Rate;
+import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
 import com.mechoori.web.service.RateService;
 import com.mechoori.web.service.RestaurantService;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
+import com.mechoori.web.service.LikeListService;
 
 @Controller
 @RequestMapping("user")
@@ -31,6 +30,8 @@ public class UserController {
     private MemberService service;
     @Autowired
     private RateService rateService;
+    @Autowired
+    private LikeListService likeService;
 
 
     @GetMapping("login")
@@ -146,10 +147,38 @@ public class UserController {
     }
 
     //찜한목록
-    @GetMapping("my-page/like-list")
-    public String likeList(){
+    @GetMapping("/my-page/like-list")
+    public String likeList(
+        Model model,
+        @AuthenticationPrincipal MechooriUserDetails member){
+        
+        List<LikeList> list = likeService.getList(member.getId());
+        // System.out.println(list);
+
+        // for(LikeList likeList: list){
+        //     likeList.add(LikeList.get)
+        // }
+
+        // (memberId=1, 
+        // restaurantId=191, 
+        // restaurantName=옥정, 
+        // img=옥정.jpg, 
+        // avgRatedPrice=11200, 
+        // avgPrice=10500, 
+        // valuePercentage=106)
+        model.addAttribute("list", list);
+
+
         return "user/my-page/like-list";
     }
+
+
+
+
+    // @GetMapping("my-page/like-list")
+    // public String likeList(){
+    //     return "user/my-page/like-list";
+    // }
 
     //가성비 성과 페이지
     @GetMapping("my-page/statistics")
