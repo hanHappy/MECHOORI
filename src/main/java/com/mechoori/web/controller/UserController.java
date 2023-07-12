@@ -190,14 +190,14 @@ public class UserController {
         //List<Rate> list = rateService.getRatedPrice(rate, memberId);
        // Map<String, Statistics> data = ratedService.getDate(member.getId());
         //model.addAttribute("data", data);
-        return "user/my-page/statistics";
+        return "user/my-page/statistics11";
     }
 
     //가성비 성과 페이지
     @GetMapping("my-page/statistics2")
     public String rateStatistics2(){
 
-        return "user/my-page/statistics2";
+        return "user/my-page/statistics22";
     }
   
 
@@ -205,7 +205,7 @@ public class UserController {
     @GetMapping("my-page/statistics3")
     public String rateStatistics3(){
 
-        return "user/my-page/statistics3";
+        return "user/my-page/statistics33";
     }
 
 }

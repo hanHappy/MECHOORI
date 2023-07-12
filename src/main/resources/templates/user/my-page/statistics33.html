@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/user/my-page/statistics3.css" />
+  <link rel="stylesheet" href="/css/common/style.css" />
+  <link rel="stylesheet" href="/css/common/header.css">
+  <link rel="stylesheet" href="/css/common/component.css">
+  <link rel="stylesheet" href="/css/common/button.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script src="/js/user/statistics3.js" defer></script>
+  <!-- <script src="/js/user/statistics.js" defer></script> -->
+
+</head>
+
+<body>
+  <header>
+    <div class="header-side left">
+      <a onclick="history.back()"><button class="header-icon back"></button></a>
+    </div>
+    <a href="/">
+      <h1 class="header-icon logo"></h1>
+    </a>
+    <div class="header-side right">
+      <a href="/"><button class="header-icon home"></button></a>
+    </div>
+  </header>
+
+  <main>
+    <div class="mainTitle">
+      <p>나의 평가 랭킹</p>
+    </div>
+
+    <canvas id="aaChart" width="375" height="540"></canvas>
+
+    <section class="MiddleBack">
+        <div class="rateImg"></div>
+        <div class="rateTextArea">
+          <p class="rateText">
+            <span sec:authorize="isAuthenticated()" sec:authentication="principal.nickname" class="username"> 회원</span> 님이 평가한 가성비 1등<br/>
+           식당은 <span id="resText" style="color: #2292F9">000</span>네요!
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

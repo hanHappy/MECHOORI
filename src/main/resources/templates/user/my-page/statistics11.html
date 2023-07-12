@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/user/my-page/statistics.css" />
+  <link rel="stylesheet" href="/css/common/style.css" />
+  <link rel="stylesheet" href="/css/common/header.css">
+  <link rel="stylesheet" href="/css/common/component.css">
+  <link rel="stylesheet" href="/css/common/button.css">
+  <script src="/js/user/my-page/statistics.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+</head>
+
+<body>
+  <header>
+    <div class="header-side left">
+      <a onclick="history.back()"><button class="header-icon back"></button></a>
+    </div>
+    <a href="/">
+      <h1 class="header-icon logo"></h1>
+    </a>
+    <div class="header-side right">
+      <a href="/"><button class="header-icon home"></button></a>
+    </div>
+  </header>
+
+  <main>
+    <div class="mainTitle">
+      <p>나의 가성비 데이터</p>
+    </div>
+
+    <!-------- 차트 버튼 ver2-------->
+    <span class="btnZone">
+      <button class="chart-btn1">가성비교</button>
+      <button class="chart-btn2">카테고리</button>
+      <button class="chart-btn3">평가랭킹</button>
+    </span>
+    <!-------- 차트 버튼 ver1-------->
+    <!-- <span class="btnZone">
+      <button class="chart-btn1">가성비교<span class="chart-span1"></span></button>
+      <button class="chart-btn2">카테고리<span class="chart-span2"></span></button>
+      <button class="chart-btn3">평가랭킹<span class="chart-span3"></span></button>
+    </span> -->
+
+
+    <section id="dataSection">
+      <canvas id="barChart" width="55" height="60"></canvas>
+
+      <section class="MiddleBack">
+        <div class="rateImg"></div>
+        <div class="rateTextArea">
+          <p class="rateText">
+            메추리 전체 회원보다 <br />
+            <span id="gap" style="color: #2292F9">30</span><span style="color: #2292F9">%</span> <span
+              id="gapM">높은</span> 가성비를 누리셨네요!
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <input type="hidden" th:data-nickName="${#authentication.principal.nickname}" id="nickName">
+
+  </main>
+</body>
+
+</html>
