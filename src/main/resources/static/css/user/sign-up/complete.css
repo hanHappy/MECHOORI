@@ -4,6 +4,7 @@
   transform: translateX(-50%);
   bottom: 40%;
   background-image: url("/images/assets/coca-signup-complete.svg");
+  background-repeat: no-repeat;
   width: 156px;
   height: 178px;
   margin-top: 116px;
@@ -17,7 +18,7 @@
   transform: translateX(-50%);
 
 
-  width: 335px;
+  width: 375px;
   height: 41px;
   
   border: none;

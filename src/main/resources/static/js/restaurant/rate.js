@@ -149,8 +149,8 @@ imgInput.addEventListener("change", (e)=>{
     reviewImgUploadBtn.classList.remove("uploaded");
 });
 
-let reviewImageLabel = reviewSection.querySelector("#review-image-label");
-reviewImageLabel.addEventListener("change", (e)=>{
-  console.log("c");
-});
+// let reviewImageLabel = reviewSection.querySelector("#review-image-label");
+// reviewImageLabel.addEventListener("change", (e)=>{
+//   console.log("c");
+// });
 

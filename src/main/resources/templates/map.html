@@ -24,7 +24,9 @@
             <button class="header-icon back"></button>
         </a>
     </div>
-    <h1 class="header-icon logo"></h1>
+    <form>
+        <h1>검색창</h1>
+    </form>
     <div class="header-side right">
         <a href="">
             <button class="d-none"></button>
@@ -44,20 +46,6 @@
             <span th:text="${list.id}" id="resId" hidden></span>
             <span th:text="${list.name}" class="resName" hidden></span>
             <span th:text="${list.contactNumber}" class="contactNumber" hidden></span>
-        </div>
-
-        <div id="menu_wrap" class="bg_white">
-            <div class="option">
-                <div>
-                    <form onsubmit="searchPlaces(); return false;">
-                        키워드 : <input type="text" placeholder="맛집" id="keyword" size="15" class="search-bar">
-                        <button type="submit" class="btn">검색하기</button>
-                    </form>
-                </div>
-            </div>
-            <hr>
-            <ul id="placesList"></ul>
-            <div id="pagination"></div>
         </div>
     </div>
 

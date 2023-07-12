@@ -9,18 +9,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>손 안의 메뉴 추천 리스트, 메추리</title>
-    <link rel="stylesheet" href="/css/common/style.css">
-    <link rel="stylesheet" href="/css/common/component.css">
-    <link rel="stylesheet" href="/css/common/button.css">
-    <link rel="stylesheet" href="/css/common/restaurant.css">
-    <link rel="stylesheet" href="/css/restaurant/list.css">
+    <link rel="stylesheet" href="/css/common/style.css?ver=1">
+    <link rel="stylesheet" href="/css/common/component.css?ver=1">
+    <link rel="stylesheet" href="/css/common/button.css?ver=1">
+    <link rel="stylesheet" href="/css/common/header.css?ver=1">
+    <link rel="stylesheet" href="/css/common/restaurant.css?ver=1">
+    <link rel="stylesheet" href="/css/restaurant/list.css?ver=1">
     <script src="/js/restaurant/list.js" defer></script>
 </head>
 
 <body>
 
     <header>
-        <nav class="header">
             <div class="header-wrapper">
                 <div class="header-side left">
                     <a href="/"><button class="header-icon back">버튼</button></a>
@@ -45,7 +45,8 @@
                     </form>
                 </div>
             </div>
-        </nav>
+    </header>
+
         <!-- 카테고리 -->
         <nav class="top-category-section">
             <div class="category">
@@ -88,7 +89,6 @@
                 </select>
             </div>
         </nav>
-    </header>
 
     <main>
 
@@ -108,7 +108,7 @@
                                     href=""
                                     type="button"
                                     sec:authorize="isAuthenticated()" 
-                                    th:data-member-id="${#authentication.principal.id}"
+                                    th:data-member-id="${#authentication.principal['id'] ?: #authentication.principal.attributes['sub']}"
                                     th:data-restaurant-id="${r.id}"
                                     class="like" 
                                     th:classappend="${r.like}?'active' : ''">좋아요
@@ -157,10 +157,10 @@
                 </section>
             </div>
         </section>
-        <div class="screen">
-            <div class="modal-like">
-                <p>너 내가 찜했다</p>
-            </div>
+
+        <!-- 좋아요 모달 -->
+        <div class="modal-toast">
+            <p>너 내가 찜했다</p>
         </div>
 
         <input type="hidden" sec:authorize="isAuthenticated()" th:value="${#authentication.principal.id}" id="member-id">

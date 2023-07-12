@@ -1,3 +1,5 @@
+import ModalToast from "../components/modal-toast.js";
+
 const header = document.querySelector("header");
 const logo = header.querySelector(".logo");
 const headerSide = header.querySelectorAll(".header-side");
@@ -11,7 +13,7 @@ const searchBar = header.querySelector("#search-bar");
 const searchBtn = header.querySelector(".search-btn");
 const restaurantListSection = document.querySelector(".restaurant-list-section");
 const restaurantList = restaurantListSection.querySelector(".restaurant-list");
-const modalLike = document.querySelector(".modal-like");
+const modalLike = document.querySelector(".modal-toast");
 
 // index 검색어 & 카테고리 검색
 let searchParam = new URLSearchParams(window.location.search);
@@ -223,19 +225,13 @@ restaurantList.onclick = function(e){
                 .then(response=>response.json())
                 .then(count=>{
                     likeCount.textContent = count;
+                })
+                .then(()=>{
+                    const modalToast = new ModalToast();
+                    modalToast.show(modalLike);
                 });
             }
         });
-        modalLike.classList.remove("d-none");
-        setTimeout(() => {
-            modalLike.classList.add("active");
-            setTimeout(() => {
-                modalLike.classList.remove("active");
-                setTimeout(() => {
-                    modalLike.classList.add("d-none");
-                }, 1000);
-            }, 1200);
-        }, 100);
     }
 
     // Like 삭제

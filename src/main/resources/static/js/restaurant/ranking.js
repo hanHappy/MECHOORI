@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     let avgprice = item.avgPrice.toLocaleString();
                     let avgRatedPrice = item.avgRatedPrice.toLocaleString();
                     let itemTemplate = `
-            <section class="thymleaf">
+            <section class="thymeleaf">
               <img src="/images/foods/${item.img}" class="img">
               <ul class="ranking-list">
                   <li class="rankingNum"></li>

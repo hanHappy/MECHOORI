@@ -13,24 +13,35 @@ li{
 
 
 /* 찜  평가 버튼 */
-.btnarea{
 
+main{
+    padding: 0 20px;
+    background-color: var(--background-color);
+}
+
+  .btnarea-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: var(--block-shadow);
+  }
+
+  .btnarea{
     width: 375px;
     height: 81px;
-    box-shadow: var(--block-shadow);
     display: flex;
     align-items: center;
     background-color: white;
   }
-  
+
   .twoBtns {
     justify-content: center;
     border: 1px solid var(--main-color);
     height: 41px;
     width: 311px;
-  
+
     border-radius: 20px;
-  
+
     justify-items: center;
     position: relative;
     margin: 0 32px;
@@ -55,7 +66,7 @@ li{
   .btn2 {
     background-color: white;
     text-align: center;
-    width: 149px;
+    width: 145px;
     color: rgba(128, 128, 128, 0.5);
     padding-right: 30px;
   }
@@ -70,19 +81,28 @@ li{
   }
 
 /* 찜한목록 카드 이미지 전체 */
+.restau-list-total {
+  /* width: 100%;
+  display: flex;
+  justify-content: space-around;
+  /* padding: 0 20px; */
+
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 10px;
+  /* padding: 0 20px; */
+}
+
 .like-restau-list{
-    width:335px;
+    width:375px;
     height:90px;
     background-color: white;
     align-items: center;
     display: grid;
-    margin: 10px auto;
+    margin: 10px 0;
     grid-template-columns: 33% 33% 33%;
     grid-template-rows: 50% 50%;
-    /* box-shadow: -1px 0px 1px rgba(0, 0, 0, 0.05),
-    1px 0px 1px rgba(0, 0, 0, 0.05),
-    0px -1px 1px rgba(0, 0, 0, 0.05),
-    0px 1px 1px rgba(0, 0, 0, 0.05); */
     box-shadow: var(--block-shadow);
     border-radius: 8px;
 }

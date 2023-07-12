@@ -44,8 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const nicknameCheck = document.querySelector('#msg-nickname-check');
         const submitBtn = document.querySelector(".next");
 
-
-
         const formData = new FormData();
         formData.append('nickname', nickname);
 
@@ -65,11 +63,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (data === "cantuse") {
                     nicknameCheck.style.color = "red";
-                    nicknameCheck.innerText = `닉네임이 이미 사용 중 입니다`
+                    nicknameCheck.innerText = "사용 중인 닉네임입니다";
                     submitBtn.disabled = true;
                 } else {
                     nicknameCheck.style.color = "blue";
-                    nicknameCheck.innerText = `닉네임을 사용하실 수 있습니다.`
+                    nicknameCheck.innerText = "사용할 수 있는 닉네임입니다";
                     submitBtn.disabled = false;
 
                 }

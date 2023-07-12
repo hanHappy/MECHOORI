@@ -21,8 +21,6 @@ public class EmailController {
             throws Exception {
 
         String code = service.sendSimpleMessage(email);
-        System.out.println(email);
-        System.out.println("인증코드: " + code);
         return code;
     }
 

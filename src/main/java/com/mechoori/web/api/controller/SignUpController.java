@@ -26,8 +26,6 @@ public class SignUpController {
         if (emailCheck) {
             //중복 확인 후에 아이디가 없으면
             String code = service.sendSimpleMessage(email);
-            System.out.println(email);
-            System.out.println("인증코드: " + code);
             return code;
         } else
             return "0";
@@ -41,7 +39,6 @@ public class SignUpController {
             throws Exception {
 
         boolean checknickname = signUpService.checkNickName(nickname);
-        System.out.println(checknickname);
 
         if(checknickname) {
             return "canUse";
