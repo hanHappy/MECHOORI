@@ -2,9 +2,10 @@ package com.mechoori.web.service;
 
 import java.util.List;
 
-import com.mechoori.web.entity.LikeListView;
+import com.mechoori.web.entity.LikeList;
 import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.RestaurantLike;
+import com.mechoori.web.security.MechooriUserDetails;
 
 public interface RestaurantLikeService {
 
@@ -14,6 +15,6 @@ public interface RestaurantLikeService {
 
     int delete(RestaurantLike restaurantLike);
 
-    List<LikeListView> getList(Member member);
+    List<LikeList> getList(int memberId);
 
 }

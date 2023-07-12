@@ -9,10 +9,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LikeListView {
+public class LikeList {
+    private int memberId;
+    private int restaurantId;
     private String restaurantName;
     private String img;
     private int avgRatedPrice;
     private int avgPrice;
     private int valuePercentage;
 }
+
+

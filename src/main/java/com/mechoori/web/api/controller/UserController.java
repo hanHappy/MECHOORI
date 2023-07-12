@@ -16,6 +16,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -26,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.RateListView;
+import com.mechoori.web.entity.RestaurantLike;
 import com.mechoori.web.security.MechooriUserDetailService;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
@@ -39,7 +41,6 @@ public class UserController {
     private ResourceLoader resourceLoader;
     @Value("${upload.profile}")
     private String uploadPath;
- 
     @Autowired
     private MemberService service;
     @Autowired
@@ -129,5 +130,11 @@ public class UserController {
         return list;
     }
 
-
+    @DeleteMapping("my-page/like-list")
+    public int delete(RestaurantLike restaurantLike){
+        System.out.println(restaurantLike.getMemberId());
+        System.out.println(restaurantLike.getRestaurantId());
+        return 1;
+       
+    }
 }

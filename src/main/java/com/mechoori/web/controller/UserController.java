@@ -6,17 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mechoori.web.entity.LikeList;
 import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.RateListView;
 import com.mechoori.web.entity.RestaurantLike;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.MemberService;
 import com.mechoori.web.service.RateService;
+import com.mechoori.web.service.RestaurantLikeService;
 import com.mechoori.web.service.RestaurantService;
 
 @Controller
@@ -30,7 +34,8 @@ public class UserController {
     private MemberService service;
     @Autowired
     private RateService rateService;
-
+    @Autowired
+    private RestaurantLikeService restaurantLikeService;
 
     @GetMapping("/social-login")
     public String socialLogin(){
@@ -165,12 +170,9 @@ public class UserController {
     //찜한목록
     @GetMapping("my-page/like-list")
     public String likeList(Model model,
-                           @AuthenticationPrincipal MechooriUserDetails user) {
-
-    List<RestaurantLike> list = service.restaurantLike(user.getId());
-
-    model.addAttribute("list",list);
-
+                           @AuthenticationPrincipal MechooriUserDetails member) {
+        List<LikeList> list = restaurantLikeService.getList(member.getId());
+        model.addAttribute("list", list);
         return "user/my-page/like-list";
     }
 

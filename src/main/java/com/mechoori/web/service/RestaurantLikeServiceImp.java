@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mechoori.web.entity.LikeListView;
+import com.mechoori.web.entity.LikeList;
+import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.RestaurantLike;
 import com.mechoori.web.repository.RestaurantLikeRepository;
+import com.mechoori.web.security.MechooriUserDetails;
 
 @Service
 public class RestaurantLikeServiceImp implements RestaurantLikeService {
@@ -31,8 +33,10 @@ public class RestaurantLikeServiceImp implements RestaurantLikeService {
     }
 
     @Override
-    public List<LikeListView> getList(int memberId) {
-        return repository.getList(memberId);
+    public List<LikeList> getList(int memberId) {
+        return repository.findAll(memberId);   
     }
+
+ 
     
 }

@@ -1,5 +1,6 @@
 package com.mechoori.web.service;
 
+import com.mechoori.web.entity.LikeList;
 import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.RestaurantLike;
 
@@ -19,4 +20,6 @@ public interface MemberService {
 	List<RestaurantLike> restaurantLike(int Id);
 
     void update(Member member);
+
+    List<LikeList> getList(Member member);
 }
