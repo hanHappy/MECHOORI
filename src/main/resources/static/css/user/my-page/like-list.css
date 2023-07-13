@@ -3,6 +3,8 @@ h1, p { margin: 0; }
 
 /* ---------------- 버튼 영역 ---------------- */
 .btn-section {
+  box-shadow: 0px 1px 4px 0px #0002;
+
   padding: 20px 30px;
 
   display: flex;
@@ -124,4 +126,14 @@ img {
   to{
       transform: scale(0);
   }
+}
+
+/* 찜한 식당이 없습니다 */
+.msg-no-list-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.msg-no-list {
+  color: var(--hint-color);
 }

@@ -1,4 +1,10 @@
 let likeList = document.querySelector('.like-list');
+let item = likeList.querySelector('.item');
+let noListFoundMsg = likeList.querySelector('.msg-no-list-wrap');
+console.log(item);
+if(item === null)
+    noListFoundMsg.classList.remove('d-none');
+    
 
 likeList.addEventListener("click", function (e) {
     if (e.target.tagName !== 'BUTTON')
@@ -22,6 +28,9 @@ likeList.addEventListener("click", function (e) {
                 e.target.classList.add('vanish');
                 setTimeout(() => {
                     e.target.parentElement.remove();
+                    let item_ = likeList.querySelector('.item');
+                    if(item_ === null)
+                        noListFoundMsg.classList.remove('d-none');
                 }, 420);
                 // -----------------------------------
             }
