@@ -132,9 +132,7 @@ public class UserController {
 
     @DeleteMapping("my-page/like-list")
     public int delete(RestaurantLike restaurantLike){
-        System.out.println(restaurantLike.getMemberId());
-        System.out.println(restaurantLike.getRestaurantId());
-        return 1;
-       
+        
+        return restaurantLikeService.delete(restaurantLike);
     }
 }
