@@ -166,6 +166,7 @@ topCategorySection.onclick = function(e){
 
 };
 
+
 // 기타 카테고리(태그) 영역 ----------------------------------------------------
 // 기타 카테고리 클릭 시 RESTful API 요청
 tagBox.onclick = function (e) {
