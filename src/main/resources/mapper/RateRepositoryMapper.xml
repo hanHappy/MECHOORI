@@ -58,6 +58,30 @@
         ) subquery
     </select>
 
+
+
+    <select id="findData2" resultType="Statistics2">
+        SELECT rv.member_id, m.nickname, c.name, COUNT(rvv.rate_count) AS rate_count
+        FROM rate_view AS rv
+        JOIN restaurant_view AS rvv ON rv.restaurant_id = rvv.id
+        JOIN category c ON rvv.category_id = c.id
+        JOIN member m ON rv.member_id = m.id
+        WHERE rv.member_id = #{memberId}
+        GROUP BY rvv.category_id
+        ORDER BY rate_count DESC
+    </select>
+
+    <select id="findData3" resultType="Statistics3">
+    SELECT rv.member_id, rv.restaurant_id, rv.avg_price, rv.avg_rated_price,
+       ROUND((rv.avg_rated_price / rv.avg_price) * 100) AS value,
+       r.name AS res_name
+    FROM rate_view rv
+    JOIN restaurant r ON rv.restaurant_id = r.id
+    WHERE rv.member_id = #{memberId}
+    order by value desc
+    limit 10
+    </select>
+
     <select id="findLatest" resultType="Rate">
         SELECT 
             *
@@ -66,6 +90,5 @@
         order by reg_date desc 
         limit 1
     </select>
-
-
+	
 </mapper>

@@ -11,9 +11,11 @@
   <link rel="stylesheet" href="/css/common/header.css">
   <link rel="stylesheet" href="/css/common/component.css">
   <link rel="stylesheet" href="/css/common/button.css">
-  <script src="/js/user/my-page/statistics.js"></script>
+  <script src="/js/user/my-page/statistics.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  
 </head>
 
 <body>
@@ -31,35 +33,40 @@
 
   <main>
     <div class="mainTitle">
-      <p>나의 가성비 성과</p>
+      <p>나의 가성비 데이터</p>
     </div>
 
-    <div class="regdate">
-      <ul>
-        <button class="leftBtn"></button>
-        <li>4월</li>
-        <li style="font-weight: 900; font-size: 28px; color:rgba(34, 146, 249, 0.7); ">5월</li>
-        <li>6월</li>
-        <button class="rightBtn"></button>
-      </ul>
-    </div>
-    <div class="rec"></div>
-    <div class="dateTxt">2023.05.01 ~ 2023.05.31</div>
+    <!-------- 차트 버튼 ver2-------->
+    <span class="btnZone">
+      <button class="chart-btn1">가성비교</button>
+      <button class="chart-btn2">카테고리</button>
+      <button class="chart-btn3">평가랭킹</button>
+    </span>
+    <!-------- 차트 버튼 ver1-------->
+    <!-- <span class="btnZone">
+      <button class="chart-btn1">가성비교<span class="chart-span1"></span></button>
+      <button class="chart-btn2">카테고리<span class="chart-span2"></span></button>
+      <button class="chart-btn3">평가랭킹<span class="chart-span3"></span></button>
+    </span> -->
 
-    <canvas id="barChart" width="375" height="230"></canvas>
 
-    <section class="MiddleBack">
-      <div class="middleText2">
+    <section id="dataSection">
+      <canvas id="barChart" width="55" height="60"></canvas>
+
+      <section class="MiddleBack">
         <div class="rateImg"></div>
         <div class="rateTextArea">
           <p class="rateText">
-            메추리 회원님들보다 <br />
-            30%높은 가성비를 누리셨네요!
+            메추리 전체 회원보다 <br />
+            <span id="gap" style="color: #2292F9">30</span><span style="color: #2292F9">%</span> <span
+              id="gapM">높은</span> 가성비를 누리셨네요!
           </p>
         </div>
-      </div>
-      </div>
+      </section>
     </section>
+
+    <input type="hidden" th:data-nickName="${#authentication.principal.nickname}" id="nickName">
+
   </main>
 </body>
 
