@@ -37,7 +37,7 @@ body { background-color: var(--background-color); }
   justify-content: center;
 }
 
-.btn-wrap li:first-child { color: var(--inactive-color); }
+.btn-wrap li:first-child { color: #d0d0d0; }
 
 .btn-wrap li:last-child {
   border: 1px solid var(--main-color);
@@ -60,7 +60,9 @@ body { background-color: var(--background-color); }
   padding: 10px 20px;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 164px);
+  row-gap: 10px;
+  column-gap: 10px;
 }
 
 .item {
@@ -99,9 +101,14 @@ body { background-color: var(--background-color); }
 }
 
 .item h1 {
+  font-size: 16px;
   font-weight: bold;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
+  padding: 0 5px 0 10px;
   margin-top: 5px;
 
   grid-area: name;

@@ -17,5 +17,5 @@ public class RateListView {
     private String resName;
     private String review;
     private Date regDate;
-
+    private int value;
 }

@@ -44,7 +44,7 @@ body { background-color: var(--background-color); }
   border: 1px solid var(--main-color);
   background-color: var(--main-color);
 }
-.btn-wrap li:last-child { color: var(--inactive-color); }
+.btn-wrap li:last-child { color: #d0d0d0; }
 
 .btn-wrap a{
   width: 100%;

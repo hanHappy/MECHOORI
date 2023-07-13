@@ -84,7 +84,13 @@ public class RateServiceImp implements RateService{
 
     @Override
     public List<RateListView> getList(int memberId, int offset) {
-        return repository.getList(memberId, offset, 6);
+        List<RateListView> list = repository.getList(memberId, offset, 6);
+        for(RateListView item : list){
+            double value_ = (double)item.getRatePrice() / item.getPrice() * 100;
+            int value = (int) Math.round(value_);
+            item.setValue(value);
+        }
+        return list;
     }
 
     @Override
