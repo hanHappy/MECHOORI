@@ -83,7 +83,7 @@ header {
     transform: translateX(0px);
 }
 /* ------------ 카테고리 ------------ */
-.category {
+.category-wrapper {
     /* style */
     background: white;
     font-size: 18px;
@@ -105,22 +105,25 @@ header {
 }
 
 /* 가상 요소 */
-.top-category-section a:after {
+.top-category:after {
     display: block;
-    width: 45px;
     content: '';
     border-bottom: solid 3px var(--sub-color);
     transform: scaleX(0);
     /*변형 방식*/
-    transition: transform 250ms ease-in-out;
+    transition: 250ms;
 }
 
-.top-category-section a:hover:after {
+.top-category:hover:after {
     transform: scaleX(1);
     color: var(--sub-color);
 }
 
-.category::-webkit-scrollbar {
+.top-category.selected {
+    border-bottom: solid 3px var(--sub-color);
+}
+
+.category-wrapper::-webkit-scrollbar {
     display: none;
 }
 
@@ -131,8 +134,9 @@ header {
     display: flex;
     gap: 10px;
 }
-
-
+.top-category-list {
+    gap: 15px;
+}
 
 /* ----- 기타 카테고리 (베트남, 태국, ...) ----- */
 .other-category-section{
@@ -144,7 +148,7 @@ header {
     height: 40px;
 }
 
-.category.others {
+.category-wrapper.others {
     /* style */
     font-size: 14px;
 
@@ -278,7 +282,7 @@ select option {
         display: none;
     }
 
-    .category{
+    .category-wrapper{
         justify-content: center;
     }
     .category-list{
