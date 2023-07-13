@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mechoori.web.entity.RestaurantView;
-import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.RestaurantService;
@@ -23,6 +22,15 @@ public class HomeController {
 	private RestaurantService restaurantService;
 
 
+	@GetMapping("/test")
+	public String test(Model model) {
+
+	List<TopCategory> list = service.getTopCategoryList();
+
+	model.addAttribute("list", list);
+
+	return "index-responsive-web";
+	}
 	
 	@GetMapping("/")
 	public String index(Model model) {
