@@ -5,7 +5,8 @@
   display: flex;
   font-size: 18px;
   align-items: center;
-  padding-left: 20px;
+  justify-content: center;
+  /* padding-left: 20px; */
   width: 375px;
   height: 61px;
   box-shadow: var(--block-shadow);

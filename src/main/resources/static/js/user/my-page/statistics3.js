@@ -12,10 +12,10 @@ async function updateDateRange() {
       myRankDate = data;
 
       // console.log(myRankDate(0));
-      console.log(data);
+      // console.log(data);
 
       let chart =
-        new Chart(document.getElementById("aaChart"), {
+        new Chart(document.getElementById("barChart"), {
           type: 'bar',
           data: {
             // labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],

@@ -180,24 +180,19 @@ public class UserController {
     //     return "user/my-page/like-list";
     // }
 
+    
     //가성비 성과 페이지
     @GetMapping("my-page/statistics")
     public String rateStatistics(){
-        // Integer memberId = null;
-        // if (member != null) {
-        //     memberId = member.getId();
-        // }
-        //List<Rate> list = rateService.getRatedPrice(rate, memberId);
-       // Map<String, Statistics> data = ratedService.getDate(member.getId());
-        //model.addAttribute("data", data);
-        return "user/my-page/statistics11";
+
+        return "user/my-page/statistics";
     }
 
     //가성비 성과 페이지
     @GetMapping("my-page/statistics2")
     public String rateStatistics2(){
 
-        return "user/my-page/statistics22";
+        return "user/my-page/statistics2";
     }
   
 
@@ -205,7 +200,7 @@ public class UserController {
     @GetMapping("my-page/statistics3")
     public String rateStatistics3(){
 
-        return "user/my-page/statistics33";
+        return "user/my-page/statistics3";
     }
 
 }

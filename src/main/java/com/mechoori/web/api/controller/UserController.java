@@ -46,7 +46,7 @@ public class UserController {
             @AuthenticationPrincipal MechooriUserDetails member) {
 
         List<Statistics2> data = rateService.getDate2(member.getId());
-        // System.out.println("data : " + data);
+        System.out.println("data : " + data);
 
         return data;
     }

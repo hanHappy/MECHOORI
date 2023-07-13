@@ -1,4 +1,4 @@
-// window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", function () {
 
 
 updateDateRange();
@@ -11,10 +11,10 @@ async function updateDateRange() {
   await fetch(url)
     .then(response => response.json())
     .then(data => {
-      // console.log(data);
+      console.log(data);
       categoryData = data;
 
-      console.log(categoryData.nickname);
+      // console.log(categoryData.nickname);
       console.log(categoryData);
 
       let chart =
@@ -29,7 +29,8 @@ async function updateDateRange() {
                 'rgb(255, 205, 86)',
                 'rgb(0, 184, 148)',
                 '#9370DB', //(퍼플)
-                '#FFC153', //(황토색)
+                "#FCF6BD",
+                // '#FFC153', //(황토색)
                 '#FF6E54',// (코랄 핑크)
                 '#FFB6C1', //(라이트 핑크)
                 '#ACD8AA', //(민트색)
@@ -42,7 +43,7 @@ async function updateDateRange() {
 
 
           options: {
-            // responsive: true, // 차트 크기를 반응형으로 설정할지 여부 (기본값: true)
+            responsive: true, // 차트 크기를 반응형으로 설정할지 여부 (기본값: true)
             maintainAspectRatio: false, // 가로 세로 비율을 유지할지 여부 (기본값: true)
             cutoutPercentage: 30, // 도넛 차트의 가운데 빈 공간 크기 (0~100, 기본값: 50)
             // rotation: -0.5 * Math.PI, // 차트 시작 각도 (-0.5 * Math.PI는 12시 방향, 기본값: -0.5 * Math.PI)
@@ -82,11 +83,11 @@ async function updateDateRange() {
         chart.data.datasets[0].data.push(v.rateCount);
       }
 
-      for(let i=0; i<categoryData.length; i++){
-        console.log(chart.data.labels[i]);
-        console.log(chart.data.datasets[i]);
+      // for(let i=0; i<categoryData.length; i++){
+        // console.log(chart.data.labels[i]);
+        // console.log(chart.data.datasets[i]);
         // console.log(chart.data.datasets[0].data(i));
-      }
+      // }
 
       let cateText = document.querySelector("#cateText");
       cateText.textContent = chart.data.labels[0];
@@ -94,7 +95,7 @@ async function updateDateRange() {
     });
 }
 
-// });
+});
 
 
 
