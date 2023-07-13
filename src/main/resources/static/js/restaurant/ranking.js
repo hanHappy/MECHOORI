@@ -1,4 +1,12 @@
 let offset = 0;
+
+let rankingNums = document.querySelectorAll(".rankingNum");
+for(let i = 0; i<rankingNums.length; i++){
+    rankingNums[i].innerText = i+1;
+}
+
+
+
 let rankingList = document.querySelector(".ranking-list-sections");
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -14,18 +22,23 @@ document.addEventListener("DOMContentLoaded", function () {
                     let avgprice = item.avgPrice.toLocaleString();
                     let avgRatedPrice = item.avgRatedPrice.toLocaleString();
                     let itemTemplate = `
-            <section class="thymeleaf">
-              <img src="/images/foods/${item.img}" class="img">
-              <ul class="ranking-list">
-                  <li class="rankingNum"></li>
-                  <li>${item.name}</li>
-                  <li>
-                      <span>${avgprice}</span><br/>
+            
+            <div>
+            <a class="thymeleaf" href="/restaurant/${item.id}">
+
+            <img src="/images/foods/${item.img}" class="img">
+            <ul class="ranking-list">
+                <li class="rankingNum"></li>
+                <li>${item.name}</li>
+                <li>
+                     <span>${avgprice}</span><br/>
                       <span>(${avgRatedPrice})</span>
-                  </li>
-                  <li>${item.value}%</li>
-              </ul>
-            </section>
+                </li>
+                <li>${item.value}%</li>
+            </ul>
+        </a>
+        </div>
+        
           `;
 
                     rankingList.insertAdjacentHTML("beforeend", itemTemplate);
@@ -34,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch((error) => {
                 console.log("Error fetching data:", error);
             });
+
+
     }
 
     let dropbox = document.getElementById("categoryDropBox");
@@ -42,10 +57,14 @@ document.addEventListener("DOMContentLoaded", function () {
         rankingList.innerHTML = "";
         offset = 0;
 
+
+
+
         let selectedIndex = dropbox.selectedIndex;
         let selectedOption = dropbox.options[selectedIndex];
         let value = selectedOption.dataset.id;
         console.log(value);
+
         if (typeof value === "undefined") {
             value = "";
         }
@@ -61,6 +80,10 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(url);
             restaurantListLoad(url);
         }
+
+        for(let i = 0; i<rankingNums.length; i++){
+            rankingNums[i].innerText = i+1;
+        }
     };
 
     // 스크롤 이벤트 리스너 등록
@@ -68,6 +91,13 @@ document.addEventListener("DOMContentLoaded", function () {
         let documentHeight = document.documentElement.scrollHeight;
         let scrollTop = document.documentElement.scrollTop;
         let windowHeight = document.documentElement.clientHeight;
+
+
+        let rankingNums = document.querySelectorAll(".rankingNum");
+        for(let i = 6; i<rankingNums.length; i++){
+            rankingNums[i].innerText = i+1;
+        }
+
 
         if (scrollTop + windowHeight >= documentHeight) {
             // 스크롤이 맨 아래에 도달했을 때
@@ -88,4 +118,10 @@ document.addEventListener("DOMContentLoaded", function () {
             restaurantListLoad(url);
         }
     });
+
+
+    /*================================================================================*/
+
+
+
 });

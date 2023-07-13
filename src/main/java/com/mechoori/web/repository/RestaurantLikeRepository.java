@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.mechoori.web.entity.LikeList;
-import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.RestaurantLike;
 import com.mechoori.web.security.MechooriUserDetails;
 
@@ -18,6 +17,6 @@ public interface RestaurantLikeRepository {
 
     int delete(RestaurantLike restaurantLike);
 
-    List<LikeList> findAll(int memberId);
+	List<LikeList> findAll(int memberId);
 
 }

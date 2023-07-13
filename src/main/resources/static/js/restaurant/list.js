@@ -7,7 +7,7 @@ const searchContainer = header.querySelector(".search-container");
 const topCategorySection = header.querySelector(".top-category-section");
 const otherCategorySection = header.querySelector(".other-category-section");
 const otherCategories = otherCategorySection.querySelector(".others");
-const tagBox = otherCategorySection.querySelector(".category.others");
+const tagBox = otherCategorySection.querySelector(".category-wrapper.others");
 const filterBox = header.querySelector(".filter-box");
 const searchBar = header.querySelector("#search-bar");
 const searchBtn = header.querySelector(".search-btn");
@@ -139,21 +139,31 @@ topCategorySection.onclick = function(e){
     searchBar.value = "";
     e.preventDefault();
     if(e.target.tagName !== 'A')
-        return;
+    return;
     
+    // 선택된 카테고리 표시 선 제거
+    let selectedCategory = topCategorySection.querySelector('.selected');
+    if(selectedCategory != null)
+        selectedCategory.classList.remove('selected');
+
     if(e.target.innerText == '전체') {
         categoryId = null;
         let url = '/api/restaurant/list';
         restaurantListLoad(url);
         otherCategorySection.classList.remove('slide-open');
-    } else if(e.target.innerText == '기타')
+        e.target.classList.add('selected');
+    } else if(e.target.innerText == '기타'){
         otherCategorySection.classList.add('slide-open');
+        e.target.classList.add('selected');
+    }
     else {
         let url = `/api/restaurant/list?c=${e.target.dataset.id}`;
         restaurantListLoad(url);
         otherCategorySection.classList.remove('slide-open');
         categoryId = e.target.dataset.id;
+        e.target.classList.add('selected');
     }
+
 };
 
 // 기타 카테고리(태그) 영역 ----------------------------------------------------

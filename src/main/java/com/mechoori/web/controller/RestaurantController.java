@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map;
 
 import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -189,6 +190,11 @@ public class RestaurantController {
 
         return "redirect:rate-result";
     }
+
+//get mapping
+//model -> map<>  =
+// data 
+
 
     @GetMapping("/ranking")
         public String ranking(Model model,

@@ -4,6 +4,15 @@
 
 <mapper namespace="com.mechoori.web.repository.RestaurantLikeRepository">
 
+	<select id="findAll" resultType="LikeList">
+		select
+			*
+		from
+			like_list_view
+		where
+			member_id = #{memberId}
+	</select>
+
 	<insert id="add" parameterType="RestaurantLike">
 		insert into 
         restaurant_like(member_id, restaurant_id)

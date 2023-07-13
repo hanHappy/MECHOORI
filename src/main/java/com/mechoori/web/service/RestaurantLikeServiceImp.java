@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mechoori.web.entity.LikeList;
-import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.RestaurantLike;
 import com.mechoori.web.repository.RestaurantLikeRepository;
 import com.mechoori.web.security.MechooriUserDetails;
@@ -34,9 +33,7 @@ public class RestaurantLikeServiceImp implements RestaurantLikeService {
 
     @Override
     public List<LikeList> getList(int memberId) {
-        return repository.findAll(memberId);   
+        return repository.findAll(memberId);
     }
-
- 
     
 }
