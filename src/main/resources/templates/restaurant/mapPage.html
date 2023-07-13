@@ -38,10 +38,14 @@
 
 <section class="bottom-sheet-section">
     <div class="touch-section"></div>
-    <div class ="bottom-sheet">
+    <div class="bottom-sheet">
         <img th:src="@{/images/foods/{img}(img=${list.img})}" id="map-img" alt="">
-        <p th:text="${list.name}" id="resName">상호명</p>
-        <p th:text="${list.address}" id="map-address-text">주소</p>
+        <br>
+        <span th:text="${list.name}" id="resName">상호명</span>
+        <br>
+        <button id="address-copy-button">
+            <span th:text="${list.address}" id="map-address-text">주소</span>
+        </button>
         <hr>
     </div>
 
