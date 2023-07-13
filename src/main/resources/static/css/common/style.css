@@ -59,6 +59,12 @@ li {
     /* --------------- 효과 --------------- */
     /* 블럭 그림자 */
     --block-shadow: 0px 1px 4px 0px #0002;
+    /* 식당 카드 그림자 */
+    --item-shadow-1: 
+                    0px 1px 1px 0px rgba(0, 0, 0, 0.05),
+                    0px -1px 1px 0px rgba(0, 0, 0, 0.05),
+                    1px 0px 1px 0px rgba(0, 0, 0, 0.05),
+                    -1px 0px 1px 0px rgba(0, 0, 0, 0.05);
     /* 버튼 그림자 -1 */
     --btn-shadow-1: 2px 2px 4px rgba(0, 0, 0, 0.25);
     /* 버튼 그림자 -2 */
