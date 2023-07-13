@@ -24,20 +24,19 @@ async function updateDateRange() {
       labels: ["유저평균", "나의평균"],
       datasets: [
         {
-          // label: "Population (millions)",
-          backgroundColor: ["#2292F9", "#FFE551"],
+          backgroundColor: [  
+            'rgba(34, 146, 249, 0.8)', 'rgba(255, 229, 81, 0.8)'
+            // "#2292F9", "#FFE551" 
+          ],
           data: [valueData.other, valueData.me],
-          // borderWidth: 10,
-
-          // inflateAmount: 1, 
-          // borderColor: #333
+          borderColor: [
+            "#2292F9", "#FFE551"
+          ],
+          borderWidth: 2
         }
       ]
     },
     options: {
-      // maintainAspectRatio: false, 
-      // barThickness: 1,
-      // maxBarThickness: 3,
       legend: { display: false },
 
       title: {
@@ -45,9 +44,6 @@ async function updateDateRange() {
         text: '가성비 성과 비교',
         fontSize: 18
       },
-
-      // responsive: true, // 차트가 반응형으로 크기 조절 여부
-      // maintainAspectRatio: false, // 차트의 가로 세로 비율 유지 여부
       layout: {
         padding: {
           left: 30,
@@ -74,7 +70,6 @@ async function updateDateRange() {
           }
         }]
       },
-
       animation: {
         duration: 1000 // 애니메이션 지속 시간 (밀리초)
       }
@@ -157,12 +152,10 @@ dataBtn2.onclick = function () {
               'rgb(0, 184, 148)',
               '#9370DB', //(퍼플)
               "#FCF6BD",
-              // '#FFC153', //(황토색)
               '#FF6E54',// (코랄 핑크)
               '#FFB6C1', //(라이트 핑크)
               '#ACD8AA', //(민트색)
               '#FF4136',// (타마린)
-              // '#FFD700',// (골든 옐로우)
             ]
           }]
         };
@@ -263,17 +256,41 @@ dataBtn3.onclick = function () {
           datasets: [{
             data: [],
             backgroundColor: [
-              "#FF6384",
-              "#36A2EB",
-              "#FFCE56",
-              "#8AC926",
-              "#FF9F40",
-              "#C4C4C4",
-              "#009F9D",
-              "#FCF6BD",
-              "#E71D36",
-              "#FFB8B8"
-            ]
+
+              'rgba(255, 99, 132, 0.5)',
+              'rgba(54, 162, 235, 0.5)',
+              'rgba(255, 206, 86, 0.5)',
+              'rgba(138, 201, 38, 0.5)',
+              'rgba(255, 159, 64, 0.5)',
+              'rgba(196, 196, 196, 0.5)',
+              'rgba(0, 159, 157, 0.5)',
+              'rgba(252, 226, 100, 0.5)',
+              'rgba(231, 29, 54, 0.5)',
+              'rgba(255, 184, 184, 0.5)'
+              // "#FF6384",
+              // "#36A2EB",
+              // "#FFCE56",
+              // "#8AC926",
+              // "#FF9F40",
+              // "#C4C4C4",
+              // "#009F9D",
+              // "#FCF6BD",
+              // "#E71D36",
+              // "#FFB8B8"
+            ],
+            borderColor: [
+              'rgba(255, 99, 132)',
+              'rgba(54, 162, 235)',
+              'rgba(255, 206, 86)',
+              'rgba(138, 201, 38)',
+              'rgba(255, 159, 64)',
+              'rgba(196, 196, 196)',
+              'rgba(0, 159, 157)',
+              'rgba(252, 226, 100)',
+              'rgba(231, 29, 54)',
+              'rgba(255, 184, 184)'
+            ],
+            borderWidth: 2
           }]
         };
         
