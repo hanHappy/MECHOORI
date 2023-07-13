@@ -1,0 +1,70 @@
+.mapStyle {
+
+    position: relative;
+
+    padding-top: 0;
+
+}
+.bottom-sheet-section {
+
+    position: relative;
+    top: 50%;
+
+    width: 100%;
+    transform: translateY(-20%);
+    background-color: rgb(255, 255, 255);
+    height: 300px;
+
+    z-index: 100;
+
+    border-radius: 50px;
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    transition: all 600ms cubic-bezier(0, 0, 0.02, 1);
+}
+
+.touch-section{
+
+    position: absolute;
+
+    margin-top: 20px;
+    border-radius: 8px;
+
+    background-color: rgba(190, 190, 190, 0.9);
+    height: 8px;
+    width: 80px;
+}
+
+#map-img{
+
+    width: 180px;
+    height: 150px;
+}
+
+
+.bottom-sheet {
+
+    position: absolute;
+    margin-top: 80px;
+}
+
+p{
+    padding: 0;
+    margin: 0;
+}
+
+hr{
+    /*rotate: 90deg;*/
+}
+
+#address-copy-button {
+
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 15px;
+
+}

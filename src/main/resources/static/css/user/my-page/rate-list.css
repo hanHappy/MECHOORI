@@ -1,0 +1,177 @@
+body { background-color: var(--background-color); }
+
+/* ---------------- 버튼 영역 ---------------- */
+.btn-section {
+  box-shadow: var(--block-shadow);
+  background-color: white;
+
+  padding: 20px 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-wrap {
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 1px solid var(--main-color);
+  
+  width: 100%;
+  height: 40px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn-wrap li {
+  border-radius: 30px;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-wrap li:first-child { color: var(--inactive-color); }
+
+.btn-wrap li:last-child {
+  border: 1px solid var(--main-color);
+  background-color: var(--main-color);
+}
+
+.btn-wrap a{
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ============== 평가 목록 ============== */
+
+.rate-list {
+  padding: 10px 20px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.item {
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: var(--item-shadow-1);
+
+  width: 164px;
+  height: 180px;
+
+  display: grid;
+  grid-template:
+                "img img" 96px
+                "name name"
+                "price price-value"
+                "rate rate-value" 1fr
+                /3fr 7fr;
+}
+
+.item img {
+  border-radius: 8px;
+
+  width: 164px;
+  height: 96px;
+
+  grid-area: img;
+}
+
+/* .text-wrap {
+  pad
+} */
+
+.item p, .item h1 { 
+  letter-spacing: -1px;
+  margin: 0; 
+}
+
+.item h1 {
+  font-weight: bold;
+  text-align: center;
+
+  margin-top: 5px;
+
+  grid-area: name;
+}
+.item p:nth-child(3){ grid-area: price; }
+.item p:nth-child(4){ grid-area: price-value; }
+.item p:nth-child(5){ grid-area: rate; }
+.item p:nth-child(6){ grid-area: rate-value; }
+.item p:nth-child(2n+1){ text-align: center; }
+
+.item p:nth-child(5),
+.item p:nth-child(6) {
+  color: var(--sub-color);
+}
+
+
+/*==========================================================================*/
+
+@media only screen and (min-width: 769px) {
+
+    .foodList {
+      display: grid;
+      width: 100%;
+      grid-template-columns: repeat(2, minmax(0, 100%));
+      grid-gap: 20px;
+      max-width: 1250px;
+    }
+
+    .adji {
+        width: 100%;
+        height: 200px;
+        box-shadow: var(--block-shadow);
+        border-radius: var(--border-radius);
+        display: flex;
+        align-items: center;
+    }
+
+    .FI {
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 100%;
+        max-width: 230px;
+        height: 100%;
+        border-radius: var(--border-radius);
+        display: inline-flex;
+    }
+
+    .resName{
+        font-weight: 900;
+        position: relative;
+        top: -30px;
+        left: 30px;
+        font-size: 22px;
+    }
+
+    .menuName{
+        position: relative;
+        top: -25px;
+}
+
+    .price{
+
+    }
+
+    .ratePrice{
+
+    }
+
+
+}
+
+
+

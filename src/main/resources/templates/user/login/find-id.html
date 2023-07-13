@@ -1,0 +1,55 @@
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+     <link rel="stylesheet" href="/css/user/login/findIdAndPwd.css"/>
+<!--    <link rel="stylesheet" href="../../../static/css/user/login/findIdAndPwd.css"/>-->
+</head>
+
+<body>
+<header>
+    <div class="header-side left">
+        <a onclick = "history.back()"><button class="header-icon back"></button></a>
+    </div>
+    <h1 >아이디 찾기</h1>
+    <div class="header-side right">
+        <a href="/"><button class="d-none"></button></a>
+    </div>
+</header>
+
+<main>
+    <div class="withNumber">휴대폰 번호로 인증</div>
+
+    <form method="post" action="/user/find-id">
+    <section class="info">
+        <div class="name">
+            이름
+            <div class="info-inputbox">
+            <input type="text" placeholder="메추리"/>
+        </div>        
+        </div>
+
+        <div class="number">
+            휴대폰 번호
+            <input type="text" placeholder="010-0000-0000" id="numberText"/>
+            <input type="button"  class="btn btn-primary" id="mail-Check-Btn" value="인증번호 받기"/>
+        </div>
+
+        <div class="number2">
+            인증번호 입력
+            <input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
+        </div>
+        <span id="mail-check-warn"></span>
+            <input type="submit" value="확인"></input>
+ 
+    </section>
+</form>
+</main>
+</body>
+</html>

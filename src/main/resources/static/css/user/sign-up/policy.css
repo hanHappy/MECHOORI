@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.policy_container{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.policy_contents{
+  width: 375px;
+}
+
+
+.line0{
+    margin-top: 40px;
+    width: 295px;
+    margin-left: auto;
+    margin-right: auto;
+
+    border: 1px solid #C6C6C6;
+}
+
+
+
+
+
+.circleParent {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    margin-top: 30px;
+  }
+  
+  .circle  {
+    width: 52px;
+    height: 52px;
+    position: absolute;
+    align-items: center;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    transform: translateX(-50%);
+    font-family: 'Noto Sans KR', sans-serif;
+    
+  }
+  
+  .circle1 {
+    left: 18%;
+    background-color: rgb(255, 229, 81, 1);
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+  }
+  .circle2 {
+    left: 50%;
+    background-color: rgba(255, 246, 198);
+    color: gray;
+  }
+  .circle3 {
+    left: 82%;
+    background-color: rgb(255, 246, 198);
+    color: gray;
+  
+  }
+  
+  .Inline {
+    width: 60%;
+    height: 1px;
+    top: 25%;
+    position: absolute;
+    background-color: black;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -2;
+  }
+  
+  .circleTextMain{
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    grid-template-rows: 100%;
+    top: -40px;
+    font-size: 14px;
+    font-family: 'Noto Sans CJK KR Medium';
+  
+  }
+  
+  .circleText1 {
+    grid-column: 1;
+    width: auto;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+  }
+  .circleText2 {
+    grid-column: 2;
+    width: auto;
+    
+    color: gray;
+  }
+  .circleText3 {
+    grid-column: 3;
+    width: auto;
+    color: gray;
+  }
+  
+
+main{
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+
+
+
+
+
+
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#form__wrap .terms__check__all {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#form__wrap .terms__check__all label {
+  margin-left: 5px;
+}
+
+.terms__list .terms__box {
+  margin: 20px 0;
+}
+
+
+input[type="checkbox"] {
+    width: 16px; 
+    height: 16px; 
+
+    margin-left: 10px;
+    margin-top: 4px;
+}
+
+
+.input__check{
+  width: 375px;
+  height: 32px;
+  font-size: 16px;
+  background-color: rgba(238, 238, 238, 1);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  line-height: 35px;  
+}
+
+
+.contents label {
+  font-weight: 700;
+}
+
+
+label.required::after {
+  margin-left: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #0086ff;
+  content: "(필수)";
+}
+
+.terms__list .terms__content {
+  height: 88px;
+  overflow: auto;
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid #dadada;
+  background: #fff;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+
+
+.line2{
+  margin-top: 25px;
+  width: 335px;  
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #C6C6C6;
+}
+
+
+
+.button-1 {
+  transition-duration: 0.2s;
+}
+
+.button-1:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    min-width: 280px;
+    padding: 20px;
+  }
+
+  #form__wrap {
+    max-width: 460px;
+    width: auto;
+  }
+}
