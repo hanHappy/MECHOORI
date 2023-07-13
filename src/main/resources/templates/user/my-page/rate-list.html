@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/user/my-page/rate-list.css?ver=1"/>
     <link rel="stylesheet" href="/css/common/style.css?ver=1"/>
     <link rel="stylesheet" href="/css/common/component.css?ver=1"/>
-    <link rel="stylesheet" href="/css/common/restaurant.css?ver=1"/>
+<!--    <link rel="stylesheet" href="/css/common/restaurant.css?ver=1"/>-->
     <link rel="stylesheet" href="/css/common/header.css?ver=1"/>
     <script src="/js/user/rate-list.js?ver=1"></script>
 
@@ -46,18 +46,18 @@
         </div>
       </div>
   </div>
-  
+
 <main>
-  
+
   <section class="mainInfo" >
     <div class="foodList" >
       <div class="adjImg1 adji" th:each="list:${list}">
         <img th:src="@{/images/foods/{img}(img=${list.img})}" class="foodImg1 FI" alt="">
         <div class="Texts" >
-          <p th:text="${list.name}">짜장 상회</p>
-          <p th:text="${list.menuName}">짬뽕</p>
-          <p th:text="${list.price}">6,000원</p>
-          <p th:text="${list.ratePrice}">6,000원</p>
+         <p>식당명: </p> <span th:text="${list.resName}" class="resName">짜장 상회</span>
+         <p>메뉴명: </p> <span th:text="${list.menuName}" class="menuName">짬뽕</span>
+         <p>판매 가격: </p> <p th:text="${list.price}" class="price">6,000원</p>
+         <p>평가 가격: </p> <p th:text="${list.ratePrice}" class="ratePrice">6,000원</p>
         </div>
       </div>
     </div>
