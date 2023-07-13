@@ -16,6 +16,7 @@ main {
     width: 100%;
     position: fixed;
     top: 0;
+    z-index: 1200;
 }
 
 .resranking {
@@ -29,6 +30,7 @@ main {
     display: flex;
     justify-content: space-around;
     background-color: white;
+    position: sticky;
 }
 
 
@@ -70,18 +72,18 @@ main {
 }
 
 
-.ranking-list-sections {
+/*.ranking-list-sections {*/
 
-    margin-top: 15px;
-    counter-reset: number 0;
+/*    margin-top: 15px;*/
+/*    counter-reset: number 0;*/
+/*    position: relative;*/
+/*}*/
 
-}
+/*.rankingNum::before {*/
+/*    counter-increment: number 1;*/
+/*    content: counter(number);*/
 
-.rankingNum::before {
-    counter-increment: number 1;
-    content: counter(number);
-
-}
+/*}*/
 
 
 .up {
@@ -93,16 +95,45 @@ main {
 }
 
 
-.moreInfo {
+
+
+.thymeleaf{
     width: 100%;
-    z-index: 999;
-    height: 30px;
+    display: block;
+    margin-bottom: 30px;
+    position: relative;
+
 }
 
-@media (max-width: 800px) {
+.medal {
+    background-image: url(/images/icons/금.png);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size:100%;
+}
 
-    .thymeleaf{
+.silver {
+    background-image: url(/images/icons/은.png);
+    background-repeat: no-repeat;
+    width: 100%;
+}
 
+.bronze {
+    background-image: url(/images/icons/동.png);
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+@media only screen and (min-width: 769px) {
+
+
+    .ranking-list-sections {
+        margin-top: 15px;
+        counter-reset: number 0;
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 100%));
+        grid-column-gap: 25px;
     }
 
 }

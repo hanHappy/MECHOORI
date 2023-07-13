@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let section = document.querySelector(".bottom-sheet-section")
     let isUpper = false;
 
-    section.addEventListener("touchstart", function (e) {
+    section.addEventListener("click", function (e) {
         if (isUpper) {
             downSection();
             isUpper = false;
@@ -61,4 +61,27 @@ document.addEventListener('DOMContentLoaded', function () {
     function downSection() {
         section.style.transform = "translateY(-20%)";
     }
+
+
+// ===================================================================================================================
+
+    const copyButton = document.getElementById('address-copy-button');
+    const addressText = document.getElementById('map-address-text');
+
+    copyButton.addEventListener('click', () => {
+        const address = addressText.textContent;
+        navigator.clipboard.writeText(address)
+            .then(() => {
+                copyButton.onclick = function () {
+                    modal.style.display = 'block';
+                }
+                alert('주소가 복사되었습니다.');
+            })
+            .catch((error) => {
+                console.error('복사 실패:', error);
+            });
+    });
+
+
+
 });

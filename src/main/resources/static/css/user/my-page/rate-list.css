@@ -116,3 +116,62 @@ body { background-color: var(--background-color); }
 .item p:nth-child(6) {
   color: var(--sub-color);
 }
+
+
+/*==========================================================================*/
+
+@media only screen and (min-width: 769px) {
+
+    .foodList {
+      display: grid;
+      width: 100%;
+      grid-template-columns: repeat(2, minmax(0, 100%));
+      grid-gap: 20px;
+      max-width: 1250px;
+    }
+
+    .adji {
+        width: 100%;
+        height: 200px;
+        box-shadow: var(--block-shadow);
+        border-radius: var(--border-radius);
+        display: flex;
+        align-items: center;
+    }
+
+    .FI {
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 100%;
+        max-width: 230px;
+        height: 100%;
+        border-radius: var(--border-radius);
+        display: inline-flex;
+    }
+
+    .resName{
+        font-weight: 900;
+        position: relative;
+        top: -30px;
+        left: 30px;
+        font-size: 22px;
+    }
+
+    .menuName{
+        position: relative;
+        top: -25px;
+}
+
+    .price{
+
+    }
+
+    .ratePrice{
+
+    }
+
+
+}
+
+
+
