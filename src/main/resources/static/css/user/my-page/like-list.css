@@ -1,9 +1,12 @@
 h1 { font-size: 16px; }
 h1, p { margin: 0; }
 
+body { background-color: var(--background-color); }
+
 /* ---------------- 버튼 영역 ---------------- */
 .btn-section {
-  box-shadow: 0px 1px 4px 0px #0002;
+  box-shadow: var(--block-shadow);
+  background-color: white;
 
   padding: 20px 30px;
 
@@ -53,7 +56,6 @@ h1, p { margin: 0; }
 }
 
 /* ---------------- 컨텐츠 영역 ---------------- */
-.like-list-section { background-color: var(--background-color); }
 .like-list { 
   padding: 8px 20px; 
 
@@ -128,8 +130,10 @@ img {
   }
 }
 
-/* 찜한 식당이 없습니다 */
+/* ------------- 찜한 식당이 없습니다 ------------- */
 .msg-no-list-wrap {
+  margin-top: 30px;
+
   display: flex;
   align-items: center;
   justify-content: center;
