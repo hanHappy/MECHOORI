@@ -17,12 +17,12 @@ public interface RestaurantService {
     List<Restaurant> getListByQuery(String query, Integer page, Integer size);
 	List<Restaurant> getListByPage(Integer page, Integer size);
 
-	List<RestaurantView> getRestaurantViewList(Integer memberId);
-    List<RestaurantView> getRestaurantViewListByTopCtgIdAndFilter(Integer memberId, Integer topCtgId, Integer filterId);
-    List<RestaurantView> getRestaurantViewListByTopCtgId(Integer memberId, Integer topCategoryId);
-	List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId);
-	List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, String query);
-    List<RestaurantView> getRestaurantViewListByFilter(Integer memberId, Integer ctgId, Integer filterId);
+	List<RestaurantView> getRestaurantViewList(Integer memberId, int offset);
+    List<RestaurantView> getRestaurantViewListByTopCtgIdAndFilter(Integer memberId, Integer topCtgId, Integer filterId, int offset);
+    List<RestaurantView> getRestaurantViewListByTopCtgId(Integer memberId, Integer topCategoryId, int offset);
+	List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId, int offset);
+	List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, String query, int offset);
+    List<RestaurantView> getRestaurantViewListByFilter(Integer memberId, Integer ctgId, Integer filterId, int offset);
 
 	List<Integer> getPages();
 	

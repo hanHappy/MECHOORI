@@ -39,7 +39,7 @@
 		</if>
 	</select>
 
-	<select id="findAllRestaurantView" resultType="RestaurantView">
+	<select id="findRestaurantViewAll" resultType="RestaurantView">
 		<if test="memberId == null">
 			select
 				r.*,
@@ -89,6 +89,7 @@
 				${filter}
 			</if>
 		</trim>
+		limit #{offset}, #{size}
 		
 	</select>
 

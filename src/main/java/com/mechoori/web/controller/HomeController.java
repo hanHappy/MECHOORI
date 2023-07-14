@@ -64,15 +64,15 @@ public class HomeController {
 		Integer memberId = null;
 
 
-		// 식당 리스트 출력
-		if(query==null&&ctgId==null)
-			list = restaurantService.getRestaurantViewList(null);
-		else if (query != null)
-			list = restaurantService.getRestaurantViewListByQuery(null, query);
-		else if (ctgId != null)
-			list = restaurantService.getRestaurantViewListByCtgId(null, ctgId);
+		// // 식당 리스트 출력
+		// if(query==null&&ctgId==null)
+		// 	list = restaurantService.getRestaurantViewList(null);
+		// else if (query != null)
+		// 	list = restaurantService.getRestaurantViewListByQuery(null, query);
+		// else if (ctgId != null)
+		// 	list = restaurantService.getRestaurantViewListByCtgId(null, ctgId);
 
-		model.addAttribute("list", list);
+		// model.addAttribute("list", list);
 
 		return "map";
 	}

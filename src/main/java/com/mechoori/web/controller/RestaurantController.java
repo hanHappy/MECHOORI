@@ -73,16 +73,18 @@ public class RestaurantController {
 
         Integer memberId = null;
 
+        int offset = 0;
+
         if (member != null)
             memberId = member.getId();
 
         // 식당 리스트 출력
         if (query == null && ctgId == null)
-            list = restaurantService.getRestaurantViewList(memberId);
+            list = restaurantService.getRestaurantViewList(memberId, offset);
         else if (query != null)
-            list = restaurantService.getRestaurantViewListByQuery(memberId, query);
+            list = restaurantService.getRestaurantViewListByQuery(memberId, query, offset);
         else if (ctgId != null)
-            list = restaurantService.getRestaurantViewListByCtgId(memberId, ctgId);
+            list = restaurantService.getRestaurantViewListByCtgId(memberId, ctgId, offset);
 
         model.addAttribute("list", list)
                 .addAttribute("mainCtgList", mainCtgList)

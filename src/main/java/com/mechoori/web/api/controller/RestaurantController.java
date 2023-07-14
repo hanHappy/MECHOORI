@@ -30,6 +30,7 @@ public class RestaurantController {
             @RequestParam(name = "tc", required = false) Integer topCtgId,
             @RequestParam(name = "c", required = false) Integer ctgId,
             @RequestParam(name = "f", required = false) Integer filterId,
+            @RequestParam("o") int offset,
             @AuthenticationPrincipal MechooriUserDetails member) {
 
         List<RestaurantView> list = null;
@@ -41,17 +42,17 @@ public class RestaurantController {
 
         // 식당 리스트 출력
         if (query == null && ctgId == null && topCtgId == null && filterId == null)
-            list = rstrService.getRestaurantViewList(memberId);
+            list = rstrService.getRestaurantViewList(memberId, offset);
         else if (topCtgId != null && filterId != null)
-            list = rstrService.getRestaurantViewListByTopCtgIdAndFilter(memberId, topCtgId, filterId);
+            list = rstrService.getRestaurantViewListByTopCtgIdAndFilter(memberId, topCtgId, filterId, offset);
         else if (filterId != null)
-            list = rstrService.getRestaurantViewListByFilter(memberId, ctgId, filterId);
+            list = rstrService.getRestaurantViewListByFilter(memberId, ctgId, filterId, offset);
         else if (query != null)
-            list = rstrService.getRestaurantViewListByQuery(memberId, query);
+            list = rstrService.getRestaurantViewListByQuery(memberId, query, offset);
         else if (topCtgId != null)
-            list = rstrService.getRestaurantViewListByTopCtgId(memberId, topCtgId);
+            list = rstrService.getRestaurantViewListByTopCtgId(memberId, topCtgId, offset);
         else if (ctgId != null)
-            list = rstrService.getRestaurantViewListByCtgId(memberId, ctgId);
+            list = rstrService.getRestaurantViewListByCtgId(memberId, ctgId, offset);
 
         return list;
     }

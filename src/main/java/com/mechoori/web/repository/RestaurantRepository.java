@@ -12,23 +12,17 @@ import com.mechoori.web.entity.RestaurantView;
 public interface RestaurantRepository {
 
     Restaurant findById(int restaurantId);
-    RestaurantView findViewById(Integer memberId, int restaurantId);
-
+    void add(Restaurant restaurant);
+    
     List<Restaurant> findAll();
+    List<Restaurant> findAllRestaurant();
     List<Restaurant> findAll(Integer categoryId, String query, Integer page, Integer size);
-
-    List<RestaurantView> findAllRestaurantView(Integer memberId);
-    List<RestaurantView> findAllRestaurantView(Integer memberId, Integer topCategoryId, Integer categoryId, String query, String filter);
+    
+    RestaurantView findViewById(Integer memberId, int restaurantId);
+    List<RestaurantView> findRestaurantViewAll(Integer memberId, int offset, int size);
+    List<RestaurantView> findRestaurantViewAll(Integer memberId, Integer topCategoryId, Integer categoryId, String query, String filter, int offset, int size);
 
     List<RestaurantRankView> getRanking(Integer categoryId, int offset, int size);
-
-
-    void add(Restaurant restaurant);
-
-    List<Restaurant> findAllRestaurant();
-
     List<RestaurantRankView> findRankAll(Integer size, Integer categoryId);
 
-//    List<RestaurantView> getRanking(Integer categoryId);
-//    List<RestaurantRankView> getRanking(int offset);
 }
