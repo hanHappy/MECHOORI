@@ -4,10 +4,11 @@ const header = document.querySelector("header");
 const logo = header.querySelector(".logo");
 const headerSide = header.querySelectorAll(".header-side");
 const searchContainer = header.querySelector(".search-container");
+// 카테고리
 const topCategorySection = header.querySelector(".top-category-section");
+// 기타 카테고리
 const otherCategorySection = header.querySelector(".other-category-section");
-const otherCategories = otherCategorySection.querySelector(".others");
-const tagBox = otherCategorySection.querySelector(".category-wrapper.others");
+// 필터
 const filterBox = header.querySelector(".filter-box");
 const searchBar = header.querySelector("#search-bar");
 const searchBtn = header.querySelector(".search-btn");
@@ -19,6 +20,7 @@ const modalLike = document.querySelector(".modal-toast");
 let searchParam = new URLSearchParams(window.location.search);
 let query = searchParam.get('q');
 let categoryId = searchParam.get('c');
+let isOtherCategoryAllSelected = false;
 
 // 검색바 보이기() -------------------------------------------------
 function showSearchBar(){
@@ -136,6 +138,7 @@ searchBtn.onclick = getListByQuery;
 // Top Category 영역 ------------------------------------------------------------
 // Top Category 클릭 시 RESTful API 요청
 topCategorySection.onclick = function(e){
+    isOtherCategoryAllSelected = false;
     searchBar.value = "";
     e.preventDefault();
     if(e.target.tagName !== 'A')
@@ -163,37 +166,45 @@ topCategorySection.onclick = function(e){
         categoryId = e.target.dataset.id;
         e.target.classList.add('selected');
     }
-
 };
 
 // 기타 카테고리(태그) 영역 ----------------------------------------------------
 // 기타 카테고리 클릭 시 RESTful API 요청
-tagBox.onclick = function (e) {
+otherCategorySection.onclick = function (e) {
     searchBar.value = "";
-    e.preventDefault();
     if(e.target.tagName !== 'BUTTON')
         return;
     
+    let tag = e.target;
+    
     // 기타 카테고리 태그 불 켰다껐다
-    let activeTag = otherCategories.querySelector('.active');
+    let activeTag = otherCategorySection.querySelector('.active');
     if (activeTag != null)
         activeTag.classList.remove('active');
-    e.target.classList.add('active');
+    tag.classList.add('active');
 
-    if (e.target.innerText == '#전체') {
+    if (tag.innerText == '#전체') {
+        isOtherCategoryAllSelected = true;
         let url = "/api/restaurant/list?tc=6";
         restaurantListLoad(url);
     } else {
-        let url = `/api/restaurant/list?c=${e.target.dataset.id}`;
+        isOtherCategoryAllSelected = false;
+        categoryId = tag.dataset.id;
+        let url = `/api/restaurant/list?c=${categoryId}`;
         restaurantListLoad(url);
     }
 };
 
 // 필터링 ----------------------------------------------------------------
 filterBox.onchange = function(e){
-    let url = `/api/restaurant/list?c=${categoryId}&f=${e.target.value}`;
+    let url = null;
+    if(isOtherCategoryAllSelected)
+        url = `/api/restaurant/list?tc=6&f=${e.target.value}`;
+    else
+        url = `/api/restaurant/list?c=${categoryId}&f=${e.target.value}`;
+        
     restaurantListLoad(url);
-}
+    }
 
 // 좋아요 버튼 ------------------------------------------------------------
 restaurantList.onclick = function(e){

@@ -18,6 +18,7 @@ public interface RestaurantService {
 	List<Restaurant> getListByPage(Integer page, Integer size);
 
 	List<RestaurantView> getRestaurantViewList(Integer memberId);
+    List<RestaurantView> getRestaurantViewListByTopCtgIdAndFilter(Integer memberId, Integer topCtgId, Integer filterId);
     List<RestaurantView> getRestaurantViewListByTopCtgId(Integer memberId, Integer topCategoryId);
 	List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId);
 	List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, String query);

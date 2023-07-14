@@ -47,35 +47,37 @@
                 </div>
             </div>
         </nav>
+
         <!-- 카테고리 -->
-        <nav class="top-category-section">
-            <div class="category-wrapper">
-                <ul class="category-list top-category-list">
-                    <li>
-                        <a class="top-category">전체</a>
-                    </li>
-                    <li th:each="c : ${mainCtgList}">
-                        <a class="top-category" 
-                           th:data-id="${c.id}"
-                           th:text="${c.name}">한식
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        <nav class="top-category-section scroll-hidden">
+            <ul class="category-list top-category-list">
+                <li>
+                    <a class="top-category">전체</a>
+                </li>
+                <li th:each="c : ${mainCtgList}">
+                    <a class="top-category" 
+                        th:data-id="${c.id}"
+                        th:text="${c.name}">한식
+                    </a>
+                </li>
+            </ul>
         </nav>
 
         <!-- 기타 카테고리 -->
         <nav class="other-category-section">
-            <div class="category-wrapper others">
-                <ul class="category-list other-category-list">
-                    <li><button class="category-tag" href="#">#전체</button></li>
-                    <li th:each="c : ${otherCtgList}">
-                        <button class="category-tag" th:data-id="${c.id}" th:text="'#' + ${c.name}">#베트남
-                        </button>
-                    </li>
-                </ul>
-            </div>
+            <ul class="category-list other-category-list">
+                <li><button class="category-tag" href="#">#전체</button></li>
+                <li th:each="c : ${otherCtgList}">
+                    <button
+                        type="button"
+                        class="category-tag" 
+                        th:data-id="${c.id}" 
+                        th:text="'#' + ${c.name}">#베트남
+                    </button>
+                </li>
+            </ul>
         </nav>
+
         <!-- 필터 -->
         <nav>
             <div class="filter-box">
@@ -89,6 +91,7 @@
                 </select>
             </div>
         </nav>
+
     </header>
 
     <main>

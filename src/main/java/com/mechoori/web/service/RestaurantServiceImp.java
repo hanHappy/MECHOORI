@@ -56,6 +56,31 @@ public class RestaurantServiceImp implements RestaurantService {
 	public List<RestaurantView> getRestaurantViewList(Integer memberId) {
 		return repository.findAllRestaurantView(memberId, null, null, null, null);
 	}
+	
+	@Override
+	public List<RestaurantView> getRestaurantViewListByTopCtgIdAndFilter(Integer memberId, Integer topCtgId,
+			Integer filterId) {
+		String filter = "";
+
+		switch(filterId){
+			case 1:
+				filter = "value desc";
+				break;
+			case 2:
+				filter = "avg_price";
+				break;
+			case 3:
+				filter = "avg_price desc";
+				break;
+			case 4:
+				filter = "rate_count desc";
+				break;
+			case 5:
+				filter = "like_count desc";
+				break;
+		}
+		return repository.findAllRestaurantView(memberId, topCtgId, null, null, filter);
+	}
 
 	@Override
 	public List<RestaurantView> getRestaurantViewListByTopCtgId(Integer memberId, Integer topCategoryId) {
@@ -166,6 +191,7 @@ public class RestaurantServiceImp implements RestaurantService {
 	public void add(Restaurant restaurant) {
 		repository.add(restaurant);
 	}
+
 
 }
 

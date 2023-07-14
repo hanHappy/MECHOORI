@@ -42,6 +42,8 @@ public class RestaurantController {
         // 식당 리스트 출력
         if (query == null && ctgId == null && topCtgId == null && filterId == null)
             list = rstrService.getRestaurantViewList(memberId);
+        else if (topCtgId != null && filterId != null)
+            list = rstrService.getRestaurantViewListByTopCtgIdAndFilter(memberId, topCtgId, filterId);
         else if (filterId != null)
             list = rstrService.getRestaurantViewListByFilter(memberId, ctgId, filterId);
         else if (query != null)
