@@ -20,8 +20,7 @@ public class EmailController {
             @RequestParam ("e") String email)
             throws Exception {
 
-        String code = service.sendSimpleMessage(email);
-        return code;
+        return service.sendSimpleMessage(email);
     }
 
 
