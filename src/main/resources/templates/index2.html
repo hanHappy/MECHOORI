@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/index2.css">
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/modal-menu.css">
+    <script src="/js/index.js" defer="defer"></script>
+    <script src="/js/map.js" defer="defer"></script>
+    <script src="/js/components/modal-menu.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-side left">
+            <a sec:authorize="hasRole('ADMIN')" href="admin">
+                <img class="" src="/images/icons/admin_btn.svg" alt="">
+            </a>
+            <span sec:authorize="hasRole('ADMIN')" sec:authentication="principal.nickname" class="username"></span>
+        </div>
+        <div class="header-icon logo">
+            <img src="/images/assets/logo.png" alt="">
+        </div>
+        <div class="header-side right">
+            <a sec:authorize="isAnonymous()" href="/user/login" class="header-icon menu">메뉴</a>
+            <a sec:authorize="isAuthenticated()" id="menu" class="header-icon menu">메뉴</a>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="ad">
+            <div class="ad-mobile">
+                <img src="/images/assets/mainAD.svg" alt="">
+            </div>
+            <div class="ad-web">
+                <img src="/images/assets/bg-web.png" alt="">
+                <div class="ad-text">
+                    <p>가성비 좋은 식당 쉽게 찾는 방법!</p>
+                    <p>메뉴추천리스트</p>
+                </div>
+            </div>
+
+            <div class="search-bar-wrap">
+                <form class="search-bar" action="restaurant/list" method="get">
+                    <label class="search-input" for="search-input">
+                        <img src="/images/icons/search-black.svg">
+                    </label>
+                    <input name="q" type="text" id="search-input" placeholder="한상민님, 오늘은 짜장상회 어떠세요?">
+                    <a href="/map">
+                    <img class="search-map" src="/images/icons/지도아이콘.svg" alt="">
+                    </a>
+                </form>
+            </div>
+        </section>
+
+
+        <section class="type">
+            <ul class="typelist">
+                <div class="category-all-wrapper">
+                    <img src="/images/icons/icon-web-카테고리.svg">
+                    <p>카테고리</p>
+                </div>
+                <li th:each="c : ${list}"> 
+                    <input name="c" type="hidden" th:value="${c.id}">
+                    <a 
+                       href="/restaurant/list/category/1"
+                       th:href="@{/restaurant/list(c=${c.id})}"> 
+                        <img 
+                            src="/images/icons/icon-web-한식.svg"
+                            th:src="@{/images/icons/icon-web-{img}(img=${c.image})}">
+                        <p th:text="${c.name}"></p>
+                    </a>
+                    <input type="hidden" name="c" th:value="${c.id}">
+                </li>
+            </ul>
+        </section>
+
+        <section class="ranking-web-container">
+            <h1>가성비 랭킹 TOP5</h1>
+            <div class="ranking-web-wrap">
+                <div class="ranking-web-left">
+                    <img src="/images/foods/ranking3.png">
+                </div>
+                <div class="ranking-web-right">
+                    <img src="/images/foods/ranking1.png">
+                    <img src="/images/foods/ranking1.png">
+                    <img src="/images/foods/ranking1.png">
+                    <img src="/images/foods/ranking1.png">
+                </div>
+            </div>
+        </section>
+
+        <!-- TODO 사진은 클릭 안 먹게 하고 제목 옆 (전체보기) 추가하면 어떨지? -->
+        <section class="ranking">
+            <div class="slidebox">
+                <h1>가성비 랭킹 TOP5</h1>
+                <input type="radio" name="slide" id="slide01" checked>
+                <input type="radio" name="slide" id="slide02">
+                <input type="radio" name="slide" id="slide03">
+                <input type="radio" name="slide" id="slide04">
+                <input type="radio" name="slide" id="slide05">
+                <input type="radio" name="slide" id="slide06">
+
+                <ul class="slidelist">
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide06" class="left"></label>
+                            <div class="imgTest1">
+                                <img src="/images/foods/2한식더미.png" alt="">
+                                <div class="textTest1">
+                                    <span>1위</span>
+                                    <span>호남식당</span>
+                                    <span>(가성비 110%)</span>
+                                </div>
+                            </div>
+                            <label for="slide02" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide01" class="left"></label>
+                            <div class="imgTest2">
+                                <img src="/images/foods/2분식더미.svg" alt="">
+                                <div class="textTest2">
+                                    <span>2위</span>
+                                    <span>소구장</span>
+                                    <span>(가성비 108%)</span>
+                                </div>
+                            </div>
+                            <label for="slide03" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide02" class="left"></label>
+                            <div class="imgTest3">
+                                <img src="/images/foods/2일식더미.svg" alt="">
+                                <div class="textTest3">
+                                    <span>3위</span>
+                                    <span>뜸들이다</span>
+                                    <span>(가성비 106%)</span>
+                                </div>
+                            </div>
+                            <label for="slide04" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide03" class="left"></label>
+                            <div class="imgTest4">
+                                <img src="/images/foods/2양식더미.svg" alt="">
+                                <div class="textTest4">
+                                    <span>4위</span>
+                                    <span>니즈버거</span>
+                                    <span>(가성비 104%)</span>
+                                </div>
+                            </div>
+                            <label for="slide05" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide04" class="left"></label>
+                            <div class="imgTest5">
+                                <img src="/images/foods/2중식더미.svg" alt="">
+                                <div class="textTest5">
+                                    <span>5위</span>
+                                    <span>짜장상회</span>
+                                    <span>(가성비 103%)</span>
+                                </div>
+                            </div>
+                            <label for="slide06" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <label for="slide05" class="left"></label>
+                        <div class="imgTest6">
+                            <a href="restaurant/ranking">
+                            <img src="/images/foods/1랭킹더미.svg" alt="">
+                            </a>
+                            <div class="textTest6">
+                                <!-- <span>랭킹 전체 보기</span> -->
+                                <!-- <span>짜장상회</span>
+                                    <span>가성비 100%</span> -->
+                            </div>
+                        </div>
+                        <a><label for="slide01" class="right"></label></a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+        
+
+        <!-- TODO 클릭 시 rate-list 페이지로 이동 -->
+        <section class="comparison">
+            <h1>나의 가성비 성과 비교</h1>
+            <div class="comparison-img">
+                <div class="comparison-img-content">
+                    <a href="user/my-page/statistics"><img  src="/images/components/index-성과비교.svg" alt=""></a>
+                </div>
+                <div class="comparison-img-content-web">
+                    <a href="user/my-page/statistics"><img  src="/images/components/index-성과비교-web.png" alt=""></a>
+                </div>
+
+                <div class="comparison-text">
+                    <p>맘껏 누려온 가성비를 확인해보세요</p>
+                    <p>내가 누린 가성비는?</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TODO 클릭 시 list 페이지로 넘어가게? -->
+        <div class="adBox">
+            <h1>식당 가성비 평가하기</h1>
+            <a href="restaurant/list">
+                <img src="/images/icons/banner-ad-web.png">
+                <img src="/images/icons/bannerAd1.png" alt="">
+                <img src="/images/icons/bannerAd2.png" alt="">
+            </a>
+        </div>
+
+        <!-- ============== 메뉴 모달 ============== -->
+        <div class="modal-menu">
+            <div class="screen">
+                <div class="panel">
+                    <div class="profile-image-wrapper">
+                        <div class="profile-image-frame">
+                            <img class="profile-image" th:src="${#authentication.principal.img}"  alt="프로필사진">
+                        </div>
+                        <div class="nickname-wrapper">
+                            <span class="nickname" th:text="${#authentication.principal.nickname}"></span>
+                        </div>
+                    </div>
+
+                    <nav class="menu-list-section">
+                        <ul>
+                            <li>
+                                <a href="/user/my-page/edit-info">
+                                    <div class="icon icon-key"></div>
+                                    <span>회원 정보 수정</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/like-list">
+                                    <div class="icon icon-heart"></div>
+                                    <span>찜 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/rate-list">
+                                    <div class="icon icon-review"></div>
+                                    <span>평가 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/statistics">
+                                    <div class="icon icon-chart"></div>
+                                    <span>가성비 평가 통계</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/logout">
+                                    <div class="icon icon-power"></div>
+                                    <span>로그아웃</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+
+</body>
+
+</html>

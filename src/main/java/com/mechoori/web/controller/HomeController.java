@@ -27,6 +27,27 @@ public class HomeController {
 
 
 
+	@GetMapping("/test-web")
+	public String testWeb(Model model) {
+
+	List<TopCategory> list = service.getTopCategoryList();
+
+	model.addAttribute("list", list);
+
+	return "index-responsive-web";
+	}
+
+	@GetMapping("/test")
+	public String test(Model model) {
+
+	List<TopCategory> list = service.getTopCategoryList();
+
+	model.addAttribute("list", list);
+
+	return "index2";
+	}
+
+	
 	
 	@GetMapping("/")
 	public String index(
