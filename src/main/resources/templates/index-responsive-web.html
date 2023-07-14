@@ -61,25 +61,27 @@
 
 
 
-        <section class="type">
-            <ul class="typelist">
-                <div class="category-all-wrapper">
-                    <img src="/images/icons/icon-web-카테고리.svg">
-                    <p>카테고리</p>
-                </div>
-                <li th:each="c : ${list}"> 
-                    <input name="c" type="hidden" th:value="${c.id}">
-                    <a 
-                       href="/restaurant/list/category/1"
-                       th:href="@{/restaurant/list(c=${c.id})}"> 
-                        <img src="/images/icons/icon-web-한식.svg"
-                            th:src="@{/images/icons/icon-web-{img}(img=${c.image})}">
-                        <p th:text="${c.name}"></p>
-                    </a>
-                    <input type="hidden" name="c" th:value="${c.id}">
-                </li>
-            </ul>
-        </section>
+    <section class="type">
+      <ul class="typelist">
+          <div class="category-all-wrapper">
+              <img src="/images/icons/icon-web-카테고리.svg">
+              <p>카테고리</p>
+          </div>
+          <li th:each="c : ${list}"> 
+              <input name="c" type="hidden" th:value="${c.id}">
+              <a 
+                 href="/restaurant/list/category/1"
+                 th:href="@{/restaurant/list(c=${c.id})}"> 
+                  <img 
+                      src="/images/icons/icon-web-한식.svg"
+                      th:src="@{/images/icons/icon-web-{img}(img=${c.image})}">
+                  <p th:text="${c.name}"></p>
+              </a>
+              <input type="hidden" name="c" th:value="${c.id}">
+          </li>
+      </ul>
+  </section>
+
 
         <!-- TODO 사진은 클릭 안 먹게 하고 제목 옆 (전체보기) 추가하면 어떨지? -->
         <section class="ranking">
@@ -96,9 +98,9 @@
                 <li class="slideitem">
                   <div>
                     <label for="slide06" class="left"></label>
-                    <div class="imgTest1">
+                    <div class="imgTest">
                       <img src="/images/foods/2한식더미.svg" alt="">
-                      <div class="textTest1">
+                      <div class="textTest">
                         <span>1위</span>
                         <span>호남식당</span>
                         <span>(가성비 110%)</span>
@@ -110,9 +112,9 @@
                 <li class="slideitem">
                   <div>
                     <label for="slide01" class="left"></label>
-                  <div class="imgTest2">
+                  <div class="imgTest">
                       <img src="/images/foods/2분식더미.svg" alt="">
-                      <div class="textTest2">
+                      <div class="textTest">
                         <span>2위</span>
                         <span>소구장</span>
                         <span>(가성비 108%)</span>
@@ -124,9 +126,9 @@
                 <li class="slideitem">
                   <div>
                     <label for="slide02" class="left"></label>
-                    <div class="imgTest3">
+                    <div class="imgTest">
                       <img src="/images/foods/2일식더미.svg" alt="">
-                      <div class="textTest3">
+                      <div class="textTest">
                         <span>3위</span>
                         <span>뜸들이다</span>
                         <span>(가성비 106%)</span>
@@ -138,9 +140,9 @@
                 <li class="slideitem">
                   <div>
                     <label for="slide03" class="left"></label>
-                    <div class="imgTest4">
+                    <div class="imgTest">
                       <img src="/images/foods/2양식더미.svg" alt="">
-                      <div class="textTest4">
+                      <div class="textTest">
                         <span>4위</span>
                         <span>니즈버거</span>
                         <span>(가성비 104%)</span>
@@ -152,9 +154,9 @@
                 <li class="slideitem">
                   <div>
                     <label for="slide04" class="left"></label>
-                    <div class="imgTest5">
+                    <div class="imgTest">
                       <img src="/images/foods/2중식더미.svg" alt="">
-                      <div class="textTest5">
+                      <div class="textTest">
                         <span>5위</span>
                         <span>짜장상회</span>
                         <span>(가성비 103%)</span>
@@ -165,15 +167,10 @@
                 </li>
                 <li class="slideitem">
                   <label for="slide05" class="left"></label>
-                  <div class="imgTest6">
+                  <div class="imgTest">
                     <a href="restaurant/ranking">
                       <img src="/images/foods/1랭킹더미.svg" alt="">
                     </a>
-                    <div class="textTest6">
-                      <!-- <span>랭킹 전체 보기</span> -->
-                      <!-- <span>짜장상회</span>
-                      <span>가성비 100%</span> -->
-                    </div>
                   </div>
                   <a><label for="slide01" class="right"></label></a>
                 </li>

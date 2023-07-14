@@ -91,7 +91,16 @@ header h1 {
 }
 
 /* ------------------------------------- */
-
+@media (min-width: 769px) {
+    .header-side {
+      width: auto; /* 너비를 자동으로 설정하여 컨테이너 크기를 조정합니다. */
+    }
+  
+    .header-icon {
+      margin: 0 8px; /* 좌우 여백을 조정합니다. */
+    }
+  }
+  
 @media screen and (min-width:1024px) {
     header {
         width: 100%;

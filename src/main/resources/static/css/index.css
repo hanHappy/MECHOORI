@@ -144,31 +144,30 @@ main{
     justify-content: space-between;
 }
 
-.title-box button{
-    background-color: transparent;
+.title-box button, .title-box h1{
     padding: 0px 0px 5px 0px;
-    border: none;
     font-family: 'Noto Sans CJK KR Medium';
     font-style: normal;
+}
+
+.title-box button{
+    background-color: transparent;
+    border: none;
     font-weight: 300;
     font-size: 16px;
     color: #838383;
 }
 
-.ranking h1{
-    padding: 0px 0px 5px 0px;
-    font-family: 'Noto Sans CJK KR Medium';
-    font-style: normal;
+.title-box h1{
     font-weight: 700;
     font-size: 18px;
     line-height: 25px;
-
     color: #000000;
 }
 
 
-
 /*---------- 슬라이드 -----------*/
+
 
 [name="slide"] {display: none;}
 .slidebox{     
@@ -177,27 +176,8 @@ main{
     margin: 0 auto;
 }
 
-.resImg{
-    /* position: relative; */
-    object-fit:cover;
-    width: 335px;
-    height: 184px;
-    max-width: 100%;
-    border-radius: 8px;
-}
-
-/* .slidebox img {max-width: 100%; border-radius: 8px;} */
-
-.textTest{
-    /* position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center; */
-}
-
-.slidebox .slidelist{
+.slidelist{
     white-space: nowrap;
-    font-size: 0;
     overflow: hidden;
 }
 
@@ -219,9 +199,16 @@ main{
     cursor: pointer;
 }
 
+.resImg{
+    object-fit:cover;
+    width: 335px;
+    height: 184px;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
 label.left{
     left: 0px;
-    /* background-color: red; */
     background-image: url('/images/icons/left버튼.svg');
     background-position: center center;
     background-size: 30%;
@@ -230,19 +217,13 @@ label.left{
 
 label.right{
     right: 0px;
-    /* background-color: red; */
     background-image: url('/images/icons/right버튼.svg');
     background-position: center center;
     background-size: 30%;
     background-repeat: no-repeat;
 }
 
-
-
-
-/* <ㅡㅡㅡ 텍스트 ㅡㅡㅡ> */
 .imgTest {
-    
     position: relative;
 }
 
@@ -263,19 +244,7 @@ label.right{
     text-align: center;
 }
 
-
-/* .imgBack{
-    background-image: url('/images/icons/rankBack.svg');
-    width: 228px;
-    height: 125px;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-} */
-
-
 .textTest span{
-    /* position: absolute; */
     color: white;
     display: flex;
     align-items: center;
@@ -300,7 +269,6 @@ label.right{
 .textTest span:nth-child(3) {
     font-size: 20px;
     font-weight: bold;
-    /* color: rgba(185, 183, 183, 1); */
     top: 63%;
     left: 119px;
 }
@@ -320,276 +288,65 @@ label.right{
 [id="slide06"]:checked ~ .slidelist .slideitem {transform:translateX(-500%); animation: slide06 20s infinite;}
 
 
-
-
 @keyframes slide01{
-    0% {left:0%;}
-    15% {left:0%;}
-    17% {left:-100%;}
-    32% {left:-100%;}
-    34% {left:-200%;}
-    49% {left:-200%;}
-    51% {left:-300%;}
-    66% {left:-300%;}
-    68% {left:-400%;}
-    83% {left:-400%;}
-    85% {left:-500%;}
-    98% {left:-500%;}
-    100% {left:0%;}
+    0%, 15% {left: 0%;}
+    17%, 32% {left: -100%;}
+    34%, 49% {left: -200%;}
+    51%, 66% {left: -300%;}
+    68%, 83% {left: -400%;}
+    85%, 98% {left: -500%;}
+    100% {left: 0%;}
 }
 
 @keyframes slide02{
-    0% {left:0%;}
-    15% {left:0%;}
-    17% {left:-100%;}
-    32% {left:-100%;}
-    34% {left:-200%;}
-    49% {left:-200%;}
-    51% {left:-300%;}
-    66% {left:-300%;}
-    68% {left:-400%;}
-    83% {left:-400%;}
-    85% {left:100%;}
-    98% {left:100%;}
-    100% {left:0%;}
+    0%, 15% {left: 0%;}
+    17%, 32% {left: -100%;}
+    34%, 49% {left: -200%;}
+    51%, 66% {left: -300%;}
+    68%, 83% {left: -400%;}
+    85%, 98% {left: -500%;}
+    100% {left: 0%;}
 }
 
 @keyframes slide03{
-    0% {left:0%;}
-    15% {left:0%;}
-    17% {left:-100%;}
-    32% {left:-100%;}
-    34% {left:-200%;}
-    49% {left:-200%;}
-    51% {left:-300%;}
-    66% {left:-300%;}
-    68% {left:200%;}
-    83% {left:200%;}
-    85% {left:100%;}
-    98% {left:100%;}
-    100% {left:0%;}
+    0%, 15% {left: 0%;}
+    17%, 32% {left: -100%;}
+    34%, 49% {left: -200%;}
+    51%, 66% {left: -300%;}
+    68%, 83% {left: -400%;}
+    85%, 98% {left: -500%;}
+    100% {left: 0%;}
 }
 
 @keyframes slide04{
-    0% {left:0%;}
-    15% {left:0%;}
-    17% {left:-100%;}
-    32% {left:-100%;}
-    34% {left:-200%;}
-    49% {left:-200%;}
-    51% {left:300%;}
-    66% {left:300%;}
-    68% {left:200%;}
-    83% {left:200%;}
-    85% {left:100%;}
-    98% {left:100%;}
-    100% {left:0%;}
+    0%, 15% {left: 0%;}
+    17%, 32% {left: -100%;}
+    34%, 49% {left: -200%;}
+    51%, 66% {left: -300%;}
+    68%, 83% {left: -400%;}
+    85%, 98% {left: -500%;}
+    100% {left: 0%;}
 }
 
 @keyframes slide05{
-    0% {left:0%;}
-    15% {left:0%;}
-    17% {left:-100%;}
-    32% {left:-100%;}
-    34% {left:400%;}
-    49% {left:400%;}
-    51% {left:300%;}
-    66% {left:300%;}
-    68% {left:200%;}
-    83% {left:200%;}
-    85% {left:100%;}
-    98% {left:100%;}
-    100% {left:0%;}
+    0%, 15% {left: 0%;}
+    17%, 32% {left: -100%;}
+    34%, 49% {left: -200%;}
+    51%, 66% {left: -300%;}
+    68%, 83% {left: -400%;}
+    85%, 98% {left: -500%;}
+    100% {left: 0%;}
 }
 
 @keyframes slide06{
-    0% {left:0%;}
-    15% {left:0%;}
-    17% {left:500%;}
-    32% {left:500%;}
-    34% {left:400%;}
-    49% {left:400%;}
-    51% {left:300%;}
-    66% {left:300%;}
-    68% {left:200%;}
-    83% {left:200%;}
-    85% {left:100%;}
-    98% {left:100%;}
-    100% {left:0%;}
+    0%, 15% {left: 0%;}
+    17%, 32% {left: -100%;}
+    34%, 49% {left: -200%;}
+    51%, 66% {left: -300%;}
+    68%, 83% {left: -400%;}
+    85%, 98% {left: -500%;}
+    100% {left: 0%;}
 }
-
-
-
-
-
-/* <ㅡㅡㅡ 분식 텍스트 ㅡㅡㅡ> */
-/* .imgTest2 {
-    position: relative;
-}
-
-.textTest2 span{
-    position: absolute;
-    color: white;
-    right: 50px;
-}
-
-.textTest2 span:nth-child(1) {
-    font-size: 24px;
-    font-weight:bolder;
-    top: 25%;
-    right: 149px;
-}
-  
-.textTest2 span:nth-child(2) {
-    font-size: 20px;
-    font-weight: bold;
-    top: 48%;
-    right: 42%;
-}
-
-.textTest2 span:nth-child(3) {
-    font-size: 16px;
-    font-weight: bold;
-    color: rgba(185, 183, 183, 1);
-    top: 63%;
-    left: 119px;
-} */
-
-
-
-
-/* <ㅡㅡㅡ 일식 텍스트 ㅡㅡㅡ> */
-/* .imgTest3 {
-    position: relative;
-}
-
-.textTest3 span{
-    position: absolute;
-    color: white;
-    right: 50px;
-}
-
-.textTest3 span:nth-child(1) {
-    font-size: 24px;
-    font-weight:bolder;
-    top: 25%;
-    right: 149px;
-}
-  
-.textTest3 span:nth-child(2) {
-    font-size: 20px;
-    font-weight: bold;
-    top: 48%;
-    right: 130px;
-}
-
-.textTest3 span:nth-child(3) {
-    font-size: 16px;
-    font-weight: bold;
-    color: rgba(185, 183, 183, 1);
-    top: 63%;
-    left: 119px;
-} */
-
-/* <ㅡㅡㅡ 양식 텍스트 ㅡㅡㅡ> */
-/* .imgTest4 {
-    position: relative;
-}
-
-.textTest4 span{
-    position: absolute;
-    color: white;
-    right: 50px;
-}
-
-.textTest4 span:nth-child(1) {
-    font-size: 24px;
-    font-weight:bolder;
-    top: 25%;
-    right: 149px;
-}
-  
-.textTest4 span:nth-child(2) {
-    font-size: 20px;
-    font-weight: bold;
-    top: 48%;
-    right: 130px;
-}
-
-.textTest4 span:nth-child(3) {
-    font-size: 16px;
-    font-weight: bold;
-    color: rgba(185, 183, 183, 1);
-    top: 63%;
-    left: 119px;
-} */
-
-/* <ㅡㅡㅡ 중식 텍스트 ㅡㅡㅡ> */
-/* .imgTest5 {
-    position: relative;
-}
-
-.textTest5 span{
-    position: absolute;
-    color: white;
-    right: 50px;
-}
-
-.textTest5 span:nth-child(1) {
-    font-size: 24px;
-    font-weight:bolder;
-    top: 25%;
-    right: 149px;
-}
-  
-.textTest5 span:nth-child(2) {
-    font-size: 20px;
-    font-weight: bold;
-    top: 48%;
-    right: 130px;
-}
-
-.textTest5 span:nth-child(3) {
-    font-size: 16px;
-    font-weight: bold;
-    color: rgba(185, 183, 183, 1);
-    top: 63%;
-    left: 119px;
-} */
-
-/* <ㅡㅡㅡ 랭킹 보기 텍스트 ㅡㅡㅡ> */
-.imgTest1 {
-    position: relative;
-}
-
-.textTest6 span{
-    position: absolute;
-    color: white;
-    right: 50px;
-}
-
-.textTest6 span:nth-child(1) {
-    font-size: 34px;
-    font-weight:bolder;
-    top: 115px;
-    right: 150px;
-}
-  
-.textTest6 span:nth-child(2) {
-    font-size: 18px;
-    font-weight: bold;
-    left: 150px;
-    top: 120px;
-}
-
-.textTest6 span:nth-child(3) {
-    font-size: 18px;
-    font-weight: bold;
-    left: 150px;
-    top: 140px;
-}
-
-
 
 
 

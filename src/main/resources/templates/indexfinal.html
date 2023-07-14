@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/indexf.css">
     <link rel="stylesheet" href="/css/common/style.css">
     <link rel="stylesheet" href="/css/common/header.css">
     <!-- <link rel="stylesheet" href="/css/common/modal-menu.css"> -->
@@ -32,6 +32,168 @@
             <a sec:authorize="isAuthenticated()" id="menu" class="header-icon menu">메뉴</a>
         </div>
     </header>
+
+    <main>
+
+        <div class="ad">
+            <section class="searchZone">
+                <div class="search-bar-container">
+                    <form class="search-bar" action="restaurant/list" method="get">
+                        <label class="search-input" for="search-input">
+                            <img src="/images/icons/search-black.svg">
+                        </label>
+                        
+                        <input class="search" name="q" type="text" id="search-input" 
+                            sec:authorize="isAuthenticated()"
+                            th:placeholder="${#authentication.principal.nickname} + '님, 오늘은 짜장상회 어떠세요?'">
+                        <input class="search" name="q" type="text" id="search-input" 
+                            sec:authorize="!isAuthenticated()"
+                            placeholder="드시고 싶은 메뉴를 입력해보세요">
+        
+                        <a href="/map">
+                        <img class="search-map" src="/images/icons/지도아이콘.svg" alt="">
+                        </a>
+                    </form>
+                </div>
+            </section>
+            <div class="ad-web">
+                <img src="/images/assets/bg-web.png" alt="">
+                <div class="ad-text">
+                    <p>가성비 좋은 식당 쉽게 찾는 방법!</p>
+                    <p>메뉴추천리스트</p>
+                </div>
+            </div>
+            <di class="ad-mobile">
+                <img src="/images/assets/mainAD.svg" alt="">
+            </div>
+        </div>
+
+        <section class="type">
+            <ul class="typelist">
+                <div class="category-all-wrapper">
+                    <img src="/images/icons/icon-web-카테고리.svg">
+                    <p>카테고리</p>
+                </div>
+                <li th:each="c : ${list}"> 
+                    <input name="c" type="hidden" th:value="${c.id}">
+                    <a 
+                       href="/restaurant/list/category/1"
+                       th:href="@{/restaurant/list(c=${c.id})}"> 
+                        <img 
+                            src="/images/icons/icon-web-한식.svg"
+                            th:src="@{/images/icons/icon-web-{img}(img=${c.image})}">
+                        <p th:text="${c.name}"></p>
+                    </a>
+                    <input type="hidden" name="c" th:value="${c.id}">
+                </li>
+            </ul>
+        </section>
+
+        <section class="ranking">
+            <div class="title-box">
+                <h1>가성비 랭킹 TOP5</h1>
+                <a href="restaurant/ranking"><button>(전체보기)</button></a>
+            </div>
+            <div class="slidebox">
+                <input type="radio" name="slide" id="slide01" checked>
+                <input type="radio" name="slide" id="slide02">
+                <input type="radio" name="slide" id="slide03">
+                <input type="radio" name="slide" id="slide04">
+                <input type="radio" name="slide" id="slide05">
+                <input type="radio" name="slide" id="slide06">
+
+                <ul class="slidelist">
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide06" class="left"></label>
+                            <div class="imgTest">
+                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[0].img})}" src="/images/foods/2한식더미.svg" alt="">
+                                <div class="textTest">
+                                    <span>1위</span>
+                                    <span th:text="${listRank[0].name}">호남식당</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[0].value} + '%'"> 110</span>)</span>
+                                </div>
+                            </div>
+                            <label for="slide02" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide01" class="left"></label>
+                            <div class="imgTest">
+                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[1].img})}" src="/images/foods/2분식더미.svg" alt="">
+                                <div class="imgBack"></div>
+                                <div class="textTest">
+                                    <span>2위</span>
+                                    <span th:text="${listRank[1].name}">소구장</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[1].value} + '%'"> 110</span>)</span>
+                                </div>
+                            </div>
+                            <label for="slide03" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide02" class="left"></label>
+                            <div class="imgTest">
+                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[2].img})}" src="/images/foods/2일식더미.svg" alt="">
+                                <div class="imgBack"></div>
+                                <div class="textTest">
+                                    <span >3위</span>
+                                    <span th:text="${listRank[2].name}">뜸들이다</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[2].value} + '%'"> 110</span>)</span>
+                                </div>
+                            </div>
+                            <label for="slide04" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide03" class="left"></label>
+                            <div class="imgTest">
+                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[3].img})}" src="/images/foods/2양식더미.svg" alt="">
+                                <div class="imgBack"></div>
+                                <div class="textTest">
+                                    <span>4위</span>
+                                    <span th:text="${listRank[3].name}">니즈버거</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[3].value} + '%'"> 110</span>)</span>
+                                </div>
+                            </div>
+                            <label for="slide05" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide04" class="left"></label>
+                            <div class="imgTest">
+                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[4].img})}" src="/images/foods/2중식더미.svg" alt="">
+                                <div class="imgBack"></div>
+                                <div class="textTest">
+                                    <span>5위</span>
+                                    <span th:text="${listRank[4].name}">짜장상회</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[4].value} + '%'"> 110</span>)</span>
+                                </div>
+                            </div>
+                            <label for="slide06" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <label for="slide05" class="left"></label>
+                        <div class="imgTest">
+                            <a  href="restaurant/ranking">
+                            <img class="resImg" src="/images/foods/1랭킹더미.svg" alt="">
+                            </a>
+                            <div class="textTest6">
+                            </div>
+                        </div>
+                        <a><label for="slide01" class="right"></label></a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
 
 
     
