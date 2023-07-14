@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/index.css?ver=1">
+    <link rel="stylesheet" href="/css/common/style.css?ver=1">
+    <link rel="stylesheet" href="/css/common/header.css?ver=2">
+    <link rel="stylesheet" href="/css/common/modal-menu.css?ver=1">
+    <link rel="stylesheet" href="/css/index.css?ver=1">
+    <script src="/js/index.js?ver=1" defer="defer"></script>
+    <script src="/js/map.js?ver=1" defer="defer"></script>
+    <script src="/js/components/modal-menu.js?ver=1" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-side left">
+            <a sec:authorize="hasRole('ADMIN')" href="admin">
+                <img class="" src="/images/icons/admin_btn.svg" alt="">
+            </a>
+            <span sec:authorize="hasRole('ADMIN')" sec:authentication="principal.nickname" class="username"></span>
+        </div>
+        <div class="header-icon logo">
+            <img src="/images/assets/logo.png" alt="">
+        </div>
+        <div class="header-side right">
+            <a sec:authorize="isAnonymous()" href="/user/login" class="header-icon menu">메뉴</a>
+            <a sec:authorize="isAuthenticated()" id="menu" class="header-icon menu">메뉴</a>
+        </div>
+    </header>
+
+<main>
+    <div class="ad">
+        <section class="searchZone">
+            <form class="search-bar" action="restaurant/list" method="get">
+                <label class="search-input" for="search-input">
+                    <img src="/images/icons/search-black.svg">
+                </label>
+                
+                <input class="search" name="q" type="text" id="search-input" 
+                    sec:authorize="isAuthenticated()"
+                    th:placeholder="${#authentication.principal.nickname} + '님, 오늘은 짜장상회 어떠세요?'">
+                <input class="search" name="q" type="text" id="search-input" 
+                    sec:authorize="!isAuthenticated()"
+                    placeholder="드시고 싶은 메뉴를 입력해보세요">
+
+                <a href="/map">
+                <img class="search-map" src="/images/icons/지도아이콘.svg" alt="">
+                </a>
+            </form>
+        </section>
+        <div class="ad-web">
+            <img src="/images/assets/bg-web.png" alt="">
+            <div class="ad-text">
+                <p>가성비 좋은 식당 쉽게 찾는 방법!</p>
+                <p>메뉴추천리스트</p>
+            </div>
+        </div>
+        <di class="ad-mobile">
+            <img src="/images/assets/mainAD.svg" alt="">
+        </div>
+    </div>
+
+        <!-------메뉴 카테고리 ---------->
+        <section class="type">
+            <ul class="typelist">
+                <li th:each="c : ${list}"> 
+                    <input name="c" type="hidden" th:value="${c.id}">
+                    <a 
+                       href="/restaurant/list/category/1"
+                       th:href="@{/restaurant/list(c=${c.id})}"> 
+                        <img 
+                            src="/images/icons/한식.svg"
+                            th:src="@{/images/icons/{img}(img=${c.image})}">
+                </a>
+                <input type="hidden" name="c" th:value="${c.id}">
+            </li>
+        </ul>
+    </section>
+
+
+
+
+        <!---------- 랭킹 탑5 ---------->
+        <section class="ranking">
+            <div class="title-box">
+            <h1>가성비 랭킹 TOP5</h1> <a href="restaurant/ranking"><button>(전체보기)</button></a>
+            </div>
+            <div class="slidebox">
+                <input type="radio" name="slide" id="slide01" checked>
+                <input type="radio" name="slide" id="slide02">
+                <input type="radio" name="slide" id="slide03">
+                <input type="radio" name="slide" id="slide04">
+                <input type="radio" name="slide" id="slide05">
+                <input type="radio" name="slide" id="slide06">
+
+                <ul class="slidelist">
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide06" class="left"></label>
+                            <div class="imgTest">
+                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[0].img})}" src="/images/foods/2한식더미.svg" alt="">
+                                <div class="textTest">
+                                    <span>1위</span>
+                                    <span th:text="${listRank[0].name}">호남식당</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[0].value} + '%'"> 110</span>)</span>
+                                </div>
+                            </div>
+                            <label for="slide02" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide01" class="left"></label>
+                            <div class="imgTest">
+                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[1].img})}" src="/images/foods/2분식더미.svg" alt="">
+                                <div class="imgBack"></div>
+                                <div class="textTest">
+                                    <span>2위</span>
+                                    <span th:text="${listRank[1].name}">소구장</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[1].value} + '%'"> 110</span>)</span>
+                                </div>
+                            </div>
+                            <label for="slide03" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide02" class="left"></label>
+                            <div class="imgTest">
+                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[2].img})}" src="/images/foods/2일식더미.svg" alt="">
+                                <div class="imgBack"></div>
+                                <div class="textTest">
+                                    <span >3위</span>
+                                    <span th:text="${listRank[2].name}">뜸들이다</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[2].value} + '%'"> 110</span>)</span>
+                                </div>
+                            </div>
+                            <label for="slide04" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide03" class="left"></label>
+                            <div class="imgTest">
+                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[3].img})}" src="/images/foods/2양식더미.svg" alt="">
+                                <div class="imgBack"></div>
+                                <div class="textTest">
+                                    <span>4위</span>
+                                    <span th:text="${listRank[3].name}">니즈버거</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[3].value} + '%'"> 110</span>)</span>
+                                </div>
+                            </div>
+                            <label for="slide05" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <label for="slide04" class="left"></label>
+                            <div class="imgTest">
+                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[4].img})}" src="/images/foods/2중식더미.svg" alt="">
+                                <div class="imgBack"></div>
+                                <div class="textTest">
+                                    <span>5위</span>
+                                    <span th:text="${listRank[4].name}">짜장상회</span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[4].value} + '%'"> 110</span>)</span>
+                                </div>
+                            </div>
+                            <label for="slide06" class="right"></label>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <label for="slide05" class="left"></label>
+                        <div class="imgTest">
+                            <a  href="restaurant/ranking">
+                            <img class="resImg" src="/images/foods/1랭킹더미.svg" alt="">
+                            </a>
+                            <div class="textTest6">
+                                <!-- <span>랭킹 전체 보기</span> -->
+                                <!-- <span>짜장상회</span>
+                                    <span>가성비 100%</span> -->
+                            </div>
+                        </div>
+                        <a><label for="slide01" class="right"></label></a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+
+        <!----------- 성과 비교  ---------->
+        
+        <!-- TODO 클릭 시 rate-list 페이지로 이동 -->
+        <section class="comparison1">
+            <h1>나만의 가성비 차트</h1>
+            <!-- <h1>나의 가성비 성과 비교</h1> -->
+            <div class="comparison-img">
+                <a href="user/my-page/statistics"><img  src="/images/components/index-성과비교3.svg" alt=""></a>
+                <div class="comparison-text">
+                    <span>내가 누린 가성비는?</span>
+                    <span>다양한 나만의 데이터를 확인해보세요</span>
+                    <!-- <span>내가 누린 가성비는?</span> -->
+                    <!-- <span>맘껏 누려온 가성비를 확인해보세요</span> -->
+                </div>
+            </div>
+        </section>
+
+
+ 
+        <div class="adBox">
+            <a href="restaurant/list">
+            <img class="rateAd" src="/images/icons/bannerAd1.png" alt="">
+            <img class="rateAd" src="/images/icons/bannerAd2.png" alt="">
+            </a>
+        </div>
+
+    <!-- ============== 메뉴 모달 ============== -->
+    <div class="modal-menu">
+        <div class="screen">
+            <div class="panel">
+                <div class="profile-image-wrapper">
+                    <div class="profile-image-frame">
+                        <img class="profile-image" th:src="${#authentication.principal.img}" alt="프로필사진">
+                    </div>
+                    <div class="nickname-wrapper">
+                        <span class="nickname" th:text="${#authentication.principal.nickname}"></span>
+                    </div>
+                </div>
+
+                    <nav class="menu-list-section">
+                        <ul>
+                            <li>
+                                <a href="/user/my-page/edit-info">
+                                    <div class="icon icon-key"></div>
+                                    <span>회원 정보 수정</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/like-list">
+                                    <div class="icon icon-heart"></div>
+                                    <span>찜 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/rate-list">
+                                    <div class="icon icon-review"></div>
+                                    <span>평가 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/statistics">
+                                    <div class="icon icon-chart"></div>
+                                    <span>가성비 평가 통계</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/logout">
+                                    <div class="icon icon-power"></div>
+                                    <span>로그아웃</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+    </div>
+
+    </main>
+
+
+</body>
+
+</html>

@@ -28,12 +28,8 @@ header h1 {
 }
 
 .header-side.left {
-
-.header-side.left {
     justify-content: start;
 }
-
-.header-side.right {
 
 .header-side.right {
     justify-content: end;
@@ -96,7 +92,7 @@ header h1 {
 
 /* ------------------------------------- */
 
-@media screen and (min-width:1280px) {
+@media screen and (min-width:1024px) {
     header {
         width: 100%;
         height: 45px;

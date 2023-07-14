@@ -48,6 +48,16 @@ public class HomeController {
 	}
 
 	
+	@GetMapping("/testf")
+	public String test2(Model model) {
+
+	List<TopCategory> list = service.getTopCategoryList();
+
+	model.addAttribute("list", list);
+
+	return "indexfinal";
+	}
+
 	
 	@GetMapping("/")
 	public String index(

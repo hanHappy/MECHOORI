@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <!-- <link rel="stylesheet" href="/css/common/modal-menu.css"> -->
+    <!-- <script src="/js/index.js" defer="defer"></script> -->
+    <!-- <script src="/js/map.js" defer="defer"></script> -->
+    <!-- <script src="/js/components/modal-menu.js" defer></script> -->
+</head>
+
+<body>
+    <header>
+        <div class="header-side left">
+            <a sec:authorize="hasRole('ADMIN')" href="admin">
+                <img class="" src="/images/icons/admin_btn.svg" alt="">
+            </a>
+            <span sec:authorize="hasRole('ADMIN')" sec:authentication="principal.nickname" class="username"></span>
+        </div>
+        <div class="header-icon logo">
+            <img src="/images/assets/logo.png" alt="">
+        </div>
+        <div class="header-side right">
+            <a sec:authorize="isAnonymous()" href="/user/login" class="header-icon menu">메뉴</a>
+            <a sec:authorize="isAuthenticated()" id="menu" class="header-icon menu">메뉴</a>
+        </div>
+    </header>
+
+
+    
+</body>
+</html>
