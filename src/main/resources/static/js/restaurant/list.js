@@ -3,15 +3,18 @@ import ModalToast from "../components/modal-toast.js";
 const header = document.querySelector("header");
 const logo = header.querySelector(".logo");
 const headerSide = header.querySelectorAll(".header-side");
+// 검색바
 const searchContainer = header.querySelector(".search-container");
+const searchBar = header.querySelector("#search-bar");
+const searchBtn = header.querySelector(".search-btn");
 // 카테고리
 const topCategorySection = header.querySelector(".top-category-section");
 // 기타 카테고리
 const otherCategorySection = header.querySelector(".other-category-section");
 // 필터
 const filterBox = header.querySelector(".filter-box");
-const searchBar = header.querySelector("#search-bar");
-const searchBtn = header.querySelector(".search-btn");
+const filter = filterBox.querySelector('#filter');
+
 const restaurantListSection = document.querySelector(".restaurant-list-section");
 const restaurantList = restaurantListSection.querySelector(".restaurant-list");
 const modalLike = document.querySelector(".modal-toast");
@@ -150,6 +153,7 @@ topCategorySection.onclick = function(e){
         selectedCategory.classList.remove('selected');
 
     if(e.target.innerText == '전체') {
+        filter.selectedIndex = 0;
         categoryId = null;
         let url = '/api/restaurant/list';
         restaurantListLoad(url);
@@ -160,6 +164,7 @@ topCategorySection.onclick = function(e){
         e.target.classList.add('selected');
     }
     else {
+        filter.selectedIndex = 0;
         let url = `/api/restaurant/list?c=${e.target.dataset.id}`;
         restaurantListLoad(url);
         otherCategorySection.classList.remove('slide-open');
@@ -182,6 +187,8 @@ otherCategorySection.onclick = function (e) {
     if (activeTag != null)
         activeTag.classList.remove('active');
     tag.classList.add('active');
+
+    filter.selectedIndex = 0;
 
     if (tag.innerText == '#전체') {
         isOtherCategoryAllSelected = true;
