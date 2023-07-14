@@ -47,24 +47,21 @@
       </ul>
     </nav>
 
-    <section class="rate-list-secdtion">
+    <section class="rate-list-section">
       <h1 class="d-none">평가 목록</h1>
       <div class="rate-list">
-        <section class="item">
-          <img src="/images/foods/짜장상회2.jpg" alt="">
-          <h1><span>짜장상회</span> · <span>짜장면</span></h1>
-          <p>가격</p>
-          <p>5,000원</p>
-          <p>평가</p>
-          <p><span>88,000</span>원(<span>120</span>%)</p>
-        </section>
-        <section class="item">
-          <img src="/images/foods/짜장상회2.jpg" alt="">
-          <h1><span>짜장상회</span> · <span>짜장면</span></h1>
-          <p>가격</p>
-          <p>5,000원</p>
-          <p>평가</p>
-          <p><span>88,000</span>원(<span>120</span>%)</p>
+        <section class="item" th:each=" r : ${list}">
+          <div class="front">
+            <img src="/images/foods/짜장상회2.jpg" th:src="@{${r.img}}" alt="">
+            <h1><span th:text="${r.resName}">짜장상회</span> · <span th:text="${r.menuName}">짜장면</span></h1>
+            <p>가격</p>
+            <p th:text="${r.price}">5,000원</p>
+            <p>평가</p>
+            <p><span th:text="${r.ratePrice}">88,000</span>원 (<span th:text="${r.value}">120</span>%)</p>
+          </div>
+          <div class="back">
+            <p th:text="${r.review}"></p>
+          </div>
         </section>
       </div>
     </section>
