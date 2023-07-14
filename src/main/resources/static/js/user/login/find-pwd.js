@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelector("#btn-confirm-num-check").addEventListener("click", function () {
         checkEmailConfirmationCode();
-    }
+    });
 
 
     function needFilmAll() {
