@@ -65,7 +65,10 @@ body { background-color: var(--background-color); }
   column-gap: 10px;
 }
 
+/* ----------- item ----------- */
 .item {
+  position: relative;
+
   border-radius: 8px;
   background-color: white;
   box-shadow: var(--item-shadow-1);
@@ -73,6 +76,20 @@ body { background-color: var(--background-color); }
   width: 164px;
   height: 180px;
 
+  /* animation */
+  transition: 0.4s;
+  transform-style: preserve-3d;
+}
+
+.front, 
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* --------- front --------- */
+.front {
   display: grid;
   grid-template:
                 "img img" 96px
@@ -82,7 +99,7 @@ body { background-color: var(--background-color); }
                 /3fr 7fr;
 }
 
-.item img {
+.front img {
   border-radius: 8px;
 
   width: 164px;
@@ -91,16 +108,12 @@ body { background-color: var(--background-color); }
   grid-area: img;
 }
 
-/* .text-wrap {
-  pad
-} */
-
-.item p, .item h1 { 
+.front p, .front h1 { 
   letter-spacing: -1px;
   margin: 0; 
 }
 
-.item h1 {
+.front h1 {
   font-size: 16px;
   font-weight: bold;
   text-align: center;
@@ -113,15 +126,21 @@ body { background-color: var(--background-color); }
 
   grid-area: name;
 }
-.item p:nth-child(3){ grid-area: price; }
-.item p:nth-child(4){ grid-area: price-value; }
-.item p:nth-child(5){ grid-area: rate; }
-.item p:nth-child(6){ grid-area: rate-value; }
-.item p:nth-child(2n+1){ text-align: center; }
+.front p:nth-child(3){ grid-area: price; }
+.front p:nth-child(4){ grid-area: price-value; }
+.front p:nth-child(5){ grid-area: rate; }
+.front p:nth-child(6){ grid-area: rate-value; }
+.front p:nth-child(2n+1){ text-align: center; }
 
-.item p:nth-child(5),
-.item p:nth-child(6) {
+.front p:nth-child(5),
+.front p:nth-child(6) {
   color: var(--sub-color);
+}
+
+/* --------- back --------- */
+.back {
+  box-sizing: border-box;
+  padding: 15px 10px;
 }
 
 
