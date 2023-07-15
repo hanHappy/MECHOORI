@@ -1,14 +1,11 @@
 let offset = 0;
 
 let rankingNums = document.querySelectorAll(".rankingNum");
-for(let i = 0; i<rankingNums.length; i++){
-    rankingNums[i].innerText = i+1;
+for (let i = 0; i < rankingNums.length; i++) {
+    rankingNums[i].innerText = i + 1;
 }
 
-
-
 let rankingList = document.querySelector(".ranking-list-sections");
-document.addEventListener("DOMContentLoaded", function () {
 
 
     function restaurantListLoad(url) {
@@ -18,27 +15,27 @@ document.addEventListener("DOMContentLoaded", function () {
                 // 아이템 채우기
                 console.log(list);
 
-                for (let item of list) {
-                    let avgprice = item.avgPrice.toLocaleString();
-                    let avgRatedPrice = item.avgRatedPrice.toLocaleString();
-                    let itemTemplate = `
-            
-            <div>
-            <a class="thymeleaf" href="/restaurant/${item.id}">
+                for(let i = 0; i<list.length; i++){
+                    let avgprice = list[i].avgPrice.toLocaleString();
+                    let avgRatedPrice = list[i].avgRatedPrice.toLocaleString();
 
-            <img src="/images/foods/${item.img}" class="img">
+                    let itemTemplate = `
+            <div>
+            <a class="thymeleaf" href="/restaurant/${list[i].id}">
+
+            <img src="/images/foods/${list[i].img}" class="img">
             <ul class="ranking-list">
-                <li class="rankingNum"></li>
-                <li>${item.name}</li>
+                <li class="rankingNum">${i+1}</li>
+                <li>${list[i].name}</li>
                 <li>
                      <span>${avgprice}</span><br/>
                       <span>(${avgRatedPrice})</span>
                 </li>
-                <li>${item.value}%</li>
+                <li>${list[i].value}%</li>
             </ul>
         </a>
         </div>
-        
+
           `;
 
                     rankingList.insertAdjacentHTML("beforeend", itemTemplate);
@@ -56,8 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
         rankingList.innerHTML = "";
         offset = 0;
-
-
 
 
         let selectedIndex = dropbox.selectedIndex;
@@ -80,10 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(url);
             restaurantListLoad(url);
         }
-
-        for(let i = 0; i<rankingNums.length; i++){
-            rankingNums[i].innerText = i+1;
-        }
     };
 
     // 스크롤 이벤트 리스너 등록
@@ -94,8 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         let rankingNums = document.querySelectorAll(".rankingNum");
-        for(let i = 6; i<rankingNums.length; i++){
-            rankingNums[i].innerText = i+1;
+        for (let i = 6; i < rankingNums.length; i++) {
+            rankingNums[i].innerText = i + 1;
         }
 
 
@@ -121,7 +112,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /*================================================================================*/
-
-
-
-});

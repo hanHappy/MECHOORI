@@ -34,13 +34,13 @@
     </div>
 </header>
 <section>
-<!--    <div id="search-bar">-->
-<!--        <input type="text" id="keyword" placeholder="키워드를 입력하세요">-->
-<!--        <button id="search-button">검색</button>-->
-<!--    </div>-->
+    <!--    <div id="search-bar">-->
+    <!--        <input type="text" id="keyword" placeholder="키워드를 입력하세요">-->
+    <!--        <button id="search-button">검색</button>-->
+    <!--    </div>-->
 
     <div class="map_wrap">
-        <div id="map" style="width: 100%; height: 550px; position:relative;overflow:hidden;"></div>
+        <div id="map" style="width: 100%; height: 650px; position:relative;overflow:hidden;"></div>
         <div th:each="list:${list}">
             <div th:text="${list.address}" class="addresses" hidden></div>
             <span th:text="${list.id}" id="resId" hidden></span>
@@ -49,13 +49,19 @@
         </div>
     </div>
 
-        <div class="custom_zoomcontrol radius_border">
+    <div class="custom_zoomcontrol radius_border">
             <span class="zoomIn"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png"
                                       alt="확대"></span>
-            <span class="zoomOut"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png"
-                                       alt="축소"></span>
+        <span class="zoomOut"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png"
+                                   alt="축소"></span>
 
     </div>
+</section>
+
+
+<section class = "modal-section">
+    <div class = "image"></div>
+    <div class = "info"></div> <!--음식점이름/방문자리뷰/주소-->ㅡ
 </section>
 
 </body>
