@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/indexf.css">
+    <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/common/style.css">
     <link rel="stylesheet" href="/css/common/header.css">
-    <!-- <link rel="stylesheet" href="/css/common/modal-menu.css"> -->
-    <!-- <script src="/js/index.js" defer="defer"></script> -->
-    <!-- <script src="/js/map.js" defer="defer"></script> -->
-    <!-- <script src="/js/components/modal-menu.js" defer></script> -->
+    <link rel="stylesheet" href="/css/common/modal-menu.css">
+    <script src="/js/index.js" defer="defer"></script>
+    <script src="/js/map.js" defer="defer"></script>
+    <script src="/js/components/modal-menu.js" defer></script>
 </head>
 
 <body>
@@ -42,7 +42,6 @@
                         <label class="search-input" for="search-input">
                             <img src="/images/icons/search-black.svg">
                         </label>
-                        
                         <input class="search" name="q" type="text" id="search-input" 
                             sec:authorize="isAuthenticated()"
                             th:placeholder="${#authentication.principal.nickname} + '님, 오늘은 짜장상회 어떠세요?'">
@@ -63,7 +62,7 @@
                     <p>메뉴추천리스트</p>
                 </div>
             </div>
-            <di class="ad-mobile">
+            <div class="ad-mobile">
                 <img src="/images/assets/mainAD.svg" alt="">
             </div>
         </div>
@@ -95,18 +94,18 @@
                     <button>(전체보기)</button></a>
                 </div>
                 <div class="slidebox">
-                    <input type="radio" name="slide" id="slide01" checked>
-                    <input type="radio" name="slide" id="slide02">
-                    <input type="radio" name="slide" id="slide03">
-                    <input type="radio" name="slide" id="slide04">
-                    <input type="radio" name="slide" id="slide05">
-                    <input type="radio" name="slide" id="slide06">
+                    <input type="radio" name="slide" id="slide1" checked>
+                    <input type="radio" name="slide" id="slide2">
+                    <input type="radio" name="slide" id="slide3">
+                    <input type="radio" name="slide" id="slide4">
+                    <input type="radio" name="slide" id="slide5">
+                    <input type="radio" name="slide" id="slide6">
 
 <!-- 반복문으로 변경, 상태값 함께 가져오기 -->
                     <ul class="slidelist">
                         <li th:each="item, index : ${listRank}" class="slideitem">
                             <div>
-                            <label th:for="'slide' + ${index.index}" class="left"></label>
+                            <label th:for="'slide' + (${index.index})" class="left"></label>
                             <div class="imgTest">
                                 <img class="resImg" th:src="@{/images/foods/{img}(img=${item.img})}">
                                 <div class="textTest">
@@ -150,14 +149,9 @@
         <section class="comparison">
             <div class="comparison-img">
                 <h1>나만의 가성비 차트</h1>
-                <div class="comparison-img-content-mobile">
+                <div class="comparison-img-content">
                     <a href="user/my-page/statistics">
-                        <img  src="/images/components/index-성과비교3.svg" alt="">
-                    </a>
-                </div>
-                <div class="comparison-img-content-web">
-                    <a href="user/my-page/statistics">
-                        <img  src="/images/components/index-성과비교-web.png" alt="">
+                        <img  src="images/components/index-성과비교.png" alt="">
                     </a>
                 </div>
                 <div class="comparison-text">
@@ -166,6 +160,68 @@
                 </div>
             </div>
         </section>
+
+        <div class="adBox">
+            <div class="adBox-wrap">
+                <h1>식당 가성비 평가하기</h1>
+                <a href="restaurant/list">
+                    <img class="rateAd-web" src="/images/icons/banner-ad-web.png">
+                    <img class="rateAd" src="/images/icons/bannerAd1.png">
+                    <img class="rateAd" src="/images/icons/bannerAd2.png">
+                </a>
+            </div>
+        </div>
+
+            <!-- ============== 메뉴 모달 ============== -->
+    <div class="modal-menu">
+        <div class="screen">
+            <div class="panel">
+                <div class="profile-image-wrapper">
+                    <div class="profile-image-frame">
+                        <img class="profile-image" th:src="${#authentication.principal.img}" alt="프로필사진">
+                    </div>
+                    <div class="nickname-wrapper">
+                        <span class="nickname" th:text="${#authentication.principal.nickname}"></span>
+                    </div>
+                </div>
+
+                <nav class="menu-list-section">
+                    <ul>
+                        <li>
+                            <a href="/user/my-page/edit-info">
+                                <div class="icon icon-key"></div>
+                                <span>회원 정보 수정</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/user/my-page/like-list">
+                                <div class="icon icon-heart"></div>
+                                <span>찜 목록</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/user/my-page/rate-list">
+                                <div class="icon icon-review"></div>
+                                <span>평가 목록</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/user/my-page/statistics">
+                                <div class="icon icon-chart"></div>
+                                <span>가성비 평가 통계</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/logout">
+                                <div class="icon icon-power"></div>
+                                <span>로그아웃</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
 
 
     </main>
