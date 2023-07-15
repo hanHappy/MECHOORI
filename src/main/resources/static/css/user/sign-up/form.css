@@ -145,3 +145,12 @@ label {
 .submit {
   margin-top: 20px;
 }
+
+
+/* placeholder animation */
+.input::-webkit-input-placeholder{
+  transition: all 0.5s;
+}
+.input:focus::-webkit-input-placeholder{
+  text-indent: -10px; opacity: 0;
+}
