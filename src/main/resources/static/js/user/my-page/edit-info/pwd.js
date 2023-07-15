@@ -1,20 +1,33 @@
 let newPwdInput = document.querySelector('#new-pwd')
 let checkPwdInput = document.querySelector('#check-pwd')
-let checkMsg = document.querySelector('#msg-check')
+let checkValidMsg = document.querySelector('#msg-check-valid')
+let checkSameMsg = document.querySelector('#msg-check-same')
 let saveBtn = document.querySelector('.btn-save')
+let modalScreen = document.querySelector('.screen')
+let modalPanel = modalScreen.querySelector('.modal-panel')
+
+newPwdInput.addEventListener('input', (e)=>{ checkValidMsg.classList.add('d-none') })
 
 checkPwdInput.addEventListener('input', ()=>{
     let newPwd = newPwdInput.value
     let checkPwd = checkPwdInput.value;
+    let isNewPwdValid = false
+    if(8 <= newPwd.length && newPwd.length <= 32)
+        isNewPwdValid = true;
 
-    if(newPwd==checkPwd){
-        checkMsg.style.color = '#2292F9'
-        checkMsg.textContent = "비밀번호가 일치합니다"
+    if(!isNewPwdValid)
+        checkValidMsg.classList.remove('d-none')
+    else
+        checkValidMsg.classList.add('d-none')
+
+
+    if(newPwd==checkPwd && isNewPwdValid){
+        checkSameMsg.classList.remove('d-none')
         saveBtn.disabled = false
         saveBtn.classList.add('active')
     }
     else{
-        checkMsg.textContent = ''
+        checkSameMsg.classList.add('d-none')
         saveBtn.disabled = true
         saveBtn.classList.remove('active')
     }
@@ -38,8 +51,11 @@ saveBtn.addEventListener('click', (e)=>{
     })
     .then(response => response.json())
     .then(member =>{
-        if(!member.id){
-
+        if(member.id){
+            modalScreen.classList.remove('d-none')
+            setTimeout(() => {
+                modalPanel.classList.add('show')
+            }, 50);
         }
     })
     

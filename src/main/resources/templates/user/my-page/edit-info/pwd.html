@@ -39,10 +39,17 @@
                         <div class="form-wrap">
                             <div class="form-item">
                                 <label>새 비밀번호</label>
-                                <input id="new-pwd" name="np" class="placeholder-effect" placeholder="* 새 비밀번호를 입력해주세요"/>
+                                <input 
+                                    id="new-pwd" 
+                                    name="np" 
+                                    class="placeholder-effect" 
+                                    placeholder="* 새 비밀번호를 입력해주세요"/>
                             </div>
                         </div>
                     </section>
+                    <div id="msg-check-valid" class="msg-check-valid d-none">
+                        8자~32자의 비밀번호를 입력해주세요
+                    </div>
 
                     <section>
                         <h1 class="d-none">새 비밀번호 확인</h1>
@@ -53,8 +60,8 @@
                             </div>
                         </div>
                     </section>
-                    <div id="msg-check">
-                        
+                    <div id="msg-check-same" class="msg-check-same d-none">
+                        비밀번호가 일치합니다
                     </div>
 
                     <ul>
@@ -69,12 +76,20 @@
             </div>
         </section>
 
-        <!-- TODO 저장 확인 모달 page controller -> rest controller -->
-        
-        <div class="screen">
-            <section modal-panel>
-
-            </section>
+        <!-- 저장 확인 모달 -->
+        <div class="screen d-none">
+            <div class="modal-panel">
+                <div class="message-wrap">
+                    <div class="img-complete"></div>
+                    <div class="text-wrap">
+                        <p>비밀번호 변경 완료</p>
+                        <p>새로운 비밀번호로 로그인해주세요.</p>
+                    </div>
+                </div>
+                <div class="btn-wrap">
+                    <a href="/logout">로그인 화면으로</a>
+                </div>
+            </div>
         </div>
 
     </main>

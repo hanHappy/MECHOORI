@@ -20,6 +20,9 @@ h1 {
     flex-direction: column;
 }
 
+.msg-check-valid { color: var(--font-color-3); }
+.msg-check-same { color: var(--sub-color); }
+
 label {
     font-weight: bold;
 

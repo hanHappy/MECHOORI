@@ -54,14 +54,16 @@ li {
     --main-color: #FFE551;
     /* 서브 색상 */
     --sub-color: #2292F9;
+    /* 비활성 색상 */
+    --inactive-color: #B9B7B7;
     /* 페이지 배경색 */
     --background-color: #F5F5F7;
     /* 폰트 기본 색상 */
     --font-color: #282828;
     /* 힌트 색상 */
     --hint-color: #9D9999;
-    /* 비활성 색상 */
-    --inactive-color: #B9B7B7;
+    /* 에러 메시지 색상 */
+    --font-color-3: #d31111;
     /* input 박스 배경색 */
     --box-color: #EEE;
     /* #EEE 버튼 "클릭" 배경색 */
