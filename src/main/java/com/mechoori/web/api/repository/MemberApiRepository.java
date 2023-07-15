@@ -13,4 +13,7 @@ public interface MemberApiRepository extends JpaRepository<Member, Long> {
     
     @Query("SELECT m.nickname FROM Member m WHERE m.email = :email")
     String getNicknameByEmail(String email);
+
+    @Query("SELECT m.img FROM Member m WHERE m.email = :email")
+    String getImgByEmail(String email);
 }

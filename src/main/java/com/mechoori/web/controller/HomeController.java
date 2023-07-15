@@ -25,9 +25,6 @@ public class HomeController {
 	@Autowired
 	private RestaurantRankService restaurantRankService;
 
-
-
-	
 	@GetMapping("/")
 	public String index(
 			Model model
