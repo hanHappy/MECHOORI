@@ -16,7 +16,7 @@ main {
     width: 100%;
     position: fixed;
     top: 0;
-    z-index: 1100;
+    /* z-index: 1100; */
 }
 
 .resranking {
@@ -45,6 +45,49 @@ main {
     box-shadow: var(--block-shadow);
 }
 
+
+/* ----- logo ----- */
+.logo-container{
+    position: relative;
+    width: 104px;
+    height: 100%;
+    overflow: hidden;
+    
+}
+
+.header-icon.hoverimg,
+.header-icon.logo {
+    transition: transform 0.5s;
+    background-size: contain;
+}
+
+.header-icon.logo{
+    position: absolute;
+    background-image: url(/images/assets/logo2.svg);
+    width: 82px;
+    height: 54px;
+    left: 10%;
+    top: 50%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+}
+
+.header-icon.hoverimg{
+    position: absolute;
+    background-image: url(/images/assets/logoBack5.svg);
+    width: 104px;
+    height: 95px;
+    z-index: -1;
+}
+
+.header-icon.hoverimg {
+    transform: translateY(115%);
+}
+  
+.logo-container:hover .header-icon.hoverimg {
+    transform: translateY(2%);
+}
+/* ---------------------------------------- */
 
 /*<img th:src="@{images/foods/img(img=${list.img})}">*/
 

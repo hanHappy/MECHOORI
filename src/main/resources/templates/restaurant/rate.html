@@ -20,9 +20,14 @@
         <div class="header-side left">
             <a class="header-icon back">버튼</a>
         </div>
-        <a href="/"><h1 class="header-icon logo">로고</h1></a>
+        <div class="logo-container">
+            <a href="/">
+              <div class="header-icon logo"></div>
+            </a>
+            <div class="header-icon hoverimg"></div>
+        </div>
         <div class="header-side right">
-            <a class="header-icon home">버튼</a>
+            <!-- <a class="header-icon home">버튼</a> -->
         </div>
     </header>
 
@@ -92,7 +97,7 @@
                         </label>
                         <input id="review-image" class="d-none" type="file" name="image" accept="image/*">
                     </div>
-                    <textarea name="review" rows="5" placeholder="100자 내로 리뷰를 작성해주세요"></textarea>
+                    <textarea class="placeholderE" name="review" rows="5" placeholder="100자 내로 리뷰를 작성해주세요"></textarea>
                 </section>
 
                 <!-- 평가하기 버튼 -->

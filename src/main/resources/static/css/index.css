@@ -132,6 +132,16 @@ main{
     line-height: normal;
 }
 
+
+/* placeholder animation */
+.search::-webkit-input-placeholder{
+    transition: all 0.5s;
+  }
+  .search:focus::-webkit-input-placeholder{
+    text-indent: -10px; opacity: 0;
+  }
+
+
 /* ------------------- 2. 카테고리  ----------------- */
 
 .type{

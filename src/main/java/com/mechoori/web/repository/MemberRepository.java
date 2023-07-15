@@ -25,4 +25,5 @@ public interface MemberRepository {
     void resetPwd(Member member);
 
     void update(Member member);
+
 }
