@@ -42,10 +42,10 @@
                         <label class="search-input" for="search-input">
                             <img src="/images/icons/search-black.svg">
                         </label>
-                        <input class="search" name="q" type="text" id="search-input"
+                        <input class="search placeholder-effect" name="q" type="text" id="search-input"
                             sec:authorize="isAuthenticated()"
                             th:placeholder="${#authentication.principal.nickname} + '님, 오늘은 짜장상회 어떠세요?'">
-                        <input class="search" name="q" type="text" id="search-input"
+                        <input class="search placeholder-effect" name="q" type="text" id="search-input"
                             sec:authorize="!isAuthenticated()"
                             placeholder="드시고 싶은 메뉴를 입력해보세요">
 
