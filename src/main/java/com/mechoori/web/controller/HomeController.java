@@ -52,8 +52,11 @@ public class HomeController {
 	public String test2(Model model) {
 
 	List<TopCategory> list = service.getTopCategoryList();
+	List<RestaurantRankView> listRank = restaurantRankService.getRankTop5();
 
 	model.addAttribute("list", list);
+	model.addAttribute("listRank", listRank);
+
 
 	return "indexfinal";
 	}

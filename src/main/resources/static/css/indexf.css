@@ -9,6 +9,10 @@
  list-style: none;
 }
 
+html{
+    font-size: 62.5%;
+}
+
 body{
     width: 100%;
     margin: 0;
@@ -19,12 +23,33 @@ main{
     box-sizing: border-box;
 }
 
-.ad-mobile img, .search-bar-container, .typelist{
+.ad-mobile img, .search-bar-container, .typelist, .ranking-wrap, .comparison-img {
     max-width: 769px;
 }
 
-.category-all-wrapper, .ad-web {
+.category-all-wrapper, .ad-web, .ranking-web-container, .comparison-img-content-web {
     display: none;
+}
+
+.type, .comparison, .ranking {
+    margin: 8px 0px 0px 0px;
+    padding: 10px 20px 10px 20px;
+    background-color: white;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.title-box button, .title-box h1, .comparison h1{
+    padding: 0px 0px 5px 0px;
+    font-family: 'Noto Sans CJK KR Medium';
+    font-style: normal;
+}
+
+
+.title-box h1, .comparison h1{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    color: #000000;
 }
 
 /* ------------------- 1. 상단  ----------------- */
@@ -114,10 +139,6 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 8px 0px 0px 0px;
-    padding: 10px 0px 10px 20px;
-    background-color: white;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .typelist{
@@ -154,22 +175,18 @@ main{
 /* ------------------- 랭킹 ------------------ */
 
 .ranking{
-    margin: 8px 0px 0px 0px;
-    padding: 10px 20px;
-    background-color: white;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+}
+
+.ranking-wrap{
+    width: 100%;
 }
 
 .title-box{
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.title-box button, .title-box h1{
-    padding: 0px 0px 5px 0px;
-    font-family: 'Noto Sans CJK KR Medium';
-    font-style: normal;
 }
 
 .title-box button{
@@ -180,11 +197,227 @@ main{
     color: #838383;
 }
 
-.title-box h1{
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 25px;
-    color: #000000;
+[name="slide"] {display: none;}
+.slidebox{     
+    max-width: 769px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.slidebox .slidelist{
+    white-space: nowrap;
+    font-size: 0;
+    overflow: hidden;
+}
+
+.slideitem{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    transition: add .5s;
+}
+
+.slideitem label{
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.resImg{
+    object-fit:cover;
+    width: 335px;
+    height: 184px;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+label.left{
+    left: 0px;
+    background-image: url('/images/icons/left버튼.svg');
+    background-position: center center;
+    background-size: 30%;
+    background-repeat: no-repeat;
+}
+
+label.right{
+    right: 0px;
+    background-image: url('/images/icons/right버튼.svg');
+    background-position: center center;
+    background-size: 30%;
+    background-repeat: no-repeat;
+}
+
+.imgTest {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 60%; 
+}
+
+.imgTest img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.textTest {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: #ffffff  1px;
+    border-style: dashed;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.textTest span{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textTest span:nth-child(1) {
+    font-size: 2.5rem;
+    font-weight:bolder;
+    top: 25%;
+}
+
+.textTest span:nth-child(2) {
+    font-size: 2rem;
+    font-weight: bold;
+    top: 48%;
+}
+
+.textTest span:nth-child(3) {
+    font-size: 2rem;
+    font-weight: bold;
+    top: 63%;
+}
+
+.valueText{
+    color: #FFE551 !important;
+}
+
+
+/* <클릭 슬라이드> */
+/* <자동 슬라이드 20초 동안 무한> */
+[id="slide01"]:checked ~ .slidelist .slideitem {transform:translateX(0%); animation: slide01 20s infinite;}
+[id="slide02"]:checked ~ .slidelist .slideitem {transform:translateX(-100%); animation: slide02 20s infinite;}
+[id="slide03"]:checked ~ .slidelist .slideitem {transform:translateX(-200%); animation: slide03 20s infinite;}
+[id="slide04"]:checked ~ .slidelist .slideitem {transform:translateX(-300%); animation: slide04 20s infinite;}
+[id="slide05"]:checked ~ .slidelist .slideitem {transform:translateX(-400%); animation: slide05 20s infinite;}
+[id="slide06"]:checked ~ .slidelist .slideitem {transform:translateX(-500%); animation: slide06 20s infinite;}
+
+
+@keyframes slide01{
+    0%, 15% {left: 0%;}
+    17%, 32% {left: -100%;}
+    34%, 49% {left: -200%;}
+    51%, 66% {left: -300%;}
+    68%, 83% {left: -400%;}
+    85%, 98% {left: -500%;}
+    100% {left: 0%;}
+}
+
+@keyframes slide02{
+    0%, 15% {left: 0%;}
+    17%, 32% {left: -100%;}
+    34%, 49% {left: -200%;}
+    51%, 66% {left: -300%;}
+    68%, 83% {left: -400%;}
+    85%, 98% {left: -500%;}
+    100% {left: 0%;}
+}
+
+@keyframes slide03{
+    0%, 15% {left: 0%;}
+    17%, 32% {left: -100%;}
+    34%, 49% {left: -200%;}
+    51%, 66% {left: -300%;}
+    68%, 83% {left: -400%;}
+    85%, 98% {left: -500%;}
+    100% {left: 0%;}
+}
+
+@keyframes slide04{
+    0%, 15% {left: 0%;}
+    17%, 32% {left: -100%;}
+    34%, 49% {left: -200%;}
+    51%, 66% {left: -300%;}
+    68%, 83% {left: -400%;}
+    85%, 98% {left: -500%;}
+    100% {left: 0%;}
+}
+
+@keyframes slide05{
+    0%, 15% {left: 0%;}
+    17%, 32% {left: -100%;}
+    34%, 49% {left: -200%;}
+    51%, 66% {left: -300%;}
+    68%, 83% {left: -400%;}
+    85%, 98% {left: -500%;}
+    100% {left: 0%;}
+}
+
+@keyframes slide06{
+    0%, 15% {left: 0%;}
+    17%, 32% {left: -100%;}
+    34%, 49% {left: -200%;}
+    51%, 66% {left: -300%;}
+    68%, 83% {left: -400%;}
+    85%, 98% {left: -500%;}
+    100% {left: 0%;}
+}
+
+/* --------------- 나의 가성비 --------------- */
+
+.comparison{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comparison-img {
+    width: 100%;
+    position: relative;
+}
+
+.comparison-img-content-mobile img{
+    width: 100%;
+}
+
+.comparison-text span {
+    position: absolute;
+}
+
+.comparison-text span{
+    color: white;
+    left: 2rem;
+}
+
+.comparison-text span:nth-child(1) {
+    font-size: 2.2rem;
+    font-weight: bold;
+    top: 65%;
+}
+  
+.comparison-text span:nth-child(2) {
+    font-size: 1.8rem;
+    top: 78%;
 }
 
 
@@ -193,16 +426,30 @@ main{
 
 
 
+
+
+@media screen and (min-width:480px){
+    html{
+        font-size: 80%;
+    }
+}
+
+@media screen and (min-width:768px){
+    html{
+        font-size: 100%;
+    }
+}
+
 @media screen and (min-width:1024px){
 
     .ad{
         position: relative;
     }
-    .ad-mobile {
+    .ad-mobile, .ranking, .ranking input, .slidelist, .comparison-img-content-mobile {
         display: none;
     }
 
-    .ad-web {
+    .ad-web, .ranking-web-container, .comparison-img-content-web {
         display: block;
     }
 
@@ -342,6 +589,69 @@ main{
         line-height: normal;
     }
 
+/* ------------------- 컨텐츠 ----------------- */
+
+/* --------------- 랭킹 ------------ */
+
+    .ranking-web-container{
+        padding: 70px 200px 10px 200px;
+        column-gap: 6px;
+    }
+    .ranking-web-container h1{
+        padding-bottom: 20px;
+    }
+    .ranking-web-wrap{
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 6px;
+        top: 50%;
+    }
+    .ranking-web-wrap img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .ranking-web-left{
+        flex: 1;
+    }
+    .ranking-web-right{
+        flex: 1.3;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 5px;
+    }
+    .ranking-web-left img {
+        width: 100%;
+    }
+    .ranking-web-right img {
+        width: 100%;
+    }
+
+/* --------------- 나의 가성비 --------------- */
+
+    .comparison{
+        padding: 70px 200px 10px 200px;
+    }
+
+    .comparison-img{
+        max-width: 100%;
+    }
+
+    .comparison-img h1{
+        font-size: 1.5em;
+        padding-bottom: 20px;
+    }
+
+    .comparison-img-content-web{
+        flex-wrap: wrap;
+        top: 50%;
+    }
+
+    .comparison-img-content-web img{
+        width: 100%;
+        /* height: 100%; */
+        /* object-fit: cover; */
+    }
 
 
 
