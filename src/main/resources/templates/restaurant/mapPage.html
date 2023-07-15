@@ -18,7 +18,7 @@
 <header>
     <div class="header-side left">
         <a onclick="history.back()">
-            <button class="">햄버거</button>
+            <button class="header-icon back"></button>
         </a>
     </div>
     <h1 class="header-icon logo"></h1>
@@ -31,27 +31,27 @@
 
 <section>
     <div class="mapStyle">
-        <div id="map" style="width: 100%; height: 450px"></div>
+        <div id="map" style="width: 100%; height: 650px"></div>
 
     </div>
 </section>
-
-<section class="bottom-sheet-section">
+<!--<a th:href="@{/restaurant/{id}(id=${list.id})}"    id="btn">-->
+<section class="bottom-sheet-section" onclick="upperSection()" th:data-restaurant-id="${list.id}">
+    <section class="bottom-sheet-back">
     <div class="touch-section"></div>
+        <div class="info-background">
     <div class="bottom-sheet">
-        <img th:src="@{/images/foods/{img}(img=${list.img})}" id="map-img" alt="">
-        <br>
         <span th:text="${list.name}" id="resName">상호명</span>
-        <br>
-        <button id="address-copy-button">
-            <span th:text="${list.address}" id="map-address-text">주소</span>
-        </button>
-        <hr>
+        <span class="category"> 양식 </span><br><br>
+        <span>방문자 리뷰 612</span><br>
+        <span>좋아요 123</span><br>
+        <span>가성비 92%</span><br>
+        <span th:text="${list.address}" id="map-address-text">주소</span><br>
+        <img th:src="@{/images/foods/{img}(img=${list.img})}" id="map-img" alt="">
     </div>
-
-
+        </div>
+    </section>
 </section>
-
 
 </body>
 </html>
