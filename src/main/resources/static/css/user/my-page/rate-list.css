@@ -139,8 +139,31 @@ body { background-color: var(--background-color); }
 
 /* --------- back --------- */
 .back {
+  backface-visibility: hidden;
+  background-color: white;
+
   box-sizing: border-box;
-  padding: 15px 10px;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transform: rotateY(180deg);
+}
+
+.review-wrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.review {
+  margin: 0;
+}
+
+.to-detail {
+  color: #c7c7c7 !important;
+  align-self: flex-end;
 }
 
 

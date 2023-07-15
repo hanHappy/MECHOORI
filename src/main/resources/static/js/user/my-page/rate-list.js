@@ -1,9 +1,36 @@
+let rateList = document.querySelector('.rate-list');
 let offset = 0;
-console.log("offset", offset);
-console.log(document.documentElement.scrollHeight);
-console.log(document.documentElement.clientHeight);
-console.log(document.documentElement.scrollTop);
 
+
+rateList.addEventListener('click', (e)=>{
+    if(e.target.className=='rate-list')
+        return
+
+    let target = e.target;
+    
+    while (target !== e.currentTarget) {
+        target = target.parentNode;
+        if(target.className == 'item')
+            break;
+    }
+
+    console.log("c");
+    
+    target.addEventListener('click', flipper)
+})
+
+  function flipper (e) {
+    const target = e.currentTarget
+    target.style.transform = "rotateY(180deg)"
+    target.addEventListener("click", innerFlipper)
+  }
+
+  function innerFlipper (e) {
+    const target = e.currentTarget
+    target.style.transform = "rotateY(0deg)"
+    target.addEventListener("click", flipper)
+    target.removeEventListener("click", innerFlipper)
+  }
 
 // 스크롤 이벤트 리스너 등록
 window.addEventListener("scroll", function () {
@@ -12,7 +39,6 @@ window.addEventListener("scroll", function () {
     let windowHeight = document.documentElement.clientHeight;
 
     let foodList = document.querySelector(".foodList")
-
 
     let url = `http://localhost:10222/api/user/my-page/rate-list?offset=${offset}`;
     console.log(document.documentElement.scrollHeight);
