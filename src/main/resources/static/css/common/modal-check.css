@@ -1,0 +1,20 @@
+.screen {
+    position: fixed;
+    z-index: 1300;
+
+    background-color: var(--modal-screen-color);
+
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.modal-panel {
+
+    background-color: white;
+    
+    min-width: 150px;
+    min-height: 100px;
+
+}

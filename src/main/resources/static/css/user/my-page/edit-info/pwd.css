@@ -1,107 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
-main{
+.change-password-wrap {
     padding: 0 20px;
 }
 
-.chagne-password-section {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-
-.chagne-password-container {
-    width: 375px;
-}
-
-
-input{
-    min-width: 325px;
-    font-family: inherit;
-}
-
-.change-pwd-text{
-    flex-grow: 0.75;
-    margin-top: 40px;
-}
-
-h1{
-    font-size: 20px;
-    color:#282828;
-    /* padding-left:40px; */
-    /* margin-left: 20px; */
-}
-
-h2{
-    margin-top: 30px;
-    font-size: 16px;
-    text-align: center;
-}
-
-.input-change-pwd-wrapper ul{
-    font-size : 16px;
-    color:#282828;
-    font-weight: bold;
-    padding : 0 0 5px 5px;
-}
-
-.input-change-pwd-wrapper{
-    margin: 30px 20px 0 20px;
-}
-
-.input-change-pwd{
-    width: 335px;
-    height: 39px;
-    border: none;
-    border-radius: 8px;
-    background-color: #eeeeee;
-    font-size: 12px;
-}
-
-.input-change-pwd-wrapper input{
-    line-height: 12px;
-    padding: 12px 0 13px 10px;
-    font-weight: bold;
-    /* color: #9d999980; */
-    list-style: none;
-    
-}
-
-input:focus {
-    outline: none;
-}
-
-ul{
-    padding-bottom: 5px;
-}
-li{
-    font-size: 12px;
-    padding : 20px 0 5px 20px;
-    color: #b2b2b2;
-}
-
-button{
-    width: 335px;
-    height: 42px;
-    border: none;
-    background-color: #2292F9;
-    
+h1 {
     font-size: 18px;
+    text-align: center;
+    margin: 30px;
+}
+
+.form-wrap {
+    padding: 10px 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
     font-weight: bold;
-    border-radius: 8px;
-    
-    box-shadow: 2px 2px 4px #00000025;
-    
-    
+
+    margin-left: 3px;
+    margin-bottom: 8px;
 }
 
+input {
+    background-color: var(--box-color);
+    border: none;
+    border-radius: var(--border-radius);
+    outline: none;
 
-a button{
-    text-decoration: none;
-    color: #ffffff;
-    margin: 20px 20px;
+    height: 40px;
+    padding: 0 0 0 10px;
 }
-/* 첫 주의사항만 따로 마진 넣음*/
-.first-li{
-   margin-top: 10px ;
+
+ul {
+    margin: 30px 0;
+}
+
+li {
+    list-style-type: disc;
+    list-style-position: inside;
+
+    font-size: 14px;
+    color: var(--hint-color);
 }
