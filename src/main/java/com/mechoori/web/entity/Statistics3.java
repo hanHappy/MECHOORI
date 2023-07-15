@@ -1,5 +1,6 @@
 package com.mechoori.web.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,14 +10,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LikeList {
-
+public class Statistics3 {
     private int memberId;
     private int restaurantId;
-    private String restaurantName;
-    private String img;
-    private int avgRatedPrice;
-    private int avgPrice;
-    private int value;
 
+    private int avgPrice;
+    private int avgRatedPrice;
+
+    private int value;
+    private String resName;
 }
