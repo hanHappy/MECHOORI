@@ -651,13 +651,103 @@ label.right{
         flex: 1.3;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr 1fr;
         column-gap: 5px;
+        row-gap: 5px;
     }
+
     .ranking-web-left img {
         width: 100%;
     }
     .ranking-web-right img {
         width: 100%;
+    }
+    .ranking-web-left{
+        position: relative;
+    }
+    .ranking-text {
+        position: absolute;
+        left: 10%;
+        top: 10%;
+        width: 80%;
+        height: 80%;
+        display: flex;
+        border-radius: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-style: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .ranking-text span{
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .ranking-text span:nth-child(1) {
+        font-size: 2.5rem;
+        font-weight:bolder;
+        top: 25%;
+    }
+    
+    .ranking-text span:nth-child(2) {
+        font-size: 2rem;
+        font-weight: bold;
+        top: 48%;
+    }
+    
+    .ranking-text span:nth-child(3) {
+        font-size: 2rem;
+        font-weight: bold;
+        top: 63%;
+    }
+
+    .ranking-web-right{
+        position: relative;
+    }
+    .ranking-text-right {
+        position: absolute;
+        left: 10%;
+        top: 10%;
+        width: 80%;
+        height: 80%;
+        display: flex;
+        border-radius: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-style: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .ranking-text-right span{
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .ranking-text-right span:nth-child(1) {
+        font-size: 1.3rem;
+        font-weight:bolder;
+        top: 25%;
+    }
+    
+    .ranking-text-right span:nth-child(2) {
+        font-size: 1.2rem;
+        font-weight: bold;
+        top: 48%;
+    }
+    
+    .ranking-text-right span:nth-child(3) {
+        font-size: 1.2rem;
+        font-weight: bold;
+        top: 63%;
     }
 
 /* --------------- 나의 가성비 --------------- */
@@ -706,7 +796,45 @@ label.right{
         max-width: 100%;
     }
 
+    
+
+
+    /* .restImg{
+        object-fit: cover;
+    } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 }  /* 미디어 쿼리 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/indexf.css">
     <link rel="stylesheet" href="/css/common/style.css">
     <link rel="stylesheet" href="/css/common/header.css">
     <link rel="stylesheet" href="/css/common/modal-menu.css">
@@ -109,9 +109,9 @@
                             <div class="imgTest">
                                 <img class="resImg" th:src="@{/images/foods/{img}(img=${item.img})}">
                                 <div class="textTest">
-                                <span th:text="${index.index + 1} + '위'"></span>
-                                <span th:text="${item.name}"></span>
-                                <span>(가성비 &nbsp; <span class="valueText" th:text="${item.value} + '%'"></span>)</span>
+                                    <span th:text="${index.index + 1} + '위'"></span>
+                                    <span th:text="${item.name}"></span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${item.value} + '%'"></span>)</span>
                                 </div>
                             </div>
                             <label th:for="'slide' + (${index.index + 2})" class="right"></label>
@@ -135,13 +135,24 @@
             <h1>가성비 랭킹 TOP5</h1>
             <div class="ranking-web-wrap">
                 <div class="ranking-web-left">
-                    <img src="/images/foods/ranking3.png">
+                    <img th:src="@{/images/foods/{img}(img=${listRank[0].img})}">
+                    <div class="ranking-text">
+                        <span>1위</span>
+                        <span th:text="${listRank[0].name}"></span>
+                        <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[0].value} + '%'"></span>)</span>
+                    </div>
                 </div>
                 <div class="ranking-web-right">
-                    <img src="/images/foods/ranking1.png">
-                    <img src="/images/foods/ranking1.png">
-                    <img src="/images/foods/ranking1.png">
-                    <img src="/images/foods/ranking1.png">
+                    <div th:each="item, index : ${listRank}" class="slideitem" th:if="${index.index &gt= 1 && index.index &lt= 4}">
+                        <!-- <div> -->
+                            <img th:src="@{/images/foods/{img}(img=${item.img})}">
+                            <div class="ranking-text-right">
+                                <span th:text="${index.index + 1} + '위'"></span>
+                                <span th:text="${item.name}"></span>
+                                <span>(가성비 &nbsp; <span class="valueText" th:text="${item.value} + '%'"></span>)</span>
+                            </div>
+                        <!-- </div> -->
+                    </div>
                 </div>
             </div>
         </section>
