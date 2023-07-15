@@ -122,7 +122,6 @@ main {
 
 @media only screen and (min-width: 769px) {
 
-
     .ranking-list-sections {
         margin-top: 15px;
         counter-reset: number 0;
@@ -137,5 +136,9 @@ main {
         margin-top: 105px;
 
     }
-
+    .ad-web img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 }
