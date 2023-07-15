@@ -73,12 +73,19 @@ body { background-color: var(--background-color); }
   background-color: white;
   box-shadow: var(--item-shadow-1);
 
+  /* overflow: hidden; */
   width: 164px;
   height: 180px;
+
+  cursor: pointer;
 
   /* animation */
   transition: 0.4s;
   transform-style: preserve-3d;
+}
+
+.item:hover {
+  box-shadow: var(--btn-shadow-4);
 }
 
 .front, 

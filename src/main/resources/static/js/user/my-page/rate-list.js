@@ -14,8 +14,6 @@ rateList.addEventListener('click', (e)=>{
             break;
     }
 
-    console.log("c");
-    
     target.addEventListener('click', flipper)
 })
 
