@@ -25,43 +25,6 @@ public class HomeController {
 	@Autowired
 	private RestaurantRankService restaurantRankService;
 
-
-
-	@GetMapping("/test-web")
-	public String testWeb(Model model) {
-
-	List<TopCategory> list = service.getTopCategoryList();
-
-	model.addAttribute("list", list);
-
-	return "index-responsive-web";
-	}
-
-	@GetMapping("/test")
-	public String test(Model model) {
-
-	List<TopCategory> list = service.getTopCategoryList();
-
-	model.addAttribute("list", list);
-
-	return "index2";
-	}
-
-	
-	@GetMapping("/testf")
-	public String test2(Model model) {
-
-	List<TopCategory> list = service.getTopCategoryList();
-	List<RestaurantRankView> listRank = restaurantRankService.getRankTop5();
-
-	model.addAttribute("list", list);
-	model.addAttribute("listRank", listRank);
-
-
-	return "indexfinal";
-	}
-
-	
 	@GetMapping("/")
 	public String index(
 			Model model
