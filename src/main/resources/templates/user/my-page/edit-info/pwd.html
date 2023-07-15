@@ -1,49 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/user/my-page/edit-info/pwd.css">
-    <title>비밀번호 변경</title>
-   
     <link rel="stylesheet" href="/css/common/header.css">
     <link rel="stylesheet" href="/css/common/style.css">
     <link rel="stylesheet" href="/css/common/button.css">
+    <link rel="stylesheet" type="text/css" href="/css/user/my-page/edit-info/pwd.css">
     <script src="password.js"></script>
+    <title>비밀번호 변경</title>
 </head>
+
 <body>
-        <header>
-            <div class="header-side left">
-                <a onclick = "history.back()"> <img class="header-icon back" src="" alt=""></a>
-            </div>
-            <div class="header-icon logo">
-                <a href="/"><img src="/assets/logo.svg" alt=""></a>
-            </div>
-            <div class="header-side right">
-                <a href="/user/my-page"> <img class="userBtn-img" src="/images/icons/햄버거Btn.svg" alt=""></a>
-            </div>
-        </header> 
+    <header>
+        <div class="header-side left">
+            <a onclick="history.back()"> <img class="header-icon back" src="" alt=""></a>
+        </div>
+        <div class="logo-container">
+            <a href="/">
+              <div class="header-icon logo"></div>
+            </a>
+            <div class="header-icon hoverimg"></div>
+          </div>
+        <div class="header-side right">
+            <a href="/user/my-page"> <img class="userBtn-img" src="/images/icons/햄버거Btn.svg" alt=""></a>
+        </div>
+    </header>
     <main>
-        <section class="chagne-password-section">
-            <div class="chagne-password-container">
-                <h2>새로운 비밀번호를 입력해주세요.</h2>
-                    <div class="input-change-pwd-wrapper">
-                    <ul>비밀번호</ul>
-                    <div class="input-change-pwd" id="password"><input type="password" placeholder="*영문, 숫자를 포함하여 8자리 이상 입력" style="border:none; background: transparent"></input></div>
-                </div>
-                <div class="input-change-pwd-wrapper">
-                    <ul>비밀번호 확인</ul>
-                    <div class="input-change-pwd"><input type="password" style="border:none; background: transparent"></input></div>
-                </div>
+        <section class="change-password-section">
+            <div class="change-password-wrap">
 
-                <li class="first-li">비밀번호는 8~32 자의 영문자, 숫자를 조합하여 설정해주세요.</li>
-                <li>다른 사이트에서 사용하는 것과 동일하거나 쉬운 비밀번호는<br>사용하지 마세요.</li>
-                <li>안전한 계정 사용을 위해 비밀번호는 주기적으로 변경해 주세요.</li>
+                <h1>새로운 비밀번호를 입력해주세요.</h1>
 
-                <a href="/user/my-page/edit-info"><button>완료</button></a>
+                <form action="pwd" method="POST">
+                    <section>
+                        <h1 class="d-none">새 비밀번호</h1>
+                        <div class="form-wrap">
+                            <div class="form-item">
+                                <label >새 비밀번호</label>
+                                <input name="newPwd" class="placeholder-effect" placeholder="* 새 비밀번호를 입력해주세요"/>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h1 class="d-none">새 비밀번호 확인</h1>
+                        <div class="form-wrap">
+                            <div class="form-item">
+                                <label >새 비밀번호 확인</label>
+                                <input class="placeholder-effect" placeholder="* 새 비밀번호를 다시 입력해주세요"/>
+                            </div>
+                        </div>
+                    </section>
+
+                    <ul>
+                        <li>비밀번호는 8~32 자의 영문자, 숫자를 조합하여 설정해주세요.</li>
+                        <li>다른 사이트에서 사용하는 것과 동일하거나 쉬운 비밀번호 사용은 삼가주세요.</li>
+                        <li>안전한 계정 사용을 위해 비밀번호는 주기적으로 변경해 주세요.</li>
+                    </ul>
+
+                    <button class="button button-1 btn-save">저장</button>
+                </form>
+
             </div>
         </section>
+
     </main>
 </body>
+
 </html>

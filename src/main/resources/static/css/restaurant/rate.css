@@ -432,6 +432,15 @@ main>*{
 }
 
 
+/* placeholder animation */
+.placeholderE::-webkit-input-placeholder{
+    transition: all 0.5s;
+}
+.placeholderE:focus::-webkit-input-placeholder{
+    text-indent: -10px; opacity: 0;
+}
+
+
 @media only screen and (min-width: 679px) {
 
     header {

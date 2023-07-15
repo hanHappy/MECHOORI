@@ -12,6 +12,53 @@ header {
     top: 0;
 }
 
+
+
+/* ----- logo ----- */
+.logo-container{
+    position: relative;
+    width: 104px;
+    height: 100%;
+    overflow: hidden;
+    
+}
+
+.header-icon.hoverimg,
+.header-icon.logo {
+    transition: transform 0.5s;
+    background-size: contain;
+}
+
+.header-icon.logo{
+    position: absolute;
+    background-image: url(/images/assets/logo2.svg);
+    width: 82px;
+    height: 54px;
+    left: 10%;
+    top: 50%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.header-icon.hoverimg{
+    position: absolute;
+    background-image: url(/images/assets/logoBack5.svg);
+    width: 104px;
+    height: 95px;
+    z-index: 999;
+}
+
+.header-icon.hoverimg {
+    transform: translateY(115%);
+}
+  
+.logo-container:hover .header-icon.hoverimg {
+    transform: translateY(2%);
+}
+/* ---------------------------------------- */
+
+
 .header-wrapper{
     background-color: var(--main-color);
 
@@ -53,11 +100,11 @@ header {
     text-indent: -999px;
 }
 
-.header-icon.logo {
+/* .header-icon.logo {
     background-image: url(/images/assets/logo.png);
     width: 72px;
     height: 44px;
-}
+} */
 .header-icon.back {
     background-image: url(/images/icons/back.svg);
     width: 13px;
@@ -69,6 +116,8 @@ header {
     width: 21px;
     height: 21px;
 }
+
+
 
 /* 검색바 */
 .search-container {

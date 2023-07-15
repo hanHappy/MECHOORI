@@ -19,4 +19,6 @@ public interface MemberService {
 	List<RestaurantLike> restaurantLike(int Id);
 
     void update(Member member);
+
+    void updatePassword(Member member, String newPwd);
 }

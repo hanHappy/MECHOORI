@@ -88,6 +88,14 @@ li {
     --content-margin: 5px 0px;
 }
 
+/* placeholder animation */
+.placeholderEffect::-webkit-input-placeholder{
+    transition: all 0.5s !important; 
+}
+.placeholderEffect:focus::-webkit-input-placeholder{
+    text-indent: -10px; opacity: 0 !important;
+}
+
 @media only screen and (min-width: 769px) {
     body {
         min-width: 1200px;
