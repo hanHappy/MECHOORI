@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -140,6 +141,18 @@ public class UserController {
 
         SecurityContextHolder.getContext().setAuthentication(createNewAuthentication(authentication, sessionMember.getEmail()));
         // -------------------------------------------------------
+        
+        return member;
+    }
+
+    // 비밀번호 변경 PUT
+    @PutMapping("my-page/edit-info/pwd")
+    public Member changePwd(@RequestParam("mid") int memberId, @RequestParam("np") String newPwd){
+        
+        Member member = new Member();
+        member.setId(memberId);
+
+        service.updatePassword(member, newPwd);
         
         return member;
     }

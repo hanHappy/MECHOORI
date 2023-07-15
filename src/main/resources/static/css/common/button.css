@@ -11,8 +11,20 @@
     font-size: 18px;
     font-weight: bold;
     color: #fff;
+    background-color: var(--btn-color-2);
+
+    cursor: not-allowed;
+
+    transition: 0.5s;
+}
+.button-1.active {
+    cursor: pointer;
     background-color: var(--sub-color);
 }
+.button-1.active:hover{
+    filter: brightness(0.8);
+}
+
 .button-2 {
     font-size: 18px;
     font-weight: bold;

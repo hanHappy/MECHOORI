@@ -86,7 +86,7 @@ input:-webkit-autofill:active {
 }
 
 .error {
-  color: #d31111;
+  color: var(--font-color-3);
 
   margin-top: 10px;
 }

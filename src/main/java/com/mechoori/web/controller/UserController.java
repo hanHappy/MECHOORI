@@ -164,7 +164,6 @@ public class UserController {
         return "user/my-page/edit-info/withdraw-complete";
     }
 
-
     @GetMapping("my-page/like-list")
     public String likeList(Model model, @AuthenticationPrincipal MechooriUserDetails member){
 
@@ -175,8 +174,6 @@ public class UserController {
         return "user/my-page/like-list";
     }
 
-
-    
     //가성비 성과 페이지
     @GetMapping("my-page/statistics")
     public String rateStatistics(){
