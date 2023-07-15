@@ -30,11 +30,6 @@ let variables = {
     offset: 0
 }
 
-// let query = searchParam.get('q')
-// let topCategoryId = null
-// let categoryId = searchParam.get('c')
-// let filterId = null
-// let offset = 0
 let otherCategoryAllId = 6
 let isLoadingOnScroll = false;
 
@@ -327,10 +322,9 @@ window.addEventListener("scroll", function () {
     if (scrollTop + windowHeight >= documentHeight){
         variables.offset += 6
         console.log("x");
-        // window.scroll({
-        //     top: 0,
-        //     left: 0,
-        //     });
+        window.scroll({
+            top: 300
+            });
     }
 
     let url = "/api/restaurant/list?"
