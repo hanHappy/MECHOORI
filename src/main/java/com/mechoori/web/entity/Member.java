@@ -2,7 +2,7 @@ package com.mechoori.web.entity;
 
 import java.util.Date;
 
-import com.mechoori.web.api.entity.enums.Role;
+import org.hibernate.annotations.DynamicInsert;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,6 +22,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicInsert
 public class Member {
 
 	@Id //식별자
