@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "program",
+            "request": "launch",
+            "mainClass": "com.mechoori.web.api.controller.program",
+            "projectName": "web"
+        },
+        {
+            "type": "java",
+            "name": "Program",
+            "request": "launch",
+            "mainClass": "com.mechoori.web.api.controller.Program",
+            "projectName": "web"
+        },
+        {
+            "type": "java",
             "name": "Program",
             "request": "launch",
             "mainClass": "com.mechoori.web.controller.Program",

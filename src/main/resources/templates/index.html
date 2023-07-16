@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/css/common/modal-menu.css?ver=1">
     <link rel="stylesheet" href="/css/index.css?ver=1">
     <script src="/js/index.js?ver=1" defer="defer"></script>
-    <script src="/js/map.js?ver=1" defer="defer"></script>
     <script src="/js/components/modal-menu.js?ver=1" defer></script>
 </head>
 
@@ -25,196 +24,169 @@
             </a>
             <span sec:authorize="hasRole('ADMIN')" sec:authentication="principal.nickname" class="username"></span>
         </div>
-        <div class="header-icon logo">
-            <img src="/assets/logo.svg" alt="">
+
+        <div class="logo-container">
+            <div class="header-icon logo">
+            </div>
+            <div class="header-icon hoverimg">
+            </div>
         </div>
+        
         <div class="header-side right">
             <a sec:authorize="isAnonymous()" href="/user/login" class="header-icon menu">메뉴</a>
             <a sec:authorize="isAuthenticated()" id="menu" class="header-icon menu">메뉴</a>
         </div>
     </header>
 
-    <section class="searchZone">
-        <form class="search-bar" action="restaurant/list" method="get">
-            <label class="search-input" for="search-input">
-                <img src="/images/icons/search-black.svg">
-            </label>
-            
-            <input class="search" name="q" type="text" id="search-input" 
-                sec:authorize="isAuthenticated()"
-                th:placeholder="${#authentication.principal.nickname} + '님, 오늘은 짜장상회 어떠세요?'">
-            <input class="search" name="q" type="text" id="search-input" 
-                sec:authorize="!isAuthenticated()"
-                placeholder="드시고 싶은 메뉴를 입력해보세요">
+    <main>
 
-            <!-- <input class="search" name="q" type="text" id="search-input" placeholder="님, 오늘은 짜장상회 어떠세요?"> -->
-            <a href="/map">
-            <img class="search-map" src="/images/icons/지도아이콘.svg" alt="">
-            </a>
-        </form>
-    </section>
+        <div class="ad">
+            <section class="searchZone">
+                <div class="search-bar-container">
+                    <form class="search-bar" action="restaurant/list" method="get">
+                        <label class="search-input" for="search-input">
+                            <img src="/images/icons/search-black.svg">
+                        </label>
+                        <input class="search" name="q" type="text" id="search-input"
+                            sec:authorize="isAuthenticated()"
+                            th:placeholder="${#authentication.principal.nickname} + '님, 오늘은 짜장상회 어떠세요?'">
+                        <input class="search" name="q" type="text" id="search-input"
+                            sec:authorize="!isAuthenticated()"
+                            placeholder="드시고 싶은 메뉴를 입력해보세요">
 
-<main>
+                        <a href="/map">
+                        <img class="search-map" src="/images/icons/지도아이콘.svg" alt="">
+                        </a>
+                    </form>
+                </div>
+            </section>
+            <div class="ad-web">
+                <img src="/images/assets/bg-web.png" alt="">
+                <div class="ad-text">
+                    <p>가성비 좋은 식당 쉽게 찾는 방법!</p>
+                    <p>메뉴추천리스트</p>
+                </div>
+            </div>
+            <div class="ad-mobile">
+                <img src="/images/assets/mainAD.svg" alt="">
+            </div>
+        </div>
 
-    <section class="ad">
-        <img src="/images/assets/mainAD.svg" alt="">
-    </section>
-
-        <!-------메뉴 카테고리 ---------->
         <section class="type">
             <ul class="typelist">
-                <li th:each="c : ${list}"> 
+                <div class="category-all-wrapper">
+                    <img src="/images/icons/icon-web-카테고리.svg">
+                    <p>카테고리</p>
+                </div>
+                <li th:each="c : ${list}">
                     <input name="c" type="hidden" th:value="${c.id}">
-                    <a 
-                       href="/restaurant/list/category/1"
-                       th:href="@{/restaurant/list(c=${c.id})}"> 
-                        <img 
-                            src="/images/icons/한식.svg"
-                            th:src="@{/images/icons/{img}(img=${c.image})}">
-                </a>
-                <input type="hidden" name="c" th:value="${c.id}">
-            </li>
-        </ul>
-    </section>
-
-
-
-
-        <!---------- 랭킹 탑5 ---------->
-        <section class="ranking">
-            <div class="title-box">
-            <h1>가성비 랭킹 TOP5</h1> <a href="restaurant/ranking"><button>(전체보기)</button></a>
-            </div>
-            <div class="slidebox">
-                <input type="radio" name="slide" id="slide01" checked>
-                <input type="radio" name="slide" id="slide02">
-                <input type="radio" name="slide" id="slide03">
-                <input type="radio" name="slide" id="slide04">
-                <input type="radio" name="slide" id="slide05">
-                <input type="radio" name="slide" id="slide06">
-
-                <ul class="slidelist">
-                    <li class="slideitem">
-                        <div>
-                            <label for="slide06" class="left"></label>
-                            <div class="imgTest">
-                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[0].img})}" src="/images/foods/2한식더미.svg" alt="">
-                                <div class="textTest">
-                                    <span>1위</span>
-                                    <span th:text="${listRank[0].name}">호남식당</span>
-                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[0].value} + '%'"> 110</span>)</span>
-                                </div>
-                            </div>
-                            <label for="slide02" class="right"></label>
-                        </div>
-                    </li>
-                    <li class="slideitem">
-                        <div>
-                            <label for="slide01" class="left"></label>
-                            <div class="imgTest">
-                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[1].img})}" src="/images/foods/2분식더미.svg" alt="">
-                                <div class="imgBack"></div>
-                                <div class="textTest">
-                                    <span>2위</span>
-                                    <span th:text="${listRank[1].name}">소구장</span>
-                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[1].value} + '%'"> 110</span>)</span>
-                                </div>
-                            </div>
-                            <label for="slide03" class="right"></label>
-                        </div>
-                    </li>
-                    <li class="slideitem">
-                        <div>
-                            <label for="slide02" class="left"></label>
-                            <div class="imgTest">
-                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[2].img})}" src="/images/foods/2일식더미.svg" alt="">
-                                <div class="imgBack"></div>
-                                <div class="textTest">
-                                    <span >3위</span>
-                                    <span th:text="${listRank[2].name}">뜸들이다</span>
-                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[2].value} + '%'"> 110</span>)</span>
-                                </div>
-                            </div>
-                            <label for="slide04" class="right"></label>
-                        </div>
-                    </li>
-                    <li class="slideitem">
-                        <div>
-                            <label for="slide03" class="left"></label>
-                            <div class="imgTest">
-                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[3].img})}" src="/images/foods/2양식더미.svg" alt="">
-                                <div class="imgBack"></div>
-                                <div class="textTest">
-                                    <span>4위</span>
-                                    <span th:text="${listRank[3].name}">니즈버거</span>
-                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[3].value} + '%'"> 110</span>)</span>
-                                </div>
-                            </div>
-                            <label for="slide05" class="right"></label>
-                        </div>
-                    </li>
-                    <li class="slideitem">
-                        <div>
-                            <label for="slide04" class="left"></label>
-                            <div class="imgTest">
-                                <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[4].img})}" src="/images/foods/2중식더미.svg" alt="">
-                                <div class="imgBack"></div>
-                                <div class="textTest">
-                                    <span>5위</span>
-                                    <span th:text="${listRank[4].name}">짜장상회</span>
-                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[4].value} + '%'"> 110</span>)</span>
-                                </div>
-                            </div>
-                            <label for="slide06" class="right"></label>
-                        </div>
-                    </li>
-                    <li class="slideitem">
-                        <label for="slide05" class="left"></label>
-                        <div class="imgTest">
-                            <a  href="restaurant/ranking">
-                            <img class="resImg" src="/images/foods/1랭킹더미.svg" alt="">
-                            </a>
-                            <div class="textTest6">
-                                <!-- <span>랭킹 전체 보기</span> -->
-                                <!-- <span>짜장상회</span>
-                                    <span>가성비 100%</span> -->
-                            </div>
-                        </div>
-                        <a><label for="slide01" class="right"></label></a>
-                    </li>
-                </ul>
-            </div>
+                    <a href="/restaurant/list/category/1"
+                       th:href="@{/restaurant/list(c=${c.id})}">
+                        <img src="/images/icons/icon-web-한식.svg"
+                            th:src="@{/images/icons/icon-web-{img}(img=${c.image})}">
+                        <p th:text="${c.name}"></p>
+                    </a>
+                    <input type="hidden" name="c" th:value="${c.id}">
+                </li>
+            </ul>
         </section>
 
+        <section class="ranking">
+            <div class="ranking-wrap">
+                <div class="title-box">
+                    <h1>가성비 랭킹 TOP5</h1>
+                    <a href="restaurant/ranking">
+                    <button>(전체보기)</button></a>
+                </div>
+                <div class="slidebox">
+                    <input type="radio" name="slide" id="slide1" checked>
+                    <input type="radio" name="slide" id="slide2">
+                    <input type="radio" name="slide" id="slide3">
+                    <input type="radio" name="slide" id="slide4">
+                    <input type="radio" name="slide" id="slide5">
+                    <input type="radio" name="slide" id="slide6">
 
-
-        <!----------- 성과 비교  ---------->
-        
-        <!-- TODO 클릭 시 rate-list 페이지로 이동 -->
-        <section class="comparison1">
-            <h1>나만의 가성비 차트</h1>
-            <!-- <h1>나의 가성비 성과 비교</h1> -->
-            <div class="comparison-img">
-                <a href="user/my-page/statistics"><img  src="/images/components/index-성과비교3.svg" alt=""></a>
-                <div class="comparison-text">
-                    <span>내가 누린 가성비는?</span>
-                    <span>다양한 나만의 데이터를 확인해보세요</span>
-                    <!-- <span>내가 누린 가성비는?</span> -->
-                    <!-- <span>맘껏 누려온 가성비를 확인해보세요</span> -->
+<!-- 반복문으로 변경, 상태값 함께 가져오기 -->
+                    <ul class="slidelist">
+                        <li th:each="item, index : ${listRank}" class="slideitem">
+                            <div>
+                            <label th:for="'slide' + (${index.index})" class="left"></label>
+                            <div class="imgTest">
+                                <img class="resImg" th:src="@{/images/foods/{img}(img=${item.img})}">
+                                <div class="textTest">
+                                    <span th:text="${index.index + 1} + '위'"></span>
+                                    <span th:text="${item.name}"></span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${item.value} + '%'"></span>)</span>
+                                </div>
+                            </div>
+                            <label th:for="'slide' + (${index.index + 2})" class="right"></label>
+                            </div>
+                        </li>
+                        <li class="slideitem">
+                            <label for="slide06" class="left"></label>
+                            <div class="imgTest">
+                            <a href="restaurant/ranking">
+                                <img class="resImg" src="/images/foods/1랭킹더미.svg" alt="">
+                            </a>
+                            </div>
+                            <a><label for="slide01" class="right"></label></a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
 
+        <section class="ranking-web-container">
+            <h1>가성비 랭킹 TOP5</h1>
+            <div class="ranking-web-wrap">
+                <div class="ranking-web-left">
+                    <img th:src="@{/images/foods/{img}(img=${listRank[0].img})}">
+                    <div class="ranking-text">
+                        <span>1위</span>
+                        <span th:text="${listRank[0].name}"></span>
+                        <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[0].value} + '%'"></span>)</span>
+                    </div>
+                </div>
+                <div class="ranking-web-right">
+                    <div th:each="item, index : ${listRank}" class="slideitem" th:if="${index.index &gt= 1 && index.index &lt= 4}">
+                        <img th:src="@{/images/foods/{img}(img=${item.img})}">
+                        <div class="ranking-text-right">
+                            <span th:text="${index.index + 1} + '위'"></span>
+                            <span th:text="${item.name}"></span>
+                            <span>(가성비 &nbsp; <span class="valueText" th:text="${item.value} + '%'"></span>)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
- 
+        <section class="comparison">
+            <div class="comparison-img">
+                <h1>나만의 가성비 차트</h1>
+                <div class="comparison-img-content">
+                    <a href="user/my-page/statistics">
+                        <img  src="images/components/index-성과비교.png" alt="">
+                    </a>
+                </div>
+                <div class="comparison-text">
+                    <span>내가 누린 가성비는?</span>
+                    <span>다양한 나만의 데이터를 확인해보세요</span>
+                </div>
+            </div>
+        </section>
+
         <div class="adBox">
-            <a href="restaurant/list">
-            <img class="rateAd" src="/images/icons/bannerAd1.png" alt="">
-            <img class="rateAd" src="/images/icons/bannerAd2.png" alt="">
-            </a>
+            <div class="adBox-wrap">
+                <h1>식당 가성비 평가하기</h1>
+                <a href="restaurant/list">
+                    <img class="rateAd-web" src="/images/icons/banner-ad-web.png">
+                    <img class="rateAd" src="/images/icons/bannerAd1.png">
+                    <img class="rateAd" src="/images/icons/bannerAd2.png">
+                </a>
+            </div>
         </div>
 
-    <!-- ============== 메뉴 모달 ============== -->
+            <!-- ============== 메뉴 모달 ============== -->
     <div class="modal-menu">
         <div class="screen">
             <div class="panel">
@@ -227,47 +199,45 @@
                     </div>
                 </div>
 
-                    <nav class="menu-list-section">
-                        <ul>
-                            <li>
-                                <a href="/user/my-page/edit-info">
-                                    <div class="icon icon-key"></div>
-                                    <span>회원 정보 수정</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/user/my-page/like-list">
-                                    <div class="icon icon-heart"></div>
-                                    <span>찜 목록</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/user/my-page/rate-list">
-                                    <div class="icon icon-review"></div>
-                                    <span>평가 목록</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/user/my-page/statistics">
-                                    <div class="icon icon-chart"></div>
-                                    <span>가성비 평가 통계</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/logout">
-                                    <div class="icon icon-power"></div>
-                                    <span>로그아웃</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                <nav class="menu-list-section">
+                    <ul>
+                        <li>
+                            <a href="/user/my-page/edit-info">
+                                <div class="icon icon-key"></div>
+                                <span>회원 정보 수정</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/user/my-page/like-list">
+                                <div class="icon icon-heart"></div>
+                                <span>찜 목록</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/user/my-page/rate-list">
+                                <div class="icon icon-review"></div>
+                                <span>평가 목록</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/user/my-page/statistics">
+                                <div class="icon icon-chart"></div>
+                                <span>가성비 평가 통계</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/logout">
+                                <div class="icon icon-power"></div>
+                                <span>로그아웃</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
+        </div>
     </div>
 
     </main>
 
-
 </body>
-
 </html>

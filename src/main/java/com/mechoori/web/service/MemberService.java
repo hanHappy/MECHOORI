@@ -21,5 +21,5 @@ public interface MemberService {
 
     void update(Member member);
 
-    List<LikeList> getList(Member member);
+	void updatePassword(Member member, String newPwd);
 }

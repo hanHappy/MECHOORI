@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', function () {
     let emailConfirmCode = '';
     let emailConfirmMsg = document.querySelector("#msg-email-check");
 
+    // FIXME 이메일 유효성 검사 메시지 조건문 수정
+    // 유효성 검사 메시지 색 통일
+
     // Function to send email confirmation request
     function sendEmailConfirmationRequest() {
         const email = document.getElementById('email').value;

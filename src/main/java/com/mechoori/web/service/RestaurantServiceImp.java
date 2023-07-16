@@ -20,6 +20,7 @@ public class RestaurantServiceImp implements RestaurantService {
 	private RestaurantRepository repository;
 	@Autowired
 	private MenuRepository menuRepository;
+	private int size = 6;
 
 	@Override
 	public List<Restaurant> getList() {
@@ -53,27 +54,52 @@ public class RestaurantServiceImp implements RestaurantService {
 
 
 	@Override
-	public List<RestaurantView> getRestaurantViewList(Integer memberId) {
-		return repository.findAllRestaurantView(memberId, null, null, null, null);
+	public List<RestaurantView> getRestaurantViewList(Integer memberId, int offset) {
+		return repository.findRestaurantViewAll(memberId, offset, this.size);
+	}
+	
+	@Override
+	public List<RestaurantView> getRestaurantViewListByTopCtgIdAndFilter(Integer memberId, Integer topCtgId,
+			Integer filterId, int offset) {
+		String filter = "";
+
+		switch(filterId){
+			case 1:
+				filter = "value desc";
+				break;
+			case 2:
+				filter = "avg_price";
+				break;
+			case 3:
+				filter = "avg_price desc";
+				break;
+			case 4:
+				filter = "rate_count desc";
+				break;
+			case 5:
+				filter = "like_count desc";
+				break;
+		}
+		return repository.findRestaurantViewAll(memberId, topCtgId, null, null, filter, offset, this.size);
 	}
 
 	@Override
-	public List<RestaurantView> getRestaurantViewListByTopCtgId(Integer memberId, Integer topCategoryId) {
-		return repository.findAllRestaurantView(memberId, topCategoryId, null, null, null);
+	public List<RestaurantView> getRestaurantViewListByTopCtgId(Integer memberId, Integer topCategoryId, int offset) {
+		return repository.findRestaurantViewAll(memberId, topCategoryId, null, null, null, offset, this.size);
 	}
 
 	@Override
-	public List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId) {
-		return repository.findAllRestaurantView(memberId, null, categoryId, null, null);
+	public List<RestaurantView> getRestaurantViewListByCtgId(Integer memberId, Integer categoryId, int offset) {
+		return repository.findRestaurantViewAll(memberId, null, categoryId, null, null, offset, this.size);
 	}
 
 	@Override
-	public List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, String query) {
-		return repository.findAllRestaurantView(memberId, null, null, query, null);
+	public List<RestaurantView> getRestaurantViewListByQuery(Integer memberId, String query, int offset) {
+		return repository.findRestaurantViewAll(memberId, null, null, query, null, offset, this.size);
 	}
 
 	@Override
-	public List<RestaurantView> getRestaurantViewListByFilter(Integer memberId, Integer ctgId, Integer filterId) {
+	public List<RestaurantView> getRestaurantViewListByFilter(Integer memberId, Integer ctgId, Integer filterId, int offset) {
 
 		String filter = "";
 
@@ -95,7 +121,7 @@ public class RestaurantServiceImp implements RestaurantService {
 				break;
 		}
 
-		return repository.findAllRestaurantView(memberId, null, ctgId, null, filter);
+		return repository.findRestaurantViewAll(memberId, null, ctgId, null, filter, offset, this.size);
 	}
 
 
@@ -166,6 +192,7 @@ public class RestaurantServiceImp implements RestaurantService {
 	public void add(Restaurant restaurant) {
 		repository.add(restaurant);
 	}
+
 
 }
 

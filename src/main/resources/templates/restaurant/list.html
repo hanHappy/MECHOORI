@@ -26,9 +26,18 @@
                 <div class="header-side left">
                     <a href="/"><button class="header-icon back">버튼</button></a>
                 </div>
-                <a href="/">
+                <!-- <a href="/">
                     <h1 class="header-icon logo">로고</h1>
-                </a>
+                </a> -->
+
+                <div class="logo-container">
+                    <a href="/">
+                      <div class="header-icon logo"></div>
+                    </a>
+                    <div class="header-icon hoverimg"></div>
+                </div>
+
+
                 <div class="header-side right">
                     <a><button class="header-icon search">버튼</button></a>
                 </div>
@@ -47,40 +56,42 @@
                 </div>
             </div>
         </nav>
+
         <!-- 카테고리 -->
-        <nav class="top-category-section">
-            <div class="category-wrapper">
-                <ul class="category-list top-category-list">
-                    <li>
-                        <a class="top-category">전체</a>
-                    </li>
-                    <li th:each="c : ${mainCtgList}">
-                        <a class="top-category" 
-                           th:data-id="${c.id}"
-                           th:text="${c.name}">한식
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        <nav class="top-category-section scroll-hidden">
+            <ul class="category-list top-category-list">
+                <li>
+                    <a class="top-category">전체</a>
+                </li>
+                <li th:each="c : ${mainCtgList}">
+                    <a class="top-category" 
+                        th:data-id="${c.id}"
+                        th:text="${c.name}">한식
+                    </a>
+                </li>
+            </ul>
         </nav>
 
         <!-- 기타 카테고리 -->
         <nav class="other-category-section">
-            <div class="category-wrapper others">
-                <ul class="category-list other-category-list">
-                    <li><button class="category-tag" href="#">#전체</button></li>
-                    <li th:each="c : ${otherCtgList}">
-                        <button class="category-tag" th:data-id="${c.id}" th:text="'#' + ${c.name}">#베트남
-                        </button>
-                    </li>
-                </ul>
-            </div>
+            <ul class="category-list other-category-list">
+                <li><button class="category-tag" href="#">#전체</button></li>
+                <li th:each="c : ${otherCtgList}">
+                    <button
+                        type="button"
+                        class="category-tag" 
+                        th:data-id="${c.id}" 
+                        th:text="'#' + ${c.name}">#베트남
+                    </button>
+                </li>
+            </ul>
         </nav>
+
         <!-- 필터 -->
         <nav>
             <div class="filter-box">
-                <select name="filter" required>
-                    <option disabled selected>필터</option>
+                <select id="filter" name="filter" required>
+                    <option disabled selected>전체</option>
                     <option value="1">가성비순</option>
                     <option value="2">낮은가격순</option>
                     <option value="3">높은가격순</option>
@@ -89,9 +100,12 @@
                 </select>
             </div>
         </nav>
+
     </header>
 
     <main>
+
+        <!-- FIXME 카테고리 바꿀 때 필터 초기화 -->
 
         <!-- 컨텐츠 -->
         <section class="restaurant-list-section">

@@ -153,6 +153,24 @@ public class UserController {
         return "user/my-page/edit-info/pwd";
     }
 
+
+    //비밀번호 변경 POST
+    @PostMapping("my-page/edit-info/pwd")
+    public String changePwd(
+        @RequestParam("newPwd") String newPwd,
+        @AuthenticationPrincipal MechooriUserDetails user
+    ){
+        Member member = new Member();
+        member.setId(user.getId());
+
+        service.updatePassword(member, newPwd);
+        return "redirect:my-page/edit-info";
+    }
+    // /user/my-page/edit-info/pwd
+
+
+
+
     //회원탈퇴
     @GetMapping("my-page/edit-info/withdraw")
     public String withdraw() {
@@ -165,7 +183,6 @@ public class UserController {
         return "user/my-page/edit-info/withdraw-complete";
     }
 
-
     @GetMapping("my-page/like-list")
     public String likeList(Model model, @AuthenticationPrincipal MechooriUserDetails member){
 
@@ -176,8 +193,6 @@ public class UserController {
         return "user/my-page/like-list";
     }
 
-
-    
     //가성비 성과 페이지
     @GetMapping("my-page/statistics")
     public String rateStatistics(){

@@ -23,13 +23,18 @@
 
   <header>
     <div class="header-side left">
-      <a onclick="history.back()" class="header-icon back"></a>
+      <a onclick="history.back()"><button class="header-icon back"></button></a>
     </div>
-    <a href="/">
-      <h1 class="header-icon logo">로고</h1>
-    </a>
+
+    <div class="logo-container">
+      <a href="/">
+        <div class="header-icon logo"></div>
+      </a>
+      <div class="header-icon hoverimg"></div>
+    </div>
+
     <div class="header-side right">
-      <a href="#" id="menu" class="header-icon menu"></a>
+      <a class="header-icon menu" id="menu"></a>
     </div>
   </header>
 
@@ -47,24 +52,25 @@
       </ul>
     </nav>
 
-    <section class="rate-list-secdtion">
+    <section class="rate-list-section">
       <h1 class="d-none">평가 목록</h1>
       <div class="rate-list">
-        <section class="item">
-          <img src="/images/foods/짜장상회2.jpg" alt="">
-          <h1><span>짜장상회</span> · <span>짜장면</span></h1>
-          <p>가격</p>
-          <p>5,000원</p>
-          <p>평가</p>
-          <p><span>88,000</span>원(<span>120</span>%)</p>
-        </section>
-        <section class="item">
-          <img src="/images/foods/짜장상회2.jpg" alt="">
-          <h1><span>짜장상회</span> · <span>짜장면</span></h1>
-          <p>가격</p>
-          <p>5,000원</p>
-          <p>평가</p>
-          <p><span>88,000</span>원(<span>120</span>%)</p>
+        <section class="item" th:each=" r : ${list}">
+          <div class="front">
+            <img src="/images/foods/짜장상회2.jpg" th:src="@{${r.img}}" alt="">
+            <h1><span th:text="${r.resName}">짜장상회</span> · <span th:text="${r.menuName}">짜장면</span></h1>
+            <p>가격</p>
+            <p th:text="${r.price}">5,000원</p>
+            <p>평가</p>
+            <p><span th:text="${r.ratePrice}">88,000</span>원 (<span th:text="${r.value}">120</span>%)</p>
+          </div>
+          <div class="back">
+            <div class="review-wrap">
+              <!-- TODO 45자까지만 가져오기 -->
+              <p class="review">맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요</p>
+            </div>
+            <a href="" class="to-detail">상세 페이지로 ></a>
+          </div>
         </section>
       </div>
     </section>

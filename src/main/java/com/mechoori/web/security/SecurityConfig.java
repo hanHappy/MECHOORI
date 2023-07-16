@@ -46,7 +46,7 @@ public class SecurityConfig {
             .logout(
                 logout -> logout
                     .logoutUrl("/logout")
-                    .logoutSuccessUrl("/"))
+                    .logoutSuccessUrl("/user/login"))
             .oauth2Login(
                 oauth2 -> oauth2
                     .defaultSuccessUrl("/") //로그인 성공 시
