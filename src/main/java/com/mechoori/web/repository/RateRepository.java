@@ -15,6 +15,7 @@ import com.mechoori.web.entity.Statistics3;
 public interface RateRepository {
 
     void add(Rate rate);
+    int delete(int id);
 
     List<Rate> findAll();
     List<Rate> findAll(int menuId);
@@ -33,4 +34,5 @@ public interface RateRepository {
     Rate findLatest(int memberId);
 
     List<ReviewListView> findViewAll(int restaurantId);
+
 }

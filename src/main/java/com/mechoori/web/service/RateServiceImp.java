@@ -39,6 +39,11 @@ public class RateServiceImp implements RateService {
     }
 
     @Override
+    public int delete(int id) {
+        return repository.delete(id);
+    }
+
+    @Override
     public List<Rate> getListByMenuIds(List<Integer> menuIds) {
         return repository.findByMenuIds(menuIds);
     }
@@ -148,4 +153,6 @@ public class RateServiceImp implements RateService {
     public List<ReviewListView> getViewList(int restaurantId) {
         return repository.findViewAll(restaurantId);
     }
+
+
 }

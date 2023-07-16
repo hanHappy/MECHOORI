@@ -97,5 +97,10 @@
         from review_list_view
         where restaurant_id = #{restaurantId}
     </select>
+
+    <delete id="delete" parameterType="int">
+        delete from rate
+        where id = #{id}
+    </delete>
 	
 </mapper>

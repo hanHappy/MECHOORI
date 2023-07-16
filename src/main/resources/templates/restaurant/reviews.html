@@ -39,7 +39,7 @@
             <span>리뷰 <span class="review-count" th:text="${count}">1,000</span>개</span>
         </div>
 
-        <section id="review-list-section">
+        <section id="review-list-section" class="review-list-section">
             <h1 class="d-none">리뷰 목록</h1>
             <div class="review-list">
                 <section class="review" th:each="r : ${list}">
@@ -52,7 +52,7 @@
                         </div>
                         <span th:text="${r.nickname}">메추리</span>
                         <span class="reg-date" th:text="${#temporals.format(r.regDate, 'yyyy.MM.dd')}">2023.07.16</span>
-                        <button class="btn-delete">×</button>
+                        <button th:data-id="${r.id}" sec:authorize="hasAnyRole('ADMIN')" class="btn-delete">×</button>
                     </div>
 
                     <!-- 평가 이미지 -->
@@ -79,7 +79,7 @@
 
         <!-- 리뷰 버튼 -->
         <div class="btn-review-wrap">
-            <a href="rate"><span class="icon-review text-hidden"></span><span>평가하기</span></a>
+            <a href="rate"><span class="icon-rate text-hidden"></span><span>평가하기</span></a>
         </div>
 
         <!-- ============== 메뉴 모달 ============== -->
@@ -134,7 +134,7 @@
         </div>
 
         <!-- 저장 확인 모달 -->
-        <div class="screen check d-none">
+        <div id="modal-check" class="screen check d-none">
             <div class="modal-panel show">
                 <div class="message-wrap">
                     <div class="img-delete"></div>
@@ -143,8 +143,8 @@
                     </div>
                 </div>
                 <div class="btns-wrap">
-                    <button class="button button-9">아니오</button>
-                    <button class="button button-8">삭제</button>
+                    <button id="no" class="button button-9">아니오</button>
+                    <button id="yes" class="button button-8">삭제</button>
                 </div>
             </div>
         </div>

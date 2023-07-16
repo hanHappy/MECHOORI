@@ -174,9 +174,6 @@ public class RestaurantController {
              .addAttribute("count", count)
              .addAttribute("r", restaurant);
         
-        System.out.println(list);
-        System.out.println(count);
-
         return "restaurant/reviews";
     }
 
