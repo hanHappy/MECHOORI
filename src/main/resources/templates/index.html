@@ -94,35 +94,90 @@
                     <button>(전체보기)</button></a>
                 </div>
                 <div class="slidebox">
-                    <input type="radio" name="slide" id="slide1" checked>
-                    <input type="radio" name="slide" id="slide2">
-                    <input type="radio" name="slide" id="slide3">
-                    <input type="radio" name="slide" id="slide4">
-                    <input type="radio" name="slide" id="slide5">
-                    <input type="radio" name="slide" id="slide6">
+                    <input type="radio" name="slide" id="slide01" checked>
+                    <input type="radio" name="slide" id="slide02">
+                    <input type="radio" name="slide" id="slide03">
+                    <input type="radio" name="slide" id="slide04">
+                    <input type="radio" name="slide" id="slide05">
+                    <input type="radio" name="slide" id="slide06">
 
-<!-- 반복문으로 변경, 상태값 함께 가져오기 -->
                     <ul class="slidelist">
-                        <li th:each="item, index : ${listRank}" class="slideitem">
+                        <li class="slideitem">
                             <div>
-                            <label th:for="'slide' + (${index.index})" class="left"></label>
-                            <div class="imgTest">
-                                <img class="resImg" th:src="@{/images/foods/{img}(img=${item.img})}">
-                                <div class="textTest">
-                                    <span th:text="${index.index + 1} + '위'"></span>
-                                    <span th:text="${item.name}"></span>
-                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${item.value} + '%'"></span>)</span>
+                                <label for="slide06" class="left"></label>
+                                <div class="imgTest">
+                                    <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[0].img})}">
+                                    <div class="textTest">
+                                        <span>1위</span>
+                                        <span th:text="${listRank[0].name}"></span>
+                                        <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[0].value} + '%'"></span>)</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <label th:for="'slide' + (${index.index + 2})" class="right"></label>
+                                <label for="slide02" class="right"></label>
                             </div>
                         </li>
                         <li class="slideitem">
-                            <label for="slide06" class="left"></label>
+                            <div>
+                                <label for="slide01" class="left"></label>
+                                <div class="imgTest">
+                                    <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[1].img})}">
+                                    <div class="textTest">
+                                        <span>2위</span>
+                                        <span th:text="${listRank[1].name}"></span>
+                                        <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[1].value} + '%'"></span>)</span>
+                                    </div>
+                                </div>
+                                <label for="slide03" class="right"></label>
+                            </div>
+                        </li>
+                        <li class="slideitem">
+                            <div>
+                                <label for="slide02" class="left"></label>
+                                <div class="imgTest">
+                                    <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[2].img})}">
+                                    <div class="textTest">
+                                        <span>3위</span>
+                                        <span th:text="${listRank[2].name}"></span>
+                                        <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[2].value} + '%'"></span>)</span>
+                                    </div>
+                                </div>
+                                <label for="slide04" class="right"></label>
+                            </div>
+                        </li>
+                        <li class="slideitem">
+                            <div>
+                                <label for="slide03" class="left"></label>
+                                <div class="imgTest">
+                                    <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[3].img})}">
+                                    <div class="textTest">
+                                        <span>4위</span>
+                                        <span th:text="${listRank[3].name}"></span>
+                                        <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[3].value} + '%'"></span>)</span>
+                                    </div>
+                                </div>
+                                <label for="slide05" class="right"></label>
+                            </div>
+                        </li>
+                        <li class="slideitem">
+                            <div>
+                                <label for="slide04" class="left"></label>
+                                <div class="imgTest">
+                                    <img class="resImg" th:src="@{/images/foods/{img}(img=${listRank[4].img})}">
+                                    <div class="textTest">
+                                        <span>5위</span>
+                                        <span th:text="${listRank[4].name}"></span>
+                                        <span>(가성비 &nbsp; <span class="valueText" th:text="${listRank[4].value} + '%'"></span>)</span>
+                                    </div>
+                                </div>
+                                <label for="slide06" class="right"></label>
+                            </div>
+                        </li>
+                        <li class="slideitem">
+                            <label for="slide05" class="left"></label>
                             <div class="imgTest">
-                            <a href="restaurant/ranking">
-                                <img class="resImg" src="/images/foods/1랭킹더미.svg" alt="">
-                            </a>
+                                <a href="restaurant/ranking">
+                                <img src="/images/foods/1랭킹더미.svg" alt="">
+                                </a>
                             </div>
                             <a><label for="slide01" class="right"></label></a>
                         </li>

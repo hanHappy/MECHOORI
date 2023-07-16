@@ -265,6 +265,7 @@ label.right{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 8px
 }
 
 .textTest {
@@ -316,73 +317,109 @@ label.right{
 
 /* <클릭 슬라이드> */
 /* <자동 슬라이드 20초 동안 무한> */
-[id="slide1"]:checked ~ .slidelist .slideitem {transform:translateX(0%); animation: slide1 20s infinite;}
-[id="slide2"]:checked ~ .slidelist .slideitem {transform:translateX(-100%); animation: slide2 20s infinite;}
-[id="slide3"]:checked ~ .slidelist .slideitem {transform:translateX(-200%); animation: slide3 20s infinite;}
-[id="slide4"]:checked ~ .slidelist .slideitem {transform:translateX(-300%); animation: slide4 20s infinite;}
-[id="slide5"]:checked ~ .slidelist .slideitem {transform:translateX(-400%); animation: slide5 20s infinite;}
-[id="slide6"]:checked ~ .slidelist .slideitem {transform:translateX(-500%); animation: slide6 20s infinite;}
+[id="slide01"]:checked ~ .slidelist .slideitem {transform:translateX(0%); animation: slide01 20s infinite;}
+[id="slide02"]:checked ~ .slidelist .slideitem {transform:translateX(-100%); animation: slide02 20s infinite;}
+[id="slide03"]:checked ~ .slidelist .slideitem {transform:translateX(-200%); animation: slide03 20s infinite;}
+[id="slide04"]:checked ~ .slidelist .slideitem {transform:translateX(-300%); animation: slide04 20s infinite;}
+[id="slide05"]:checked ~ .slidelist .slideitem {transform:translateX(-400%); animation: slide05 20s infinite;}
+[id="slide06"]:checked ~ .slidelist .slideitem {transform:translateX(-500%); animation: slide06 20s infinite;}
 
-
-@keyframes slide1{
-    0%, 15% {left: 0%;}
-    17%, 32% {left: -100%;}
-    34%, 49% {left: -200%;}
-    51%, 66% {left: -300%;}
-    68%, 83% {left: -400%;}
-    85%, 98% {left: -500%;}
-    100% {left: 0%;}
+@keyframes slide01{
+    0% {left:0%;}
+    15% {left:0%;}
+    17% {left:-100%;}
+    32% {left:-100%;}
+    34% {left:-200%;}
+    49% {left:-200%;}
+    51% {left:-300%;}
+    66% {left:-300%;}
+    68% {left:-400%;}
+    83% {left:-400%;}
+    85% {left:100%;}
+    98% {left:100%;}
+    100% {left:0%;}
 }
 
-@keyframes slide2{
-    0%, 15% {left: 0%;}
-    17%, 32% {left: -100%;}
-    34%, 49% {left: -200%;}
-    51%, 66% {left: -300%;}
-    68%, 83% {left: -400%;}
-    85%, 98% {left: -500%;}
-    100% {left: 0%;}
+@keyframes slide02{
+    0% {left:0%;}
+    15% {left:0%;}
+    17% {left:-100%;}
+    32% {left:-100%;}
+    34% {left:-200%;}
+    49% {left:-200%;}
+    51% {left:-300%;}
+    66% {left:-300%;}
+    68% {left:-400%;}
+    83% {left:-400%;}
+    85% {left:100%;}
+    98% {left:100%;}
+    100% {left:0%;}
 }
 
-@keyframes slide3{
-    0%, 15% {left: 0%;}
-    17%, 32% {left: -100%;}
-    34%, 49% {left: -200%;}
-    51%, 66% {left: -300%;}
-    68%, 83% {left: -400%;}
-    85%, 98% {left: -500%;}
-    100% {left: 0%;}
+@keyframes slide03{
+    0% {left:0%;}
+    15% {left:0%;}
+    17% {left:-100%;}
+    32% {left:-100%;}
+    34% {left:-200%;}
+    49% {left:-200%;}
+    51% {left:-300%;}
+    66% {left:-300%;}
+    68% {left:200%;}
+    83% {left:200%;}
+    85% {left:100%;}
+    98% {left:100%;}
+    100% {left:0%;}
 }
 
-@keyframes slide4{
-    0%, 15% {left: 0%;}
-    17%, 32% {left: -100%;}
-    34%, 49% {left: -200%;}
-    51%, 66% {left: -300%;}
-    68%, 83% {left: -400%;}
-    85%, 98% {left: -500%;}
-    100% {left: 0%;}
+@keyframes slide04{
+    0% {left:0%;}
+    15% {left:0%;}
+    17% {left:-100%;}
+    32% {left:-100%;}
+    34% {left:-200%;}
+    49% {left:-200%;}
+    51% {left:300%;}
+    66% {left:300%;}
+    68% {left:200%;}
+    83% {left:200%;}
+    85% {left:100%;}
+    98% {left:100%;}
+    100% {left:0%;}
 }
 
-@keyframes slide5{
-    0%, 15% {left: 0%;}
-    17%, 32% {left: -100%;}
-    34%, 49% {left: -200%;}
-    51%, 66% {left: -300%;}
-    68%, 83% {left: -400%;}
-    85%, 98% {left: -500%;}
-    100% {left: 0%;}
+@keyframes slide05{
+    0% {left:0%;}
+    15% {left:0%;}
+    17% {left:-100%;}
+    32% {left:-100%;}
+    34% {left:400%;}
+    49% {left:400%;}
+    51% {left:300%;}
+    66% {left:300%;}
+    68% {left:200%;}
+    83% {left:200%;}
+    85% {left:100%;}
+    98% {left:100%;}
+    100% {left:0%;}
 }
 
-@keyframes slide6{
-    0%, 15% {left: 0%;}
-    17%, 32% {left: -100%;}
-    34%, 49% {left: -200%;}
-    51%, 66% {left: -300%;}
-    68%, 83% {left: -400%;}
-    85%, 98% {left: -500%;}
-    100% {left: 0%;}
+@keyframes slide06{
+    0% {left:0%;}
+    15% {left:0%;}
+    17% {left:500%;}
+    32% {left:500%;}
+    34% {left:400%;}
+    49% {left:400%;}
+    51% {left:300%;}
+    66% {left:300%;}
+    68% {left:200%;}
+    83% {left:200%;}
+    85% {left:100%;}
+    98% {left:100%;}
+    100% {left:0%;}
 }
+
 
 /* --------------- 나의 가성비 --------------- */
 
