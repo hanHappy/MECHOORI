@@ -17,15 +17,20 @@
 <body>
     <header>
         <div class="header-side left">
-            <a onclick="history.back()" class="header-icon back"></a>
+          <a onclick="history.back()"><button class="header-icon back"></button></a>
         </div>
-        <a href="/">
-            <h1 class="header-icon logo">로고</h1>
-        </a>
+    
+        <div class="logo-container">
+          <a href="/">
+            <div class="header-icon logo"></div>
+          </a>
+          <div class="header-icon hoverimg"></div>
+        </div>
+    
         <div class="header-side right">
-            <a href="#" id="menu" class="header-icon menu"></a>
+          <a class="header-icon menu" id="menu"></a>
         </div>
-    </header>
+      </header>
 
     <main>
         <nav class="btn-section">

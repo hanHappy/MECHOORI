@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,7 +34,6 @@ public class UserController {
     private RateService rateService;
     @Autowired
     private RestaurantLikeService restaurantLikeService;
-
 
     @GetMapping("/social-login")
     public String socialLogin(){
@@ -151,6 +152,24 @@ public class UserController {
     public String changePwd() {
         return "user/my-page/edit-info/pwd";
     }
+
+
+    //비밀번호 변경 POST
+    @PostMapping("my-page/edit-info/pwd")
+    public String changePwd(
+        @RequestParam("newPwd") String newPwd,
+        @AuthenticationPrincipal MechooriUserDetails user
+    ){
+        Member member = new Member();
+        member.setId(user.getId());
+
+        service.updatePassword(member, newPwd);
+        return "redirect:my-page/edit-info";
+    }
+    // /user/my-page/edit-info/pwd
+
+
+
 
     //회원탈퇴
     @GetMapping("my-page/edit-info/withdraw")

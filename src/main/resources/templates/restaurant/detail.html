@@ -19,18 +19,22 @@
 </head>
 
 <body>
-<header>
-    <div class="search-container">
+    <header>
         <div class="header-side left">
-            <button class="header-icon back" onclick="history.back()"></button>
+          <a onclick="history.back()"><button class="header-icon back"></button></a>
         </div>
-        <h1 class="header-icon logo">로고</h1>
+    
+        <div class="logo-container">
+          <a href="/">
+            <div class="header-icon logo"></div>
+          </a>
+          <div class="header-icon hoverimg"></div>
+        </div>
+    
         <div class="header-side right">
-            <button class="header-icon home" onclick="location.href='../'"></button>
+          <!-- <a class="header-icon menu" id="menu"></a> -->
         </div>
-    </div>
-
-</header>
+      </header>
 
 <main>
     <div class="detail">

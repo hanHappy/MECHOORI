@@ -1,43 +1,43 @@
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mechoori.web.repository.RestaurantRepository">
-    <select id="findById" resultType="Restaurant">
-        select *
-        from restaurant
-        where id = #{restaurantId}
-    </select>
+   <select id="findById" resultType="Restaurant">
+      select * 
+      from restaurant
+      where id = #{restaurantId}
+   </select>
 
-	<select id="findViewById" resultType="RestaurantView">
-		<if test="memberId == null">
-			select *
-			from restaurant_view
-			where id = #{restaurantId}
-		</if>
-		<if test="memberId != null">
-			select rv.*, IF(rl.member_id is not null, 1, 0) `like`
-			from restaurant_view rv
-			left join restaurant_like rl on rv.id = rl.restaurant_id and rl.member_id = #{memberId}
-			where rv.id = #{restaurantId}
-		</if>
-	</select>
+   <select id="findViewById" resultType="RestaurantView">
+      <if test="memberId == null">
+         select * 
+         from restaurant_view
+         where id = #{restaurantId}
+      </if>
+      <if test="memberId != null">
+         select rv.*, IF(rl.member_id is not null, 1, 0) `like`
+         from restaurant_view rv
+         left join restaurant_like rl on rv.id = rl.restaurant_id and rl.member_id = #{memberId}
+         where rv.id = #{restaurantId}
+      </if>
+   </select>
 
-	<select id="findAll" resultType="Restaurant">
-		select *
-		from restaurant
-		<trim prefix="where" prefixOverrides="AND|OR">
-			<if test="categoryId != null">
-				category_id = #{categoryId};
-			</if>
-			<if test="query != null">
-				name like '%${query}%'
-			</if>
-		</trim>
-		<if test="page != null">
-			limit #{page}, #{size}
-		</if>
-	</select>
+   <select id="findAll" resultType="Restaurant">
+      select *
+      from restaurant
+      <trim prefix="where" prefixOverrides="AND|OR">
+         <if test="categoryId != null">
+            category_id = #{categoryId};
+         </if>
+         <if test="query != null">
+            name like '%${query}%'
+         </if>
+      </trim>
+      <if test="page != null">
+         limit #{page}, #{size}
+      </if>
+   </select>
 
 	<select id="findRestaurantViewAll" resultType="RestaurantView">
 		<if test="memberId == null">
@@ -98,19 +98,36 @@
       values(#{topCategoryId}, #{categoryId}, #{name}, #{img}, #{intro}, #{address}, #{operatingTime}, #{contactNumber})
    </insert>
 
-    <select id="getRanking" resultType="RestaurantRankView">
-        SELECT *
-        FROM restaurant_rank_view
-        <if test="categoryId != null">
-            WHERE category_id = #{categoryId}
-        </if>
-        ORDER BY value DESC
-            LIMIT #{offset}, #{size}
-    </select>
+   <select id="getRanking" resultType="RestaurantView">
+      SELECT *
+      from restaurant_view
+      <if test="categoryId != null">
+      where category_id = #{categoryId}
+      </if>
+      ORDER BY value DESC
+   </select>
 
-    <select id="findAllRestaurant" resultType="Restaurant">
-        select * from restaurant
-    </select>
+<!-- <select id="getRanking" resultType="RestaurantView">
+ SELECT *,
+  (SELECT COUNT(*)
+  FROM (SELECT *
+  FROM restaurant_view
+  <if test="categoryId != null">
+     WHERE category_id = #{categoryId}
+  </if>
+  ORDER BY value DESC) AS subquery
+  WHERE subquery.value >= restaurant_view.value) AS rank
+  FROM restaurant_view
+  ORDER BY value DESC
+</select> -->
+
+
+   <select id="findAllRestaurant" resultType="Restaurant">
+      select * from restaurant
+   </select>
+
+
+
 
 	<select id="findRankAll" resultType="RestaurantRankView">
 		select * from restaurant_rank_view order by value desc

@@ -1,10 +1,14 @@
 .change-password-wrap {
+.change-password-wrap {
     padding: 0 20px;
 }
 
 h1 {
     font-size: 18px;
+h1 {
+    font-size: 18px;
     text-align: center;
+    margin: 30px;
     margin: 30px;
 }
 
@@ -23,8 +27,12 @@ h1 {
 .msg-check-valid { color: var(--font-color-3); }
 .msg-check-same { color: var(--sub-color); }
 
+
 label {
     font-weight: bold;
+
+    margin-left: 3px;
+    margin-bottom: 8px;
 
     margin-left: 3px;
     margin-bottom: 8px;

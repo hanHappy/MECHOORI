@@ -1,5 +1,6 @@
 package com.mechoori.web.service;
 
+import com.mechoori.web.entity.LikeList;
 import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.RestaurantLike;
 
