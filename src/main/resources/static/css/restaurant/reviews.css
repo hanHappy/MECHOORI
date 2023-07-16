@@ -12,14 +12,24 @@
 .summary-info-wrap>span:first-child { font-weight: bold; }
 .review-count { color: var(--sub-color); }
 
-/* 리뷰 컨텐츠 섹션 */
+/* ================ 리뷰 리스트 섹션 ================ */
+.review-list-section {
+    width: 100%;
+}
+
 .review-list {
     padding: 10px 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
-/* 유저 프로필란 */
+/* 리뷰 아이템 */
+.review {
+    margin: 10px 0;
+}
+
+/* -------------- 유저 프로필란 -------------- */
 .profile-wrap {
     font-size: 14px;
 
@@ -27,12 +37,8 @@
     align-items: center;
     gap: 10px;
 }
-.profile-wrap span:last-child {
-    color: var(--hint-color);
-    letter-spacing: -1px;
-    margin-left: 10px;
-}
 
+/* 프로필 이미지 */
 .profile-img-wrap {
     border-radius: 50%;
     overflow: hidden;
@@ -48,13 +54,48 @@
     object-fit: cover;
 }
 
-/* 평가 이미지란 */
+/* 등록일 */
+.reg-date {
+    color: var(--hint-color);
+    letter-spacing: -1px;
+    margin-left: 15px;
+}
+
+/* 삭제 버튼 */
+.btn-delete {
+    color: var(--font-color-3);
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    
+    margin-left: auto;
+
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    border: 1.5px solid var(--font-color-3);
+    border-radius: 8px;
+    filter: brightness(0.8);
+}
+
+
+/* -------------- 평가 이미지란 -------------- */
 .img-wrap {
     border-radius: 8px;
     overflow: hidden;
+    
+    height: 140px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-wrap img {
+    object-fit: cover;
 }
 
-/* 평가 정보란 */
+/* -------------- 평가 정보란 -------------- */
 .rate-info-wrap {
     font-size: 14px;
     padding: 0 14px;
@@ -65,10 +106,11 @@
 }
 .rate-info-wrap p:last-child{ color: var(--sub-color); }
 
-/* 리뷰란 */
+/* -------------- 리뷰란 -------------- */
 .review-wrap { padding: 0 6px; }
 
-/* 리뷰쓰기 버튼 */
+
+/* -------------- 리뷰쓰기 버튼 -------------- */
 .btn-review-wrap {
     border-radius: 20px;
     background-color: var(--main-color);

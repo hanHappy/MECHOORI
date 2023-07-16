@@ -33,6 +33,7 @@ import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.entity.RestaurantRankView;
 import com.mechoori.web.entity.RestaurantView;
+import com.mechoori.web.entity.ReviewListView;
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
@@ -156,7 +157,26 @@ public class RestaurantController {
     }
 
     @GetMapping("{id}/reviews")
-    public String reviews(@PathVariable("id") int restaurantId, Model model){
+    public String reviews(
+        @PathVariable("id") int restaurantId, 
+        @AuthenticationPrincipal MechooriUserDetails member,
+        Model model){
+        
+        Integer memberId = null;
+        if(member != null)
+            memberId = member.getId();
+
+        List<ReviewListView> list = rateService.getViewList(restaurantId);
+        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+        int count = list.size();
+
+        model.addAttribute("list", list)
+             .addAttribute("count", count)
+             .addAttribute("r", restaurant);
+        
+        System.out.println(list);
+        System.out.println(count);
+
         return "restaurant/reviews";
     }
 

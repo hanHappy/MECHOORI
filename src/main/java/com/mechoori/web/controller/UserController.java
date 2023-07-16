@@ -101,7 +101,7 @@ public class UserController {
                            @AuthenticationPrincipal MechooriUserDetails user) {
 
 //        List<RateList> list = rateService.getList(user.getId());
-        List<RateListView> list = rateService.getList(user.getId(),offset);
+        List<RateListView> list = rateService.getMyList(user.getId(),offset);
         model.addAttribute("list", list);
 
         return "user/my-page/rate-list";

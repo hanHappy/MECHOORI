@@ -4,7 +4,9 @@
     height: 40px;
     border: none;
     border-radius: var(--border-radius);
-    padding: 0
+    padding: 0;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .button-1 {
@@ -70,11 +72,17 @@
     background-color: #FFE8E8;
     border: 1.5px solid #F00;
 }
+.button-8:hover{
+    filter: brightness(0.8);
+}
 .button-9 {
     font-size: 16px;
     font-weight: bold;
     width: 80px;
     background-color: var(--box-color);
+}
+.button-9:hover {
+    filter: brightness(0.8);
 }
 .button-10 {
     font-size: 16px;
