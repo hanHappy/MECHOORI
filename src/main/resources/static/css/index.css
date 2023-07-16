@@ -39,7 +39,7 @@ main{
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-.title-box button, .title-box h1, .comparison h1{
+.title-box button, .title-box h1, .comparison h1 {
     padding: 0px 0px 5px 0px;
     font-family: 'Noto Sans CJK KR Medium';
     font-style: normal;
@@ -63,13 +63,14 @@ main{
     overflow: hidden; /* 추가 */
 }
 
-
 .ad-mobile{
     width: 100%;
     display: flex;
     justify-content: center;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
     position: relative;
+    margin-top: -55px; /* 추가 */
+    z-index: 1; /* 추가 */
 }
 
 .ad-mobile img{
@@ -81,6 +82,7 @@ main{
 /* ----------------- 검색창 ------------------- */
 
 .searchZone{
+    position: relative; /* 변경 */
     position: fixed;
     display: flex;
     justify-content: center;
@@ -88,7 +90,7 @@ main{
     padding: 8px 10px;
     box-sizing: border-box;
     background-color: transparent;
-    z-index: 999;
+    z-index: 2;
 }
 
 .search-bar-container{
@@ -502,6 +504,9 @@ label.right{
     .comparison, .ranking, .adBox {
         box-shadow: none;
     }
+    .search-bar-container{
+       width: 63%;
+    }
 }
 
 @media screen and (min-width:1024px){
@@ -666,8 +671,18 @@ label.right{
         padding: 70px 200px 10px 200px;
         column-gap: 6px;
     }
-    .ranking-web-container h1{
-        padding-bottom: 20px;
+    .ranking-web-title{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 15px;
+    }
+    .ranking-web-title button{
+        background-color: transparent;
+        border: none;
+        font-weight: 300;
+        font-size: 18px;
+        color: #838383;
     }
     .ranking-web-wrap{
         display: flex;
@@ -798,7 +813,7 @@ label.right{
 
     .comparison-img h1{
         font-size: 1.5em;
-        padding-bottom: 20px;
+        padding-bottom: 15px;
     }
 
     .comparison-img-content {
