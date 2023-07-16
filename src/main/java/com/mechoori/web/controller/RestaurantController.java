@@ -147,6 +147,30 @@ public class RestaurantController {
         return "restaurant/rate";
     }
 
+    @GetMapping("{id}/reviews")
+    public String reviews(
+        @PathVariable("id") int restaurantId,
+        @AuthenticationPrincipal MechooriUserDetails member,
+        Model model){
+
+        Integer memberId = null;
+        if(member != null)
+            memberId = member.getId();
+
+        List<ReviewListView> list = rateService.getViewList(restaurantId);
+        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+        int count = list.size();
+
+        model.addAttribute("list", list)
+             .addAttribute("count", count)
+             .addAttribute("r", restaurant);
+
+        System.out.println(list);
+        System.out.println(count);
+
+        return "restaurant/reviews";
+    }
+
     // TODO 리뷰 이미지 파일명 + id로 저장
     @PostMapping("{id}/rate")
     public String rate(
@@ -235,16 +259,6 @@ public class RestaurantController {
         model.addAttribute("result", result);
 
         return "/restaurant/rate-result";
-    }
-
-    @GetMapping("{id}/reviews")
-    public String review(@PathVariable int id,
-                         Model model){
-
-        List<Review> list = restaurantService.findReviewAll(id);
-
-
-        return "review";
     }
 
 
