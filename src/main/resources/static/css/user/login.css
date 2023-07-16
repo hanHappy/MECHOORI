@@ -85,8 +85,23 @@ input:-webkit-autofill:active {
   text-align: start;
 }
 
+/* placeholder animation */
+.email::-webkit-input-placeholder{
+  transition: all 0.5s;
+}
+.email:focus::-webkit-input-placeholder{
+  text-indent: -10px; opacity: 0;
+}
+.pwd::-webkit-input-placeholder{
+  transition: all 0.5s;
+}
+.pwd:focus::-webkit-input-placeholder{
+  text-indent: -10px; opacity: 0;
+}
+
+
 .error {
-  color: #d31111;
+  color: var(--font-color-3);
 
   margin-top: 10px;
 }

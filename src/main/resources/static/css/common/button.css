@@ -11,8 +11,20 @@
     font-size: 18px;
     font-weight: bold;
     color: #fff;
+    background-color: var(--btn-color-2);
+
+    cursor: not-allowed;
+
+    transition: 0.5s;
+}
+.button-1.active {
+    cursor: pointer;
     background-color: var(--sub-color);
 }
+.button-1.active:hover{
+    filter: brightness(0.8);
+}
+
 .button-2 {
     font-size: 18px;
     font-weight: bold;
@@ -68,8 +80,11 @@
     font-size: 16px;
     background-color: #fff;
     box-shadow: 0 0 5px 0 #75757525;
-
+    
     width: 80px;
+}
+.button-10:hover {
+    /* box-shadow: var(--btn-shadow-2); */
 }
 .button-11 {
     font-size: 16px;

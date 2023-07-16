@@ -68,10 +68,6 @@ main{
     height: 28px;
 }
 
-.btn-upload:hover {
-    filter: brightness(0.8);
-}
-
 .profile-img-input {
     display: none;
 }

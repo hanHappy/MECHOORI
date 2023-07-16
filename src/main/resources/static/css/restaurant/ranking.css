@@ -16,7 +16,7 @@ main {
     width: 100%;
     position: fixed;
     top: 0;
-    z-index: 1200;
+    /* z-index: 1100; */
 }
 
 .resranking {
@@ -46,6 +46,49 @@ main {
 }
 
 
+/* ----- logo ----- */
+.logo-container{
+    position: relative;
+    width: 104px;
+    height: 100%;
+    overflow: hidden;
+    
+}
+
+.header-icon.hoverimg,
+.header-icon.logo {
+    transition: transform 0.5s;
+    background-size: contain;
+}
+
+.header-icon.logo{
+    position: absolute;
+    background-image: url(/images/assets/logo2.svg);
+    width: 82px;
+    height: 54px;
+    left: 10%;
+    top: 50%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+}
+
+.header-icon.hoverimg{
+    position: absolute;
+    background-image: url(/images/assets/logoBack5.svg);
+    width: 104px;
+    height: 95px;
+    z-index: -1;
+}
+
+.header-icon.hoverimg {
+    transform: translateY(115%);
+}
+  
+.logo-container:hover .header-icon.hoverimg {
+    transform: translateY(2%);
+}
+/* ---------------------------------------- */
+
 /*<img th:src="@{images/foods/img(img=${list.img})}">*/
 
 .ranking-list {
@@ -54,7 +97,6 @@ main {
     height: 50px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 
-    margin-bottom: 25px;
     text-align: center;
     align-items: center;
     box-shadow: var(--block-shadow);
@@ -69,6 +111,7 @@ main {
     object-fit: cover;
     border-radius: 8px 8px 0 0;
     max-width: 500px;
+    margin-top:20px
 }
 
 
@@ -94,13 +137,9 @@ main {
     color: #b95151;
 }
 
-
-
-
 .thymeleaf{
     width: 100%;
     display: block;
-    margin-bottom: 30px;
     position: relative;
 
 }
@@ -134,6 +173,12 @@ main {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 100%));
         grid-column-gap: 25px;
+    }
+
+    .top-section {
+
+        margin-top: 105px;
+
     }
 
 }

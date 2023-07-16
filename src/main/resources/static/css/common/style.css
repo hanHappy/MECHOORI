@@ -21,13 +21,28 @@ ul {
 li {
     list-style: none;
 }
-
 .d-none {
     display: none !important;
 }
 .text-hidden{
     text-indent: -999px;
     overflow: hidden;
+}
+/* 스크롤 제거 */
+.scroll-hidden::-webkit-scrollbar {
+    display: none;
+}
+.scroll-hidden {
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
+}
+/* placeholder */
+.placeholder-effect::placeholder { color: var(--hint-color); }
+.placeholder-effect::-webkit-input-placeholder{
+    transition: all 0.5s;
+}
+.placeholder-effect:focus::-webkit-input-placeholder{
+    text-indent: -10px; opacity: 0;
 }
 
 :root {
@@ -39,14 +54,16 @@ li {
     --main-color: #FFE551;
     /* 서브 색상 */
     --sub-color: #2292F9;
+    /* 비활성 색상 */
+    --inactive-color: #B9B7B7;
     /* 페이지 배경색 */
     --background-color: #F5F5F7;
     /* 폰트 기본 색상 */
     --font-color: #282828;
     /* 힌트 색상 */
     --hint-color: #9D9999;
-    /* 비활성 색상 */
-    --inactive-color: #B9B7B7;
+    /* 에러 메시지 색상 */
+    --font-color-3: #d31111;
     /* input 박스 배경색 */
     --box-color: #EEE;
     /* #EEE 버튼 "클릭" 배경색 */
@@ -55,6 +72,8 @@ li {
     --btn-color-2: #a6d5ff;
     /* 아이콘 색상 */
     --icon-color: #6D6D6D;
+    /* 모달 배경 색상 */
+    --modal-screen-color: rgba(0, 0, 0, 0.7);
 
     /* --------------- 효과 --------------- */
     /* 블럭 그림자 */
@@ -86,6 +105,14 @@ li {
     --contents-space: 20px;
     /* 컨텐트 상하 마진 */
     --content-margin: 5px 0px;
+}
+
+/* placeholder animation */
+.placeholderEffect::-webkit-input-placeholder{
+    transition: all 0.5s !important; 
+}
+.placeholderEffect:focus::-webkit-input-placeholder{
+    text-indent: -10px; opacity: 0 !important;
 }
 
 @media only screen and (min-width: 769px) {
