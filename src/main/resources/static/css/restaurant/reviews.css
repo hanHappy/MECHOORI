@@ -1,0 +1,106 @@
+/* 요약 정보 */
+.summary-info-wrap {
+    border-bottom: var(--border-bottom);
+
+    height: 50px;
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.summary-info-wrap>span:first-child { font-weight: bold; }
+.review-count { color: var(--sub-color); }
+
+/* 리뷰 컨텐츠 섹션 */
+.review-list {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* 유저 프로필란 */
+.profile-wrap {
+    font-size: 14px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.profile-wrap span:last-child {
+    color: var(--hint-color);
+    letter-spacing: -1px;
+    margin-left: 10px;
+}
+
+.profile-img-wrap {
+    border-radius: 50%;
+    overflow: hidden;
+
+    width: 32px;
+    height: 32px;
+}
+
+.profile-img-wrap img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+/* 평가 이미지란 */
+.img-wrap {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* 평가 정보란 */
+.rate-info-wrap {
+    font-size: 14px;
+    padding: 0 14px;
+}
+.rate-info-wrap p{
+    color: rgb(91, 91, 91);
+    margin: 0;
+}
+.rate-info-wrap p:last-child{ color: var(--sub-color); }
+
+/* 리뷰란 */
+.review-wrap { padding: 0 6px; }
+
+/* 리뷰쓰기 버튼 */
+.btn-review-wrap {
+    border-radius: 20px;
+    background-color: var(--main-color);
+
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+    padding: 5px 10px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-review-wrap:hover {
+    box-shadow: var(--btn-shadow-5);
+}
+
+.btn-review-wrap a{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.icon-review {
+    display: block;
+
+    background-image: url(/images/icons/pencil.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 14px;
+    height: 14px;
+}

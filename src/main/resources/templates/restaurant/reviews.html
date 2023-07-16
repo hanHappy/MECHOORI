@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/modal-menu.css">
+    <link rel="stylesheet" href="/css/restaurant/reviews.css">
+    <script src="/js/components/modal-menu.js" defer></script>
+    <title>리뷰</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-side left">
+            <a onclick="history.back()"><button class="header-icon back"></button></a>
+        </div>
+
+        <div class="logo-container">
+            <a href="/">
+                <div class="header-icon logo"></div>
+            </a>
+            <div class="header-icon hoverimg"></div>
+        </div>
+
+        <div class="header-side right">
+            <a sec:authorize="isAnonymous()" href="/user/login" class="header-icon menu">메뉴</a>
+            <a sec:authorize="isAuthenticated()" id="menu" class="header-icon menu">메뉴</a>
+        </div>
+    </header>
+    <main>
+        <div class="summary-info-wrap">
+            <span>짜장상회</span>
+            <span>리뷰 <span class="review-count">1,000</span>개</span>
+        </div>
+
+        <section id="review-list-section">
+            <h1 class="d-none">리뷰 목록</h1>
+            <div class="review-list">
+                <section class="review">
+                    <h1 class="d-none">리뷰</h1>
+
+                    <!-- 프로필 -->
+                    <div class="profile-wrap">
+                        <div class="profile-img-wrap">
+                            <img src="/images/member/profile/coca-analysis.svg" alt="">
+                        </div>
+                        <span>메추리</span>
+                        <span>2023.07.16</span>
+                    </div>
+
+                    <!-- 평가 이미지 -->
+                    <div class="img-wrap">
+                        <img src="/images/member/review/coca-full.svg" alt="">
+                    </div>
+
+                    <!-- 평가 정보 -->
+                    <div class="rate-info-wrap">
+                        <p>메뉴명 : <span>짜장면</span></p>
+                        <p>가격 : <span>6,000원</span></p>
+                        <p>평가 : <span>7,000원</span>&nbsp;(<span>116</span>%)</p>
+                    </div>
+
+                    <!-- 리뷰 -->
+                    <div class="review-wrap">
+                        <p>맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 </p>
+                    </div>
+
+                </section>
+            </div>
+
+        </section>
+
+        <!-- 리뷰 버튼 -->
+        <div class="btn-review-wrap">
+            <a href="rate"><span class="icon-review text-hidden"></span><span>리뷰쓰기</span></a>
+        </div>
+
+        <!-- ============== 메뉴 모달 ============== -->
+        <div class="modal-menu" sec:authorize="isAuthenticated()">
+            <div class="screen">
+                <div class="panel">
+                    <div class="profile-image-wrapper">
+                        <div class="profile-image-frame">
+                            <img class="profile-image" th:src="${#authentication.principal.img}" alt="프로필사진">
+                        </div>
+                        <div class="nickname-wrapper">
+                            <span class="nickname" th:text="${#authentication.principal.nickname}"></span>
+                        </div>
+                    </div>
+
+                    <nav class="menu-list-section">
+                        <ul>
+                            <li>
+                                <a href="/user/my-page/edit-info">
+                                    <div class="icon icon-key"></div>
+                                    <span>회원 정보 수정</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/like-list">
+                                    <div class="icon icon-heart"></div>
+                                    <span>찜 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/rate-list">
+                                    <div class="icon icon-review"></div>
+                                    <span>평가 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/statistics">
+                                    <div class="icon icon-chart"></div>
+                                    <span>가성비 평가 통계</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/logout">
+                                    <div class="icon icon-power"></div>
+                                    <span>로그아웃</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -155,6 +155,11 @@ public class RestaurantController {
         return "restaurant/rate";
     }
 
+    @GetMapping("{id}/reviews")
+    public String reviews(@PathVariable("id") int restaurantId, Model model){
+        return "restaurant/reviews";
+    }
+
     // TODO 리뷰 이미지 파일명 + id로 저장
     @PostMapping("{id}/rate")
     public String rate(
