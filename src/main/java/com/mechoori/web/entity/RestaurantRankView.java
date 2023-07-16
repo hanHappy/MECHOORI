@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class RestaurantRankView {
 
-    private int id;
+
     private int topCategoryId;
     private int categoryId;
     private String name;
