@@ -1,0 +1,11 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mechoori.web.repository.ReviewListRepository">
+    <select id="findAll" resultType="ReviewListView">
+        select * 
+            from review_list_view
+            where member_id = #{memberId}
+    </select>
+</mapper>

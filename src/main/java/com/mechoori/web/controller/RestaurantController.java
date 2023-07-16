@@ -33,12 +33,14 @@ import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.entity.RestaurantRankView;
 import com.mechoori.web.entity.RestaurantView;
+import com.mechoori.web.entity.ReviewListView;
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RateService;
 import com.mechoori.web.service.RestaurantService;
+import com.mechoori.web.service.ReviewListService;
 
 @Controller
 @RequestMapping("/restaurant")
@@ -52,6 +54,8 @@ public class RestaurantController {
     private CategoryService categoryService;
     @Autowired
     private RateService rateService;
+    @Autowired
+    private ReviewListService reviewListService;
 
     @Value("${upload.review}")
     private String uploadPath;
@@ -191,6 +195,20 @@ public class RestaurantController {
         rateService.add(rate, user.getId());
 
         return "redirect:rate-result";
+    }
+
+    // ---------- 리뷰 리스트 ------------
+    @GetMapping("{id}/reviewList")
+    public String reiviewList(
+            @PathVariable("id") int restaurantId, 
+            @AuthenticationPrincipal MechooriUserDetails member,
+            Model model){
+
+
+        List<ReviewListView> list = reviewListService.getDate(member.getId());
+        model.addAttribute("list", list);
+
+        return "restaurant/reviewList";
     }
 
 //get mapping

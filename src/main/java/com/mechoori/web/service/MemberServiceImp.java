@@ -66,13 +66,6 @@ public class MemberServiceImp implements MemberService {
         repository.update(member);
     }
 
-    @Override
-    public void updatePassword(Member member, String newPwd) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        member.setPassword(passwordEncoder.encode(newPwd));
-        repository.update(member);
-    }
-
     // 비밀번호 변경
     @Override
     public void updatePassword(Member member, String newPwd) {
