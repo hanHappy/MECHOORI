@@ -1,4 +1,8 @@
 let likeBtn = document.querySelector('.like');
+let copyButton = document.getElementById('map-address-copy-button');
+let addressText = document.getElementById('map-address-copy-text');
+let modalCopy = document.getElementById('modal-copy');
+let shareBtn = document.querySelector('.share')
 
 likeBtn.onclick = function(e){
 
@@ -59,3 +63,36 @@ likeBtn.onclick = function(e){
     }
 
 }
+
+// 주소 복사
+copyButton.addEventListener('click', () => {
+    const address = addressText.textContent;
+    navigator.clipboard.writeText(address)
+        .then(() => {
+            modalCopy.style.display = 'block';
+            setTimeout(() => {
+                modalCopy.style.display = 'none';
+            }, 1000);
+        })
+});
+
+// 공유하기
+shareBtn.onclick = function(e){
+    const shareObject = {
+        title: window.name,
+        url: window.location.href
+    };
+
+    if (navigator.share) {
+        navigator
+        .share(shareObject)
+        .then(() => {
+        })
+        .catch((error) => {
+            alert('error: 다시 시도해주세요.')
+        })
+    } else {
+        alert('error: 미지원 브라우저입니다.')
+    }
+    }    
+

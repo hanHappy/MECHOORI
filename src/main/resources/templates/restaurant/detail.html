@@ -7,11 +7,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>손 안의 메뉴 추천 리스트, 메추리</title>
+    <title th:text="'메뉴 추천 리스트, 메추리 : '+${r.name}"> </title>
     <link rel="stylesheet" type="text/css" href="/css/common/style.css?ver=1">
     <link rel="stylesheet" href="/css/common/header.css?ver=2">
     <link rel="stylesheet" type="text/css" href="/css/restaurant/detail.css?ver=1">
     <link rel="stylesheet" href="/css/common/button.css?ver=1">
+    <link rel="stylesheet" href="/css/common/modal-toast.css?ver=1">
     <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
     <script src="/js/restaurant/map.js" defer></script>
@@ -141,22 +142,14 @@
             </div>
         </div>
 
-        <!-- TODO UI 수정 -->
         <div class="map-detail">
             <div class="map-table">
                 <div id="map" style="height: 200px; width: 100%;"></div>
                 <div class="map-button">
-                    <div class="map-button-image" id=btnWrap>
-                        <div id="popupBtn">
-                            <img src="/images/icons/icon-phone.svg">전화하기
-                        </div>
-                    </div>
-                    <div class="map-button-image">
-                        <img src="/images/icons/icon-map.svg">
-                        <a href="/restaurant/mapPage" th:href="@{mapPage/{id}(id=${r.id})}">
-                            지도보기
-                        </a>
-                    </div>
+                    <img src="/images/icons/icon-map.svg">
+                    <a href="/restaurant/mapPage" th:href="@{mapPage/{id}(id=${r.id})}">
+                        지도보기
+                    </a>
                 </div>
             </div>
         </div>
@@ -185,79 +178,13 @@
         </div>
     </div>
 
-
 </main>
 
+<!---- 주소 복사 모달 ---->
+<div id="modal-copy">
+    <p>주소가 복사되었습니다.</p>
+</div>
 
-<!-- ============================================================= -->
-
-<!-- 주소 복사 모달 -->
-<!-- <div id="address-copy-modal" class="address-copy-modal">
-  <div class="address-copy-modal-content">
-    <p id="copy-notification-message"></p>
-  </div>
-</div> -->
-
-<!-- TODO 상세 페이지 로드 시 모달 노출 : 확인 중-->
-<!-- 전화하기 모달 -->
-<!--<div id="modalWrap">-->
-<!--  <div id="modalContent">-->
-<!--    <div id="modalBody">-->
-<!--      <div id="callBtn">전화하기</div>-->
-<!--      <div id="closeBtn">취소하기</div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
-
-<!-- 스크립트 (분리 예정) -->
-
-<script>
-
-    // 주소 복사
-    const copyButton = document.getElementById('map-address-copy-button');
-    const addressText = document.getElementById('map-address-copy-text');
-
-    copyButton.addEventListener('click', () => {
-        const address = addressText.textContent;
-        navigator.clipboard.writeText(address)
-            .then(() => {
-                copyButton.onclick = function () {
-                    modal.style.display = 'block';
-                }
-                alert('주소가 복사되었습니다.');
-            })
-            .catch((error) => {
-                console.error('복사 실패:', error);
-            });
-    });
-
-    // 전화하기 버튼
-    document.addEventListener('DOMContentLoaded', function () {
-        const btn = document.getElementById('popupBtn');
-        const modal = document.getElementById('modalWrap');
-        const closeBtn = document.getElementById('closeBtn');
-        const callBtn = document.getElementById('callBtn');
-
-        modal.style.display = 'none';
-
-        btn.onclick = function () {
-            modal.style.display = 'block';
-        }
-        closeBtn.onclick = function () {
-            modal.style.display = 'none'; // 모달 닫기
-        }
-        callBtn.onclick = function () {
-            modal.style.display = 'none'; // 모달 닫기
-        }
-
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = 'none'; // 모달 외부
-            }
-        }
-    });
-</script>
 </body>
 
 </html>
