@@ -172,10 +172,11 @@ main{
     text-align: center;
     justify-content: center;
     width: 54px;
-    height: 60px;
+    height: 64px;
     border-radius: 8px;
     border: 1px solid var(--unnamed, #EEE);
     background-color: white;
+    font-size: 1.3rem;
 }
 
 .typelist img{

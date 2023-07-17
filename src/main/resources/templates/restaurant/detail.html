@@ -147,17 +147,10 @@
             <div class="map-table">
                 <div id="map" style="height: 200px; width: 100%;"></div>
                 <div class="map-button">
-                    <div class="map-button-image" id=btnWrap>
-                        <div id="popupBtn">
-                            <img src="/images/icons/icon-phone.svg">전화하기
-                        </div>
-                    </div>
-                    <div class="map-button-image">
-                        <img src="/images/icons/icon-map.svg">
-                        <a href="/restaurant/mapPage" th:href="@{mapPage/{id}(id=${r.id})}">
-                            지도보기
-                        </a>
-                    </div>
+                    <img src="/images/icons/icon-map.svg">
+                    <a href="/restaurant/mapPage" th:href="@{mapPage/{id}(id=${r.id})}">
+                        지도보기
+                    </a>
                 </div>
             </div>
         </div>
