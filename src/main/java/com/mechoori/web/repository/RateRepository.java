@@ -30,4 +30,6 @@ public interface RateRepository {
     List<RateListView> getList(int memberId, int offset, int size);
 
     Rate findLatest(int memberId);
+
+    int delete(int id);
 }

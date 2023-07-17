@@ -90,5 +90,11 @@
         order by reg_date desc 
         limit 1
     </select>
+
+
+    <delete id="delete" parameterType="int">
+		delete from rate
+		where id=#{Id}
+	</delete>
 	
 </mapper>

@@ -3,6 +3,7 @@ package com.mechoori.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mechoori.web.entity.Member;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.TopCategory;
+import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RestaurantService;
@@ -99,10 +102,30 @@ public class AdminController {
     }
 
     @PostMapping("restaurant/add")
-    public String addRestaurant(Restaurant restaurant){
+    public String Restaurant(Restaurant restaurant){
         restaurantService.add(restaurant);
         return "redirect:../restaurant";
     }
+    // 레스토랑 업데이트 0716
+    @GetMapping("restaurant/{id}/edit")
+    public String updateRestaurant(
+            Model model,
+            @PathVariable("id") int restaurantId){
+
+        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+        model.addAttribute("r", restaurant);
+
+        return "admin/restaurant/edit";
+    }
+    // 레스토랑 업데이트 0716 post
+    @PostMapping("restaurant/{id}/edit")
+    public String updateRestaurant(Restaurant restaurant){
+
+        restaurantService.update(restaurant);
+        return "redirect:../../restaurant";
+    }
+
+
 
     // ================= 메뉴 =================
 

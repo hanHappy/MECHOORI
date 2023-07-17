@@ -142,4 +142,10 @@ public class RateServiceImp implements RateService {
 
         return result;
     }
+
+    @Override
+    public int delete(int id) {
+
+        return repository.delete(id); 
+    }
 }

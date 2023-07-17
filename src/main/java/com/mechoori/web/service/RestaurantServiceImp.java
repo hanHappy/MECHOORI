@@ -193,6 +193,27 @@ public class RestaurantServiceImp implements RestaurantService {
 		repository.add(restaurant);
 	}
 
+	@Override
+	public void update(Restaurant restaurant) {
+
+		if(restaurant.getName()=="")
+		restaurant.setName(null);
+
+		if(restaurant.getImg()=="")
+		restaurant.setImg(null);
+
+		if(restaurant.getIntro()=="")
+		restaurant.setIntro(null);
+
+		if(restaurant.getOperatingTime()=="")
+		restaurant.setOperatingTime(null);
+
+		if(restaurant.getContactNumber()=="")
+		restaurant.setContactNumber(null);
+
+		repository.update(restaurant);
+	}
+
 
 }
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.mechoori.web.entity.LikeList;
 import com.mechoori.web.entity.RestaurantLike;
 import com.mechoori.web.repository.RestaurantLikeRepository;
+import com.mechoori.web.security.MechooriUserDetails;
 
 @Service
 public class RestaurantLikeServiceImp implements RestaurantLikeService {

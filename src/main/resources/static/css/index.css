@@ -39,7 +39,7 @@ main{
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-.title-box button, .title-box h1, .comparison h1{
+.title-box button, .title-box h1, .comparison h1 {
     padding: 0px 0px 5px 0px;
     font-family: 'Noto Sans CJK KR Medium';
     font-style: normal;
@@ -63,13 +63,14 @@ main{
     overflow: hidden; /* 추가 */
 }
 
-
 .ad-mobile{
     width: 100%;
     display: flex;
     justify-content: center;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
     position: relative;
+    margin-top: -55px; /* 추가 */
+    z-index: 1; /* 추가 */
 }
 
 .ad-mobile img{
@@ -81,6 +82,7 @@ main{
 /* ----------------- 검색창 ------------------- */
 
 .searchZone{
+    position: relative; /* 변경 */
     position: fixed;
     display: flex;
     justify-content: center;
@@ -88,7 +90,7 @@ main{
     padding: 8px 10px;
     box-sizing: border-box;
     background-color: transparent;
-    z-index: 999;
+    z-index: 2;
 }
 
 .search-bar-container{
@@ -170,14 +172,19 @@ main{
     text-align: center;
     justify-content: center;
     width: 54px;
-    height: 60px;
+    height: 64px;
     border-radius: 8px;
     border: 1px solid var(--unnamed, #EEE);
     background-color: white;
+    font-size: 1.3rem;
 }
 
 .typelist img{
     width: 29px;
+}
+
+.rankColor{
+    color:#FFD700 !important;
 }
 
 
@@ -275,6 +282,7 @@ label.right{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 8px
 }
 
 .textTest {
@@ -320,79 +328,117 @@ label.right{
 }
 
 .valueText{
-    color: #FFE551 !important;
+    /* color:   #FFC0CB !important; */
+    /* color:   #00FF00 !important; */
+    color:   #ff8902 !important;
 }
 
 
 /* <클릭 슬라이드> */
 /* <자동 슬라이드 20초 동안 무한> */
-[id="slide1"]:checked ~ .slidelist .slideitem {transform:translateX(0%); animation: slide1 20s infinite;}
-[id="slide2"]:checked ~ .slidelist .slideitem {transform:translateX(-100%); animation: slide2 20s infinite;}
-[id="slide3"]:checked ~ .slidelist .slideitem {transform:translateX(-200%); animation: slide3 20s infinite;}
-[id="slide4"]:checked ~ .slidelist .slideitem {transform:translateX(-300%); animation: slide4 20s infinite;}
-[id="slide5"]:checked ~ .slidelist .slideitem {transform:translateX(-400%); animation: slide5 20s infinite;}
-[id="slide6"]:checked ~ .slidelist .slideitem {transform:translateX(-500%); animation: slide6 20s infinite;}
+[id="slide01"]:checked ~ .slidelist .slideitem {transform:translateX(0%); animation: slide01 20s infinite;}
+[id="slide02"]:checked ~ .slidelist .slideitem {transform:translateX(-100%); animation: slide02 20s infinite;}
+[id="slide03"]:checked ~ .slidelist .slideitem {transform:translateX(-200%); animation: slide03 20s infinite;}
+[id="slide04"]:checked ~ .slidelist .slideitem {transform:translateX(-300%); animation: slide04 20s infinite;}
+[id="slide05"]:checked ~ .slidelist .slideitem {transform:translateX(-400%); animation: slide05 20s infinite;}
+[id="slide06"]:checked ~ .slidelist .slideitem {transform:translateX(-500%); animation: slide06 20s infinite;}
 
-
-@keyframes slide1{
-    0%, 15% {left: 0%;}
-    17%, 32% {left: -100%;}
-    34%, 49% {left: -200%;}
-    51%, 66% {left: -300%;}
-    68%, 83% {left: -400%;}
-    85%, 98% {left: -500%;}
-    100% {left: 0%;}
+@keyframes slide01{
+    0% {left:0%;}
+    15% {left:0%;}
+    17% {left:-100%;}
+    32% {left:-100%;}
+    34% {left:-200%;}
+    49% {left:-200%;}
+    51% {left:-300%;}
+    66% {left:-300%;}
+    68% {left:-400%;}
+    83% {left:-400%;}
+    85% {left:100%;}
+    98% {left:100%;}
+    100% {left:0%;}
 }
 
-@keyframes slide2{
-    0%, 15% {left: 0%;}
-    17%, 32% {left: -100%;}
-    34%, 49% {left: -200%;}
-    51%, 66% {left: -300%;}
-    68%, 83% {left: -400%;}
-    85%, 98% {left: -500%;}
-    100% {left: 0%;}
+@keyframes slide02{
+    0% {left:0%;}
+    15% {left:0%;}
+    17% {left:-100%;}
+    32% {left:-100%;}
+    34% {left:-200%;}
+    49% {left:-200%;}
+    51% {left:-300%;}
+    66% {left:-300%;}
+    68% {left:-400%;}
+    83% {left:-400%;}
+    85% {left:100%;}
+    98% {left:100%;}
+    100% {left:0%;}
 }
 
-@keyframes slide3{
-    0%, 15% {left: 0%;}
-    17%, 32% {left: -100%;}
-    34%, 49% {left: -200%;}
-    51%, 66% {left: -300%;}
-    68%, 83% {left: -400%;}
-    85%, 98% {left: -500%;}
-    100% {left: 0%;}
+@keyframes slide03{
+    0% {left:0%;}
+    15% {left:0%;}
+    17% {left:-100%;}
+    32% {left:-100%;}
+    34% {left:-200%;}
+    49% {left:-200%;}
+    51% {left:-300%;}
+    66% {left:-300%;}
+    68% {left:200%;}
+    83% {left:200%;}
+    85% {left:100%;}
+    98% {left:100%;}
+    100% {left:0%;}
 }
 
-@keyframes slide4{
-    0%, 15% {left: 0%;}
-    17%, 32% {left: -100%;}
-    34%, 49% {left: -200%;}
-    51%, 66% {left: -300%;}
-    68%, 83% {left: -400%;}
-    85%, 98% {left: -500%;}
-    100% {left: 0%;}
+@keyframes slide04{
+    0% {left:0%;}
+    15% {left:0%;}
+    17% {left:-100%;}
+    32% {left:-100%;}
+    34% {left:-200%;}
+    49% {left:-200%;}
+    51% {left:300%;}
+    66% {left:300%;}
+    68% {left:200%;}
+    83% {left:200%;}
+    85% {left:100%;}
+    98% {left:100%;}
+    100% {left:0%;}
 }
 
-@keyframes slide5{
-    0%, 15% {left: 0%;}
-    17%, 32% {left: -100%;}
-    34%, 49% {left: -200%;}
-    51%, 66% {left: -300%;}
-    68%, 83% {left: -400%;}
-    85%, 98% {left: -500%;}
-    100% {left: 0%;}
+@keyframes slide05{
+    0% {left:0%;}
+    15% {left:0%;}
+    17% {left:-100%;}
+    32% {left:-100%;}
+    34% {left:400%;}
+    49% {left:400%;}
+    51% {left:300%;}
+    66% {left:300%;}
+    68% {left:200%;}
+    83% {left:200%;}
+    85% {left:100%;}
+    98% {left:100%;}
+    100% {left:0%;}
 }
 
-@keyframes slide6{
-    0%, 15% {left: 0%;}
-    17%, 32% {left: -100%;}
-    34%, 49% {left: -200%;}
-    51%, 66% {left: -300%;}
-    68%, 83% {left: -400%;}
-    85%, 98% {left: -500%;}
-    100% {left: 0%;}
+@keyframes slide06{
+    0% {left:0%;}
+    15% {left:0%;}
+    17% {left:500%;}
+    32% {left:500%;}
+    34% {left:400%;}
+    49% {left:400%;}
+    51% {left:300%;}
+    66% {left:300%;}
+    68% {left:200%;}
+    83% {left:200%;}
+    85% {left:100%;}
+    98% {left:100%;}
+    100% {left:0%;}
 }
+
 
 /* --------------- 나의 가성비 --------------- */
 
@@ -474,6 +520,9 @@ label.right{
     }
     .comparison, .ranking, .adBox {
         box-shadow: none;
+    }
+    .search-bar-container{
+       width: 63%;
     }
 }
 
@@ -639,8 +688,18 @@ label.right{
         padding: 70px 200px 10px 200px;
         column-gap: 6px;
     }
-    .ranking-web-container h1{
-        padding-bottom: 20px;
+    .ranking-web-title{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 15px;
+    }
+    .ranking-web-title button{
+        background-color: transparent;
+        border: none;
+        font-weight: 300;
+        font-size: 18px;
+        color: #838383;
     }
     .ranking-web-wrap{
         display: flex;
@@ -771,7 +830,7 @@ label.right{
 
     .comparison-img h1{
         font-size: 1.5em;
-        padding-bottom: 20px;
+        padding-bottom: 15px;
     }
 
     .comparison-img-content {
