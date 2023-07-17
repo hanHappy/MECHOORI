@@ -66,6 +66,13 @@ main{
 
     width: 29px;
     height: 28px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-upload:hover {
+    filter: brightness(0.8);
 }
 
 .profile-img-input {

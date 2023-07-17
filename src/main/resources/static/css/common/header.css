@@ -134,6 +134,7 @@ header h1 {
 .header-icon.cancel,
 .header-icon.search {
     cursor: pointer;
+    box-shadow: none;
 }
 
 /* ------------------------------------- */

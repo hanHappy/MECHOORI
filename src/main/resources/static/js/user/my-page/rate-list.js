@@ -77,6 +77,8 @@ window.addEventListener("scroll", function () {
 
 });
 
-
-
+let item = rateList.querySelector('.item');
+let noListFoundMsg = rateList.querySelector('.msg-no-list-wrap')
+if(!item)
+    noListFoundMsg.classList.remove('d-none')
 

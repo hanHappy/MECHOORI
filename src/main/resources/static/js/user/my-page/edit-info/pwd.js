@@ -29,12 +29,10 @@ checkPwdInput.addEventListener('input', ()=>{
     if(newPwd==checkPwd && isNewPwdValid){
         checkSameMsg.classList.remove('d-none')
         saveBtn.disabled = false
-        saveBtn.classList.add('active')
     }
     else{
         checkSameMsg.classList.add('d-none')
         saveBtn.disabled = true
-        saveBtn.classList.remove('active')
     }
 })
 

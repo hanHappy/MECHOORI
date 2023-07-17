@@ -1,6 +1,7 @@
 import ModalCheck from "../components/modal-check.js"
 
 let rateList = document.querySelector('.review-list')
+let reviewItem = rateList.querySelector('.review')
 let modalCheck = document.querySelector('#modal-check')
 let modalPanel = modalCheck.querySelector('.modal-panel')
 let noBtn = modalCheck.querySelector('#no')
@@ -45,3 +46,7 @@ yesBtn.addEventListener('click', (e)=>{
         }
     })
 })
+
+let noListFoundMsg = rateList.querySelector('.msg-no-list-wrap')
+if(!reviewItem)
+    noListFoundMsg.classList.remove('d-none')

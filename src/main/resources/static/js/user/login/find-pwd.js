@@ -67,8 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log(email);
 
                 let itemTemplate = `
-          <main>
-          
             <form action="/user/login/find-pwd" method="POST">
               <input type="text" name="email" value="${email}" readonly>
               <label for="passwordReset">비밀번호 재설정</label>
@@ -79,8 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </form>
             <label for="checkPasswordReset">비밀번호 재확인</label>
             <input type="text" class="checkPasswordReset" id="checkPasswordReset" placeholder="비밀번호를 다시 입력해주세요">
-            
-          </main>
         `;
                 main.insertAdjacentHTML("beforeend", itemTemplate);
             })
@@ -92,20 +88,19 @@ document.addEventListener("DOMContentLoaded", function () {
     function checkEmailConfirmationCode() {
         const userCode = document.querySelector('#email-confirm-num').value;
         const emailConfirmMsg = document.querySelector('#msg-email-confirm-result');
-        const emconfirmchk = document.querySelector('#emconfirmchk');
         const submitBtn = document.querySelector(".btn-next");
 
         if (userCode !== emailConfirmCode) {
-            emailConfirmMsg.innerHTML = '<span id="emconfirmchk">인증번호가 잘못되었습니다</span>';
-            emconfirmchk.style.color = '#FA3E3E';
-            emconfirmchk.style.fontWeight = 'bold';
-            emconfirmchk.style.fontSize = '10px';
+            emailConfirmMsg.textContent = '인증번호가 잘못되었습니다';
+            emailConfirmMsg.style.color = '#FA3E3E';
+            emailConfirmMsg.style.fontWeight = 'bold';
+            emailConfirmMsg.style.fontSize = '14px';
             submitBtn.disabled = true;
         } else {
-            emailConfirmMsg.innerHTML = '<span id="emconfirmchk">인증번호가 일치합니다</span>';
-            emconfirmchk.style.color = '#0D6EFD';
-            emconfirmchk.style.fontWeight = 'bold';
-            emconfirmchk.style.fontSize = '10px';
+            emailConfirmMsg.textContent = '인증번호가 일치합니다';
+            emailConfirmMsg.style.color = '#0D6EFD';
+            emailConfirmMsg.style.fontWeight = 'bold';
+            emailConfirmMsg.style.fontSize = '14px';
             submitBtn.disabled = false;
         }
     }

@@ -13,17 +13,17 @@
     font-size: 18px;
     font-weight: bold;
     color: #fff;
-    background-color: var(--btn-color-2);
-
-    cursor: not-allowed;
-
-    transition: 0.5s;
-}
-.button-1.active {
-    cursor: pointer;
     background-color: var(--sub-color);
+
+    cursor: pointer;
+
+    transition: 0.3s;
 }
-.button-1.active:hover{
+.button-1:disabled {
+    background-color: var(--btn-color-2);
+    cursor: not-allowed !important;
+}
+.button-1:hover{
     filter: brightness(0.8);
 }
 
