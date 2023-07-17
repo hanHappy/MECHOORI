@@ -22,7 +22,7 @@ let rankingList = document.querySelector(".ranking-list-sections");
                     let itemTemplate = `
             <div>
             <a class="thymeleaf" href="/restaurant/${list[i].id}">
-
+    
             <img src="/images/foods/${list[i].img}" class="img">
             <ul class="ranking-list">
                 <li class="rankingNum">${i+1}</li>
@@ -35,7 +35,7 @@ let rankingList = document.querySelector(".ranking-list-sections");
             </ul>
         </a>
         </div>
-
+    
           `;
 
                     rankingList.insertAdjacentHTML("beforeend", itemTemplate);

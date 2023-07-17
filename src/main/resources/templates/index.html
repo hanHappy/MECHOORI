@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="/css/common/style.css?ver=1">
     <link rel="stylesheet" href="/css/common/header.css?ver=2">
     <link rel="stylesheet" href="/css/common/modal-menu.css?ver=1">
-    <link rel="stylesheet" href="/css/index.css?ver=1">
     <script src="/js/index.js?ver=1" defer="defer"></script>
     <script src="/js/components/modal-menu.js?ver=1" defer></script>
+    
 </head>
 
 <body>
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="ad-mobile">
-                <img src="/images/assets/mainAD.svg" alt="">
+                <img src="/images/assets/mainimg.svg" alt="">
             </div>
         </div>
 
@@ -97,32 +97,31 @@
                         <button>(전체보기)</button></a>
                 </div>
                 <div class="slidebox">
-                    <input type="radio" name="slide" id="slide1" checked>
-                    <input type="radio" name="slide" id="slide2">
-                    <input type="radio" name="slide" id="slide3">
-                    <input type="radio" name="slide" id="slide4">
-                    <input type="radio" name="slide" id="slide5">
-                    <input type="radio" name="slide" id="slide6">
+                    <input type="radio" name="slide" id="slide01" checked>
+                    <input type="radio" name="slide" id="slide02">
+                    <input type="radio" name="slide" id="slide03">
+                    <input type="radio" name="slide" id="slide04">
+                    <input type="radio" name="slide" id="slide05">
+                    <input type="radio" name="slide" id="slide06">
 
-                    <!-- 반복문으로 변경, 상태값 함께 가져오기 -->
                     <ul class="slidelist">
                         <li th:each="item, index : ${listRank}" class="slideitem">
                             <div>
-                                <label th:for="'slide' + (${index.index})" class="left"></label>
-                                <div class="imgTest">
-                                    <img class="resImg" th:src="@{/images/foods/{img}(img=${item.img})}">
-                                    <div class="textTest">
-                                        <span th:text="${index.index + 1} + '위'"></span>
-                                        <span th:text="${item.name}"></span>
-                                        <span>(가성비 &nbsp; <span class="valueText"
-                                                th:text="${item.value} + '%'"></span>)</span>
-                                    </div>
+                                <label th:if="${index.index == 0}" th:for="'slide06'" class="left"></label>
+                                <label th:if="${index.index != 0}" th:for="'slide0' + (${index.index})" class="left"></label>
+                            <div class="imgTest">
+                                <img class="resImg" th:src="@{/images/foods/{img}(img=${item.img})}">
+                                <div class="textTest">
+                                    <span class="rankColor" th:text="${index.index + 1} + '위'"></span>
+                                    <span th:text="${item.name}"></span>
+                                    <span>(가성비 &nbsp; <span class="valueText" th:text="${item.value} + '%'"></span>)</span>
                                 </div>
-                                <label th:for="'slide' + (${index.index + 2})" class="right"></label>
+                            </div>
+                            <label th:for="'slide0' + (${index.index + 2})" class="right"></label>
                             </div>
                         </li>
                         <li class="slideitem">
-                            <label for="slide06" class="left"></label>
+                            <label for="slide05" class="left"></label>
                             <div class="imgTest">
                                 <a href="restaurant/ranking">
                                     <img class="resImg" src="/images/foods/1랭킹더미.svg" alt="">
@@ -136,7 +135,12 @@
         </section>
 
         <section class="ranking-web-container">
-            <h1>가성비 랭킹 TOP5</h1>
+            <div class="ranking-web-title">
+                <h1>가성비 랭킹 TOP5</h1>
+                <a href="restaurant/ranking">
+                    <button>(전체보기)</button>
+                </a>
+            </div>
             <div class="ranking-web-wrap">
                 <div class="ranking-web-left">
                     <img th:src="@{/images/foods/{img}(img=${listRank[0].img})}">

@@ -7,11 +7,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>손 안의 메뉴 추천 리스트, 메추리</title>
+    <title th:text="'메뉴 추천 리스트, 메추리 : '+${r.name}"> </title>
     <link rel="stylesheet" type="text/css" href="/css/common/style.css?ver=1">
     <link rel="stylesheet" href="/css/common/header.css?ver=2">
     <link rel="stylesheet" type="text/css" href="/css/restaurant/detail.css?ver=1">
     <link rel="stylesheet" href="/css/common/button.css?ver=1">
+    <link rel="stylesheet" href="/css/common/modal-toast.css?ver=1">
     <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
     <script src="/js/restaurant/map.js" defer></script>
@@ -80,6 +81,9 @@
                 </div>
             </div>
         </div>
+                </div>
+            </div>
+        </div>
 
         <section class="forWeb">
             <div class="menu">
@@ -87,7 +91,25 @@
                     <img src="/images/icons/icon-line.svg">
                     <p>대표메뉴</p>
                 </div>
+        <section class="forWeb">
+            <div class="menu">
+                <div class="menu-title">
+                    <img src="/images/icons/icon-line.svg">
+                    <p>대표메뉴</p>
+                </div>
 
+                <div class="menu-detail" th:each="menu, iter : ${menuViewList}" th:if="${iter.index} &lt; 4">
+                    <div class="menu-detail-name">
+                        <span th:text="${menu.name}">메뉴명</span>
+                    </div>
+                    <div>
+                        <span class="dot">………………</span>
+                    </div>
+                    <div>
+                        <span th:text="${menu.price + '원'}">가격</span>
+                        <span th:text="'(' + ${menu.value} + '%)'" class="menu-detail-rp"></span>
+                    </div>
+                </div>
                 <div class="menu-detail" th:each="menu, iter : ${menuViewList}" th:if="${iter.index} &lt; 4">
                     <div class="menu-detail-name">
                         <span th:text="${menu.name}">메뉴명</span>
@@ -117,6 +139,22 @@
                     </ul>
                 </div>
             </div>
+                <div class="button-6">
+                    <input id="check-btn" type="checkbox">
+                    <label for="check-btn">메뉴 더보기</label>
+                    <span class="togle">▼</span>
+                    <ul class="menubars" th:each="menu, iterStat : ${menuViewList}" th:if="${iterStat.index} &gt;= 4">
+                        <div class="menubars-content">
+                            <span class="menu-detail-name" th:text="${menu.name}">메뉴명</span>
+                            <span>…………</span>
+                            <div>
+                                <span th:text="${menu.price}+'원'">가격</span>
+                                <span th:text="'(' + ${menu.value} + '%)'" class="menu-detail-rp"></span>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
 
             <div class="map">
                 <div class="map-title-box">
@@ -129,33 +167,37 @@
                         <img src="/images/icons/icon-mapmore.svg" id="map-address-copy-button">
                     </div>
                 </div>
-
-                <!-- TODO UI 수정 -->
-                <div class="map-detail">
-                    <div class="map-table">
-                        <div id="map" style="height: 200px; width: 100%;"></div>
-                        <div class="map-button">
-                            <div class="map-button-image" id=btnWrap>
-                                <div id="popupBtn">
-                                    <img src="/images/icons/icon-phone.svg">전화하기
-                                </div>
-                            </div>
-                            <div class="map-button-image">
-                                <img src="/images/icons/icon-map.svg">
-                                <a href="/restaurant/mapPage" th:href="@{mapPage/{id}(id=${r.id})}">
-                                    지도보기
-                                </a>
-                            </div>
-                        </div>
+            <div class="map">
+                <div class="map-title-box">
+                    <div class="map-title">
+                        <img src="/images/icons/icon-line.svg">
+                        <p>위치 안내</p>
+                    </div>
+                    <div class="map-address">
+                        <p class="map-address-content" th:text="${r.address}" id="map-address-copy-text">주소</p>
+                        <img src="/images/icons/icon-mapmore.svg" id="map-address-copy-button">
                     </div>
                 </div>
+
+        <div class="map-detail">
+            <div class="map-table">
+                <div id="map" style="height: 200px; width: 100%;"></div>
+                <div class="map-button">
+                    <img src="/images/icons/icon-map.svg">
+                    <a href="/restaurant/mapPage" th:href="@{mapPage/{id}(id=${r.id})}">
+                        지도보기
+                    </a>
+                </div>
             </div>
-        </section>
-        <div class="review">
-            <div class="review-title-box">
-                <div class="review-title">
-                    <img src="/images/icons/icon-line.svg">
-                    <p>리뷰 (<span class="review-span" th:text="${rateList.size()}">99</span>+)</p>
+        </div>
+    </div>
+    </section>
+    <!----------- 변경 중 --------------->
+    <div class="review">
+        <div class="review-title-box">
+            <div class="review-title">
+                <img src="/images/icons/icon-line.svg">
+                <p>리뷰 (<span class="review-span" th:text="${rateList.size()}">99</span>+)</p>
 
                 </div>
                 <a href="reviews" th:href="@{/restaurant/{id}/reviews(id=${r.id})}">
@@ -175,78 +217,13 @@
             <a href="rate" th:href="@{/restaurant/{id}/rate(id=${r.id})}"><span class="icon-rate text-hidden"></span>&nbsp;&nbsp;<span>평가하기</span></a>
         </div>
 
-    </main>
+</main>
 
+<!---- 주소 복사 모달 ---->
+<div id="modal-copy">
+    <p>주소가 복사되었습니다.</p>
+</div>
 
-    <!-- ============================================================= -->
-
-    <!-- 주소 복사 모달 -->
-    <!-- <div id="address-copy-modal" class="address-copy-modal">
-  <div class="address-copy-modal-content">
-    <p id="copy-notification-message"></p>
-  </div>
-</div> -->
-
-    <!-- TODO 상세 페이지 로드 시 모달 노출 : 확인 중-->
-    <!-- 전화하기 모달 -->
-    <!--<div id="modalWrap">-->
-    <!--  <div id="modalContent">-->
-    <!--    <div id="modalBody">-->
-    <!--      <div id="callBtn">전화하기</div>-->
-    <!--      <div id="closeBtn">취소하기</div>-->
-    <!--    </div>-->
-    <!--  </div>-->
-    <!--</div>-->
-
-
-    <!-- 스크립트 (분리 예정) -->
-
-    <script>
-
-        // 주소 복사
-        const copyButton = document.getElementById('map-address-copy-button');
-        const addressText = document.getElementById('map-address-copy-text');
-
-        copyButton.addEventListener('click', () => {
-            const address = addressText.textContent;
-            navigator.clipboard.writeText(address)
-                .then(() => {
-                    copyButton.onclick = function () {
-                        modal.style.display = 'block';
-                    }
-                    alert('주소가 복사되었습니다.');
-                })
-                .catch((error) => {
-                    console.error('복사 실패:', error);
-                });
-        });
-
-        // 전화하기 버튼
-        document.addEventListener('DOMContentLoaded', function () {
-            const btn = document.getElementById('popupBtn');
-            const modal = document.getElementById('modalWrap');
-            const closeBtn = document.getElementById('closeBtn');
-            const callBtn = document.getElementById('callBtn');
-
-            modal.style.display = 'none';
-
-            btn.onclick = function () {
-                modal.style.display = 'block';
-            }
-            closeBtn.onclick = function () {
-                modal.style.display = 'none'; // 모달 닫기
-            }
-            callBtn.onclick = function () {
-                modal.style.display = 'none'; // 모달 닫기
-            }
-
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none'; // 모달 외부
-                }
-            }
-        });
-    </script>
 </body>
 
 </html>
