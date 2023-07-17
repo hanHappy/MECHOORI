@@ -18,6 +18,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,12 +34,14 @@ import com.mechoori.web.entity.Restaurant;
 import com.mechoori.web.entity.RestaurantDetail;
 import com.mechoori.web.entity.RestaurantRankView;
 import com.mechoori.web.entity.RestaurantView;
+import com.mechoori.web.entity.ReviewListView;
 import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RateService;
 import com.mechoori.web.service.RestaurantService;
+import com.mechoori.web.service.ReviewListService;
 
 @Controller
 @RequestMapping("/restaurant")
@@ -52,6 +55,8 @@ public class RestaurantController {
     private CategoryService categoryService;
     @Autowired
     private RateService rateService;
+    @Autowired
+    private ReviewListService reviewListService;
 
     @Value("${upload.review}")
     private String uploadPath;
@@ -193,9 +198,24 @@ public class RestaurantController {
         return "redirect:rate-result";
     }
 
-//get mapping
-//model -> map<>  =
-// data 
+    // ---------- 리뷰 리스트 (R) ------------
+    @GetMapping("{id}/reviews")
+    public String reiviewList(
+            @PathVariable("id") int restaurantId, 
+            @AuthenticationPrincipal MechooriUserDetails member,
+            Model model){
+
+
+        List<ReviewListView> list = reviewListService.getDate(restaurantId);
+        int count = list.size();
+
+        model.addAttribute("list", list)
+            .addAttribute("count", count);
+        System.out.println(list);
+        System.out.println(count);
+        return "restaurant/reviews";
+    }
+
 
 
     @GetMapping("/ranking")

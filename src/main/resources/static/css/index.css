@@ -183,6 +183,10 @@ main{
     width: 29px;
 }
 
+.rankColor{
+    color:#FFD700 !important;
+}
+
 
 /* ------------------- 3. 컨텐츠 ----------------- */
 
@@ -324,7 +328,9 @@ label.right{
 }
 
 .valueText{
-    color: #FFE551 !important;
+    /* color:   #FFC0CB !important; */
+    /* color:   #00FF00 !important; */
+    color:   #ff8902 !important;
 }
 
 

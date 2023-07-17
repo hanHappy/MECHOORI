@@ -27,4 +27,6 @@ public interface RateService {
 
 
     Map<String, Object> getRateResult(int restaurantId, int memberId);
+
+    int delete(int id);
 }

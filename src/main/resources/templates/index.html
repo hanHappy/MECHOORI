@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="/css/common/style.css?ver=1">
     <link rel="stylesheet" href="/css/common/header.css?ver=2">
     <link rel="stylesheet" href="/css/common/modal-menu.css?ver=1">
-    <link rel="stylesheet" href="/css/index.css?ver=1">
     <script src="/js/index.js?ver=1" defer="defer"></script>
     <script src="/js/components/modal-menu.js?ver=1" defer></script>
+    
 </head>
 
 <body>
@@ -114,7 +114,7 @@
                             <div class="imgTest">
                                 <img class="resImg" th:src="@{/images/foods/{img}(img=${item.img})}">
                                 <div class="textTest">
-                                    <span th:text="${index.index + 1} + '위'"></span>
+                                    <span class="rankColor" th:text="${index.index + 1} + '위'"></span>
                                     <span th:text="${item.name}"></span>
                                     <span>(가성비 &nbsp; <span class="valueText" th:text="${item.value} + '%'"></span>)</span>
                                 </div>

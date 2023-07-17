@@ -3,7 +3,6 @@ package com.mechoori.web.service;
 import java.util.List;
 
 import com.mechoori.web.entity.*;
-import com.mechoori.web.entity.RestaurantView;
 
 public interface RestaurantService {
 
@@ -28,6 +27,7 @@ public interface RestaurantService {
 	
 	List<RestaurantRankView> getRanking(Integer categoryId , int offset);
     void add(Restaurant restaurant);
+    void update(Restaurant restaurant);
 
 
 //	List<RestaurantRankView> getRanking(int offset);
