@@ -1,6 +1,7 @@
 package com.mechoori.web.entity;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+// TODO RateListView와 합치기
 public class ReviewListView {
     private int id;
     private int memberId;

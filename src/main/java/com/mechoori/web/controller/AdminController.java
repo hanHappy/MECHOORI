@@ -135,6 +135,13 @@ public class AdminController {
         return "admin/restaurant/edit";
     }
 
+    @GetMapping("restaurant/{id}/edit")
+    public String updateRestaurant(@PathVariable("id") int restaurantId, Model model){
+        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+        model.addAttribute("r", restaurant);
+        return "admin/restaurant/edit";
+    }
+
     // ================= 메뉴 =================
 
     @GetMapping("restaurant/{id}/menu")
