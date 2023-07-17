@@ -31,7 +31,6 @@ let variables = {
 }
 
 let otherCategoryAllId = 6
-let isLoadingOnScroll = false;
 
 // ==================== 검색바 ====================
 // 검색바 보이기() --------------------------------
@@ -73,13 +72,11 @@ function resetVariables(){
     variables.filterId = null
     variables.offset = 0
     filter.selectedIndex = 0
-    isLoadingOnScroll = false
+    restaurantList.innerHTML = ""
     window.scroll({
         top: 0,
     })
 }
-
-// TODO url에 offset 포함
 
 // -------------- 식당 리스트 로드 함수 ---------------
 function restaurantListLoad(url){
@@ -91,8 +88,6 @@ function restaurantListLoad(url){
         .then(response => response.json())
         .then(list => {
             console.log(list);
-            if(!isLoadingOnScroll)
-                restaurantList.innerHTML = ""
 
             // 아이템 채우기
             for (let r of list) {
@@ -316,12 +311,6 @@ window.addEventListener("scroll", function () {
     let documentHeight = document.documentElement.scrollHeight
     let scrollTop = document.documentElement.scrollTop
     let windowHeight = document.documentElement.clientHeight
-
-    isLoadingOnScroll = true
-
-    // console.log(documentHeight);
-    // console.log(scrollTop);
-    // console.log(windowHeight);
 
     // 스크롤 바닥에 닿으면
     if (scrollTop + windowHeight >= documentHeight - 10){
