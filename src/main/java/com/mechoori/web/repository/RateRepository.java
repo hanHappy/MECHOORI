@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.RateListView;
+import com.mechoori.web.entity.ReviewListView;
 import com.mechoori.web.entity.Statistics;
 import com.mechoori.web.entity.Statistics2;
 import com.mechoori.web.entity.Statistics3;
@@ -14,22 +15,26 @@ import com.mechoori.web.entity.Statistics3;
 public interface RateRepository {
 
     void add(Rate rate);
+    int delete(int id);
 
     List<Rate> findAll();
     List<Rate> findAll(int menuId);
 
     List<Rate> findByMenuIds(List<Integer> menuIds);
 
-    List<RateListView> getList(int memberId);
+    List<RateListView> getMyList(int memberId);
 
     // ------ chart ------
     List<Statistics> findData(int memberId);
     List<Statistics2> findData2(int memberId);
     List<Statistics3> findData3(int memberId);
 
-    List<RateListView> getList(int memberId, int offset, int size);
+    List<RateListView> getMyList(int memberId, int offset, int size);
 
     Rate findLatest(int memberId);
+
+    List<ReviewListView> findViewAll(int restaurantId);
+
 
     int delete(int id);
 }

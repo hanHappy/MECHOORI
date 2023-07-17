@@ -128,6 +128,14 @@ header h1 {
     height: 21px;
 }
 
+.header-icon.back,
+.header-icon.home,
+.header-icon.menu,
+.header-icon.cancel,
+.header-icon.search {
+    cursor: pointer;
+}
+
 /* ------------------------------------- */
 @media (min-width: 769px) {
     .header-side {

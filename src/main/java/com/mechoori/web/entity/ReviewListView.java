@@ -1,7 +1,6 @@
 package com.mechoori.web.entity;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <meta charset="UTF-8">
@@ -31,7 +31,7 @@
             <div class="header-icon hoverimg">
             </div>
         </div>
-        
+
         <div class="header-side right">
             <a sec:authorize="isAnonymous()" href="/user/login" class="header-icon menu">메뉴</a>
             <a sec:authorize="isAuthenticated()" id="menu" class="header-icon menu">메뉴</a>
@@ -47,15 +47,14 @@
                         <label class="search-input" for="search-input">
                             <img src="/images/icons/search-black.svg">
                         </label>
-                        <input class="search" name="q" type="text" id="search-input"
+                        <input class="search placeholder-effect" name="q" type="text" id="search-input"
                             sec:authorize="isAuthenticated()"
                             th:placeholder="${#authentication.principal.nickname} + '님, 오늘은 짜장상회 어떠세요?'">
-                        <input class="search" name="q" type="text" id="search-input"
-                            sec:authorize="!isAuthenticated()"
-                            placeholder="드시고 싶은 메뉴를 입력해보세요">
+                        <input class="search placeholder-effect" name="q" type="text" id="search-input"
+                            sec:authorize="!isAuthenticated()" placeholder="드시고 싶은 메뉴를 입력해보세요">
 
                         <a href="/map">
-                        <img class="search-map" src="/images/icons/지도아이콘.svg" alt="">
+                            <img class="search-map" src="/images/icons/지도아이콘.svg" alt="">
                         </a>
                     </form>
                 </div>
@@ -80,8 +79,7 @@
                 </div>
                 <li th:each="c : ${list}">
                     <input name="c" type="hidden" th:value="${c.id}">
-                    <a href="/restaurant/list/category/1"
-                       th:href="@{/restaurant/list(c=${c.id})}">
+                    <a href="/restaurant/list/category/1" th:href="@{/restaurant/list(c=${c.id})}">
                         <img src="/images/icons/icon-web-한식.svg"
                             th:src="@{/images/icons/icon-web-{img}(img=${c.image})}">
                         <p th:text="${c.name}"></p>
@@ -96,7 +94,7 @@
                 <div class="title-box">
                     <h1>가성비 랭킹 TOP5</h1>
                     <a href="restaurant/ranking">
-                    <button>(전체보기)</button></a>
+                        <button>(전체보기)</button></a>
                 </div>
                 <div class="slidebox">
                     <input type="radio" name="slide" id="slide01" checked>
@@ -125,9 +123,9 @@
                         <li class="slideitem">
                             <label for="slide05" class="left"></label>
                             <div class="imgTest">
-                            <a href="restaurant/ranking">
-                                <img class="resImg" src="/images/foods/1랭킹더미.svg" alt="">
-                            </a>
+                                <a href="restaurant/ranking">
+                                    <img class="resImg" src="/images/foods/1랭킹더미.svg" alt="">
+                                </a>
                             </div>
                             <a><label for="slide01" class="right"></label></a>
                         </li>
@@ -153,7 +151,8 @@
                     </div>
                 </div>
                 <div class="ranking-web-right">
-                    <div th:each="item, index : ${listRank}" class="slideitem" th:if="${index.index &gt= 1 && index.index &lt= 4}">
+                    <div th:each="item, index : ${listRank}" class="slideitem"
+                        th:if="${index.index &gt= 1 && index.index &lt= 4}">
                         <img th:src="@{/images/foods/{img}(img=${item.img})}">
                         <div class="ranking-text-right">
                             <span th:text="${index.index + 1} + '위'"></span>
@@ -170,7 +169,7 @@
                 <h1>나만의 가성비 차트</h1>
                 <div class="comparison-img-content">
                     <a href="user/my-page/statistics">
-                        <img  src="images/components/index-성과비교.png" alt="">
+                        <img src="images/components/index-성과비교.png" alt="">
                     </a>
                 </div>
                 <div class="comparison-text">
@@ -191,58 +190,59 @@
             </div>
         </div>
 
-            <!-- ============== 메뉴 모달 ============== -->
-    <div class="modal-menu">
-        <div class="screen">
-            <div class="panel">
-                <div class="profile-image-wrapper">
-                    <div class="profile-image-frame">
-                        <img class="profile-image" th:src="${#authentication.principal.img}" alt="프로필사진">
+        <!-- ============== 메뉴 모달 ============== -->
+        <div class="modal-menu d-none">
+            <div class="screen">
+                <div class="panel">
+                    <div class="profile-image-wrapper">
+                        <div class="profile-image-frame">
+                            <img class="profile-image" th:src="${#authentication.principal.img}" alt="프로필사진">
+                        </div>
+                        <div class="nickname-wrapper">
+                            <span class="nickname" th:text="${#authentication.principal.nickname}"></span>
+                        </div>
                     </div>
-                    <div class="nickname-wrapper">
-                        <span class="nickname" th:text="${#authentication.principal.nickname}"></span>
-                    </div>
-                </div>
 
-                <nav class="menu-list-section">
-                    <ul>
-                        <li>
-                            <a href="/user/my-page/edit-info">
-                                <div class="icon icon-key"></div>
-                                <span>회원 정보 수정</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/user/my-page/like-list">
-                                <div class="icon icon-heart"></div>
-                                <span>찜 목록</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/user/my-page/rate-list">
-                                <div class="icon icon-review"></div>
-                                <span>평가 목록</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/user/my-page/statistics">
-                                <div class="icon icon-chart"></div>
-                                <span>가성비 평가 통계</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/logout">
-                                <div class="icon icon-power"></div>
-                                <span>로그아웃</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                    <nav class="menu-list-section">
+                        <ul>
+                            <li>
+                                <a href="/user/my-page/edit-info">
+                                    <div class="icon icon-key"></div>
+                                    <span>회원 정보 수정</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/like-list">
+                                    <div class="icon icon-heart"></div>
+                                    <span>찜 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/rate-list">
+                                    <div class="icon icon-review"></div>
+                                    <span>평가 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/statistics">
+                                    <div class="icon icon-chart"></div>
+                                    <span>가성비 평가 통계</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/logout">
+                                    <div class="icon icon-power"></div>
+                                    <span>로그아웃</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
 
     </main>
 
 </body>
+
 </html>
