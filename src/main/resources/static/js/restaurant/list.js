@@ -74,6 +74,9 @@ function resetVariables(){
     variables.offset = 0
     filter.selectedIndex = 0
     isLoadingOnScroll = false
+    window.scroll({
+        top: 0,
+    })
 }
 
 // TODO url에 offset 포함
@@ -83,8 +86,6 @@ function restaurantListLoad(url){
     let memberId = null
     if(document.querySelector("#member-id")!=null)
         memberId = document.querySelector("#member-id").value
-
-    console.log(url);
 
     fetch(url)
         .then(response => response.json())
@@ -230,11 +231,11 @@ filterBox.onchange = function(e){
     variables.offset = 0
     let url = null
 
-    if(topCategoryId)
+    if(variables.topCategoryId)
         url = `/api/restaurant/list?tc=${variables.topCategoryId}&f=${variables.filterId}&o=${variables.offset}`
-    else if(categoryId)
+    else if(variables.categoryId)
         url = `/api/restaurant/list?c=${variables.categoryId}&f=${variables.filterId}&o=${variables.offset}`
-    else if(query)
+    else if(variables.query)
         url = `/api/restaurant/list?q=${variables.query}&f=${variables.filterId}&o=${variables.offset}`
         
     restaurantListLoad(url)
@@ -318,34 +319,37 @@ window.addEventListener("scroll", function () {
 
     isLoadingOnScroll = true
 
+    // console.log(documentHeight);
+    // console.log(scrollTop);
+    // console.log(windowHeight);
+
     // 스크롤 바닥에 닿으면
-    if (scrollTop + windowHeight >= documentHeight){
+    if (scrollTop + windowHeight >= documentHeight - 10){
         variables.offset += 6
-        console.log("x");
         window.scroll({
-            top: 300
-            });
-    }
-
-    let url = "/api/restaurant/list?"
-
-    let urls = {
-        query: `q=${variables.query}`,
-        topCategoryId: `tc=${variables.topCategoryId}`,
-        categoryId: `c=${variables.categoryId}`,
-        filterId: `f=${variables.filterId}`,
-        offset: `o=${variables.offset}`
-    }
-
-    let keyArr = Object.keys(variables)
-    let and = "&"
-    for(let i = 0; i < keyArr.length; i++){
-        if(variables[keyArr[i]] !== null){
-            url = `${url}${urls[keyArr[i]]}`
-            if(i<keyArr.length-2)
-                url = `${url}${and}`
+            top: documentHeight,
+        })
+        
+        let url = "/api/restaurant/list?"
+    
+        let urls = {
+            query: `q=${variables.query}`,
+            topCategoryId: `tc=${variables.topCategoryId}`,
+            categoryId: `c=${variables.categoryId}`,
+            filterId: `f=${variables.filterId}`,
+            offset: `o=${variables.offset}`
         }
+    
+        let keyArr = Object.keys(variables)
+        let and = "&"
+        for(let i = 0; i < keyArr.length; i++){
+            if(variables[keyArr[i]] !== null){
+                url = `${url}${urls[keyArr[i]]}`
+                if(i<keyArr.length-2)
+                    url = `${url}${and}`
+            }
+        }
+        restaurantListLoad(url);
     }
-    console.log(url);
-    // restaurantListLoad(url);
+
 })

@@ -2,6 +2,7 @@ package com.mechoori.web.controller;
 
 import java.util.List;
 
+import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -102,6 +103,13 @@ public class AdminController {
     public String addRestaurant(Restaurant restaurant){
         restaurantService.add(restaurant);
         return "redirect:../restaurant";
+    }
+
+    @GetMapping("restaurant/{id}/edit")
+    public String updateRestaurant(@PathVariable("id") int restaurantId, Model model){
+        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+        model.addAttribute("r", restaurant);
+        return "admin/restaurant/edit";
     }
 
     // ================= 메뉴 =================
