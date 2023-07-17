@@ -1,6 +1,5 @@
 package com.mechoori.web.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,7 +7,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.RateListView;
@@ -18,7 +16,6 @@ import com.mechoori.web.entity.Statistics2;
 import com.mechoori.web.entity.Statistics3;
 import com.mechoori.web.repository.MenuRepository;
 import com.mechoori.web.repository.RateRepository;
-import com.mechoori.web.repository.RestaurantRepository;
 import com.mechoori.web.repository.RestaurantRepository;
 
 @Service
@@ -147,5 +144,10 @@ public class RateServiceImp implements RateService {
     @Override
     public List<ReviewListView> getViewList(int restaurantId) {
         return repository.findViewAll(restaurantId);
+    }
+
+    @Override
+    public int delete(int id) {
+        return repository.delete(id);
     }
 }

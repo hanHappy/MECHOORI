@@ -73,10 +73,10 @@
 
         <section class="type">
             <ul class="typelist">
-                <div class="category-all-wrapper">
-                    <img src="/images/icons/icon-web-카테고리.svg">
-                    <p>카테고리</p>
-                </div>
+<!--                <div class="category-all-wrapper">-->
+<!--                    <img sㅑrc="/images/icons/icon-web-카테고리.svg">-->
+<!--                    <p>카테고리</p>-->
+<!--                </div>-->
                 <li th:each="c : ${list}">
                     <input name="c" type="hidden" th:value="${c.id}">
                     <a href="/restaurant/list/category/1" th:href="@{/restaurant/list(c=${c.id})}">

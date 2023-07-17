@@ -18,4 +18,6 @@ public interface MenuRepository {
 
     void add(Menu menu);
     void update(Menu menu);
+
+    int delete(int id);
 }

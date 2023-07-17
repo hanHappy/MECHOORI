@@ -35,4 +35,10 @@
 		where id = #{id}
 	</update>
 
+
+	<delete id="delete" parameterType="int">
+		delete from menu
+		where id = #(id)
+	</delete>
+
 </mapper>
