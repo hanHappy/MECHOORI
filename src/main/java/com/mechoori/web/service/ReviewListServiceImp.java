@@ -16,9 +16,9 @@ public class ReviewListServiceImp implements ReviewListService{
 
 
     @Override
-    public List<ReviewListView> getDate(int member) {
+    public List<ReviewListView> getDate(int restaurantId) {
        
-        List<ReviewListView> list = repository.findAll(member);
+        List<ReviewListView> list = repository.findAll(restaurantId);
 
         return list;
     }

@@ -9,6 +9,6 @@ import com.mechoori.web.entity.ReviewListView;
 @Mapper
 public interface ReviewListRepository {
 
-    public List<ReviewListView> findAll(int member);
+    public List<ReviewListView> findAll(int restaurantId);
 
 }

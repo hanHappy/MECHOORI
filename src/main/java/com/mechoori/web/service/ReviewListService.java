@@ -6,5 +6,5 @@ import com.mechoori.web.entity.ReviewListView;
 
 public interface ReviewListService {
 
-    public List<ReviewListView> getDate(int member);
+    public List<ReviewListView> getDate(int restaurantId);
 }

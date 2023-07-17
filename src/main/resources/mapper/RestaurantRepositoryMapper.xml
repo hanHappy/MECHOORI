@@ -98,6 +98,19 @@
       values(#{topCategoryId}, #{categoryId}, #{name}, #{img}, #{intro}, #{address}, #{operatingTime}, #{contactNumber})
    </insert>
 
+	<update id="update" parameterType="Restaurant">
+        update restaurant
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="img != null">img = #{img},</if>
+            <if test="intro != null">intro = #{intro},</if>
+            <if test="address != null">address = #{address},</if>
+            <if test="operatingTime != null">operating_time = #{operatingTime},</if>
+            <if test="contactNumber != null">contact_number = #{contactNumber}</if>
+        </set>
+        where id = #{id}        
+    </update>
+
     <select id="getRanking" resultType="RestaurantRankView">
         SELECT *
         FROM restaurant_rank_view

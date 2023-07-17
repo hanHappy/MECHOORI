@@ -3,9 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/admin/restaurant.css">
     <title>UPDATE Restaurant</title>
 </head>
 <body>
-    
+    <a href="../../restaurant">식당 페이지로</a>
+
+    <hr>
+    <br>
+
+    <div class="column-container">
+        <div class="column-box">
+            <p>id</p>
+            <p>상위카테고리</p>
+            <p>카테고리</p>
+            <p>식당명</p>
+            <p>이미지</p>
+            <p>소개</p>
+            <p>주소</p>
+            <p>영업시간</p>
+            <p>연락처</p>
+        </div>
+    </div>
+    <section class="restaurant-list-section">
+        <h1 style="display: none;">식당 리스트</h1>
+        <div class="restaurant-list">
+            <form action="edit" method="POST">
+                <section class="data">
+                    <span th:text="${r.id}"></span>
+                    <input type="hidden" name="id" th:value="${r.id}">
+                    <input name="topCategoryId" th:placeholder="${r.topCategoryId}"></span>
+                    <input type="text" name="categoryId" th:placeholder="${r.categoryId}" >
+                    <input type="text" name="name" th:placeholder="${r.name}" >
+                    <input type="text" name="img" th:placeholder="${r.img}" >
+                    <input type="text" name="intro" th:placeholder="${r.intro}" >
+                    <input type="text" name="address" th:placeholder="${r.address}" >
+                    <input type="text" name="operatingTime" th:placeholder="${r.operatingTime}" >
+                    <input type="text" name="contactNumber" th:placeholder="${r.contactNumber}" >
+                    <button>완료</button>
+                    <input type="hidden" name="rid" th:value="${r.id}">
+                </section>
+            </form>
+        </div>
+    </section>
+
+    <br>
 </body>
 </html>

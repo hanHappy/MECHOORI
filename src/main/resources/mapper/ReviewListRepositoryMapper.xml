@@ -6,6 +6,6 @@
     <select id="findAll" resultType="ReviewListView">
         select * 
             from review_list_view
-            where member_id = #{memberId}
+            where restaurant_id = #{restaurantId}
     </select>
 </mapper>

@@ -18,6 +18,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -197,23 +198,24 @@ public class RestaurantController {
         return "redirect:rate-result";
     }
 
-    // ---------- 리뷰 리스트 ------------
-    @GetMapping("{id}/reviewList")
+    // ---------- 리뷰 리스트 (R) ------------
+    @GetMapping("{id}/reviews")
     public String reiviewList(
             @PathVariable("id") int restaurantId, 
             @AuthenticationPrincipal MechooriUserDetails member,
             Model model){
 
 
-        List<ReviewListView> list = reviewListService.getDate(member.getId());
-        model.addAttribute("list", list);
+        List<ReviewListView> list = reviewListService.getDate(restaurantId);
+        int count = list.size();
 
-        return "restaurant/reviewList";
+        model.addAttribute("list", list)
+            .addAttribute("count", count);
+        System.out.println(list);
+        System.out.println(count);
+        return "restaurant/reviews";
     }
 
-//get mapping
-//model -> map<>  =
-// data 
 
 
     @GetMapping("/ranking")
