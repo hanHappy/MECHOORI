@@ -55,6 +55,11 @@ body { background-color: var(--background-color); }
 
 
 /* ============== 평가 목록 ============== */
+.rate-list-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .rate-list {
   padding: 10px 20px;
@@ -73,7 +78,6 @@ body { background-color: var(--background-color); }
   background-color: white;
   box-shadow: var(--item-shadow-1);
 
-  /* overflow: hidden; */
   width: 164px;
   height: 180px;
 
@@ -148,6 +152,7 @@ body { background-color: var(--background-color); }
 .back {
   backface-visibility: hidden;
   background-color: white;
+  border-radius: 8px;
 
   box-sizing: border-box;
   padding: 10px;

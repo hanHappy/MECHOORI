@@ -12,6 +12,7 @@ import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.RateListView;
+import com.mechoori.web.entity.ReviewListView;
 import com.mechoori.web.entity.Statistics;
 import com.mechoori.web.entity.Statistics2;
 import com.mechoori.web.entity.Statistics3;
@@ -35,6 +36,11 @@ public class RateServiceImp implements RateService {
         rate.setId(null);
         rate.setMemberId(memberId);
         repository.add(rate);
+    }
+
+    @Override
+    public int delete(int id) {
+        return repository.delete(id);
     }
 
     @Override
@@ -88,8 +94,8 @@ public class RateServiceImp implements RateService {
     }
 
     @Override
-    public List<RateListView> getList(int memberId, int offset) {
-        List<RateListView> list = repository.getList(memberId, offset, 6);
+    public List<RateListView> getMyList(int memberId, int offset) {
+        List<RateListView> list = repository.getMyList(memberId, offset, 6);
         for(RateListView item : list){
             double value_ = (double)item.getRatePrice() / item.getPrice() * 100;
             int value = (int) Math.round(value_);
@@ -144,8 +150,9 @@ public class RateServiceImp implements RateService {
     }
 
     @Override
-    public int delete(int id) {
-
-        return repository.delete(id); 
+    public List<ReviewListView> getViewList(int restaurantId) {
+        return repository.findViewAll(restaurantId);
     }
+
+
 }

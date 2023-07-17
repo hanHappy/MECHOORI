@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+// TODO RateListView와 합치기
 public class ReviewListView {
     private int id;
     private int memberId;

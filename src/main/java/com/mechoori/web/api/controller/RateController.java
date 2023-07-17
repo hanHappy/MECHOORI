@@ -7,20 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mechoori.web.service.RateService;
-import com.mechoori.web.service.ReviewListService;
 
 @RestController("apiRateController")
 @RequestMapping("api/rate")
 public class RateController {
-    
+
     @Autowired
-    private RateService service;
-
-
+    private RateService rateService;
+    
     @DeleteMapping("{id}")
     public int delete(@PathVariable("id") int id){
-        System.out.println(id);
-         
-        return service.delete(id);
+        return rateService.delete(id);
     }
+
 }

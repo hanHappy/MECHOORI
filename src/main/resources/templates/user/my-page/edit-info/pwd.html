@@ -20,13 +20,15 @@
 <body>
     <header>
         <div class="header-side left">
-            <a onclick="history.back()"> <img class="header-icon back" src="" alt=""></a>
+            <a onclick="history.back()" class="header-icon back"></a>
         </div>
-        <div class="header-icon logo">
-            <a href="/"><img src="/assets/logo.svg" alt=""></a>
+        <div class="logo-container">
+            <a href="/">
+              <div class="header-icon logo"></div>
+            </a>
+            <div class="header-icon hoverimg"></div>
         </div>
         <div class="header-side right">
-            <a href="/user/my-page"> <img class="userBtn-img" src="/images/icons/햄버거Btn.svg" alt=""></a>
         </div>
     </header>
     <main>
@@ -72,14 +74,14 @@
                         <li>안전한 계정 사용을 위해 비밀번호는 주기적으로 변경해 주세요.</li>
                     </ul>
 
-                    <button type="button" th:data-mid="${#authentication.principal.id}" class="button button-1 btn-save" disabled>저장</button>
+                    <button type="button" th:data-mid="${#authentication.principal.id}" class="button button-1 active btn-save" >저장</button>
                 </form>
 
             </div>
         </section>
 
         <!-- 저장 확인 모달 -->
-        <div class="screen d-none">
+        <div class="screen check d-none">
             <div class="modal-panel">
                 <div class="message-wrap">
                     <div class="img-complete"></div>

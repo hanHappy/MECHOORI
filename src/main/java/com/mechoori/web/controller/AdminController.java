@@ -2,6 +2,7 @@ package com.mechoori.web.controller;
 
 import java.util.List;
 
+import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -126,6 +127,20 @@ public class AdminController {
     }
 
 
+
+    @GetMapping("restaurant/{id}/edit")
+    public String updateRestaurant(@PathVariable("id") int restaurantId, Model model){
+        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+        model.addAttribute("r", restaurant);
+        return "admin/restaurant/edit";
+    }
+
+    @GetMapping("restaurant/{id}/edit")
+    public String updateRestaurant(@PathVariable("id") int restaurantId, Model model){
+        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+        model.addAttribute("r", restaurant);
+        return "admin/restaurant/edit";
+    }
 
     // ================= 메뉴 =================
 

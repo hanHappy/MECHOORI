@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/common/modal-check.css">
     <link rel="stylesheet" href="/css/restaurant/reviews.css">
     <script src="/js/components/modal-menu.js" defer></script>
-    <script src="/js/restaurant/reviews.js" defer></script>
+    <script type="module" src="/js/restaurant/reviews.js" defer></script>
     <title>리뷰</title>
 </head>
 
@@ -35,7 +35,7 @@
     </header>
     <main>
         <div class="summary-info-wrap">
-            <span th:text="${list.get(0).restaurantName}">짜장상회</span>
+            <span th:text="${r.name}">짜장상회</span>
             <span>리뷰 <span class="review-count" th:text="${count}">1,000</span>개</span>
         </div>
 
@@ -135,7 +135,7 @@
 
         <!-- 저장 확인 모달 -->
         <div id="modal-check" class="screen check d-none">
-            <div class="modal-panel show">
+            <div class="modal-panel">
                 <div class="message-wrap">
                     <div class="img-delete"></div>
                     <div class="text-wrap">
