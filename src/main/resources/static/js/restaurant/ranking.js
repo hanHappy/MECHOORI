@@ -22,20 +22,23 @@ let rankingList = document.querySelector(".ranking-list-sections");
                     let itemTemplate = `
             <div>
             <a class="thymeleaf" href="/restaurant/${list[i].id}">
-    
-            <img src="/images/foods/${list[i].img}" class="img">
+            <div class ="black-filter">
             <ul class="ranking-list">
+                <img src="/images/foods/${list[i].img}" class="img">
                 <li class="rankingNum">${i+1}</li>
-                <li>${list[i].name}</li>
+                <li class="resto-name">${list[i].name}</li>
                 <li>
-                     <span>${avgprice}</span><br/>
-                      <span>(${avgRatedPrice})</span>
                 </li>
-                <li>${list[i].value}%</li>
+                <li class="value">
+                <span>${avgprice}</span>
+                <span>(${avgRatedPrice})</span>
+                &nbsp; <span>${list[i].value}%</span>
+                </li>
             </ul>
+            </div>
         </a>
         </div>
-    
+
           `;
 
                     rankingList.insertAdjacentHTML("beforeend", itemTemplate);

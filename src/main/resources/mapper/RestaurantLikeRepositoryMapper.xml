@@ -21,9 +21,4 @@
 		delete from restaurant_like
 		where member_id=#{memberId} and restaurant_id=#{restaurantId}
 	</delete>
-
-	<select id="findAll" resultType="LikeList">
-		select * from like_list_view
-		where member_id=#{memberId} 
-	</select>
 </mapper>

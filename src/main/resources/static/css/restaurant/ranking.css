@@ -109,7 +109,7 @@ main {
 }   
 
 .black-filter{
-    width: 100%;
+    width: 335px;
     height: 80px;
     background-color: #00000040;
     border-radius: 8px;
@@ -130,7 +130,7 @@ main {
 
 .rankingNum{
     grid-area: rank;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .resto-name{
