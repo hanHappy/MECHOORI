@@ -1,4 +1,7 @@
 let likeBtn = document.querySelector('.like');
+let copyButton = document.getElementById('map-address-copy-button');
+let addressText = document.getElementById('map-address-copy-text');
+let modalCopy = document.getElementById('modal-copy');
 
 likeBtn.onclick = function(e){
 
@@ -59,3 +62,41 @@ likeBtn.onclick = function(e){
     }
 
 }
+
+// 주소 복사
+copyButton.addEventListener('click', () => {
+    const address = addressText.textContent;
+    navigator.clipboard.writeText(address)
+        .then(() => {
+            modalCopy.style.display = 'block';
+            setTimeout(() => {
+                modalCopy.style.display = 'none';
+            }, 1000);
+        })
+});
+
+// 전화하기 버튼
+// document.addEventListener('DOMContentLoaded', function () {
+//     const btn = document.getElementById('popupBtn');
+//     const modal = document.getElementById('modalWrap');
+//     const closeBtn = document.getElementById('closeBtn');
+//     const callBtn = document.getElementById('callBtn');
+
+//     modal.style.display = 'none';
+
+//     btn.onclick = function () {
+//         modal.style.display = 'block';
+//     }
+//     closeBtn.onclick = function () {
+//         modal.style.display = 'none'; // 모달 닫기
+//     }
+//     callBtn.onclick = function () {
+//         modal.style.display = 'none'; // 모달 닫기
+//     }
+
+//     window.onclick = function (event) {
+//         if (event.target == modal) {
+//             modal.style.display = 'none'; // 모달 외부
+//         }
+//     }
+// });
