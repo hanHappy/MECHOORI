@@ -5,6 +5,11 @@
   font-family: var(--font);
 }
 
+body {
+  background-color: var(--background-color);
+  padding-bottom: 80px;
+}
+
 /* --------------헤더-------------- */
 
 header {
@@ -41,11 +46,6 @@ header {
 }
 
 /* ---------------메인---------------- */
-
-main {
-  background-color: var(--background-color);
-
-}
 
 .detail {
   background-color: white;

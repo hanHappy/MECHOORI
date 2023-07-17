@@ -84,6 +84,9 @@ function restaurantListLoad(url){
     if(document.querySelector("#member-id")!=null)
         memberId = document.querySelector("#member-id").value
 
+    if(!variables.filterId)
+        restaurantList.innerHTML = ""
+
     fetch(url)
         .then(response => response.json())
         .then(list => {
@@ -332,10 +335,12 @@ window.addEventListener("scroll", function () {
         let keyArr = Object.keys(variables)
         let and = "&"
         for(let i = 0; i < keyArr.length; i++){
+            console.log(url);
             if(variables[keyArr[i]] !== null){
-                url = `${url}${urls[keyArr[i]]}`
-                if(i<keyArr.length-2)
-                    url = `${url}${and}`
+                url = `${url}${urls[keyArr[i]]}${and}`
+                if(i==keyArr.length-2){
+                    continue
+                }
             }
         }
         restaurantListLoad(url);
