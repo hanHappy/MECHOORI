@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>손 안의 메뉴 추천 리스트, 메추리</title>
+    <title th:text="'메뉴 추천 리스트, 메추리 : '+${r.name}"> </title>
     <link rel="stylesheet" type="text/css" href="/css/common/style.css?ver=1">
     <link rel="stylesheet" href="/css/common/header.css?ver=2">
     <link rel="stylesheet" type="text/css" href="/css/restaurant/detail.css?ver=1">
@@ -142,7 +142,6 @@
             </div>
         </div>
 
-        <!-- TODO UI 수정 -->
         <div class="map-detail">
             <div class="map-table">
                 <div id="map" style="height: 200px; width: 100%;"></div>
@@ -185,18 +184,6 @@
 <div id="modal-copy">
     <p>주소가 복사되었습니다.</p>
 </div>
-
-<!-- TODO 상세 페이지 로드 시 모달 노출 : 확인 중-->
-<!-- 전화하기 모달 -->
-<!--<div id="modalWrap">-->
-<!--  <div id="modalContent">-->
-<!--    <div id="modalBody">-->
-<!--      <div id="callBtn">전화하기</div>-->
-<!--      <div id="closeBtn">취소하기</div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
 
 </body>
 
