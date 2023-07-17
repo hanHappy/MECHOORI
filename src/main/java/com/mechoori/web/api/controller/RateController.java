@@ -1,12 +1,11 @@
 package com.mechoori.web.api.controller;
 
-import com.mechoori.web.repository.RateRepository;
+import com.mechoori.web.entity.ReviewListView;
 import com.mechoori.web.service.RateService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -23,6 +22,15 @@ public class RateController {
         System.out.println(id);
 
         return  service.delete(id);
+    }
+
+
+    @GetMapping("/{id}")
+    public List<ReviewListView> list(
+            @RequestParam(value = "offset", defaultValue = "0") int offset,
+            @RequestParam(name = "ctgId", required = false) Integer categoryId) {
+
+        return service.getViewList(categoryId, offset);
     }
 
 }

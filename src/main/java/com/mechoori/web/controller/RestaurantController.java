@@ -147,13 +147,13 @@ public class RestaurantController {
     public String reviews(
         @PathVariable("id") int restaurantId,
         @AuthenticationPrincipal MechooriUserDetails member,
+        @RequestParam(value = "offset", defaultValue = "0") int offset,
         Model model){
-
         Integer memberId = null;
         if(member != null)
             memberId = member.getId();
 
-        List<ReviewListView> list = rateService.getViewList(restaurantId);
+        List<ReviewListView> list = rateService.getViewList(restaurantId, offset);
         Restaurant restaurant = restaurantService.getDetailById(restaurantId);
         int count = list.size();
 

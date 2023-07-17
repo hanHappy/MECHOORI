@@ -90,7 +90,7 @@
 			</if>
 		</trim>
 		limit #{offset}, #{size}
-		
+
 	</select>
 
    <insert id="add" parameterType = "Restaurant">
@@ -135,6 +135,7 @@
 
 	<select id="findReviewAll" resultType="Review">
 		select * from review_list_view where restaurant_id = #{restaurantId}
+		limit #{offset}, #{size}
 	</select>
 
 

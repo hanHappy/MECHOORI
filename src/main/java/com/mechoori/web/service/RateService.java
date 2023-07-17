@@ -29,7 +29,7 @@ public interface RateService {
 
     Map<String, Object> getRateResult(int restaurantId, int memberId);
 
-    List<ReviewListView> getViewList(int restaurantId);
+    List<ReviewListView> getViewList(int restaurantId,  int offset);
 
     int delete(int id);
 }

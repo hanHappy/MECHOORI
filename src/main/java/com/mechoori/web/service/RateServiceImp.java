@@ -142,8 +142,8 @@ public class RateServiceImp implements RateService {
     }
 
     @Override
-    public List<ReviewListView> getViewList(int restaurantId) {
-        return repository.findViewAll(restaurantId);
+    public List<ReviewListView> getViewList(int restaurantId, int offset) {
+        return repository.findViewAll(restaurantId, offset);
     }
 
     @Override
