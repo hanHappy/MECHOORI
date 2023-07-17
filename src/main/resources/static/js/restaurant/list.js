@@ -13,7 +13,7 @@ const topCategorySection = header.querySelector(".top-category-section")
 const otherCategorySection = header.querySelector(".other-category-section")
 // 필터
 const filterBox = header.querySelector(".filter-box")
-const filter = filterBox.querySelector('#filter')
+const filter = filterBox.querySelector('.filter')
 
 const restaurantListSection = document.querySelector(".restaurant-list-section")
 const restaurantList = restaurantListSection.querySelector(".restaurant-list")
@@ -84,13 +84,10 @@ function restaurantListLoad(url){
     if(document.querySelector("#member-id")!=null)
         memberId = document.querySelector("#member-id").value
 
-    if(!variables.filterId)
-        restaurantList.innerHTML = ""
-
+        console.log(url);
     fetch(url)
         .then(response => response.json())
         .then(list => {
-            console.log(list);
 
             // 아이템 채우기
             for (let r of list) {
@@ -224,7 +221,8 @@ otherCategorySection.onclick = function (e) {
 }
 
 // --------------------- 필터링 -----------------------
-filterBox.onchange = function(e){
+filter.addEventListener('change', (e)=>{
+    restaurantList.innerHTML = ""
     variables.filterId = e.target.value
     variables.offset = 0
     let url = null
@@ -235,52 +233,47 @@ filterBox.onchange = function(e){
         url = `/api/restaurant/list?c=${variables.categoryId}&f=${variables.filterId}&o=${variables.offset}`
     else if(variables.query)
         url = `/api/restaurant/list?q=${variables.query}&f=${variables.filterId}&o=${variables.offset}`
-        
-    restaurantListLoad(url)
-}
 
+    restaurantListLoad(url)
+}) 
 
 // --------------------- 필터링 Design -----------------------
 
-$(".custom-select").each(function() {
-    var classes = $(this).attr("class"),
-        id      = $(this).attr("id"),
-        name    = $(this).attr("name");
-    var template =  '<div class="' + classes + '">';
-        template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
-        template += '<div class="custom-options">';
-        $(this).find("option").each(function() {
-          template += '<span class="custom-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
-        });
-    template += '</div></div>';
+// $(".custom-select").each(function() {
+//     var classes = $(this).attr("class"),
+//         id      = $(this).attr("id"),
+//         name    = $(this).attr("name");
+//     var template =  '<div class="' + classes + '">';
+//         template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
+//         template += '<div class="custom-options">';
+//         $(this).find("option").each(function() {
+//           template += '<span class="custom-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
+//         });
+//     template += '</div></div>';
     
-    $(this).wrap('<div class="custom-select-wrapper"></div>');
-    $(this).hide();
-    $(this).after(template);
-  });
-  $(".custom-option:first-of-type").hover(function() {
-    $(this).parents(".custom-options").addClass("option-hover");
-  }, function() {
-    $(this).parents(".custom-options").removeClass("option-hover");
-  });
-  $(".custom-select-trigger").on("click", function() {
-    $('html').one('click',function() {
-      $(".custom-select").removeClass("opened");
-    });
-    $(this).parents(".custom-select").toggleClass("opened");
-    event.stopPropagation();
-  });
-  $(".custom-option").on("click", function() {
-    $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
-    $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
-    $(this).addClass("selection");
-    $(this).parents(".custom-select").removeClass("opened");
-    $(this).parents(".custom-select").find(".custom-select-trigger").text($(this).text());
-  });
-
-
-
-
+//     $(this).wrap('<div class="custom-select-wrapper"></div>');
+//     $(this).hide();
+//     $(this).after(template);
+//   });
+//   $(".custom-option:first-of-type").hover(function() {
+//     $(this).parents(".custom-options").addClass("option-hover");
+//   }, function() {
+//     $(this).parents(".custom-options").removeClass("option-hover");
+//   });
+//   $(".custom-select-trigger").on("click", function() {
+//     $('html').one('click',function() {
+//       $(".custom-select").removeClass("opened");
+//     });
+//     $(this).parents(".custom-select").toggleClass("opened");
+//     event.stopPropagation();
+//   });
+//   $(".custom-option").on("click", function() {
+//     $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
+//     $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
+//     $(this).addClass("selection");
+//     $(this).parents(".custom-select").removeClass("opened");
+//     $(this).parents(".custom-select").find(".custom-select-trigger").text($(this).text());
+//   });
 
 // ------------------ 좋아요 -------------------
 restaurantList.onclick = function(e){
@@ -378,7 +371,6 @@ window.addEventListener("scroll", function () {
         let keyArr = Object.keys(variables)
         let and = "&"
         for(let i = 0; i < keyArr.length; i++){
-            console.log(url);
             if(variables[keyArr[i]] !== null){
                 url = `${url}${urls[keyArr[i]]}${and}`
                 if(i==keyArr.length-2){
