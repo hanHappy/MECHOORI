@@ -5,12 +5,9 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map;
 
-import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -114,31 +111,23 @@ public class RestaurantController {
             menuIds.add(menuView.getId());
         }
         //리뷰
-        List<Rate> rateList = rateService.getListByMenuIds(menuIds);
+        List<ReviewListView> rateList = rateService.getViewList(restaurantId);
 
         //리뷰 최신순 4개
-        List<Rate> top4Rates;
+        List<ReviewListView> top4Rates;
         if (rateList.size() < 4) {
-            List<Rate> sortedList = new ArrayList<>(rateList);
-            sortedList.sort(Comparator.comparing(Rate::getRegDate).reversed());
+            List<ReviewListView> sortedList = new ArrayList<>(rateList);
+            sortedList.sort(Comparator.comparing(ReviewListView::getRegDate).reversed());
             top4Rates = sortedList.subList(0, rateList.size());
         } else {
-            List<Rate> sortedList = new ArrayList<>(rateList);
-            sortedList.sort(Comparator.comparing(Rate::getRegDate).reversed());
+            List<ReviewListView> sortedList = new ArrayList<>(rateList);
+            sortedList.sort(Comparator.comparing(ReviewListView::getRegDate).reversed());
             top4Rates = sortedList.subList(0, 4);
-        }
-
-        List<String> menuNames = new ArrayList<>();
-        for (Rate rate : top4Rates) {
-            int menuId = rate.getMenuId();
-            String menuName = menuService.getMenuName(menuId, menuViewList);
-            menuNames.add(menuName);
         }
 
         model.addAttribute("menuViewList", menuViewList);
         model.addAttribute("r", restaurantView);
         model.addAttribute("rateList", rateList);
-        model.addAttribute("menuNames", menuNames);
         model.addAttribute("top4Rates", top4Rates);
 
         return "restaurant/detail";

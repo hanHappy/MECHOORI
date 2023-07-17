@@ -445,55 +445,110 @@ tr:nth-child(2) td:first-child {
   background: transparent;
 }
 
+/* 리뷰 컨텐츠 */
 .review-contents {
-  display: inline-flex;
-  align-items: flex-start;
-  width:100%;
+  margin: 10px 0;
+
+  display: grid;
+  grid-template: 
+                  "profile-img rate-info rate-img" 26px
+                  "profile-img comment rate-img" 26px
+                  / 65px minmax(110px, 1fr) 65px
+                  
 }
 
-.review-contents img {
-  width: 65px;
+.review-contents p { 
+  font-weight: 400;
+  margin: 0; 
+}
+
+.review-contents img:first-child {
+  grid-area: profile-img;
+  
+  border-radius: 50%;
+  
+  width: 45px;
+  height: 45px;
+  margin-left: 5px;
+
+  align-self: center;
+}
+
+.review-contents p:nth-child(2) { grid-area: rate-info; }
+.review-contents p:nth-child(3) { 
+  grid-area: comment; 
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   margin-right: 10px;
-  margin-bottom: 5px;
+}
+.review-contents img:last-child {
+  grid-area: rate-img;
+
+  width: 52px;
+  height: 52px;
 }
 
-.review-info,
-.review-content {
-  width: 100%;
-  display: inline-flex;
-  flex-wrap: wrap;
-}
+.review-contents .nickname { font-weight: bold; }
 
-.review-info span,
-.review-content span {
-  flex-basis: 50%;
-}
-
-.rate-title {
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 30px;
-  color: var(--sub-color);
-}
-
-.rate-menu {
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 30px;
-}
-
-.review-nickname,
-.review-text {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 30px;
-}
+.review-contents .value { color: var(--sub-color); }
 
 a {
   color: inherit;
   text-decoration: none;
   cursor: default;
 }
+
+/* -------------- 평가하기 버튼 -------------- */
+.btn-review-wrap {
+  border-radius: 20px;
+  background-color: var(--main-color);
+  text-indent: -200px;
+  overflow: hidden;
+  
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  padding: 15px 5px 10px 15px;
+  height: 30px;
+  
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+
+.btn-review-wrap:hover {
+  text-indent: 0;
+  box-shadow: var(--btn-shadow-5);
+  padding-right: 20px;
+}
+
+.btn-review-wrap a{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  cursor: pointer;
+}
+
+.icon-rate {
+  display: block;
+
+  background-image: url(/images/icons/pencil.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  width: 25px;
+  height: 25px;
+}
+
+.btn-review-wrap span:last-child {
+  font-size: 16px;
+  /* font-weight: bold; */
+}
+
 
 
 /* -------------------------------------- */
