@@ -510,6 +510,30 @@ a {
 
 /* -------------------------------------- */
 
+
+/* 주소 복사 모달 */
+#modal-copy {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  
+  padding: 8px;
+  height: 26px;
+  
+  background-color: #000000c0;
+  color: white;
+  border-radius: 8px;
+
+  transition: 1s;
+  display: none;
+}
+
 /* ===주소 복사 모달=== */
 .address-copy-modal {
   display: none;
@@ -662,3 +686,4 @@ a {
     padding: 10px 0;
   }
 }
+

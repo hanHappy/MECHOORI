@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/css/common/header.css?ver=2">
     <link rel="stylesheet" type="text/css" href="/css/restaurant/detail.css?ver=1">
     <link rel="stylesheet" href="/css/common/button.css?ver=1">
+    <link rel="stylesheet" href="/css/common/modal-toast.css?ver=1">
     <script type="text/javascript"
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
     <script src="/js/restaurant/map.js" defer></script>
@@ -181,18 +182,12 @@
         </div>
     </div>
 
-
 </main>
 
-
-<!-- ============================================================= -->
-
-<!-- 주소 복사 모달 -->
-<!-- <div id="address-copy-modal" class="address-copy-modal">
-  <div class="address-copy-modal-content">
-    <p id="copy-notification-message"></p>
-  </div>
-</div> -->
+<!---- 주소 복사 모달 ---->
+<div id="modal-copy">
+    <p>주소가 복사되었습니다.</p>
+</div>
 
 <!-- TODO 상세 페이지 로드 시 모달 노출 : 확인 중-->
 <!-- 전화하기 모달 -->
@@ -206,54 +201,6 @@
 <!--</div>-->
 
 
-<!-- 스크립트 (분리 예정) -->
-
-<script>
-
-    // 주소 복사
-    const copyButton = document.getElementById('map-address-copy-button');
-    const addressText = document.getElementById('map-address-copy-text');
-
-    copyButton.addEventListener('click', () => {
-        const address = addressText.textContent;
-        navigator.clipboard.writeText(address)
-            .then(() => {
-                copyButton.onclick = function () {
-                    modal.style.display = 'block';
-                }
-                alert('주소가 복사되었습니다.');
-            })
-            .catch((error) => {
-                console.error('복사 실패:', error);
-            });
-    });
-
-    // 전화하기 버튼
-    document.addEventListener('DOMContentLoaded', function () {
-        const btn = document.getElementById('popupBtn');
-        const modal = document.getElementById('modalWrap');
-        const closeBtn = document.getElementById('closeBtn');
-        const callBtn = document.getElementById('callBtn');
-
-        modal.style.display = 'none';
-
-        btn.onclick = function () {
-            modal.style.display = 'block';
-        }
-        closeBtn.onclick = function () {
-            modal.style.display = 'none'; // 모달 닫기
-        }
-        callBtn.onclick = function () {
-            modal.style.display = 'none'; // 모달 닫기
-        }
-
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = 'none'; // 모달 외부
-            }
-        }
-    });
-</script>
 </body>
 
 </html>
