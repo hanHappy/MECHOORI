@@ -108,31 +108,21 @@ public class AdminController {
         return "redirect:../restaurant";
     }
     // 레스토랑 업데이트 0716
-    @GetMapping("restaurant/{id}/edit")
-    public String updateRestaurant(
-            Model model,
-            @PathVariable("id") int restaurantId){
-
-        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
-        model.addAttribute("r", restaurant);
-
-        return "admin/restaurant/edit";
-    }
+//    @GetMapping("restaurant/{id}/edit")
+//    public String updateRestaurant(
+//            Model model, @PathVariable("id") int restaurantId){
+//
+//        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+//        model.addAttribute("r", restaurant);
+//
+//        return "admin/restaurant/edit";
+//    }
     // 레스토랑 업데이트 0716 post
     @PostMapping("restaurant/{id}/edit")
     public String updateRestaurant(Restaurant restaurant){
 
         restaurantService.update(restaurant);
         return "redirect:../../restaurant";
-    }
-
-
-
-    @GetMapping("restaurant/{id}/edit")
-    public String updateRestaurant(@PathVariable("id") int restaurantId, Model model){
-        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
-        model.addAttribute("r", restaurant);
-        return "admin/restaurant/edit";
     }
 
     @GetMapping("restaurant/{id}/edit")

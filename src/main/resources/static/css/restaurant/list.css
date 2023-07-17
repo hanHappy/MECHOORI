@@ -390,16 +390,16 @@ header {
     /* padding: 0px 30px 0px 20px; */
   }
   
-  
+
   .custom-option:first-of-type {
     border-radius: 4px 4px 0 0;
   }
-  
+
   .custom-option:last-of-type {
     border-bottom: 0;
     border-radius: 0 0 4px 4px;
   }
-  
+
   .custom-option:hover,
   .custom-option.selection {
     background: #92b4f2;
@@ -481,21 +481,6 @@ select option {
 }
 
 @media only screen and (min-width: 679px) {
-
-    header {
-        height: 300px;
-        width: 100%;
-        background-image: url(/images/foods/main.svg);
-        /*background-color: transparent;*/
-        /*background-repeat: no-repeat;*/
-        background-size: cover;
-        z-index: 80;
-        position: relative;
-    }
-
-    .header-wrapper {
-        display: none;
-    }
 
     .category-wrapper {
         justify-content: center;

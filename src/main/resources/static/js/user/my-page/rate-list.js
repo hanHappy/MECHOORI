@@ -38,7 +38,7 @@ window.addEventListener("scroll", function () {
 
     let foodList = document.querySelector(".foodList")
 
-    let url = `http://localhost:10222/api/user/my-page/rate-list?offset=${offset}`;
+    let url = `http://localhost:8080/api/user/my-page/rate-list?offset=${offset}`;
     console.log(document.documentElement.scrollHeight);
     console.log(document.documentElement.clientHeight);
     console.log(document.documentElement.scrollTop);

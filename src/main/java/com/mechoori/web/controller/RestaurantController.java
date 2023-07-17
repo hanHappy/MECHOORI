@@ -209,24 +209,6 @@ public class RestaurantController {
     }
 
     // ---------- 리뷰 리스트 (R) ------------
-    @GetMapping("{id}/reviews")
-    public String reiviewList(
-            @PathVariable("id") int restaurantId, 
-            @AuthenticationPrincipal MechooriUserDetails member,
-            Model model){
-
-
-        List<ReviewListView> list = reviewListService.getDate(restaurantId);
-        int count = list.size();
-
-        model.addAttribute("list", list)
-            .addAttribute("count", count);
-        System.out.println(list);
-        System.out.println(count);
-        return "restaurant/reviews";
-    }
-
-
 
     @GetMapping("/ranking")
         public String ranking(Model model,

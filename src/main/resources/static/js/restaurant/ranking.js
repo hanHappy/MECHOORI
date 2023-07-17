@@ -68,10 +68,10 @@ let rankingList = document.querySelector(".ranking-list-sections");
             // 드롭박스가 변경되면 기존 내용을 삭제하고 새로운 데이터를 받아옵니다.
 
             categoryId = null;
-            let url = "http://localhost:10222/api/restaurant/ranking";
+            let url = "http://localhost:8080/api/restaurant/ranking";
             restaurantListLoad(url);
         } else {
-            let url = `http://localhost:10222/api/restaurant/ranking?ctgId=${value}`;
+            let url = `http://localhost:8080/api/restaurant/ranking?ctgId=${value}`;
             console.log(url);
             restaurantListLoad(url);
         }
@@ -103,7 +103,7 @@ let rankingList = document.querySelector(".ranking-list-sections");
                 value = "";
             }
 
-            let url = `http://localhost:10222/api/restaurant/ranking?ctgId=${value}&offset=${offset}`;
+            let url = `http://localhost:8080/api/restaurant/ranking?ctgId=${value}&offset=${offset}`;
 
             console.log(url);
             restaurantListLoad(url);
