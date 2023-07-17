@@ -1,7 +1,7 @@
 import ModalToast from "../components/modal-toast.js"
 
 const header = document.querySelector("header")
-const logo = header.querySelector(".logo")
+const logo = header.querySelector(".logo-container")
 const headerSide = header.querySelectorAll(".header-side")
 // 검색바
 const searchContainer = header.querySelector(".search-container")

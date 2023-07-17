@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map;
 
+import com.mechoori.web.entity.*;
 import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,22 +19,9 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mechoori.web.entity.Category;
-import com.mechoori.web.entity.Menu;
-import com.mechoori.web.entity.MenuView;
-import com.mechoori.web.entity.Rate;
-import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantDetail;
-import com.mechoori.web.entity.RestaurantRankView;
-import com.mechoori.web.entity.RestaurantView;
-import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
@@ -153,6 +141,30 @@ public class RestaurantController {
                 .addAttribute("r", restaurant);
 
         return "restaurant/rate";
+    }
+
+    @GetMapping("{id}/reviews")
+    public String reviews(
+        @PathVariable("id") int restaurantId,
+        @AuthenticationPrincipal MechooriUserDetails member,
+        Model model){
+
+        Integer memberId = null;
+        if(member != null)
+            memberId = member.getId();
+
+        List<ReviewListView> list = rateService.getViewList(restaurantId);
+        Restaurant restaurant = restaurantService.getDetailById(restaurantId);
+        int count = list.size();
+
+        model.addAttribute("list", list)
+             .addAttribute("count", count)
+             .addAttribute("r", restaurant);
+
+        System.out.println(list);
+        System.out.println(count);
+
+        return "restaurant/reviews";
     }
 
     // TODO 리뷰 이미지 파일명 + id로 저장

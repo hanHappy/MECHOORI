@@ -31,7 +31,7 @@
             <div class="header-icon hoverimg">
             </div>
         </div>
-        
+
         <div class="header-side right">
             <a sec:authorize="isAnonymous()" href="/user/login" class="header-icon menu">메뉴</a>
             <a sec:authorize="isAuthenticated()" id="menu" class="header-icon menu">메뉴</a>
@@ -74,10 +74,10 @@
 
         <section class="type">
             <ul class="typelist">
-                <div class="category-all-wrapper">
-                    <img src="/images/icons/icon-web-카테고리.svg">
-                    <p>카테고리</p>
-                </div>
+<!--                <div class="category-all-wrapper">-->
+<!--                    <img sㅑrc="/images/icons/icon-web-카테고리.svg">-->
+<!--                    <p>카테고리</p>-->
+<!--                </div>-->
                 <li th:each="c : ${list}">
                     <input name="c" type="hidden" th:value="${c.id}">
                     <a href="/restaurant/list/category/1"
@@ -96,7 +96,7 @@
                 <div class="title-box">
                     <h1>가성비 랭킹 TOP5</h1>
                     <a href="restaurant/ranking">
-                    <button>(전체보기)</button></a>
+                        <button>(전체보기)</button></a>
                 </div>
                 <div class="slidebox">
                     <input type="radio" name="slide" id="slide01" checked>

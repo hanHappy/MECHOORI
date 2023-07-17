@@ -3,13 +3,10 @@ package com.mechoori.web.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mechoori.web.entity.RestaurantRankView;
+import com.mechoori.web.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantDetail;
-import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.repository.MenuRepository;
 import com.mechoori.web.repository.RestaurantRepository;
 
@@ -191,6 +188,11 @@ public class RestaurantServiceImp implements RestaurantService {
 	@Override
 	public void add(Restaurant restaurant) {
 		repository.add(restaurant);
+	}
+
+	@Override
+	public List<Review> findReviewAll(int restaurantId) {
+		return repository.findReviewAll(restaurantId);
 	}
 
 

@@ -1,6 +1,5 @@
 package com.mechoori.web.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,15 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mechoori.web.entity.Menu;
-import com.mechoori.web.entity.Menu;
 import com.mechoori.web.entity.Rate;
 import com.mechoori.web.entity.RateListView;
+import com.mechoori.web.entity.ReviewListView;
 import com.mechoori.web.entity.Statistics;
 import com.mechoori.web.entity.Statistics2;
 import com.mechoori.web.entity.Statistics3;
 import com.mechoori.web.repository.MenuRepository;
 import com.mechoori.web.repository.RateRepository;
-import com.mechoori.web.repository.RestaurantRepository;
 import com.mechoori.web.repository.RestaurantRepository;
 
 @Service
@@ -88,8 +86,8 @@ public class RateServiceImp implements RateService {
     }
 
     @Override
-    public List<RateListView> getList(int memberId, int offset) {
-        List<RateListView> list = repository.getList(memberId, offset, 6);
+    public List<RateListView> getMyList(int memberId, int offset) {
+        List<RateListView> list = repository.getMyList(memberId, offset, 6);
         for(RateListView item : list){
             double value_ = (double)item.getRatePrice() / item.getPrice() * 100;
             int value = (int) Math.round(value_);
@@ -141,5 +139,15 @@ public class RateServiceImp implements RateService {
         result.put("myValue", myValue);
 
         return result;
+    }
+
+    @Override
+    public List<ReviewListView> getViewList(int restaurantId) {
+        return repository.findViewAll(restaurantId);
+    }
+
+    @Override
+    public int delete(int id) {
+        return repository.delete(id);
     }
 }

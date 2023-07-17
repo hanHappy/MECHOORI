@@ -2,6 +2,7 @@ package com.mechoori.web.repository;
 
 import java.util.List;
 
+import com.mechoori.web.entity.Review;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.mechoori.web.entity.Restaurant;
@@ -24,5 +25,8 @@ public interface RestaurantRepository {
 
     List<RestaurantRankView> getRanking(Integer categoryId, int offset, int size);
     List<RestaurantRankView> findRankAll(Integer size, Integer categoryId);
+
+
+    List<Review> findReviewAll(int restaurantId);
 
 }

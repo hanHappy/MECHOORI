@@ -171,7 +171,7 @@ public class UserController {
                            @AuthenticationPrincipal MechooriUserDetails user,
                            @RequestParam(value = "offset") int offset) {
 
-        List<RateListView> list = rateService.getList(user.getId(),offset);
+        List<RateListView> list = rateService.getMyList(user.getId(),offset);
 
         return list;
     }
@@ -181,3 +181,6 @@ public class UserController {
         return restaurantLikeService.delete(restaurantLike);
     }
 }
+
+
+

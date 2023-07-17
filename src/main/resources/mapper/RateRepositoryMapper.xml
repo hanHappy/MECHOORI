@@ -27,7 +27,7 @@
         </foreach>
     </select>
 
-    <select id="getList" parameterType="RateListView">
+    <select id="getMyList" parameterType="RateListView">
         SELECT * FROM rate_list_view
         WHERE member_id = #{memberId}
         LIMIT #{offset}, #{size}
@@ -90,5 +90,17 @@
         order by reg_date desc 
         limit 1
     </select>
+
+    <select id="findViewAll" resultType="ReviewListView">
+        select 
+            *
+        from review_list_view
+        where restaurant_id = #{restaurantId}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from rate
+        where id = #{id}
+    </delete>
 	
 </mapper>

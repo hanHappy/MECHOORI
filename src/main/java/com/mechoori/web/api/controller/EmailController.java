@@ -5,6 +5,7 @@ import com.mechoori.web.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 // FIXME UserController로 이동
 
 @RestController
@@ -17,7 +18,7 @@ public class EmailController {
     @PostMapping("/form")
     @ResponseBody
     String mailConfirm(
-            @RequestParam ("e") String email)
+            @RequestParam("e") String email)
             throws Exception {
 
         return service.sendSimpleMessage(email);
