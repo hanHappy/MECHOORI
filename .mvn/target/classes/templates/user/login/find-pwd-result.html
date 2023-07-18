@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/user/login/findIdAndPwd2.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+
+</head>
+<body>
+
+<header>
+    <div class="header-side left">
+        <button class="d-none"></button>
+    </div>
+    <h1 class="header-icon logo"></h1>
+    <div class="header-side right">
+        <a href="/">
+            <button class="header-icon home"></button>
+        </a>
+    </div>
+</header>
+
+<main>
+
+    <form action="find-pwd-result" method="post">
+        <label for="passwordReset">비밀번호 재설정</label>
+        <input type="text" name="password" class="passwordReset" id="passwordReset" placeholder="비밀번호를 입력해주세요">
+    </form>
+    <label for="checkPasswordReset">비밀번호 재확인</label>
+    <input type="text" class="checkPasswordReset" id="checkPasswordReset" placeholder="비밀번호를 다시 입력해주세요">
+
+    <button type="submit" id="submitBtn">재설정 하기</button>
+
+
+</main>
+
+</body>
+</html>

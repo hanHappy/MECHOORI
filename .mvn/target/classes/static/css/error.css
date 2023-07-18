@@ -1,0 +1,14 @@
+.img{
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    width: 300px;
+    height: 300px;
+}
+
+.img.err404 {
+    background-image: url("/images/assets/coca-물음표.png");
+} 
+.img.err500 {
+    background-image: url("/images/assets/coca-500.svg");
+}

@@ -1,0 +1,64 @@
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="/css/user/login/findIdAndPwd.css"/>
+    <link rel="stylesheet" href="/css/style.css"/> -->
+    <!-- <link rel="stylesheet" href="/css/user/login/findIdAndPwd.css"/> -->
+    <link rel="stylesheet" href="../../../static/css/user/login/findIdAndPwd.css"/>
+    <!-- <link rel="stylesheet" href="../../../static/css/style.css"/> -->
+</head>
+<script src="/js/user/login/find-pwd.js" defer></script>
+
+<body>
+<header>
+    <div class="header-side left">
+        <a onclick="history.back()">
+            <button class="header-icon back"></button>
+        </a>
+    </div>
+    <h1 class="header-icon logo"></h1>
+    <div class="header-side right">
+        <a href="/">
+            <button class="d-none"></button>
+        </a>
+    </div>
+</header>
+
+<main id="main">
+    <div class="withNumber">이메일로 인증</div>
+
+    <form method="post" action="user/find-pwd">
+
+        <section class="info">
+            <div class="name">
+                아이디(이메일)
+                <div class="info-inputbox">
+                    <label for="emailText"></label>
+                    <input type="text" id="emailText" placeholder="user@mechoori.com" class="emailText"/>
+                    <button type="button" class="emailConfirm">인증 번호 받기</button>
+                    <div id="emailCheck"></div>
+                </div>
+            </div>
+
+            <div class="number2">
+                <label for="Certification" id="emailconfirmTxt">인증번호 입력</label>
+                <input type="text" id="Certification"/>
+            </div>
+        </section>
+    </form>
+
+        <button type="submit"
+                class="nextBtn" disabled>확인
+        </button>
+
+
+</main>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/user/my-page/statistics.css" />
+  <link rel="stylesheet" href="/css/common/style.css" />
+  <link rel="stylesheet" href="/css/common/header.css">
+  <link rel="stylesheet" href="/css/common/component.css">
+  <link rel="stylesheet" href="/css/common/button.css">
+  <script src="/js/user/statistics.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+</head>
+
+<body>
+  <header>
+    <div class="header-side left">
+      <a onclick="history.back()"><button class="header-icon back"></button></a>
+    </div>
+    <a href="/">
+      <h1 class="header-icon logo"></h1>
+    </a>
+    <div class="header-side right">
+      <a href="/"><button class="header-icon home"></button></a>
+    </div>
+  </header>
+
+  <main>
+    <div class="mainTitle">
+      <p>나의 가성비 성과</p>
+    </div>
+
+    <div class="regdate">
+      <ul>
+        <button class="leftBtn"></button>
+        <li>4월</li>
+        <li style="font-weight: 900; font-size: 28px; color:rgba(34, 146, 249, 0.7); ">5월</li>
+        <li>6월</li>
+        <button class="rightBtn"></button>
+      </ul>
+    </div>
+    <div class="rec"></div>
+    <div class="dateTxt">2023.05.01 ~ 2023.05.31</div>
+
+    <canvas id="barChart" width="375" height="230"></canvas>
+
+    <section class="MiddleBack">
+      <div class="middleText2">
+        <div class="rateImg"></div>
+        <div class="rateTextArea">
+          <p class="rateText">
+            메추리 회원님들보다 <br />
+            30%높은 가성비를 누리셨네요!
+          </p>
+        </div>
+      </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

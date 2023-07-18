@@ -1,0 +1,33 @@
+.imageP {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40%;
+  background-image: url("/images/assets/coca-signup-complete.svg");
+  background-repeat: no-repeat;
+  width: 156px;
+  height: 178px;
+  margin-top: 116px;
+  margin-bottom: 116px;
+}
+
+.btn {
+  position: relative;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+
+  width: 375px;
+  height: 41px;
+  
+  border: none;
+  background-color: var(--sub-color);
+  border-radius: 8px;
+
+  color: rgb(255, 255, 255);
+  font-size: 18Px;
+  font-weight: 700;
+  
+}
+

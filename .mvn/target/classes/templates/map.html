@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>손 안의 메뉴 추천 리스트, 메추리</title>
+    <script type="text/javascript"
+            src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
+    <script src="/js/map.js" defer="defer"></script>
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/map.css">
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+<header>
+    <div class="header-side left">
+        <a href="/">
+            <button class="header-icon back"></button>
+        </a>
+    </div>
+    <form>
+        <h1>검색창</h1>
+    </form>
+    <div class="header-side right">
+        <a href="">
+            <button class="d-none"></button>
+        </a>
+    </div>
+</header>
+<section>
+    <!--    <div id="search-bar">-->
+    <!--        <input type="text" id="keyword" placeholder="키워드를 입력하세요">-->
+    <!--        <button id="search-button">검색</button>-->
+    <!--    </div>-->
+
+    <div class="map_wrap">
+        <div id="map" style="width: 100%; height: 650px; position:relative;overflow:hidden;"></div>
+        <div th:each="list:${list}">
+            <div th:text="${list.address}" class="addresses" hidden></div>
+            <span th:text="${list.id}" id="resId" hidden></span>
+            <span th:text="${list.name}" class="resName" hidden></span>
+            <span th:text="${list.contactNumber}" class="contactNumber" hidden></span>
+        </div>
+    </div>
+
+    <div class="custom_zoomcontrol radius_border">
+            <span class="zoomIn"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png"
+                                      alt="확대"></span>
+        <span class="zoomOut"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png"
+                                   alt="축소"></span>
+
+    </div>
+</section>
+
+
+<section class = "modal-section">
+    <div class = "image"></div>
+    <div class = "info"></div> <!--음식점이름/방문자리뷰/주소-->ㅡ
+</section>
+
+</body>
+</html>
+

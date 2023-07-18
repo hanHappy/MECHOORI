@@ -1,0 +1,47 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mechoori.web.repository.MemberRepository">
+	<select id="findById" resultType="Member">
+		select * 
+         from member where id=#{id}
+	</select>
+	<select id="findByEmail" resultType="Member">
+      select * from member where email = #{email}
+   </select>
+	<select id="findRoleByEmail" resultType="String">
+      select role_name from email_with_role where email = #{email}
+   </select>
+   <insert id="save" parameterType="Member">
+      insert into 
+      member(username, nickname, email, password)
+      values(#{username}, #{nickname}, #{email}, #{password})
+   </insert>
+
+    <select id="searchEmail" resultType="String">
+        select email from member where email = #{email}
+    </select>
+
+    <select id="restaurantLIke" resultType="int">
+        select member_id from restaurant_like where member_id = #{memberId}
+    </select>
+
+    <update id="resetPwd" parameterType="Member">
+        UPDATE member
+        SET password = #{password}
+        WHERE email = #{email}
+    </update>
+
+    <update id="update" parameterType="Member">
+        update member
+        <set>
+            <if test="nickname != null">nickname = #{nickname},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="img != null">img = #{img}</if>
+        </set>
+        where id = #{id}        
+    </update>
+
+
+</mapper>

@@ -1,0 +1,91 @@
+main {
+    height: 100%;
+    padding: 0 20px;
+}
+
+.mainTop{
+
+    height: 100%;
+}
+
+
+.category {
+
+    align-items: center;
+    position: absolute;
+    width: 98px;
+    height: 31px;
+    top: 90px;
+    margin:18px 20px 0 256px;
+
+    border-radius: var(--border-radius);
+
+}
+
+.resranking {
+    box-sizing: border-box;
+
+    /* Auto layout */
+
+    margin: 0;
+    padding: 18px 20px;
+
+    position: absolute;
+    width: 100%;
+    height: 61px;
+    top: 90px;
+
+    box-shadow: var(--block-shadow);
+
+}
+
+
+.top-section {
+    display: grid;
+    height: 50px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    margin-top: 64px;
+    text-align: center;
+    align-items: center;
+    box-shadow: var(--block-shadow);
+}
+
+
+/*<img th:src="@{images/foods/img(img=${list.img})}">*/
+
+.ranking-list {
+
+    display: grid;
+    height: 50px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    margin-bottom: 25px;
+    text-align: center;
+    align-items: center;
+    box-shadow: var(--block-shadow);
+
+}
+
+
+
+.img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+
+.ranking-list-sections {
+
+    margin-top: 15px;
+}
+
+.up{
+    color: #7676ff;
+}
+
+.down{
+    color: #b95151;
+}

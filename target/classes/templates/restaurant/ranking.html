@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:div="http://www.divymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="widdiv=device-widdiv, initial-scale=1.0">
+    <title>Document</title>
+    <!--    <link rel="stylesheet" href="../../static/css/restaurant/ranking.css" />-->
+    <link rel="stylesheet" href="/css/restaurant/ranking.css"/>
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/button.css">
+    <script src="/js/restaurant/ranking.js" defer="defer"></script>
+
+</head>
+<body>
+
+<header>
+    <div class="header-side left">
+        <a onclick="history.back()">
+            <button class="header-icon back"></button>
+        </a>
+    </div>
+    <h1 class="header-icon logo"></h1>
+    <div class="header-side right">
+        <a href="/">
+            <button class="header-icon home"></button>
+        </a>
+    </div>
+</header>
+
+
+<section class="mainTop">
+    <div class="resranking">가성비 식당 랭킹</div>
+    <select class="category" name="category" id="categoryDropBox" required>
+        <option value="카테고리 선택" disabled selected>카테고리 선택</option>
+        <option
+                th:data-id="${ctg.id}"
+                th:each="ctg:${ctg}"
+                th:text="${ctg.name}"
+        >전체
+        </option> <!-- 전체랭킹을 보여 주는 식으로 운영 해야 될 것 같ㄷ다-->
+    </select>
+</section>
+
+<section class="top-section">
+    <div>순위</div>
+    <div>상호</div>
+    <div>평균가격<br/>(평가가격)</div>
+    <div>가성비</div>
+</section>
+
+<main>
+
+    <section class="ranking-list-sections">
+        <section th:each="list, iter:${list}"  th:if="${iter.index} &lt; 9">
+            <img th:src="@{/images/foods/{img}(img=${list.img})}" class="img">
+
+            <section class="ranking-list">
+                <div class="rankingNum" th:text="${list.rank}">1</div>
+                <div th:text="${list.name}">맘마니</div>
+                <div>
+                    <span th:text="${#numbers.formatDecimal(list.avgPrice, 0, 'COMMA', 0, 'POINT')}">8,800원</span><br/>
+                    <span th:text="'(' + ${#numbers.formatDecimal(list.avgRatedPrice, 0, 'COMMA', 0, 'POINT')} + ')'"></span>
+                </div>
+                <div th:text="${list.value}+'%'">123%</div>
+            </section>
+        </section>
+    </section>
+
+    <!--        </option> &lt;!&ndash; 전체랭킹을 보여 주는 식으로 운영 해야 될 것 같ㄷ다&ndash;&gt;-->
+
+    <!--        <button class = "moreInfo">-->
+    <!--          더보기       아래로 드래그시 10개 추가      -->
+    <!--        </button>-->
+</main>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html 
+    lang="en" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+    >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/admin/restaurant.css">
+    <title>EDIT Menu</title>
+</head>
+
+<body>
+    <a href="../../menu">메뉴 페이지로</a>
+
+    <a style="color: #282828;" href="menu"><h1>Menu</h1></a>
+
+    <hr>
+    <br>
+
+    <div class="column-container">
+        <div class="menu column-box">
+            <p>id</p>
+            <p>식당id</p>
+            <p>메뉴명</p>
+            <p>가격</p>
+        </div>
+    </div>
+    <section class="restaurant-list-section">
+        <h1 style="display: none;">식당 리스트</h1>
+        <div class="restaurant-list">
+            <form action="edit" method="POST">
+                <section class="data menu">
+                    <span th:text="${m.id}"></span>
+                    <input type="hidden" name="id" th:value="${m.id}">
+                    <span th:text="${m.restaurantId}"></span>
+                    <input type="text" name="name" th:placeholder="${m.name}" >
+                    <input type="text" name="price" th:placeholder="${m.price}" >
+                    <button>완료</button>
+                    <input type="hidden" name="rid" th:value="${r.id}">
+                </section>
+            </form>
+        </div>
+    </section>
+
+    <section id="restaurant-list-section">
+
+    </section>
+
+    <br>
+
+
+</body>
+
+</html>

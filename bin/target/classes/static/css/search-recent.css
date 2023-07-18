@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+body{
+    margin: 0;
+    color: #282828;
+    font-family: var(--font);
+}
+
+header {
+    height: 144px;
+    width: 100%;
+    padding: 77px 20px 22px 20px;
+    background-color: #FFE551;
+    
+    /* layout */
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    display: flex;
+}
+
+main{
+    width: 100%;
+    padding: 20px 20px 0 20px;
+    box-sizing: border-box;
+}
+
+.search-container {
+    width: 100%;
+    display: flex;
+    text-align: center;
+}
+
+.search-inner {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    border: 1px solid var(--main-color);
+    box-shadow: var(--btn-shadow);
+    background-color: white;
+    border-radius: 8px;
+}
+
+input {
+    width: 65%;
+    height: 100%;
+    border: 0px;
+    font-size: 18px;
+    outline: none;
+}
+
+.icon_searching button {
+    width: 100%;
+    padding-top: 10%;
+    background-color: transparent;
+    border: none;
+}
+
+.icon_backward button {
+    width: 100%;
+    padding-top: 10%;
+    background-color: transparent;
+    border: none;
+}
+
+.icon_searching {
+    position: absolute;
+    left: 15px;
+    top: 20%;
+}
+
+.icon_backward {
+    position: absolute;
+    right: 15px;
+    top: 20%;
+}
+
+p {
+    margin: 0;
+}
+
+/* ======================= main ======================= */
+
+.title-box{
+    display: flex;
+    justify-content: space-between;
+}
+
+h1{
+    margin: 0;
+    font-weight: normal;
+    font-size: 18px;
+    color: #2292F9;
+
+    /* layout */
+    display: inline-block;
+}
+
+.title-box button{
+    background-color: transparent;
+    border: none;
+    color: #9D9999;
+}
+
+/* ------------- 리스트 ------------- */
+
+.list{
+    margin-top: 15px;
+
+    /* layout */
+    display: flex;
+}
+
+.search-date{
+    margin-left: auto;
+}
+
+.list button{
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    line-height: 0;
+
+    /* layout */
+    margin-left: 20px;
+}

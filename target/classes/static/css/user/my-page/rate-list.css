@@ -1,0 +1,174 @@
+@import url("../../style.css");
+
+
+
+/* 메인 */
+.btnarea{
+
+  width: 375px;
+  height: 81px;
+  box-shadow: var(--block-shadow);
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+
+.twoBtns {
+  justify-content: center;
+  border: 1px solid var(--main-color);
+  height: 41px;
+  width: 311px;
+
+  border-radius: 20px;
+
+  justify-items: center;
+  position: relative;
+  margin: 0 32px;
+}
+
+.btnspar {
+  border-radius: 20px;
+  display: flex;
+  height: 41px;
+  justify-items: center;
+  grid-template-columns: 32fr 1fr 32fr;
+  border-style: none;
+  justify-content: center;
+  position: absolute;
+}
+.btn1 {
+  background-color: white;
+  text-align: center;
+  width: 149px;
+  color: rgba(128, 128, 128, 0.5);
+  padding-left: 30px;
+
+}
+.btn2 {
+  background-color: rgb(255, 229, 81);
+  width: 165px;
+  z-index: 30;
+}
+
+.btn {
+  position: relative;
+  grid-column: 2;
+  border-radius: 20px;
+  border-style: none;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+/*=======================  메인 정보  ========================*/
+
+.mainInfo {
+  margin-top:10px;
+  background-color: white;
+  width: 375px;
+  height: 800px;
+
+
+
+}
+
+
+.foodList {
+  background-color: var(--background-color);
+  list-style: none;
+  width: 375px;
+  height: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  padding:0;
+  justify-content: center;
+  gap:11px;
+
+  
+}
+
+.FI {
+
+  background-image: url("../../../images/foods/김가네.jpg");
+  width: 162px;
+  height: 97px;
+  border-radius: var(--border-radius);
+  background-size: 100%;
+} 
+.FI1 {
+
+  background-image: url("../../../images/foods/678버거.jpg");
+  width: 162px;
+  height: 97px;
+  border-radius: var(--border-radius);
+  position: relative;
+  top: -80px;
+  background-size: 100%;
+}
+
+.FI2 {
+
+  background-image: url("../../../images/foods/기꾸스시.jpg");
+  width: 162px;
+  height: 97px;
+  border-radius: var(--border-radius);
+  position: relative;
+  top: -80px;
+  background-size: 100%;
+}
+
+.text2,
+.text1 {
+  position: relative;
+  top: -70px;
+}
+
+
+.Texts {
+text-align: center;
+}
+
+p {
+  margin:0;
+}
+
+.adji {
+
+  width: 162px;
+  height: 172px;
+  background-color: white;
+  box-shadow: var(--block-shadow);
+  border-radius: var(--border-radius);
+}
+
+/*  */
+
+image {
+  border-radius: var(--border-radius);
+}
+
+.adjImg3,
+.adjImg4 {
+position: relative;
+height: 92px;
+top:-50px
+}
+
+.adjImg5,
+.adjImg6 {
+  position: relative;
+  height: 92px;
+  top:-100px
+}
+
+.text1,
+.text2 {
+  
+  position: relative;
+  top: -80px;
+
+}
+
+.PwdCheck {
+
+  position: absolute;
+}

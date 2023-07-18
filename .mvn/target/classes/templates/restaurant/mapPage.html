@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>손 안의 메뉴 추천 리스트, 메추리</title>
+    <script type="text/javascript"
+            src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
+    <script src="/js/restaurant/mapPage.js?ver=1" defer></script>
+    <link rel="stylesheet" href="/css/common/style.css?ver=1">
+    <link rel="stylesheet" href="/css/common/header.css?ver=1">
+    <link rel="stylesheet" href="/css/restaurant/mapPage.css?ver=1">
+
+</head>
+
+<body>
+<header>
+    <div class="header-side left">
+        <a onclick="history.back()">
+            <button class="header-icon back"></button>
+        </a>
+    </div>
+    <h1 class="header-icon logo"></h1>
+    <div class="header-side right">
+        <a href="/">
+            <button class="header-icon home"></button>
+        </a>
+    </div>
+</header>
+
+<section>
+    <div class="mapStyle">
+        <div id="map" style="width: 100%; height: 650px"></div>
+
+    </div>
+</section>
+<!--<a th:href="@{/restaurant/{id}(id=${list.id})}"    id="btn">-->
+<section class="bottom-sheet-section" onclick="upperSection()" th:data-restaurant-id="${list.id}">
+    <section class="bottom-sheet-back">
+    <div class="touch-section"></div>
+        <div class="info-background">
+    <div class="bottom-sheet">
+        <span th:text="${list.name}" id="resName">상호명</span>
+        <span class="category"> 양식 </span><br><br>
+        <span>방문자 리뷰 612</span><br>
+        <span>좋아요 123</span><br>
+        <span>가성비 92%</span><br>
+        <span th:text="${list.address}" id="map-address-text">주소</span><br>
+        <img th:src="@{/images/foods/{img}(img=${list.img})}" id="map-img" alt="">
+    </div>
+        </div>
+    </section>
+</section>
+
+</body>
+</html>

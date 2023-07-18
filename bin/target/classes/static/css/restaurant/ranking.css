@@ -1,0 +1,98 @@
+main {
+    height: 100%;
+    padding: 0 20px;
+}
+
+.category {
+
+    width: 98px;
+    height: 31px;
+    text-align: center;
+    border-radius: var(--border-radius);
+
+}
+
+.mainTop {
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.resranking {
+    box-sizing: border-box;
+    margin: 90px 0 0;
+    padding: 18px 20px;
+    width: 100%;
+    height: 61px;
+    top: 90px;
+    box-shadow: var(--block-shadow);
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+}
+
+
+.top-section {
+    display: grid;
+    height: 50px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    margin-top: 64px;
+    text-align: center;
+    align-items: center;
+    box-shadow: var(--block-shadow);
+}
+
+
+/*<img th:src="@{images/foods/img(img=${list.img})}">*/
+
+.ranking-list {
+
+    display: grid;
+    height: 50px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    margin-bottom: 25px;
+    text-align: center;
+    align-items: center;
+    box-shadow: var(--block-shadow);
+
+}
+
+
+.img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+
+.ranking-list-sections {
+
+    margin-top: 15px;
+    counter-reset: number 0;
+
+}
+
+.rankingNum::before {
+    counter-increment: number 1;
+    content: counter(number);
+
+}
+
+
+.up {
+    color: #7676ff;
+}
+
+.down {
+    color: #b95151;
+}
+
+
+.moreInfo {
+    width: 100%;
+    z-index: 999;
+    height: 30px;
+}

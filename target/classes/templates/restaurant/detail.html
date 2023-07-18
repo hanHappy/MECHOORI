@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>손 안의 메뉴 추천 리스트, 메추리</title>
+  <link rel="stylesheet" type="text/css" href="/css/restaurant/detail.css">
+  <link rel="stylesheet" type="text/css" href="/css/common/style.css">
+  <link rel="stylesheet" href="/css/common/header.css">
+  <link rel="stylesheet" href="/css/common/button.css">
+  <script type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
+  <script src="/js/restaurant/map.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="search-container">
+            <div class="header-side left">
+              <button class="header-icon back" onclick="history.back()"></button>
+          </div>
+          <h1 class="header-icon logo">로고</h1>
+          <div class="header-side right">
+              <button class="header-icon home" onclick="location.href='../index.html'" ></button>
+          </div>
+        </div>
+
+    </header>
+
+  <main>
+    <div class="detail">
+      <img src="/images/foods/청화원2.png"
+           th:src="@{/images/foods/{img}(img = ${r.img})}"
+           class="rstr-thumb">
+      <div class="detail-content">
+        <div class="title">
+          <p th:text="${r.name}" id="resName">짜장상회</p>
+          <div>
+            <img src="/images/icons/icon-like.svg">
+            <img src="/images/icons/icon-share.svg">
+          </div>
+        </div>
+        <div class="rated-result">
+          <div>
+            <img src="/images/icons/icon-like-result.svg">
+            <p th:text="${r.likeCount}">찜하기수</p>
+          </div>
+          <div>
+            <img src="/images/icons/icon-rated-result.svg">
+            <p th:text="${r.rateCount}">평가수</p>
+          </div>
+        </div>
+
+        <div class="intro">
+          <p th:text="${r.intro}">소개글</p>
+          <p th:text="${r.address}">서울 · 신촌</p>
+        </div>
+
+        <div class="price">
+          <p class="rating-price">가성비 <span th:text="${r.value}">80</span>% (<span th:text="${r.rateCount}">99</span>)
+          </p>
+          <!-- 상민(6/18) : 평가 가격 추가-->
+          <p>평균 <span th:text="${r.avgPrice}">6,000</span>원 · 평가 <span th:text="${r.avgRatedPrice}"></span>원</p>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="menu">
+      <div class="menu-title">
+        <img src="/images/icons/icon-line.svg">
+        <p>대표메뉴</p>
+      </div>
+
+      <div class="menu-detail" th:each="menu, iter : ${menuViewList}" th:if="${iter.index} &lt; 4">
+        <div class="menu-detail-name">
+          <span th:text="${menu.name}">메뉴명</span>
+        </div>
+        <div>
+          <span>………………</span>
+        </div>
+        <div>
+          <span th:text="${menu.price + '원'}">가격</span>
+          <span th:text="'(' + ${menu.value} + '%)'" class="menu-detail-rp"></span>
+        </div>
+      </div>
+
+      <div class="button-6">
+        <input id="check-btn" type="checkbox">
+        <label for="check-btn">메뉴 더보기</label>
+        <span class="togle">▼</span>
+        <ul class="menubars" th:each="menu, iterStat : ${menuViewList}" th:if="${iterStat.index} &gt;= 4">
+          <div class="menubars-content">
+            <span class="menu-detail-name" th:text="${menu.name}">메뉴명</span>
+            <span>…………</span>
+            <div>
+              <span th:text="${menu.price}+'원'">가격</span>
+              <span th:text="'(' + ${menu.value} + '%)'" class="menu-detail-rp"></span>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+
+    <div class="map">
+      <div class="map-title-box">
+        <div class="map-title">
+          <img src="/images/icons/icon-line.svg">
+          <p>위치 안내</p>
+        </div>
+        <div class="map-address">
+          <p class="map-address-content" th:text="${r.address}" id="map-address-copy-text">주소</p>
+          <img src="/images/icons/icon-mapmore.svg" id="map-address-copy-button">
+        </div>
+      </div>
+
+      <!-- TODO UI 수정 -->
+      <div class="map-detail">
+        <div class="map-table">
+          <div id="map" style="height: 300px; width: 300px;"></div>
+          <div class="map-button">
+            <div class="map-button-image" id=btnWrap>
+              <div id="popupBtn">
+                <img src="/images/icons/icon-phone.svg">전화하기
+              </div>
+            </div>
+            <div class="map-button-image">
+              <img src="/images/icons/icon-map.svg">
+              <a href="/restaurant/mapPage" th:href="@{mapPage/{id}(id=${r.id})}">
+                지도보기
+              </a> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!----------- 변경 중 --------------->
+  <div class="review">
+    <div class="review-title-box">
+      <div class="review-title">
+        <img src="/images/icons/icon-line.svg">
+        <p>리뷰 (<span class="review-span" th:text="${rateList.size()}">99</span>+)</p>
+
+      </div>
+      <a href="/restaurant/{id}/rate" th:href="@{/restaurant/{id}/rate(id=${r.id})}"><button class="button button-11">평가하기</button></a>
+    </div>
+    <div class="review-contents"  th:each="rate, index: ${top4Rates}">
+      <img src="/images/components/식당_1(75x75).png" alt="식당사진" width="65px">
+      <div class="review-content">
+        <span class="rate-title" th:text="'가성비 평가 : '+${rate.price}">가성비 평가 가격</span>
+        <p class="rate-menu" th:text="'메뉴명 : '+${menuNames[__${index.index}__]}">메뉴명</p>
+        <span class="review-nickname" th:text="'닉네임 : '+${rate.memberId}">닉네임</span>
+        <p class="review-text" th:text="'리뷰 내용 : '+${rate.review}">리뷰</p>
+      </div>
+    </div>
+  </div>
+
+
+</main>
+
+
+<!-- ============================================================= -->
+
+<!-- 주소 복사 모달 -->
+<!-- <div id="address-copy-modal" class="address-copy-modal">
+  <div class="address-copy-modal-content">
+    <p id="copy-notification-message"></p>
+  </div>
+</div> -->
+
+  <!-- TODO 상세 페이지 로드 시 모달 노출 : 확인 중-->
+  <!-- 전화하기 모달 -->
+  <!--<div id="modalWrap">-->
+  <!--  <div id="modalContent">-->
+  <!--    <div id="modalBody">-->
+  <!--      <div id="callBtn">전화하기</div>-->
+  <!--      <div id="closeBtn">취소하기</div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>-->
+
+
+  <!-- 스크립트 (분리 예정) -->
+
+  <script>
+
+    // 주소 복사
+    const copyButton = document.getElementById('map-address-copy-button');
+    const addressText = document.getElementById('map-address-copy-text');
+
+    copyButton.addEventListener('click', () => {
+      const address = addressText.textContent;
+      navigator.clipboard.writeText(address)
+        .then(() => {
+          copyButton.onclick = function () {
+            modal.style.display = 'block';
+          }
+          alert('주소가 복사되었습니다.');
+        })
+        .catch((error) => {
+          console.error('복사 실패:', error);
+        });
+    });
+
+    // 전화하기 버튼
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn = document.getElementById('popupBtn');
+      const modal = document.getElementById('modalWrap');
+      const closeBtn = document.getElementById('closeBtn');
+      const callBtn = document.getElementById('callBtn');
+
+      modal.style.display = 'none';
+
+      btn.onclick = function () {
+        modal.style.display = 'block';
+      }
+      closeBtn.onclick = function () {
+        modal.style.display = 'none'; // 모달 닫기
+      }
+      callBtn.onclick = function () {
+        modal.style.display = 'none'; // 모달 닫기
+      }
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = 'none'; // 모달 외부
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

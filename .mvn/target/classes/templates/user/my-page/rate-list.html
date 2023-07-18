@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/user/my-page/rate-list.css" />
+  <link rel="stylesheet" href="/css/common/style.css" />
+  <link rel="stylesheet" href="/css/common/header.css" />
+  <link rel="stylesheet" href="/css/common/component.css" />
+  <link rel="stylesheet" href="/css/common/modal-menu.css" />
+  <link rel="stylesheet" href="/css/common/restaurant.css" />
+  <script src="/js/user/my-page/rate-list.js" defer></script>
+  <script src="/js/components/modal-menu.js" defer></script>
+
+</head>
+
+<body>
+
+  <header>
+    <div class="header-side left">
+      <a onclick="history.back()"><button class="header-icon back"></button></a>
+    </div>
+
+    <div class="logo-container">
+      <a href="/">
+        <div class="header-icon logo"></div>
+      </a>
+      <div class="header-icon hoverimg"></div>
+    </div>
+
+    <div class="header-side right">
+      <a class="header-icon menu" id="menu"></a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 찜한 목록 / 평가 목록 -->
+    <nav class="btn-section">
+      <ul class="btn-wrap">
+        <li class="btn-like-list">
+          <a href="like-list"><span>찜한 목록</span></a>
+        </li>
+        <li class="btn-rate-list">
+          <a href="#"><span>평가 목록</span></a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="rate-list-section">
+      <h1 class="d-none">평가 목록</h1>
+      <div class="rate-list">
+        <section class="item" th:each=" r : ${list}">
+          <div class="front">
+            <img src="/images/foods/짜장상회2.jpg" th:src="@{${r.img}}" alt="">
+            <h1><span th:text="${r.resName}">짜장상회</span> · <span th:text="${r.menuName}">짜장면</span></h1>
+            <p>가격</p>
+            <p th:text="${r.price}">5,000원</p>
+            <p>평가</p>
+            <p><span th:text="${r.ratePrice}">88,000</span>원 (<span th:text="${r.value}">120</span>%)</p>
+          </div>
+          <div class="back">
+            <div class="review-wrap">
+              <!-- TODO 45자까지만 가져오기 -->
+              <p class="review">맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요</p>
+            </div>
+            <a href="" class="to-detail">상세 페이지로 ></a>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ============== 메뉴 모달 ============== -->
+    <div class="modal-menu">
+      <div class="screen">
+        <div class="panel">
+          <div class="profile-image-wrapper">
+            <div class="profile-image-frame">
+              <img class="profile-image" th:src="${#authentication.principal.img}" alt="프로필사진">
+            </div>
+            <div class="nickname-wrapper">
+              <span class="nickname" th:text="${#authentication.principal.nickname}"></span>
+            </div>
+          </div>
+
+          <nav class="menu-list-section">
+            <ul>
+              <li>
+                <a href="/user/my-page/edit-info">
+                  <div class="icon icon-key"></div>
+                  <span>회원 정보 수정</span>
+                </a>
+              </li>
+              <li>
+                <a href="/user/my-page/like-list">
+                  <div class="icon icon-heart"></div>
+                  <span>찜 목록</span>
+                </a>
+              </li>
+              <li>
+                <a href="/user/my-page/rate-list">
+                  <div class="icon icon-review"></div>
+                  <span>평가 목록</span>
+                </a>
+              </li>
+              <li>
+                <a href="/user/my-page/statistics">
+                  <div class="icon icon-chart"></div>
+                  <span>가성비 평가 통계</span>
+                </a>
+              </li>
+              <li>
+                <a href="/logout">
+                  <div class="icon icon-power"></div>
+                  <span>로그아웃</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</body>
+
+</html>

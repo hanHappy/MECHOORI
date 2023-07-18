@@ -1,0 +1,43 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "program",
+            "request": "launch",
+            "mainClass": "com.mechoori.web.controller.program",
+            "projectName": "web"
+        },
+        {
+            "type": "java",
+            "name": "program",
+            "request": "launch",
+            "mainClass": "com.mechoori.web.api.controller.program",
+            "projectName": "web"
+        },
+        {
+            "type": "java",
+            "name": "Program",
+            "request": "launch",
+            "mainClass": "com.mechoori.web.api.controller.Program",
+            "projectName": "web"
+        },
+        {
+            "type": "java",
+            "name": "Program",
+            "request": "launch",
+            "mainClass": "com.mechoori.web.controller.Program",
+            "projectName": "web"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MechooriApplication<web>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.mechoori.web.MechooriApplication",
+            "projectName": "web",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=62920 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=web"
+        }
+    ]
+}
