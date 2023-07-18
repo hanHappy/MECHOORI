@@ -70,10 +70,10 @@ dropbox.onchange = function (e) {
         // 드롭박스가 변경되면 기존 내용을 삭제하고 새로운 데이터를 받아옵니다.
 
         categoryId = null;
-        let url = "http://localhost:8080/api/restaurant/ranking";
+        let url = "http://192.168.0.67:8080/api/restaurant/ranking";
         restaurantListLoad(url);
     } else {
-        let url = `http://localhost:8080/api/restaurant/ranking?ctgId=${value}`;
+        let url = `http://192.168.0.67:8080/api/restaurant/ranking?ctgId=${value}`;
         console.log(url);
         restaurantListLoad(url);
     }
@@ -92,7 +92,7 @@ window.addEventListener("scroll", function () {
     }
 
 
-    if (scrollTop + windowHeight >= documentHeight) {
+    if (scrollTop + windowHeight >= documentHeight - 10) {
         // 스크롤이 맨 아래에 도달했을 때
         offset += 8;
 
@@ -105,7 +105,7 @@ window.addEventListener("scroll", function () {
             value = "";
         }
 
-        let url = `http://localhost:8080/api/restaurant/ranking?ctgId=${value}&offset=${offset}`;
+        let url = `http://192.168.0.67:8080/api/restaurant/ranking?ctgId=${value}&offset=${offset}`;
 
         console.log(url);
         restaurantListLoad(url);

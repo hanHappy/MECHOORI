@@ -42,6 +42,8 @@ public class RestaurantController {
             list = rstrService.getRestaurantViewList(memberId, offset);
         else if (topCtgId != null && filterId != null)
             list = rstrService.getRestaurantViewListByTopCtgIdAndFilter(memberId, topCtgId, filterId, offset);
+        else if (query != null && filterId != null)
+            list = rstrService.getRestaurantViewListByQueryAndFilter(memberId, query, filterId, offset);
         else if (filterId != null)
             list = rstrService.getRestaurantViewListByFilter(memberId, ctgId, filterId, offset);
         else if (query != null)

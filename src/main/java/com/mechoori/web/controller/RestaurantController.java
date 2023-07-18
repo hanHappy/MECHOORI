@@ -52,6 +52,7 @@ public class RestaurantController {
     public String list(
             @RequestParam(name = "q", required = false) String query,
             @RequestParam(name = "c", required = false) Integer ctgId,
+            @RequestParam(value = "o", defaultValue = "0") Integer offset,
             @AuthenticationPrincipal MechooriUserDetails member,
             Model model) {
 
@@ -61,8 +62,6 @@ public class RestaurantController {
         List<RestaurantView> list = null;
 
         Integer memberId = null;
-
-        int offset = 0;
 
         if (member != null)
             memberId = member.getId();

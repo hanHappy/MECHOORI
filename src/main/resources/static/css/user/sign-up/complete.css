@@ -11,23 +11,6 @@
   margin-bottom: 116px;
 }
 
-.btn {
-  position: relative;
-
-  left: 50%;
-  transform: translateX(-50%);
-
-
-  width: 375px;
-  height: 41px;
-  
-  border: none;
-  background-color: var(--sub-color);
-  border-radius: 8px;
-
-  color: rgb(255, 255, 255);
-  font-size: 18Px;
-  font-weight: 700;
-  
+main {
+  padding: 0 20px;
 }
-

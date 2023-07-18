@@ -5,6 +5,10 @@
   font-family: var(--font);
 }
 
+body {
+  background-color: var(--background-color);
+}
+
 .web-img{
   display:none;
 }
@@ -53,7 +57,6 @@ header {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  padding: 0 20px;
 }
 
 .detail-content{
@@ -65,7 +68,7 @@ header {
 
   width: 100%;
   max-width: 500px;
-  max-height: 250px;
+  max-height: 240px;
 
 }
 
@@ -352,6 +355,7 @@ header {
 .review {
   margin: 8px 0;
   padding: 15px 20px;
+  margin-bottom: 100px;
   background-color: white;
   box-shadow: var(--block-shadow);
   font-size: 16px;
@@ -637,7 +641,6 @@ a {
 .img-section{
   display: flex;
   justify-content: center;
-  padding-top: 14px;
 }
 
 .img-section img{

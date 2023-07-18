@@ -41,8 +41,6 @@ import com.mechoori.web.service.RestaurantLikeService;
 @RestController("apiUserController")
 @RequestMapping("api/user")
 public class UserController {
-    
-
 
     @Autowired
     private ResourceLoader resourceLoader;
@@ -57,20 +55,19 @@ public class UserController {
     @Autowired
     private MechooriUserDetailService mechooriUserDetailService;
 
-
-    //-------- chart -------
+    // -------- chart -------
     @GetMapping("my-page/statistics")
     public Map<String, Integer> statistics(
             @AuthenticationPrincipal MechooriUserDetails member) {
 
         System.out.println("member: " + member);
         Map<String, Integer> data = rateService.getDate(member.getId());
-        System.out.println("data : "+  data);
+        System.out.println("data : " + data);
 
         return data;
     }
 
-        @GetMapping("my-page/statistics2")
+    @GetMapping("my-page/statistics2")
     public List<Statistics2> statistics2(
             @AuthenticationPrincipal MechooriUserDetails member) {
 
@@ -84,43 +81,42 @@ public class UserController {
     public List<Statistics3> statistics3(
             @AuthenticationPrincipal MechooriUserDetails member) {
 
-            List<Statistics3> data = rateService.getDate3(member.getId());
+        List<Statistics3> data = rateService.getDate3(member.getId());
         // System.out.println("data : " + data);
 
         return data;
     }
-
 
     // TODO 이미지 파일명 + id로 저장
     // 이미지 추가
     @PutMapping("{id}")
     @Transactional
     public Member updateInfo(
-        @PathVariable("id") int memberId,
-        @RequestParam(name = "nickname", required = false) String nickname,
-        @RequestParam(name =  "file", required = false) MultipartFile file) throws IOException {
+            @PathVariable("id") int memberId,
+            @RequestParam(name = "nickname", required = false) String nickname,
+            @RequestParam(name = "file", required = false) MultipartFile file) throws IOException {
 
         Member member = service.getById(memberId);
-        
+
         // 프로필 사진 변경했다면~
-        if(file != null){
+        if (file != null) {
             // 이미지 파일명
             String fileName = file.getOriginalFilename();
-            
+
             // 1. 경로 설정 및 디렉토리 생성
             Resource resource = resourceLoader.getResource(uploadPath);
             File pathFile = resource.getFile();
-    
-            if(!pathFile.exists())
+
+            if (!pathFile.exists())
                 pathFile.mkdirs();
-    
+
             // 2. 파일 저장
             // 절대 경로
             // C:/~/롯데리아.jpg
             String realPath = Paths.get(pathFile.getAbsolutePath(), fileName).toString();
             // 파일.변신(새로운 파일(절대경로에))
             file.transferTo(new File(realPath));
-    
+
             // 3. db 저장
             // /images/member/profile/롯데리아.jpg
             String dbPath = uploadPath + fileName;
@@ -129,19 +125,20 @@ public class UserController {
         }
 
         // 닉네임 변경했다면 ~
-        if(nickname != null){
+        if (nickname != null) {
             member.setNickname(nickname);
         }
-        
+
         service.update(member);
-        
+
         // 세션 갱신 ==============================================
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         MechooriUserDetails sessionMember = (MechooriUserDetails) authentication.getPrincipal();
 
-        SecurityContextHolder.getContext().setAuthentication(createNewAuthentication(authentication, sessionMember.getEmail()));
+        SecurityContextHolder.getContext()
+                .setAuthentication(createNewAuthentication(authentication, sessionMember.getEmail()));
         // -------------------------------------------------------
-        
+
         return member;
     }
 
@@ -155,20 +152,29 @@ public class UserController {
     }
 
     @GetMapping("my-page/rate-list")
-    public List <RateListView> rateList(
-                           @AuthenticationPrincipal MechooriUserDetails user,
-                           @RequestParam(name = "offset") int offset) {
+    public List<RateListView> rateList(
+            @AuthenticationPrincipal MechooriUserDetails user,
+            @RequestParam(name = "offset") int offset) {
 
-        List<RateListView> list = rateService.getMyList(user.getId(),offset);
+        List<RateListView> list = rateService.getMyList(user.getId(), offset);
 
         return list;
     }
 
     @DeleteMapping("my-page/like-list")
-    public int delete(RestaurantLike restaurantLike){
+    public int delete(RestaurantLike restaurantLike) {
         return restaurantLikeService.delete(restaurantLike);
     }
+
+    // 비밀번호 변경 PUT
+    @PutMapping("my-page/edit-info/pwd")
+    public Member changePwd(@RequestParam("mid") int memberId, @RequestParam("np") String newPwd) {
+
+        Member member = new Member();
+        member.setId(memberId);
+
+        service.updatePassword(member, newPwd);
+
+        return member;
+    }
 }
-
-
-

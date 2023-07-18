@@ -101,7 +101,7 @@ window.addEventListener("scroll", function () {
 
         console.log(offset)
 
-        let url = `http://localhost:8080/api/rate/${resId}/reviews?offset=${offset}`;
+        let url = `http://192.168.0.67:8080/api/rate/${resId}/reviews?offset=${offset}`;
         console.log(url)
         reviewListLoad(url);
     }

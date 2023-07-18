@@ -124,6 +124,32 @@ public class RestaurantServiceImp implements RestaurantService {
 		return repository.findRestaurantViewAll(memberId, null, ctgId, null, filter, offset, this.size);
 	}
 
+		@Override
+	public List<RestaurantView> getRestaurantViewListByQueryAndFilter(Integer memberId, String query, Integer filterId,
+			int offset) {
+		String filter = "";
+
+		switch(filterId){
+			case 1:
+				filter = "value desc";
+				break;
+			case 2:
+				filter = "avg_price";
+				break;
+			case 3:
+				filter = "avg_price desc";
+				break;
+			case 4:
+				filter = "rate_count desc";
+				break;
+			case 5:
+				filter = "like_count desc";
+				break;
+		}
+
+		return repository.findRestaurantViewAll(memberId, null, null, query, filter, offset, this.size);
+	}
+
 
 
 
@@ -223,6 +249,8 @@ public class RestaurantServiceImp implements RestaurantService {
 	public List<Restaurant> findAllRestaurant() {
 		return repository.findAllRestaurant();
 	}
+
+
 
 
 

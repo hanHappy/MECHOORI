@@ -238,6 +238,8 @@ filter.addEventListener('change', (e)=>{
         url = `/api/restaurant/list?c=${variables.categoryId}&f=${variables.filterId}&o=${variables.offset}`
     else if(variables.query)
         url = `/api/restaurant/list?q=${variables.query}&f=${variables.filterId}&o=${variables.offset}`
+    else
+        url = `/api/restaurant/list?o=${variables.offset}`
 
     restaurantListLoad(url)
 }) 

@@ -1,10 +1,6 @@
 let rateList = document.querySelector('.rate-list');
 let offset = 0;
 
-
-console.log(offset)
-
-
 rateList.addEventListener('click', (e)=>{
     if(e.target.className == 'rate-list')
         return
@@ -76,7 +72,7 @@ window.addEventListener("scroll", function () {
         offset += 6;
 
         console.log("offset", offset);
-        let url = `http://localhost:8080/api/user/my-page/rate-list?offset=${offset}`;
+        let url = `http://192.168.0.67:8080/api/user/my-page/rate-list?offset=${offset}`;
         console.log(url)
 
         listLoad(url);
