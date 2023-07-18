@@ -30,14 +30,10 @@ public class HomeController {
 			Model model
 			// @AuthenticationPrincipal MechooriUserDetails member //
 	) {
-
 		List<TopCategory> list = service.getTopCategoryList();
 		List<RestaurantRankView> listRank = restaurantRankService.getRankTop5();
 
-		// String nickname = member.getNickname();//
-
 		model.addAttribute("list", list);
-			// .addAttribute("nickname", nickname);//
 		model.addAttribute("listRank", listRank);
 		
 		System.out.println("id----------------------------------: ");

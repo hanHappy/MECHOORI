@@ -1,9 +1,11 @@
+
 main{
   display: flex;
   flex-direction: column;
   padding: 0 20px;
+  flex-direction: column;
+  padding: 0 20px;
 }
-
 
 .line0{
     margin-top: 40px;
@@ -13,7 +15,6 @@ main{
 
     border: 1px solid #C6C6C6;
 }
-
 
 .circleParent {
     position: relative;
@@ -163,8 +164,6 @@ label.required::after {
   border-radius: 8px;
 }
 
-
-
 .line2{
   margin-top: 25px;
   width: 335px;  
@@ -173,15 +172,8 @@ label.required::after {
   border: 1px solid #C6C6C6;
 }
 
-
-
-.button-1 {
-  transition-duration: 0.2s;
-}
-
-.button-1:disabled {
-  opacity: 0.2;
-  cursor: not-allowed;
+.btn-next {
+  max-width: 460px;
 }
 
 @media (max-width: 768px) {
@@ -194,5 +186,7 @@ label.required::after {
     max-width: 460px;
     width: auto;
   }
+  
+  
 }
 

@@ -3,7 +3,7 @@ package com.mechoori.web.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mechoori.web.entity.RestaurantRankView;
+import com.mechoori.web.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -170,7 +170,7 @@ public class RestaurantServiceImp implements RestaurantService {
 
 	@Override
 	public List<RestaurantRankView> getRanking(Integer categoryId, int offset) {
-		return repository.getRanking(categoryId, offset, 6);
+		return repository.getRanking(categoryId, offset, 8);
 	}
 
 //	@Override
@@ -212,6 +212,11 @@ public class RestaurantServiceImp implements RestaurantService {
 		restaurant.setContactNumber(null);
 
 		repository.update(restaurant);
+	}
+
+	@Override
+	public List<Review> findReviewAll(int restaurantId) {
+		return repository.findReviewAll(restaurantId);
 	}
 
 

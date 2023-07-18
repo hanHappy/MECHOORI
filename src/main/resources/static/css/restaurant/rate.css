@@ -4,16 +4,9 @@ body {
     background-color: var(--background-color);
 }
 header {
-    /* layout */
     width: 100%;
-    position: sticky;
-    z-index: 1;
-    top: 0;
-
-    /* items layout */
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 main {
@@ -39,36 +32,36 @@ main>*{
     text-indent: -999px;
 }
 
-.header-logo {
-    background-image: url(/images/assets/logo.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+/*.header-logo {*/
+/*    background-image: url(/images/assets/logo.png);*/
+/*    background-size: contain;*/
+/*    background-repeat: no-repeat;*/
+/*    background-position: center;*/
 
-    /* layout */
-    width: 72px;
-    height: 44px;
-    margin: 0;
+/*    !* layout *!*/
+/*    width: 72px;*/
+/*    height: 44px;*/
+/*    margin: 0;*/
 
-    /* "메추리" 텍스트 가리기 */
-    overflow: hidden;
-    text-indent: -999px;
-}
+/*    !* "메추리" 텍스트 가리기 *!*/
+/*    overflow: hidden;*/
+/*    text-indent: -999px;*/
+/*}*/
 
-.header-icon-home {
-    background-image: url(/images/icons/home.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    border: none;
-    background-color: transparent;
+/*.header-icon-home {*/
+/*    background-image: url(/images/icons/home.svg);*/
+/*    background-size: cover;*/
+/*    background-repeat: no-repeat;*/
+/*    border: none;*/
+/*    background-color: transparent;*/
 
-    width: 20px;
-    height: 23px;
+/*    width: 20px;*/
+/*    height: 23px;*/
 
-    /* "메뉴버튼" 텍스트 가리기 */
-    overflow: hidden;
-    text-indent: -999px;
-}
+/*    !* "메뉴버튼" 텍스트 가리기 *!*/
+/*    overflow: hidden;*/
+/*    text-indent: -999px;*/
+/*}*/
 /* ----------- 식당 이미지 ----------- */
 .restaurant-img-box {
     line-height: 0px;
@@ -443,16 +436,6 @@ main>*{
 
 @media only screen and (min-width: 679px) {
 
-    header {
-        height: 300px;
-        width: 100%;
-        background-image: url(/images/foods/main.svg);
-        /*background-color: transparent;*/
-        /*background-repeat: no-repeat;*/
-        background-size: cover;
-        z-index: 80;
-        position: relative;
-    }
 
     .restaurant-img-box {
         display: flex;
@@ -469,7 +452,6 @@ main>*{
     .restaurant-name-wrapper {
         display: flex;
         margin-top: 15px;
-        max-width: 900px;
         align-items: center;
         flex-wrap: wrap;
         justify-content: center;

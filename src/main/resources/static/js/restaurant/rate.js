@@ -82,11 +82,11 @@ dropbox.addEventListener("change", (e)=>{
 // 평가 버튼 핸들러 (disable <-> able)
 function rateBtnHandler(){
   if(isMenuPriceFilled && isRatePriceValid){
-    rateBtn.classList.remove("inactive");
+    rateBtn.classList.add("active");
     rateBtn.disabled = false;
   }
   else{
-    rateBtn.classList.add("inactive");
+    rateBtn.classList.remove("active");
     rateBtn.disabled = true;
   }
 }

@@ -52,4 +52,9 @@ public class MenuServiceImp implements MenuService{
 			menu.setName(null);
 		repository.update(menu);
 	}
+
+	@Override
+	public int delete(int id) {
+		return repository.delete(id);
+	}
 }

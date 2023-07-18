@@ -1,23 +1,43 @@
 package com.mechoori.web.api.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import com.mechoori.web.entity.RateListView;
+import com.mechoori.web.entity.ReviewListView;
+import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.RateService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 
 @RestController("apiRateController")
-@RequestMapping("api/rate")
+@RequestMapping("/api/rate")
 public class RateController {
 
     @Autowired
-    private RateService rateService;
-    
+    private RateService service;
+
+
     @DeleteMapping("{id}")
-    public int delete(@PathVariable("id") int id){
-        return rateService.delete(id);
+    public int deleteReview(@PathVariable("id") int id) {
+
+        System.out.println(id);
+
+        return  service.delete(id);
     }
+
+
+    @GetMapping("{id}/reviews")
+    public List<ReviewListView> list(
+            @RequestParam(name = "offset", defaultValue = "0") int offset,
+            @PathVariable("id") int restaurantId) {
+
+
+        List<ReviewListView> list = service.getViewList(restaurantId, offset);
+        System.out.println(list);
+        return list;
+    }
+
 
 }

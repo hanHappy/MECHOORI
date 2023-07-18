@@ -123,6 +123,10 @@ p { margin: 0; }
 /* -------------- 리뷰란 -------------- */
 .review-wrap { padding: 0 6px; }
 
+/* 찜한 식당이 없스빈다 */
+.msg-no-list-wrap {
+    color: var(--hint-color);
+}
 
 /* -------------- 리뷰쓰기 버튼 -------------- */
 .btn-review-wrap {

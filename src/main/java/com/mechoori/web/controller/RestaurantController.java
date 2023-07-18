@@ -8,6 +8,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+import com.mechoori.web.entity.*;
+import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -15,24 +17,9 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mechoori.web.entity.Category;
-import com.mechoori.web.entity.Menu;
-import com.mechoori.web.entity.MenuView;
-import com.mechoori.web.entity.Rate;
-import com.mechoori.web.entity.Restaurant;
-import com.mechoori.web.entity.RestaurantDetail;
-import com.mechoori.web.entity.RestaurantRankView;
-import com.mechoori.web.entity.RestaurantView;
-import com.mechoori.web.entity.ReviewListView;
-import com.mechoori.web.entity.TopCategory;
 import com.mechoori.web.security.MechooriUserDetails;
 import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
@@ -98,6 +85,7 @@ public class RestaurantController {
     @GetMapping("{id}")
     public String detail(
             @PathVariable("id") int restaurantId,
+            @RequestParam(value = "offset", defaultValue = "0") int offset,
             @AuthenticationPrincipal MechooriUserDetails member,
             Model model) {
         
@@ -115,7 +103,7 @@ public class RestaurantController {
             menuIds.add(menuView.getId());
         }
         //리뷰
-        List<ReviewListView> rateList = rateService.getViewList(restaurantId);
+        List<ReviewListView> rateList = rateService.getViewList(restaurantId, offset);
 
         //리뷰 최신순 4개
         List<ReviewListView> top4Rates;
@@ -151,15 +139,15 @@ public class RestaurantController {
 
     @GetMapping("{id}/reviews")
     public String reviews(
-        @PathVariable("id") int restaurantId, 
+        @PathVariable("id") int restaurantId,
         @AuthenticationPrincipal MechooriUserDetails member,
+        @RequestParam(value = "offset", defaultValue = "0") int offset,
         Model model){
-        
         Integer memberId = null;
         if(member != null)
             memberId = member.getId();
 
-        List<ReviewListView> list = rateService.getViewList(restaurantId);
+        List<ReviewListView> list = rateService.getViewList(restaurantId, offset);
         Restaurant restaurant = restaurantService.getDetailById(restaurantId);
         int count = list.size();
 
@@ -167,6 +155,9 @@ public class RestaurantController {
              .addAttribute("count", count)
              .addAttribute("r", restaurant);
         
+        System.out.println(list);
+        System.out.println(count);
+
         return "restaurant/reviews";
     }
 
@@ -209,24 +200,6 @@ public class RestaurantController {
     }
 
     // ---------- 리뷰 리스트 (R) ------------
-    @GetMapping("{id}/reviews")
-    public String reiviewList(
-            @PathVariable("id") int restaurantId, 
-            @AuthenticationPrincipal MechooriUserDetails member,
-            Model model){
-
-
-        List<ReviewListView> list = reviewListService.getDate(restaurantId);
-        int count = list.size();
-
-        model.addAttribute("list", list)
-            .addAttribute("count", count);
-        System.out.println(list);
-        System.out.println(count);
-        return "restaurant/reviews";
-    }
-
-
 
     @GetMapping("/ranking")
         public String ranking(Model model,

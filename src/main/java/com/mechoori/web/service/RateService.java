@@ -12,7 +12,6 @@ import com.mechoori.web.entity.Statistics3;
 public interface RateService {
 
     void add(Rate rate, int memberId);
-    int delete(int id);
 
     // List<Rate> getListByRestaurantId(int restaurantId);
     List<Rate> getListByMenuIds(List<Integer> menuIds);
@@ -30,7 +29,7 @@ public interface RateService {
 
     Map<String, Object> getRateResult(int restaurantId, int memberId);
 
-    List<ReviewListView> getViewList(int restaurantId);
+    List<ReviewListView> getViewList(Integer restaurantId,  int offset);
 
-    
+    int delete(int id);
 }

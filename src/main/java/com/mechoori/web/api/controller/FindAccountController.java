@@ -28,6 +28,8 @@ public class FindAccountController {
         //not null
 
         if (emailCheck) {
+
+            System.out.println(email);
             String code = service.sendSimpleMessage(email);
             return code;
 
@@ -41,6 +43,8 @@ public class FindAccountController {
     public String resetPwd(
             @RequestParam("email") String email){
 
+
+        System.out.println(email);
         return email;
     }
 

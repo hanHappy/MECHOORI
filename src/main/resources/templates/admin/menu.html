@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/admin/restaurant.css">
+    <script src="/js/admin/admin.js"></script>
     <title>Menu</title>
 </head>
 <body>
@@ -48,7 +49,7 @@
                 <div class="buttons">
                     <a th:href="@{restaurant/{id}/menu(id=${r.id})}"><button>MENU</button></a>
                     <a th:href="@{restaurant/{id}/update(id=${r.id})}"><button>EDIT</button></a>
-                    <a th:href="@{restaurant/{id}/delete(id=${r.id})}"><button>DEL</button></a>
+                    <a th:href="@{restaurant/{id}/delete(id=${r.id})}" th:data="${r.id}"><button>DEL</button></a>
                 </div>
             </section>
         </div>

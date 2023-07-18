@@ -67,11 +67,14 @@
           <div class="back">
             <div class="review-wrap">
               <!-- TODO 45자까지만 가져오기 -->
-              <p class="review">맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요맛나요</p>
+              <p class="review" th:text="${r.review}">맛나요</p>
             </div>
-            <a href="" class="to-detail">상세 페이지로 ></a>
+            <a href="" th:href="@{/restaurant/{id}(id=${r.restaurantId})}" class="to-detail">상세 페이지로 ></a>
           </div>
         </section>
+        <div class="msg-no-list-wrap d-none">
+          <p class="msg-no-list">찜한 식당이 없습니다</p>
+        </div>
       </div>
     </section>
 

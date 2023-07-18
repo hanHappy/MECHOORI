@@ -23,22 +23,18 @@ let rankingList = document.querySelector(".ranking-list-sections");
             <div>
             <a class="thymeleaf" href="/restaurant/${list[i].id}">
             <div class ="black-filter">
+            <div class ="black-filter">
             <ul class="ranking-list">
-                <img src="/images/foods/${list[i].img}" class="img">
                 <li class="rankingNum">${i+1}</li>
-                <li class="resto-name">${list[i].name}</li>
+                <li>${list[i].name}</li>
                 <li>
-                </li>
-                <li class="value">
-                <span>${avgprice}</span>
-                <span>(${avgRatedPrice})</span>
-                &nbsp; <span class="valueText">${list[i].value}%</span>
+                     <span>${avgprice}</span><br/>
+                      <span class="valueText">(${avgRatedPrice})</span>
                 </li>
             </ul>
-            </div>
         </a>
         </div>
-
+    
           `;
 
                     rankingList.insertAdjacentHTML("beforeend", itemTemplate);
@@ -95,7 +91,7 @@ let rankingList = document.querySelector(".ranking-list-sections");
 
         if (scrollTop + windowHeight >= documentHeight) {
             // 스크롤이 맨 아래에 도달했을 때
-            offset += 6;
+            offset += 8;
 
             let dropbox = document.getElementById("categoryDropBox");
             let selectedIndex = dropbox.selectedIndex;

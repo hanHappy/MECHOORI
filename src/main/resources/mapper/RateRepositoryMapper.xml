@@ -96,6 +96,7 @@
             *
         from review_list_view
         where restaurant_id = #{restaurantId}
+        limit #{offset}, #{size}
     </select>
 
     <delete id="delete" parameterType="int">

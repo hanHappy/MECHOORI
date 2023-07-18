@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <meta charset="UTF-8">
@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="/css/common/style.css?ver=1">
     <link rel="stylesheet" href="/css/common/header.css?ver=2">
     <link rel="stylesheet" href="/css/common/modal-menu.css?ver=1">
+    <link rel="stylesheet" href="/css/index.css?ver=1">
     <script src="/js/index.js?ver=1" defer="defer"></script>
     <script src="/js/components/modal-menu.js?ver=1" defer></script>
-    
+
 </head>
 
 <body>
@@ -47,14 +48,14 @@
                         <label class="search-input" for="search-input">
                             <img src="/images/icons/search-black.svg">
                         </label>
-                        <input class="search placeholder-effect" name="q" type="text" id="search-input"
+                        <input class="search" name="q" type="text" id="search-input"
                             sec:authorize="isAuthenticated()"
                             th:placeholder="${#authentication.principal.nickname} + '님, 오늘은 옥정 어떠세요?'">
                         <input class="search placeholder-effect" name="q" type="text" id="search-input"
                             sec:authorize="!isAuthenticated()" placeholder="드시고 싶은 메뉴를 입력해보세요">
 
                         <a href="/map">
-                            <img class="search-map" src="/images/icons/지도아이콘.svg" alt="">
+                        <img class="search-map" src="/images/icons/지도아이콘.svg" alt="">
                         </a>
                     </form>
                 </div>
@@ -79,7 +80,8 @@
                 </div>
                 <li th:each="c : ${list}">
                     <input name="c" type="hidden" th:value="${c.id}">
-                    <a href="/restaurant/list/category/1" th:href="@{/restaurant/list(c=${c.id})}">
+                    <a href="/restaurant/list/category/1"
+                       th:href="@{/restaurant/list(c=${c.id})}">
                         <img src="/images/icons/icon-web-한식.svg"
                             th:src="@{/images/icons/icon-web-{img}(img=${c.image})}">
                         <p th:text="${c.name}"></p>
@@ -125,9 +127,9 @@
                         <li class="slideitem">
                             <label for="slide05" class="left"></label>
                             <div class="imgTest">
-                                <a href="restaurant/ranking">
-                                    <img class="resImg" src="/images/foods/1랭킹더미.svg" alt="">
-                                </a>
+                            <a href="restaurant/ranking">
+                                <img class="resImg" src="/images/foods/1랭킹더미.svg" alt="">
+                            </a>
                             </div>
                             <a><label for="slide01" class="right"></label></a>
                         </li>
@@ -171,7 +173,7 @@
                 <h1>나만의 가성비 차트</h1>
                 <div class="comparison-img-content">
                     <a href="user/my-page/statistics">
-                        <img src="images/components/index-성과비교.png" alt="">
+                        <img  src="images/components/index-성과비교.png" alt="">
                     </a>
                 </div>
                 <div class="comparison-text">
@@ -246,5 +248,4 @@
     </main>
 
 </body>
-
 </html>

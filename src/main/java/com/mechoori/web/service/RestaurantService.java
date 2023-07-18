@@ -29,6 +29,9 @@ public interface RestaurantService {
     void add(Restaurant restaurant);
     void update(Restaurant restaurant);
 
+	List<Review> findReviewAll(int restaurantId);
+	
+
 
 //	List<RestaurantRankView> getRanking(int offset);
 
