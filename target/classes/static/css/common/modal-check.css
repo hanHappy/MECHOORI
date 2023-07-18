@@ -1,0 +1,117 @@
+:root {
+    --btn-height: 46px;
+}
+
+.screen.check {
+    position: fixed;
+    z-index: 1300;
+
+    background-color: var(--modal-screen-color);
+
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen.check .modal-panel {
+    border-radius: 8px;
+    background-color: white;
+
+    overflow: hidden;
+    
+    min-width: 310px;
+    min-height: 100px;
+
+    transition: 0.4s;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.screen.check .modal-panel.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.screen.check .message-wrap {
+    /* padding: 30px; */
+    padding: 20px 30px 15px 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 성공 아이콘 */
+.screen.check .img-complete {
+    background-image: url("/images/icons/check.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    width: 50px;
+    height: 50px;
+}
+
+/* Coca 이미지 (삭제) */
+.screen.check .img-delete {
+    background-image: url("/images/assets/coca-sulk.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    width: 100px;
+    height: 100px;
+}
+
+.screen.check .text-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen.check .text-wrap p:first-child{
+    font-weight: bold;
+    font-size: 18px;
+    margin: 15px;
+}
+.screen.check .text-wrap p:last-child{
+    text-align: center;
+    font-size: 16px;
+    margin: 0;
+}
+
+/* 버튼 - 1개 */
+.screen.check .btn-wrap{
+    background-color: var(--sub-color);
+
+    height: var(--btn-height);
+}
+
+.screen.check .btn-wrap a{
+    display: block;
+
+    text-align: center;
+    line-height: var(--btn-height);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+
+    width: 100%;
+    height: 100%;
+}
+
+/* 버튼 - 2개 */
+.btns-wrap {
+    padding-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
