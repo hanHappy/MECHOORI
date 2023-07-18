@@ -2,6 +2,7 @@ package com.mechoori.web.controller;
 
 import java.util.List;
 
+import com.mechoori.web.entity.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,10 +36,10 @@ public class HomeController {
 
 		model.addAttribute("list", list);
 		model.addAttribute("listRank", listRank);
-		
+
 		System.out.println("id----------------------------------: ");
 		System.out.println(listRank.get(0).getId());
-		
+
 		// for(int i=0; i<10; i++){
 		// 	System.out.println(nickname);
 		// }
@@ -49,14 +50,12 @@ public class HomeController {
 
 
 	@GetMapping("map")
-	public String map(@RequestParam(name = "q", required = false) String query,
-					  @RequestParam(name = "c", required = false) Integer ctgId,
-					  Model model) {
+	public String map(Model model) {
 
 
-		List<RestaurantView> list = null;
+		List<Restaurant> list = restaurantService.findAllRestaurant();
 
-		Integer memberId = null;
+		model.addAttribute("list", list);
 
 		return "map";
 	}

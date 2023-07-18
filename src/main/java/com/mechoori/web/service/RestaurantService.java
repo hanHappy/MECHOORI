@@ -30,7 +30,8 @@ public interface RestaurantService {
     void update(Restaurant restaurant);
 
 	List<Review> findReviewAll(int restaurantId);
-	
+
+    List<Restaurant> findAllRestaurant();
 
 
 //	List<RestaurantRankView> getRanking(int offset);

@@ -219,6 +219,12 @@ public class RestaurantServiceImp implements RestaurantService {
 		return repository.findReviewAll(restaurantId);
 	}
 
+	@Override
+	public List<Restaurant> findAllRestaurant() {
+		return repository.findAllRestaurant();
+	}
+
+
 
 }
 

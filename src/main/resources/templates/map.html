@@ -20,24 +20,20 @@
 <body>
 <header>
     <div class="header-side left">
-        <a href="/">
-            <button class="header-icon back"></button>
-        </a>
+        <a href="javascript: history.back();" class="header-icon back"></a>
     </div>
-    <form>
-        <h1>검색창</h1>
-    </form>
-    <div class="header-side right">
-        <a href="">
-            <button class="d-none"></button>
+    <div class="logo-container">
+        <a href="/">
+            <div class="header-icon logo"></div>
         </a>
+        <div class="header-icon hoverimg"></div>
+    </div>
+    <div class="header-side right">
+        <a href="/" class="header-icon d-none"></a>
     </div>
 </header>
 <section>
-    <!--    <div id="search-bar">-->
-    <!--        <input type="text" id="keyword" placeholder="키워드를 입력하세요">-->
-    <!--        <button id="search-button">검색</button>-->
-    <!--    </div>-->
+
 
     <div class="map_wrap">
         <div id="map" style="width: 100%; height: 650px; position:relative;overflow:hidden;"></div>
@@ -56,12 +52,6 @@
                                    alt="축소"></span>
 
     </div>
-</section>
-
-
-<section class = "modal-section">
-    <div class = "image"></div>
-    <div class = "info"></div> <!--음식점이름/방문자리뷰/주소-->ㅡ
 </section>
 
 </body>
