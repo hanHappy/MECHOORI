@@ -71,9 +71,7 @@ public class UserController {
 
     @PostMapping("login/find-pwd")
     public String updatePassword(@RequestParam("email") String email, @RequestParam("np") String newPwd) {
-        Member member = Member.builder()
-                              .email(email)
-                              .build();
+        Member member = service.getByEmail(email);
         service.updatePassword(member, newPwd);
         return "redirect:/user/login";
     }

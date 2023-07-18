@@ -146,10 +146,5 @@ main{
 }
 
 .btn-save {
-    margin-top: 20px;
-    background-color: var(--btn-color-2);
-}
-
-.btn-save.active {
-    background-color: var(--sub-color);
+    margin-top: 30px;
 }

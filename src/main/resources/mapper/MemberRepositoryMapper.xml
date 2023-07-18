@@ -35,18 +35,17 @@
 
     <update id="update" parameterType="Member">
         update member
+        
         <set>
             <if test="nickname != null">nickname = #{nickname},</if>
             <if test="password != null">password = #{password},</if>
             <if test="img != null">img = #{img}</if>
         </set>
+
         <if test="id != null">
             where id = #{id}    
         </if>
-        <if test="email != null">
-            where email = #{email}    
-        </if>
-            
+
     </update>
 
 </mapper>
