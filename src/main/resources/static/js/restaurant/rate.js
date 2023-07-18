@@ -1,14 +1,11 @@
 // 평가 확인 모달 ------------------------------------------
 let header = document.querySelector('header');
 let backBtn = header.querySelector('.header-icon.back');
-let homeBtn = header.querySelector('.header-icon.home');
 let logo = header.querySelector('.logo');
 let modalComplete = document.querySelector('.modal.check-complete');
 let noComplete = modalComplete.querySelector('.no');
 let modalBack = document.querySelector('.modal.check-back');
 let noBack = modalBack.querySelector('.no');
-let modalHome = document.querySelector('.modal.check-home');
-let noHome = modalHome.querySelector('.no');
 let rateBtn = document.querySelector('.rate-btn');
 
 // 가격 관련
@@ -21,13 +18,10 @@ let slider = document.querySelector("#my-range");
 // 모달 나타나게
 header.onclick = function (e) {
   if (e.target != backBtn
-    && e.target != homeBtn
     && e.target != logo)
     return;
   if (e.target == backBtn)
     modalBack.classList.remove('d-none');
-  if (e.target == homeBtn)
-    modalHome.classList.remove('d-none');
 }
 rateBtn.onclick = function (e) {
   modalComplete.classList.remove('d-none');
@@ -37,8 +31,7 @@ rateBtn.onclick = function (e) {
 window.addEventListener('click', function (e) {
   let isModal = true;
   if (e.target == modalComplete
-    || e.target == modalBack
-    || e.target == modalHome)
+    || e.target == modalBack)
     isModal = false;
 
   if (!isModal) {
@@ -50,10 +43,6 @@ window.addEventListener('click', function (e) {
 modalBack.onclick = function(e){
   if(e.target == noBack)
     modalBack.classList.add('d-none');
-}
-modalHome.onclick = function(e){
-  if(e.target == noHome)
-    modalHome.classList.add('d-none');
 }
 modalComplete.onclick = function(e){
   if(e.target == noComplete)
@@ -82,11 +71,11 @@ dropbox.addEventListener("change", (e)=>{
 // 평가 버튼 핸들러 (disable <-> able)
 function rateBtnHandler(){
   if(isMenuPriceFilled && isRatePriceValid){
-    rateBtn.classList.add("active");
+    rateBtn.classList.remove("inactive");
     rateBtn.disabled = false;
   }
   else{
-    rateBtn.classList.remove("active");
+    rateBtn.classList.add("inactive");
     rateBtn.disabled = true;
   }
 }
@@ -148,9 +137,3 @@ imgInput.addEventListener("change", (e)=>{
   else
     reviewImgUploadBtn.classList.remove("uploaded");
 });
-
-// let reviewImageLabel = reviewSection.querySelector("#review-image-label");
-// reviewImageLabel.addEventListener("change", (e)=>{
-//   console.log("c");
-// });
-

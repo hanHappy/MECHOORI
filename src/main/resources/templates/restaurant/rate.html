@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/common/header.css?ver=2">
     <link rel="stylesheet" href="/css/restaurant/rate.css?ver=1">
     <link rel="stylesheet" href="/css/common/button.css?ver=1">
-    <script src="/js/restaurant/rate.js?ver=1" defer="defer"></script>
+    <script src="/js/restaurant/rate.js" defer></script>
 
 </head>
 
@@ -18,7 +18,7 @@
     <!-- ================ header ================ -->
     <header>
         <div class="header-side left">
-            <a onclick="history.back()"><button class="header-icon back"></button></a>
+            <a class="header-icon back"></a>
         </div>
 
         <div class="logo-container">
@@ -29,7 +29,6 @@
         </div>
 
         <div class="header-side right">
-            <!-- <a class="header-icon menu" id="menu"></a> -->
         </div>
     </header>
 
@@ -116,7 +115,7 @@
                     </div>
                     <div class="check-btn-box">
                         <button type="button" class="no">아니오</button>
-                        <a href="/"><button class="yes">네</button></a>
+                        <a href=""><button class="yes">네</button></a>
                     </div>
                 </div>
             </div>
@@ -134,23 +133,7 @@
                 </div>
                 <div class="check-btn-box">
                     <button class="no">아니오</button>
-                    <a href="/restaurant/list"><button class="yes">네</button></a>
-                </div>
-            </div>
-        </div>
-        <!-- 모달 /홈으로 확인-->
-        <div class="modal check-home d-none">
-            <div class="modal-box">
-                <div class="question-box">
-                    <img src="/images/assets/coca-물음표.png" alt="">
-                    <div>
-                        <p>작성을 취소하고</p>
-                        <p>홈으로 돌아갈까요?</p>
-                    </div>
-                </div>
-                <div class="check-btn-box">
-                    <button class="no">아니오</button>
-                    <a href="/"><button class="yes">네</button></a>
+                    <a onclick="history.back()"><button class="yes">네</button></a>
                 </div>
             </div>
         </div>
