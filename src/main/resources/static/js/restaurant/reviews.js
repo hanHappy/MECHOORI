@@ -47,7 +47,7 @@ function reviewListLoad(url) {
         .then(list => {
 
             for (let r of list) {
-                let RatedPrice = r.ratePrice.toLocaleString();
+                let RatedPrice = r[i].ratePrice.toLocaleString();
                 let Template = `
               <section class="review">
                 <h1 class="d-none">리뷰</h1>
@@ -55,7 +55,7 @@ function reviewListLoad(url) {
                 <!-- 프로필 -->
                 <div class="profile-wrap">
                     <div class="profile-img-wrap">
-                        <img src=${r.memberImg} alt="">
+                        <img src="/images/member/profile/{img}}" alt="">
                     </div>
                     <span>${r.nickname}</span>
                     <button class="btn-delete">×</button>
