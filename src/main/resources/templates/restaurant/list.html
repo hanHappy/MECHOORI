@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html 
+    lang="en" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>손 안의 메뉴 추천 리스트, 메추리</title>
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/common/component.css">
+    <link rel="stylesheet" href="/css/common/button.css">
+    <link rel="stylesheet" href="/css/common/restaurant.css">
+    <link rel="stylesheet" href="/css/common/modal-toast.css">
+    <link rel="stylesheet" href="/css/restaurant/list.css">
+    <script type="module" src="/js/restaurant/list.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+<!-- FIXME 헤더 안 됨 -->
+<!-- FIXME 좋아요 안 됨 -->
+    <header>
+        <nav class="header">
+            <div class="header-wrapper">
+                <div class="header-side left">
+                    <a href="/"><button class="header-icon back">버튼</button></a>
+                </div>
+                <!-- <a href="/">
+                    <h1 class="header-icon logo">로고</h1>
+                </a> -->
+
+                <div class="logo-container">
+                    <a href="/">
+                      <div class="header-icon logo"></div>
+                    </a>
+                    <div class="header-icon hoverimg"></div>
+                </div>
+
+
+                <div class="header-side right">
+                    <a><button class="header-icon search">버튼</button></a>
+                </div>
+                <div class="search-container d-none">
+                    <form action="list" method="get" onsubmit="return false">
+                        <div>
+                            <a href="/">
+                                <button type="button" class="back-btn text-hidden">뒤로가기</button>
+                            </a>
+                        </div>
+                        <input id="search-bar" class="placeholderEffect" type="text" name="q" placeholder="어떤 식당이 궁금하신가요?">
+                        <div>
+                            <button type="button" class="search-btn text-hidden">검색</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 카테고리 -->
+        <nav class="top-category-section scroll-hidden">
+            <ul class="category-list top-category-list">
+                <li>
+                    <a class="top-category">전체</a>
+                </li>
+                <li th:each="c : ${mainCtgList}">
+                    <a class="top-category" 
+                        th:data-id="${c.id}"
+                        th:text="${c.name}">한식
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 기타 카테고리 -->
+        <nav class="other-category-section">
+            <ul class="category-list other-category-list">
+                <li><button class="category-tag" href="#">#전체</button></li>
+                <li th:each="c : ${otherCtgList}">
+                    <button
+                        type="button"
+                        class="category-tag" 
+                        th:data-id="${c.id}" 
+                        th:text="'#' + ${c.name}">#베트남
+                    </button>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 필터 -->
+        <nav>
+            <div class="filter-box">
+                <select name="filter" id="filter" class="filter custom-select sources"  placeholder="전체">
+                <option disabled selected>전체</option>
+                <option value="1">가성비순</option>
+                <option value="2">낮은가격순</option>
+                <option value="3">높은가격순</option>
+                <option value="4">평가순</option>
+                <option value="5">좋아요순</option>
+                </select>
+            </div>              
+        </nav>
+
+    </header>
+
+    <main>
+
+        <!-- FIXME 카테고리 바꿀 때 필터 초기화 -->
+
+        <!-- 컨텐츠 -->
+        <section class="restaurant-list-section">
+            <h1 style="display: none;">식당 목록</h1>
+            <div class="restaurant-list">
+                <section class="restaurant" th:each="r : ${list}">
+                    <div class="content">
+                        <!-- 이미지 -->
+                        <div class="image-box">
+                            <img src="/images/foods/청화원2.png" th:src="@{/images/foods/{img}(img=${r.img})}" alt="이미지"
+                                class="image">
+                            <div class="image-screen">
+                                <!-- 하트 -->
+                                <a 
+                                    href=""
+                                    type="button"
+                                    sec:authorize="isAuthenticated()" 
+                                    th:data-member-id="${#authentication.principal['id'] ?: #authentication.principal.attributes['sub']}"
+                                    th:data-restaurant-id="${r.id}"
+                                    class="like" 
+                                    th:classappend="${r.like}?'active' : ''">좋아요
+                                </a>
+                                <a 
+                                    sec:authorize="isAnonymous()"
+                                    href="/user/login" 
+                                    class="like">좋아요
+                                </a>
+                                <div class="data-box">
+                                    <p>
+                                        <span>좋아요 이미지</span>
+                                        <span th:text="${r.likeCount}" id="like-count">718</span>
+                                        <span>평가 이미지</span>
+                                        <span th:text="${r.rateCount}">207</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 정보 -->
+                        <div class="info-box">
+                            <div class="name-wrapper">
+                                <span th:text="${r.name}" class="name">식당명</span>
+                            </div>
+                            <div class="info">
+                                <p>
+                                    평균가격
+                                    <span th:text="${r.avgPrice}">10,000원</span>
+                                    <span class="value subject">· 가성비</span>
+                                    <span th:text="${r.value} + '%'" class="value">113%</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 버튼 -->
+                        <div class="btn-box">
+                            <div>
+                                <a href="/restaurant/1" th:href="@{/restaurant/{id}(id=${r.id})}">
+                                    <button class="button button-12">상세보기</button></a>
+                            </div>
+                            <div>
+                                <a href="/restaurant/{id}/rate" th:href="@{/restaurant/{id}/rate(id=${r.id})}">
+                                    <button class="button button-12">평가하기</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- 좋아요 모달 -->
+        <div class="modal-toast">
+            <p>너 내가 찜했다</p>
+        </div>
+
+        <input type="hidden" sec:authorize="isAuthenticated()" th:value="${#authentication.principal.id}" id="member-id">
+    </main>
+
+</body>
+
+</html>

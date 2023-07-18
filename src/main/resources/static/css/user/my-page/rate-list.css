@@ -1,0 +1,238 @@
+body { background-color: var(--background-color); }
+
+/* ---------------- 버튼 영역 ---------------- */
+.btn-section {
+  box-shadow: var(--block-shadow);
+  background-color: white;
+
+  padding: 20px 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-wrap {
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 1px solid var(--main-color);
+  
+  width: 100%;
+  height: 40px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn-wrap li {
+  border-radius: 30px;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-wrap li:first-child { color: #d0d0d0; }
+
+.btn-wrap li:last-child {
+  border: 1px solid var(--main-color);
+  background-color: var(--main-color);
+}
+
+.btn-wrap a{
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ============== 평가 목록 ============== */
+.rate-list-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rate-list {
+  padding: 10px 20px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 164px);
+  row-gap: 10px;
+  column-gap: 10px;
+}
+
+/* ----------- item ----------- */
+.item {
+  position: relative;
+
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: var(--item-shadow-1);
+
+  width: 164px;
+  height: 180px;
+
+  cursor: pointer;
+
+  /* animation */
+  transition: 0.4s;
+  transform-style: preserve-3d;
+}
+
+.item:hover {
+  box-shadow: var(--btn-shadow-4);
+}
+
+.front, 
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* --------- front --------- */
+.front {
+  display: grid;
+  grid-template:
+                "img img" 96px
+                "name name"
+                "price price-value"
+                "rate rate-value" 1fr
+                /3fr 7fr;
+}
+
+.front img {
+  border-radius: 8px;
+
+  width: 164px;
+  height: 96px;
+
+  grid-area: img;
+}
+
+.front p, .front h1 { 
+  letter-spacing: -1px;
+  margin: 0; 
+}
+
+.front h1 {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  padding: 0 5px 0 10px;
+  margin-top: 5px;
+
+  grid-area: name;
+}
+.front p:nth-child(3){ grid-area: price; }
+.front p:nth-child(4){ grid-area: price-value; }
+.front p:nth-child(5){ grid-area: rate; }
+.front p:nth-child(6){ grid-area: rate-value; }
+.front p:nth-child(2n+1){ text-align: center; }
+
+.front p:nth-child(5),
+.front p:nth-child(6) {
+  color: var(--sub-color);
+}
+
+/* --------- back --------- */
+.back {
+  backface-visibility: hidden;
+  background-color: white;
+  border-radius: 8px;
+
+  box-sizing: border-box;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transform: rotateY(180deg);
+}
+
+.review-wrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.review {
+  margin: 0;
+}
+
+.to-detail {
+  color: #c7c7c7 !important;
+  align-self: flex-end;
+}
+
+
+/*==========================================================================*/
+
+@media only screen and (min-width: 769px) {
+
+    .foodList {
+      display: grid;
+      width: 100%;
+      grid-template-columns: repeat(2, minmax(0, 100%));
+      grid-gap: 20px;
+      max-width: 1250px;
+    }
+
+    .adji {
+        width: 100%;
+        height: 200px;
+        box-shadow: var(--block-shadow);
+        border-radius: var(--border-radius);
+        display: flex;
+        align-items: center;
+    }
+
+    .FI {
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 100%;
+        max-width: 230px;
+        height: 100%;
+        border-radius: var(--border-radius);
+        display: inline-flex;
+    }
+
+    .resName{
+        font-weight: 900;
+        position: relative;
+        top: -30px;
+        left: 30px;
+        font-size: 22px;
+    }
+
+    .menuName{
+        position: relative;
+        top: -25px;
+}
+
+    .price{
+
+    }
+
+    .ratePrice{
+
+    }
+
+
+}
+
+
+

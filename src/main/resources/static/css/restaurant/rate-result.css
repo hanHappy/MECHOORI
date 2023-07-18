@@ -1,0 +1,123 @@
+.page-wrap {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px 20px 0 20px;
+}
+
+.poster { min-width: 325px; }
+
+/* 포스터 배경 */
+.poster-bg {
+    background-color: #F4F4F4;
+    border-radius: 8px;
+
+    width: 100%;
+    height: 100%;
+}
+
+/* 데이터 섹션 */
+.data-section {
+    box-sizing: border-box;
+    padding: 0 6px;
+}
+
+.data-item {
+    background-color: white;
+
+    height: 135px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.img-chart-wrap {
+    padding: 0 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-chart {
+    background-image: url("/images/icons/chart-2.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    width: 100px;
+    height: 100px;
+}
+
+.data-text-wrap { padding: 0 6px; }
+
+.data-text-wrap p{ 
+    word-spacing: -1px;
+    margin: 0;
+}
+
+.data-text-wrap p:first-child { 
+    font-weight: bold;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    display: -webkit-box; 
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.data-text-wrap p:last-child { color: #F98F78; }
+
+/* 메추리의 분석 */
+.coca-analysis-wrap {
+    min-height: 200px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coca-analysis-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-coca {
+    background-image: url(/images/assets/coca-analysis.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-width: 100px;
+    min-height: 85px;
+}
+
+.text-bg {
+    background-color: white;
+    border-radius: 30px;
+
+    width: 270px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    text-align: center;
+    font-weight: bold;
+}
+
+.go-statistics {
+    color: #909090 !important;
+    font-size: 14px;
+
+    margin-top: 10px;
+
+    align-self: flex-end;
+}
+
+.btn-to-home { margin-top: 20px; }

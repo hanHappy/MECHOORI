@@ -1,0 +1,100 @@
+body {
+    padding: 20px;
+}
+
+input {
+    width: 85%;
+    height: 30px;
+    font-size: 16px;
+}
+
+    input::placeholder {
+    font-size: 14px;
+}
+
+.search-btn {
+    height: 35px;
+}
+
+/* -------------- 칼럼 -------------- */
+.column-box {
+    font-weight: bold;
+    text-align: center;
+
+    width: 80vw;
+
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+}
+.menu.column-box {
+    font-weight: bold;
+    text-align: center;
+
+    width: 60vw;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+/* -------------- 데이터 -------------- */
+.data {
+    text-align: center;
+
+    width: 90vw;
+    margin-bottom: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+}
+.data.menu {
+    text-align: center;
+
+    width: 75vw;
+    margin-bottom: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+.restaurant p{
+    margin: 0;
+}
+
+.page-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pages {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.page a{
+    font-size: 20px;
+    text-decoration: none;
+    color: blue;
+}
+
+.button-box {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.button-box button {
+    width: 55px;
+    border: none;
+}
+
+.menu-btn{
+    background-color: var(--sub-color);
+    color: white;
+}
+
+.delete-btn{
+    background-color: #F98F78;
+}

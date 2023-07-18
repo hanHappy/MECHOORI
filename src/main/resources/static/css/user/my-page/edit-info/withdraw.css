@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url('/css/common/style.css');
+
+body {
+    width: 375px;
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+}
+
+.header {
+    height: 95px;
+    position: relative;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 375px;
+    height: 5px;
+    border-bottom: 1px solid #FFEA74;
+}
+
+h1 {
+    padding: 49px 0 20px 33px;
+    font-size: 18px;
+    color: #282828;
+    /* padding-top: 99px; */
+}
+
+h2 {
+    font-size: 16px;
+    margin: 20px 0 0 33px;
+}
+
+h3 {
+    font-size: 14px;
+    margin: 20px 0 0 33px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li:before {
+    content: "· ";
+}
+
+ul li + li {
+    margin-top: 10px;
+  }
+
+li {
+    font-size: 14px;
+    margin-top: 20px;
+    padding-left: 33px;
+}
+
+.checknotice {
+    display: flex;
+    align-items: center;
+}
+
+.checkicon {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.checkicon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-left: 5px;
+    margin-top: 22px;
+}
+
+
+.withdraw {
+    width: 335px;
+    height: 42px;
+    border: none;
+    background-color: #EEEEEE;
+    margin-top: 40px;
+    margin-left: 20px;
+    box-shadow: 2px 2px 4px #00000025;
+    border-radius: 8px;
+}
+
+button a {
+    text-decoration: none;
+    color: #282828;
+    font-weight: bold;
+    font-size: 18px;
+}
