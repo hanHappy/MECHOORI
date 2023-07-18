@@ -73,6 +73,23 @@ label {
   margin-top: 20px;
 }
 
-.btn-next {
+.btn-save {
   margin-top: 20px;
 }
+
+ul {
+  margin: 30px 0;
+}
+
+li {
+  list-style-type: disc;
+  list-style-position: inside;
+
+  font-size: 14px;
+  color: var(--hint-color);
+
+  margin-top: 10px;
+}
+
+.msg-check-valid { color: var(--font-color-3); }
+.msg-check-same { color: var(--sub-color); }

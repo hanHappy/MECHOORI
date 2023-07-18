@@ -1,140 +1,109 @@
-// FIXME 버튼 수정
+import ModalCheck from "../../components/modal-check.js"
 
-document.addEventListener("DOMContentLoaded", function () {
+let form = document.querySelector('#form-reset-pwd')
+let emailInput = form.querySelector('#email')
+let emailCodeInput = form.querySelector('#email-confirm-num')
 
-    let emailConfirmCode = "";
-    let emailConfirm = document.getElementById("msg-email-check");
+let emailConfirmCode = ""
+let emailConfirm = form.querySelector("#msg-email-check")
 
-    function sendEmailConfirmationRequest() {
-        let email = document.querySelector("#email").value;
-        let emailTxt = document.querySelector("#email");
-        let formData = new FormData();
+let resetPwdSection = form.querySelector('.reset-pwd')
 
-        formData.append("email", email);
+function sendEmailConfirmationRequest() {
+    let email = form.querySelector("#email").value
+    let formData = new FormData()
 
-        fetch('/api/find-pwd/email-check', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: new URLSearchParams(formData),
+    formData.append("email", email)
+
+    fetch('/api/find-pwd/email-check', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(formData),
+    })
+        .then(function (response) {
+            if (response.ok) {
+                return response.text()
+            } else {
+                throw new Error('이메일 전송에 실패했습니다.')
+            }
         })
-            .then(function (response) {
-                if (response.ok) {
-                    return response.text();
-                } else {
-                    throw new Error('이메일 전송에 실패했습니다.');
-                }
-            })
-            .then(function (data) {
-                if (data === "cant") {
-                    emailConfirm.innerText = `이메일 확인 후 다시 입력 해주세요`;
-                    emailConfirm.style.color = "red";
-                } else {
-                    emailConfirmCode = data;
-                    emailConfirm.innerText = `인증코드가 이메일로 전송되었습니다`;
-                    emailTxt.readOnly = true;
-                }
-            })
-            .catch(function (error) {
-                console.log(error.message);
-            });
-    }
-
-    function resetPassword(email) {
-        let main = document.querySelector("#main");
-        let formData = new FormData();
-
-        formData.append("email", email);
-
-        fetch('/api/find-pwd', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: new URLSearchParams(formData),
+        .then(function (data) {
+            if (data === "cant") {
+                emailConfirm.innerText = `이메일 확인 후 다시 입력 해주세요`
+                emailConfirm.style.color = "#FA3E3E"
+            } else {
+                emailConfirmCode = data
+                emailConfirm.innerText = `인증코드가 이메일로 전송되었습니다`
+                emailConfirm.style.color = "#282828"
+            }
         })
-            .then(function (response) {
-                if(response.ok)
-                    return response.text();
-                else
-                    throw new Error("전송 실패")
-                // Check response status and handle accordingly
-            })
-            .then(function (data) {
-                // Process the data returned by the server
-                main.innerHTML = "";
-                console.log(email);
+        .catch(function (error) {
+            console.log(error.message)
+        })
+}
 
-                let itemTemplate = `
-            <form action="/user/login/find-pwd" method="POST">
-              <input type="text" name="email" value="${email}" readonly>
-              <label for="passwordReset">비밀번호 재설정</label>
-              <input type="text" name="password" class="passwordReset" id="passwordReset" placeholder="비밀번호를 입력해주세요">
-              <!-- 이메일 값 전달 -->
-              <button type="submit" id="submitBtn">재설정 하기</button>
-              
-            </form>
-            <label for="checkPasswordReset">비밀번호 재확인</label>
-            <input type="text" class="checkPasswordReset" id="checkPasswordReset" placeholder="비밀번호를 다시 입력해주세요">
-        `;
-                main.insertAdjacentHTML("beforeend", itemTemplate);
-            })
-            .catch(function (error) {
-                console.log("Error fetching data:", error);
-            });
+function checkEmailConfirmationCode() {
+    const userCode = form.querySelector('#email-confirm-num').value
+    const emailConfirmMsg = form.querySelector('#msg-email-confirm-result')
+    const submitBtn = form.querySelector(".btn-save")
+
+    if (userCode !== emailConfirmCode) {
+        emailConfirmMsg.textContent = '인증번호가 잘못되었습니다'
+        emailConfirmMsg.style.color = '#FA3E3E'
+        emailConfirmMsg.style.fontWeight = 'bold'
+        emailConfirmMsg.style.fontSize = '14px'
+        submitBtn.disabled = true
+    } else {
+        emailConfirmMsg.textContent = '인증번호가 일치합니다'
+        emailConfirmMsg.style.color = '#0D6EFD'
+        emailConfirmMsg.style.fontWeight = 'bold'
+        emailConfirmMsg.style.fontSize = '14px'
+        resetPwdSection.classList.remove('d-none')
+        emailInput.readOnly = true
+        emailCodeInput.readOnly = true
+        emailInput.style.color = '#9D9999'
+        emailCodeInput.style.color = '#9D9999'
     }
+}
 
-    function checkEmailConfirmationCode() {
-        const userCode = document.querySelector('#email-confirm-num').value;
-        const emailConfirmMsg = document.querySelector('#msg-email-confirm-result');
-        const submitBtn = document.querySelector(".btn-next");
+form.querySelector("#btn-email-confirm-request").addEventListener("click", function () {
+    sendEmailConfirmationRequest()
+})
 
-        if (userCode !== emailConfirmCode) {
-            emailConfirmMsg.textContent = '인증번호가 잘못되었습니다';
-            emailConfirmMsg.style.color = '#FA3E3E';
-            emailConfirmMsg.style.fontWeight = 'bold';
-            emailConfirmMsg.style.fontSize = '14px';
-            submitBtn.disabled = true;
-        } else {
-            emailConfirmMsg.textContent = '인증번호가 일치합니다';
-            emailConfirmMsg.style.color = '#0D6EFD';
-            emailConfirmMsg.style.fontWeight = 'bold';
-            emailConfirmMsg.style.fontSize = '14px';
-            submitBtn.disabled = false;
-        }
+form.querySelector("#btn-confirm-num-check").addEventListener("click", function () {
+    checkEmailConfirmationCode()
+})
+
+// ============================ 비밀번호 재설정 ============================
+let newPwdInput = form.querySelector('#new-pwd')
+let checkPwdInput = form.querySelector('#check-pwd')
+let checkValidMsg = form.querySelector('#msg-check-valid')
+let checkSameMsg = form.querySelector('#msg-check-same')
+let saveBtn = form.querySelector('.btn-save')
+
+newPwdInput.addEventListener('input', (e)=>{ checkValidMsg.classList.add('d-none') })
+
+checkPwdInput.addEventListener('input', ()=>{
+    let newPwd = newPwdInput.value
+    let checkPwd = checkPwdInput.value
+    let isNewPwdValid = false
+    if(8 <= newPwd.length && newPwd.length <= 32)
+        isNewPwdValid = true
+
+    if(!isNewPwdValid)
+        checkValidMsg.classList.remove('d-none')
+    else
+        checkValidMsg.classList.add('d-none')
+
+
+    if(newPwd==checkPwd && isNewPwdValid){
+        checkSameMsg.classList.remove('d-none')
+        saveBtn.disabled = false
     }
-
-    document.querySelector("#btn-email-confirm-request").addEventListener("click", function () {
-        sendEmailConfirmationRequest();
-    });
-
-    document.querySelector("#btn-confirm-num-check").addEventListener("click", function () {
-        checkEmailConfirmationCode();
-    });
-
-
-    function needFilmAll() {
-        let email = document.querySelector("#email").value;
-        let emailConfirm = document.querySelector(".emailconfirmTxt").value;
-        let submitBtn = document.querySelector(".btn-next");
-
-        if (email !== "" && emailConfirm !== "") {
-            submitBtn.disabled = false;
-            console.log("false");
-        } else {
-            submitBtn.disabled = true;
-            submitBtn.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
-            console.log("nope");
-        }
+    else{
+        checkSameMsg.classList.add('d-none')
+        saveBtn.disabled = true
     }
-
-    // 이벤트 핸들러 등록
-    document.querySelector(".btn-next").addEventListener("click", function (e) {
-        e.preventDefault();
-        let email = document.querySelector("#email").value;
-        resetPassword(email);
-    });
-
-
-});
+})

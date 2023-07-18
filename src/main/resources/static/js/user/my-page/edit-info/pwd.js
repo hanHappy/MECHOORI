@@ -9,8 +9,6 @@ let modalScreen = document.querySelector('.screen')
 let modalPanel = modalScreen.querySelector('.modal-panel')
 const modal = new ModalCheck()
 
-// FIXME 비밀번호 찾기 버튼 disable
-
 newPwdInput.addEventListener('input', (e)=>{ checkValidMsg.classList.add('d-none') })
 
 checkPwdInput.addEventListener('input', ()=>{
