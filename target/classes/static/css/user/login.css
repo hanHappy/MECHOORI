@@ -1,18 +1,26 @@
+/* --------- 메인 ----------*/
+main{
+  padding: 0 20px;
+}
+
 /* --------- 이미지 ----------*/
 .login-image {
   background-image: url("/images/assets/coca-식사.svg");
   background-repeat: no-repeat;
   background-position: center;
   
-  height: 300px;
+  height: 280px;
 }
 
 /* --------- 로그인 폼 --------- */
-.login-form-section { width: 100%; }
+.login-form-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
 
 .login-form-container {
-  width: 100%;
-  padding: 0 20px;
+  width: 375px;
   box-sizing: border-box;
 }
 
@@ -77,8 +85,23 @@ input:-webkit-autofill:active {
   text-align: start;
 }
 
+/* placeholder animation */
+.email::-webkit-input-placeholder{
+  transition: all 0.5s;
+}
+.email:focus::-webkit-input-placeholder{
+  text-indent: -10px; opacity: 0;
+}
+.pwd::-webkit-input-placeholder{
+  transition: all 0.5s;
+}
+.pwd:focus::-webkit-input-placeholder{
+  text-indent: -10px; opacity: 0;
+}
+
+
 .error {
-  color: #d31111;
+  color: var(--font-color-3);
 
   margin-top: 10px;
 }
@@ -87,9 +110,28 @@ input:-webkit-autofill:active {
   margin-top: 20px;
 }
 
-.account-container {
-  margin-top: 30px;
+.social-account-container{
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+}
 
+.social-account-wrapper{
+  padding: 8px 0;
+  text-align: center;
+}
+
+.social-account-wrapper img{
+  width: 36px;
+}
+
+.social-account-wrapper a:nth-child(2),
+.social-account-wrapper a:nth-child(3){
+  margin-left: 30px;
+}
+
+.account-container {
+  /* margin-top: 18px; */
   display: flex;
   justify-content: center;
 }
@@ -98,12 +140,12 @@ input:-webkit-autofill:active {
   padding: 0 15px;
 }
 
+.social-account-wrapper,
 .account-wrapper,
 .account-wrapper a{
   color: var(--hint-color);
 }
 
 .account-wrapper.find-pwd{
-  border-left: 1px solid var(--hint-color);
   border-right: 1px solid var(--hint-color);
 }

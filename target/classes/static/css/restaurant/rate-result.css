@@ -1,134 +1,123 @@
-@import url(style.css);
-
-main {
-    padding: 0px 20px;
-}
-
-h1 {
-    font-size: 20px;
-}
-
-p {
-    font-weight: bold;
-    margin: 0;
-    text-align: center;
-}
-
-/* =================== 헤더 =================== */
-
-header {
-    height: var(--header-height);
-    width: 100%;
-    background-color: var(--main-color);
-
-    /* layout */
-    position: sticky;
-    top: 0;
-    padding: 0 20px;
+.page-wrap {
     box-sizing: border-box;
+    width: 100%;
+    padding: 20px 20px 0 20px;
+}
+
+.poster { min-width: 325px; }
+
+/* 포스터 배경 */
+.poster-bg {
+    background-color: #F4F4F4;
+    border-radius: 8px;
+
+    width: 100%;
+    height: 100%;
+}
+
+/* 데이터 섹션 */
+.data-section {
+    box-sizing: border-box;
+    padding: 0 6px;
+}
+
+.data-item {
+    background-color: white;
+
+    height: 135px;
+
     display: flex;
     align-items: center;
-    justify-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
-.home {
-    background-image: url(/images/icons/홈.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 25px;
-    height: 19.5px;
-    /* 텍스트 가리기 */
-    overflow: hidden;
-    text-indent: -999px;
+.img-chart-wrap {
+    padding: 0 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.menu {
-    background-image: url(/images/icons/메뉴.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 22px;
-    height: 19px;
-    
-
-    /* 텍스트 가리기 */
-    overflow: hidden;
-    text-indent: -999px;
-}
-
-.award{
-    background-image: url(/images/components/상장.png);
-    background-size: contain;
+.img-chart {
+    background-image: url("/images/icons/chart-2.svg");
     background-position: center;
     background-repeat: no-repeat;
-    width: 100%;
-    height: 60vmax;
-    margin-top: 20px;
-    padding: 40px 50px 0px 50px;
+    
+    width: 100px;
+    height: 100px;
+}
 
-    /* layout */
-    box-sizing: border-box;
+.data-text-wrap { padding: 0 6px; }
+
+.data-text-wrap p{ 
+    word-spacing: -1px;
+    margin: 0;
+}
+
+.data-text-wrap p:first-child { 
+    font-weight: bold;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    display: -webkit-box; 
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.data-text-wrap p:last-child { color: #F98F78; }
+
+/* 메추리의 분석 */
+.coca-analysis-wrap {
+    min-height: 200px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coca-analysis-item {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-.award h1 {
-    font-size: 20px;
-    text-shadow: 0px 4px 4px #00000025;
-    margin-top: 20px;
+.img-coca {
+    background-image: url(/images/assets/coca-analysis.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-width: 100px;
+    min-height: 85px;
 }
 
-.my-rate-title {
-    margin-top: 10px;
-}
+.text-bg {
+    background-color: white;
+    border-radius: 30px;
 
-.my-rate-data {
-    color: var(--sub-color);
-    text-shadow: 0px 4px 4px #00000025;
-    margin-top: 10px;
-    width: 100%;
+    width: 270px;
+    height: 60px;
 
-    /* layout */
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
 }
 
-.users-rate-title {
-    margin-top: 60px;
-}
-
-.users-rate-title span {
-    font-size: 12px;
-}
-
-.users-rate-data {
-    width: 100%;
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.date {
-    font-size: 12px;
-    margin-top: 20px;
-}
-
-.complete-btn {
-    width: 100%;
-    height: 42px;
-    
-    /* 폰트 */
-    font-size: 18px;
+.text {
+    text-align: center;
     font-weight: bold;
-    color: #FFF;
-    
-    /* 버튼 스타일링 */
-    background-color:var(--sub-color);
-    border: none;
-    border-radius: var(--border-radius);
-    box-shadow: var(--btn-shadow);
-
-    /* layout */
-    margin-top: var(--contents-space);
 }
+
+.go-statistics {
+    color: #909090 !important;
+    font-size: 14px;
+
+    margin-top: 10px;
+
+    align-self: flex-end;
+}
+
+.btn-to-home { margin-top: 20px; }

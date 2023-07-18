@@ -1,64 +1,98 @@
-<html
-        xmlns:th="http://www.thymeleaf.org"
-        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="/css/user/login/findIdAndPwd.css"/>
-    <link rel="stylesheet" href="/css/style.css"/> -->
-    <!-- <link rel="stylesheet" href="/css/user/login/findIdAndPwd.css"/> -->
-    <link rel="stylesheet" href="../../../static/css/user/login/findIdAndPwd.css"/>
-    <!-- <link rel="stylesheet" href="../../../static/css/style.css"/> -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/user/login/findIdAndPwd.css" />
+    <link rel="stylesheet" href="/css/common/style.css" />
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/button.css">
+    <title>비밀번호 찾기</title>
 </head>
 <script src="/js/user/login/find-pwd.js" defer></script>
 
 <body>
-<header>
-    <div class="header-side left">
-        <a onclick="history.back()">
-            <button class="header-icon back"></button>
-        </a>
-    </div>
-    <h1 class="header-icon logo"></h1>
-    <div class="header-side right">
-        <a href="/">
-            <button class="d-none"></button>
-        </a>
-    </div>
-</header>
+    <header>
+        <div class="header-side left">
+            <a onclick="history.back()">
+                <button class="header-icon back"></button>
+            </a>
+        </div>
+        <h1 class="header-icon logo"></h1>
+        <div class="header-side right">
+            <a href="/">
+                <button class="d-none"></button>
+            </a>
+        </div>
+    </header>
 
-<main id="main">
-    <div class="withNumber">이메일로 인증</div>
+    <main id="main">
 
-    <form method="post" action="user/find-pwd">
+        <div class="title">
+            <p>비밀번호 찾기</p>
+        </div>
+        
+        <div class="find-pwd-container">
+            <section class="form-section">
+                <!-- form 전체 -->
+                <div class="form-container">
 
-        <section class="info">
-            <div class="name">
-                아이디(이메일)
-                <div class="info-inputbox">
-                    <label for="emailText"></label>
-                    <input type="text" id="emailText" placeholder="user@mechoori.com" class="emailText"/>
-                    <button type="button" class="emailConfirm">인증 번호 받기</button>
-                    <div id="emailCheck"></div>
+                    <form method="post" action="user/find-pwd">
+
+                        <!-- 이메일 -->
+                        <div class="form-wrap">
+                            <div class="form-item">
+                                <label for="email">이메일</label>
+                                <div class="input-wrap">
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        class="input input5"
+                                        name="email"
+                                        placeholder="* 로그인 시 사용할 이메일 주소 입력"
+                                        required />
+                                    <button
+                                        type="button"
+                                        id="btn-email-confirm-request"
+                                        class="button button-10">인증 요청
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="msg-email-check" class="msg-email-check"></div>
+                        </div>
+
+                        <!-- 이메일 인증번호 -->
+                        <div class="form-wrap">
+                            <div class="form-item">
+                                <label for="email-confirm-num" id="memailconfirmTxt">인증번호 입력</label>
+                                <div class="input-wrap">
+                                    <input
+                                        type="text"
+                                        id="email-confirm-num"
+                                        class="input input9"
+                                        placeholder="* 이메일 인증번호 입력"
+                                        required />
+                                    <button
+                                        type="button"
+                                        id="btn-confirm-num-check"
+                                        class="button button-10">확인
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="msg-email-confirm-result" class="msg-email-confirm-result"></div>
+                        </div>
+                    </form>
+
+                    <button type="submit" class="button button-1 btn-next" disabled>다음</button>
+
                 </div>
-            </div>
-
-            <div class="number2">
-                <label for="Certification" id="emailconfirmTxt">인증번호 입력</label>
-                <input type="text" id="Certification"/>
-            </div>
-        </section>
-    </form>
-
-        <button type="submit"
-                class="nextBtn" disabled>확인
-        </button>
+            </section>
+        </div>
 
 
-</main>
+
+    </main>
 </body>
+
 </html>

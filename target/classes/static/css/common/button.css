@@ -4,7 +4,9 @@
     height: 40px;
     border: none;
     border-radius: var(--border-radius);
-    padding: 0
+    padding: 0;
+    cursor: pointer !important;
+    transition: 0.3s;
 }
 
 .button-1 {
@@ -12,7 +14,19 @@
     font-weight: bold;
     color: #fff;
     background-color: var(--sub-color);
+
+    cursor: pointer;
+
+    transition: 0.3s;
 }
+.button-1:disabled {
+    background-color: var(--btn-color-2);
+    cursor: not-allowed !important;
+}
+.button-1:hover{
+    filter: brightness(0.8);
+}
+
 .button-2 {
     font-size: 18px;
     font-weight: bold;
@@ -43,6 +57,8 @@
 
     /* layout */
     line-height: 30px;
+    
+    cursor: pointer;
 }
 .button-7 {
     font-size: 16px;
@@ -58,16 +74,27 @@
     background-color: #FFE8E8;
     border: 1.5px solid #F00;
 }
+.button-8:hover{
+    filter: brightness(0.8);
+}
 .button-9 {
     font-size: 16px;
     font-weight: bold;
     width: 80px;
     background-color: var(--box-color);
 }
+.button-9:hover {
+    filter: brightness(0.8);
+}
 .button-10 {
     font-size: 16px;
+    background-color: #fff;
+    box-shadow: 0 0 5px 0 #75757525;
+    
     width: 80px;
-    background-color: var(--box-color);
+}
+.button-10:hover {
+    /* box-shadow: var(--btn-shadow-2); */
 }
 .button-11 {
     font-size: 16px;
@@ -75,7 +102,13 @@
     width: 70px;
     height: 28px;
 }
+.button-11:hover {
+    filter: brightness(0.8);
+}
 .button-12 {
     font-size: 16px;
     background-color: var(--box-color);
+}
+.button-12:hover {
+    filter: brightness(0.8);
 }

@@ -1,26 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
 body {
     background-color: var(--background-color);
 }
-
-/* =================== 헤더 =================== */
-
 header {
-    height: var(--header-height);
-    width: var(--header-width);
-    padding: var(--header-padding);
-    background-color: var(--main-color);
-
-    /* layout */
     width: 100%;
-    position: sticky;
-    top: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
 
-    /* items layout */
-    box-sizing: border-box;
+main {
     display: flex;
-    align-items: end;
-    justify-content: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+main>*{
+    width: 100%;
 }
 
 .header-icon-back {
@@ -37,59 +32,56 @@ header {
     text-indent: -999px;
 }
 
-.header-logo {
-    background-image: url(/images/assets/logo.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+/*.header-logo {*/
+/*    background-image: url(/images/assets/logo.png);*/
+/*    background-size: contain;*/
+/*    background-repeat: no-repeat;*/
+/*    background-position: center;*/
 
-    /* layout */
-    width: 72px;
-    height: 44px;
-    margin: 0;
+/*    !* layout *!*/
+/*    width: 72px;*/
+/*    height: 44px;*/
+/*    margin: 0;*/
 
-    /* "메추리" 텍스트 가리기 */
-    overflow: hidden;
-    text-indent: -999px;
-}
+/*    !* "메추리" 텍스트 가리기 *!*/
+/*    overflow: hidden;*/
+/*    text-indent: -999px;*/
+/*}*/
 
-.header-icon-home {
-    background-image: url(/images/icons/home.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    border: none;
-    background-color: transparent;
+/*.header-icon-home {*/
+/*    background-image: url(/images/icons/home.svg);*/
+/*    background-size: cover;*/
+/*    background-repeat: no-repeat;*/
+/*    border: none;*/
+/*    background-color: transparent;*/
 
-    width: 20px;
-    height: 23px;
+/*    width: 20px;*/
+/*    height: 23px;*/
 
-    /* "메뉴버튼" 텍스트 가리기 */
-    overflow: hidden;
-    text-indent: -999px;
-}
-
-/* =================== 메인 =================== */
-main {
-    max-width: 1200px;
-}
-
+/*    !* "메뉴버튼" 텍스트 가리기 *!*/
+/*    overflow: hidden;*/
+/*    text-indent: -999px;*/
+/*}*/
 /* ----------- 식당 이미지 ----------- */
 .restaurant-img-box {
     line-height: 0px;
+    display: flex;
+    justify-content: center;
 }
 
 .restaurant-img {
     width: 100%;
-    min-height: 140px;
-    max-height: 150px;
+    height: 140px;
     object-fit: cover;
+    max-width: 450px;
+    /* margin-top: 25px; */
 }
 
 /* ----------- 상호명 ----------- */
 .restaurant-name-wrapper {
     background-color: #fff;
-    height: 3em;
-    font-size: 24px;
+    height: 72px;
+    font-size: 20px;
     font-weight: bold;
     box-shadow: var(--block-shadow);
 
@@ -108,6 +100,12 @@ main {
     flex-direction: column;
     margin-top: var(--block-space);
     padding: 20px;
+
+    max-width: 900px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
 }
 
 /* ----------- 메뉴 선택 ----------- */
@@ -207,6 +205,7 @@ main {
     -webkit-appearance: none;
     width: 100%;
     height: 2vmin;
+    max-height: 10px;
     border-radius: 5px;
     background-color: var(--sub-color);
     outline: none;
@@ -223,7 +222,9 @@ main {
     -webkit-appearance: none;
     appearance: none;
     width: 6vmin;
+    max-width: 40px;
     height: 6vmin;
+    max-height: 40px;
     border-radius: 50%;
     background: var(--background-color);
     border: 3px solid var(--sub-color);
@@ -239,7 +240,7 @@ main {
 }
 
 /* ----------- 리뷰 ----------- */
-.comment {
+.review {
     background-color: #fff;
 
     /* layout */
@@ -248,45 +249,83 @@ main {
     margin-top: var(--contents-space);
 }
 
-    .comment h1 {
-        margin: var(--content-margin);
-        font-weight: bold;
-    }
-
-    .comment textarea {
-        font-family: var(--font);
-        margin: var(--content-margin);
-        background-color: var(--box-color);
-        border: none;
-        border-radius: var(--border-radius);
-        height: 80px;
-        padding: 10px;
-        resize: none;
-    }
-
-/* ----------- 평가 버튼 ----------- */
-.rate-btn-container {
-    margin-top: var(--contents-space);
-    width: 100%;
-    box-sizing: border-box;
+.review h1 {
+    margin: var(--content-margin);
+    font-weight: bold;
 }
 
-    .rate-btn {
-        height: var(--btn-height);
-        width: 100%;
-        background-color: var(--sub-color);
-        border: none;
-        border-radius: var(--border-radius);
-        font-size: 18px;
-        color: #fff;
-        font-weight: bold;
-    }
+/* ----------- 리뷰 사진 ----------- */
+.review-image-wrap {
+    margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+}
+
+.icon-camera {
+    background-image: url(/images/icons/camera-black.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+
+}
+
+.btn-upload {
+    font-size: 14px;
+    border-radius: 8px;
+    background-color: #EEE;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    height: 30px;
+    width: 100px;
+    padding: 0px 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.btn-upload:hover {
+    background-color: #cfcfcf;
+    /* color: #fff; */
+}
+
+.btn-upload.uploaded {
+    background-color: #cfcfcf;
+}
+
+
+.review textarea {
+    font-family: var(--font);
+    margin-top: 10px;
+    background-color: var(--box-color);
+    border: none;
+    border-radius: var(--border-radius);
+    height: 80px;
+    padding: 10px;
+    resize: none;
+}
+
+/* ----------- 평가 버튼 ----------- */
+.rate-btn { margin-top: 20px; }
+.rate-btn.inactive {
+    background-color: var(--btn-color-2);
+}
+
 
 /* ------------- 평가 확인 모달 ------------- */
 /* 모달 창 */
-.modal{
+.modal {
     background-color: rgba(0, 0, 0, 0.7);
-    
+
     /* layout */
     position: fixed;
     z-index: 1;
@@ -295,87 +334,130 @@ main {
     width: 100%;
     height: 100%;
     padding-top: 40%;
-    
+
     /* items layout */
     display: flex;
     justify-content: center;
 }
 
-    /* 모달 박스 공통 */
-    .modal-box {
-        font-weight: bold;
-        background-color: #fff;
-        border-radius: var(--border-radius);
-        box-sizing: border-box;
+/* 모달 박스 공통 */
+.modal-box {
+    font-weight: bold;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
 
-        /* layout */
-        position: fixed;
-        padding: 30px;
-        width: 315px;
-        max-height: auto;
+    /* layout */
+    position: fixed;
+    padding: 30px;
+    width: 315px;
+    max-height: auto;
 
-        /* items layout */
+    /* items layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* 메추리 + 텍스트(질문) 박스 */
+.question-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.question-box img {
+    width: 106px;
+    height: 92px;
+}
+
+.question-box p {
+    margin: 0;
+    text-align: center;
+}
+
+/* 버튼 박스 */
+.check-btn-box {
+    display: flex;
+    gap: 20px;
+}
+
+.check-btn-box button {
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: bold;
+    width: 80px;
+    height: 40px;
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--btn-shadow2);
+}
+
+.no {
+    background-color: var(--box-color);
+}
+
+.no:hover {
+    filter: brightness(0.9);
+}
+
+.yes {
+    background-color: var(--main-color);
+}
+
+.yes:hover {
+    filter: brightness(0.9);
+}
+
+.modal.check-back .no,
+.modal.check-home .no {
+    background-color: #FFE8E8;
+    border: 1.5px solid #F00;
+    color: #F00;
+}
+
+.modal.check-back .yes,
+.modal.check-home .yes {
+    background-color: var(--box-color);
+}
+
+
+/* placeholder animation */
+.placeholderE::-webkit-input-placeholder{
+    transition: all 0.5s;
+}
+.placeholderE:focus::-webkit-input-placeholder{
+    text-indent: -10px; opacity: 0;
+}
+
+
+@media only screen and (min-width: 679px) {
+
+
+    .restaurant-img-box {
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        width: 100%;
         justify-content: center;
-        gap: 15px;
     }
-    
-        /* 메추리 + 텍스트(질문) 박스 */
-        .question-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
 
-            .question-box img {
-                width: 106px;
-                height: 92px;
-            }
+    .input-contents-wrapper {
+        width: 100%;
+        max-width: 900px;
 
-            .question-box p {
-                margin: 0;
-                text-align: center;
-            }
+    }
 
-        /* 버튼 박스 */
-        .check-btn-box {
-            display: flex;
-            gap: 20px;
-        }
-
-            .check-btn-box button {
-                font-family: var(--font);
-                font-size: 16px;
-                font-weight: bold;
-                width: 80px;
-                height: 40px;
-                border: none;
-                border-radius: var(--border-radius);
-                box-shadow: var(--btn-shadow2);
-            }
-
-            .no {
-                background-color: var(--box-color);
-            }
-            .no:hover {
-                filter: brightness(0.9);
-            }
-            .yes {
-                background-color: var(--main-color);
-            }
-            .yes:hover {
-                filter: brightness(0.9);
-            }
-            .modal.check-back .no,
-            .modal.check-home .no {
-                background-color: #FFE8E8;
-                border: 1.5px solid #F00;
-                color: #F00;
-            }
-            .modal.check-back .yes,
-            .modal.check-home .yes {
-                background-color: var(--box-color);
-            }
+    .restaurant-name-wrapper {
+        display: flex;
+        margin-top: 15px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: relative;
+        left: 50%;
+        padding: 0 20px;
+        transform: translateX(-50%);
+    }
+}

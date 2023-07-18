@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     let emailConfirmCode = '';
-    let emailConfirm = document.getElementById("emailCheck");
+    let emailConfirmMsg = document.querySelector("#msg-email-check");
+
+    // FIXME 이메일 유효성 검사 메시지 조건문 수정
+    // 유효성 검사 메시지 색 통일
 
     // Function to send email confirmation request
     function sendEmailConfirmationRequest() {
@@ -26,13 +29,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (data === "0") {
 
-                    emailConfirm.innerText = `사용 중 이거나, 이메일 확인 후 다시 입력 해주세요`
-                    emailConfirm.style.color = "red";
+                    emailConfirmMsg.innerText = "사용 중인 계정이거나 형식이 올바르지 않습니다"
+                    emailConfirmMsg.style.color = "red";
                 } else {
                     //아이디 없을 때
                     emailConfirmCode = data;
-                    emailConfirm.innerText = `인증코드가 이메일로 전송되었습니다`
-                    console.log('인증코드가 이메일로 전송되었습니다.');
+                    emailConfirmMsg.innerText = `인증코드가 이메일로 전송되었습니다`
                 }
             })
             .catch(function (error) {
@@ -42,10 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function nicknameCheck() {
         const nickname = document.getElementById('nickname').value
-        const nicknameCheck = document.getElementById('check');
+        const nicknameCheck = document.querySelector('#msg-nickname-check');
         const submitBtn = document.querySelector(".next");
-
-
 
         const formData = new FormData();
         formData.append('nickname', nickname);
@@ -66,11 +66,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (data === "cantuse") {
                     nicknameCheck.style.color = "red";
-                    nicknameCheck.innerText = `닉네임이 이미 사용 중 입니다`
+                    nicknameCheck.innerText = "사용 중인 닉네임입니다";
                     submitBtn.disabled = true;
                 } else {
                     nicknameCheck.style.color = "blue";
-                    nicknameCheck.innerText = `닉네임을 사용하실 수 있습니다.`
+                    nicknameCheck.innerText = "사용할 수 있는 닉네임입니다";
                     submitBtn.disabled = false;
 
                 }
@@ -80,28 +80,26 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
-
+    // 이메일 인증번호
     function checkEmailConfirmationCode() {
-        const userCode = document.getElementById('memailconfirm').value;
-        const memailconfirmTxt = document.getElementById('memailconfirmTxt');
+        const userCode = document.getElementById('email-confirm').value;
+        const emailConfirmMsg = document.querySelector('#msg-email-confirm-result');
         const emconfirmchk = document.getElementById('emconfirmchk');
         const submitBtn = document.querySelector(".next");
 
 
         if (userCode !== emailConfirmCode) {
-            memailconfirmTxt.innerHTML = '<span id="emconfirmchk">인증번호가 잘못되었습니다.</span>';
+            emailConfirmMsg.innerHTML = '<span id="emconfirmchk">인증번호가 잘못되었습니다.</span>';
             emconfirmchk.style.color = '#FA3E3E';
             emconfirmchk.style.fontWeight = 'bold';
             emconfirmchk.style.fontSize = '10px';
-            console.log('인증번호가 잘못되었습니다.');
             submitBtn.disabled = true;
 
         } else {
-            memailconfirmTxt.innerHTML = '<span id="emconfirmchk">인증번호 확인 완료</span>';
+            emailConfirmMsg.innerHTML = '<span id="emconfirmchk">인증번호가 일치합니다</span>';
             emconfirmchk.style.color = '#0D6EFD';
             emconfirmchk.style.fontWeight = 'bold';
             emconfirmchk.style.fontSize = '10px';
-            console.log('인증번호 확인 완료');
             submitBtn.disabled = false;
 
 
@@ -109,14 +107,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Event handler for email confirmation button click
-    document.getElementById('checkEmail').addEventListener('click', function () {
+    document.querySelector('#btn-email-confirm-request').addEventListener('click', function () {
         sendEmailConfirmationRequest();
     });
 
-    // Event handler for email confirmation code input
-    document.getElementById('memailconfirm').addEventListener('keyup', function () {
+    // 인증번호 확인 버튼 클릭 시 일치 여부 판별
+    let emailConfirmNumCheckBtn = document.querySelector('#btn-confirm-num-check');
+    emailConfirmNumCheckBtn.onclick = function(){
         checkEmailConfirmationCode();
-    });
+    }
 
     // Event handler for email confirmation button click
     document.getElementById('nickname').addEventListener('input', function () {
@@ -125,8 +124,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //////////////////////////////////////////////////////////
     let password = document.querySelector("#password");
-    let password1 = document.querySelector("#password1");
-    let passwordCheck = document.getElementById("passwordCheck");
+    let password1 = document.querySelector("#password-confirm");
+    let passwordCheck = document.querySelector("#password-check");
 
     password1.oninput = function () {
 
@@ -166,14 +165,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /////////////////////////////////////////////////////////
+
 const form = document.querySelector("#form__wrap");
-const submitBtn = document.querySelector(".next");
+const submitBtn = document.querySelector(".submit");
 
 form.addEventListener("input", function () {
-    needFilmAll();
+    checkAnswerCompletion();
 });
 
-function needFilmAll() {
+function checkAnswerCompletion() {
     let userName = document.querySelector(".input1").value;
     let nickname = document.querySelector(".input2").value;
     let password = document.querySelector(".input3").value;
@@ -189,10 +189,8 @@ function needFilmAll() {
         emailConfirm !== ""
     ) {
         submitBtn.disabled = false;
-        console.log("false");
     } else {
         submitBtn.disabled = true;
-        console.log("nope");
     }
 
 }

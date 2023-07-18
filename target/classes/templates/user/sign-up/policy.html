@@ -6,31 +6,36 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="/css/user/sign-up/policy.css">
   <link rel="stylesheet" href="/css/common/style.css">
   <link rel="stylesheet" href="/css/common/header.css">
   <link rel="stylesheet" href="/css/common/component.css">
   <link rel="stylesheet" href="/css/common/button.css">
+  <link rel="stylesheet" href="/css/user/sign-up/policy.css">
   <script defer src="/js/user/sign-up/policy.js"></script>
 </head>
 
+<!-- FIXME 양쪽 padding -->
+<!-- 프로모셔 (선택) -->
+
 <body>
-    <header>
-        <div class="header-side left">
-            <a><button class="header-icon back">버튼</button></a>
-        </div>
-        <h1 class="title">회원가입</h1>
-        <div class="header-side right">
-            <!-- <button class="">버튼</button> -->
-        </div>
-    </header>
+  <header>
+    <div class="header-side left">
+      <button onclick="history.back()" class="header-icon back">버튼</button>
+    </div>
+    <h1 class="title">회원가입</h1>
+    <div class="header-side right">
+      <!-- <button class="">버튼</button> -->
+    </div>
+  </header>
 
   <main>
     <div class="circleParent">
-      <span class="circle1 circle">1</span>
-      <span class="circle2 circle">2</span>
-      <span class="circle3 circle">3</span>
-      <span class="Inline"></span>
+      <div class="circleParent-content">
+        <span class="circle1 circle">1</span>
+        <span class="circle2 circle">2</span>
+        <span class="circle3 circle">3</span>
+        <span class="Inline"></span>
+      </div>
     </div>
 
     <div class="circleTextMain">
@@ -41,11 +46,12 @@
 
 
     <div class="line1"></div>
-
+    <div class="policy_container">
+      <div class="policy_contents">
         <form action="/" method="POST" id="form__wrap">
           <div class="terms__check__all">
             <input type="checkbox" name="checkAll" id="checkAll" />
-                <label for="checkAll">이용약관 모두 동의</label>
+            <label for="checkAll">이용약관 모두 동의</label>
           </div>
           <ul class="terms__list">
             <li class="terms__box">
@@ -98,8 +104,9 @@
           </ul>
         </form>
         <a href="/user/sign-up/form">
-        <button href="" type="submit" class="next-button" disabled>다음</button></a>
-
+          <button href="" type="submit" class="button button-1 btn-next" disabled>다음</button></a>
+      </div>
+    </div>
   </main>
 
 </body>

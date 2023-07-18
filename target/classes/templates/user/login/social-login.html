@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
 <body>
-    <a href="http://localhost:8080/oauth2/authorize/google">
-      google-login
-    </a><p></p>
-    <a href="http://localhost:8080/oauth2/authorize/naver">
-      naver-login
-    </a><p></p>
-    <a href="http://localhost:8080/oauth2/authorize/kakao">
-      kakao-login
-    </a>
-
+  <div sec:authorize="isAuthenticated()">
+    닉네임 : <span sec:authentication="principal.nickname"></span><p></p>
+    로그인 : <a href="/logout">Logout</a>
+  </div><p></p>
+  <a href="http://localhost:8080/oauth2/authorize/google">
+    google-login
+  </a><p></p>
+  <a href="http://localhost:8080/oauth2/authorize/naver">
+    naver-login
+  </a><p></p>
+  <a href="http://localhost:8080/oauth2/authorize/kakao">
+    kakao-login
+  </a>
 </body>
 </html>

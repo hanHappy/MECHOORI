@@ -6,35 +6,117 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rate result</title>
+    <link rel="stylesheet" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/button.css">
+    <link rel="stylesheet" href="/css/common/modal-menu.css">
     <link rel="stylesheet" href="/css/restaurant/rate-result.css">
+    <script src="/js/components/modal-menu.js" defer></script>
 </head>
 
 <body>
     <!-- ================ header ================ -->
     <header>
-        <a href="/main_hsm.html" class="home">홈</a>
-        <h1 class="title">평가 결과</h1>
-        <a href="" class="menu">메뉴</a>
+        <div class="header-side left">
+        </div>
+        <a href="/"><h1 class="header-icon logo">로고</h1></a>
+        <div class="header-side right">
+            <a id="menu" class="header-icon menu">버튼</a>
+        </div>
     </header>
     <main>
-        <div class="award">
-            <h1>[유저]님의 평가</h1>
-            <p class="my-rate-title">[식당명] [메뉴명]에 대한<br>
-            평가가격, 가성비</p>
-            <div class="my-rate-data">
-                <p>평가가격<br>[평가가격]원</p>
-                <p>가성비<br>[가성비]%</p>
-            </div>
-            <p class="users-rate-title">회원님들의 평가<span>(누적)</span></p>
-            <div class="users-rate-data">
-                <p>평가가격<br>[평가가격]원</p>
-                <p>가성비<br>[가성비]%</p>
-            </div>
-            <p class="date">yyyy년 mm월 dd일 (인)</p>
+        <div class="page-wrap">
+            <section class="poster">
+                <h1 class="d-none">평가 완료 포스터</h1>
+                <div class="poster-bg">
+                    <section>
+                        <h1 class="d-none">평가 완료</h1>
+                    </section>
+                    <section class="data-section">
+                        <h1 class="d-none">차트 & 평가 데이터</h1>
+                        <div class="data-item">
+                            <div class="img-chart-wrap">
+                                <div class="img-chart"></div>
+                            </div>
+                            <div class="data-text-wrap">
+                                <p><span th:text="${result.name}"></span> · <span th:text="${result.menuName}"></span></p>
+                                <p>판매 가격 &nbsp;&nbsp;<span th:text="${result.menuPrice}"></span>원</p>
+                                <p>유저 평균 &nbsp;&nbsp;<span th:text="${result.avgRatedPrice}"></span>원</p>
+                                <p>나의 평가 &nbsp;&nbsp;<span th:text="${result.myRatePrice}"></span>원 (<span th:text="${result.myValue}"></span>%)</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h1 class="d-none">메추리의 분석</h1>
+                        <div class="coca-analysis-wrap">
+                            <div class="coca-analysis-item">
+                                <div class="img-coca"></div>
+                                <div class="text-bg">
+                                    <div class="text">
+                                        메추리 회원님들보다<br>
+                                        <span id=""></span>원 <span></span> 평가하셨네요!
+                                    </div>
+                                </div>
+                                <a href="/user/my-page/statistics" class="go-statistics">통계 보러 가기 ></a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <a href="/"><button type="button" class="button button-1 btn-to-home">홈으로</button></a>
         </div>
-        <a href="/main_hsm.html">
-            <button class="complete-btn">완료</button>
-        </a>
+
+        <!-- ============== 메뉴 모달 ============== -->
+        <div class="modal-menu">
+            <div class="screen">
+                <div class="panel">
+                    <div class="profile-image-wrapper">
+                        <div class="profile-image-frame">
+                            <img class="profile-image" th:src="${#authentication.principal.img}"  alt="프로필사진">
+                        </div>
+                        <div class="nickname-wrapper">
+                            <span class="nickname" th:text="${#authentication.principal.nickname}"></span>
+                        </div>
+                    </div>
+
+                    <nav class="menu-list-section">
+                        <ul>
+                            <li>
+                                <a href="/user/my-page/edit-info">
+                                    <div class="icon icon-key"></div>
+                                    <span>회원 정보 수정</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/like-list">
+                                    <div class="icon icon-heart"></div>
+                                    <span>찜 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/rate-list">
+                                    <div class="icon icon-review"></div>
+                                    <span>평가 목록</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/user/my-page/statistics">
+                                    <div class="icon icon-chart"></div>
+                                    <span>가성비 평가 통계</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/logout">
+                                    <div class="icon icon-power"></div>
+                                    <span>로그아웃</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        
     </main>
 </body>
 

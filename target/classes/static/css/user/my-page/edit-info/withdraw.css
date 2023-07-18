@@ -10,7 +10,7 @@ body {
 }
 
 .header {
-    height: 145px;
+    height: 95px;
     position: relative;
 }
 
@@ -25,7 +25,7 @@ header::after {
 }
 
 h1 {
-    padding: 99px 0 20px 33px;
+    padding: 49px 0 20px 33px;
     font-size: 18px;
     color: #282828;
     /* padding-top: 99px; */
