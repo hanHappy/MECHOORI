@@ -1,5 +1,8 @@
+
 main{
   display: flex;
+  flex-direction: column;
+  padding: 0 20px;
   flex-direction: column;
   padding: 0 20px;
 }
@@ -93,6 +96,8 @@ main{
     width: auto;
     color: gray;
   }
+  
+
 
 ul {
   list-style: none;
@@ -184,3 +189,4 @@ label.required::after {
   
   
 }
+

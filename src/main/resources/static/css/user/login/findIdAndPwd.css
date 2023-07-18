@@ -76,3 +76,22 @@ label {
 .btn-next {
   margin-top: 20px;
 }
+
+/* placeholder animation */
+.input.input5::-webkit-input-placeholder {
+  transition: all 0.5s;
+}
+
+.input.input5:focus::-webkit-input-placeholder {
+  text-indent: -10px;
+  opacity: 0;
+}
+
+.input.input9::-webkit-input-placeholder {
+  transition: all 0.5s;
+}
+
+.input.input9:focus::-webkit-input-placeholder {
+  text-indent: -10px;
+  opacity: 0;
+}
