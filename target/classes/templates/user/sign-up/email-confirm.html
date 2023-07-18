@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/user/sign-up/form.css" />
+  <link rel="stylesheet" href="/css/common/style.css">
+  <link rel="stylesheet" href="/css/common/header.css">
+  <link rel="stylesheet" href="/css/common/component.css">
+  <link rel="stylesheet" href="/css/common/button.css">
+  <script src="/js/user/sign-up/form.js" defer></script>
+</head>
+<body>
+<header>
+  <div class="header-side left">
+    <a onclick="history.back()"><button class="header-icon back"></button></a>
+  </div>
+  <h1 class="header-icon logo"></h1>
+  <div class="header-side right">
+    <a href="/"><button class="header-icon home"></button></a>
+  </div>
+</header>
+
+
+
+<form action="user/sign-up/emailConfirm" method="POST">
+<div class="emailParent">
+  <div class="emailText text"></div>
+  <div class="email">
+    <label for="email" id="mailTxt">이메일</label>
+    <input name="email" type="email" id="email" class="input5" placeholder="  * 이메일  주소  입력"    />
+    <button type="button" id="checkEmail">인증 요청</button>
+    <div id="emailCheck"></div>
+  </div>
+</div>
+
+  <div class="numParent">
+    <label for="memailconfirm" id="memailconfirmTxt">인증 번호 입력</label>
+    <input type="text" class="input9" id="memailconfirm"   />
+  </div>
+
+  <a href="user/sign-up/form">
+    <button type="submit" id ="submitBtn" disabled>다음</button>
+  </a>
+
+</form>
+
+
+</body>
+</html>
