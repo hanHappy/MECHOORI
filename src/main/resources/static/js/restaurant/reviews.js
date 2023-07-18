@@ -4,7 +4,13 @@ let noBtn = modalCheck.querySelector('#no')
 let yesBtn = modalCheck.querySelector('#yes')
 let id = null
 let offset = 0;
-let reviews = document.querySelector(".review")
+
+let resId = rateList.dataset.resId
+
+
+console.log(rateList.dataset)
+
+console.log(offset);
 
 
 rateList.addEventListener('click', (e) => {
@@ -40,7 +46,7 @@ function reviewListLoad(url) {
         .then(list => {
 
             for (let r of list) {
-                let RatedPrice = r[i].ratePrice.toLocaleString();
+                let RatedPrice = r.ratePrice.toLocaleString();
                 let Template = `
               <section class="review">
                 <h1 class="d-none">리뷰</h1>
@@ -48,7 +54,7 @@ function reviewListLoad(url) {
                 <!-- 프로필 -->
                 <div class="profile-wrap">
                     <div class="profile-img-wrap">
-                        <img src="/images/member/profile/{img}}" alt="">
+                        <img src=${r.memberImg} alt="">
                     </div>
                     <span>${r.nickname}</span>
                     <button class="btn-delete">×</button>
@@ -56,7 +62,7 @@ function reviewListLoad(url) {
 
                 <!-- 평가 이미지 -->
                 <div class="img-wrap">
-                    <img src="/images/member/review/{img}" alt="">
+                    <img src=${r.reviewImg} alt="">
                 </div>
 
                 <!-- 평가 정보 -->
@@ -68,38 +74,34 @@ function reviewListLoad(url) {
 
                 <!-- 리뷰 -->
                 <div class="review-wrap">
-                    <p th:text="${r.review}">맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 맛있다 </p>
+                    <p>${r.review}</p>
                 </div>
 
             </section>
               `;
 
-                reviews.insertAdjacentHTML("beforeend", Template);
+                rateList.insertAdjacentHTML("beforeend", Template);
             }
         })
         .catch((error) => {
             console.log("Error fetching data:", error);
         });
 
-
-    window.addEventListener("scroll", function () {
-        let documentHeight = document.documentElement.scrollHeight;
-        let scrollTop = document.documentElement.scrollTop;
-        let windowHeight = document.documentElement.clientHeight;
-
-        console.log(documentHeight)
-        console.log(scrollTop)
-        console.log(windowHeight)
-
-        if (scrollTop + windowHeight >= documentHeight) {
-            // 스크롤이 맨 아래에 도달했을 때
-            offset += 6;
-            console.log(offset)
-
-            let url = `http://localhost:10222/api/rate/${id}`
-            reviewListLoad(url);
-        }
-    })
-
-
 }
+
+window.addEventListener("scroll", function () {
+    let documentHeight = document.documentElement.scrollHeight;
+    let scrollTop = document.documentElement.scrollTop;
+    let windowHeight = document.documentElement.clientHeight;
+
+    if (scrollTop + windowHeight >= documentHeight) {
+        // 스크롤이 맨 아래에 도달했을 때
+        offset += 6;
+
+        console.log(offset)
+
+        let url = `http://localhost:8080/api/rate/${resId}/reviews?offset=${offset}`;
+        console.log(url)
+        reviewListLoad(url);
+    }
+})

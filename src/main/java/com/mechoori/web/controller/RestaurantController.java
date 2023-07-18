@@ -85,6 +85,7 @@ public class RestaurantController {
     @GetMapping("{id}")
     public String detail(
             @PathVariable("id") int restaurantId,
+            @RequestParam(value = "offset", defaultValue = "0") int offset,
             @AuthenticationPrincipal MechooriUserDetails member,
             Model model) {
         
@@ -102,7 +103,7 @@ public class RestaurantController {
             menuIds.add(menuView.getId());
         }
         //리뷰
-        List<ReviewListView> rateList = rateService.getViewList(restaurantId);
+        List<ReviewListView> rateList = rateService.getViewList(restaurantId, offset);
 
         //리뷰 최신순 4개
         List<ReviewListView> top4Rates;

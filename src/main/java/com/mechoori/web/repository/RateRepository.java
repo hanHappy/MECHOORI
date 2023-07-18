@@ -32,7 +32,7 @@ public interface RateRepository {
 
     Rate findLatest(int memberId);
 
-    List<ReviewListView> findViewAll(int restaurantId, int offset);
+    List<ReviewListView> findViewAll(Integer restaurantId, int offset, int size);
 
     int delete(int id);
 

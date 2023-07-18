@@ -134,7 +134,7 @@
 
 	<select id="findReviewAll" resultType="Review">
 		select * from review_list_view where restaurant_id = #{restaurantId}
-		limit #{offset}, #{size}
+		limit #{size}
 	</select>
 
 

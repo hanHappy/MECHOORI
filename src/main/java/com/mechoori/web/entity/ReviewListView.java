@@ -22,7 +22,6 @@ public class ReviewListView {
     private String restaurantName;
     private String menuName;
     private int price;
-    private int id;
     private int ratePrice;
     private int value;
     private String review;

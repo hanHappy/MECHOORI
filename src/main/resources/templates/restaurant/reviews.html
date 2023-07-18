@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -41,7 +41,7 @@
 
         <section id="review-list-section" class="review-list-section">
             <h1 class="d-none">리뷰 목록</h1>
-            <div class="review-list">
+            <div class="review-list" th:data-res-id="${r.id}">
                 <section class="review" th:each="r : ${list}">
                     <h1 class="d-none">리뷰</h1>
 
@@ -50,6 +50,7 @@
                     <div class="profile-img-wrap">
                         <img src="/images/member/profile/coca-analysis.svg" th:src="@{${r.memberImg}}" alt="">
                     </div>
+                    <span  hidden="hidden" class="res"></span>
                     <span th:text="${r.nickname}">메추리</span>
                     <span class="reg-date" th:text="${#temporals.format(r.regDate, 'yyyy.MM.dd')}">2023.07.16</span>
                     <button th:data-id="${r.id}" sec:authorize="hasAnyRole('ADMIN')" class="btn-delete">×</button>

@@ -170,7 +170,7 @@ public class RestaurantServiceImp implements RestaurantService {
 
 	@Override
 	public List<RestaurantRankView> getRanking(Integer categoryId, int offset) {
-		return repository.getRanking(categoryId, offset, 6);
+		return repository.getRanking(categoryId, offset, 8);
 	}
 
 //	@Override

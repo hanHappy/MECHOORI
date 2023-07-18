@@ -95,7 +95,7 @@ let rankingList = document.querySelector(".ranking-list-sections");
 
         if (scrollTop + windowHeight >= documentHeight) {
             // 스크롤이 맨 아래에 도달했을 때
-            offset += 6;
+            offset += 8;
 
             let dropbox = document.getElementById("categoryDropBox");
             let selectedIndex = dropbox.selectedIndex;
