@@ -881,7 +881,12 @@ footer h1 {
     font-size: 18px;
 }
 
+footer div{
+    color: var(--hint-color);
+}
+
 footer a {
     color: var(--sub-color) !important;
     text-decoration: underline;
 }
+
