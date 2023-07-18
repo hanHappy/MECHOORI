@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category</title>
+</head>
+
+
+<body>
+
+  <a href="../admin">관리자 페이지로</a>
+
+  <h1>Top Category</h1>
+
+  <hr>
+
+  <table>
+    <th>id</th>
+    <th>name</th>
+    <th>img</th>
+    <th></th> 
+    <tr th:each="c: ${list}">
+      <td th:text="${c.id}">id</td>
+      <td th:text="${c.name}">name</td>
+      <td th:text="${c.image}">img</td>
+      <td><button href="category/update" th:value="${c.id}" name="id">EDIT</button></td>
+      <td><button href="category/delete" th:value="${c.id}" name="id">DEL</button></td>
+    </tr>
+  </table>
+  <p></p>
+  <a href="category/save"><button>추가</button></a>
+</body>
+
+
+</html>
