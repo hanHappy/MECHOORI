@@ -28,10 +28,16 @@ main {
     top: 90px;
     box-shadow: var(--block-shadow);
     display: flex;
-    justify-content: space-around;
+    justify-content:space-between;
+    align-items: center;
     background-color: white;
     position: sticky;
+    font-size: 20px;
+    font-weight: bold;
+    box-sizing: border-box;
 }
+
+
 
 
 .top-section {
@@ -106,10 +112,15 @@ main {
     box-shadow: var(--block-shadow);
     margin-top:20px;
     max-width: 500px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
 }   
 
+
+
+
 .black-filter{
-    width: 100%;
+    width: 335px;
     height: 80px;
     background-color: #00000040;
     border-radius: 8px;
@@ -125,12 +136,11 @@ main {
     border-radius: 8px;
     max-width: 500px;
     margin : 18px 0 16px 0;
-    
 }
 
 .rankingNum{
     grid-area: rank;
-    font-size: 18px;
+    font-size: 26px;
 }
 
 .resto-name{
@@ -138,6 +148,8 @@ main {
     text-align: left;
     padding-left: 20px;
     padding-top: 15px;
+    font-size: 18px;
+    color: #FFE551;
 }
 .value{
     grid-area: info;
@@ -145,19 +157,57 @@ main {
     padding-right: 20px;
     padding-bottom: 15px;
 }
-/*.ranking-list-sections {*/
 
-/*    margin-top: 15px;*/
-/*    counter-reset: number 0;*/
-/*    position: relative;*/
-/*}*/
+.valueText{
+    color: #ff8902;
+    font-size: 18px;
+}
 
-/*.rankingNum::before {*/
-/*    counter-increment: number 1;*/
-/*    content: counter(number);*/
 
-/*}*/
+/* ----- 카테고리 ----- */
+.category {
+    /* layout */
+    /* width: 100%; */
+    height: 36px;
+    /* margin-right: -20px; */
+    /* padding-right: -20px; */
+    /* margin-bottom: 10px; */
+    
+    justify-content: space-between;
+    /* items layout */
+    display: flex;
+    align-items: center;
+    /* justify-content: end; */
+    background-color: white;
+    /* box-shadow: var(--block-shadow); */
+}
 
+select {
+    /* style */
+    color: var(--font-color);
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    background-image: url(/images/icons/filter.svg);
+    background-repeat: no-repeat;
+    background-position: right center;
+
+    /* font */
+    font-family: var(--font);
+    font-size: 14px;
+
+    /* layout */
+    padding-left: 5px;
+    padding-right: 15px;
+}
+
+select option {
+    color: #4E4E4E;
+}
+
+/* ----- ----- */
 
 .up {
     color: #7676ff;

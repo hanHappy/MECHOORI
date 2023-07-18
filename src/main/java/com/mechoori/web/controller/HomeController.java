@@ -39,7 +39,9 @@ public class HomeController {
 		model.addAttribute("list", list);
 			// .addAttribute("nickname", nickname);//
 		model.addAttribute("listRank", listRank);
-		// System.out.println(listRank);
+		
+		System.out.println("id----------------------------------: ");
+		System.out.println(listRank.get(0).getId());
 		
 		// for(int i=0; i<10; i++){
 		// 	System.out.println(nickname);
@@ -59,17 +61,6 @@ public class HomeController {
 		List<RestaurantView> list = null;
 
 		Integer memberId = null;
-
-
-		// // 식당 리스트 출력
-		// if(query==null&&ctgId==null)
-		// 	list = restaurantService.getRestaurantViewList(null);
-		// else if (query != null)
-		// 	list = restaurantService.getRestaurantViewListByQuery(null, query);
-		// else if (ctgId != null)
-		// 	list = restaurantService.getRestaurantViewListByCtgId(null, ctgId);
-
-		// model.addAttribute("list", list);
 
 		return "map";
 	}

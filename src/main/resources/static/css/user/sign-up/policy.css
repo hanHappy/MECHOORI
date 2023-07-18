@@ -1,18 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
-*{
-    margin: 0px;
-    padding: 0px;
-}
-
-.policy_container{
-  width: 100%;
+main{
   display: flex;
-  justify-content: space-around;
-}
-
-.policy_contents{
-  width: 375px;
+  flex-direction: column;
+  padding: 0 20px;
 }
 
 
@@ -24,9 +13,6 @@
 
     border: 1px solid #C6C6C6;
 }
-
-
-
 
 
 .circleParent {
@@ -111,18 +97,6 @@
   }
   
 
-main{
-    display: flex;
-    flex-direction: column;
-    padding: 0 20px;
-}
-
-
-
-
-
-
-
 
 ul {
   list-style: none;
@@ -155,7 +129,6 @@ input[type="checkbox"] {
 
 
 .input__check{
-  width: 375px;
   height: 32px;
   font-size: 16px;
   background-color: rgba(238, 238, 238, 1);
@@ -222,3 +195,4 @@ label.required::after {
     width: auto;
   }
 }
+
