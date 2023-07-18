@@ -145,18 +145,6 @@ public class UserController {
         return member;
     }
 
-    // 비밀번호 변경 PUT
-    @PutMapping("my-page/edit-info/pwd")
-    public Member changePwd(@RequestParam("mid") int memberId, @RequestParam("np") String newPwd){
-        
-        Member member = new Member();
-        member.setId(memberId);
-
-        service.updatePassword(member, newPwd);
-        
-        return member;
-    }
-
     // 세션 갱신 method
     public Authentication createNewAuthentication(Authentication currentAuth, String email) {
         UserDetails newPrincipal = mechooriUserDetailService.loadUserByUsername(email);

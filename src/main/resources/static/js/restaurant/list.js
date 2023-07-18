@@ -55,7 +55,7 @@ header.onclick = function(e){
 // index 검색 -> 검색바+키워드 보여주기 -----------
 if(variables.query != null){
     // 검색바에 검색 키워드 남겨놓기
-    searchBar.value = query
+    searchBar.value = variables.query
     // URLSearchParams 인스턴스 초기화 안 해주면 
     // index 페이지든 list 페이지든 검색바랑 키워드 계속 떠있음
     // => 검색바에 키워드 남아있지 않도록 초기화
