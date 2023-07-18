@@ -69,19 +69,14 @@ public class UserController {
         return "user/login/find-pwd";
     }
 
-
-    //    @GetMapping("/login/find-pwd-result")
-    //    public String findPwdResult(String email) {
-    //        return "user/login/find-pwd-result";
-    //    }
-
     @PostMapping("login/find-pwd")
-    public String resetPwd(Member member) {
-        service.resetPwd(member);
-
-        return "redirect:/";
+    public String updatePassword(@RequestParam("email") String email, @RequestParam("np") String newPwd) {
+        Member member = Member.builder()
+                              .email(email)
+                              .build();
+        service.updatePassword(member, newPwd);
+        return "redirect:/user/login";
     }
-
 
     @GetMapping("sign-up/policy")
     public String policy() {
