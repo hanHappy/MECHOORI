@@ -1,3 +1,5 @@
+// FIXME 버튼 수정
+
 document.addEventListener("DOMContentLoaded", function () {
 
     let emailConfirmCode = "";

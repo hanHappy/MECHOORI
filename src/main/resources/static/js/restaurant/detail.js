@@ -2,6 +2,7 @@ let likeBtn = document.querySelector('.like');
 let copyButton = document.getElementById('map-address-copy-button');
 let addressText = document.getElementById('map-address-copy-text');
 let modalCopy = document.getElementById('modal-copy');
+let shareBtn = document.querySelector('.share')
 
 likeBtn.onclick = function(e){
 
@@ -75,28 +76,23 @@ copyButton.addEventListener('click', () => {
         })
 });
 
-// 전화하기 버튼
-// document.addEventListener('DOMContentLoaded', function () {
-//     const btn = document.getElementById('popupBtn');
-//     const modal = document.getElementById('modalWrap');
-//     const closeBtn = document.getElementById('closeBtn');
-//     const callBtn = document.getElementById('callBtn');
+// 공유하기
+shareBtn.onclick = function(e){
+    const shareObject = {
+        title: window.name,
+        url: window.location.href
+    };
 
-//     modal.style.display = 'none';
+    if (navigator.share) {
+        navigator
+        .share(shareObject)
+        .then(() => {
+        })
+        .catch((error) => {
+            alert('error: 다시 시도해주세요.')
+        })
+    } else {
+        alert('error: 미지원 브라우저입니다.')
+    }
+    }    
 
-//     btn.onclick = function () {
-//         modal.style.display = 'block';
-//     }
-//     closeBtn.onclick = function () {
-//         modal.style.display = 'none'; // 모달 닫기
-//     }
-//     callBtn.onclick = function () {
-//         modal.style.display = 'none'; // 모달 닫기
-//     }
-
-//     window.onclick = function (event) {
-//         if (event.target == modal) {
-//             modal.style.display = 'none'; // 모달 외부
-//         }
-//     }
-// });

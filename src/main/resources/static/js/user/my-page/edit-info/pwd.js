@@ -1,3 +1,5 @@
+import ModalCheck from "../../../components/modal-check.js"
+
 let newPwdInput = document.querySelector('#new-pwd')
 let checkPwdInput = document.querySelector('#check-pwd')
 let checkValidMsg = document.querySelector('#msg-check-valid')
@@ -5,6 +7,9 @@ let checkSameMsg = document.querySelector('#msg-check-same')
 let saveBtn = document.querySelector('.btn-save')
 let modalScreen = document.querySelector('.screen')
 let modalPanel = modalScreen.querySelector('.modal-panel')
+const modal = new ModalCheck()
+
+// FIXME 비밀번호 찾기 버튼 disable
 
 newPwdInput.addEventListener('input', (e)=>{ checkValidMsg.classList.add('d-none') })
 
@@ -52,10 +57,7 @@ saveBtn.addEventListener('click', (e)=>{
     .then(response => response.json())
     .then(member =>{
         if(member.id){
-            modalScreen.classList.remove('d-none')
-            setTimeout(() => {
-                modalPanel.classList.add('show')
-            }, 50);
+            modal.show(modalScreen, modalPanel)
         }
     })
     

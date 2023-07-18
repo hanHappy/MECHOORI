@@ -5,7 +5,7 @@
     border: none;
     border-radius: var(--border-radius);
     padding: 0;
-    cursor: pointer;
+    cursor: pointer !important;
     transition: 0.3s;
 }
 
@@ -57,6 +57,8 @@
 
     /* layout */
     line-height: 30px;
+    
+    cursor: pointer;
 }
 .button-7 {
     font-size: 16px;
@@ -100,7 +102,13 @@
     width: 70px;
     height: 28px;
 }
+.button-11:hover {
+    filter: brightness(0.8);
+}
 .button-12 {
     font-size: 16px;
     background-color: var(--box-color);
+}
+.button-12:hover {
+    filter: brightness(0.8);
 }
