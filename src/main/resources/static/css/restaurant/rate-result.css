@@ -1,10 +1,18 @@
+
 .page-wrap {
     box-sizing: border-box;
     width: 100%;
     padding: 20px 20px 0 20px;
 }
 
+
 .poster { min-width: 325px; }
+
+.poster h1{
+    margin: 0;
+    margin: 12px 0 28px 0;
+    text-align: center;
+}
 
 /* 포스터 배경 */
 .poster-bg {
@@ -18,17 +26,18 @@
 /* 데이터 섹션 */
 .data-section {
     box-sizing: border-box;
-    padding: 0 6px;
+    padding: 10px 10px;
 }
 
 .data-item {
     background-color: white;
 
     height: 135px;
-
+    padding: 0 10px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    border-radius: 8px;
 }
 
 .img-chart-wrap {
@@ -50,9 +59,19 @@
 
 .data-text-wrap { padding: 0 6px; }
 
+.data-text-wrap p:first-child{
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+
+.data-text-wrap p:nth-child(4){
+    padding-top: 5px;
+}
+
 .data-text-wrap p{ 
     word-spacing: -1px;
     margin: 0;
+    font-size: 14px;
 }
 
 .data-text-wrap p:first-child { 
@@ -109,6 +128,19 @@
 .text {
     text-align: center;
     font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.text-high {
+    color: var(--sub-color);
+}
+
+.text-row {
+    color: var(--font-color-3);
+}
+
+.text-equals{
+    color: var(--sub-color);
 }
 
 .go-statistics {

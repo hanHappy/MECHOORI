@@ -151,7 +151,7 @@
 
     <div></div>
 
-            <div class="map">
+            <div class="map-container">
                 <div class="map-title-box">
                     <div class="map-title">
                         <img src="/images/icons/icon-line.svg">
@@ -189,12 +189,12 @@
                 </a>
             </div>
             <div class="review-contents" th:each="r : ${top4Rates}">
-                <img src="" th:src="@{${r.memberImg}}" alt="프로필사진">
+                <img src="" th:src="@{$r.memberImg}" alt="프로필사진">
                 <p><span th:text="${r.menuName}">메뉴명</span> · <span class="value" th:text="${r.value} + '%'">110%</span>
                 </p>
                 <p><span th:text="${r.nickname}" class="nickname">닉네임</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
                         class="comment" th:text="${r.review}">코멘트코멘트코멘트코멘트코멘트</span></p>
-                <img src="" th:src="@{${r.reviewImg}}" alt="리뷰사진">
+                <img src="" th:src="@{$r.reviewImg}" alt="리뷰사진">
             </div>
         </div>
 
@@ -207,7 +207,7 @@
     </main>
 
     <!-- ============== 메뉴 모달 ============== -->
-    <div class="modal-menu d-none">
+    <div sec:authorize="isAuthenticated()" class="modal-menu d-none">
         <div class="screen">
             <div class="panel">
                 <div class="profile-image-wrapper">

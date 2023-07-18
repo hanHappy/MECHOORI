@@ -27,6 +27,7 @@
     <main>
         <div class="page-wrap">
             <section class="poster">
+                <h1>✨ 평가완료 ✨</h1>
                 <h1 class="d-none">평가 완료 포스터</h1>
                 <div class="poster-bg">
                     <section>
@@ -53,8 +54,19 @@
                                 <div class="img-coca"></div>
                                 <div class="text-bg">
                                     <div class="text">
-                                        메추리 회원님들보다<br>
-                                        <span id=""></span>원 <span></span> 평가하셨네요!
+                                        <div th:with = "result = (${result.myRatePrice} - ${result.avgRatedPrice})">
+                                            <div th:if="${result &gt 0}">
+                                                메추리 회원님들보다<br>
+                                                <span class="text-high">[[${result}]]원 높게</span> 평가하셨네요!
+                                            </div>
+                                            <div th:if="${result &lt 0}">
+                                                메추리 회원님들보다<br>
+                                                <span class="text-row">[[${-result}]]원 낮게</span> 평가하셨네요!
+                                            </div>
+                                            <div th:if="${result == 0}">메추리 회원님들과<br>
+                                                <span class="text-equals">동일하게</span> 평가하셨네요!</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <a href="/user/my-page/statistics" class="go-statistics">통계 보러 가기 ></a>

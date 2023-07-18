@@ -256,15 +256,15 @@ header {
   padding-bottom: 10px;
 }
 
-.map {
+.map-container {
   margin: 8px 0;
   padding: 15px 20px;
   background-color: white;
-  box-shadow: var(--block-shadow);
+  box-shadow : var(--block-shadow);
   font-size: 16px;
   font-weight: 700;
   line-height: 30px;
-  height: 320px;
+  /* height: 320px; */
 
   max-width: 900px;
   position: relative;
@@ -673,7 +673,7 @@ a {
   .detail{
     margin-top: 20px;
     display: grid;
-    grid-template-columns: 1fr 50px 1fr;
+    grid-template-columns: 1fr 40px 1fr;
     padding-bottom: 18px;
   }
 
@@ -683,7 +683,7 @@ a {
   }
 
   .map{
-    box-shadow: none;
+    box-shadow: var(--block-shadow);
     padding: 20px 50px;
   }
 
@@ -707,6 +707,18 @@ a {
 
   .review{
     margin-bottom: 20px;
+  }
+
+  .map, .map-container{
+    box-shadow: none;
+  }
+
+  .map{
+    padding: 20px 0px;
+  }
+
+  .map-container{
+    padding-right: 50px;
   }
 }
 
