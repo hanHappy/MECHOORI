@@ -1,7 +1,6 @@
 let likeList = document.querySelector('.like-list');
 let item = likeList.querySelector('.item');
 let noListFoundMsg = likeList.querySelector('.msg-no-list-wrap');
-console.log(item);
 if(item === null)
     noListFoundMsg.classList.remove('d-none');
     

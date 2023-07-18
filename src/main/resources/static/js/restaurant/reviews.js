@@ -1,4 +1,5 @@
 let rateList = document.querySelector('.review-list')
+let reviewItem = rateList.querySelector('.review')
 let modalCheck = document.querySelector('#modal-check')
 let noBtn = modalCheck.querySelector('#no')
 let yesBtn = modalCheck.querySelector('#yes')
@@ -105,3 +106,7 @@ window.addEventListener("scroll", function () {
         reviewListLoad(url);
     }
 })
+
+let noListFoundMsg = rateList.querySelector('.msg-no-list-wrap')
+if(!reviewItem)
+    noListFoundMsg.classList.remove('d-none')

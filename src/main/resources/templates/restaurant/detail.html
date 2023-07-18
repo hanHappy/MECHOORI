@@ -8,15 +8,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="'메뉴 추천 리스트, 메추리 : '+${r.name}"> </title>
-    <link rel="stylesheet" type="text/css" href="/css/common/style.css?ver=1">
-    <link rel="stylesheet" href="/css/common/header.css?ver=2">
-    <link rel="stylesheet" type="text/css" href="/css/restaurant/detail.css?ver=1">
-    <link rel="stylesheet" href="/css/common/button.css?ver=1">
-    <link rel="stylesheet" href="/css/common/modal-toast.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="/css/common/style.css">
+    <link rel="stylesheet" href="/css/common/modal-menu.css">
+    <link rel="stylesheet" href="/css/common/button.css">
+    <link rel="stylesheet" href="/css/common/modal-toast.css">
+    <link rel="stylesheet" type="text/css" href="/css/restaurant/detail.css">
+    <link rel="stylesheet" href="/css/common/header.css">
     <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9413a6fbf3f9b5aebdbce4bddfb5f61b&libraries=services"></script>
     <script src="/js/restaurant/map.js" defer></script>
     <script src="/js/restaurant/detail.js" defer></script>
+    <script src="/js/components/modal-menu.js" defer></script>
 </head>
 
 <body>
@@ -33,7 +35,8 @@
         </div>
 
         <div class="header-side right">
-            <!-- <a class="header-icon menu" id="menu"></a> -->
+            <a sec:authorize="isAnonymous()" href="/user/login" class="header-icon menu">메뉴</a>
+            <a sec:authorize="isAuthenticated()" id="menu" class="header-icon menu">메뉴</a>
         </div>
     </header>
 
@@ -75,22 +78,17 @@
                     <p class="rating-price">가성비 <span th:text="${r.value}">80</span>% (<span
                             th:text="${r.rateCount}">99</span>)
                     </p>
-                    <p>평균 <span th:text="${r.avgPrice}">6,000</span>원 · 평가 <span th:text="${r.avgRatedPrice}"></span>원</p>
+                    <p>평균 <span th:text="${r.avgPrice}">6,000</span>원 · 평가 <span th:text="${r.avgRatedPrice}"></span>원
+                    </p>
 
 
                 </div>
             </div>
         </div>
-                </div>
-            </div>
+        </div>
+        </div>
         </div>
 
-        <section class="forWeb">
-            <div class="menu">
-                <div class="menu-title">
-                    <img src="/images/icons/icon-line.svg">
-                    <p>대표메뉴</p>
-                </div>
         <section class="forWeb">
             <div class="menu">
                 <div class="menu-title">
@@ -139,65 +137,38 @@
                     </ul>
                 </div>
             </div>
-                <div class="button-6">
-                    <input id="check-btn" type="checkbox">
-                    <label for="check-btn">메뉴 더보기</label>
-                    <span class="togle">▼</span>
-                    <ul class="menubars" th:each="menu, iterStat : ${menuViewList}" th:if="${iterStat.index} &gt;= 4">
-                        <div class="menubars-content">
-                            <span class="menu-detail-name" th:text="${menu.name}">메뉴명</span>
-                            <span>…………</span>
-                            <div>
-                                <span th:text="${menu.price}+'원'">가격</span>
-                                <span th:text="'(' + ${menu.value} + '%)'" class="menu-detail-rp"></span>
+
+            <div class="map">
+                <div class="map-title-box">
+                    <div class="map-title">
+                        <img src="/images/icons/icon-line.svg">
+                        <p>위치 안내</p>
+                    </div>
+                    <div class="map-address">
+                        <p class="map-address-content" th:text="${r.address}" id="map-address-copy-text">주소</p>
+                        <img src="/images/icons/icon-mapmore.svg" id="map-address-copy-button">
+                    </div>
+                </div>
+                <div class="map">
+                    <div class="map-detail">
+                        <div class="map-table">
+                            <div id="map" style="height: 200px; width: 100%;"></div>
+                            <div class="map-button">
+                                <img src="/images/icons/icon-map.svg">
+                                <a href="/restaurant/mapPage" th:href="@{mapPage/{id}(id=${r.id})}">
+                                    지도보기
+                                </a>
                             </div>
                         </div>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="map">
-                <div class="map-title-box">
-                    <div class="map-title">
-                        <img src="/images/icons/icon-line.svg">
-                        <p>위치 안내</p>
-                    </div>
-                    <div class="map-address">
-                        <p class="map-address-content" th:text="${r.address}" id="map-address-copy-text">주소</p>
-                        <img src="/images/icons/icon-mapmore.svg" id="map-address-copy-button">
                     </div>
                 </div>
-            <div class="map">
-                <div class="map-title-box">
-                    <div class="map-title">
-                        <img src="/images/icons/icon-line.svg">
-                        <p>위치 안내</p>
-                    </div>
-                    <div class="map-address">
-                        <p class="map-address-content" th:text="${r.address}" id="map-address-copy-text">주소</p>
-                        <img src="/images/icons/icon-mapmore.svg" id="map-address-copy-button">
-                    </div>
-                </div>
-
-        <div class="map-detail">
-            <div class="map-table">
-                <div id="map" style="height: 200px; width: 100%;"></div>
-                <div class="map-button">
-                    <img src="/images/icons/icon-map.svg">
-                    <a href="/restaurant/mapPage" th:href="@{mapPage/{id}(id=${r.id})}">
-                        지도보기
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </section>
-    <!----------- 변경 중 --------------->
-    <div class="review">
-        <div class="review-title-box">
-            <div class="review-title">
-                <img src="/images/icons/icon-line.svg">
-                <p>리뷰 (<span class="review-span" th:text="${rateList.size()}">99</span>+)</p>
+        </section>
+        <!----------- 변경 중 --------------->
+        <div class="review">
+            <div class="review-title-box">
+                <div class="review-title">
+                    <img src="/images/icons/icon-line.svg">
+                    <p>리뷰 (<span class="review-span" th:text="${rateList.size()}">99</span>+)</p>
 
                 </div>
                 <a href="reviews" th:href="@{/restaurant/{id}/reviews(id=${r.id})}">
@@ -206,23 +177,77 @@
             </div>
             <div class="review-contents" th:each="r : ${top4Rates}">
                 <img src="" th:src="@{${r.memberImg}}" alt="프로필사진">
-                <p><span th:text="${r.menuName}">메뉴명</span> · <span class="value" th:text="${r.value} + '%'">110%</span></p>
-                <p><span th:text="${r.nickname}" class="nickname">닉네임</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment" th:text="${r.review}">코멘트코멘트코멘트코멘트코멘트</span></p>
+                <p><span th:text="${r.menuName}">메뉴명</span> · <span class="value" th:text="${r.value} + '%'">110%</span>
+                </p>
+                <p><span th:text="${r.nickname}" class="nickname">닉네임</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        class="comment" th:text="${r.review}">코멘트코멘트코멘트코멘트코멘트</span></p>
                 <img src="" th:src="@{${r.reviewImg}}" alt="리뷰사진">
             </div>
         </div>
 
         <!-- 리뷰 버튼 -->
         <div class="btn-review-wrap">
-            <a href="rate" th:href="@{/restaurant/{id}/rate(id=${r.id})}"><span class="icon-rate text-hidden"></span>&nbsp;&nbsp;<span>평가하기</span></a>
+            <a href="rate" th:href="@{/restaurant/{id}/rate(id=${r.id})}"><span
+                    class="icon-rate text-hidden"></span>&nbsp;&nbsp;<span>평가하기</span></a>
         </div>
 
-</main>
+    </main>
 
-<!---- 주소 복사 모달 ---->
-<div id="modal-copy">
-    <p>주소가 복사되었습니다.</p>
-</div>
+    <!-- ============== 메뉴 모달 ============== -->
+    <div class="modal-menu d-none">
+        <div class="screen">
+            <div class="panel">
+                <div class="profile-image-wrapper">
+                    <div class="profile-image-frame">
+                        <img class="profile-image" th:src="${#authentication.principal.img}" alt="프로필사진">
+                    </div>
+                    <div class="nickname-wrapper">
+                        <span class="nickname" th:text="${#authentication.principal.nickname}"></span>
+                    </div>
+                </div>
+
+                <nav class="menu-list-section">
+                    <ul>
+                        <li>
+                            <a href="/user/my-page/edit-info">
+                                <div class="icon icon-key"></div>
+                                <span>회원 정보 수정</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/user/my-page/like-list">
+                                <div class="icon icon-heart"></div>
+                                <span>찜 목록</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/user/my-page/rate-list">
+                                <div class="icon icon-review"></div>
+                                <span>평가 목록</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/user/my-page/statistics">
+                                <div class="icon icon-chart"></div>
+                                <span>가성비 평가 통계</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/logout">
+                                <div class="icon icon-power"></div>
+                                <span>로그아웃</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!---- 주소 복사 모달 ---->
+    <div id="modal-copy">
+        <p>주소가 복사되었습니다.</p>
+    </div>
 
 </body>
 

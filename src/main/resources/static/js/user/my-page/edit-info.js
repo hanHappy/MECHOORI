@@ -31,7 +31,6 @@ profileImgInput.addEventListener('change', (e) => {
 
     isImgChanged = true;
 
-    saveBtn.classList.add('active');
     saveBtn.disabled = false;
 });
 
@@ -90,10 +89,8 @@ nicknameInput.addEventListener('input', async (e) => {
     let isNicknameChanged = checkNicknameChange();
 
     if (isNicknameChanged && isNicknameUnique) {
-        saveBtn.classList.add('active');
         saveBtn.disabled = false;
     } else if (!(isNicknameChanged || isNicknameUnique || isImgChanged)) {
-        saveBtn.classList.remove('active');
         saveBtn.disabled = true;
     }
 

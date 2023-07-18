@@ -132,7 +132,7 @@
 		</if>
 	</select>
 
-	<select id="findReviewAll" resultType="Review">
+	<select id="findReviewAll" resultType="ReviewListView">
 		select * from review_list_view where restaurant_id = #{restaurantId}
 		limit #{size}
 	</select>
