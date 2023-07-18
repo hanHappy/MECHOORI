@@ -149,7 +149,8 @@ header {
     overflow: auto;
     width: 100%;
     height: 60px;
-    padding-left: 10px;
+    /* padding-left: 10px; */
+    padding-right: 6px;
 
     display: flex;
     align-items: center;
@@ -171,7 +172,7 @@ header {
 }
 
 /* 효과 */
-.top-category {
+/* .top-category {
     transition: 0.2s;
 }
 
@@ -182,7 +183,56 @@ header {
 
 .top-category.selected {
     border-bottom: solid 3px var(--sub-color);
+} */
+/* -----  ----- */
+.top-category {
+    padding: 5px 5px 1px 5px;
+    margin-left: 5px;
+    border: unset;
+    border-radius: 12px;
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    /* -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27); */
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.1);
+    transition: all 250ms;
+    overflow: hidden;
 }
+
+.top-category::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    /* background-color: #212121; */
+    background-color: #2292F9;
+    color: #e8e8e8;
+    z-index: -1;
+    /* -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27); */
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.1);
+    transition: all 250ms
+}
+
+.top-category:hover {
+    color: #e8e8e8;
+}
+
+.top-category:hover::before,
+.top-category.active::before {
+    width: 100%;
+}
+
+.top-category.active{
+    color: #e8e8e8;
+
+}
+
 
 /* ----- 기타 카테고리 (베트남, 태국, ...) ----- */
 .other-category-section {
@@ -230,7 +280,7 @@ header {
 /* ------------ 필터 ------------ */
 .filter-box {
     /* layout */
-    width: 100%;
+    /* width: 100%; */
     height: 36px;
     padding-right: 20px;
     margin-bottom: var(--block-space);
@@ -243,169 +293,6 @@ header {
     background-color: white;
     box-shadow: var(--block-shadow);
 }
-
-
-/* ------------ 필터 ver2 ------------ */
-  /* .filter-box {
-    position: absolute;
-    display: inline-block;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  } */
-  
-  /** Custom Select **/
-  .custom-select-wrapper {
-    position: relative;
-    display: inline-block;
-    user-select: none;
-  }
-  
-  .custom-select-wrapper select {
-    display: none;
-  }
-  
-  .custom-select {
-    position: relative;
-    display: inline-block;
-  }
-  
-  
-  /* ----- */
-  .custom-select-trigger:after {
-    position: absolute;
-    display: block;
-    content: '';
-    width: 10px;
-    height: 10px;
-    top: 50%;
-    right: 15px;
-    margin-top: -3px;
-    border-bottom: 1px solid #555555;
-    border-right: 1px solid #555555;
-    transform: rotate(45deg) translateY(-50%);
-    transition: all .4s ease-in-out;
-    transform-origin: 50% 0;
-  }
-  
-  /* ----- */
-  .custom-select.opened .custom-select-trigger:after {
-    margin-top: 3px;
-    transform: rotate(-135deg) translateY(-50%);
-  }
-  
-  /* ----- */
-  .custom-options {
-    position: absolute;
-    display: block;
-    top: 100%;
-    left: 0;
-    right: 0;
-    min-width: 100%;
-    margin: 10px 0;
-    border: 1px solid #b5b5b5;
-    border-radius: 4px;
-    box-sizing: border-box;
-    box-shadow: 0 2px 1px rgba(0, 0, 0, .07);
-    background: #fff;
-    transition: all .4s ease-in-out;
-  
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(-15px);
-  }
-  
-  /* ----- */
-  .custom-select.opened .custom-options {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all;
-    transform: translateY(0);
-    /* height: 100px; */
-  }
-  
-  /* ----- */
-  .custom-options:before {
-    position: absolute;
-    display: block;
-    content: '';
-    bottom: 100%;
-    right: 15px;
-    width: 7px;
-    height: 7px;
-    margin-bottom: -4px;
-    border-top: 1px solid #b5b5b5;
-    border-left: 1px solid #b5b5b5;
-    background: #fff;
-    transform: rotate(45deg);
-    transition: all .4s ease-in-out;
-  }
-  
-  /* ----- */
-  .option-hover:before {
-    background: #f9f9f9;
-  }
-  
-  
-  /* --위-- */
-  .custom-select-trigger {
-    position: relative;
-    display: block;
-    /* width: 30px; */
-    height: 22px;
-    width: 35px;
-    /* padding: 0 84px 0 22px; */
-    padding: 7px 64px 0 12px;
-    font-size: 12px;
-    font-weight: 500;
-    color: #555555;
-    white-space: nowrap;
-    /* line-height: 60px; */
-    /* box-sizing: border-box; */
-    background: var(--box-color);;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  /* --아래-- */
-  .custom-option {
-    position: relative;
-    display: block;
-    /* padding: 0 22px; */
-    border-bottom: 1px solid #b5b5b5;
-    font-size: 12px;
-    font-weight: 400;
-    color: #7b7a7a;
-    /* text-align: center; */
-    /* line-height: 47px; */
-    cursor: pointer;
-    transition: all .4s ease-in-out;
-  
-    box-sizing: border-box;
-    padding-left: 20px;
-    padding-top: 6px;
-    white-space: nowrap;
-    height: 30px;
-    /* padding: 0px 30px 0px 20px; */
-  }
-  
-  
-  .custom-option:first-of-type { border-radius: 4px 4px 0 0; }
-  
-  .custom-option:last-of-type {
-    border-bottom: 0;
-    border-radius: 0 0 4px 4px;
-  }
-
-  .custom-option:hover,
-  .custom-option.selection {
-    background: #92b4f2;
-    font-weight: 800;
-    color:#ffffff
-  }
-
-/* ---------------------------------------- */
 
 select {
     /* style */
@@ -427,6 +314,12 @@ select {
     padding-left: 5px;
     padding-right: 15px;
 }
+
+/* ------------ 필터 ver2 ------------ */
+
+
+/* ---------------------------------------- */
+
 
 select option {
     color: #4E4E4E;
@@ -454,16 +347,17 @@ select option {
     transition: 1s;
 }
 
-/* =============== 식당 리스트 섹션 =============== */
-.restaurant-list {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.modal-like.active {
+    opacity: 1;
 }
 
-.modal-like.active { opacity: 1; }
-.modal-like p { margin: 0; }
+.modal-like p {
+    margin: 0;
+}
+
+.restaurant-list-section {
+    width: 100%;
+}
 
 /* 모바일 미디어 쿼리 */
 @media screen and (max-width: 375px) {
@@ -479,6 +373,21 @@ select option {
 
 @media only screen and (min-width: 679px) {
 
+    header {
+        height: 300px;
+        width: 100%;
+        background-image: url(/images/foods/main.svg);
+        /*background-color: transparent;*/
+        /*background-repeat: no-repeat;*/
+        background-size: cover;
+        z-index: 80;
+        position: relative;
+    }
+
+    .header-wrapper {
+        display: none;
+    }
+
     .category-wrapper {
         justify-content: center;
     }
@@ -487,4 +396,3 @@ select option {
         gap: 100px;
 
     }
-}

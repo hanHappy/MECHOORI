@@ -4,6 +4,7 @@ export default class ModalToast {
     show(modal){
         modal.classList.remove("d-none");
         setTimeout(() => {
+            modal.style.display = "block";
             modal.classList.add("active");
             setTimeout(() => {
                 modal.classList.remove("active");

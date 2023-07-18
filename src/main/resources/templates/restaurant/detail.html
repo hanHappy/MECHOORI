@@ -40,20 +40,36 @@
         </div>
     </header>
 
-    <main>
-        <div class="detail">
+<main>
+
+    <!-- <div class="web-img">
+        <img src="/images/assets/bg-web.png">
+    </div> -->
+
+    <div class="detail">
             <div class="img-section">
-                <img src="/images/foods/청화원2.png" th:src="@{/images/foods/{img}(img = ${r.img})}" class="rstr-thumb">
+                <img src="/images/foods/청화원2.png"
+                    th:src="@{/images/foods/{img}(img = ${r.img})}"
+                    class="rstr-thumb">
             </div>
+            <div></div>
             <div class="detail-content">
                 <div class="title">
                     <p th:text="${r.name}" id="resName">짜장상회</p>
                     <div>
-                        <a href="" type="button" sec:authorize="isAuthenticated()"
-                            th:data-member-id="${#authentication.principal.id}" th:data-restaurant-id="${r.id}"
-                            class="like" th:classappend="${r.like}?'active' : ''">좋아요
+                        <a 
+                            href=""
+                            type="button"
+                            sec:authorize="isAuthenticated()" 
+                            th:data-member-id="${#authentication.principal.id}"
+                            th:data-restaurant-id="${r.id}"
+                            class="like" 
+                            th:classappend="${r.like}?'active' : ''">좋아요
                         </a>
-                        <a sec:authorize="isAnonymous()" href="/user/login" class="like">좋아요
+                        <a 
+                            sec:authorize="isAnonymous()"
+                            href="/user/login" 
+                            class="like">좋아요
                         </a>
                         <a href="" class="share">공유하기</a>
                     </div>
@@ -78,16 +94,11 @@
                     <p class="rating-price">가성비 <span th:text="${r.value}">80</span>% (<span
                             th:text="${r.rateCount}">99</span>)
                     </p>
-                    <p>평균 <span th:text="${r.avgPrice}">6,000</span>원 · 평가 <span th:text="${r.avgRatedPrice}"></span>원
-                    </p>
-
-
-                </div>
+                    <!-- 상민(6/18) : 평가 가격 추가-->
+                    <p>평균 <span th:text="${r.avgPrice}">6,000</span>원 · 평가 <span th:text="${r.avgRatedPrice}"></span>원</p>
             </div>
         </div>
-        </div>
-        </div>
-        </div>
+    </div>
 
         <section class="forWeb">
             <div class="menu">
@@ -121,22 +132,24 @@
                     </div>
                 </div>
 
-                <div class="button-6">
-                    <input id="check-btn" type="checkbox">
-                    <label for="check-btn">메뉴 더보기</label>
-                    <span class="togle">▼</span>
-                    <ul class="menubars" th:each="menu, iterStat : ${menuViewList}" th:if="${iterStat.index} &gt;= 4">
-                        <div class="menubars-content">
-                            <span class="menu-detail-name" th:text="${menu.name}">메뉴명</span>
-                            <span>…………</span>
-                            <div>
-                                <span th:text="${menu.price}+'원'">가격</span>
-                                <span th:text="'(' + ${menu.value} + '%)'" class="menu-detail-rp"></span>
-                            </div>
-                        </div>
-                    </ul>
+        <div class="button-6">
+            <input id="check-btn" type="checkbox">
+            <label for="check-btn">메뉴 더보기</label>
+            <span class="togle">▼</span>
+            <ul class="menubars" th:each="menu, iterStat : ${menuViewList}" th:if="${iterStat.index} &gt;= 4">
+                <div class="menubars-content">
+                    <span class="menu-detail-name" th:text="${menu.name}">메뉴명</span>
+                    <span>…………</span>
+                    <div>
+                        <span th:text="${menu.price}+'원'">가격</span>
+                        <span th:text="'(' + ${menu.value} + '%)'" class="menu-detail-rp"></span>
+                    </div>
                 </div>
-            </div>
+            </ul>
+        </div>
+    </div>
+
+    <div></div>
 
             <div class="map">
                 <div class="map-title-box">

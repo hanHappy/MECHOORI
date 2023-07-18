@@ -5,9 +5,8 @@
   font-family: var(--font);
 }
 
-body {
-  background-color: var(--background-color);
-  padding-bottom: 80px;
+.web-img{
+  display:none;
 }
 
 /* --------------헤더-------------- */
@@ -308,6 +307,7 @@ header {
 }
 
 .map-detail {
+  margin-top: 20px;
   width: 100%;
   display: flex;
   border: 1px solid var(--hint-color);
@@ -637,23 +637,32 @@ a {
 .img-section{
   display: flex;
   justify-content: center;
+  padding-top: 14px;
+}
+
+.img-section img{
+  object-fit: cover;
 }
 
 @media (min-width: 769px) {
 
   main{
   background-color: #FFFFFF;
-}
+  }
 
-  header {
-    height: 300px;
+  .web-img{
+    display: block;
     width: 100%;
-    background-image: url(/images/foods/main.svg);
-    /*background-color: transparent;*/
-    /*background-repeat: no-repeat;*/
-    background-size: cover;
-    z-index: 80;
-    position: relative;
+    height: 150px;
+    overflow: hidden;
+  }
+
+  .web-img img{
+    object-fit: cover;
+  }
+
+  .review, .forWeb, .detail{
+    width: 940px;
   }
 
   .dot{
@@ -662,36 +671,42 @@ a {
   }
 
   .detail{
-    display: flex;
-    align-content: center;
-    justify-content: center;
-
-    margin-top: 30px;
-    padding: 50px 20px;
-
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 50px 1fr;
+    padding-bottom: 18px;
   }
-  .detail-content {
-    padding: 0 20px 20px 20px;
-    margin-right: 170px;
-    position: relative;
-    left: 50px;
+
+  .menu{
+    box-shadow: none;
+    padding: 20px 50px;
+  }
+
+  .map{
+    box-shadow: none;
+    padding: 20px 50px;
   }
 
   .forWeb{
+    width: 940px;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 380px));
+    grid-template-columns: 1fr 50px 1fr;
+    /* grid-template-columns: repeat(2, minmax(0, 380px)); */
     background-color: #FFFFFF;
     justify-content: center;
     max-width: 940px;
     width: 100%;
-
     position: relative;
     left: 50%;
     transform: translateX(-50%);
 
     box-shadow: var(--block-shadow);
-    margin: 10px 0;
+    margin: 20px 0;
     padding: 10px 0;
+  }
+
+  .review{
+    margin-bottom: 20px;
   }
 }
 
