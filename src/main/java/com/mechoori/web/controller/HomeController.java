@@ -2,6 +2,7 @@ package com.mechoori.web.controller;
 
 import java.util.List;
 
+import com.mechoori.web.entity.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,25 +42,12 @@ public class HomeController {
 
 
 	@GetMapping("map")
-	public String map(@RequestParam(name = "q", required = false) String query,
-					  @RequestParam(name = "c", required = false) Integer ctgId,
-					  Model model) {
+	public String map(Model model) {
 
 
-		List<RestaurantView> list = null;
+		List<Restaurant> list = restaurantService.findAllRestaurant();
 
-		Integer memberId = null;
-
-
-		// // 식당 리스트 출력
-		// if(query==null&&ctgId==null)
-		// 	list = restaurantService.getRestaurantViewList(null);
-		// else if (query != null)
-		// 	list = restaurantService.getRestaurantViewListByQuery(null, query);
-		// else if (ctgId != null)
-		// 	list = restaurantService.getRestaurantViewListByCtgId(null, ctgId);
-
-		// model.addAttribute("list", list);
+		model.addAttribute("list", list);
 
 		return "map";
 	}
