@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import com.mechoori.web.api.service.MechooriOAuth2UserService;
 
@@ -15,9 +16,11 @@ import com.mechoori.web.api.service.MechooriOAuth2UserService;
 public class SecurityConfig {
 
     private final MechooriOAuth2UserService mechooriOAuth2UserService;
+    private final AuthenticationSuccessHandler authenticationSuccessHandler;
 
-    public SecurityConfig(MechooriOAuth2UserService mechooriOAuth2UserService) {
+    public SecurityConfig(MechooriOAuth2UserService mechooriOAuth2UserService, AuthenticationSuccessHandler authenticationSuccessHandler) {
         this.mechooriOAuth2UserService = mechooriOAuth2UserService;
+        this.authenticationSuccessHandler = authenticationSuccessHandler;
     }
 
     // 권한을 위한 필터 객체
@@ -42,7 +45,8 @@ public class SecurityConfig {
                     .loginPage("/user/login") // GET 요청
                     .loginProcessingUrl("/user/login") // POST 요청
                     .usernameParameter("email")
-                    .defaultSuccessUrl("/")) // 다른 페이지에서 온 게 아니라 바로 로그인 버튼 눌렀을 때
+                    .defaultSuccessUrl("/") // 다른 페이지에서 온 게 아니라 바로 로그인 버튼 눌렀을 때
+                    .successHandler(authenticationSuccessHandler)) // 다른 페이지에서 왔을 때
             .logout(
                 logout -> logout
                     .logoutUrl("/logout")

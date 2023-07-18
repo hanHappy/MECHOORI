@@ -18,6 +18,7 @@
     justify-content: center;
 
     transition: 1s;
+    display: none;
 }
 
 .modal-toast.active {

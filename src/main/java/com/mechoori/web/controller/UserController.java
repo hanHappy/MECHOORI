@@ -22,6 +22,8 @@ import com.mechoori.web.service.RateService;
 import com.mechoori.web.service.RestaurantLikeService;
 import com.mechoori.web.service.RestaurantService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("user")
 public class UserController {
@@ -41,7 +43,14 @@ public class UserController {
     }
 
     @GetMapping("login")
-    public String login() {
+    public String login(HttpServletRequest request){
+
+        // Referer -> 이전 페이지 URI 가져오기
+        String uri = request.getHeader("Referer");
+        if (uri != null && !uri.contains("/login")) {
+            request.getSession().setAttribute("prevPage", uri);
+        }
+        
         return "user/login";
     }
 

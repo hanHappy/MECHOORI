@@ -38,57 +38,61 @@
       </header>
 
 <main>
+
+    <!-- <div class="web-img">
+        <img src="/images/assets/bg-web.png">
+    </div> -->
+
     <div class="detail">
-        <div class="img-section">
-        <img src="/images/foods/청화원2.png"
-             th:src="@{/images/foods/{img}(img = ${r.img})}"
-             class="rstr-thumb">
-        </div>
+            <div class="img-section">
+                <img src="/images/foods/청화원2.png"
+                    th:src="@{/images/foods/{img}(img = ${r.img})}"
+                    class="rstr-thumb">
+            </div>
+            <div></div>
             <div class="detail-content">
-            <div class="title">
-                <p th:text="${r.name}" id="resName">짜장상회</p>
-                <div>
-                    <a 
-                        href=""
-                        type="button"
-                        sec:authorize="isAuthenticated()" 
-                        th:data-member-id="${#authentication.principal.id}"
-                        th:data-restaurant-id="${r.id}"
-                        class="like" 
-                        th:classappend="${r.like}?'active' : ''">좋아요
-                    </a>
-                    <a 
-                        sec:authorize="isAnonymous()"
-                        href="/user/login" 
-                        class="like">좋아요
-                    </a>
-                    <a href="" class="share">공유하기</a>
+                <div class="title">
+                    <p th:text="${r.name}" id="resName">짜장상회</p>
+                    <div>
+                        <a 
+                            href=""
+                            type="button"
+                            sec:authorize="isAuthenticated()" 
+                            th:data-member-id="${#authentication.principal.id}"
+                            th:data-restaurant-id="${r.id}"
+                            class="like" 
+                            th:classappend="${r.like}?'active' : ''">좋아요
+                        </a>
+                        <a 
+                            sec:authorize="isAnonymous()"
+                            href="/user/login" 
+                            class="like">좋아요
+                        </a>
+                        <a href="" class="share">공유하기</a>
+                    </div>
                 </div>
-            </div>
-            <div class="rated-result">
-                <div>
-                    <img src="/images/icons/icon-like-result.svg">
-                    <p th:text="${r.likeCount}" id="like-count">찜하기수</p>
+                <div class="rated-result">
+                    <div>
+                        <img src="/images/icons/icon-like-result.svg">
+                        <p th:text="${r.likeCount}" id="like-count">찜하기수</p>
+                    </div>
+                    <div>
+                        <img src="/images/icons/icon-rated-result.svg">
+                        <p th:text="${r.rateCount}">평가수</p>
+                    </div>
                 </div>
-                <div>
-                    <img src="/images/icons/icon-rated-result.svg">
-                    <p th:text="${r.rateCount}">평가수</p>
+
+                <div class="intro">
+                    <p th:text="${r.intro}">소개글</p>
+                    <p th:text="${r.address}">서울 · 신촌</p>
                 </div>
-            </div>
 
-            <div class="intro">
-                <p th:text="${r.intro}">소개글</p>
-                <p th:text="${r.address}">서울 · 신촌</p>
-            </div>
-
-            <div class="price">
-                <p class="rating-price">가성비 <span th:text="${r.value}">80</span>% (<span
-                        th:text="${r.rateCount}">99</span>)
-                </p>
-                <!-- 상민(6/18) : 평가 가격 추가-->
-                <p>평균 <span th:text="${r.avgPrice}">6,000</span>원 · 평가 <span th:text="${r.avgRatedPrice}"></span>원</p>
-
-
+                <div class="price">
+                    <p class="rating-price">가성비 <span th:text="${r.value}">80</span>% (<span
+                            th:text="${r.rateCount}">99</span>)
+                    </p>
+                    <!-- 상민(6/18) : 평가 가격 추가-->
+                    <p>평균 <span th:text="${r.avgPrice}">6,000</span>원 · 평가 <span th:text="${r.avgRatedPrice}"></span>원</p>
             </div>
         </div>
     </div>
@@ -129,6 +133,8 @@
             </ul>
         </div>
     </div>
+
+    <div></div>
 
     <div class="map">
         <div class="map-title-box">
