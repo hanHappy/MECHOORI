@@ -67,10 +67,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log(email);
 
                 let itemTemplate = `
+            <div class="title">
+                <p>비밀번호 찾기</p>
+            </div>
+
             <form action="/user/login/find-pwd" method="POST">
               <input type="text" name="email" value="${email}" readonly>
               <label for="passwordReset">비밀번호 재설정</label>
-              <input type="text" name="password" class="passwordReset" id="passwordReset" placeholder="비밀번호를 입력해주세요">
+              <input type="password" name="password" class="passwordReset" id="passwordReset" placeholder="비밀번호를 입력해주세요">
               <!-- 이메일 값 전달 -->
               <button type="submit" id="submitBtn">재설정 하기</button>
               

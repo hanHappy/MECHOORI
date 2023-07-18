@@ -373,26 +373,16 @@ select option {
 
 @media only screen and (min-width: 679px) {
 
-    header {
-        height: 300px;
+
+    .restaurant-list-section{
+        padding: 0 20px;
+    }
+
+    .restaurant-list {
         width: 100%;
-        background-image: url(/images/foods/main.svg);
-        /*background-color: transparent;*/
-        /*background-repeat: no-repeat;*/
-        background-size: cover;
-        z-index: 80;
+        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 100%));
         position: relative;
     }
-
-    .header-wrapper {
-        display: none;
-    }
-
-    .category-wrapper {
-        justify-content: center;
-    }
-
-    .category-list {
-        gap: 100px;
-
-    }
+}
