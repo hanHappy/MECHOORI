@@ -7,6 +7,9 @@ import com.mechoori.web.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mechoori.web.entity.Restaurant;
+import com.mechoori.web.entity.RestaurantDetail;
+import com.mechoori.web.entity.RestaurantView;
 import com.mechoori.web.repository.MenuRepository;
 import com.mechoori.web.repository.RestaurantRepository;
 
@@ -52,7 +55,7 @@ public class RestaurantServiceImp implements RestaurantService {
 
 	@Override
 	public List<RestaurantView> getRestaurantViewList(Integer memberId, int offset) {
-		return repository.findRestaurantViewAll(memberId, offset, this.size);
+		return repository.findRestaurantViewAll(memberId, null, null, null, null, offset, this.size);
 	}
 	
 	@Override
@@ -167,7 +170,7 @@ public class RestaurantServiceImp implements RestaurantService {
 
 	@Override
 	public List<RestaurantRankView> getRanking(Integer categoryId, int offset) {
-		return repository.getRanking(categoryId, offset, 6);
+		return repository.getRanking(categoryId, offset, 8);
 	}
 
 //	@Override
@@ -188,6 +191,27 @@ public class RestaurantServiceImp implements RestaurantService {
 	@Override
 	public void add(Restaurant restaurant) {
 		repository.add(restaurant);
+	}
+
+	@Override
+	public void update(Restaurant restaurant) {
+
+		if(restaurant.getName()=="")
+		restaurant.setName(null);
+
+		if(restaurant.getImg()=="")
+		restaurant.setImg(null);
+
+		if(restaurant.getIntro()=="")
+		restaurant.setIntro(null);
+
+		if(restaurant.getOperatingTime()=="")
+		restaurant.setOperatingTime(null);
+
+		if(restaurant.getContactNumber()=="")
+		restaurant.setContactNumber(null);
+
+		repository.update(restaurant);
 	}
 
 	@Override

@@ -15,12 +15,12 @@ header {
 
 
 /* ----- logo ----- */
-.logo-container{
+.logo-container {
     position: relative;
     width: 104px;
     height: 100%;
     overflow: hidden;
-    
+
 }
 
 .header-icon.hoverimg,
@@ -29,7 +29,7 @@ header {
     background-size: contain;
 }
 
-.header-icon.logo{
+.header-icon.logo {
     position: absolute;
     background-image: url(/images/assets/logo2.svg);
     width: 82px;
@@ -41,7 +41,7 @@ header {
     z-index: 1000;
 }
 
-.header-icon.hoverimg{
+.header-icon.hoverimg {
     position: absolute;
     background-image: url(/images/assets/logoBack5.svg);
     width: 104px;
@@ -52,14 +52,15 @@ header {
 .header-icon.hoverimg {
     transform: translateY(115%);
 }
-  
+
 .logo-container:hover .header-icon.hoverimg {
     transform: translateY(2%);
 }
+
 /* ---------------------------------------- */
 
 
-.header-wrapper{
+.header-wrapper {
     background-color: var(--main-color);
 
     /* layout */
@@ -170,11 +171,15 @@ header {
 }
 
 /* 효과 */
-.top-category { transition: 0.2s; }
+.top-category {
+    transition: 0.2s;
+}
+
 .top-category:hover,
 .top-category.selected {
     color: var(--sub-color);
 }
+
 .top-category.selected {
     border-bottom: solid 3px var(--sub-color);
 }
@@ -187,7 +192,10 @@ header {
     height: 0;
     transition: height 0.3s;
 }
-.other-category-section.slide-open { height: 40px; }
+
+.other-category-section.slide-open {
+    height: 40px;
+}
 
 .other-category-list {
     /* style */
@@ -236,6 +244,171 @@ header {
     box-shadow: var(--block-shadow);
 }
 
+
+/* ------------ 필터 ver2 ------------ */
+  /* .filter-box {
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } */
+  
+  /** Custom Select **/
+  .custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+    user-select: none;
+  }
+  
+  .custom-select-wrapper select {
+    display: none;
+  }
+  
+  .custom-select {
+    position: relative;
+    display: inline-block;
+  }
+  
+  
+  /* ----- */
+  .custom-select-trigger:after {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    top: 50%;
+    right: 15px;
+    margin-top: -3px;
+    border-bottom: 1px solid #555555;
+    border-right: 1px solid #555555;
+    transform: rotate(45deg) translateY(-50%);
+    transition: all .4s ease-in-out;
+    transform-origin: 50% 0;
+  }
+  
+  /* ----- */
+  .custom-select.opened .custom-select-trigger:after {
+    margin-top: 3px;
+    transform: rotate(-135deg) translateY(-50%);
+  }
+  
+  /* ----- */
+  .custom-options {
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    right: 0;
+    min-width: 100%;
+    margin: 10px 0;
+    border: 1px solid #b5b5b5;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .07);
+    background: #fff;
+    transition: all .4s ease-in-out;
+  
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-15px);
+  }
+  
+  /* ----- */
+  .custom-select.opened .custom-options {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: translateY(0);
+    /* height: 100px; */
+  }
+  
+  /* ----- */
+  .custom-options:before {
+    position: absolute;
+    display: block;
+    content: '';
+    bottom: 100%;
+    right: 15px;
+    width: 7px;
+    height: 7px;
+    margin-bottom: -4px;
+    border-top: 1px solid #b5b5b5;
+    border-left: 1px solid #b5b5b5;
+    background: #fff;
+    transform: rotate(45deg);
+    transition: all .4s ease-in-out;
+  }
+  
+  /* ----- */
+  .option-hover:before {
+    background: #f9f9f9;
+  }
+  
+  
+  /* --위-- */
+  .custom-select-trigger {
+    position: relative;
+    display: block;
+    /* width: 30px; */
+    height: 22px;
+    width: 35px;
+    /* padding: 0 84px 0 22px; */
+    padding: 7px 64px 0 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #555555;
+    white-space: nowrap;
+    /* line-height: 60px; */
+    /* box-sizing: border-box; */
+    background: var(--box-color);;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* --아래-- */
+  .custom-option {
+    position: relative;
+    display: block;
+    /* padding: 0 22px; */
+    border-bottom: 1px solid #b5b5b5;
+    font-size: 12px;
+    font-weight: 400;
+    color: #7b7a7a;
+    /* text-align: center; */
+    /* line-height: 47px; */
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+  
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-top: 6px;
+    white-space: nowrap;
+    height: 30px;
+    /* padding: 0px 30px 0px 20px; */
+  }
+  
+
+  .custom-option:first-of-type {
+    border-radius: 4px 4px 0 0;
+  }
+
+  .custom-option:last-of-type {
+    border-bottom: 0;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .custom-option:hover,
+  .custom-option.selection {
+    background: #92b4f2;
+    font-weight: 800;
+    color:#ffffff
+  }
+
+/* ---------------------------------------- */
+
 select {
     /* style */
     color: var(--font-color);
@@ -257,7 +430,9 @@ select {
     padding-right: 15px;
 }
 
-select option { color: #4E4E4E; }
+select option {
+    color: #4E4E4E;
+}
 
 .modal-like {
     color: #fff;
@@ -281,10 +456,17 @@ select option { color: #4E4E4E; }
     transition: 1s;
 }
 
-.modal-like.active { opacity: 1; }
-.modal-like p { margin: 0; }
+.modal-like.active {
+    opacity: 1;
+}
 
-.restaurant-list-section { width: 100%; }
+.modal-like p {
+    margin: 0;
+}
+
+.restaurant-list-section {
+    width: 100%;
+}
 
 /* 모바일 미디어 쿼리 */
 @media screen and (max-width: 375px) {
@@ -299,21 +481,6 @@ select option { color: #4E4E4E; }
 }
 
 @media only screen and (min-width: 679px) {
-
-    header {
-        height: 300px;
-        width: 100%;
-        background-image: url(/images/foods/main.svg);
-        /*background-color: transparent;*/
-        /*background-repeat: no-repeat;*/
-        background-size: cover;
-        z-index: 80;
-        position: relative;
-    }
-
-    .header-wrapper {
-        display: none;
-    }
 
     .category-wrapper {
         justify-content: center;

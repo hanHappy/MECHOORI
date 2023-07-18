@@ -98,29 +98,28 @@
       values(#{topCategoryId}, #{categoryId}, #{name}, #{img}, #{intro}, #{address}, #{operatingTime}, #{contactNumber})
    </insert>
 
-   <select id="getRanking" resultType="RestaurantView">
-      SELECT *
-      from restaurant_view
-      <if test="categoryId != null">
-      where category_id = #{categoryId}
-      </if>
-      ORDER BY value DESC
-   </select>
+	<update id="update" parameterType="Restaurant">
+        update restaurant
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="img != null">img = #{img},</if>
+            <if test="intro != null">intro = #{intro},</if>
+            <if test="address != null">address = #{address},</if>
+            <if test="operatingTime != null">operating_time = #{operatingTime},</if>
+            <if test="contactNumber != null">contact_number = #{contactNumber}</if>
+        </set>
+        where id = #{id}        
+    </update>
 
-<!-- <select id="getRanking" resultType="RestaurantView">
- SELECT *,
-  (SELECT COUNT(*)
-  FROM (SELECT *
-  FROM restaurant_view
-  <if test="categoryId != null">
-     WHERE category_id = #{categoryId}
-  </if>
-  ORDER BY value DESC) AS subquery
-  WHERE subquery.value >= restaurant_view.value) AS rank
-  FROM restaurant_view
-  ORDER BY value DESC
-</select> -->
-
+    <select id="getRanking" resultType="RestaurantRankView">
+        SELECT *
+        FROM restaurant_rank_view
+        <if test="categoryId != null">
+            WHERE category_id = #{categoryId}
+        </if>
+        ORDER BY value DESC
+            LIMIT #{offset}, #{size}
+    </select>
 
    <select id="findAllRestaurant" resultType="Restaurant">
       select * from restaurant
@@ -135,7 +134,7 @@
 
 	<select id="findReviewAll" resultType="Review">
 		select * from review_list_view where restaurant_id = #{restaurantId}
-		limit #{offset}, #{size}
+		limit #{size}
 	</select>
 
 

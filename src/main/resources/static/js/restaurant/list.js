@@ -31,7 +31,6 @@ let variables = {
 }
 
 let otherCategoryAllId = 6
-let isLoadingOnScroll = false;
 
 // ==================== 검색바 ====================
 // 검색바 보이기() --------------------------------
@@ -73,10 +72,11 @@ function resetVariables(){
     variables.filterId = null
     variables.offset = 0
     filter.selectedIndex = 0
-    isLoadingOnScroll = false
+    restaurantList.innerHTML = ""
+    window.scroll({
+        top: 0,
+    })
 }
-
-// TODO url에 offset 포함
 
 // -------------- 식당 리스트 로드 함수 ---------------
 function restaurantListLoad(url){
@@ -84,14 +84,13 @@ function restaurantListLoad(url){
     if(document.querySelector("#member-id")!=null)
         memberId = document.querySelector("#member-id").value
 
-    console.log(url);
+    if(!variables.filterId)
+        restaurantList.innerHTML = ""
 
     fetch(url)
         .then(response => response.json())
         .then(list => {
             console.log(list);
-            if(!isLoadingOnScroll)
-                restaurantList.innerHTML = ""
 
             // 아이템 채우기
             for (let r of list) {
@@ -230,15 +229,58 @@ filterBox.onchange = function(e){
     variables.offset = 0
     let url = null
 
-    if(topCategoryId)
+    if(variables.topCategoryId)
         url = `/api/restaurant/list?tc=${variables.topCategoryId}&f=${variables.filterId}&o=${variables.offset}`
-    else if(categoryId)
+    else if(variables.categoryId)
         url = `/api/restaurant/list?c=${variables.categoryId}&f=${variables.filterId}&o=${variables.offset}`
-    else if(query)
+    else if(variables.query)
         url = `/api/restaurant/list?q=${variables.query}&f=${variables.filterId}&o=${variables.offset}`
         
     restaurantListLoad(url)
 }
+
+
+// --------------------- 필터링 Design -----------------------
+
+$(".custom-select").each(function() {
+    var classes = $(this).attr("class"),
+        id      = $(this).attr("id"),
+        name    = $(this).attr("name");
+    var template =  '<div class="' + classes + '">';
+        template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
+        template += '<div class="custom-options">';
+        $(this).find("option").each(function() {
+          template += '<span class="custom-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
+        });
+    template += '</div></div>';
+    
+    $(this).wrap('<div class="custom-select-wrapper"></div>');
+    $(this).hide();
+    $(this).after(template);
+  });
+  $(".custom-option:first-of-type").hover(function() {
+    $(this).parents(".custom-options").addClass("option-hover");
+  }, function() {
+    $(this).parents(".custom-options").removeClass("option-hover");
+  });
+  $(".custom-select-trigger").on("click", function() {
+    $('html').one('click',function() {
+      $(".custom-select").removeClass("opened");
+    });
+    $(this).parents(".custom-select").toggleClass("opened");
+    event.stopPropagation();
+  });
+  $(".custom-option").on("click", function() {
+    $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
+    $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
+    $(this).addClass("selection");
+    $(this).parents(".custom-select").removeClass("opened");
+    $(this).parents(".custom-select").find(".custom-select-trigger").text($(this).text());
+  });
+
+
+
+
 
 // ------------------ 좋아요 -------------------
 restaurantList.onclick = function(e){
@@ -316,36 +358,35 @@ window.addEventListener("scroll", function () {
     let scrollTop = document.documentElement.scrollTop
     let windowHeight = document.documentElement.clientHeight
 
-    isLoadingOnScroll = true
-
     // 스크롤 바닥에 닿으면
-    if (scrollTop + windowHeight >= documentHeight){
+    if (scrollTop + windowHeight >= documentHeight - 10){
         variables.offset += 6
-        console.log("x");
         window.scroll({
-            top: 300
-            });
-    }
-
-    let url = "/api/restaurant/list?"
-
-    let urls = {
-        query: `q=${variables.query}`,
-        topCategoryId: `tc=${variables.topCategoryId}`,
-        categoryId: `c=${variables.categoryId}`,
-        filterId: `f=${variables.filterId}`,
-        offset: `o=${variables.offset}`
-    }
-
-    let keyArr = Object.keys(variables)
-    let and = "&"
-    for(let i = 0; i < keyArr.length; i++){
-        if(variables[keyArr[i]] !== null){
-            url = `${url}${urls[keyArr[i]]}`
-            if(i<keyArr.length-2)
-                url = `${url}${and}`
+            top: documentHeight,
+        })
+        
+        let url = "/api/restaurant/list?"
+    
+        let urls = {
+            query: `q=${variables.query}`,
+            topCategoryId: `tc=${variables.topCategoryId}`,
+            categoryId: `c=${variables.categoryId}`,
+            filterId: `f=${variables.filterId}`,
+            offset: `o=${variables.offset}`
         }
+    
+        let keyArr = Object.keys(variables)
+        let and = "&"
+        for(let i = 0; i < keyArr.length; i++){
+            console.log(url);
+            if(variables[keyArr[i]] !== null){
+                url = `${url}${urls[keyArr[i]]}${and}`
+                if(i==keyArr.length-2){
+                    continue
+                }
+            }
+        }
+        restaurantListLoad(url);
     }
-    console.log(url);
-    // restaurantListLoad(url);
+
 })

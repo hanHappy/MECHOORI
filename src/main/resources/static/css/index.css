@@ -183,6 +183,10 @@ main{
     width: 29px;
 }
 
+.rankColor{
+    color:#FFD700 !important;
+}
+
 
 /* ------------------- 3. 컨텐츠 ----------------- */
 
@@ -324,7 +328,9 @@ label.right{
 }
 
 .valueText{
-    color: #FFE551 !important;
+    /* color:   #FFC0CB !important; */
+    /* color:   #00FF00 !important; */
+    color:   #ff8902 !important;
 }
 
 
@@ -621,13 +627,13 @@ label.right{
     }
 
     .typelist{
-        max-width: 800px;
-        grid-template-columns: repeat(6, 1fr);
+        max-width: 900px;
+        grid-template-columns: repeat(7, 1fr);
         overflow-x: hidden;
     }
 
     .typelist li{
-        width: 72px;
+        width: 100%;
         padding-right: 20px;
         border-radius: 0;
         border: 0;
@@ -650,7 +656,7 @@ label.right{
         float: left;
         padding: 15px 0;
         padding-right: 10px;
-        width: 60px;
+        width: 30px;
     }
 
     .category-all-wrapper {

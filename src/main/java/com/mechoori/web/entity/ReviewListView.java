@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 // TODO RateListView와 합치기
 public class ReviewListView {
+    private int id;
     private int memberId;
     private String nickname;
     private String memberImg;
@@ -21,7 +22,6 @@ public class ReviewListView {
     private String restaurantName;
     private String menuName;
     private int price;
-    private int id;
     private int ratePrice;
     private int value;
     private String review;

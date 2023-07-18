@@ -13,6 +13,7 @@ public class RestaurantRankView {
     private int avgPrice;
     private int avgRatedPrice;
     private int value;
+    private int id;
 
 
 }

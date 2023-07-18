@@ -166,10 +166,10 @@ public class UserController {
         return newAuth;
     }
 
-    @GetMapping("/my-page/rate-list")
+    @GetMapping("my-page/rate-list")
     public List <RateListView> rateList(
                            @AuthenticationPrincipal MechooriUserDetails user,
-                           @RequestParam(value = "offset") int offset) {
+                           @RequestParam(name = "offset") int offset) {
 
         List<RateListView> list = rateService.getMyList(user.getId(),offset);
 

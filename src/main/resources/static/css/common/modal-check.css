@@ -28,9 +28,9 @@
     min-width: 310px;
     min-height: 100px;
 
-    transition: 0.5s;
+    transition: 0.4s;
     opacity: 0;
-    transform: translateY(100px);
+    transform: translateY(30px);
 }
 
 .screen.check .modal-panel.show {

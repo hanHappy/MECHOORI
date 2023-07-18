@@ -21,6 +21,8 @@ public class EmailController {
             @RequestParam("e") String email)
             throws Exception {
 
+        System.out.println(email);
+
         return service.sendSimpleMessage(email);
     }
 

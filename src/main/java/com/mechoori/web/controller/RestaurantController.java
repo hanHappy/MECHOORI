@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Map;
 
 import com.mechoori.web.entity.*;
@@ -27,6 +25,7 @@ import com.mechoori.web.service.CategoryService;
 import com.mechoori.web.service.MenuService;
 import com.mechoori.web.service.RateService;
 import com.mechoori.web.service.RestaurantService;
+import com.mechoori.web.service.ReviewListService;
 
 @Controller
 @RequestMapping("/restaurant")
@@ -40,6 +39,8 @@ public class RestaurantController {
     private CategoryService categoryService;
     @Autowired
     private RateService rateService;
+    @Autowired
+    private ReviewListService reviewListService;
 
     @Value("${upload.review}")
     private String uploadPath;
@@ -84,6 +85,7 @@ public class RestaurantController {
     @GetMapping("{id}")
     public String detail(
             @PathVariable("id") int restaurantId,
+            @RequestParam(value = "offset", defaultValue = "0") int offset,
             @AuthenticationPrincipal MechooriUserDetails member,
             Model model) {
         
@@ -101,31 +103,23 @@ public class RestaurantController {
             menuIds.add(menuView.getId());
         }
         //리뷰
-        List<Rate> rateList = rateService.getListByMenuIds(menuIds);
+        List<ReviewListView> rateList = rateService.getViewList(restaurantId, offset);
 
         //리뷰 최신순 4개
-        List<Rate> top4Rates;
+        List<ReviewListView> top4Rates;
         if (rateList.size() < 4) {
-            List<Rate> sortedList = new ArrayList<>(rateList);
-            sortedList.sort(Comparator.comparing(Rate::getRegDate).reversed());
+            List<ReviewListView> sortedList = new ArrayList<>(rateList);
+            sortedList.sort(Comparator.comparing(ReviewListView::getRegDate).reversed());
             top4Rates = sortedList.subList(0, rateList.size());
         } else {
-            List<Rate> sortedList = new ArrayList<>(rateList);
-            sortedList.sort(Comparator.comparing(Rate::getRegDate).reversed());
+            List<ReviewListView> sortedList = new ArrayList<>(rateList);
+            sortedList.sort(Comparator.comparing(ReviewListView::getRegDate).reversed());
             top4Rates = sortedList.subList(0, 4);
-        }
-
-        List<String> menuNames = new ArrayList<>();
-        for (Rate rate : top4Rates) {
-            int menuId = rate.getMenuId();
-            String menuName = menuService.getMenuName(menuId, menuViewList);
-            menuNames.add(menuName);
         }
 
         model.addAttribute("menuViewList", menuViewList);
         model.addAttribute("r", restaurantView);
         model.addAttribute("rateList", rateList);
-        model.addAttribute("menuNames", menuNames);
         model.addAttribute("top4Rates", top4Rates);
 
         return "restaurant/detail";
@@ -160,7 +154,7 @@ public class RestaurantController {
         model.addAttribute("list", list)
              .addAttribute("count", count)
              .addAttribute("r", restaurant);
-
+        
         System.out.println(list);
         System.out.println(count);
 
@@ -205,10 +199,7 @@ public class RestaurantController {
         return "redirect:rate-result";
     }
 
-//get mapping
-//model -> map<>  =
-// data 
-
+    // ---------- 리뷰 리스트 (R) ------------
 
     @GetMapping("/ranking")
         public String ranking(Model model,
