@@ -28,9 +28,9 @@ public class RateController {
     @GetMapping("/{id}")
     public List<ReviewListView> list(
             @RequestParam(value = "offset", defaultValue = "0") int offset,
-            @RequestParam(name = "ctgId", required = false) Integer categoryId) {
+            @PathVariable("id") int restaurantId) {
 
-        return service.getViewList(categoryId, offset);
+        return service.getViewList(restaurantId,offset);
     }
 
 }

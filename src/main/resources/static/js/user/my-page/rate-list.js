@@ -3,7 +3,7 @@ let offset = 0;
 
 
 rateList.addEventListener('click', (e)=>{
-    if(e.target.className=='rate-list')
+    if(e.target.className == 'rate-list')
         return
 
     let target = e.target;

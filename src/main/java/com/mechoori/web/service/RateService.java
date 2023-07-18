@@ -32,4 +32,5 @@ public interface RateService {
     List<ReviewListView> getViewList(int restaurantId,  int offset);
 
     int delete(int id);
+
 }
