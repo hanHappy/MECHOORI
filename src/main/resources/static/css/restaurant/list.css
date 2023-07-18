@@ -479,12 +479,23 @@ select option {
 
 @media only screen and (min-width: 679px) {
 
-    .category-wrapper {
-        justify-content: center;
+    /*.category-wrapper {*/
+    /*    justify-content: center;*/
+    /*}*/
+
+    .restaurant-list-section{
+        padding: 0 20px;
     }
 
-    .category-list {
-        gap: 100px;
-
+    .restaurant-list {
+        width: 100%;
+        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 100%));
+        position: relative;
     }
+
+    /*.category-list {*/
+    /*    gap: 100px;*/
+    /*}*/
 }
