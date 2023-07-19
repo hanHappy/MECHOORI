@@ -19,11 +19,19 @@
     <header>
         <div class="header-side left">
         </div>
-        <a href="/"><h1 class="header-icon logo">로고</h1></a>
-        <div class="header-side right">
-            <a id="menu" class="header-icon menu">버튼</a>
+
+        <div class="logo-container">
+          <a href="/">
+            <div class="header-icon logo"></div>
+          </a>
+          <div class="header-icon hoverimg"></div>
         </div>
-    </header>
+
+        <div class="header-side right">
+            <a sec:authorize="isAnonymous()" href="/user/login" class="header-icon menu">메뉴</a>
+            <a sec:authorize="isAuthenticated()" id="menu" class="header-icon menu">메뉴</a>
+        </div>
+      </header>
     <main>
         <div class="page-wrap">
             <section class="poster">

@@ -49,6 +49,10 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
             // 단, 회원가입 -> 로그인 => 인덱스
             if (prevPage.contains("/user/sign-up/policy")) {
                 uri = "/";
+            } else if (prevPage.contains("/user/sign-up/complete")) {
+                uri = "/";
+            } else if (prevPage.contains("/user/my-page/edit-info/pwd")) {
+                uri = "/";
             } else {
                 uri = prevPage;
             }
