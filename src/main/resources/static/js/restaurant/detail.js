@@ -1,6 +1,6 @@
 let likeBtn = document.querySelector('.like');
-let copyButton = document.getElementById('map-address-copy-button');
-let addressText = document.getElementById('map-address-copy-text');
+let copyButton = document.querySelector('#map-address-copy-button');
+let addressText = document.querySelector('#map-address-copy-text');
 let modalCopy = document.getElementById('modal-copy');
 let shareBtn = document.querySelector('.share')
 
@@ -66,6 +66,7 @@ likeBtn.onclick = function(e){
 
 // 주소 복사
 copyButton.addEventListener('click', () => {
+    console.log("c");
     const address = addressText.textContent;
     navigator.clipboard.writeText(address)
         .then(() => {

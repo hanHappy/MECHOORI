@@ -568,19 +568,6 @@ a {
   display: none;
 }
 
-/* ===주소 복사 모달=== */
-.address-copy-modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
 .address-copy-modal-content {
   background-color: #fefefe;
   margin: 25% auto;

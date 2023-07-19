@@ -55,7 +55,7 @@ section.addEventListener("click", function (e) {
 const restaurantId = section.getAttribute('data-restaurant-id');
 
 function upperSection() {
-    section.style.transform = "translateY(-600%)";
+    section.style.transform = "translateY(-900%)";
 
     setTimeout(() => {
         window.location.href = '/restaurant/'+restaurantId;
