@@ -1,10 +1,14 @@
+import ModalCheck from '/js/components/modal-check.js'
+
 let rateList = document.querySelector('.review-list')
 let reviewItem = rateList.querySelector('.review')
 let modalCheck = document.querySelector('#modal-check')
+let modalPanel = modalCheck.querySelector('.modal-panel')
 let noBtn = modalCheck.querySelector('#no')
 let yesBtn = modalCheck.querySelector('#yes')
 let id = null
 let offset = 0;
+let review = null
 
 let resId = rateList.dataset.resId
 
@@ -18,10 +22,13 @@ rateList.addEventListener('click', (e) => {
     if (e.target.tagName != 'BUTTON')
         return
 
-    modalCheck.classList.remove('d-none')
+    let modal = new ModalCheck();
+    modal.show(modalCheck, modalPanel)
 
     let button = e.target
     id = button.dataset.id
+
+    review = button.parentElement.parentElement
 })
 
 modalCheck.addEventListener('click', (e) => {
@@ -33,10 +40,16 @@ noBtn.addEventListener('click', (e) => {
     modalCheck.classList.add('d-none')
 })
 
-yesBtn.addEventListener('click', (e) => {
-
+yesBtn.addEventListener('click', (e)=>{
     fetch(`/api/rate/${id}`, {
         method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(result => {
+        if(result == 1){
+            modalCheck.classList.add('d-none')
+            review.remove()
+        }
     })
 })
 
@@ -99,10 +112,7 @@ window.addEventListener("scroll", function () {
         // 스크롤이 맨 아래에 도달했을 때
         offset += 6;
 
-        console.log(offset)
-
         let url = `http://192.168.0.67:8080/api/rate/${resId}/reviews?offset=${offset}`;
-        console.log(url)
         reviewListLoad(url);
     }
 })
