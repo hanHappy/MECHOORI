@@ -118,8 +118,7 @@ window.addEventListener("DOMContentLoaded", function (e) {
             })
             .catch(function (error) {
                 console.log(error);
-                var locPosition = new kakao.maps.LatLng(37.4812845080678, 126.952713197762);
-
+                var locPosition = new kakao.maps.LatLng(37.552458900000,126.937826200000);
                 // 마커를 표시합니다
                 displayMarker(locPosition);
             });
