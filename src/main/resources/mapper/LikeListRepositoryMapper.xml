@@ -5,7 +5,8 @@
 <mapper namespace="com.mechoori.web.repository.LikeListRepository">
     <select id="findAll" resultType="LikeList">
         select * 
-            from like_list_view 
-            where member_id = #{memberId}
+        from like_list_view 
+        where member_id = #{memberId}
+        order by reg_date desc
     </select>
 </mapper>
