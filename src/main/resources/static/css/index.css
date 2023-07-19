@@ -210,9 +210,14 @@ main{
 .title-box button{
     background-color: transparent;
     border: none;
-    font-weight: 300;
-    font-size: 16px;
-    color: #838383;
+    font-size: 14px;
+    color: var(--hint-color);
+    font-weight: 450;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.title-box button:hover {
+    filter: brightness(0.8);
 }
 
 [name="slide"] {display: none;}

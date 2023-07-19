@@ -176,7 +176,7 @@
                     </div>
                 </div>
         </section>
-        <!----------- 변경 중 --------------->
+        <!-- =================== 리뷰 목록 =================== -->
         <div class="review">
             <div class="review-title-box">
                 <div class="review-title">
@@ -190,8 +190,10 @@
             </div>
             <div class="review-contents" th:each="r : ${top4Rates}">
                 <img src="" th:src="@{${r.memberImg}}" alt="프로필사진">
-                <p class="review-rate-info"><span class="menu-name" th:text="${r.menuName}">메뉴명</span>&nbsp;&nbsp;<span class="value" th:text="${r.value} + '%'">110%</span>
-                </p>
+                <div class="review-rate-info-wrap">
+                    <span class="menu-name" th:text="${r.menuName}">메뉴명</span>
+                    <span class="value" th:text="${r.value} + '%'">110%</span>
+                </div>
                 <p><span th:text="${r.nickname}" class="nickname">닉네임</span>&nbsp;&nbsp;&nbsp;<span
                         class="comment" th:text="${r.review}">코멘트코멘트코멘트코멘트코멘트</span></p>
                 <img src="" th:src="@{${r.reviewImg}}" alt="리뷰사진">

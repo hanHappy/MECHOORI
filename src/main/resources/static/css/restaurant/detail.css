@@ -242,7 +242,7 @@ header {
 
 .menubars-content{
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1.3fr;
+  grid-template-columns: 1.5fr 1fr 1.5fr;
   /* display:flex;
   justify-content: space-between; */
 }
@@ -430,7 +430,28 @@ header {
   align-self: center;
 }
 
-.review-contents p:nth-child(2) { grid-area: rate-info; }
+.review-rate-info-wrap {
+  display: grid;
+  grid-template: 
+                "menu-name value" auto
+                / 1fr 40px;
+  padding-right: 10px;
+}
+
+/* .review-contents p:nth-child(2) { grid-area: rate-info; } */
+.menu-name {
+  grid-area: menu-name;
+
+  font-weight: 400;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box; 
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.value { grid-area: value; }
+
 .review-contents p:nth-child(3) { 
   grid-area: comment; 
 
@@ -458,13 +479,7 @@ a {
   cursor: default;
 }
 
-.menu-name {
-  max-width: 140px;
-  display: inline-flex;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
+
 
 /* -------------- 평가하기 버튼 -------------- */
 .btn-review-wrap {
