@@ -36,5 +36,7 @@ public interface RateRepository {
 
     int delete(int id);
 
+    int findCount(int restaurantId);
+
 
 }

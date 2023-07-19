@@ -30,6 +30,7 @@
     <select id="getMyList" parameterType="RateListView">
         SELECT * FROM rate_list_view
         WHERE member_id = #{memberId}
+        order by reg_date desc
         LIMIT #{offset}, #{size}
     </select>
 
@@ -96,6 +97,7 @@
             *
         from review_list_view
         where restaurant_id = #{restaurantId}
+        order by reg_date desc
         limit #{offset}, #{size}
     </select>
 
@@ -103,5 +105,12 @@
         delete from rate
         where id = #{id}
     </delete>
+
+    <select id="findCount" resultType="int">
+        select
+            count(id)
+        from review_list_view
+        where restaurant_id = #{restaurantId};
+    </select>
 	
 </mapper>

@@ -116,10 +116,14 @@ public class RestaurantController {
             top4Rates = sortedList.subList(0, 4);
         }
 
+        int count = rateService.getCount(restaurantId);
+
         model.addAttribute("menuViewList", menuViewList);
         model.addAttribute("r", restaurantView);
         model.addAttribute("rateList", rateList);
         model.addAttribute("top4Rates", top4Rates);
+        model.addAttribute("count", count);
+
 
         return "restaurant/detail";
     }
@@ -148,15 +152,12 @@ public class RestaurantController {
 
         List<ReviewListView> list = rateService.getViewList(restaurantId, offset);
         Restaurant restaurant = restaurantService.getDetailById(restaurantId);
-        int count = list.size();
+        int count = rateService.getCount(restaurantId);
 
         model.addAttribute("list", list)
              .addAttribute("count", count)
              .addAttribute("r", restaurant);
         
-        System.out.println(list);
-        System.out.println(count);
-
         return "restaurant/reviews";
     }
 

@@ -92,7 +92,7 @@ public class RateServiceImp implements RateService {
 
     @Override
     public List<RateListView> getMyList(int memberId, int offset) {
-        List<RateListView> list = repository.getMyList(memberId, offset, 6);
+        List<RateListView> list = repository.getMyList(memberId, offset, 10);
         for(RateListView item : list){
             double value_ = (double)item.getRatePrice() / item.getPrice() * 100;
             int value = (int) Math.round(value_);
@@ -148,7 +148,12 @@ public class RateServiceImp implements RateService {
 
     @Override
     public List<ReviewListView> getViewList(Integer restaurantId, int offset) {
-        return repository.findViewAll(restaurantId, offset, 6);
+        return repository.findViewAll(restaurantId, offset, 10);
+    }
+
+    @Override
+    public int getCount(int restaurantId) {
+        return repository.findCount(restaurantId);
     }
 
 

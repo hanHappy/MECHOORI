@@ -33,4 +33,6 @@ public interface RateService {
 
     int delete(int id);
 
+    int getCount(int restaurantId);
+
 }
