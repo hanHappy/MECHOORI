@@ -125,8 +125,18 @@ saveBtn.onclick = function (e) {
     })
         .then(response => response.json())
         .then(member => {
-            if(isProfileChanged)
-                profileFrame.innerHTML = `<img id="profile-image" src=${member.img}>`;
+            if(isProfileChanged) {
+                let img = new Image();
+                img.onload = function() {
+                    img.style.width = 'inherit';
+                    img.style.height = 'inherit';
+                    img.style.position = 'inherit';
+                    img.style.objectFit = 'cover';
+                    profileFrame.innerHTML = '';
+                    profileFrame.appendChild(img);
+                };
+                img.src = member.img;
+            }
             if(isNicknameChanged){
                 nicknameInput.value = member.nickname;
                 nickname.textContent = member.nickname;
