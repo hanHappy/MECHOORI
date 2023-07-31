@@ -37,13 +37,6 @@ public class HomeController {
 		model.addAttribute("list", list);
 		model.addAttribute("listRank", listRank);
 
-		System.out.println("id----------------------------------: ");
-		System.out.println(listRank.get(0).getId());
-
-		// for(int i=0; i<10; i++){
-		// 	System.out.println(nickname);
-		// }
-
 		return "index";
 	}
 
