@@ -1,4 +1,4 @@
-# MECHOORI
+# :fork_and_knife: MECHOORI
 내 손 안의 메뉴 추천 리스트
 
 > ![java](https://img.shields.io/badge/Java-17-DEB887?style=flat)
