@@ -121,8 +121,8 @@
   </tr>
 </thead>
 <tbody>
-<td align="center" width="468px"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/106819402/f3313042-b885-4509-9c6c-526982468fe8"><img src="https://github.com/hanHappy/MECHOORI/assets/106819402/f3313042-b885-4509-9c6c-526982468fe8" width="50%" style="max-width: 100%"></a></td>
-  <td align="center" width="468px"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/106819402/3b2fa1a5-784f-4319-961e-36f450d76957"><img src="https://github.com/hanHappy/MECHOORI/assets/106819402/3b2fa1a5-784f-4319-961e-36f450d76957" width="50%" style="max-width: 100%"></a></td>
+<td align="center" width="468px"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/126304637/203f1248-e89a-405e-ad5c-008091016997"><img src="https://github.com/hanHappy/MECHOORI/assets/126304637/203f1248-e89a-405e-ad5c-008091016997" width="50%" style="max-width: 100%"></a></td>
+  <td align="center" width="468px"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/126304637/adbbf02d-4166-4b54-bf94-6e60807ddb15"><img src="https://github.com/hanHappy/MECHOORI/assets/126304637/adbbf02d-4166-4b54-bf94-6e60807ddb15" width="50%" style="max-width: 100%"></a></td>
 </tbody>  
 </table>
 <br>
@@ -134,11 +134,8 @@
   </tr>
 </thead>
 <tbody>
-<td align="center" width="468px"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/126304637/3378eaa4-ab05-4b1b-884f-052dfbbf4cea"><img src="htt지</th>
-  </tr>
-</thead>
 <tbody>
-<td align="center" width="468px"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/106819402/774d94be-a57a-4e0a-9c75-2d52b6960c20"><img src="https://github.com/hanHappy/MECHOORI/assets/106819402/774d94be-a57a-4e0a-9c75-2d52b6960c20" width="50%" style="max-width: 100%"></a></td>
+<td align="center" width="468px"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/126304637/53349132-0f6d-4b8d-b1a6-cb428265f9ab"><img src="https://github.com/hanHappy/MECHOORI/assets/126304637/53349132-0f6d-4b8d-b1a6-cb428265f9ab" width="50%" style="max-width: 100%"></a></td>
 </tbody>  
 </table>
 
@@ -201,8 +198,8 @@
 </thead>
 <tbody>
 <tr>
-<td align="center"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/124006794/3146ca3a-233a-4bef-b061-f0989cb18152"><img src="https://github.com/hanHappy/MECHOORI/assets/124006794/3146ca3a-233a-4bef-b061-f0989cb18152" width="50%" style="max-width: 100%;"></a></td>
-<td align="center"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/124006794/bdc76575-1843-4fc4-999e-3f76b853034e"><img src="https://github.com/hanHappy/MECHOORI/assets/124006794/bdc76575-1843-4fc4-999e-3f76b853034e" width="50%" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/126304637/9bffdaec-0f0b-4829-8833-d316f03c16e0"><img src="https://github.com/hanHappy/MECHOORI/assets/126304637/9bffdaec-0f0b-4829-8833-d316f03c16e0" width="50%" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/126304637/ff11d0fb-b26b-4a0b-80a6-f49f56081e33"><img src="https://github.com/hanHappy/MECHOORI/assets/126304637/ff11d0fb-b26b-4a0b-80a6-f49f56081e33" width="50%" style="max-width: 100%;"></a></td>
 </tr>
 </tbody>
 </table>
@@ -217,7 +214,7 @@
 </thead>
 <tbody>
 <tr>
-<td align="center"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/124006794/186a2cd9-f70b-4584-9212-e8063d697873"><img src="https://github.com/hanHappy/MECHOORI/assets/124006794/186a2cd9-f70b-4584-9212-e8063d697873" width="50%" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/126304637/66f6f995-53c7-48d5-8969-b23f365d7cba"><img src="https://github.com/hanHappy/MECHOORI/assets/126304637/66f6f995-53c7-48d5-8969-b23f365d7cba" width="50%" style="max-width: 100%;"></a></td>
 </tr>
 </tbody>
 </table>
@@ -228,13 +225,13 @@
 <thead>
 <tr>
 <th align="center">회원 정보 수정 페이지</th>
-<th align="center">비밀번호 찾기 페이지지</th>
+<th align="center">비밀번호 찾기 페이지</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/126304637/30f3dc5a-7f10-4a45-8975-9bb6ee399d91"><img src="https://github.com/hanHappy/MECHOORI/assets/126304637/30f3dc5a-7f10-4a45-8975-9bb6ee399d91" width="50%" style="max-width: 100%;"></a></td>
-<td align="center" valign="top"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/124006794/b8642655-418f-469a-a2e3-141ad3efa35b"><img src="https://github.com/hanHappy/MECHOORI/assets/124006794/b8642655-418f-469a-a2e3-141ad3efa35b" width="50%" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/126304637/d31cef88-5b16-4179-a8a6-2c868b5b7fb1"><img src="https://github.com/hanHappy/MECHOORI/assets/126304637/d31cef88-5b16-4179-a8a6-2c868b5b7fb1" width="50%" style="max-width: 100%;"></a></td>
+<td align="center" valign="top"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/126304637/a8425cb2-e8ab-491a-aa7e-9b4e61e45504"><img src="https://github.com/hanHappy/MECHOORI/assets/126304637/a8425cb2-e8ab-491a-aa7e-9b4e61e45504" width="50%" style="max-width: 100%;"></a></td>
 </tr>
 </tbody>
 </table>
