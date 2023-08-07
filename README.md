@@ -230,7 +230,7 @@
 </thead>
 <tbody>
 <tr>
-<td align="center"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/126304637/d31cef88-5b16-4179-a8a6-2c868b5b7fb1"><img "><img src="https://github.com/hanHappy/MECHOORI/assets/126304637/d31cef88-5b16-4179-a8a6-2c868b5b7fb1"><img " width="50%" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/126304637/36093f68-9267-4f99-ba47-8751ff0b55dd"><img src="https://github.com/hanHappy/MECHOORI/assets/126304637/36093f68-9267-4f99-ba47-8751ff0b55dd" width="50%" style="max-width: 100%;"></a></td>
 <td align="center"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/126304637/94fbdb6e-5bc2-4349-a96d-90ac8f35572d"><img src="https://github.com/hanHappy/MECHOORI/assets/126304637/94fbdb6e-5bc2-4349-a96d-90ac8f35572d" width="50%" style="max-width: 100%;"></a></td>
 </tr>
 </tbody>
