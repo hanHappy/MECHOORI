@@ -251,7 +251,7 @@
 <tbody>
 <tr>
 <td align="center" width="468px" valign="top"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/118332255/2e884bf2-78eb-4f41-9ece-c10775450621"><img src="https://github.com/hanHappy/MECHOORI/assets/124006794/b8642655-418f-469a-a2e3-141ad3efa35b" width="50%" style="max-width: 100%;"></a></td>
-<td align="center" width="468px"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/118332255/e602e4fb-ae69-4219-96e4-792c704d85e1"><img src="https://github.com/hanHappy/MECHOORI/assets/118332255/e602e4fb-ae69-4219-96e4-792c704d85e1" width="50%" style="max-width: 100%;"></a></td>
+<td align="center" width="468px"><a target="_blank" rel="noopener noreferrer" href="https://github.com/hanHappy/MECHOORI/assets/118332255/e602e4fb-ae69-4219-96e4-792c704d85e1"><img src="https://github.com/hanHappy/MECHOORI/assets/118332255/e602e4fb-ae69-4219-96e4-792c704d85e1" height="100%" style="max-width: 100%;"></a></td>
 </tr>
 </tbody>
 </table>
