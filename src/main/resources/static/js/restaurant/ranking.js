@@ -37,17 +37,13 @@ function restaurantListLoad(url) {
             </ul>
         </a>
         </div>
-    
           `;
-
                 rankingList.insertAdjacentHTML("beforeend", itemTemplate);
             }
         })
         .catch((error) => {
             console.log("Error fetching data:", error);
         });
-
-
 }
 
 let dropbox = document.getElementById("categoryDropBox");
@@ -55,7 +51,6 @@ dropbox.onchange = function (e) {
     e.preventDefault();
     rankingList.innerHTML = "";
     offset = 0;
-
 
     let selectedIndex = dropbox.selectedIndex;
     let selectedOption = dropbox.options[selectedIndex];
@@ -67,13 +62,13 @@ dropbox.onchange = function (e) {
     }
 
     if (e.target.innerText === "전체") {
-        // 드롭박스가 변경되면 기존 내용을 삭제하고 새로운 데이터를 받아옵니다.
+        // 드롭박스가 변경되면 기존 내용을 삭제하고 새로운 데이터를 받아온다.
 
         categoryId = null;
-        let url = "http://192.168.0.67:8080/api/restaurant/ranking";
+        let url = "http://localhost:8080/api/restaurant/ranking";
         restaurantListLoad(url);
     } else {
-        let url = `http://192.168.0.67:8080/api/restaurant/ranking?ctgId=${value}`;
+        let url = `http://localhost:8080/api/restaurant/ranking?ctgId=${value}`;
         console.log(url);
         restaurantListLoad(url);
     }
@@ -85,12 +80,10 @@ window.addEventListener("scroll", function () {
     let scrollTop = document.documentElement.scrollTop;
     let windowHeight = document.documentElement.clientHeight;
 
-
     let rankingNums = document.querySelectorAll(".rankingNum");
     for (let i = 6; i < rankingNums.length; i++) {
         rankingNums[i].innerText = i + 1;
     }
-
 
     if (scrollTop + windowHeight >= documentHeight - 10) {
         // 스크롤이 맨 아래에 도달했을 때
@@ -105,12 +98,9 @@ window.addEventListener("scroll", function () {
             value = "";
         }
 
-        let url = `http://192.168.0.67:8080/api/restaurant/ranking?ctgId=${value}&offset=${offset}`;
+        let url = `http://localhost:8080/api/restaurant/ranking?ctgId=${value}&offset=${offset}`;
 
         console.log(url);
         restaurantListLoad(url);
     }
 });
-
-
-/*================================================================================*/

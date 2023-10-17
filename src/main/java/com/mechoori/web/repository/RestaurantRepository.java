@@ -25,6 +25,8 @@ public interface RestaurantRepository {
 
     List<RestaurantRankView> getRanking(Integer categoryId, int offset, int size);
     List<RestaurantRankView> findRankAll(Integer size, Integer categoryId);
+
+
     void update(Restaurant restaurant);
 
 
