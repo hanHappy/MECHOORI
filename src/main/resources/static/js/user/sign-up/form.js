@@ -185,6 +185,7 @@ function checkAnswerCompletion() {
         nickname !== "" &&
         password !== "" &&
         passwordCheck !== "" &&
+        password === passwordCheck &&
         email !== "" &&
         emailConfirm !== ""
     ) {
@@ -194,4 +195,5 @@ function checkAnswerCompletion() {
     }
 
 }
+
 

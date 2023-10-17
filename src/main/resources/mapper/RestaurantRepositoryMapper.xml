@@ -121,10 +121,6 @@
             LIMIT #{offset}, #{size}
     </select>
 
-   <select id="findAllRestaurant" resultType="Restaurant">
-      select * from restaurant
-   </select>
-
 	<select id="findRankAll" resultType="RestaurantRankView">
 		select * from restaurant_rank_view order by value desc
 		<if test="size != null">
@@ -132,11 +128,13 @@
 		</if>
 	</select>
 
+   <select id="findAllRestaurant" resultType="Restaurant">
+      select * from restaurant
+   </select>
+
 	<select id="findReviewAll" resultType="ReviewListView">
 		select * from review_list_view where restaurant_id = #{restaurantId}
 		limit #{size}
 	</select>
-
-
 
 </mapper>
