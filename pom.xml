@@ -206,11 +206,16 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 			<version>2.7.5</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-clean-plugin</artifactId>
+			<version>3.1.0</version>
+		</dependency>
 </dependencies>
 
 	<build>
 		<plugins>
+
 		<plugin>
             <groupId>com.mysema.maven</groupId>
             <artifactId>apt-maven-plugin</artifactId>
@@ -222,7 +227,7 @@
                     </goals>
                     <configuration>
                         <outputDirectory>target/generated-sources</outputDirectory>
-<!--						<outputDirectory>/home/ubuntu/.ssh/MECHOORI/target/generated-sources</outputDirectory>-->
+						<!--						<outputDirectory>/home/ubuntu/.ssh/MECHOORI/target/generated-sources</outputDirectory>-->
 						<processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                     </configuration>
                 </execution>
