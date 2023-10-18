@@ -143,7 +143,11 @@
 			<artifactId>querydsl-apt</artifactId>
 			<version>5.0.0</version> <!-- 버전은 필요에 따라 적절히 설정 -->
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 		<!-- QueryDSL Core Library -->
 		<dependency>
 			<groupId>com.querydsl</groupId>
