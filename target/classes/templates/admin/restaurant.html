@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html 
+    lang="en" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+    >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/admin/restaurant.css">
+    <link rel="stylesheet" href="/css/common/style.css">
+    <!-- <link rel="stylesheet" href="/css/common/style.css"> -->
+    <script src="/js/admin/restaurant.js" defer="defer"></script>
+    <title>Restaurant</title>
+</head>
+
+<body>
+    <a href="../admin">관리자 페이지로</a>
+
+    <a style="color: #282828;" href="restaurant"><h1>Restaurant</h1></a>
+
+    <hr>
+    <br>
+    <form method="get">
+        <input name="q" class="search-input" type="text" placeholder="식당 검색">
+        <button class="search-btn">검색</button>
+    </form>
+    <br>
+
+    <a href="restaurant/add"><button>추가</button></a>
+
+    <div class="column-container">
+        <div class="column-box">
+            <p>id</p>
+            <p>상위카테고리</p>
+            <p>카테고리</p>
+            <p>식당명</p>
+            <p>이미지</p>
+            <p>소개</p>
+            <p>주소</p>
+            <p>영업시간</p>
+            <p>연락처</p>
+        </div>
+    </div>
+    <section class="restaurant-list-section">
+        <h1 style="display: none;">식당 리스트</h1>
+        <div class="restaurant-list">
+            <section class="data restaurant" th:each="r: ${list}">
+                <p align="center" th:text="${r.id}">id</p>
+                <p align="center" th:text="${r.topCategoryId}">top_category_id</p>
+                <p align="center" th:text="${r.categoryId}">category_id</p>
+                <p align="center" th:text="${r.name}">name</p>
+                <p align="center" th:text="${r.img}">img</p>
+                <p align="center" th:text="${r.intro}">intro</p>
+                <p align="center" th:text="${r.address}">address</p>
+                <p align="center" th:text="${r.operatingTime}">operating_time</p>
+                <p align="center" th:text="${r.contactNumber}">contact_number</p>
+                <div class="button-box">
+                    <a th:href="@{restaurant/{id}/menu(id=${r.id})}"><button class="menu-btn">MENU</button></a>
+                    <a th:href="@{restaurant/{id}/edit(id=${r.id})}"><button class="edit-btn">EDIT</button></a>
+                    <a th:href="@{restaurant/{id}/delete(id=${r.id})}"><button class="delete-btn">DEL</button></a>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <br>
+
+    <a href="restaurant/add"><button>추가</button></a>
+
+    <br>
+
+    <div class="page-container">
+        <ul class="pages">
+            <li class="page" th:each="p : ${pages}">
+                <a th:href="@{/admin/restaurant(p=${p})}" th:text="${p}"></a>
+            </li>
+        </ul>
+    </div>
+
+    <br>
+
+</body>
+
+</html>

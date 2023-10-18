@@ -1,0 +1,104 @@
+body {
+    overflow: hidden !important
+}
+
+
+.mapStyle {
+
+    position: relative;
+
+    padding-top: 0;
+
+}
+
+.bottom-sheet-back{
+
+    height: 280px;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 36px;
+}
+
+
+
+.bottom-sheet-section {
+
+    position: relative;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-20%);
+    background-color: rgb(255, 255, 255);
+    height: 600px;
+    z-index: 100;
+    border-radius: 50px;
+    justify-content: center;
+    transition: all 12s cubic-bezier(0, 0, 0.02, 1);
+}
+
+.touch-section{
+
+    position: absolute;
+
+    margin-top: 20px;
+    border-radius: 8px;
+
+    background-color: rgba(190, 190, 190, 0.9);
+    height: 8px;
+    width: 80px;
+}
+
+#map-img{
+
+    left: 140px;
+    width: 100px;
+    height: 80px;
+    position: relative;
+    bottom: 120px;
+}
+
+#resName{
+    font-weight: 900;
+    font-size: 21px;
+}
+
+
+.bottom-sheet {
+
+    position: absolute;
+    margin: 20px 0 0 10px;
+    width: 100%;
+}
+
+
+p{
+    padding: 0;
+    margin: 0;
+}
+
+.info-background{
+
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    border: 2px solid #a9a9a9;
+    top: 50px;
+    border-radius: 8px;
+    height: 200px;
+
+}
+/*#address-copy-button {*/
+
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    justify-items: center;*/
+/*    margin-top: 15px;*/
+
+/*}*/
+
+
+.category{
+    color: #a7a7a7;
+
+}

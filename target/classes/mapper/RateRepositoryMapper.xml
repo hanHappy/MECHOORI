@@ -1,0 +1,116 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mechoori.web.repository.RateRepository">
+
+    <select id="findAll" resultType="Rate">
+        select 
+            *
+        from rate
+        <if test="menuId != null">
+            where menu_id = #{menuId}
+        </if>
+    </select>
+	
+	<insert id="add" parameterType="Rate">
+		insert into 
+        rate(member_id, menu_id, price, review, img)
+		values(#{memberId}, #{menuId}, #{price}, #{review}, #{img})
+	</insert>
+    <select id="findByMenuIds" parameterType="java.util.List" resultType="Rate">
+        SELECT *
+        FROM rate
+        WHERE menu_id IN
+        <foreach item="menuId" collection="list" open="(" separator="," close=")">
+            #{menuId}
+        </foreach>
+    </select>
+
+    <select id="getMyList" parameterType="RateListView">
+        SELECT * FROM rate_list_view
+        WHERE member_id = #{memberId}
+        order by reg_date desc
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="findData" resultType="Statistics">
+        SELECT #{memberId} AS member_id, ROUND(AVG(rated_avg_price), -2) AS overall_rated_avg_price,
+        ROUND(AVG(avg_price), -2) AS overall_avg_price
+        FROM (
+        SELECT rv.restaurant_id, AVG(rv.avg_rated_price) AS rated_avg_price, AVG(rv.avg_price) AS avg_price
+        FROM rate_view rv
+        INNER JOIN (
+        SELECT restaurant_id
+        FROM rate_view
+        WHERE member_id = #{memberId}
+        ) m ON rv.restaurant_id = m.restaurant_id
+        WHERE rv.member_id = #{memberId}
+        GROUP BY rv.restaurant_id
+        ) subquery
+        UNION ALL
+        SELECT 0 AS member_id, ROUND(AVG(rated_avg_price), -2) AS overall_rated_avg_price, ROUND(AVG(avg_price), -2) AS
+        overall_avg_price
+        FROM (
+        SELECT rv.restaurant_id, AVG(rv.avg_rated_price) AS rated_avg_price, AVG(rv.avg_price) AS avg_price
+        FROM rate_view rv
+        WHERE rv.member_id != #{memberId}
+        GROUP BY rv.restaurant_id
+        ) subquery
+    </select>
+
+
+
+    <select id="findData2" resultType="Statistics2">
+        SELECT rv.member_id, m.nickname, c.name, COUNT(rvv.rate_count) AS rate_count
+        FROM rate_view AS rv
+        JOIN restaurant_view AS rvv ON rv.restaurant_id = rvv.id
+        JOIN category c ON rvv.category_id = c.id
+        JOIN member m ON rv.member_id = m.id
+        WHERE rv.member_id = #{memberId}
+        GROUP BY rvv.category_id
+        ORDER BY rate_count DESC
+    </select>
+
+    <select id="findData3" resultType="Statistics3">
+    SELECT rv.member_id, rv.restaurant_id, rv.avg_price, rv.avg_rated_price,
+       ROUND((rv.avg_rated_price / rv.avg_price) * 100) AS value,
+       r.name AS res_name
+    FROM rate_view rv
+    JOIN restaurant r ON rv.restaurant_id = r.id
+    WHERE rv.member_id = #{memberId}
+    order by value desc
+    limit 10
+    </select>
+
+    <select id="findLatest" resultType="Rate">
+        SELECT 
+            *
+        FROM rate 
+        where member_id = #{memberId} 
+        order by reg_date desc 
+        limit 1
+    </select>
+
+    <select id="findViewAll" resultType="ReviewListView">
+        select 
+            *
+        from review_list_view
+        where restaurant_id = #{restaurantId}
+        order by reg_date desc
+        limit #{offset}, #{size}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from rate
+        where id = #{id}
+    </delete>
+
+    <select id="findCount" resultType="int">
+        select
+            count(id)
+        from review_list_view
+        where restaurant_id = #{restaurantId};
+    </select>
+	
+</mapper>

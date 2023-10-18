@@ -1,0 +1,162 @@
+@import url("../../style.css");
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  width: 100%;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+/* ========메인========== */
+.circleParent {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin-top: 30px;
+}
+
+.circle  {
+  width: 52px;
+  height: 52px;
+  position: absolute;
+  align-items: center;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  transform: translateX(-50%);
+  font-family: 'Noto Sans KR', sans-serif;
+  
+}
+
+.circle1 {
+  left: 18%;
+  background-color: rgb(255, 246, 198);
+  color: gray;
+}
+.circle2 {
+  left: 50%;
+  background-color: rgba(255, 229, 81, 1);
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+}
+.circle3 {
+  left: 82%;
+  background-color: rgb(255, 246, 198);
+  color: gray;
+
+}
+
+.Inline {
+  width: 60%;
+  height: 1px;
+  top: 25%;
+  position: absolute;
+  background-color: black;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -2;
+}
+
+.circleTextMain{
+  position: relative;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  grid-template-rows: 100%;
+  top: -40px;
+  font-size: 14px;
+  font-family: 'Noto Sans CJK KR Medium';
+
+}
+
+.circleText1 {
+  grid-column: 1;
+  width: auto;
+  color: gray;
+}
+.circleText2 {
+  grid-column: 2;
+  width: auto;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+  
+}
+.circleText3 {
+  grid-column: 3;
+  width: auto;
+  color: gray;
+}
+
+
+
+/* ================= 정보 입력 칸 ================= */
+
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-contents{
+  width: 375px;
+}
+
+.form-wrap {
+  padding: 10px 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  background-color: var(--box-color);
+  border: none;
+  border-radius: var(--border-radius);
+
+  height: 40px;
+  padding: 0 0 0 10px;
+}
+
+label {
+  font-weight: bold;
+
+  margin-left: 3px;
+  margin-bottom: 8px;
+}
+
+.input-wrap {
+  display: flex;
+  gap: 11px;
+}
+
+.input-wrap input {
+  flex: 1;
+}
+
+.submit {
+  margin-top: 20px;
+}
+
+
+/* placeholder animation */
+.input::-webkit-input-placeholder{
+  transition: all 0.5s;
+}
+.input:focus::-webkit-input-placeholder{
+  text-indent: -10px; opacity: 0;
+}
