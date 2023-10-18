@@ -239,8 +239,8 @@
                         <goal>process</goal>
                     </goals>
                     <configuration>
-<!--                        <outputDirectory>target/generated-sources</outputDirectory>-->
-						<outputDirectory>/home/ubuntu/.ssh/mechoori/MECHOORI/target/generated-sources</outputDirectory>
+                        <outputDirectory>target/generated-sources</outputDirectory>
+<!--						<outputDirectory>/home/ubuntu/.ssh/mechoori/MECHOORI/target/generated-sources</outputDirectory>-->
 						<processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                     </configuration>
                 </execution>
