@@ -229,6 +229,26 @@
 			</resource>
 		</resources>
 		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>target</directory>
+							<includes>
+								<include>*</include>
+							</includes>
+							<excludes>
+								<exclude>generated-sources/**</exclude>
+							</excludes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+
 		<plugin>
             <groupId>com.mysema.maven</groupId>
             <artifactId>apt-maven-plugin</artifactId>
@@ -239,8 +259,8 @@
                         <goal>process</goal>
                     </goals>
                     <configuration>
-                        <outputDirectory>target/generated-sources</outputDirectory>
-<!--						<outputDirectory>/home/ubuntu/.ssh/mechoori/MECHOORI/target/generated-sources</outputDirectory>-->
+<!--                        <outputDirectory>target/generated-sources</outputDirectory>-->
+						<outputDirectory>./ssh/project/MECHOORI/target/generated-sources</outputDirectory>
 						<processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                     </configuration>
                 </execution>
